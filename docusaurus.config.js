@@ -23,7 +23,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/fullstack-decal/website/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/fullstack-decal/website/edit/main',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -44,9 +44,9 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'Intro',
+            docId: 'Content',
             position: 'left',
-            label: 'Intro',
+            label: 'Content',
           },
           {
             to: 'course-policies',
@@ -68,7 +68,7 @@ const config = {
             items: [
               {
                 label: 'Intro',
-                to: '/docs/Intro',
+                to: '/docs/Lessons/AboutLessons',
               }
             ],
           },
