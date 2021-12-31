@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react'
-import clsx from 'clsx'
-import styles from './HomepageFeatures.module.css'
+import React, { ReactElement } from 'react';
+import clsx from 'clsx';
+import styles from './HomepageFeatures.module.css';
 
 type FeatureItem = {
   title: string;
@@ -17,7 +17,7 @@ const FeatureList: FeatureItem[] = [
         Docusaurus was designed from the ground up to be easily installed and
         used to get your website up and running quickly.
       </>
-    )
+    ),
   },
   {
     title: 'Focus on What Matters',
@@ -27,7 +27,7 @@ const FeatureList: FeatureItem[] = [
         Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
         ahead and move your docs into the <code>docs</code> directory.
       </>
-    )
+    ),
   },
   {
     title: 'Powered by React',
@@ -37,9 +37,9 @@ const FeatureList: FeatureItem[] = [
         Extend or customize your website layout by reusing React. Docusaurus can
         be extended while reusing the same header and footer.
       </>
-    )
+    ),
   }
-]
+];
 
 function Feature ({ title, image, description }: FeatureItem) {
   return (
@@ -52,10 +52,10 @@ function Feature ({ title, image, description }: FeatureItem) {
         <p>{description}</p>
       </div>
     </div>
-  )
+  );
 }
 
-export default function HomepageFeatures (): JSX.Element {
+const HomepageFeatures = (): React.FC => {
   return (
     <section className={styles.features}>
       <div className="container">
@@ -66,5 +66,7 @@ export default function HomepageFeatures (): JSX.Element {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default HomepageFeatures;

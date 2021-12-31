@@ -24,10 +24,11 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['error'],
     'comma-dangle': ['error', {
       arrays: 'never',
-      objects: 'always',
+      objects: 'always-multiline',
       imports: 'never',
       exports: 'never',
       functions: 'never',
     }],
+    semi: ['error', 'always'],
   },
-}
+};

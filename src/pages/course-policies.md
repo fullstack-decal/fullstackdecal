@@ -17,7 +17,7 @@ We hope you take advantage of the office hours we have scheduled this term, and 
 Please do not expect TAs to debug your code. This is not a good use of their time, and part of the goal of this course is to turn you into a great tester and debugger. However, the TAs can help you find and fix your bugs.
 
 ## Discussion Forum
-All important course announcements will be made on Piazza. We will be automatically enrolling everyone.
+All important course announcements will be made on Piazza and Slack.
 
 ## Piazza Etiquette
 - Search before posting. Your question may have already been answered by us or other students in the past. Reading other students' posts will let you refine your question, and gives us more time to answer new questions.
@@ -30,22 +30,31 @@ All important course announcements will be made on Piazza. We will be automatica
 - If you reply to a follow-up answering the question at hand, mark the follow-up as resolved, since it no longer requires attention.
 
 ## Grading
-In order to foster a collaborative environment, CS61C is graded on a fixed scale. The course is graded out of 300 points, with the following mappings from points to letter grades:
+All Decal's are taken pass-no-pass, this one is no exception. Your final grade will be based primarily upon your attendance and completion of Homework and the 3 projects. A "pass" is a 60% in the class
+
+### Grading Breakdown
+
+| Item | Percent |
+| ----------- | ----------- |
+| Attendance   |    50%    |
+| Homework     | 15%  |
+| Project 1     | 10%  |
+| Project 2     | 10%  |
+| Final Project     | 15%  |
 
 
 ## Deadlines
 Any assignment which is due by the end of the day is due by 11:59:59PM Pacific Time.
 
-
 ## Homework
 Homework is designed to let you practice the week's material. We encourage you to work on the homework problems in small groups, but each student is required to turn in a solution that they have written themselves.
 
-Homework is graded on correctness.
+Homework is graded on completion.
 
 Every day homework is late, your grade will decrease by 10%.
 
 ## Projects
-Projects are designed to give you heavy-duty experience with the application of course content. Projects are graded on correctness. You must work on your own for each project.
+Projects are designed to give you heavy-duty experience with the application of course content. Projects are graded on correctness. You must work on your own for each project with the exception of the fial 
 
 ## Accommodations and Extensions
 Some forms:
