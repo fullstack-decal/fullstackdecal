@@ -55,7 +55,7 @@ function Feature ({ title, image, description }: FeatureItem) {
   );
 }
 
-const HomepageFeatures = (): React.FC => {
+const HomepageFeatures: React.FC = () => {
   return (
     <section className={styles.features}>
       <div className="container">
