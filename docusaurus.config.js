@@ -15,6 +15,8 @@ const config = {
   organizationName: 'fullstack-decal', // Usually your GitHub org/user name.
   projectName: 'website', // Usually your repo name.
 
+  themes: ['@docusaurus/theme-live-codeblock'],
+
   presets: [
     [
       'classic',

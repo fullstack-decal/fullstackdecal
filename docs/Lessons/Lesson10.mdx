@@ -1,0 +1,613 @@
+# Lesson 10 - React 2: Routing, Styling, and Libraries
+
+Welcome to React 3! In this lesson, we'll introduce you to the react ecosystem, which is a very, VERY large part of what makes react so useful and why it's considered the dominant frontend framework.
+
+We now have a solid understanding of React, and know how to use components, state, and props to build basic yet powerful web apps. This lessons introduces the tools most commonly used to build large-scale web applications. These tools allow you to go from basic single-page websites to sprawling apps likes Facebook and Airbnb.
+
+Over the last couple lessons, we've used package managers — even if we didn't fully realize it. We'll start by diving into different package managers such as `npm` and `yarn`. We'll use these to add tools to your app.
+
+Next, we'll cover routing and how to add different pages to your web app. We'll aim to cover dynamic routing as well, to demonstrate what happens if you want a large number of pages or need a page for various pieces of data. Say goodbye to the `<a>` tag.
+
+Lastly, we'll go over using CSS in react and why the old method of simply importing CSS files may not be desirable, and the unintended consequences of not using a specialized solution. We'll talk about some of these solutions — CSS modules, styled components, or SASS.
+
+We'll also talk about component libraries and their use cases, as well as introduce you to some popular ones that are commonly used. We'll do a demo with the most well-known one, `React-Bootstrap`, to get you familiar with the basics of using component libraries in react.
+
+## React Router
+
+We've learned about state, hooks, and components, and now we can build a nice single-page web app (commonly referred to as a SPA).
+
+But now what? Most websites have multiple pages and some even have dynamic routes, routes that use data to determine what's shown to the user.
+
+Think about youtube. The homepage showing you all the suggestions of videos you might want to see is `youtube.com`. At the same time, however, each video must have its own route. Instead of having some poor intern create a route for each video on youtube manually, we can use dynamic routing to display countless similar pages by using a variable in the URL that's determined by the video or piece of content that was clicked on. We can then go to that page and pull the variable from the URL to determine which piece of content to display.
+
+To be doing all this, we'll be using React Router. React Router is by far the most popular client-side router in the React community. It is mature, being used by big companies, and battle-tested at large scales. It also has a lot of really cool capabilities, some of which we'll examine here.
+
+:::info More on Routing
+
+If you want to learn more about client-side routing and its alternative, server-side routing, check out [this resource](https://medium.com/@wilbo/server-side-vs-client-side-routing-71d710e9227f).
+
+:::
+
+### Documentation
+React router documentation can be found [here](https://v5.reactrouter.com/web/guides/quick-start).
+
+### Installation
+```shell
+yarn add react-router-dom
+```
+
+### Why use Routers?
+
+Why use a React Router at all? Didn't the `<a>` work? It did but with a flaw: every link you clicked would end up in the browser navigating to a whole new page which means React would totally reload your entire app all over again. With Routers, and its special features, it can intercept this and just handle that all client-side. Much faster and a better user experience. The base URL and page never actually change.
+
+React Router is, at the end of the day, a conditional rendering wrapper that only shows you the component associated with the link you've selected or are on.
+
+### Basic Routing
+
+Let's implement a basic example of routing.
+
+:::info Introducing a New Tag
+Introducing a new tag: `<nav>` ! It is intended to wrap major navigation blocks on your webpage. Here's more information about it.
+:::
+
+```jsx
+import React from "react";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <div>
+				{/* The HTML */}
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
+          </ul>
+        </nav>
+
+				{/* The React Router that makes the HTML above work */}
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/users">
+            <Users />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+
+      </div>
+    </BrowserRouter>
+  );
+}
+
+const Home = () =>  <h2>Home</h2>;
+const About = () => <h2>About</h2>;
+const Users = () => <h2>Users</h2>;
+
+export default App
+```
+
+### Dynamic Routing
+
+What if we have too many routes to write down manually? For example, what if we want a route for every listing on Airbnb? Here's where dynamic routing comes into play.
+
+We can set our routes to use a variable by simply putting a colon in front of the term we want to use as a variable in our route. See the example below where we use `:id` in our route, creating a variable `id` that is then later accessed.
+
+```jsx
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+} from "react-router-dom";
+
+function DynamicRouting() {
+	const data = [
+  { name: "Netflix", route: "netflix" },
+  { name: "Zillow", route: "zillow" },
+  { name: "Yahoo", route: "yahoo" },
+  { name: "Instagram", route: "instagram" },
+	];
+
+  return (
+    <Router>
+      <div>
+        <h2>Accounts</h2>
+
+        <div>
+          {data.map((item) => (
+            <Link to={`/${item.route}`}>
+              <div>
+                <h3>{item.name}</h3>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <Switch>
+          <Route path="/:id" children={<Child />} />
+        </Switch>
+      </div>
+    </Router>
+  );
+}
+
+function Child() {
+  let { id } = useParams();
+
+  return (
+    <div>
+      <h3>{id}</h3>
+    </div>
+  );
+}
+
+export default DynamicRouting
+```
+
+As you can see, we use `/:id` as a variable route, or a dynamic route rather than a static route. There is no path `/id` (unless we want there to be), rather, the `id` variable is a URL parameter, or param. We specifically the children of the `/:id` route in our `<Route>` tag, and this component is what will be rendered to the user. As we can see above, the `Child` component changes what it displays depending on the route that it is displayed from. We can grab the `id` param from the URL by using the `useParams` hook as shown in the example, then proceed to use it as a variable in our component.
+
+To add an example, say you were looking at a list of cards in airbnb, each with basic listing info on them. When you want to learn more about a listing, you clock on that card, which then takes you to another page with more complete info about that listing. Relating that action to dynamic routing, each listing has a unique id. The browser takes you to a URL with that id when you click on a card. In this way Airbnb implements dynamic routing, setting the URL to the id of the listing you chose. Next, the router realizes that it has a dynamic route (`/listing/12345` might match to `/listing/:id` for example) and renders that route's assigned component, which we'll call `Listing`. `Listing` then uses hooks such as `useParam` to determine the id of the requested listing, then queries Airbnb's database to get the info for that listing before displaying it to the user.
+
+### Complex Routing — A Practical Example (Optional)
+
+I've included an example from the [WDB](https://webatberkeley.org/) website below.
+
+```jsx
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import Navbar from './components/navbar';
+import Footer from './components/footer';
+
+import Landing from './pages/landing';
+import About from './pages/about';
+import Initiatives from './pages/initiatives';
+import Error from './pages/error';
+
+import './App.scss';
+
+function App() {
+	return (
+		<Router>
+			<Switch>
+				<Route exact path="/">
+					<Navbar landing />
+				</Route>
+				<Route path="*">
+					<Navbar />
+				</Route>
+			</Switch>
+
+			<Switch>
+				{/* About Us */}
+				<Route path="/about">
+					<About />
+				</Route>
+
+				{/* Initiatives */}
+				<Route path="/initiatives">
+					<Initiatives />
+				</Route>
+
+				{/* Landing Page */}
+				<Route exact path="/">
+					<Landing />
+				</Route>
+
+				{/* 404 no page found */}
+				<Route path="*">
+					<Error />
+				</Route>
+			</Switch>
+
+			<Footer />
+		</Router>
+	);
+}
+
+export default App;
+```
+
+Let's take a closer look at the following snippet from the above
+
+```jsx
+<Switch>
+	<Route exact path="/">
+		<Navbar landing />
+	</Route>
+	<Route path="*">
+		<Navbar />
+	</Route>
+</Switch>
+```
+
+The `exact` prop tells our router to only show the landing version of the navbar when there are no extensions to the URL, which makes sense since we want our landing page to be the default page. Using `*` as the path for our regular navbar tells the router that for all other pages, render the regular navbar.
+
+:::info
+
+Using a single variable as a prop (such as `exact` or `landing` above) is equivalent to setting `exact={true}` or `landing={true}` as a prop. Thus we just use `exact` or `landing` instead of the whole statement as shorthand.
+
+:::
+
+---
+
+# CSS-in-JS
+
+CSS-in-JS is a term you'll hear often, but what exactly does it mean? CSS-in-JS usually means using an alternative method of styling than just plain CSS files, such as [styled-components](https://styled-components.com/) or [css-modules](https://github.com/css-modules/css-modules). These solutions often require some change in the javascript that is being written, which is why we call these solutions "CSS in JS".
+
+Why do we care about using CSS-in-JS? This is because all CSS in our react app is global. Say you have two components, Page1 and Page2. Even if you create `page1.css` and `page2.css` and only import page1.css into your Page1 component, all the classes you create in `page1.css` will apply to your Page2 component as well. Thus if you accidentally use the same class name across both components, or use a class name multiple times anywhere in your app, the CSS rules you've written in `page1.css` will apply everywhere, which in most cases is highly undesirable and can cause unintended and difficult to fix CSS collisions.
+
+## CSS Modules
+
+CSS modules transforms your CSS files from being globally scoped to being component scoped, which means that the CSS you import into your component only affects the component you've imported that CSS file into. To transform a CSS file into a CSS modules file, simply change the file name from `<file name>.css` to  `<file name>.module.css`. CSS modules also works with sass. In order to use CSS modules in your app, make the following changes.
+
+```jsx
+//Importing Regular CSS
+import './styles.css';
+
+//Using Regular CSS
+<div className="container">
+	<h3>Hi There!</h3>
+</div>
+```
+
+```jsx
+//Importing CSS Modules
+import styles from './styles.module.css';
+
+//Using CSS Modules
+<div className={styles["container"]}>
+	<h3>Hi There!</h3>
+</div>
+```
+
+The difference in your JavaScript files is that you treat your CSS file as an object and access the class names the same way you would access an object's attributes, but that's it! Your CSS files remain the same and now there's no need to worry about annoying CSS collisions.
+
+### Installation
+
+CSS modules comes pre-installed with Create React App (sometimes referred to as CRA).
+
+### Documentation
+
+[Documentation](https://github.com/css-modules/css-modules)
+
+---
+
+## Styled Components
+
+Using styled components is a bit more tricky.
+
+### Why Use Styled Components
+
+- Write CSS in JS alongside HTML in JS, but don't have to inline the CSS
+- Keeps track of which components are rendered on a page and injects their styles and nothing else, fully automatically.
+- You never have to worry about duplication, overlap or misspellings. No need to keep track of class names.
+- Adapting the styling of a component based on its props or a global theme is simple and intuitive without having to manually manage dozens of classes.
+
+### Installation
+
+```bash
+npm i styled-components
+```
+
+### Trying It Out
+
+In `app.js`,
+
+```jsx
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+const Wrapper = styled.section`
+  padding: 4em;
+  background: papayawhip;
+`;
+
+render(
+  <Wrapper>
+    <Title>
+      Hello World!
+    </Title>
+  </Wrapper>
+);
+```
+
+The naming is as intuitive as it seems — `Title` is an `<h1>` tag, but with some styles associated with it. `Wrapper` is a div, but with some styles associated with it. To add style, we no longer need to inline, we can simply change the definition of `Title` or `Wrapper`.
+
+### Passing Arguments
+
+```jsx
+const Button = styled.button`
+  background: ${props => props.primary === true ? "palevioletred" : "white"};
+  color: ${props => props.primary ? "white" : "palevioletred"};
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
+
+render(
+  <div>
+    <Button>Normal</Button>
+    <Button primary={true}>Primary</Button>
+  </div>
+);
+```
+
+### Documentation
+
+[styled-components](https://styled-components.com/)
+
+---
+
+## Component Libraries
+
+A UI component library is a set of ready-made UI components such as buttons, inputs, dialogs, and so on. They serve as building blocks for layouts. Thanks to their modular nature, we can arrange components in many different ways to achieve unique effects. Each library has a distinctive look and feel, but most of them offer theming, and their components are customizable to a certain degree.
+
+Popular component libraries for React include React-Bootstrap, Theme UI, and Chakra UI. We'll be focusing on Chakra UI.
+
+Libraries are made for one reason – to make developers’ lives easier. UI component libraries are no different in their purpose.
+
+### Benefits to Using a Component Library
+
+- **Speed** – incorporating a UI component library can have a great impact on development speed. Instead of creating each element from scratch, we simply mix and match the existing components. Even if some additional customization is required, it tends to be much quicker than writing styles on our own.
+- **Ease of use** – components are meant to be easy to use. Established libraries are well-organized and have good documentation that is easy to follow. Very often, it’s enough just to copy and paste code snippets to make it work.
+- **Attractive look** – components look great without requiring any extra effort from the developer; they’re carefully designed by professionals.
+- **Compatibility** – ensuring cross-browser and cross-device compatibility is one of the biggest challenges of frontend development. UI component libraries provide compatibility out of the box, which makes everything so simple!
+- **Accessibility** – good libraries adhere to accessibility guidelines, so developers don’t even need to think about it.
+
+### Drawbacks to Using a Component Library
+
+- **Generic look** – your app’s look and feel will be determined by the library’s style in most parts. This is not necessarily an issue, but you need to make sure that this is acceptable for your project.
+- **Change of design direction** – It’s very important that designers understand and stick to components offered by the library. If the direction changes towards a custom solution, it will become increasingly difficult and time-consuming to overwrite the initial implementation.
+- **New team members** – every developer and designer needs to be familiar with the particular library and its implementation (though this point is true for any design system and any project).
+- **Bundle size** – UI component libraries tend to be big, so it’s probably not the best idea to engage them in tiny projects.
+
+---
+
+## Chakra-UI
+
+Chakra UI is component library based on a few principles:
+
+- Style Props: All component styles can be overridden or extended via style props to reduce the use of css prop or styled(). Compose new components from Box.
+
+- Simplicity: Strive to keep the component API fairly simple and show real world scenarios of using the component.
+
+- Composition: Break down components into smaller parts with minimal props to keep complexity low, and compose them together. This will ensure that the styles and functionality are flexible and extensible.
+
+- Accessibility: When creating a component, keep accessibility top of mind. This includes keyboard navigation, focus management, color contrast, voice over, and the correct aria-* attributes.
+
+- Dark Mode: Make components dark mode compatible. Use useColorMode hook to handle styling. Learn more about dark mode.
+
+- Naming Props: We all know naming is the hardest thing in this industry. Generally, ensure a prop name is indicative of what it does. Boolean props should be named using auxiliary verbs such as does, has, is and should. For example, Button uses isDisabled, isLoading, etc.
+
+For more info on Chakra versus other component libraries, check out their [docs](https://chakra-ui.com/docs/comparison).
+
+### Installation
+
+```shell
+yarn add @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^5
+```
+
+#### Setup Provider
+```jsx
+import * as React from 'react'
+
+// 1. import `ChakraProvider` component
+import { ChakraProvider } from '@chakra-ui/react'
+
+function App({ Component }) {
+  // 2. Use at the root of your app
+  return (
+    <ChakraProvider>
+      <Component />
+    </ChakraProvider>
+  )
+}
+```
+
+### Incorporating
+
+```jsx live
+// Sample card from Airbnb
+
+function AirbnbExample() {
+  const property = {
+    imageUrl: 'https://bit.ly/2Z4KKcF',
+    imageAlt: 'Rear view of modern home with pool',
+    beds: 3,
+    baths: 2,
+    title: 'Modern home in city center in the heart of historic Los Angeles',
+    formattedPrice: '$1,900.00',
+    reviewCount: 34,
+    rating: 4,
+  }
+
+  return (
+      <Box maxW='sm' borderWidth='2px' borderRadius='lg' overflow='hidden' borderStyle="solid" >
+        <Image src={property.imageUrl} alt={property.imageAlt} />
+        <Box p='6'>
+          <Box display='flex' alignItems='baseline'>
+            <Badge borderRadius='full' px='2' colorScheme='teal'>
+              New
+            </Badge>
+            <Box
+              color='gray.500'
+              fontWeight='semibold'
+              letterSpacing='wide'
+              fontSize='xs'
+              textTransform='uppercase'
+              ml='2'
+            >
+              {property.beds} beds &bull; {property.baths} baths
+            </Box>
+          </Box>
+
+          <Box
+            mt='1'
+            fontWeight='semibold'
+            as='h4'
+            lineHeight='tight'
+            isTruncated
+          >
+            {property.title}
+          </Box>
+
+          <Box>
+            {property.formattedPrice}
+            <Box as='span' color='gray.600' fontSize='sm'>
+              / wk
+            </Box>
+          </Box>
+
+          <Box display='flex' mt='2' alignItems='center'>
+            {Array(5)
+              .fill('')
+              .map((_, i) => (
+                <StarIcon
+                  key={i}
+                  color={i < property.rating ? 'teal.500' : 'gray.300'}
+                />
+              ))}
+            <Box as='span' ml='2' color='gray.600' fontSize='sm'>
+              {property.reviewCount} reviews
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+  )
+}
+```
+
+
+## React-Bootstrap
+
+React-Bootstrap is a complete re-implementation of the Bootstrap components using React. It has **no dependency on either `bootstrap.js` or jQuery.** If you have React setup and React-Bootstrap installed, you have everything you need.
+
+Methods and events using jQuery are done imperatively by directly manipulating the DOM. In contrast, React uses updates to the state to update the virtual DOM. In this way, React-Bootstrap provides a more reliable solution by incorporating Bootstrap functionality into React's virtual DOM.
+
+### Installation
+
+```bash
+yarn add react-bootstrap bootstrap
+```
+
+### Incorporating Bootstrap
+
+```jsx
+import React, { Component } from 'react';
+import Alert from 'react-bootstrap/Alert';
+
+const Example = () => {
+  return (
+    <Alert dismissible variant="danger">
+      <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+      <p>
+        Change this and that and try again.
+      </p>
+    </Alert>
+  )
+}
+
+export default Example
+```
+
+Don't worry if you don't get what's going on here — you don't need to remember Bootstrap (and by extension ReactBootstrap!) Whatever you don't understand in the above block of text, google it!
+
+### Documentation
+
+[React-Bootstrap](https://react-bootstrap.github.io/getting-started/introduction/)
+
+---
+
+## Other Libraries (Optional)
+
+There are many component libraries I haven't covered, and oftentimes larger projects and companies may create their own to fit their needs. I've included some other popular component libraries below. No component library is necessarily better than another, and each has pros and cons.
+
+[Material-UI: A popular React UI framework](https://material-ui.com/)
+
+Google's component library. The main complaint to using Material UI is that it's hard to customize and can thus leave some sites using a large amount of Material UI looking too much like something from Google.
+
+[Ant Design - The world's second most popular React UI framework](https://ant.design/)
+
+A library developed by the Chinese tech giant Alibaba.
+
+[Semantic UI](https://semantic-ui.com/)
+
+Lightweight CSS frameworks such as [Tailwind](https://tailwindcss.com/) or [Pure](https://purecss.io/) can also be considered as viable alternatives to a component library. They offer a minimal, less opinionated CSS foundation that will help you speed up development, while at the same time allowing tremendous flexibility.
+
+---
+
+## Package Managers (Optional)
+
+### What is NPM?
+
+`npm` informally stands for **node package manager**. `npm` is a package manager for JavaScript and is the default package manager for Node.
+
+It consists of a command-line client, also called npm, and an online database of public and paid-for private packages called the npm registry.
+
+[npm](https://www.npmjs.com/)
+
+In order to install a package to use in your react project using npm, you run `npm install <name of package>` in the root directory of your react app. This adds the package as a dependency in `package.json`.
+
+It is important to note that the `package.json` is just a list of tools you are using. It doesn't do anything except to list them. The real magic happens in the `node_modules` folder, where the packages are stored for you.
+
+### What is Yarn?
+
+Yarn is a package manager released by Facebook in 2016 and is a common alternative to NPM.
+
+[Home](https://yarnpkg.com/)
+
+To install a package using yarn, run `yarn add <name of package>` in the root directory. **
+
+### NPM vs Yarn
+
+And now, to have an age-old discussion — which one should you use?
+
+**In practice, there is no real difference between the effects of using `NPM` and `yarn`**, as both package managers work perfectly fine.
+
+Back in the day, npm used to be super buggy, so yarn was created as a solution to NPM's deficiencies. These days the people behind npm were able to fix the main complaints people had against NPM, but many people and companies still prefer yarn as a byproduct of that era. There are definitely still advantages to using yarn, such as:
+
+- Installing packages using yarn tends to be faster than installing packages with npm
+- There are some slight security advantages to using yarn
+
+but there are no other drastic differences between the two package managers. I personally use yarn and recommend yarn to others starting projects, but the choice is entirely up to you. **Make sure you don't use both,** however, because that can cause some problems on the backend when attempting to host your app.
+
+If you are using npm, you should see a `package-lock.json` in your app. If you are using yarn, you should see a `yarn.lock` in your app.
+
+---
+
+# Conclusion
+
+This lesson is all about helping you realize that the React universe is massive, collaborative, and full of tools that make writing React faster and easier. There are many more tools to the React ecosystem that we were unable to touch on today and that you may not need at any point in the course, but keep in mind that if you're trying to solve a general problem or create something specific, there's probably an npm package for that.
+
+---
+
+**Contributors**
+
+- [Caelin Sutch](https://www.linkedin.com/in/caelinsutch)
+- [Samarth Goel](https://www.linkedin.com/in/samarth-goel-1047b8187/)
+- [Arushi Somani](https://www.linkedin.com/in/arushisomani/)
+- [Natalia Vetter-Neo](https://www.linkedin.com/in/nataliavetter/)
