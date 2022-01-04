@@ -56,6 +56,11 @@ const config = {
             label: 'Course Policies',
           },
           {
+            to: 'staff',
+            position: 'left',
+            label: 'Staff',
+          },
+          {
             href: 'https://github.com/fullstack-decal/website',
             label: 'GitHub',
             position: 'right',
@@ -77,6 +82,10 @@ const config = {
           {
             title: 'Community',
             items: [
+              {
+                label: 'Facebook',
+                href: 'hhttps://www.facebook.com/webatberkeley/',
+              },
               {
                 label: 'Instagram',
                 href: 'https://www.instagram.com/webatberkeley/',

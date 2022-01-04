@@ -1,0 +1,29 @@
+import StaffMember from "../components/StaffMember";
+
+import staff from "../data/staff";
+
+import { SimpleGrid } from "@chakra-ui/react";
+
+# Spring 2022 Course Staff
+
+<SimpleGrid columns={2} spacing={10} my={8}>
+  {staff.map(({ name, image, role, linkedin, personal, bio, email }) => (
+    <StaffMember
+      name={name}
+      image={image}
+      role={role}
+      linkedin={linkedin}
+      personal={personal}
+      bio={bio}
+      email={email}
+    />
+  ))}
+</SimpleGrid>
+
+# Past Course Staff and Other Notable Contributors
+
+- [Arushi Somani](https://www.linkedin.com/in/arushisomani/)
+- [Hector Ramos](https://www.linkedin.com/in/hector-ramos-/)
+- [Abhi Wadekar](https://www.linkedin.com/in/abhiraam-wadekar/)
+- [Ervin Baccay](https://www.linkedin.com/in/ebaccay/)
+- [Brian Holt](https://www.linkedin.com/in/btholt/)
