@@ -68,11 +68,11 @@ const staff = [
   },
   {
     name: 'Isabel Zheng',
-    image: '/img/staff/alex.png',
+    image: '/img/staff/isabel.png',
     role: 'Design TA',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/isabel-zheng-24003b1b2/',
     personal: '',
-    bio: '',
+    bio: 'Hi all! I’m Isabel, a 2nd year Data Science major from LA. I love all things out of the box and empathetic, especially within tech. Outside of web development, you can find me watching astronomy videos, cafe hopping (peep the cafe pic), and listening to Ichika Nito.',
   }
 ];
 

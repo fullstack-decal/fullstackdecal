@@ -25,7 +25,7 @@ const StaffMember: React.FC<StaffMemberProps> = ({
   email,
 }) => (
   <VStack spacing={2} align="flex-start">
-    <img src={image} alt={name} width="50%" />
+    <img src={image} alt={name} width="50%" style={{ borderRadius: '.5rem' }}/>
     <Text as="p" mb={0} fontWeight="bold" fontSize="xl" pt={1}>
       {name} - {role}
     </Text>
