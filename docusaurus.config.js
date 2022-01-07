@@ -61,7 +61,7 @@ const config = {
             label: 'Staff',
           },
           {
-            href: 'https://github.com/fullstack-decal/website',
+            href: 'https://github.com/fullstack-decal',
             label: 'GitHub',
             position: 'right',
           }
@@ -71,11 +71,11 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Lessons',
+            title: 'Quick Links',
             items: [
               {
-                label: 'Intro',
-                to: '/docs/Lessons/AboutLessons',
+                label: 'Lecture Recordings',
+                to: 'https://www.youtube.com/channel/UCGpukPda1pJ8Ei20e02oR0w',
               }
             ],
           },
@@ -84,7 +84,7 @@ const config = {
             items: [
               {
                 label: 'Facebook',
-                href: 'hhttps://www.facebook.com/webatberkeley/',
+                href: 'https://www.facebook.com/webatberkeley/',
               },
               {
                 label: 'Instagram',
@@ -95,6 +95,10 @@ const config = {
           {
             title: 'More',
             items: [
+              {
+                label: 'WDB Website',
+                href: 'https://webatberkeley.org/',
+              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/full-stack-decal',
