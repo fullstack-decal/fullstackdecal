@@ -17,9 +17,13 @@ CSS is a way to take the HTML elements that you have on the page and style them 
 
 Take for example, a site with no CSS styling. Doesn’t look great!
 
-![A site with no CSS styling.](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e7b0687d-9af5-446b-9fea-7742c495f193/Screen_Shot_2020-08-20_at_11.05.10_AM.png)
+![No CSS Image](../assets/Lesson3/Lesson3-1.png)
 
 A site with no CSS styling.
+
+![CSS Image](../assets/Lesson3/Lesson3-2.png)
+
+A site with CSS styling.
 
 ---
 
@@ -72,7 +76,7 @@ With classes, you want to name things ***semantically***. This is a fancy word 
 
 **Example**: Imagine this is a blog post on my website.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b3fa5410-b3ba-4d38-8b12-1f613e337329/Screen_Shot_2021-01-16_at_2.23.33_AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b3fa5410-b3ba-4d38-8b12-1f613e337329/Screen_Shot_2021-01-16_at_2.23.33_AM.png)
+![Example 1 Image](../assets/Lesson3/Lesson3-3.png)
 
 ***For the blog post title, what should I call the class? What tag should I use?*** 
 
@@ -95,7 +99,7 @@ For the name of the class, how about `red-title`? It's a title and it's red; fi
 
 While that may seem appropriate and fitting now, what if you need to change your blog's styling the following week and now that blog post looks like this:
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/87cd0247-9916-4cd9-b803-b3a490f7c049/Screen_Shot_2021-01-16_at_2.23.57_AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/87cd0247-9916-4cd9-b803-b3a490f7c049/Screen_Shot_2021-01-16_at_2.23.57_AM.png)
+![Example 2 Image](../assets/Lesson3/Lesson3-4.png)
 
 If your title is still called `red-title`, you have a bit of a problem! Now your class name is not only not descriptive of what the item is, it's actually wrong which will make it way more confusing to you and other laters. 
 
@@ -176,7 +180,7 @@ There are different methods to select an HTML element. Here they are listed in o
 We will discuss the concept of **specificity** of selected elements more in depth later, so here is a brief overview. 
 
 - Since there are so many ways to potentially style an element? What if two ways clash with each other?
-- There is a specific hierarchy in which styling overrides one another. We will go in depth into this order [later](https://www.notion.so/f15f73dc019c41baae757d3825d9ef16) with examples.
+- There is a specific hierarchy in which styling overrides one another. We will go in depth into this order later with examples.
 
 ## Universal selectors
 
@@ -314,6 +318,8 @@ h1, h2, p {
 }
 ```
 
+![Color Image](../assets/Lesson3/Lesson3-5.png)
+
 - `font-size`: changes size of the text
 
 ```css
@@ -321,6 +327,7 @@ h1, h2, p {
   font-size: 100px;
 }
 ```
+![Font Size Image](../assets/Lesson3/Lesson3-6.png)
 
 - `font-weight`: changes heaviness of font. **lower = lighter, higher = bolder**
 
@@ -329,6 +336,7 @@ h1, h2, p {
   font-weight: 200;
 }
 ```
+![Font Weight Image](../assets/Lesson3/Lesson3-7.png)
 
 - `font-family`: type of font face being used
 
@@ -338,6 +346,8 @@ h1, h2, p {
 }
 ```
 
+![Font Family Image](../assets/Lesson3/Lesson3-8.png)
+
 - `text-decoration`: allows you to modify lines on your text
 
 ```css
@@ -346,11 +356,15 @@ h1, h2, p {
 }
 ```
 
+![Text Decoration 1 Image](../assets/Lesson3/Lesson3-9.png)
+
 ```css
 .heading {
   text-decoration: overline underline green;
 }
 ```
+
+![Text Decoration 2 Image](../assets/Lesson3/Lesson3-10.png)
 
 - `text-align`: change the alignment of your text
 
@@ -365,11 +379,15 @@ h1, h2, p {
 }
 ```
 
+![Text Align 1 Image](../assets/Lesson3/Lesson3-11.png)
+
 ```css
 .heading {
   text-align: left;
 }
 ```
+
+![Text Align 2 Image](../assets/Lesson3/Lesson3-12.png)
 
 ## Border
 
@@ -381,11 +399,15 @@ p {
 }
 ```
 
+![Border 1 Image](../assets/Lesson3/Lesson3-13.png)
+
 ```css
 p {
   border-style: solid;
 }
 ```
+
+![Border 2 Image](../assets/Lesson3/Lesson3-14.png)
 
 - `border-weight` thickness of the border
 
@@ -395,6 +417,8 @@ p {
   border-weight: 20px;
 }
 ```
+
+![Border Weight Image](../assets/Lesson3/Lesson3-15.png)
 
 - `border-color` color of the border
 
@@ -406,6 +430,8 @@ p {
 }
 ```
 
+![Border Color Image](../assets/Lesson3/Lesson3-16.png)
+
 - `border-radius` roundedness of border corners
 
 ```css
@@ -414,6 +440,8 @@ p {
   border-radius: 10px
 }
 ```
+
+![Border Radius Image](../assets/Lesson3/Lesson3-17.png)
 
 - `border-top-right-bottom-left`
 
@@ -425,11 +453,15 @@ p {
 }
 ```
 
+![Border Bottom 1 Image](../assets/Lesson3/Lesson3-18.png)
+
 ```css
 p {
   border-bottom: 6px solid red;
 }
 ```
+
+![Border Bottom 2 Image](../assets/Lesson3/Lesson3-19.png)
 
 ```css
 p {
@@ -439,6 +471,8 @@ p {
 }
 ```
 
+![Border Bottom Left Top Image](../assets/Lesson3/Lesson3-20.png)
+
 - `border` shorthand way to specify border width style, and color all at once.
 
 ```css
@@ -447,9 +481,11 @@ p {
 }
 ```
 
+![Border Image](../assets/Lesson3/Lesson3-21.png)
+
 ## Position and sizing
 
-More in detail demos and descriptions 👉🏻
+More in detail demos and descriptions in Lesson 4!
 
 **Positions**:
 
@@ -493,6 +529,8 @@ More in detail demos and descriptions 👉🏻
     }
     ```
     
+    ![Background Color Image](../assets/Lesson3/Lesson3-22.png)
+    
 - `background-image` specify image url to use as background
     
     ```css
@@ -500,6 +538,8 @@ More in detail demos and descriptions 👉🏻
       background-image: url("paper.gif");
     }
     ```
+    
+    ![Background Image Image](../assets/Lesson3/Lesson3-23.png)
     
 - `background-position` specify where the image goes relative to viewport
     
@@ -509,6 +549,8 @@ More in detail demos and descriptions 👉🏻
       background-position: left top;
     }
     ```
+    
+    ![Background Position Image](../assets/Lesson3/Lesson3-24.png)
     
 - `background-repeat` specifies if the background image repeats (defaults repeat)
     
@@ -520,6 +562,8 @@ More in detail demos and descriptions 👉🏻
     }
     ```
     
+    ![Background Repeat Image](../assets/Lesson3/Lesson3-25.png)
+    
 - `background-attachment` you can choose how the background image moves as the user scrolls (default scroll)
     
     ```css
@@ -529,6 +573,8 @@ More in detail demos and descriptions 👉🏻
       background-position: right top;
     }
     ```
+    
+    ![Background Attachment Image](../assets/Lesson3/Lesson3-26.png)
     
 - `background` shorthand for all values in one line
     
@@ -545,6 +591,8 @@ More in detail demos and descriptions 👉🏻
     background-attachment
     background-position
     ```
+    
+    ![Background Image](../assets/Lesson3/Lesson3-26.png)
     
 
 ## Colors
@@ -570,7 +618,7 @@ More in detail demos and descriptions 👉🏻
 
 ## Box Model (Height, Width, Padding, Border, and Margin)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fd30743e-c438-4f92-b961-2faa9d6d7fc0/Screen_Shot_2021-06-27_at_4.33.55_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fd30743e-c438-4f92-b961-2faa9d6d7fc0/Screen_Shot_2021-06-27_at_4.33.55_PM.png)
+![Box Model Image](../assets/Lesson3/Lesson3-27.png)
 
 ### Content
 
