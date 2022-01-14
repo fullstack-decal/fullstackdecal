@@ -52,11 +52,11 @@ const staff = [
   },
   {
     name: 'Nitya Krishnakumar',
-    image: '/img/staff/alex.png',
+    image: '/img/staff/nitya.png',
     role: 'Frontend TA',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/nitya-krish/',
     personal: '',
-    bio: '',
+    bio: 'Hi! I’m Nitya, a junior studying CS from Portland OR. I love web development so I’m super excited to be teaching this class! In my spare time, you can find me watching TV, beating my friends at card games, and catching up on sleep. Looking forward to meeting everyone this semester!',
   },
   {
     name: 'Waleed Latif',
