@@ -9,14 +9,6 @@ const theme = extendTheme({
         borderRadius: 0,
       },
     },
-    Accordion: {
-      baseStyle: {},
-    },
-    AccordionItem: {
-      baseStyle: {
-
-      },
-    },
     AccordionButton: {
       baseStyle: {
         backgroundColor: 'transparent',

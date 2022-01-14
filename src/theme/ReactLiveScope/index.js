@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import axios from 'axios';
 import { Box, Badge, Image, ChakraProvider } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 
@@ -18,6 +19,7 @@ const ReactLiveScope = {
   Badge,
   Image,
   StarIcon,
+  axios,
 };
 
 export default ReactLiveScope;
