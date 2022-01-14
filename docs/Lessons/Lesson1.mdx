@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Lesson 1 - Intro
 
 ## Welcome to [Web Development at Berkeley](https://webatberkeley.org/)'s Introduction to Full-Stack Development DeCal!
@@ -16,9 +20,9 @@ Hey there! Full-Stack Development is super difficult, it took me probably two ye
 
 Contrary to what many people believe, you do not have to be a wizard with math to write code. The two subjects share some overlap but also are quite different. Many artists, lawyers, historians, linguists, and others have great success learning how to code. Don't let those preconceived notions hold you back at all.
 
-Also keep in mind that this is *hard*. Learning how to code is hard. It's similar to learning a foreign language where you have to learn a lot of small pieces of information to be able to make sense of the larger picture. It's easy to feel discouraged, especially when you feel like you *should* get something but don't. Keep your head up and keep trying. Walk away from the problem and come back later. Try explaining your problem to someone / your dog / a [rubber ducky](https://en.wikipedia.org/wiki/Rubber_duck_debugging) (seriously, it works.)
+Also keep in mind that this is _hard_. Learning how to code is hard. It's similar to learning a foreign language where you have to learn a lot of small pieces of information to be able to make sense of the larger picture. It's easy to feel discouraged, especially when you feel like you _should_ get something but don't. Keep your head up and keep trying. Walk away from the problem and come back later. Try explaining your problem to someone / your dog / a [rubber ducky](https://en.wikipedia.org/wiki/Rubber_duck_debugging) (seriously, it works.)
 
-Never feel afraid to Google *anything*. Every programmer you know, from the top person in the field to the newest student is Googling things *constantly*. This isn't cheating; it's a skill. It's a requirement. There is so much information coming at you that cannot possibly remember it all. Copy and paste code. Look at [StackOverflow](https://stackoverflow.com/). Ask dumb questions. You get better by repeatedly exposing yourself to information. Each time a bit more will sink in.
+Never feel afraid to Google _anything_. Every programmer you know, from the top person in the field to the newest student is Googling things _constantly_. This isn't cheating; it's a skill. It's a requirement. There is so much information coming at you that cannot possibly remember it all. Copy and paste code. Look at [StackOverflow](https://stackoverflow.com/). Ask dumb questions. You get better by repeatedly exposing yourself to information. Each time a bit more will sink in.
 
 Don't try to understand every piece all at once. There are times where it's okay to just trust that something works and come back later to understand how. It's a tough balance because you do want to try to understand what's going on. I'll try to signal to you what's worth diving into and what's worth leaving for another day but just know you don't have to understand it all at once.
 
@@ -29,7 +33,6 @@ Lastly, this isn't a get-rich-quick scheme. Learning to code is hard and require
 **[Caelin Sutch](https://www.linkedin.com/in/caelinsutch) - Facilitator**
 
 Hi everyone! My name is Caelin, and I'm a second year EECS and Business major (though currently on a gap semester). There is nothing I love more than building things, and web development is one of the easiest ways to quickly build and iterate products. When I'm not programming, you'll find me DJing, listening to music, and being a frat star.
-
 
 **[Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/) - Full Stack TA**
 
@@ -87,7 +90,7 @@ Before continuing, please look over the [Course Policies](/course-policies) to g
 
 1. All materials are on this course website. This includes course readings, homework, and projects
 2. All communications will happen on Slack. You will be invited to the slack workspace if you are enrolled in the course.
-3. Read through the [Course Policies](/course-policies) for information on grading, absence policies, and more if you haven't already. *This is incredibly important for you to understand how to succeed in this course*
+3. Read through the [Course Policies](/course-policies) for information on grading, absence policies, and more if you haven't already. _This is incredibly important for you to understand how to succeed in this course_
 
 # What You'll Be Learning
 
@@ -105,7 +108,7 @@ You will learn everything you need to know to create your own website, from back
 
 Why do you need three languages? Let's make the imperfect metaphor of building a house. To build a house you need tools (like your text editor, your browser, your command line.) After you have tools, you need all the building material: the 2x4s, the shingles, the dry wall, the windows: all the things you need to put together to make a house. This is the HTML, or hypertext markup langauge. However this house thus far isn't going to be very pretty to look and not very functional. It's not going to have any color or any sort of elaborate structures. It's going to be bland, inert, and boring.
 
-Likewise, you can create a website that's *just* HTML but it's going to be a black-and-white text document with no style or interactivity.
+Likewise, you can create a website that's _just_ HTML but it's going to be a black-and-white text document with no style or interactivity.
 
 ### CSS - The Decorations
 
@@ -127,8 +130,7 @@ Now, if I want to order delivery to my house, I have to call someone else. Someo
 
 The clients, in this case, could be different peoples' computers, phones, smart assistants, smartwatches, smart ovens, who knows!? So one server can service many clients. In this case, we're just worried about people's browsers (like Chrome, Firefox, Edge, Safari, etc.) on their computers and phones. While the frontend code (the smart house stuff) is almost always in JavaScript (there's stuff like Web Assembly but for the purposes of this course just JS), the backend code can be in any number of languages: Python, Ruby, JavaScript, Java, Go, C#, etc.
 
-Today we will only be using JavaScript on both the frontend and the backend so you don't have to learn two languages, but just know you *could* use a different language on the backend.
-
+Today we will only be using JavaScript on both the frontend and the backend so you don't have to learn two languages, but just know you _could_ use a different language on the backend.
 
 To recap:
 
@@ -138,7 +140,6 @@ To recap:
 4. The backend code (we'll still use JavaScript) is the pizza place. It's a place where we can request things from and it will send back what we ask for. Or we can send things to it, like when you upload a new photo to your social media account. One server serves many clients, just like one pizza place serves many homes.
 
 ## Evolution of the Web
-
 
 ### Web 1.0
 
@@ -187,20 +188,24 @@ An example of a basic HTML site is below:
   <head>
     <title>Page Title</title>
   </head>
-<!-- CSS -->
+  <!-- CSS -->
   <style>
-  body {background-color: powderblue;}
-  h1   {color: blue;}
-  p    {color: red;}
+    body {
+      background-color: powderblue;
+    }
+    h1 {
+      color: blue;
+    }
+    p {
+      color: red;
+    }
   </style>
   <body>
-
     <h1>This is a Heading</h1>
     <p>This is a paragraph.</p>
     <span id="demo" />
-
   </body>
-<!-- Javascript-->
+  <!-- Javascript-->
   <script>
     // This will set the `span` with an id of `demo` to have the child "Hello Javascript"
     document.getElementById("demo").innerHTML = "Hello JavaScript!";
@@ -254,7 +259,7 @@ IMO this is the best part about Web Development, a final product that you can sh
 
 Before we get started, we need to set you up with all the necessary tools you're going to need to get up and going. I use macOS to write code on but nearly everything I'm going to suggest has Windows equivalents and some have Linux equivalents as well.
 
-What's important here is that you find what works for you. Every developer has very strong opinions about their tools and will tell you that is some reason you *have* to use their tool. Don't listen to them. Find what works for you. If you find yourself fighting your tools more than they're helping you, consider trying something else. Keep an open mind.
+What's important here is that you find what works for you. Every developer has very strong opinions about their tools and will tell you that is some reason you _have_ to use their tool. Don't listen to them. Find what works for you. If you find yourself fighting your tools more than they're helping you, consider trying something else. Keep an open mind.
 
 What's shiny or popular is not necessarily going to work for you. Take time to invest in making your tools work the best for you. Small wins amount to huge boosts in productivity in the long term.
 
@@ -288,7 +293,7 @@ WebStorm is a very powerful IDE that has a lot of features and tools built into 
 
 This is my tool of choice and a great integrated solution.
 
-Lastly, I'm going to simply state there are two more tools you could use: [vim](https://www.vim.org/) and [emacs](https://www.gnu.org/software/emacs/). These are tools that you use in the command line / terminal and use *just* the keyboard, no mouse. These tools have difficult learning curves, but once you're productive in them, they allow you to go very fast.
+Lastly, I'm going to simply state there are two more tools you could use: [vim](https://www.vim.org/) and [emacs](https://www.gnu.org/software/emacs/). These are tools that you use in the command line / terminal and use _just_ the keyboard, no mouse. These tools have difficult learning curves, but once you're productive in them, they allow you to go very fast.
 
 My advice for you is: don't, especially right now as you're learning to code. If you want to revisit it later then you could do that. But just know that it is indeed quite difficult.
 

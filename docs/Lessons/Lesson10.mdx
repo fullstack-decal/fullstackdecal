@@ -1,3 +1,7 @@
+---
+sidebar_position: 11
+---
+
 # Lesson 10 - React 2: Routing, Styling, and Libraries
 
 Welcome to React 3! In this lesson, we'll introduce you to the react ecosystem, which is a very, VERY large part of what makes react so useful and why it's considered the dominant frontend framework.
@@ -29,9 +33,11 @@ If you want to learn more about client-side routing and its alternative, server-
 :::
 
 ### Documentation
+
 React router documentation can be found [here](https://v5.reactrouter.com/web/guides/quick-start).
 
 ### Installation
+
 ```shell
 yarn add react-router-dom
 ```
@@ -52,18 +58,13 @@ Introducing a new tag: `<nav>` ! It is intended to wrap major navigation blocks 
 
 ```jsx
 import React from "react";
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
 const App = () => {
   return (
     <BrowserRouter>
       <div>
-				{/* The HTML */}
+        {/* The HTML */}
         <nav>
           <ul>
             <li>
@@ -78,7 +79,7 @@ const App = () => {
           </ul>
         </nav>
 
-				{/* The React Router that makes the HTML above work */}
+        {/* The React Router that makes the HTML above work */}
         <Switch>
           <Route path="/about">
             <About />
@@ -90,17 +91,16 @@ const App = () => {
             <Home />
           </Route>
         </Switch>
-
       </div>
     </BrowserRouter>
   );
-}
+};
 
-const Home = () =>  <h2>Home</h2>;
+const Home = () => <h2>Home</h2>;
 const About = () => <h2>About</h2>;
 const Users = () => <h2>Users</h2>;
 
-export default App
+export default App;
 ```
 
 ### Dynamic Routing
@@ -120,12 +120,12 @@ import {
 } from "react-router-dom";
 
 function DynamicRouting() {
-	const data = [
-  { name: "Netflix", route: "netflix" },
-  { name: "Zillow", route: "zillow" },
-  { name: "Yahoo", route: "yahoo" },
-  { name: "Instagram", route: "instagram" },
-	];
+  const data = [
+    { name: "Netflix", route: "netflix" },
+    { name: "Zillow", route: "zillow" },
+    { name: "Yahoo", route: "yahoo" },
+    { name: "Instagram", route: "instagram" },
+  ];
 
   return (
     <Router>
@@ -160,7 +160,7 @@ function Child() {
   );
 }
 
-export default DynamicRouting
+export default DynamicRouting;
 ```
 
 As you can see, we use `/:id` as a variable route, or a dynamic route rather than a static route. There is no path `/id` (unless we want there to be), rather, the `id` variable is a URL parameter, or param. We specifically the children of the `/:id` route in our `<Route>` tag, and this component is what will be rendered to the user. As we can see above, the `Child` component changes what it displays depending on the route that it is displayed from. We can grab the `id` param from the URL by using the `useParams` hook as shown in the example, then proceed to use it as a variable in our component.
@@ -172,55 +172,55 @@ To add an example, say you were looking at a list of cards in airbnb, each with 
 I've included an example from the [WDB](https://webatberkeley.org/) website below.
 
 ```jsx
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Navbar from './components/navbar';
-import Footer from './components/footer';
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
-import Landing from './pages/landing';
-import About from './pages/about';
-import Initiatives from './pages/initiatives';
-import Error from './pages/error';
+import Landing from "./pages/landing";
+import About from "./pages/about";
+import Initiatives from "./pages/initiatives";
+import Error from "./pages/error";
 
-import './App.scss';
+import "./App.scss";
 
 function App() {
-	return (
-		<Router>
-			<Switch>
-				<Route exact path="/">
-					<Navbar landing />
-				</Route>
-				<Route path="*">
-					<Navbar />
-				</Route>
-			</Switch>
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Navbar landing />
+        </Route>
+        <Route path="*">
+          <Navbar />
+        </Route>
+      </Switch>
 
-			<Switch>
-				{/* About Us */}
-				<Route path="/about">
-					<About />
-				</Route>
+      <Switch>
+        {/* About Us */}
+        <Route path="/about">
+          <About />
+        </Route>
 
-				{/* Initiatives */}
-				<Route path="/initiatives">
-					<Initiatives />
-				</Route>
+        {/* Initiatives */}
+        <Route path="/initiatives">
+          <Initiatives />
+        </Route>
 
-				{/* Landing Page */}
-				<Route exact path="/">
-					<Landing />
-				</Route>
+        {/* Landing Page */}
+        <Route exact path="/">
+          <Landing />
+        </Route>
 
-				{/* 404 no page found */}
-				<Route path="*">
-					<Error />
-				</Route>
-			</Switch>
+        {/* 404 no page found */}
+        <Route path="*">
+          <Error />
+        </Route>
+      </Switch>
 
-			<Footer />
-		</Router>
-	);
+      <Footer />
+    </Router>
+  );
 }
 
 export default App;
@@ -230,12 +230,12 @@ Let's take a closer look at the following snippet from the above
 
 ```jsx
 <Switch>
-	<Route exact path="/">
-		<Navbar landing />
-	</Route>
-	<Route path="*">
-		<Navbar />
-	</Route>
+  <Route exact path="/">
+    <Navbar landing />
+  </Route>
+  <Route path="*">
+    <Navbar />
+  </Route>
 </Switch>
 ```
 
@@ -257,26 +257,26 @@ Why do we care about using CSS-in-JS? This is because all CSS in our react app i
 
 ## CSS Modules
 
-CSS modules transforms your CSS files from being globally scoped to being component scoped, which means that the CSS you import into your component only affects the component you've imported that CSS file into. To transform a CSS file into a CSS modules file, simply change the file name from `<file name>.css` to  `<file name>.module.css`. CSS modules also works with sass. In order to use CSS modules in your app, make the following changes.
+CSS modules transforms your CSS files from being globally scoped to being component scoped, which means that the CSS you import into your component only affects the component you've imported that CSS file into. To transform a CSS file into a CSS modules file, simply change the file name from `<file name>.css` to `<file name>.module.css`. CSS modules also works with sass. In order to use CSS modules in your app, make the following changes.
 
 ```jsx
 //Importing Regular CSS
-import './styles.css';
+import "./styles.css";
 
 //Using Regular CSS
 <div className="container">
-	<h3>Hi There!</h3>
-</div>
+  <h3>Hi There!</h3>
+</div>;
 ```
 
 ```jsx
 //Importing CSS Modules
-import styles from './styles.module.css';
+import styles from "./styles.module.css";
 
 //Using CSS Modules
 <div className={styles["container"]}>
-	<h3>Hi There!</h3>
-</div>
+  <h3>Hi There!</h3>
+</div>;
 ```
 
 The difference in your JavaScript files is that you treat your CSS file as an object and access the class names the same way you would access an object's attributes, but that's it! Your CSS files remain the same and now there's no need to worry about annoying CSS collisions.
@@ -326,9 +326,7 @@ const Wrapper = styled.section`
 
 render(
   <Wrapper>
-    <Title>
-      Hello World!
-    </Title>
+    <Title>Hello World!</Title>
   </Wrapper>
 );
 ```
@@ -339,8 +337,9 @@ The naming is as intuitive as it seems — `Title` is an `<h1>` tag, but with so
 
 ```jsx
 const Button = styled.button`
-  background: ${props => props.primary === true ? "palevioletred" : "white"};
-  color: ${props => props.primary ? "white" : "palevioletred"};
+  background: ${(props) =>
+    props.primary === true ? "palevioletred" : "white"};
+  color: ${(props) => (props.primary ? "white" : "palevioletred")};
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
@@ -397,7 +396,7 @@ Chakra UI is component library based on a few principles:
 
 - Composition: Break down components into smaller parts with minimal props to keep complexity low, and compose them together. This will ensure that the styles and functionality are flexible and extensible.
 
-- Accessibility: When creating a component, keep accessibility top of mind. This includes keyboard navigation, focus management, color contrast, voice over, and the correct aria-* attributes.
+- Accessibility: When creating a component, keep accessibility top of mind. This includes keyboard navigation, focus management, color contrast, voice over, and the correct aria-\* attributes.
 
 - Dark Mode: Make components dark mode compatible. Use useColorMode hook to handle styling. Learn more about dark mode.
 
@@ -412,11 +411,12 @@ yarn add @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^
 ```
 
 #### Setup Provider
+
 ```jsx
-import * as React from 'react'
+import * as React from "react";
 
 // 1. import `ChakraProvider` component
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App({ Component }) {
   // 2. Use at the root of your app
@@ -424,7 +424,7 @@ function App({ Component }) {
     <ChakraProvider>
       <Component />
     </ChakraProvider>
-  )
+  );
 }
 ```
 
@@ -435,72 +435,77 @@ function App({ Component }) {
 
 function AirbnbExample() {
   const property = {
-    imageUrl: 'https://bit.ly/2Z4KKcF',
-    imageAlt: 'Rear view of modern home with pool',
+    imageUrl: "https://bit.ly/2Z4KKcF",
+    imageAlt: "Rear view of modern home with pool",
     beds: 3,
     baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
+    title: "Modern home in city center in the heart of historic Los Angeles",
+    formattedPrice: "$1,900.00",
     reviewCount: 34,
     rating: 4,
-  }
+  };
 
   return (
-      <Box maxW='sm' borderWidth='2px' borderRadius='lg' overflow='hidden' borderStyle="solid" >
-        <Image src={property.imageUrl} alt={property.imageAlt} />
-        <Box p='6'>
-          <Box display='flex' alignItems='baseline'>
-            <Badge borderRadius='full' px='2' colorScheme='teal'>
-              New
-            </Badge>
-            <Box
-              color='gray.500'
-              fontWeight='semibold'
-              letterSpacing='wide'
-              fontSize='xs'
-              textTransform='uppercase'
-              ml='2'
-            >
-              {property.beds} beds &bull; {property.baths} baths
-            </Box>
-          </Box>
-
+    <Box
+      maxW="sm"
+      borderWidth="2px"
+      borderRadius="lg"
+      overflow="hidden"
+      borderStyle="solid"
+    >
+      <Image src={property.imageUrl} alt={property.imageAlt} />
+      <Box p="6">
+        <Box display="flex" alignItems="baseline">
+          <Badge borderRadius="full" px="2" colorScheme="teal">
+            New
+          </Badge>
           <Box
-            mt='1'
-            fontWeight='semibold'
-            as='h4'
-            lineHeight='tight'
-            isTruncated
+            color="gray.500"
+            fontWeight="semibold"
+            letterSpacing="wide"
+            fontSize="xs"
+            textTransform="uppercase"
+            ml="2"
           >
-            {property.title}
+            {property.beds} beds &bull; {property.baths} baths
           </Box>
+        </Box>
 
-          <Box>
-            {property.formattedPrice}
-            <Box as='span' color='gray.600' fontSize='sm'>
-              / wk
-            </Box>
+        <Box
+          mt="1"
+          fontWeight="semibold"
+          as="h4"
+          lineHeight="tight"
+          isTruncated
+        >
+          {property.title}
+        </Box>
+
+        <Box>
+          {property.formattedPrice}
+          <Box as="span" color="gray.600" fontSize="sm">
+            / wk
           </Box>
+        </Box>
 
-          <Box display='flex' mt='2' alignItems='center'>
-            {Array(5)
-              .fill('')
-              .map((_, i) => (
-                <StarIcon
-                  key={i}
-                  color={i < property.rating ? 'teal.500' : 'gray.300'}
-                />
-              ))}
-            <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-              {property.reviewCount} reviews
-            </Box>
+        <Box display="flex" mt="2" alignItems="center">
+          {Array(5)
+            .fill("")
+            .map((_, i) => (
+              <StarIcon
+                key={i}
+                color={i < property.rating ? "teal.500" : "gray.300"}
+              />
+            ))}
+          <Box as="span" ml="2" color="gray.600" fontSize="sm">
+            {property.reviewCount} reviews
           </Box>
         </Box>
       </Box>
-  )
+    </Box>
+  );
 }
 ```
-
 
 ## React-Bootstrap
 
@@ -517,21 +522,19 @@ yarn add react-bootstrap bootstrap
 ### Incorporating Bootstrap
 
 ```jsx
-import React, { Component } from 'react';
-import Alert from 'react-bootstrap/Alert';
+import React, { Component } from "react";
+import Alert from "react-bootstrap/Alert";
 
 const Example = () => {
   return (
     <Alert dismissible variant="danger">
       <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-      <p>
-        Change this and that and try again.
-      </p>
+      <p>Change this and that and try again.</p>
     </Alert>
-  )
-}
+  );
+};
 
-export default Example
+export default Example;
 ```
 
 Don't worry if you don't get what's going on here — you don't need to remember Bootstrap (and by extension ReactBootstrap!) Whatever you don't understand in the above block of text, google it!
@@ -580,7 +583,7 @@ Yarn is a package manager released by Facebook in 2016 and is a common alternati
 
 [Home](https://yarnpkg.com/)
 
-To install a package using yarn, run `yarn add <name of package>` in the root directory. **
+To install a package using yarn, run `yarn add <name of package>` in the root directory. \*\*
 
 ### NPM vs Yarn
 

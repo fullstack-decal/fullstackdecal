@@ -1,43 +1,54 @@
-import {Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box} from "@chakra-ui/react";
-import Admonition from '@theme/Admonition';
+---
+sidebar_position: 12
+---
+
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+} from "@chakra-ui/react";
+import Admonition from "@theme/Admonition";
 
 # Lesson 11 - HTTP, REST, Postman
 
 ## HTTP
 
-When we think of the Internet, we often think only of the websites which we are visiting. 
+When we think of the Internet, we often think only of the websites which we are visiting.
 What we often fail to see is the vast network of resources that are utilized when we use that website.
 
-Modern web applications consist of two major parts: a frontend and a backend. 
-I like to use the restaurant analogy to visualize the difference. 
-A traditional restaurant consists of two main parts: a dining room and a kitchen. 
-When we order, we only ever see the nicely-furnished, well-decorated dining room. 
-But when we give our order to the waiter, they must relay that order to the kitchen. 
-A complicated set of instructions is then executed to produce our order and our waiter, like magic, returns with our food. 
+Modern web applications consist of two major parts: a frontend and a backend.
+I like to use the restaurant analogy to visualize the difference.
+A traditional restaurant consists of two main parts: a dining room and a kitchen.
+When we order, we only ever see the nicely-furnished, well-decorated dining room.
+But when we give our order to the waiter, they must relay that order to the kitchen.
+A complicated set of instructions is then executed to produce our order and our waiter, like magic, returns with our food.
 
-Similarly, when we use a website, we interact only with the frontend. 
-The frontend is simply a rendering of content that the user can interact with directly. 
-However, when we interact with that frontend, 
+Similarly, when we use a website, we interact only with the frontend.
+The frontend is simply a rendering of content that the user can interact with directly.
+However, when we interact with that frontend,
 the frontend itslef is normally interacting with a backend that produces the content that we want.
 
-The natural question, then, is how do the frontend and backend communicate? 
-The answer is HTTP. HTTP is the backbone of the Internet. 
-Put simply, it is how computers in a network talk to one another. 
-The Internet is, largely, just a continuous stream of millions of HTTP requests sent back and forth across a vast network. 
+The natural question, then, is how do the frontend and backend communicate?
+The answer is HTTP. HTTP is the backbone of the Internet.
+Put simply, it is how computers in a network talk to one another.
+The Internet is, largely, just a continuous stream of millions of HTTP requests sent back and forth across a vast network.
 If your computer is a node in the graph of the Internet, then HTTP is the edge connecting it to all others.
 
 ### HTTP Requests
 
 To communicate across many different machines and across vast networks, we require some standardized form of communication
-to be able to both send and receive information reliably. 
+to be able to both send and receive information reliably.
 
 To do this, we turn to HTTP requests. HTTP requests are essentially objects containing information about the type, time,
-and relevant information as it pertains to a request. We fill out this request and then send it to the server of interest. 
+and relevant information as it pertains to a request. We fill out this request and then send it to the server of interest.
 If that server is meant to respond, it will send back an HTTP response and the relevant data to answer your request.
 
-HTTP requests consist of two parts: the header and the body. 
+HTTP requests consist of two parts: the header and the body.
 
-Below is an example of an HTTP header. 
+Below is an example of an HTTP header.
 
 ```plaintext
 GET /home.html HTTP/1.1
@@ -53,11 +64,12 @@ If-Modified-Since: Mon, 18 Jul 2016 02:36:04 GMT
 If-None-Match: "c561c68d0ba92bbeb8b0fff2a9199f722e3a621a"
 Cache-Control: max-age=0
 ```
-The first line defines the type of request, also known as the method (more on this below), the location on the server to which the 
+
+The first line defines the type of request, also known as the method (more on this below), the location on the server to which the
 request is made, and the protocol. This first line is also called the start line. The second line contains the name of the server
 to which the request is made. This is the information that is used to send your request to the appropriate machine to handle it.
 
-The remaining lines are used to specify information about the request. This includes potential authorization, cacheing, handling, 
+The remaining lines are used to specify information about the request. This includes potential authorization, cacheing, handling,
 etc. At this level, we won't be using these too much, but as your applications become more complicated, taking advantage of these
 headers may allow for significantly more functionality.
 
@@ -80,10 +92,10 @@ You don't need to know all of them, the most commonly used ones are `GET`, `POST
 ### HTTP Responses
 
 Just as we make requests to a server for information, we also expect a response. Even if we do not expect data in return, the server
-always sends a response indiciating that it received the request. 
+always sends a response indiciating that it received the request.
 
 Below is an example of a response header. At the very top, you'll see a status code which indicates the type of response.
-Based on the digit in the hundreths place, we can determine if the request was successful or not. 
+Based on the digit in the hundreths place, we can determine if the request was successful or not.
 
 - `1XX`: Informational
 - `2XX`: Successful
@@ -105,7 +117,7 @@ Here are some of the most common response codes.
 
 ## curl vs. browser
 
-curl is your machine's built in way of making requests to external websites. Here, we will use curl to show that an HTTP request is nothing but two computers talking to each other. 
+curl is your machine's built in way of making requests to external websites. Here, we will use curl to show that an HTTP request is nothing but two computers talking to each other.
 
 Open your terminal and type the following:
 
@@ -113,7 +125,7 @@ Open your terminal and type the following:
 curl https://pokeapi.co/api/v2/pokemon/ditto
 ```
 
-You should see a response that looks absolutely enormous, but something like this: [https://pokeapi.co/api/v2/pokemon/ditto](https://pokeapi.co/api/v2/pokemon/ditto). **THIS IS THE KEY INTUITION:** Notice, that entering a URL into your browser is exactly the same thing as making a GET request to that URL. Now you understand how we navigate the Internet! `curl` and your browser are just two of many, many different ways to make a request, and the data returned is just one of many types we *can* return.
+You should see a response that looks absolutely enormous, but something like this: [https://pokeapi.co/api/v2/pokemon/ditto](https://pokeapi.co/api/v2/pokemon/ditto). **THIS IS THE KEY INTUITION:** Notice, that entering a URL into your browser is exactly the same thing as making a GET request to that URL. Now you understand how we navigate the Internet! `curl` and your browser are just two of many, many different ways to make a request, and the data returned is just one of many types we _can_ return.
 
 # Anatomy of a Request
 
@@ -125,21 +137,21 @@ Let's look at the following request
 GET 'https://pokeapi.co/api/v2/pokemon/ditto'
 ```
 
-Now let's look at the components of our request. 
+Now let's look at the components of our request.
 
-`https://`  defines the protocol we are using. In this case, we are using the HTTP secure protocol
+`https://` defines the protocol we are using. In this case, we are using the HTTP secure protocol
 
 `[pokeapi.co/](http://pokeapi.com/)` defines the server (computer) to which we are making our request. When we make a request, we are essentially making it to a particular IP address. In the case of domain names, your Internet service provider does some cool stuff (which I won't go into here) which essentially aliases this domain name to an IP address to complete your request.
 
 `/api/v2/` We will learn later about the importance of this. For now, think of it like this: In order to make our request, we have to request a certain part of the website where the content we want is kept. For example, navigate to the WDB website [webatberkeley.org](http://webatberkeley.org). As you click on the different options in the menu, notice that the URL in the search bar is changing. To get the information you want, you need to go to the location where it is stored. Our requests follow a similar (In fact, directly related) pattern. We must make our request in the right place to get what we want. In this case, we are making a request to the API, specifically v2 of the API. You can also think of it as a large file system, where to access the files we want, we navigate to their location at the server (again directly related to how websites function).
 
-`/pokemon/ditto` It may not be immediately clear why these are the search terms, or why they differ from `/api/v2` in terms of functionality, but bear with me. Ultimately, all of these `/` 's represent how the designers of the website have chosen to organize the website. When we make a request to an API, we must make the request directly to the API, or else the website will likely return HTML files to be rendered. That is why this particular website used `/api/v2`. ***Every website will be different.*** It is up to the designer how they organize their website, and as the client, it is your responsibility to check the docs for how you can get what you need. After we access the API, we are telling the website: "Please look at Pokemon, and of those, please look at Ditto." The last term is usually a unique key which maps to a single entry of data which is what *you* want. 
+`/pokemon/ditto` It may not be immediately clear why these are the search terms, or why they differ from `/api/v2` in terms of functionality, but bear with me. Ultimately, all of these `/` 's represent how the designers of the website have chosen to organize the website. When we make a request to an API, we must make the request directly to the API, or else the website will likely return HTML files to be rendered. That is why this particular website used `/api/v2`. **_Every website will be different._** It is up to the designer how they organize their website, and as the client, it is your responsibility to check the docs for how you can get what you need. After we access the API, we are telling the website: "Please look at Pokemon, and of those, please look at Ditto." The last term is usually a unique key which maps to a single entry of data which is what _you_ want.
 
 ## Fancier requests
 
-URL encoding is a fairly straightforward part of web development so we won't dive too deeply into this, it is more of something you learn as you go, and a lot of the packages that we use handle these kinds of things for you. If you were curious, we can in fact add more information to our get request. 
+URL encoding is a fairly straightforward part of web development so we won't dive too deeply into this, it is more of something you learn as you go, and a lot of the packages that we use handle these kinds of things for you. If you were curious, we can in fact add more information to our get request.
 
-Instead of just telling the web server *where* to get the data,  we can, in some cases specify the type of data that we want to get. Where as the previous request returned exactly the data item that we need, think of this as more like a search. We can give the website some query parameters to return the data we want. This is done with the `/?key1=value1&key2=value2` syntax. The `?` specifies that we are encoding query parameters, and the `&` key allows for encoding of multiple parameters. 
+Instead of just telling the web server _where_ to get the data, we can, in some cases specify the type of data that we want to get. Where as the previous request returned exactly the data item that we need, think of this as more like a search. We can give the website some query parameters to return the data we want. This is done with the `/?key1=value1&key2=value2` syntax. The `?` specifies that we are encoding query parameters, and the `&` key allows for encoding of multiple parameters.
 
 The following API returns a random number when called.
 
@@ -147,7 +159,7 @@ The following API returns a random number when called.
 https://csrng.net/csrng/csrng.php
 ```
 
-Let us try calling it with no parameters. 
+Let us try calling it with no parameters.
 
 ```bash
 curl 'https://csrng.net/csrng/csrng.php'
@@ -189,14 +201,14 @@ Notice that now, the API is only returning random numbers between the parameters
 
 # JSON
 
-Look at our last example. You may be wondering, why does the response look like that? When we make requests to an API, if we get a status `200` code we can expect that the server will return some data. What kind of data it returns depends on what kind of data we are seeking. In some cases, it might return entire HTML pages, that is what your browser will render into a "website". In other cases, we simply want a snippet of data from our server, not an entire page. In order to the server to return this kind of data in a standardized and easily accessible way, we use JSON to send the data. JavaScript Object Notation is an open standard file format and data interchange format. While it does say JavaScript in the name, think of JSON as *completely language agnostic.* It is fair to say that JSON is one of the backbones of the Internet. Much of the data that is exchanged between servers and clients is sent in JSON. Here is an example of JSON:
+Look at our last example. You may be wondering, why does the response look like that? When we make requests to an API, if we get a status `200` code we can expect that the server will return some data. What kind of data it returns depends on what kind of data we are seeking. In some cases, it might return entire HTML pages, that is what your browser will render into a "website". In other cases, we simply want a snippet of data from our server, not an entire page. In order to the server to return this kind of data in a standardized and easily accessible way, we use JSON to send the data. JavaScript Object Notation is an open standard file format and data interchange format. While it does say JavaScript in the name, think of JSON as _completely language agnostic._ It is fair to say that JSON is one of the backbones of the Internet. Much of the data that is exchanged between servers and clients is sent in JSON. Here is an example of JSON:
 
 ```jsx
 	{
 		"status":"success",
 		"min":1,
 		"max":100,
-		"random":[44, 20, 30], 
+		"random":[44, 20, 30],
 		"extra": {
 			"hello": "goodbye",
 			"goodday": "goodnight"
@@ -204,11 +216,11 @@ Look at our last example. You may be wondering, why does the response look like 
 	}
 ```
 
-**NOTE: I've added the "extra" field to demonstrate that JSON can nest JSON, this would not have been in your response from the previous example.** 
+**NOTE: I've added the "extra" field to demonstrate that JSON can nest JSON, this would not have been in your response from the previous example.**
 
-JSON is much like a dictionary in Python or a Map in Java. Contained within the object are several keys which map to values. These values can be strings (wrapped in quotes), numbers, lists, or even more objects. 
+JSON is much like a dictionary in Python or a Map in Java. Contained within the object are several keys which map to values. These values can be strings (wrapped in quotes), numbers, lists, or even more objects.
 
-JSON is critical to understanding how we exchange data. It not only defines how we receive data from the server (`GET` for example), but it also defines how we send data to the server (`POST`, `PUT`, `DELETE`). 
+JSON is critical to understanding how we exchange data. It not only defines how we receive data from the server (`GET` for example), but it also defines how we send data to the server (`POST`, `PUT`, `DELETE`).
 
 Here is an example of a GET request with the fields in JSON.
 
@@ -216,7 +228,7 @@ Here is an example of a GET request with the fields in JSON.
 
 ![Screen Shot 2021-08-16 at 12.47.16 AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/56d72407-d36d-4fc9-a1a4-edfdd63458d7/Screen_Shot_2021-08-16_at_12.47.16_AM.png)
 
-You do not need to worry about what all these fields mean, just notice the way that necessary information is organized and easily accessible. Status Code: `200`, url, method: `GET` , and data, are all incredibly important pieces of information, and JSON makes them significantly easier to access in a standardized way. 
+You do not need to worry about what all these fields mean, just notice the way that necessary information is organized and easily accessible. Status Code: `200`, url, method: `GET` , and data, are all incredibly important pieces of information, and JSON makes them significantly easier to access in a standardized way.
 
 # REST API
 
@@ -235,17 +247,17 @@ A server application that offers a REST API is also called a **RESTful** server.
 
 ## Postman
 
-Postman is an incredibly helpful tool for testing and validating our APIs. In this case, REST APIs. Postman is essentially a systematic and user-friendly way to send predefined requests. 
+Postman is an incredibly helpful tool for testing and validating our APIs. In this case, REST APIs. Postman is essentially a systematic and user-friendly way to send predefined requests.
 
-Let's open Postman together. 
+Let's open Postman together.
 
-Once you create an account and login, you will be met with a picture of your workspace. Click on Workspaces > My Workspace. There should be nothing there except maybe an example request that we could make. We will now be returning to our previous examples to show how we can make systematic GET requests to the same APIs. 
+Once you create an account and login, you will be met with a picture of your workspace. Click on Workspaces > My Workspace. There should be nothing there except maybe an example request that we could make. We will now be returning to our previous examples to show how we can make systematic GET requests to the same APIs.
 
 [Example API](https://www.notion.so/6550d800e50149b1ab4d789485dc1969)
 
 Additionally, `/db/all` supports a query param specifying the maximum number of items to return.
 
-I will teach you how to run this program fully, but for the purpose of this exercise, 
+I will teach you how to run this program fully, but for the purpose of this exercise,
 
 # EXTRA: RESTful Server in Action and Postman
 
@@ -254,7 +266,7 @@ To understand REST API and HTTP methods a step further, let us take a look at a 
 Let's say we are building a TODO app. Take a look at the following code. Pay close attention to what the comments address.
 
 ```jsx
-const express = require('express');
+const express = require("express");
 
 const app = express();
 
@@ -262,56 +274,59 @@ var port = process.env.PORT || 8080;
 
 var router = express.Router();
 
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // The method of the root url. Be friendly and welcome our user :)
-router.get('/', function(req, res) {
-    res.json({ message: 'Welcome to the TODO app.' });   
+router.get("/", function (req, res) {
+  res.json({ message: "Welcome to the TODO app." });
 });
 
 // All HTTP methods under the /todos URL.
-router.route('/todos')
+router
+  .route("/todos")
   // This GET method is in charge of returnning all the todos.
   .get((req, res) => {
-    res.json({ message: 'Return all todos.'});   
+    res.json({ message: "Return all todos." });
   })
-  // This POST methods is used to create a new todo. 
+  // This POST methods is used to create a new todo.
   // Its request will have a body, containing the content of the new todo.
   .post((req, res) => {
-    res.json({ 
-      message: ('Create a new todo: ' + "1" + " - " + req.body.content),
-      todo_id:  "1",
+    res.json({
+      message: "Create a new todo: " + "1" + " - " + req.body.content,
+      todo_id: "1",
       content: req.body.content,
-    }); 
-  })
+    });
+  });
 
 // All HTTP methods under the /todos/:todo_id URL.
 // The /:todo_id is a parameter within the URL that specifies a particular todo.
-router.route('/todos/:todo_id')
+router
+  .route("/todos/:todo_id")
   // This GET method is used to get the content from a specific todo.
   .get((req, res) => {
-    res.json({ message: 'Get the content from a todo.'});   
+    res.json({ message: "Get the content from a todo." });
   })
   // We use PUT method to update a todo's content.
   .put((req, res) => {
-    res.json({ 
-              message: ('Update the todo: ' + req.params.todo_id + " - " + req.body.content),
-              todo_id: req.params.todo_id,
-              content: req.body.content,
-            });   
+    res.json({
+      message:
+        "Update the todo: " + req.params.todo_id + " - " + req.body.content,
+      todo_id: req.params.todo_id,
+      content: req.body.content,
+    });
   })
   // DELETE method is used to delete a todo.
   .delete((req, res) => {
-    res.json({ message: 'Delete a todo.' }); 
-  })
+    res.json({ message: "Delete a todo." });
+  });
 
-app.use('/api', router); // API Root url at: http://localhost:8080/api
+app.use("/api", router); // API Root url at: http://localhost:8080/api
 
 app.listen(port);
-console.log('Server listenning on port ' + port);
+console.log("Server listenning on port " + port);
 ```
 
 Now with the dummy server ready, how should we send all the HTTP requests? Introduce a new tool in our workflow —— postman.
@@ -320,7 +335,7 @@ Let's start the server with `npm run start` and see how can we interact with the
 
 ## Postman
 
-Postman is a platform for API development. It can easily build and send out API requests. 
+Postman is a platform for API development. It can easily build and send out API requests.
 
 Once you download and install postman, click `new collection` on the left side bar to create a new collection of API requests. Let's call it `RESTful server test requests`.
 
@@ -330,8 +345,8 @@ Then, click on the more button and add a request. Let's first test out the API f
 
 ```jsx
 // The method of the root url. Be friendly and welcome our user :)
-router.get('/', function(req, res) {
-    res.json({ message: 'Welcome to the TODO app.' });   
+router.get("/", function (req, res) {
+  res.json({ message: "Welcome to the TODO app." });
 });
 ```
 
@@ -347,20 +362,21 @@ Postman is a very powerful tool as it can save your API request and resend it ag
 
 ```jsx
 // All HTTP methods under the /todos URL.
-router.route('/todos')
+router
+  .route("/todos")
   // This GET method is in charge of returnning all the todos.
   .get((req, res) => {
-    res.json({ message: 'Return all todos.'});   
+    res.json({ message: "Return all todos." });
   })
-  // This POST methods is used to create a new todo. 
+  // This POST methods is used to create a new todo.
   // Its request will have a body, containing the content of the new todo.
   .post((req, res) => {
-    res.json({ 
-      message: ('Create a new todo: ' + "1" + " - " + req.body.content),
-      todo_id:  "1",
+    res.json({
+      message: "Create a new todo: " + "1" + " - " + req.body.content,
+      todo_id: "1",
       content: req.body.content,
-    }); 
-  })
+    });
+  });
 ```
 
 Let's first create a new request, and use [`http://localhost:8080/api/todos`](http://localhost:8080/api/todos) as the request URL. We start by testing out the `GET` request, and after clicking send, you should see the following JSON as a response:
@@ -377,7 +393,7 @@ Now let's try out the `POST` request, unlike the `GET` request, the `POST` reque
 
 This `undefined` in the message means that the server does not receive the content of the todo, which should be included in the request body.
 
-To add a request body, click on **Body** and then select `raw`. Change the format from `TEXT` to `JSON`, and you are ready to write your first request body. 
+To add a request body, click on **Body** and then select `raw`. Change the format from `TEXT` to `JSON`, and you are ready to write your first request body.
 
 Let's say I want to create a todo with content "hello world todo". Then, we create a JSON like this:
 

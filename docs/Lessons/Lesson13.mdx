@@ -1,3 +1,7 @@
+---
+sidebar_position: 14
+---
+
 # Lesson 13 - Node, NPM, Express
 
 You are very familiar with Javascript by now, and you may notice that we can only run Javascript in our browser using the `<script>` tag. What if we want to write scripts using Javascript and run them using the local machines, just like how python is.
@@ -32,14 +36,14 @@ Go to [https://nodejs.org/en/](https://nodejs.org/en/) to install node.js for fr
 
 Let us confirm that you have correctly downloaded Node.js and npm.
 
-In the terminal, type 
+In the terminal, type
 
 ```bash
 node -v
 npm -v
 ```
 
-If both lines output the version number then we are good. 
+If both lines output the version number then we are good.
 
 Now, let us install out first package. The remainder of this example we will be using Axios to make HTTP requests as necessary, so let us install Axios.
 
@@ -50,7 +54,7 @@ npm init -y
 npm install axios
 ```
 
-The  `npm init` command is used to create a new npm package, essentially every node script that we will write can be treated as a npm package. The `-y` flag just skip all the configuration step and creates a most basic npm package with all default settings.
+The `npm init` command is used to create a new npm package, essentially every node script that we will write can be treated as a npm package. The `-y` flag just skip all the configuration step and creates a most basic npm package with all default settings.
 
 Now when we list the files in our `example/` directory, we should see three things:
 
@@ -58,7 +62,7 @@ Now when we list the files in our `example/` directory, we should see three thin
 - `package.json` file
 - `package-lock.json` file (optional)
 
-Essentially, each of these helps npm organize the packages we installed. In the node_modules folder is where we can find our actual packages. Many times, our node_modules file grows incredibly large and can take up quite a bit of space. It is discouraged to go directly into the node_modules, instead, npm provides a variety of utilities which we can use to keep our projects clean and efficient. I won't go into them here, but as you develop, you will run across them or you can read the docs [here](https://docs.npmjs.com/packages-and-modules). The other file is the package.json file. The package.json file is the file which record and defines the top-level packages and dependencies for our project. package-lock.json is a similar idea but with some nuances, you do not need to worry about those. 
+Essentially, each of these helps npm organize the packages we installed. In the node_modules folder is where we can find our actual packages. Many times, our node_modules file grows incredibly large and can take up quite a bit of space. It is discouraged to go directly into the node_modules, instead, npm provides a variety of utilities which we can use to keep our projects clean and efficient. I won't go into them here, but as you develop, you will run across them or you can read the docs [here](https://docs.npmjs.com/packages-and-modules). The other file is the package.json file. The package.json file is the file which record and defines the top-level packages and dependencies for our project. package-lock.json is a similar idea but with some nuances, you do not need to worry about those.
 
 ## Hello World
 
@@ -77,10 +81,10 @@ The console should print "hello world." and then exit.
 Node in browser and Node.js are technically the same form of JavaScript. Both run on the browser's JavaScript engine, usually Chrome V8. However, there are some fundamental difference which make Node.js just different enough to be annoying. The most prominent difference is that Node.js uses the `require` module to import other modules which define functionality. All Node projects are organized into modules, and we use `require` to import them. For example, the following code imports Axios, a package commonly used to make HTTP requests.
 
 ```jsx
-const axios = require('axios')
+const axios = require("axios");
 ```
 
-Another difference is that since there is no web page to be manipulated, there is no `document` object for Node.js, which means that DOM manipulation cannot be carried out in Node.js (with the help of some packages, it can). 
+Another difference is that since there is no web page to be manipulated, there is no `document` object for Node.js, which means that DOM manipulation cannot be carried out in Node.js (with the help of some packages, it can).
 
 Since Node is a server side language, it can interact with the local file system easily, it also provides ways to setup a server with ease.
 
@@ -122,23 +126,23 @@ Above is the code for the most basic web server. Let's analyze it line by line.
 
 To import any npm packages that we download, we use the `require()` function provided by Node. Thus, the `const express = require('express')`
 
-`const app = express()` creates an app object that provides various useful methods. 
+`const app = express()` creates an app object that provides various useful methods.
 
 ```jsx
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 ```
 
-The `get` method will return "Hello world!" once a web browser visits [http://localhost:3000](http://localhost:3000) Essentially, we are telling node that when the user makes a `GET` request to the `/` url (this is the root url), define this response and send it. 
+The `get` method will return "Hello world!" once a web browser visits [http://localhost:3000](http://localhost:3000) Essentially, we are telling node that when the user makes a `GET` request to the `/` url (this is the root url), define this response and send it.
 
 ```jsx
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+  console.log(`Example app listening at http://localhost:${port}`);
+});
 ```
 
-The `listen` method will set up and start the server that listens for any requests at a specific port. 
+The `listen` method will set up and start the server that listens for any requests at a specific port.
 
 Let's start our application by typing `node index.js` then visiting [`http://localhost:3000`](http://localhost:3000/)
 
@@ -150,11 +154,11 @@ Now let's define some more functionality for our server.
 
 Before we jump into actually writing code, let's take a moment to consider design. With smarter design, we can make our code intuitive, clean, and efficient. The goal of software is to make life intuitive, clean, and efficient!
 
-We will be implementing a "dumb" version of a database, meaning that we will be emulating what a database would do with a very stupid implementation. We will use a JSON object to store the items at a certain index and then return those items as needed. 
+We will be implementing a "dumb" version of a database, meaning that we will be emulating what a database would do with a very stupid implementation. We will use a JSON object to store the items at a certain index and then return those items as needed.
 
-First, let's think about what types of data we will be interfacing with. There are two main types: metadata and the actual database data. Our metadata is the data that we use to define the state of our database and its characteristics, and the actual database data will be the items we put. 
+First, let's think about what types of data we will be interfacing with. There are two main types: metadata and the actual database data. Our metadata is the data that we use to define the state of our database and its characteristics, and the actual database data will be the items we put.
 
-Some examples of a metadata are the database capacity and current index. Let's define two routes in our API: `/info` and `/db` . These are where we will make our requests. 
+Some examples of a metadata are the database capacity and current index. Let's define two routes in our API: `/info` and `/db` . These are where we will make our requests.
 
 ### GET Requests
 
@@ -287,13 +291,13 @@ app.listen(port, () => {
 });
 ```
 
-POST and PUT are, in my opinion, what separate a static website from a true web application. POST and PUT are how we actually collect and store relevant data for the user. They are the methods which give our website **functionality** *for the user.* 
+POST and PUT are, in my opinion, what separate a static website from a true web application. POST and PUT are how we actually collect and store relevant data for the user. They are the methods which give our website **functionality** _for the user._
 
-Let's look at POST first. To pass data along a POST request, we place data in the body. Because we don't know the "shape" and size of our data, we utilize the body as a sort of empty container to hold the data that we want to send. (Note: It would be overkill to put request parameters into this space for GET requests). 
+Let's look at POST first. To pass data along a POST request, we place data in the body. Because we don't know the "shape" and size of our data, we utilize the body as a sort of empty container to hold the data that we want to send. (Note: It would be overkill to put request parameters into this space for GET requests).
 
 Exercise: Go to Postman and set up a POST request. Go to body and look at all of the potential options for request bodies. By and large, we will be using "raw" in this class. Click on raw and view the options in the dropdown for data formats. Lot's of options! In this class, we will largely stick to JSON but if you are curious, you can always explore others. (Note: other formats may require extra setup on the Express side).
 
-Now let's look at PUT. PUT is an excellent example of how versatile a request is. In our PUT request, we use both url encoding and the body to send relevant data to our server. In the URL, we put where we want the data to go, and in our body we define what data we want to go there. This is exactly aligned to the design principles we laid our for our GET and POST requests! With smarter design we can vastly simplify the complexity of our systems. 
+Now let's look at PUT. PUT is an excellent example of how versatile a request is. In our PUT request, we use both url encoding and the body to send relevant data to our server. In the URL, we put where we want the data to go, and in our body we define what data we want to go there. This is exactly aligned to the design principles we laid our for our GET and POST requests! With smarter design we can vastly simplify the complexity of our systems.
 
 Let's get some pictures from NASA using this API that they are providing and send the descriptions back.
 
@@ -319,9 +323,9 @@ app.get('/nasa', (req, res) => {
 })
 ```
 
-We will try to send an API request to NASA whenever a user visits the `/nasa` route of our website. 
+We will try to send an API request to NASA whenever a user visits the `/nasa` route of our website.
 
-Now to send an API request, we will use axios.get(). This will *send* a `get` request to the particular url provided. 
+Now to send an API request, we will use axios.get(). This will _send_ a `get` request to the particular url provided.
 
 Now go ahead and visit the [`http://localhost:3000/nasa`](http://localhost:3000/nasa) url, you would find this displaying on the screen.
 
@@ -348,7 +352,7 @@ app.get('/create', (req, res) => {
 
 In the `/create` route, we simply can access all the parameter like this.
 
-Now, let us create a file using the file system package that node provides. 
+Now, let us create a file using the file system package that node provides.
 
 ```jsx
 const fs = require("fs");
