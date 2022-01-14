@@ -32,11 +32,11 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, lessons }) => (
     <Text textStyle="subtitle2">Week {weekNumber}</Text>
     <Divider my={2} />
     {lessons.map((lesson) => (
-      <Flex key={lesson.date} mt={4} ml={3}>
+      <Flex key={lesson.date} mt={5} ml={3}>
         <Text textStyle="body" fontWeight="bold" mr={4} w={20}>
           {lesson.date}:
         </Text>
-        <Flex direction="column" gap={4}>
+        <Flex direction="column" gap={3}>
           <Content label={lesson.format} title={lesson.topic} />
           {lesson.readingTitle && (
             <Content
