@@ -1,4 +1,5 @@
 # Lesson 2 - HTML
+
 ## Learning Objectives
 
 1. Understand what is HTML
@@ -8,7 +9,7 @@
 
 # Intro to HTML
 
-We're going to start building our very first website. At first our website is going be pretty ugly but it's still going to be functional! We're going to be using the language HTML, or hypertext markup language. This isn't a programming language since it doesn't actually *do* anything. It's like how English isn't a programming language either: you can't "run" English. Same idea with HTML: you can't "run" HTML. HTML is simply the language and pictures on the page. It's the static (which is another word for unchanging) content.
+We're going to start building our very first website. At first our website is going be pretty ugly but it's still going to be functional! We're going to be using the language HTML, or hypertext markup language. This isn't a programming language since it doesn't actually _do_ anything. It's like how English isn't a programming language either: you can't "run" English. Same idea with HTML: you can't "run" HTML. HTML is simply the language and pictures on the page. It's the static (which is another word for unchanging) content.
 
 ## Tags
 
@@ -47,174 +48,156 @@ There are 4 components to an HTML file:
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- *Metadata goes in here -->*
-      <title>Page Title</title>
-    </head>
+    <!-- *Metadata goes in here -->
+    *
+    <title>Page Title</title>
+  </head>
 
-    <body>
-      <!-- *Actual Content Goes in Here -->*
-      <p>Hello World!</p>
-    </body>
+  <body>
+    <!-- *Actual Content Goes in Here -->*
+    <p>Hello World!</p>
+  </body>
 </html>
 ```
 
 ### HTML Tags
 
 - **Regular text** → `<p>` tag
-    
-    ```html
-    <p>Text!</p>
-    ```
-    
+  ```html
+  <p>Text!</p>
+  ```
 - **Headers** → `<h1>` - `<h6>` tags
-    
-    ```html
-    <h1>I'm a big header!</h1>
-    <h3>I'm a slighly smaller header.</h3>
-    <h5>I'm a small header.</h5>
-    ```
-    
-    - Header types are used for size and SEO (Search Engine Optimization)
-        - Each header tag has a different default font size
-            - `<h1>` tags have the largest font size and decrease down to `<h6>` being the smallest
-        - Google uses header tags to divide up a website
-            - `<h1>` tags are seen as main subjects for a website, while `<h3>` tags are seen as subsections
+  ```html
+  <h1>I'm a big header!</h1>
+  <h3>I'm a slighly smaller header.</h3>
+  <h5>I'm a small header.</h5>
+  ```
+  - Header types are used for size and SEO (Search Engine Optimization)
+    - Each header tag has a different default font size
+      - `<h1>` tags have the largest font size and decrease down to `<h6>` being the smallest
+    - Google uses header tags to divide up a website
+      - `<h1>` tags are seen as main subjects for a website, while `<h3>` tags are seen as subsections
 - **Link** → `<a>` tag
-    
-    ```html
-    <a href="https://webatberkeley.org">This is a link!</a>
-    ```
-    
-    - the `href` is an attribute of the `<a>` tag
-        - attributes are simply ***characteristics*** of tags
-        - When clicked, the page will redirect to the URL specified by the `href` attribute
-        - **ex.** this `href` points to the [Web Dev at Berkeley](https://webatberkeley.org/) site
+  ```html
+  <a href="https://webatberkeley.org">This is a link!</a>
+  ```
+  - the `href` is an attribute of the `<a>` tag
+    - attributes are simply **_characteristics_** of tags
+    - When clicked, the page will redirect to the URL specified by the `href` attribute
+    - **ex.** this `href` points to the [Web Dev at Berkeley](https://webatberkeley.org/) site
 - **Lists** → `<ul>`, `<ol>`, `<li>` tags
-    - `<ul>` stands for *unordered list* (bullet points ⇒ Where order doesn't matter)
-    - `<ol>` stands for *ordered list* (1. 2. 3. ⇒ Where order matters)
-    - `<li>` stands for *list item*
-    
-    ```html
-    <ul>
-      <li>This is an</li>
-      <li>unordered list</li>
-      <li>with 3 items</li>
-    </ul>
-    ```
-    
+  - `<ul>` stands for _unordered list_ (bullet points ⇒ Where order doesn't matter)
+  - `<ol>` stands for _ordered list_ (1. 2. 3. ⇒ Where order matters)
+  - `<li>` stands for _list item_
+  ```html
+  <ul>
+    <li>This is an</li>
+    <li>unordered list</li>
+    <li>with 3 items</li>
+  </ul>
+  ```
 - **Buttons** → `<button>` tag
-    - Creates a clickable button
-    - Put elements inside and around the button to make it functional and pretty
-    
-    ```html
-    <a href="https://webatberkeley.org/">
-      <button>
-        <p>Go to Web Dev at Berkeley's site</p>
-      </button>
-    </a>
-    ```
-    
+  - Creates a clickable button
+  - Put elements inside and around the button to make it functional and pretty
+  ```html
+  <a href="https://webatberkeley.org/">
+    <button>
+      <p>Go to Web Dev at Berkeley's site</p>
+    </button>
+  </a>
+  ```
 - **Divs** → `<div>` tag
-    - Short for division
-    - Generic container tag
-    - You'll use a lot of divs even though they may not make total sense right now
+  - Short for division
+  - Generic container tag
+  - You'll use a lot of divs even though they may not make total sense right now
 - **Spans** → `<span>` tag (optional)
-    - A container for small pieces of text
+  - A container for small pieces of text
 - **Image** → `<img>` tag
-    - Displays images
-    - `src` attribute points to the image
-    - `alt` attribute is displayed as text if the photo is unavailable or cannot be used
-    - `<img />` is a **self closing tag**
-        - This makes sense because an image tag doesn't contain anything - it simply displays an image
-    - `width` and `height` set the dimensions of the image
-    
-    ```html
-    <img 
-      src="./folder/my-picture.png" 
-      alt="my picture" 
-      width="200" 
-      height="200" 
-      class="my-picture"
-    />
-    ```
-    
+  - Displays images
+  - `src` attribute points to the image
+  - `alt` attribute is displayed as text if the photo is unavailable or cannot be used
+  - `<img />` is a **self closing tag**
+    - This makes sense because an image tag doesn't contain anything - it simply displays an image
+  - `width` and `height` set the dimensions of the image
+  ```html
+  <img
+    src="./folder/my-picture.png"
+    alt="my picture"
+    width="200"
+    height="200"
+    class="my-picture"
+  />
+  ```
 - Inputs → `<input>` tag
-    - Inputs can have different types, such as text, password, email, file, and many more that all come with their own unique validation and behavior
+  - Inputs can have different types, such as text, password, email, file, and many more that all come with their own unique validation and behavior
 
 ```html
 <div>
-  <input /> <!-- with a trailing slash -->
-  <input> <!-- without a trailing slash; it's the same thing -->
+  <input />
+  <!-- with a trailing slash -->
+  <input />
+  <!-- without a trailing slash; it's the same thing -->
   <input type="color" />
   <input type="file" />
   <input type="number" />
   <input type="datetime-local" />
-    <!-- 
+  <!-- 
     Short Article on the difference between radio buttons and checkbox buttons:
     https://www.geeksforgeeks.org/radio-button-vs-checkbox-in-html/
     -->
-  <input type="radio" /> 
+  <input type="radio" />
   <input type="checkbox" />
 </div>
 ```
 
 - **Textarea** → `<textarea>` tag **(optional)**
-    - A larger input for text
-    - The `placeholder` attribute specifies what shows up in the textarea when the user hasn't entered any input (Optional)
-    - The `rows` attribute specifies how many rows of text the textarea offers initially - this can be increased if the user inputs more text than the number of rows given to the textarea  (Optional)
-    - Despite nothing going inside the textarea tags, it is not a self-closing tag (HTML is a really old language and so we have to live with some old quirks)
-    
-    ```html
-    <textarea 
-      id="textarea-id" 
-      placeholder="this is temporary text" 
-      rows="4"
-    >
-    </textarea>
-    ```
-    
+  - A larger input for text
+  - The `placeholder` attribute specifies what shows up in the textarea when the user hasn't entered any input (Optional)
+  - The `rows` attribute specifies how many rows of text the textarea offers initially - this can be increased if the user inputs more text than the number of rows given to the textarea (Optional)
+  - Despite nothing going inside the textarea tags, it is not a self-closing tag (HTML is a really old language and so we have to live with some old quirks)
+  ```html
+  <textarea
+    id="textarea-id"
+    placeholder="this is temporary text"
+    rows="4"
+  ></textarea>
+  ```
 - **Selects and Option** → `<select>`, `<option>` tags **(optional)**
-    
-    ```html
-    <div>
-      <select id="farm-animals">
-        <option class="animal" value="pig">Pig</option>
-    	<option class="animal" value="cow">Cow</option>
-    	<option class="animal" value="rooster">Rooster</option>
-      </select>
-    </div>
-    ```
-    
+  ```html
+  <div>
+    <select id="farm-animals">
+      <option class="animal" value="pig">Pig</option>
+      <option class="animal" value="cow">Cow</option>
+      <option class="animal" value="rooster">Rooster</option>
+    </select>
+  </div>
+  ```
 - **Form** → `<form>` tag
-    - A group of html tags related to gathering data from a user
-    - This will be some combination of `input`, `textarea`, and `select` tags
-    - A form is just a container for the other tags
-    
-    ```html
-    <form class="my-form">
-      <input type="text" />
-      <textarea></textarea>
-    </form>
-    ```
-    
+  - A group of html tags related to gathering data from a user
+  - This will be some combination of `input`, `textarea`, and `select` tags
+  - A form is just a container for the other tags
+  ```html
+  <form class="my-form">
+    <input type="text" />
+    <textarea></textarea>
+  </form>
+  ```
 - **Table** → `<table>`,`<tr>`, `<td>` tags
-    - `table` creates a table
-    - `tr` stands for table row
-    - `td` probably stands for something? Basically its just represents a cell in your table
-    
-    ```html
-    <table id="coordinates">
-      <tr class="top-row">
-        <td>(0,0)</td>
-        <td>(1,0)</td>
-      </tr>
-      <tr class="bottom-row">
-        <td>(0,1)</td>
-        <td>(1,1)</td>
-      </tr>
-    </table>
-    ```
-    
+  - `table` creates a table
+  - `tr` stands for table row
+  - `td` probably stands for something? Basically its just represents a cell in your table
+  ```html
+  <table id="coordinates">
+    <tr class="top-row">
+      <td>(0,0)</td>
+      <td>(1,0)</td>
+    </tr>
+    <tr class="bottom-row">
+      <td>(0,1)</td>
+      <td>(1,1)</td>
+    </tr>
+  </table>
+  ```
 
 There are many, many, many more tags. This is just a highlight of some of the more useful, common ones.
 
@@ -234,7 +217,8 @@ Let's go back to our `Hello World` example and dissect the anatomy of an HTML fi
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- *Metadata goes in here -->*
+    <!-- *Metadata goes in here -->
+    *
     <title>Page Title</title>
   </head>
 
@@ -268,30 +252,26 @@ All of our "visual" HTML will go in here. All your `div`s, `span`s, `img`s, e
 Tags like `title` and `meta` go into the `<head></head>` of your HTML document. These tags are responsible for telling search engines and the browser top-level information about your site.
 
 - `<title>` ⇒ Sets the title of the website
-    - Is what shows up at the top of the tab
+  - Is what shows up at the top of the tab
 - `<meta>` ⇒ Sets the metadata of the site
-    - **ex**. description, image preview, social media display, etc
-    - Is used for SEO (Search Engine Optimization)
-        - **i.e.** getting your site to show up at the top of Google
-    - A common structure is `<meta name="____", description="____"/>`
-        
-        ```html
-        <head>
-          <meta
-            name="description"
-            content="Web Development at Berkeley aims to bring web 
-            development education and technologies to the Berkeley 
-            community, centralizing the scattered web education 
-            opportunities and resources offered by current 
-            campus organizations."
-           />
-        </head>
-        ```
-        
-    - Common metadata involves the **page title**, **description**, **URL**, and **image preview.**
-    
-    [The Essential Meta Tags for Social Media | CSS-Tricks](https://css-tricks.com/essential-meta-tags-social-media/)
-    
+  - **ex**. description, image preview, social media display, etc
+  - Is used for SEO (Search Engine Optimization)
+    - **i.e.** getting your site to show up at the top of Google
+  - A common structure is `<meta name="____", description="____"/>`
+    ```html
+    <head>
+      <meta
+        name="description"
+        content="Web Development at Berkeley aims to bring web 
+        development education and technologies to the Berkeley 
+        community, centralizing the scattered web education 
+        opportunities and resources offered by current 
+        campus organizations."
+      />
+    </head>
+    ```
+  - Common metadata involves the **page title**, **description**, **URL**, and **image preview.**
+  [The Essential Meta Tags for Social Media | CSS-Tricks](https://css-tricks.com/essential-meta-tags-social-media/)
 
 ---
 
@@ -322,7 +302,9 @@ Tags like `title` and `meta` go into the `<head></head>` of your HTML document. 
 </html>
 ```
 
+---
+
 **Contributors**
 
-- [Brian Holt](https://www.linkedin.com/in/btholt/)
 - [Samarth Goel](https://www.linkedin.com/in/samarth-goel-1047b8187/)
+- [Brian Holt](https://www.linkedin.com/in/btholt/)

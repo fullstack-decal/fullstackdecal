@@ -44,8 +44,8 @@ npm install --save express cors mongoose express bcryptjs jsonwebtoken
 First, let’s create a `index.js` file:
 
 ```jsx
-const express = require("express");
-const bodyParser = require("body-parser");
+const express = require('express');
+const bodyParser = require('body-parser');
 // const InitiateMongoServer = require("./config/db");
 
 // Initiate Mongo Server
@@ -59,8 +59,8 @@ const PORT = process.env.PORT || 4000;
 // Middleware
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  res.json({ message: "API Working" });
+app.get('/', (req, res) => {
+  res.json({ message: 'API Working' });
 });
 
 app.listen(PORT, (req, res) => {
@@ -95,16 +95,16 @@ connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName
 Now, create a `config` folder and a `db.js` file there:
 
 ```jsx
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 // Replace this with your MONGOURI.
-const MONGOURI = "mongodb://127.0.0.1:27017/example-auth-db";
+const MONGOURI = 'mongodb://127.0.0.1:27017/example-auth-db';
 const InitiateMongoServer = async () => {
   try {
     await mongoose.connect(MONGOURI, {
       useNewUrlParser: true,
     });
-    console.log("Connected to DB !!");
+    console.log('Connected to DB !!');
   } catch (e) {
     console.log(e);
     throw e;
@@ -121,7 +121,7 @@ module.exports = InitiateMongoServer;
 Create a `models` folder and then create a `User.js` file, this file will define our database schema.
 
 ```jsx
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const UserSchema = mongoose.Schema({
   username: {
@@ -143,7 +143,7 @@ const UserSchema = mongoose.Schema({
 });
 
 // export model user with UserSchema
-module.exports = mongoose.model("user", UserSchema);
+module.exports = mongoose.model('user', UserSchema);
 ```
 
 Finally, uncomment the two lines inside `index.js`, and run `node index.js` again, you should see this if you have successfully connected with the db:
@@ -155,13 +155,13 @@ Finally, uncomment the two lines inside `index.js`, and run `node index.js` agai
 Now, it's time to implement the Signup router which will be mounted on `/user/signup`. Create a folder called `routes`, and inside, create a file called `user.js`:
 
 ```jsx
-const express = require("express");
-const { check, validationResult } = require("express-validator");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const express = require('express');
+const { check, validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 
-const User = require("../model/User");
+const User = require('../model/User');
 
 /**
  * @method - POST
@@ -170,11 +170,11 @@ const User = require("../model/User");
  */
 
 router.post(
-  "/signup",
+  '/signup',
   [
-    check("username", "Please Enter a Valid Username").not().isEmpty(),
-    check("email", "Please enter a valid email").isEmail(),
-    check("password", "Please enter a valid password").isLength({
+    check('username', 'Please Enter a Valid Username').not().isEmpty(),
+    check('email', 'Please enter a valid email').isEmail(),
+    check('password', 'Please enter a valid password').isLength({
       min: 6,
     }),
   ],
@@ -193,7 +193,7 @@ router.post(
       });
       if (user) {
         return res.status(400).json({
-          msg: "User Already Exists",
+          msg: 'User Already Exists',
         });
       }
 
@@ -216,7 +216,7 @@ router.post(
 
       jwt.sign(
         payload,
-        "randomString",
+        'randomString',
         {
           expiresIn: 10000,
         },
@@ -229,7 +229,7 @@ router.post(
       );
     } catch (err) {
       console.log(err.message);
-      res.status(500).send("Error in Saving");
+      res.status(500).send('Error in Saving');
     }
   }
 );
@@ -244,10 +244,10 @@ module.exports = router;
 Also remember to import the user route and update it inside `index.js`:
 
 ```jsx
-const express = require("express");
-const bodyParser = require("body-parser");
-const user = require("./routes/user"); //new addition
-const InitiateMongoServer = require("./config/db");
+const express = require('express');
+const bodyParser = require('body-parser');
+const user = require('./routes/user'); //new addition
+const InitiateMongoServer = require('./config/db');
 
 // Initiate Mongo Server
 InitiateMongoServer();
@@ -260,8 +260,8 @@ const PORT = process.env.PORT || 4000;
 // Middleware
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  res.json({ message: "API Working" });
+app.get('/', (req, res) => {
+  res.json({ message: 'API Working' });
 });
 
 /**
@@ -269,7 +269,7 @@ app.get("/", (req, res) => {
  * Router - /user/*
  * Method - *
  */
-app.use("/user", user);
+app.use('/user', user);
 
 app.listen(PORT, (req, res) => {
   console.log(`Server Started at PORT ${PORT}`);
@@ -288,10 +288,10 @@ Add the following code to `user.js` to support login:
 
 ```jsx
 router.post(
-  "/login",
+  '/login',
   [
-    check("email", "Please enter a valid email").isEmail(),
-    check("password", "Please enter a valid password").isLength({
+    check('email', 'Please enter a valid email').isEmail(),
+    check('password', 'Please enter a valid password').isLength({
       min: 6,
     }),
   ],
@@ -311,13 +311,13 @@ router.post(
       });
       if (!user)
         return res.status(400).json({
-          message: "User Not Exist",
+          message: 'User Not Exist',
         });
 
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch)
         return res.status(400).json({
-          message: "Incorrect Password !",
+          message: 'Incorrect Password !',
         });
 
       const payload = {
@@ -328,7 +328,7 @@ router.post(
 
       jwt.sign(
         payload,
-        "randomString",
+        'randomString',
         {
           expiresIn: 3600,
         },
@@ -342,7 +342,7 @@ router.post(
     } catch (e) {
       console.error(e);
       res.status(500).json({
-        message: "Server Error",
+        message: 'Server Error',
       });
     }
   }
@@ -366,13 +366,13 @@ The `/user/me` route will return your user if you pass the token in the header
  * @param - /user/me
  */
 
-router.get("/me", auth, async (req, res) => {
+router.get('/me', auth, async (req, res) => {
   try {
     // request.user is getting fetched from Middleware after token authentication
     const user = await User.findById(req.user.id);
     res.json(user);
   } catch (e) {
-    res.send({ message: "Error in Fetching user" });
+    res.send({ message: 'Error in Fetching user' });
   }
 });
 ```
@@ -384,19 +384,19 @@ Go ahead and create a new folder named **middleware**. Inside this folder, crea
 > This auth middleware will be used to verify the token, retrieve user based on the token payload.
 
 ```jsx
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 module.exports = function (req, res, next) {
-  const token = req.header("token");
-  if (!token) return res.status(401).json({ message: "Auth Error" });
+  const token = req.header('token');
+  if (!token) return res.status(401).json({ message: 'Auth Error' });
 
   try {
-    const decoded = jwt.verify(token, "randomString");
+    const decoded = jwt.verify(token, 'randomString');
     req.user = decoded.user;
     next();
   } catch (e) {
     console.error(e);
-    res.status(500).send({ message: "Invalid Token" });
+    res.status(500).send({ message: 'Invalid Token' });
   }
 };
 ```
@@ -414,12 +414,12 @@ PostMan is required for Testing the API. If you don't have PostMan installed fir
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a5457571-a6af-4774-b89e-a4e64fceee78/Untitled.png)
 
+## Resources:
+
+[Authentication in NodeJS With Express and Mongo - CodeLab #1](https://dev.to/dipakkr/implementing-authentication-in-nodejs-with-express-and-jwt-codelab-1-j5i)
+
 ---
 
 **Contributors**
 
-- Alex Wu
-
-**Resources:**
-
-[Authentication in NodeJS With Express and Mongo - CodeLab #1](https://dev.to/dipakkr/implementing-authentication-in-nodejs-with-express-and-jwt-codelab-1-j5i)
+- [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)

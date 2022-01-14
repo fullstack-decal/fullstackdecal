@@ -1,15 +1,13 @@
 import React from 'react';
+import { Lesson } from '../types';
+import { Box, Flex, Text, Tag, Divider } from '@chakra-ui/react';
+import Link from '@docusaurus/Link';
 
-import { Box, Flex, VStack, Text, Tag } from '@chakra-ui/react';
-
-type Lesson = {
-  date: string;
-  format: string;
-  topic: string;
-  reading?: string;
-  assigmentFormat?: string;
-  assigmentTitle?: string;
-  starterCode?: string;
+type ContentProps = {
+  label: string;
+  title: string;
+  dueDate?: string;
+  link?: string;
 };
 
 type WeekCardProps = {
@@ -17,21 +15,45 @@ type WeekCardProps = {
   lessons: Lesson[];
 };
 
+const Content: React.FC<ContentProps> = ({ label, title, dueDate, link }) => (
+  <Flex align="center">
+    <Tag mr={3}>{label}</Tag>
+    <Text textStyle="body">
+      {link ? <Link to={link}>{title}</Link> : title}
+      <Text as="span" textStyle="body" fontWeight="bold">
+        {dueDate && ` (due ${dueDate})`}
+      </Text>
+    </Text>
+  </Flex>
+);
+
 const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, lessons }) => (
   <Box>
-    <Text>Week {weekNumber}</Text>
+    <Text textStyle="subtitle2">Week {weekNumber}</Text>
+    <Divider my={2} />
     {lessons.map((lesson) => (
-      <Box key={lesson.date}>
-        <Flex>
-          {lesson.date}
-          <VStack spacing={3}>
-            <Flex>
-              <Tag>{lesson.format}</Tag>
-              <Text>{lesson.topic}</Text>
-            </Flex>
-          </VStack>
+      <Flex key={lesson.date} mt={4} ml={3}>
+        <Text textStyle="body" fontWeight="bold" mr={4} w={20}>
+          {lesson.date}:
+        </Text>
+        <Flex direction="column" gap={4}>
+          <Content label={lesson.format} title={lesson.topic} />
+          {lesson.readingTitle && (
+            <Content
+              label="Reading"
+              title={lesson.readingTitle}
+              link={lesson.readingLink}
+            />
+          )}
+          {lesson.assigmentFormat && (
+            <Content
+              label={lesson.assigmentFormat}
+              title={lesson.assigmentTitle}
+              dueDate={lesson.assigmentDueDate}
+            />
+          )}
         </Flex>
-      </Box>
+      </Flex>
     ))}
   </Box>
 );
