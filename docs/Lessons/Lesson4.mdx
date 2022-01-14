@@ -31,6 +31,8 @@ A fixed element is positioned relative to the **viewport**.
 
 The element's position relative to the screen will **not** change even if the user scrolls.
 
+![Fixed Image](../assets/Lesson4/Lesson4-1.gif)
+
 **Does not leave space** in the page where it would statically have been located.
 
 Use **top**, **bottom**, **left**, and **right** to place.
@@ -47,7 +49,7 @@ Use higher **z-index** to **layer on top of other elements**.
 
 Use **top**, **bottom**, **left**, and **right** to place.
 
-![Gradient background is absolutely positioned.](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4f88c2d1-8f34-4c02-8df3-a4f22024970c/Screen_Shot_2021-06-27_at_4.44.19_PM.png)
+![Absolute Image](../assets/Lesson4/Lesson4-2.png)
 
 Gradient background is absolutely positioned.
 
@@ -61,9 +63,12 @@ Essentially toggles between relative and fixed.
 
 Use **top**, **bottom**, **left**, and **right** to place.
 
-### Diagram for Positioning
+![Sticky Image](../assets/Lesson4/Lesson4-3.gif)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1c5802f4-9acb-4554-b76d-1372cc82e313/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1c5802f4-9acb-4554-b76d-1372cc82e313/Untitled.png)
+Once it hits a position on scroll, it will stick to it.
+
+### Diagram for Positioning
+![Positioning Image](../assets/Lesson4/Lesson4-4.png)
 
 ---
 
@@ -90,8 +95,7 @@ span {
   </p>
 </body>
 ```
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f86af144-272d-4745-bca4-1477857bbce0/Screen_Shot_2021-07-12_at_10.33.17_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f86af144-272d-4745-bca4-1477857bbce0/Screen_Shot_2021-07-12_at_10.33.17_PM.png)
+![Inline Image](../assets/Lesson4/Lesson4-5.png)
 
 ### Block
 
@@ -118,7 +122,7 @@ span {
 </body>
 ```
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9f48eb3c-ef51-4951-b464-d048703c3c66/Screen_Shot_2021-07-12_at_10.36.21_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9f48eb3c-ef51-4951-b464-d048703c3c66/Screen_Shot_2021-07-12_at_10.36.21_PM.png)
+![Block Image](../assets/Lesson4/Lesson4-6.png)
 
 ### Grid
 
@@ -152,8 +156,7 @@ Not supported by all browsers yet so **not usable** in most production sites.
   <div class="grid-item">6</div>  
 </div>
 ```
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/60285a34-0369-4ddf-8283-4da911dcace0/Screen_Shot_2021-07-12_at_10.38.36_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/60285a34-0369-4ddf-8283-4da911dcace0/Screen_Shot_2021-07-12_at_10.38.36_PM.png)
+![Grid Image](../assets/Lesson4/Lesson4-7.png)
 
 ### Flex-box
 
@@ -197,7 +200,7 @@ is inherited through the descendants.</p>
 such as this <span>span</span>.</p>
 ```
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2a7e4248-f654-4531-a165-d4026e5c4fde/Screen_Shot_2020-09-24_at_1.05.18_AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2a7e4248-f654-4531-a165-d4026e5c4fde/Screen_Shot_2020-09-24_at_1.05.18_AM.png)
+![Cascade Image](../assets/Lesson4/Lesson4-8.png)
 
 <aside>
 💡 Order in CSS classes does matter! Whatever comes last in your CSS document is what stands. This is the concept of the cascade.
@@ -212,7 +215,7 @@ Specificity is how specific a certain CSS styling attribute is. To determine spe
 
 More selector specificity means that it will override the styling of an element also styled by a less specific CSS selector.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/97845e64-4043-4366-bad0-566ad87aec02/Add_a_heading.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/97845e64-4043-4366-bad0-566ad87aec02/Add_a_heading.png)
+![Specificity Image](../assets/Lesson4/Lesson4-9.png)
 
 <aside>
 💡 This convention is not a real CSS rule. It is just for the sake of remembering the hierarchy.
@@ -221,9 +224,11 @@ More selector specificity means that it will override the styling of an element 
 
 Here are a few examples:
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7209bf2a-bd8b-43b3-b8ed-d41086603143/Group_11.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7209bf2a-bd8b-43b3-b8ed-d41086603143/Group_11.png)
+![Example 1 Image](../assets/Lesson4/Lesson4-10.png)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b2781ecb-6153-4dc1-985a-806c882ee44d/Group_12.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b2781ecb-6153-4dc1-985a-806c882ee44d/Group_12.png)
+![Example 2 Image](../assets/Lesson4/Lesson4-11.png)
+
+![Example 3 Image](../assets/Lesson4/Lesson4-12.png)
 
 The **green specificity numbers indicate the styling selector that overrides the other**. 
 
@@ -260,7 +265,7 @@ Here’s the syntax:
 
 Can **specify** speed, delay, and style of transition.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9e97ee68-a92a-408d-8b0d-32655ad9a4ac/Group_11_(1).png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9e97ee68-a92a-408d-8b0d-32655ad9a4ac/Group_11_(1).png)
+![Animation Image](../assets/Lesson4/Lesson4-13.png)
 
 ## Media Queries
 
@@ -272,7 +277,7 @@ Can add as many as needed at the **end** of your CSS file
 
 Can check **width**, **height**, **resolution**, and **orientation** of device.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7bc4abd6-eb2e-419c-b47e-05df52d556d8/carbon_(32)_1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7bc4abd6-eb2e-419c-b47e-05df52d556d8/carbon_(32)_1.png)
+![Media Image](../assets/Lesson4/Lesson4-14.png)
 
 **Common breakpoints:**
 
@@ -284,7 +289,7 @@ Can check **width**, **height**, **resolution**, and **orientation** of device.
 
 ## Good Practice
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8b852045-9f89-4c23-9abb-6279aa410301/Group_12_(2).png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8b852045-9f89-4c23-9abb-6279aa410301/Group_12_(2).png)
+![Good Practice Image](../assets/Lesson4/Lesson4-15.png)
 
 ---
 
