@@ -28,7 +28,7 @@ Browsers aren't the only thing reading websites. Blind and people who can't see 
 
 ```html
 <button>
-	<p>Click me!</p>
+  <p>Click me!</p>
 </button>
 ```
 
@@ -46,15 +46,15 @@ There are 4 components to an HTML file:
 ```html
 <!DOCTYPE html>
 <html>
-		<head>
-				<!-- *Metadata goes in here -->*
-				<title>Page Title</title>
-		</head>
+  <head>
+    <!-- *Metadata goes in here -->*
+      <title>Page Title</title>
+    </head>
 
-		<body>
-				<!-- *Actual Content Goes in Here -->*
-				<p>Hello World!</p>
-		</body>
+    <body>
+      <!-- *Actual Content Goes in Here -->*
+      <p>Hello World!</p>
+    </body>
 </html>
 ```
 
@@ -96,9 +96,9 @@ There are 4 components to an HTML file:
     
     ```html
     <ul>
-    		<li>This is an</li>
-    		<li>unordered list</li>
-    		<li>with 3 items</li>
+      <li>This is an</li>
+      <li>unordered list</li>
+      <li>with 3 items</li>
     </ul>
     ```
     
@@ -107,11 +107,11 @@ There are 4 components to an HTML file:
     - Put elements inside and around the button to make it functional and pretty
     
     ```html
-    	<a href="https://webatberkeley.org/">
-    			<button>
-    					<p>Go to Web Dev at Berkeley's site</p>
-    			</button>
-    	</a>
+    <a href="https://webatberkeley.org/">
+      <button>
+        <p>Go to Web Dev at Berkeley's site</p>
+      </button>
+    </a>
     ```
     
 - **Divs** → `<div>` tag
@@ -130,11 +130,11 @@ There are 4 components to an HTML file:
     
     ```html
     <img 
-    	src="./folder/my-picture.png" 
-    	alt="my picture" 
-    	width="200" 
-    	height="200" 
-    	class="my-picture"
+      src="./folder/my-picture.png" 
+      alt="my picture" 
+      width="200" 
+      height="200" 
+      class="my-picture"
     />
     ```
     
@@ -143,16 +143,16 @@ There are 4 components to an HTML file:
 
 ```html
 <div>
-	<input /> <!-- with a trailing slash -->
+  <input /> <!-- with a trailing slash -->
   <input> <!-- without a trailing slash; it's the same thing -->
   <input type="color" />
   <input type="file" />
   <input type="number" />
   <input type="datetime-local" />
-	<!-- 
-	Short Article on the difference between radio buttons and checkbox buttons:
-	https://www.geeksforgeeks.org/radio-button-vs-checkbox-in-html/
-	-->
+    <!-- 
+    Short Article on the difference between radio buttons and checkbox buttons:
+    https://www.geeksforgeeks.org/radio-button-vs-checkbox-in-html/
+    -->
   <input type="radio" /> 
   <input type="checkbox" />
 </div>
@@ -166,9 +166,9 @@ There are 4 components to an HTML file:
     
     ```html
     <textarea 
-    	id="textarea-id" 
-    	placeholder="this is temporary text" 
-    	rows="4"
+      id="textarea-id" 
+      placeholder="this is temporary text" 
+      rows="4"
     >
     </textarea>
     ```
@@ -177,11 +177,11 @@ There are 4 components to an HTML file:
     
     ```html
     <div>
-    	<select id="farm-animals">
-    		<option class="animal" value="pig">Pig</option>
-    		<option class="animal" value="cow">Cow</option>
-    		<option class="animal" value="rooster">Rooster</option>
-    	</select>
+      <select id="farm-animals">
+        <option class="animal" value="pig">Pig</option>
+    	<option class="animal" value="cow">Cow</option>
+    	<option class="animal" value="rooster">Rooster</option>
+      </select>
     </div>
     ```
     
@@ -192,8 +192,8 @@ There are 4 components to an HTML file:
     
     ```html
     <form class="my-form">
-    	<input type="text" />
-    	<textarea></textarea>
+      <input type="text" />
+      <textarea></textarea>
     </form>
     ```
     
@@ -233,15 +233,15 @@ Let's go back to our `Hello World` example and dissect the anatomy of an HTML fi
 ```html
 <!DOCTYPE html>
 <html>
-		<head>
-				<!-- *Metadata goes in here -->*
-				<title>Page Title</title>
-		</head>
+  <head>
+    <!-- *Metadata goes in here -->*
+    <title>Page Title</title>
+  </head>
 
-		<body>
-				<!-- *Actual Content Goes in Here -->*
-				<p>Hello World!</p>
-		</body>
+  <body>
+    <!-- *Actual Content Goes in Here -->*
+    <p>Hello World!</p>
+  </body>
 </html>
 ```
 
@@ -277,14 +277,14 @@ Tags like `title` and `meta` go into the `<head></head>` of your HTML document. 
         
         ```html
         <head>
-        	<meta
-        			name="description"
-        			content="Web Development at Berkeley aims to bring web 
-        					development education and technologies to the Berkeley 
-        					community, centralizing the scattered web education 
-        					opportunities and resources offered by current 
-        					campus organizations."
-        	/>
+          <meta
+            name="description"
+            content="Web Development at Berkeley aims to bring web 
+            development education and technologies to the Berkeley 
+            community, centralizing the scattered web education 
+            opportunities and resources offered by current 
+            campus organizations."
+           />
         </head>
         ```
         
@@ -300,25 +300,25 @@ Tags like `title` and `meta` go into the `<head></head>` of your HTML document. 
 ```html
 <!DOCTYPE html>
 <html>
-		<head>
-				<title>HTML Reddit</title>
-		</head>
-		<body>
-      <h1> Reddit </h1>
-      <div>
-        <h2> Post Title </h2>
-        <p> Post description </p>
-      </div>
-      <div>
-        <h2> Create a new post </h2>
-        <form>
-          <p> Enter your post title: </p>
-          <input />
-          <p> Enter your post: </p>
-          <input />
-          <input type="submit" />
-        </form>
-		</body>
+  <head>
+    <title>HTML Reddit</title>
+  </head>
+  <body>
+    <h1> Reddit </h1>
+    <div>
+      <h2> Post Title </h2>
+      <p> Post description </p>
+    </div>
+    <div>
+      <h2> Create a new post </h2>
+      <form>
+        <p> Enter your post title: </p>
+        <input />
+        <p> Enter your post: </p>
+        <input />
+        <input type="submit" />
+      </form>
+  </body>
 </html>
 ```
 
