@@ -22,7 +22,7 @@ const staff = [
     image: '/img/staff/kim.png',
     role: 'Frontend TA',
     linkedin: 'https://www.linkedin.com/in/kimberleyfan/',
-    personal: 'www.github.com/kimberleyfan',
+    personal: 'https://www.github.com/kimberleyfan',
     bio: "Hi everyone! I'm Kimberley and I'm studying computer science from Walnut, California. I really like building websites from the ground up and being able to help other peers enjoy it too is fun to me. Besides web development, I'm into aesthetic cafes, anime, and kdrama, screaming, and retail therapy. Feel free to hit me up for whatever!",
     // email: 'mailto: kimberley.fan123@berkeley.edu',
   },
