@@ -85,9 +85,10 @@ I really can use any tag and it'll mechanically work. Using CSS, you can make pr
 3. It makes it easier for Google, Bing, DuckDuckGo, etc. to crawl your website which means your site will rank higher in search results.
 
 <aside>
-💡 Screen readers and other accessibility tools *do not* read your class names or IDs; choosing good names here purely affects you and others working on this code
+💡 Screen readers and other accessibility tools DO NOT read your class names or IDs; choosing good names here purely affects you and others working on this code
 
 </aside>
+
 
 Given that, it means we need to choose a tag that means that's a title. In this case, we can use an `h1` because that is the main header of that subsection. 
 
@@ -132,15 +133,14 @@ Another way to use CSS is by inserting CSS classes directly into the HTML docume
 ```html
 <html lang="en">
   <head>
-   
-	  <style>
-		  h1 {
-			  color:red;
-		  }
-		  p {
-			  color:blue;
-		  }
-	  </style>
+    <style>
+      h1 {
+        color:red;
+      }
+      p {
+        color:blue;
+      }
+    </style>
   </head>
 </html>
 
@@ -157,7 +157,7 @@ The most common way to implement CSS is by using the `<link>` tag to link an ext
 ```html
 <html lang="en">
   <head>
-	  <link rel="stylesheet" href="../style/about.css"/>
+    <link rel="stylesheet" href="../style/about.css"/>
   </head>
 </html>
 
