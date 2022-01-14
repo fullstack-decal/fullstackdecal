@@ -1,7 +1,11 @@
 import React from 'react';
+import textStyles from './textStyles';
+import layerStyles from './layerStyles';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({
+  textStyles,
+  layerStyles,
   components: {
     Box: {
       baseStyle: {
@@ -27,9 +31,11 @@ const theme = extendTheme({
 
 // eslint-disable-next-line react/prop-types
 const Root = ({ children }) => {
-  return <ChakraProvider resetCSS={false} theme={theme}>
-    {children}
-  </ChakraProvider>;
+  return (
+    <ChakraProvider resetCSS={false} theme={theme}>
+      {children}
+    </ChakraProvider>
+  );
 };
 
 export default Root;
