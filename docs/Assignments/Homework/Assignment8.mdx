@@ -25,19 +25,18 @@ Before we start building anything, we have to set up our server first. For this 
 
 - cd into the directory: `cd sp22-assignment8-skeleton/node-server`
 - Install dependencies: `npm i`
-- Ensure you have Nodemon installed: `npm i -g nodemon`
-- Run the server: `nodemon blockserver.js`
+- Run the server: `npm start`
 
 
 
 You should see output that looks something like this:
 ```shell
-[nodemon] 2.0.12
-[nodemon] to restart at any time, enter `rs`
-[nodemon] watching path(s): *.*
-[nodemon] watching extensions: js,mjs,json
-[nodemon] starting `node blockserver.js`
-Example app listening at http://localhost:3001
+❯ npm start
+
+> node-server@1.0.0 start
+> node index.js
+
+Block Server listening at http://localhost:3002
 ```
 
 ## Task 2 - Start the Frontend
@@ -111,11 +110,11 @@ Fetch data from our server (`http://localhost:3002/posts`) and render out each a
 - Make sure your server URL is passed in the get logic correctly
 - Where would the fetch logic be placed?
 
-## Task 5 - Creating a new post
+## Task 4 - Creating a new post
 
 Now that we can view posts from our server, you'll notice that there's a form at the bottom to create a new post. We've already built the logic to get the form data, you'll be using a post request to add this data to our server.
 
-Axios post requests are very simple, as an example:\
+Axios post requests are very simple, as an example:
 
 ```js
 axios
@@ -131,7 +130,7 @@ Use a `POST` request to create a new post.
 **Tips**
 - To create a new post, you'll have to `POST` /post
 
-## Task 6 - Working with Comments
+## Task 5 - Working with Comments
 
 At this point, you should be able to view and create new posts. Now, we'll do the same for comments.
 
@@ -143,6 +142,14 @@ Create a new `Comments` component to view all the comments on a single post. Als
 
 ## Submission
 Submit a live video of your code running to Gradescope and make sure to push all your changes!
+
+### Demo of Solution
+
+When finished, your website should be able to run like the follow:
+
+<iframe src="https://www.loom.com/embed/843dd029aa584d1398b129145b8d5968" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style={{ height: '300px'}}/>
+
+Note the UI doesn't have to be the samee
 
 ## Contributors
 - [Caelin Sutch](https://www.linkedin.com/in/caelinsutch)
