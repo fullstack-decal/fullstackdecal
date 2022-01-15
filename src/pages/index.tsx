@@ -3,7 +3,7 @@ import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import WeekCard from '../components/WeekCard';
 import schedule from '../data/schedule';
-import { Container, Flex, Text } from '@chakra-ui/react';
+import { Container, Box, Flex, Text } from '@chakra-ui/react';
 
 const Home: React.FC = () => {
   const { siteConfig } = useDocusaurusContext();
@@ -12,8 +12,8 @@ const Home: React.FC = () => {
       title={siteConfig.title}
       description="Description will go into a meta tag in <head />"
     >
-      <Container maxW="container.xl" py={10}>
-        <Text textStyle="title" mb={6}>
+      <Container maxW="container.xl" pt={10} pb={16}>
+        <Text textStyle="title" mb={4}>
           CS 198-099: Introduction to Full Stack Development
         </Text>
         <Text textStyle="body" mb={4}>
@@ -27,14 +27,20 @@ const Home: React.FC = () => {
           large amount of material and that this course can feel like a lot,
           even for those with past CS experience.
         </Text>
-        <Flex layerStyle="aside" mb={8}>
+        <Box layerStyle="aside" mb={6}>
           <Text textStyle="body">
             💡 The materials in this course have been made available to the
             public in pursuit of reaching, educating, and supporting as many
             people as we can.
           </Text>
-        </Flex>
-        <Text textStyle="subtitle1" mb={6}>
+        </Box>
+        <Text textStyle="subtitle1" mb={4}>
+          Announcements
+        </Text>
+        <Text textStyle="body" mb={6}>
+          Welcome to the Introduction to Full Stack Development DeCal!
+        </Text>
+        <Text textStyle="subtitle1" mb={5}>
           Course Overview
         </Text>
         <Flex direction="column" gap={6}>
