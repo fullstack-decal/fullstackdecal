@@ -14,10 +14,11 @@ Static is the default positioning, where the elements will follow the normal flo
 - **Block boxes** flow **vertically** **downward** starting at the top of their containing block and normally takes the full width of the containing “block level element” unless otherwise specified. One block element placed directly below the preceding block element. Block elements are DIV, P elements.
 - **Inline elements** reside in a block level container or inside a block level element and they appear side by side in normal flow. If they reach the right most wall of container then the inline elements (i.e their box model) wraps to next line within the container and stays horizontally.
 
-<aside>
-💡 If an element is static, it's not affected by top, bottom, left, and right properties. It doesn't want to listen to you!
+:::tip 
 
-</aside>
+If an element is static, it's not affected by top, bottom, left, and right properties. It doesn't want to listen to you!
+
+:::
 
 ### Relative
 
@@ -101,10 +102,11 @@ span {
 
 Displays an element as a block element (like p). It starts on a new line, and takes up the whole width. (**default**)
 
-<aside>
-💡 Notice how there is a gap under "word" due to the height property now being used! Compare to above example where height is ignored.
+:::tip 
 
-</aside>
+Notice how there is a gap under "word" due to the height property now being used! Compare to above example where height is ignored.
+
+:::
 
 ```css
 span {
@@ -202,10 +204,11 @@ such as this <span>span</span>.</p>
 
 ![Cascade Image](../assets/Lesson4/Lesson4-8.png)
 
-<aside>
-💡 Order in CSS classes does matter! Whatever comes last in your CSS document is what stands. This is the concept of the cascade.
+:::tip
 
-</aside>
+Order in CSS classes does matter! Whatever comes last in your CSS document is what stands. This is the concept of the cascade.
+
+:::
 
 ## Specificity
 
@@ -217,10 +220,11 @@ More selector specificity means that it will override the styling of an element 
 
 ![Specificity Image](../assets/Lesson4/Lesson4-9.png)
 
-<aside>
-💡 This convention is not a real CSS rule. It is just for the sake of remembering the hierarchy.
+:::tip
 
-</aside>
+This convention is not a real CSS rule. It is just for the sake of remembering the hierarchy.
+
+:::
 
 Here are a few examples:
 
@@ -234,10 +238,11 @@ The **green specificity numbers indicate the styling selector that overrides the
 
 Notice how the highest number ALWAYS overrides the lowest. 
 
-<aside>
-💡 Dev tools is great for when this gets confusing! Any overridden styling will appear with a ~~strikethrough~~.
+:::tip
 
-</aside>
+Dev tools is great for when this gets confusing! Any overridden styling will appear with a ~~strikethrough~~.
+
+:::
 
 # Animation and Media Queries
 
