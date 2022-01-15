@@ -29,10 +29,10 @@ const Content: React.FC<ContentProps> = ({ label, title, dueDate, link }) => (
 
 const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, lessons }) => (
   <Box>
-    <Text textStyle="subtitle2">Week {weekNumber}</Text>
+    <Text textStyle="subtitle3">Week {weekNumber}</Text>
     <Divider my={2} />
     {lessons.map((lesson) => (
-      <Flex key={lesson.date} mt={5} ml={3}>
+      <Flex key={lesson.date} mt={6} ml={3}>
         <Text textStyle="body" fontWeight="bold" mr={4} w={20}>
           {lesson.date}:
         </Text>

@@ -13,8 +13,11 @@ const Home: React.FC = () => {
       description="Description will go into a meta tag in <head />"
     >
       <Container maxW="container.xl" pt={10} pb={16}>
-        <Text textStyle="title" mb={4}>
+        <Text textStyle="title" mb={0}>
           CS 198-099: Introduction to Full Stack Development
+        </Text>
+        <Text textStyle="subtitle2" mb={6}>
+          Spring 2022
         </Text>
         <Text textStyle="body" mb={4}>
           Welcome to{' '}
@@ -27,25 +30,25 @@ const Home: React.FC = () => {
           large amount of material and that this course can feel like a lot,
           even for those with past CS experience.
         </Text>
-        <Box layerStyle="aside" mb={6}>
+        <Box layerStyle="aside" mb={8}>
           <Text textStyle="body">
             💡 The materials in this course have been made available to the
             public in pursuit of reaching, educating, and supporting as many
             people as we can.
           </Text>
         </Box>
-        <Text textStyle="subtitle1" mb={4}>
+        <Text textStyle="subtitle1" mb={6}>
           Announcements
         </Text>
-        <Text textStyle="body" mb={6}>
+        <Text textStyle="body" mb={8}>
           Welcome to the Introduction to Full Stack Development DeCal!
         </Text>
-        <Text textStyle="subtitle1" mb={5}>
+        <Text textStyle="subtitle1" mb={6}>
           Course Overview
         </Text>
-        <Flex direction="column" gap={6}>
+        <Flex direction="column" gap={6} >
           <>
-            {Array(2)
+            {Array(9)
               .fill(0)
               .map((_, index) => {
                 const weekLessons = schedule.filter(

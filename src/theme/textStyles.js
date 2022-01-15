@@ -16,6 +16,11 @@ const textStyles = {
   },
   subtitle2: {
     ...defaultTextStyle,
+    fontSize: '2xl',
+    fontWeight: 'bold',
+  },
+  subtitle3: {
+    ...defaultTextStyle,
     fontSize: 'xl',
     fontWeight: 'bold',
   },
