@@ -8,10 +8,11 @@ We're going to start reasoning about how to put together these things, how to cr
 
 CSS is a **list of rules** that you give the browser: "all `h1`s will be colored red" or "all images will be 100 pixels wide". 
 
-<aside>
-💡 Like HTML, CSS is not a programming language!
+:::tip 
 
-</aside>
+Like HTML, CSS is not a programming language!
+
+:::
 
 CSS is a way to take the HTML elements that you have on the page and style them to look nice.
 
@@ -57,10 +58,11 @@ CSS searches for elements in your HTML to style. So we need a way to **tag/ident
 </div>
 ```
 
-<aside>
-💡 Notice above that the id's must have different values!
+:::tip 
 
-</aside>
+Notice above that the id's must have different values!
+
+:::
 
 ---
 
@@ -88,10 +90,11 @@ I really can use any tag and it'll mechanically work. Using CSS, you can make pr
 2. It'll make it easier for you to come back later and maintain your code or for someone else to understand what you did. Code is communication between you and future readers.
 3. It makes it easier for Google, Bing, DuckDuckGo, etc. to crawl your website which means your site will rank higher in search results.
 
-<aside>
-💡 Screen readers and other accessibility tools *do not* read your class names or IDs; choosing good names here purely affects you and others working on this code
+:::tip 
 
-</aside>
+Screen readers and other accessibility tools *do not* read your class names or IDs; choosing good names here purely affects you and others working on this code
+
+:::
 
 Given that, it means we need to choose a tag that means that's a title. In this case, we can use an `h1` because that is the main header of that subsection. 
 
@@ -303,11 +306,6 @@ h1, h2, p {
 
 # Common CSS Properties
 
-<aside>
-💡 `"    "` denotes that all properties used above still apply. This is for the purpose of the lesson, it doesn't work in CSS itself!
-
-</aside>
-
 ## Text
 
 - `color`: changes color of the text
@@ -368,10 +366,11 @@ h1, h2, p {
 
 - `text-align`: change the alignment of your text
 
-<aside>
-💡 text-align defaults to center
+:::tip 
 
-</aside>
+text-align defaults to center
+
+:::
 
 ```css
 .heading {
