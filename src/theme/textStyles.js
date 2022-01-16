@@ -1,33 +1,46 @@
 const defaultTextStyle = {
-  color: 'rgb(55, 53, 47)',
+  fontFamily: 'Poppins',
+  color: '#000000',
   m: 0,
 };
 
 const textStyles = {
-  title: {
+  title1: {
+    ...defaultTextStyle,
+    fontSize: '7xl',
+    fontWeight: 'bold',
+    as: 'h1',
+  },
+  title2: {
     ...defaultTextStyle,
     fontSize: '5xl',
     fontWeight: 'bold',
+    as: 'h2',
   },
   subtitle1: {
     ...defaultTextStyle,
     fontSize: '3xl',
     fontWeight: 'bold',
+    as: 'h3',
   },
   subtitle2: {
     ...defaultTextStyle,
-    fontSize: '2xl',
+    fontSize: 'lg',
     fontWeight: 'bold',
+    as: 'h4',
   },
-  subtitle3: {
-    ...defaultTextStyle,
-    fontSize: 'xl',
-    fontWeight: 'bold',
-  },
-  body: {
+  body1: {
     ...defaultTextStyle,
     fontSize: 'md',
     fontWeight: 'normal',
+    as: 'p',
+  },
+  body2: {
+    ...defaultTextStyle,
+    fontSize: 'md',
+    fontWeight: 'normal',
+    color: 'grey',
+    as: 'p',
   },
   inherit: {
     fontFamily: 'inherit',

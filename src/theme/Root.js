@@ -6,6 +6,10 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 const theme = extendTheme({
   textStyles,
   layerStyles,
+  colors: {
+    blue: '#3560A6',
+    grey: '#C4C4C4',
+  },
   components: {
     Box: {
       baseStyle: {
