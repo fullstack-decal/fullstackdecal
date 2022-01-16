@@ -60,6 +60,8 @@ const schedule: Lesson[] = [
     date: 'Feb 24',
     format: 'Lecture 7',
     topic: 'JavaScript 3',
+    readingTitle: 'Scope and Asynchronous JS',
+    readingLink: '/docs/Lessons/Lesson7',
   },
 
   {
@@ -67,6 +69,8 @@ const schedule: Lesson[] = [
     date: 'Mar 1',
     format: 'Lecture 8',
     topic: 'Node',
+    readingTitle: 'Node.js, NPM, and Yarn',
+    readingLink: '/docs/Lessons/Lesson8',
   },
   {
     week: 4,
@@ -80,6 +84,8 @@ const schedule: Lesson[] = [
     date: 'Mar 8',
     format: 'Lecture 9',
     topic: 'React 1',
+    readingTitle: 'Intro to React',
+    readingLink: '/docs/Lessons/Lesson9',
   },
   {
     week: 5,
@@ -131,6 +137,58 @@ const schedule: Lesson[] = [
     topic: 'React 3',
     readingTitle: 'Node, NPM, Express',
     readingLink: '/docs/Lessons/Lesson13',
+  },
+
+  {
+    week: 9,
+    date: 'Apr 5',
+    format: 'Lecture 14',
+    topic: 'Backend 2',
+  },
+  {
+    week: 9,
+    date: 'Apr 7',
+    format: 'Project Proposal Night',
+    topic: '',
+  },
+
+  {
+    week: 10,
+    date: 'Apr 12',
+    format: 'Lab 2',
+    topic: 'Full Stack Lab / Catchup',
+  },
+  {
+    week: 10,
+    date: 'Apr 14',
+    format: 'Lecture 15',
+    topic: 'UI/UX 2',
+  },
+
+  {
+    week: 11,
+    date: 'Apr 19',
+    format: 'Lecture 16',
+    topic: 'Backend 3',
+  },
+  {
+    week: 11,
+    date: 'Apr 21',
+    format: 'Lecture 17',
+    topic: 'Cloud & DevOps',
+  },
+
+  {
+    week: 12,
+    date: 'Apr 26',
+    format: 'Special Lecture',
+    topic: 'Speaker TBD',
+  },
+  {
+    week: 12,
+    date: 'Apr 28',
+    format: 'Project Presentation Night',
+    topic: '',
   }
 ];
 

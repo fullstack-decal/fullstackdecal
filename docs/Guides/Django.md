@@ -54,7 +54,7 @@ The last line, however, actually creates our new environment. It's standard to c
 
 Within the virtual environment, there will be several new files and folders. 
 
-![../assets/guides/Django/newenv.png](../assets/guides/Django/newenv.png)
+![New Environment](../assets/guides/Django/newenv.png)
 
 For the purposes of the setup, we won't be going over what each folder and file is or does.
 
@@ -66,7 +66,7 @@ source bin/activate
 
 Once activated, the virtual environment name you created (in this case, newenv) should appear to the left of your computer's name.  
 
-![../assets/guides/Django/newenv-console.png](../assets/guides/Django/newenv-console.png)
+![New Environment in Console](../assets/guides/Django/newenv-console.png)
 
 To deactivate your virtual environment, simply enter "deactivate" in your command line. 
 
@@ -86,7 +86,7 @@ Change your directory into the folder that has the same title you gave your proj
 
 Inside the folder itself should be as follows:
 
-![../assets/guides/Django/structure.png](../assets/guides/Django/structure.png)
+![Django File Structure](../assets/guides/Django/structure.png)
 
 For the purposes of this demonstration, you don't need to worry about any other files except for settings[.](http://settings.py)py and urls.py.
 
@@ -120,7 +120,7 @@ In essence, then, settings.py and urls.py are the core of this admin folder.
 
 Here's an image of what this [urls.py](http://urls.py) in the main directory might look like:
 
-![../assets/guides/Django/basic-app.png](../assets/guides/Django/basic-app.png)
+![Basic Django App](../assets/guides/Django/basic-app.png)
 
 Dissecting this a bit further, the admin import is where all the admin functionality is whenever you go to the path of 'admin/'. For instance, if you were to start the server and went to "127.0.0.1:8000/admin/", you would redirected to the admin site. 
 

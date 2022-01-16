@@ -48,7 +48,7 @@ const Home: React.FC = () => {
         </Text>
         <Flex direction="column" gap={6} >
           <>
-            {Array(9)
+            {Array(12)
               .fill(0)
               .map((_, index) => {
                 const weekLessons = schedule.filter(
