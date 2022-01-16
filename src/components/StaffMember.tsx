@@ -25,13 +25,13 @@ const StaffMember: React.FC<StaffMemberProps> = ({
   email,
 }) => (
   <Box>
-    <Flex align="center">
+    <Flex align="center" direction={['column', 'row']}>
       <img
         src={image}
         alt={name}
         style={{ borderRadius: '100rem', width: '10rem' }}
       />
-      <Box ml={6}>
+      <Box ml={[0, 6]}>
         <Text textStyle="subtitle1">{name}</Text>
         <Flex align="center">
           <Text textStyle="subtitle2" color="blue" mb={1}>
@@ -72,7 +72,7 @@ const StaffMember: React.FC<StaffMemberProps> = ({
       </Box>
     </Flex>
 
-    <Text textStyle="body1" mt={5} lineHeight="27px">
+    <Text textStyle="body1" mt={[3, 5]} lineHeight="27px">
       {bio}
     </Text>
   </Box>

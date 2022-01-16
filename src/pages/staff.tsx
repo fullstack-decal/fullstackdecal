@@ -16,12 +16,12 @@ const Staff = () => {
       description="Description will go into a meta tag in <head />"
     >
       <Box w="100vw">
-        <Container maxW="container.lg" mt={12} pt={1.5} mb={20}>
-          <Text textStyle="title2" color="blue" mb={12}>
+        <Container maxW="container.lg" mt={12} mb={20} pt={1.5} px={[7, 10]}>
+          <Text textStyle="title2" color="blue" mb={[8, 12]}>
             SPRING 2022 COURSE STAFF
           </Text>
 
-          <SimpleGrid columns={2} spacing={16}>
+          <SimpleGrid columns={[1, null, 2]} spacing={[12, 16]}>
             {staff.map(
               ({ name, image, role, linkedin, personal, bio, email }) => (
                 <StaffMember
@@ -43,7 +43,7 @@ const Staff = () => {
               & OTHER NOTABLE CONTRIBUTORS
             </Text>
           </Text>
-          <SimpleGrid columns={4} spacing={10}>
+          <SimpleGrid columns={[1, 2, 3, 4]} spacing={10}>
             {pastStaff.map(({ name, image, linkedin }) => (
               <PastStaffMember
                 name={name}
