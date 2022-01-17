@@ -7,14 +7,17 @@ const defaultTextStyle = {
 const textStyles = {
   title1: {
     ...defaultTextStyle,
-    fontSize: '7xl',
+    fontSize: '8xl',
     fontWeight: 'bold',
+    lineHeight: '1.25',
+    textShadow: '0px 0px 25px rgba(109, 23, 139, 0.25)',
     as: 'h1',
   },
   title2: {
     ...defaultTextStyle,
     fontSize: '5xl',
     fontWeight: 'bold',
+    lineHeight: '1.3',
     as: 'h2',
   },
   subtitle1: {

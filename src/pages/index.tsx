@@ -12,32 +12,62 @@ const Home: React.FC = () => {
       title={siteConfig.title}
       description="Description will go into a meta tag in <head />"
     >
-      <Container maxW="container.lg" pt={10} pb={16}>
-        <Text textStyle="title1" mb={0}>
-          CS 198-099: Introduction to Full Stack Development
-        </Text>
-        <Text textStyle="subtitle2" mb={6}>
-          Spring 2022
-        </Text>
-        <Text textStyle="body" mb={4}>
-          Welcome to{' '}
-          <a href="https://webatberkeley.org/">Web Development at Berkeley</a>
-          &apos;s Introduction to Full Stack Development! In this course, we
-          cover the basics of web development, how the internet works, and the
-          frameworks, technologies, and best practices that are used in the
-          industry today. No prior CS experience is required to participate and
-          succeed in this course, but we do acknowledge that we cover a fairly
-          large amount of material and that this course can feel like a lot,
-          even for those with past CS experience.
-        </Text>
-        <Box layerStyle="aside" mb={8}>
-          <Text textStyle="body">
-            💡 The materials in this course have been made available to the
-            public in pursuit of reaching, educating, and supporting as many
-            people as we can.
+      <Box width="100vw" height="120vh" position="absolute" top={0} zIndex={-1}>
+        <img src="/img/background.png" style={{ width: '100%' }} />
+      </Box>
+      <Container maxW="container.lg" pb={16}>
+        <Box h="120vh" pt={20}>
+          <Text
+            textStyle="label1"
+            textShadow="0px 0px 25px rgba(109, 23, 139, 0.25)"
+            mb={3}
+          >
+            CS 198-099&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;SPRING 22
+          </Text>
+          <Text
+            textStyle="title2"
+            color="transparent"
+            textShadow="0px 0px 25px rgba(109, 23, 139, 0.25)"
+            sx={{ WebkitTextStroke: '2px white' }}
+          >
+            INTRODUCTION TO
+          </Text>
+          <Text textStyle="title1" color="white">
+            FULL STACK
+            <br />
+            DEVELOPMENT
+          </Text>
+          <Text
+            textStyle="label1"
+            textShadow="0px 0px 25px rgba(109, 23, 139, 0.25)"
+            mt={2}
+            mb={12}
+          >
+            Tuesday & Thursday, 6:30pm -
+            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Physics 1
+          </Text>
+          <Text textStyle="body2" color="white" mb={8}>
+            Welcome to{' '}
+            <a href="https://webatberkeley.org/">Web Development at Berkeley</a>
+            &apos;s{' '}
+            <Text as="span" fontWeight="bold">
+              Introduction to Full Stack Development!
+            </Text>{' '}
+            In this course, we cover the basics of web development, how the
+            internet works, and the frameworks, technologies, and best practices
+            that are used in the industry today. No prior CS experience is
+            required to participate and succeed in this course, but we do
+            acknowledge that we cover a fairly large amount of material and that
+            this course can feel like a lot, even for those with past CS
+            experience.
+          </Text>
+          <Text textStyle="body2" color="white">
+            The materials in this course have been made available to the public
+            in pursuit of reaching, educating, and supporting as many people as
+            we can.
           </Text>
         </Box>
-        <Text textStyle="title2" color="purple" mb={4}>
+        <Text textStyle="title2" color="purple" mt={28} mb={4}>
           Announcements
         </Text>
         <Box mb={16}>
