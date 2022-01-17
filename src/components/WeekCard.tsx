@@ -1,6 +1,6 @@
 import React from 'react';
 import { Lesson } from '../types';
-import { Flex, Text, Tag, Divider } from '@chakra-ui/react';
+import { Box, Flex, Text, Tag, Divider } from '@chakra-ui/react';
 import Link from '@docusaurus/Link';
 
 type ContentProps = {
@@ -31,15 +31,18 @@ const Content: React.FC<ContentProps> = ({
   return (
     <Flex align="center">
       <Tag
-        mr={3}
+        mr={[5, 4, 3]}
         borderRadius="full"
         px={4}
         py={1.5}
+        minW={[36, null, 28]}
+        justifyContent="center"
         border={category === 'lecture' ? 'none' : '2px solid white'}
         bg={category === 'lecture' ? 'white' : 'transparent'}
       >
         <Text
           textStyle="body1"
+          whiteSpace="nowrap"
           color={category === 'lecture' ? color : 'white'}
         >
           {label}
@@ -75,26 +78,42 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, lessons }) => {
     <Flex
       align="center"
       bg={`${colors[weekNumber]}Gradient`}
-      px={12}
-      py={8}
+      px={[4, 8, 10, 12]}
+      py={[6, 8]}
       borderRadius="3xl"
+      direction={['column', null, 'row']}
     >
       <Text textStyle="subtitle2" fontSize="3xl" color="white">
         Week {weekNumber}
       </Text>
-      <Divider
-        orientation="vertical"
-        h={60}
-        w={1}
-        borderRadius="full"
-        opacity={1}
-        bg="white"
-        mx={10}
-      />
-      <Flex gap={28}>
+      <Box display={['none', null, 'block']}>
+        <Divider
+          orientation="vertical"
+          h={60}
+          w={1}
+          borderRadius="full"
+          opacity={1}
+          bg="white"
+          mx={10}
+        />
+      </Box>
+      <Box display={['block', null, 'none']}>
+        <Divider
+          h={1}
+          w={60}
+          borderRadius="full"
+          opacity={1}
+          bg="white"
+          mt={2}
+          mb={5}
+        />
+      </Box>
+      <Flex direction={['column', null, 'row']} gap={[8, null, 10, 28]}>
         {lessons.map((lesson) => (
           <Flex direction="column" gap={5} key={lesson.date}>
-            <Text textStyle="label1">{lesson.date}</Text>
+            <Text textStyle="label1" textAlign={['center', null, 'left']}>
+              {lesson.date}
+            </Text>
             <Content
               label={lesson.format}
               title={lesson.topic}
