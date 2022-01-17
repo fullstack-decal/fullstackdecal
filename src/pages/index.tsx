@@ -12,14 +12,20 @@ const Home: React.FC = () => {
       title={siteConfig.title}
       description="Description will go into a meta tag in <head />"
     >
-      <Box width="100vw" height="120vh" position="absolute" top={0} zIndex={-1}>
-        <img src="/img/background.png" style={{ width: '100%' }} />
-      </Box>
-      <Container maxW="container.lg" pb={16}>
-        <Box h="120vh" pt={20}>
+      <Box
+        h={['100vh', '110vh', '105vh', '120vh']}
+        backgroundImage={[
+          '/img/background-mobile.png',
+          null,
+          '/img/background.png'
+        ]}
+        backgroundSize="100% 100%"
+      >
+        <Container maxW="container.lg">
           <Text
             textStyle="label1"
             textShadow="0px 0px 25px rgba(109, 23, 139, 0.25)"
+            pt={[10, 20]}
             mb={3}
           >
             CS 198-099&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;SPRING 22
@@ -28,6 +34,7 @@ const Home: React.FC = () => {
             textStyle="title2"
             color="transparent"
             textShadow="0px 0px 25px rgba(109, 23, 139, 0.25)"
+            mb={[2, 0]}
             sx={{ WebkitTextStroke: '2px white' }}
           >
             INTRODUCTION TO
@@ -41,12 +48,12 @@ const Home: React.FC = () => {
             textStyle="label1"
             textShadow="0px 0px 25px rgba(109, 23, 139, 0.25)"
             mt={2}
-            mb={12}
+            mb={[8, 12]}
           >
             Tuesday & Thursday, 6:30pm -
             8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Physics 1
           </Text>
-          <Text textStyle="body2" color="white" mb={8}>
+          <Text textStyle="body2" color="white" mb={[6, 8]}>
             Welcome to{' '}
             <a href="https://webatberkeley.org/">Web Development at Berkeley</a>
             &apos;s{' '}
@@ -66,8 +73,10 @@ const Home: React.FC = () => {
             in pursuit of reaching, educating, and supporting as many people as
             we can.
           </Text>
-        </Box>
-        <Text textStyle="title2" color="purple" mt={28} mb={4}>
+        </Container>
+      </Box>
+      <Container maxW="container.lg" pb={16}>
+        <Text textStyle="title2" color="purple" mt={[8, 16, 6, 28]} mb={4}>
           Announcements
         </Text>
         <Box mb={16}>

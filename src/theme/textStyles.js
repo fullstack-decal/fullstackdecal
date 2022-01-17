@@ -7,7 +7,7 @@ const defaultTextStyle = {
 const textStyles = {
   title1: {
     ...defaultTextStyle,
-    fontSize: '8xl',
+    fontSize: ['5xl', '6xl', '8xl'],
     fontWeight: 'bold',
     lineHeight: '1.25',
     textShadow: '0px 0px 25px rgba(109, 23, 139, 0.25)',
@@ -15,7 +15,7 @@ const textStyles = {
   },
   title2: {
     ...defaultTextStyle,
-    fontSize: '5xl',
+    fontSize: ['3xl', '4xl', '5xl'],
     fontWeight: 'bold',
     lineHeight: '1.3',
     as: 'h2',
@@ -34,7 +34,7 @@ const textStyles = {
   },
   label1: {
     ...defaultTextStyle,
-    fontSize: '2xl',
+    fontSize: ['xl', '2xl'],
     fontWeight: 'bold',
     as: 'p',
     color: 'white',
