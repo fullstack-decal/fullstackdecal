@@ -12,7 +12,7 @@ const Home: React.FC = () => {
       title={siteConfig.title}
       description="Description will go into a meta tag in <head />"
     >
-      <Container maxW="container.xl" pt={10} pb={16}>
+      <Container maxW="container.lg" pt={10} pb={16}>
         <Text textStyle="title" mb={0}>
           CS 198-099: Introduction to Full Stack Development
         </Text>
@@ -37,16 +37,21 @@ const Home: React.FC = () => {
             people as we can.
           </Text>
         </Box>
-        <Text textStyle="subtitle1" mb={6}>
+        <Text textStyle="title2" color="purple" mb={4}>
           Announcements
         </Text>
-        <Text textStyle="body" mb={8}>
-          Welcome to the Introduction to Full Stack Development DeCal!
-        </Text>
-        <Text textStyle="subtitle1" mb={6}>
+        <Box mb={16}>
+          <Text textStyle="subtitle2" fontSize="3xl" mb={2}>
+            Week 0
+          </Text>
+          <Text textStyle="body">
+            Welcome to the Introduction to Full Stack Development DeCal!
+          </Text>
+        </Box>
+        <Text textStyle="title2" color="purple" mb={8}>
           Course Overview
         </Text>
-        <Flex direction="column" gap={6} >
+        <Flex direction="column" gap={7}>
           <>
             {Array(12)
               .fill(0)

@@ -28,3 +28,12 @@
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+a {
+  color: white;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: white;
+}

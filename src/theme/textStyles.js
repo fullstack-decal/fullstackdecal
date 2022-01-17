@@ -29,17 +29,23 @@ const textStyles = {
     fontWeight: 'bold',
     as: 'h4',
   },
+  label1: {
+    ...defaultTextStyle,
+    fontSize: '2xl',
+    fontWeight: 'bold',
+    as: 'p',
+    color: 'white',
+  },
   body1: {
     ...defaultTextStyle,
     fontSize: 'md',
-    fontWeight: 'normal',
+    fontWeight: 'bold',
     as: 'p',
   },
   body2: {
     ...defaultTextStyle,
     fontSize: 'md',
     fontWeight: 'normal',
-    color: 'grey',
     as: 'p',
   },
   inherit: {
