@@ -13,7 +13,7 @@ const Home: React.FC = () => {
       description="Description will go into a meta tag in <head />"
     >
       <Container maxW="container.lg" pt={10} pb={16}>
-        <Text textStyle="title" mb={0}>
+        <Text textStyle="title1" mb={0}>
           CS 198-099: Introduction to Full Stack Development
         </Text>
         <Text textStyle="subtitle2" mb={6}>
