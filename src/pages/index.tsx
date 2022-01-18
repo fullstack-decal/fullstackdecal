@@ -13,7 +13,7 @@ const Home: React.FC = () => {
       description="Description will go into a meta tag in <head />"
     >
       <Box
-        h={['100vh', '110vh', '105vh', '120vh']}
+        // h={['100vh', '110vh', '105vh', '120vh']}
         backgroundImage={[
           '/img/background-mobile.png',
           null,
@@ -55,8 +55,9 @@ const Home: React.FC = () => {
           </Text>
           <Text textStyle="body2" color="white" mb={[6, 8]}>
             Welcome to{' '}
-            <a href="https://webatberkeley.org/">Web Development at Berkeley</a>
-            &apos;s{' '}
+            <a href="https://webatberkeley.org/">
+              Web Development at Berkeley&apos;s
+            </a>{' '}
             <Text as="span" fontWeight="bold">
               Introduction to Full Stack Development!
             </Text>{' '}
@@ -68,7 +69,7 @@ const Home: React.FC = () => {
             this course can feel like a lot, even for those with past CS
             experience.
           </Text>
-          <Text textStyle="body2" color="white">
+          <Text textStyle="body2" color="white" pb={56}>
             The materials in this course have been made available to the public
             in pursuit of reaching, educating, and supporting as many people as
             we can.
@@ -76,7 +77,7 @@ const Home: React.FC = () => {
         </Container>
       </Box>
       <Container maxW="container.lg" pb={16}>
-        <Text textStyle="title2" color="purple" mt={[8, 16, 6, 28]} mb={4}>
+        <Text textStyle="title2" color="purple" mt={[8, 16]} mb={4}>
           Announcements
         </Text>
         <Box mb={16}>
@@ -92,7 +93,7 @@ const Home: React.FC = () => {
         </Text>
         <Flex direction="column" gap={7}>
           <>
-            {Array(12)
+            {Array(13)
               .fill(0)
               .map((_, index) => {
                 const weekLessons = schedule.filter(

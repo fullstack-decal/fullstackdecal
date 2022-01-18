@@ -71,6 +71,7 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, lessons }) => {
     'blue',
     'pink',
     'pink',
+    'pink',
     'purple'
   ];
 
