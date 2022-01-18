@@ -32,7 +32,3 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 a {
   color: white;
 }
-
-a:hover {
-  color: inherit;
-}

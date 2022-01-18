@@ -51,7 +51,8 @@ const Home: React.FC = () => {
             mb={[8, 12]}
           >
             Tuesday & Thursday, 6:30pm -
-            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Physics 1
+            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Zoom, then
+            Physics 1
           </Text>
           <Text textStyle="body2" color="white" mb={[6, 8]}>
             Welcome to{' '}
@@ -85,15 +86,58 @@ const Home: React.FC = () => {
           Announcements
         </Text>
         <Box mb={16}>
-          <Text textStyle="subtitle2" fontSize="3xl" mb={2}>
+          <Text textStyle="subtitle2" fontSize="3xl" mb={4}>
             Week 0
           </Text>
           <Text textStyle="body">
-            Welcome to the Introduction to Full Stack Development DeCal!
+            Welcome to the{' '}
+            <Text as="span" fontWeight="bold">
+              Introduction to Full Stack Development DeCal
+            </Text>
+            ! If you&apos;re interested in learning the skills needed to tackle
+            the technology side of efforts like starting a new business,
+            breaking into the tech industry, and creating cool products that
+            live on the internet, you&apos;re in the right place! In this course
+            you&apos;ll gain familiarity and practice using industry-standard
+            development and design technologies such as JavaScript, React.js,
+            Node.js, Figma, MongoDB, Express, AWS, HTML/CSS, and much more!
             <br />
             <br />
-            If you&apos;re interested in applying to and joining the course this
-            semester, you can find more information on the{' '}
+            To learn more about the DeCal, please attend one of our
+            infosessions! We have our{' '}
+            <Link
+              href="https://www.facebook.com/events/348063700170538/"
+              textDecoration="underline"
+              isExternal
+            >
+              first infosession on January 24th
+            </Link>{' '}
+            and our{' '}
+            <Link
+              href="https://www.facebook.com/events/224636553192406/"
+              textDecoration="underline"
+              isExternal
+            >
+              second infosession on January 26th
+            </Link>
+            . Both infosessions are held over zoom, and zoom links can be found
+            at the linked Facebook events. Make sure to mark &quot;Going&quot;
+            or &quot;Interested&quot; on the facebook events to receieve
+            reminders about each infosession!
+            <br />
+            <br />
+            If you plan to apply, you can find this DeCal&apos;s application at{' '}
+            <Link
+              href="https://forms.gle/uw6P28m7eicTeDm47"
+              textDecoration="underline"
+              isExternal
+            >
+              this link
+            </Link>
+            . Applications are due at 11:59:59pm pacific time on January 30th,
+            and we plan to have our first class on Febuary 3rd. For more
+            information such as infosession links, the link to our interest
+            form, and more information about WDB, check out the{' '}
             <Link
               href="https://webatberkeley.org/join"
               textDecoration="underline"
@@ -101,14 +145,7 @@ const Home: React.FC = () => {
             >
               WDB website
             </Link>
-            . Our application open January 18th at <Link
-              href="https://forms.gle/uw6P28m7eicTeDm47"
-              textDecoration="underline"
-              isExternal
-            >
-              this link
-            </Link> and is due by January 30th, as
-            we plan to have our first class on Febuary 3rd.
+            .
             <br />
             <br />
             To learn more about the course, please check out our{' '}
