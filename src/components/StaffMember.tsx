@@ -31,7 +31,7 @@ const StaffMember: React.FC<StaffMemberProps> = ({
         alt={name}
         style={{ borderRadius: '100rem', width: '10rem' }}
       />
-      <Box ml={[0, 6]}>
+      <Flex direction="column" align={['center', 'flex-start']} ml={[0, 6]}>
         <Text textStyle="subtitle1">{name}</Text>
         <Flex align="center">
           <Text textStyle="subtitle2" color="blue" mb={1}>
@@ -69,10 +69,10 @@ const StaffMember: React.FC<StaffMemberProps> = ({
             </Link>
           )}
         </Flex>
-      </Box>
+      </Flex>
     </Flex>
 
-    <Text textStyle="body1" mt={[3, 5]} lineHeight="27px">
+    <Text textStyle="body1" mt={[3, 5]} lineHeight="27px" fontWeight="normal">
       {bio}
     </Text>
   </Box>

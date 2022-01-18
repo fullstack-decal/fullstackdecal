@@ -3,7 +3,7 @@ import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import WeekCard from '../components/WeekCard';
 import schedule from '../data/schedule';
-import { Container, Box, Flex, Text } from '@chakra-ui/react';
+import { Container, Box, Flex, Text, Link } from '@chakra-ui/react';
 
 const Home: React.FC = () => {
   const { siteConfig } = useDocusaurusContext();
@@ -55,9 +55,13 @@ const Home: React.FC = () => {
           </Text>
           <Text textStyle="body2" color="white" mb={[6, 8]}>
             Welcome to{' '}
-            <a href="https://webatberkeley.org/">
+            <Link
+              href="https://webatberkeley.org/"
+              textDecoration="underline"
+              isExternal
+            >
               Web Development at Berkeley&apos;s
-            </a>{' '}
+            </Link>{' '}
             <Text as="span" fontWeight="bold">
               Introduction to Full Stack Development!
             </Text>{' '}

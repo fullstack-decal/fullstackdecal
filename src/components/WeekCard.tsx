@@ -49,7 +49,7 @@ const Content: React.FC<ContentProps> = ({
         </Text>
       </Tag>
       <Text textStyle="body1" color="white">
-        {link ? <Link to={link}>{title}</Link> : title}
+        {link ? <Link to={link} style={{ textDecoration: 'underline' }}>{title}</Link> : title}
         <Text as="span" textStyle="body" fontWeight="bold">
           {dueDate && ` (due ${dueDate})`}
         </Text>
