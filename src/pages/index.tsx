@@ -25,7 +25,8 @@ const Home: React.FC = () => {
           <Text
             textStyle="label1"
             textShadow="0px 0px 25px rgba(109, 23, 139, 0.25)"
-            pt={[10, 20]}
+            pt={[10, 16]}
+            mt={[0, 2]}
             mb={3}
           >
             CS 198-099&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;SPRING 22
