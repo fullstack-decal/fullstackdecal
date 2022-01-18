@@ -101,7 +101,13 @@ const Home: React.FC = () => {
             >
               WDB website
             </Link>
-            . Our application open January 18th and is due by January 30th, as
+            . Our application open January 18th at <Link
+              href="https://forms.gle/uw6P28m7eicTeDm47"
+              textDecoration="underline"
+              isExternal
+            >
+              this link
+            </Link> and is due by January 30th, as
             we plan to have our first class on Febuary 3rd.
             <br />
             <br />
