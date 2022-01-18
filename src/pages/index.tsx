@@ -145,7 +145,7 @@ const Home: React.FC = () => {
             >
               WDB website
             </Link>
-            .
+            . Please direct all questions about applying and the DeCal to webatberkeley@gmail.com.
             <br />
             <br />
             To learn more about the course, please check out our{' '}
