@@ -90,6 +90,27 @@ const Home: React.FC = () => {
           </Text>
           <Text textStyle="body">
             Welcome to the Introduction to Full Stack Development DeCal!
+            <br />
+            <br />
+            If you&apos;re interested in applying to and joining the course this
+            semester, you can find more information on the{' '}
+            <Link
+              href="https://webatberkeley.org/join"
+              textDecoration="underline"
+              isExternal
+            >
+              WDB website
+            </Link>
+            . Our application open January 18th and is due by January 30th, as
+            we plan to have our first class on Febuary 3rd.
+            <br />
+            <br />
+            To learn more about the course, please check out our{' '}
+            <Link href="/course-policies" textDecoration="underline">
+              course policies
+            </Link>{' '}
+            page. You can also find a course schedule, including the topics we
+            cover, below.
           </Text>
         </Box>
         <Text textStyle="title2" color="purple" mb={8}>
