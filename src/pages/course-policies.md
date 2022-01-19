@@ -10,7 +10,9 @@
 
 **Faculty Sponsor:** Josh Hug
 
-**Course Number:** 33390
+**Course Number:** 33156
+
+**Course Catalog Link:** [https://classes.berkeley.edu/content/2022-spring-compsci-198-099-grp-099](https://classes.berkeley.edu/content/2022-spring-compsci-198-099-grp-099)
 
 **Time:** There are 2 lectures every week. Students are expected to attend both lectures every week.
 - Lecture 1: Tuesday @ 6:30pm - 8:00pm pacific time
