@@ -21,12 +21,11 @@ const Home: React.FC = () => {
         ]}
         backgroundSize="100% 100%"
       >
-        <Container maxW="container.lg">
+        <Container maxW="container.lg" pt={[0, 2]}>
           <Text
             textStyle="label1"
             textShadow="0px 0px 25px rgba(109, 23, 139, 0.25)"
             pt={[10, 16]}
-            mt={[0, 2]}
             mb={3}
           >
             CS 198-099&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;SPRING 22
@@ -52,7 +51,7 @@ const Home: React.FC = () => {
             mb={[8, 12]}
           >
             Tuesday & Thursday, 6:30pm -
-            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Zoom, then
+            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Zoom (first 2 weeks), then
             Physics 1
           </Text>
           <Text textStyle="body2" color="white" mb={[6, 8]}>
