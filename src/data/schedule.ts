@@ -129,6 +129,8 @@ const schedule: Lesson[] = [
     date: 'Mar 29',
     format: 'Lecture 12',
     topic: 'UI/UX 1',
+    readingTitle: 'Basic UI/UX',
+    readingLink: '/docs/Lessons/Lesson12',
   },
   {
     week: 8,
@@ -144,6 +146,8 @@ const schedule: Lesson[] = [
     date: 'Apr 5',
     format: 'Lecture 14',
     topic: 'Backend 2',
+    readingTitle: 'MongoDB, Authentication',
+    readingLink: '/docs/Lessons/Lesson14',
   },
   {
     week: 9,
@@ -163,6 +167,8 @@ const schedule: Lesson[] = [
     date: 'Apr 14',
     format: 'Lecture 15',
     topic: 'UI/UX 2',
+    readingTitle: 'UI/UX Principles',
+    readingLink: '/docs/Lessons/Lesson15',
   },
 
   {
@@ -176,6 +182,8 @@ const schedule: Lesson[] = [
     date: 'Apr 21',
     format: 'Lecture 17',
     topic: 'Cloud & DevOps',
+    readingTitle: 'Devops and Cloud',
+    readingLink: '/docs/Lessons/Lesson17',
   },
 
   {
