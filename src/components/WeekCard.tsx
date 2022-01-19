@@ -29,7 +29,7 @@ const Content: React.FC<ContentProps> = ({
   }
 
   return (
-    <Flex align="center">
+    <Flex align="center" className="content">
       <Tag
         mr={[5, 4, 3]}
         borderRadius="full"
