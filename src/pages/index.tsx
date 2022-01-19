@@ -3,7 +3,7 @@ import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import WeekCard from '../components/WeekCard';
 import schedule from '../data/schedule';
-import { Container, Box, Flex, Text, Link } from '@chakra-ui/react';
+import { Container, Box, Flex, Text, Link, Button } from '@chakra-ui/react';
 
 const Home: React.FC = () => {
   const { siteConfig } = useDocusaurusContext();
@@ -21,7 +21,7 @@ const Home: React.FC = () => {
         ]}
         backgroundSize="100% 100%"
       >
-        <Container maxW="container.lg" pt={[0, 2]}>
+        <Container maxW="container.lg">
           <Text
             textStyle="label1"
             textShadow="0px 0px 25px rgba(109, 23, 139, 0.25)"
@@ -51,8 +51,8 @@ const Home: React.FC = () => {
             mb={[8, 12]}
           >
             Tuesday & Thursday, 6:30pm -
-            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Zoom (first 2 weeks), then
-            Physics 1
+            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Zoom (first 2
+            weeks), then Physics 1 Classroom
           </Text>
           <Text textStyle="body2" color="white" mb={[6, 8]}>
             Welcome to{' '}
@@ -89,7 +89,7 @@ const Home: React.FC = () => {
           <Text textStyle="subtitle2" fontSize="3xl" mb={4}>
             Week 0
           </Text>
-          <Text textStyle="body">
+          <Text textStyle="body" mb={6}>
             Welcome to the{' '}
             <Text as="span" fontWeight="bold">
               Introduction to Full Stack Development DeCal
@@ -145,7 +145,8 @@ const Home: React.FC = () => {
             >
               WDB website
             </Link>
-            . Please direct all questions about applying and the DeCal to webatberkeley@gmail.com.
+            . Please direct all questions about applying and the DeCal to
+            webatberkeley@gmail.com.
             <br />
             <br />
             To learn more about the course, please check out our{' '}
@@ -155,6 +156,44 @@ const Home: React.FC = () => {
             page. You can also find a course schedule, including the topics we
             cover, below.
           </Text>
+          <Flex direction="column" gap={4}>
+            <Link
+              href="https://forms.gle/K1iAuhezGSMTUfKb7"
+              variant="button"
+              isExternal
+            >
+              <Button variant="pink" minW="20rem">
+                DeCal Interest Form
+              </Button>
+            </Link>
+            <Link
+              href="https://www.facebook.com/events/348063700170538/"
+              variant="button"
+              isExternal
+            >
+              <Button variant="blue" minW="20rem">
+                DeCal Infosession 1 FB Event
+              </Button>
+            </Link>
+            <Link
+              href="https://www.facebook.com/events/224636553192406/"
+              variant="button"
+              isExternal
+            >
+              <Button variant="orange" minW="20rem">
+                DeCal Infosession 2 FB Event
+              </Button>
+            </Link>
+            <Link
+              href="https://forms.gle/uw6P28m7eicTeDm47"
+              variant="button"
+              isExternal
+            >
+              <Button variant="purple" minW="20rem">
+                DeCal Application
+              </Button>
+            </Link>
+          </Flex>
         </Box>
         <Text textStyle="title2" color="purple" mb={8}>
           Course Overview

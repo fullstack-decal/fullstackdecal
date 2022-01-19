@@ -25,6 +25,54 @@ const theme = extendTheme({
         borderRadius: 0,
       },
     },
+    Link: {
+      variants: {
+        button: {
+          w: 'fit-content',
+          _hover: {
+            textDecoration: 'none',
+          },
+        },
+      },
+    },
+    Button: {
+      baseStyle: {
+        border: 'none',
+        cursor: 'pointer',
+        color: 'white',
+        _focus: {
+          outline: 'none',
+          border: 'none',
+          boxShadow: 'none',
+        },
+      },
+      variants: {
+        purple: {
+          bg: 'purpleGradient',
+          _hover: {
+            bg: 'purpleGradient',
+          },
+        },
+        orange: {
+          bg: 'orangeGradient',
+          _hover: {
+            bg: 'orangeGradient',
+          },
+        },
+        blue: {
+          bg: 'blueGradient',
+          _hover: {
+            bg: 'blueGradient',
+          },
+        },
+        pink: {
+          bg: 'pinkGradient',
+          _hover: {
+            bg: 'pinkGradient',
+          },
+        },
+      },
+    },
     AccordionButton: {
       baseStyle: {
         backgroundColor: 'transparent',
