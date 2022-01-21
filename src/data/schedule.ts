@@ -20,6 +20,9 @@ const schedule: Lesson[] = [
     topic: 'HTML',
     readingTitle: 'HTML',
     readingLink: '/docs/Lessons/Lesson2',
+    assigmentFormat: 'Homework 2',
+    assigmentTitle: 'Tribute Page',
+    assigmentDueDate: 'Feb 15',
   },
   {
     week: 1,
@@ -28,6 +31,9 @@ const schedule: Lesson[] = [
     topic: 'CSS 1',
     readingTitle: 'Introduction to CSS',
     readingLink: '/docs/Lessons/Lesson3',
+    assigmentFormat: 'Homework 3',
+    assigmentTitle: 'Country Flags',
+    assigmentDueDate: 'Feb 17',
   },
 
   {
@@ -37,6 +43,9 @@ const schedule: Lesson[] = [
     topic: 'CSS 2',
     readingTitle: 'Advanced CSS',
     readingLink: '/docs/Lessons/Lesson4',
+    assigmentFormat: 'Project 1',
+    assigmentTitle: 'Personal Website',
+    assigmentDueDate: 'Feb 24',
   },
   {
     week: 2,
@@ -45,6 +54,9 @@ const schedule: Lesson[] = [
     topic: 'JavaScript 1',
     readingTitle: 'Basic JavaScript',
     readingLink: '/docs/Lessons/Lesson5',
+    assigmentFormat: 'Homework 4',
+    assigmentTitle: 'Fun With JavaScript',
+    assigmentDueDate: 'Mar 1',
   },
 
   {
@@ -62,6 +74,9 @@ const schedule: Lesson[] = [
     topic: 'JavaScript 3',
     readingTitle: 'Scope and Asynchronous JS',
     readingLink: '/docs/Lessons/Lesson7',
+    assigmentFormat: 'Project 2',
+    assigmentTitle: 'Calculator',
+    assigmentDueDate: 'Mar 8',
   },
 
   {
@@ -86,6 +101,9 @@ const schedule: Lesson[] = [
     topic: 'React 1',
     readingTitle: 'Intro to React',
     readingLink: '/docs/Lessons/Lesson9',
+    assigmentFormat: 'Homework 5',
+    assigmentTitle: 'Create a Social Media Site',
+    assigmentDueDate: 'Mar 15',
   },
   {
     week: 5,
