@@ -35,7 +35,7 @@ const Content: React.FC<ContentProps> = ({
         borderRadius="full"
         px={4}
         py={1.5}
-        minW={[36, null, 32]}
+        minW={[36]}
         justifyContent="center"
         border={category === 'lecture' ? 'none' : '2px solid white'}
         bg={category === 'lecture' ? 'white' : 'transparent'}
@@ -109,7 +109,7 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, lessons }) => {
           mb={5}
         />
       </Box>
-      <Flex direction={['column', null, 'row']} gap={[8, null, 10, 28]}>
+      <Flex direction={['column', null, 'row']} gap={[8, null, 10, 24]}>
         {lessons.map((lesson) => (
           <Flex direction="column" gap={5} key={lesson.date}>
             <Text textStyle="label1" textAlign={['center', null, 'left']}>
