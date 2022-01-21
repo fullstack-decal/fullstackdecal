@@ -35,7 +35,7 @@ const Content: React.FC<ContentProps> = ({
         borderRadius="full"
         px={4}
         py={1.5}
-        minW={[36, null, 28]}
+        minW={[36, null, 32]}
         justifyContent="center"
         border={category === 'lecture' ? 'none' : '2px solid white'}
         bg={category === 'lecture' ? 'white' : 'transparent'}
