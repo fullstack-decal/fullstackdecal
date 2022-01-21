@@ -84,7 +84,7 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, lessons }) => {
       borderRadius="3xl"
       direction={['column', null, 'row']}
     >
-      <Text textStyle="subtitle2" fontSize="3xl" color="white">
+      <Text textStyle="subtitle2" fontSize="3xl" color="white" whiteSpace="nowrap">
         Week {weekNumber}
       </Text>
       <Box display={['none', null, 'block']}>
