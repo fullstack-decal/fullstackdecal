@@ -121,12 +121,18 @@ const schedule: Lesson[] = [
     topic: 'Backend 1',
     readingTitle: 'HTTP, REST, Postman',
     readingLink: '/docs/Lessons/Lesson11',
+    assigmentFormat: 'Homework 6',
+    assigmentTitle: 'Using the NASA API',
+    assigmentDueDate: 'Mar 29',
   },
   {
     week: 6,
     date: 'Mar 17',
     format: 'Lab 2',
     topic: 'React Lab / Catchup',
+    assigmentFormat: 'Homework 7',
+    assigmentTitle: 'Full-Stack Social Media Platform',
+    assigmentDueDate: 'Apr 5',
   },
 
   {
@@ -149,6 +155,9 @@ const schedule: Lesson[] = [
     topic: 'UI/UX 1',
     readingTitle: 'Basic UI/UX',
     readingLink: '/docs/Lessons/Lesson12',
+    assigmentFormat: 'Project 3',
+    assigmentTitle: 'Final Project Design & Architecture Proposal',
+    assigmentDueDate: 'Apr 7',
   },
   {
     week: 8,
@@ -166,12 +175,18 @@ const schedule: Lesson[] = [
     topic: 'Backend 2',
     readingTitle: 'MongoDB, Authentication',
     readingLink: '/docs/Lessons/Lesson14',
+    assigmentFormat: 'Homework 8',
+    assigmentTitle: 'RESTful API Creation and CURD Opertions',
+    assigmentDueDate: 'Apr 14',
   },
   {
     week: 9,
     date: 'Apr 7',
     format: 'Project Proposal Night',
     topic: '',
+    assigmentFormat: 'Project 4',
+    assigmentTitle: 'Final Project',
+    assigmentDueDate: 'Apr 28',
   },
 
   {
@@ -187,6 +202,9 @@ const schedule: Lesson[] = [
     topic: 'UI/UX 2',
     readingTitle: 'UI/UX Principles',
     readingLink: '/docs/Lessons/Lesson15',
+    assigmentFormat: 'Homework 9',
+    assigmentTitle: 'Redesign You Favorite Website',
+    assigmentDueDate: 'Apr 21',
   },
 
   {
@@ -200,7 +218,7 @@ const schedule: Lesson[] = [
     date: 'Apr 21',
     format: 'Lecture 17',
     topic: 'Cloud & DevOps',
-    readingTitle: 'Devops and Cloud',
+    readingTitle: 'Cloud & DevOps',
     readingLink: '/docs/Lessons/Lesson17',
   },
 
