@@ -48,7 +48,7 @@ There are 4 components to an HTML file:
 3. `<head>` ⇒ holds the metadata for the document
 4. `<body>` ⇒ contains all the actual html that will be displayed on the site
 
-```html
+```html live
 <!DOCTYPE html>
 <html>
   <head>
@@ -69,11 +69,11 @@ There are 4 components to an HTML file:
 ### Common HTML Tags
 
 - **Regular text** → `<p>` tag
-  ```html
+  ```html live
   <p>Text!</p>
   ```
 - **Headers** → `<h1>` - `<h6>` tags
-  ```html
+  ```html live
   <h1>I'm a big header!</h1>
   <h3>I'm a slighly smaller header.</h3>
   <h5>I'm a small header.</h5>
@@ -84,7 +84,7 @@ There are 4 components to an HTML file:
     - Google uses header tags to divide up a website
       - `<h1>` tags are seen as main subjects for a website, while `<h3>` tags are seen as subsections
 - **Link** → `<a>` tag
-  ```html
+  ```html live
   <a href="https://webatberkeley.org">This is a link!</a>
   ```
   - the `href` is an attribute of the `<a>` tag
@@ -95,7 +95,7 @@ There are 4 components to an HTML file:
   - `<ul>` stands for _unordered list_ (bullet points ⇒ Where order doesn't matter)
   - `<ol>` stands for _ordered list_ (1. 2. 3. ⇒ Where order matters)
   - `<li>` stands for _list item_
-  ```html
+  ```html live
   <ul>
     <li>This is an</li>
     <li>unordered list</li>
@@ -105,7 +105,7 @@ There are 4 components to an HTML file:
 - **Buttons** → `<button>` tag
   - Creates a clickable button
   - Put elements inside and around the button to make it functional and pretty
-  ```html
+  ```html live
   <a href="https://webatberkeley.org/">
     <button>
       <p>Go to Web Dev at Berkeley's site</p>
@@ -125,7 +125,7 @@ There are 4 components to an HTML file:
   - `<img />` is a **self closing tag**
     - This makes sense because an image tag doesn't contain anything - it simply displays an image
   - `width` and `height` set the dimensions of the image
-  ```html
+  ```html live
   <img
     src="./folder/my-picture.png"
     alt="my picture"
@@ -137,7 +137,7 @@ There are 4 components to an HTML file:
 - Inputs → `<input>` tag
   - Inputs can have different types, such as text, password, email, file, and many more that all come with their own unique validation and behavior
 
-```html
+```html live
 <div>
   <input />
   <!-- with a trailing slash -->
@@ -161,7 +161,7 @@ There are 4 components to an HTML file:
   - The `placeholder` attribute specifies what shows up in the textarea when the user hasn't entered any input (Optional)
   - The `rows` attribute specifies how many rows of text the textarea offers initially - this can be increased if the user inputs more text than the number of rows given to the textarea (Optional)
   - Despite nothing going inside the textarea tags, it is not a self-closing tag (HTML is a really old language and so we have to live with some old quirks)
-  ```html
+  ```html live
   <textarea
     id="textarea-id"
     placeholder="this is temporary text"
@@ -169,7 +169,7 @@ There are 4 components to an HTML file:
   ></textarea>
   ```
 - **Selects and Option** → `<select>`, `<option>` tags **(optional)**
-  ```html
+  ```html live
   <div>
     <select id="farm-animals">
       <option class="animal" value="pig">Pig</option>
@@ -182,7 +182,7 @@ There are 4 components to an HTML file:
   - A group of html tags related to gathering data from a user
   - This will be some combination of `input`, `textarea`, and `select` tags
   - A form is just a container for the other tags
-  ```html
+  ```html live
   <form class="my-form">
     <input type="text" />
     <textarea></textarea>
@@ -192,7 +192,7 @@ There are 4 components to an HTML file:
   - `table` creates a table
   - `tr` stands for table row
   - `td` probably stands for something? Basically its just represents a cell in your table
-  ```html
+  ```html live
   <table id="coordinates">
     <tr class="top-row">
       <td>(0,0)</td>
@@ -225,7 +225,7 @@ In most IDEs, a comment can be made with `ctrl + /`
 
 Let's go back to our `Hello World` example and dissect the anatomy of an HTML file, or document, more closely.
 
-```html
+```html live
 <!DOCTYPE html>
 <html>
   <head>
@@ -290,7 +290,7 @@ Tags like `title` and `meta` go into the `<head></head>` of your HTML document. 
 
 ### Code Demo
 
-```html
+```html live
 <!DOCTYPE html>
 <html>
   <head>
