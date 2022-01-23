@@ -67,6 +67,14 @@ const staff = [
     // email: 'mailto: waleedlatif@berkeley.edu'
   },
   {
+    name: 'Joshua Tsai',
+    image: '/img/staff/josh.png',
+    role: 'Backend TA',
+    linkedin: 'https://www.linkedin.com/in/joshua-tsai-01/',
+    bio: 'Hello, I am a sophomore studying EECS. This is my first semester on WDB’s course staff and I am excited to meet you all.',
+    // email: 'mailto: waleedlatif@berkeley.edu'
+  },
+  {
     name: 'Isabel Zheng',
     image: '/img/staff/isabel.png',
     role: 'Design TA',
