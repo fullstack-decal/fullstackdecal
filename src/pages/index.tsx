@@ -51,8 +51,7 @@ const Home: React.FC = () => {
             mb={[8, 12]}
           >
             Tuesday & Thursday, 6:30pm -
-            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Zoom (first 2
-            weeks), then Physics 1 Classroom
+            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Physics 1 Classroom
           </Text>
           <Text textStyle="body2" color="white" mb={[6, 8]}>
             Welcome to{' '}
