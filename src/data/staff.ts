@@ -74,6 +74,13 @@ const staff = [
     // email: 'mailto: waleedlatif@berkeley.edu'
   },
   {
+    name: 'Neil Kamdar',
+    image: '/img/staff/neil.png',
+    role: 'Frontend TA',
+    linkedin: 'https://www.linkedin.com/in/neil-kamdar/',
+    bio: "Hey! My name is Neil and I'm a 3rd year majoring in Computer Science from Orange County, CA. I love web development because it allows me to creatively solve any problem and make it usable for anyone. My interests include playing pickup basketball, finding new places to eat, and exploring trails and cities. I'm really excited to TA this semester!",
+  },
+  {
     name: 'Joshua Tsai',
     image: '/img/staff/josh.png',
     role: 'Backend TA',
