@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import WeekCard from '../components/WeekCard';
+import SetsUsApart from '../components/SetsUsApart';
 import schedule from '../data/schedule';
 import { Container, Box, Flex, Text, Link, Button } from '@chakra-ui/react';
 
@@ -51,7 +52,8 @@ const Home: React.FC = () => {
             mb={[8, 12]}
           >
             Tuesday & Thursday, 6:30pm -
-            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Physics 1 Classroom
+            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Physics 1
+            Classroom
           </Text>
           <Text textStyle="body2" color="white" mb={[6, 8]}>
             Welcome to{' '}
@@ -194,6 +196,10 @@ const Home: React.FC = () => {
             </Link>
           </Flex>
         </Box>
+
+        {/* What Sets Us Apart Section */}
+        <SetsUsApart />
+
         <Text textStyle="title2" color="purple" mb={8}>
           Course Overview
         </Text>
