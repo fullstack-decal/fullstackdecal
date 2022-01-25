@@ -51,6 +51,13 @@ const staff = [
     bio: "Hey there! My name is Samarth and I'm majoring in CS and Business. Web Development and Education are both huge passions of mine, which is why I'm so excited to be helping with the Full-Stack DeCal. Besides coding, I practice martial arts, play guitar, and play the drums in the cal band.",
   },
   {
+    name: 'Rachel Ng',
+    image: '/img/staff/rachel.png',
+    role: 'Backend TA',
+    linkedin: 'https://www.linkedin.com/in/rachel-ngjiemin',
+    bio: 'Hi I am Rachel! A senior studying environmental science & data science :~) I am excited to share and learn alongside everyone!! in my free time I like to climb, run and maybe read!!!',
+  },
+  {
     name: 'Nitya Krishnakumar',
     image: '/img/staff/nitya.png',
     role: 'Frontend TA',
