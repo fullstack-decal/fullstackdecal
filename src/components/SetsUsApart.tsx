@@ -65,6 +65,9 @@ const SetsUsApart: React.FC = () => {
           curriculum. Additionally, we have 2 lectures per week, whereas
           Cubstart has a lecture and a lab every week.
           <br /> <br />
+          If you&apos;re confused as to which course to apply to or take, feel
+          free to email webatberkeley@gmail.com with your questions!
+          {/*
           As stated at the top of this section, we have amazing guest speakers
           from the industry who come to teach and offer their time to our
           students. In addition to guest lecturers, we also have 1-2 career and
@@ -73,7 +76,7 @@ const SetsUsApart: React.FC = () => {
           we teach in this course everyday! Many of these speakers have actually
           been associatted with the course, either as a member of course staff,
           past DeCal student, or as a significant contributer to this
-          course&apos;s existance.
+          course&apos;s existance. */}
         </Text>
         <Text textStyle="subtitle2" fontSize="3xl" my={4}>
           Web Development and Design DeCal
