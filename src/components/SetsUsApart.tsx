@@ -27,6 +27,9 @@ const SetsUsApart: React.FC = () => {
           you&apos;re interested in joining WDB but don&apos;t have the
           requisite exprience, the DeCal is a great way to learn what you need
           to know before applying!
+          <br /> <br />
+          If you&apos;re confused as to which course to apply to or take, feel
+          free to email webatberkeley@gmail.com with your questions!
         </Text>
         <Text textStyle="subtitle2" fontSize="3xl" my={4}>
           CS 169
@@ -54,25 +57,22 @@ const SetsUsApart: React.FC = () => {
           other technologies, so there wasn&apos;t a huge overlap between the
           two. There were some similar base topics, but overall they taught
           different technologies. They revamped their curriculum this semester,
-          however, and now their curriculum is very similar to ours. One
-          difference, however, is that our curriculum includes lessons to teach
-          students about cloud technologies and DevOps.
+          however, and now the two curriculums are very similar. One difference,
+          however, is that our curriculum includes lessons to teach students
+          about cloud technologies and DevOps.
           <br /> <br />
-          One of the biggest differentiating factors is our age. we&apos;ve been
+          One of the biggest differentiating factors is our age. We&apos;ve been
           teaching this curriculum for 4 semesters (2 as an internal education
           program, 2 as a DeCal now), so our material is very fleshed out and
           tested. Because of this we have a very comprehensive set of readings,
           one for each lecture, that serve as a de facto textbook. In fact,
           we&apos;re planning to turn our readings into a more formal textbook
           this semester!
-          <br /> <br />
-          We plan to take more students than Cubstart. Cubstart has 75 seats
-          open in the academic guide, whereas we plan on taking 110-120 students
-          total. Additionally, we have 2 lectures per week, whereas Cubstart has
-          a lecture and a lab every week.
-          <br /> <br />
-          If you&apos;re confused as to which course to apply to or take, feel
-          free to email webatberkeley@gmail.com with your questions!
+          <br /> <br />A few other differences: We plan to take more students
+          than Cubstart. Cubstart has 75 seats open in the academic guide,
+          whereas we plan on taking 110-120 students total. Additionally, we
+          have 2 lectures per week, whereas Cubstart has a lecture and a lab
+          every week.
           {/*
           As stated at the top of this section, we have amazing guest speakers
           from the industry who come to teach and offer their time to our
