@@ -80,12 +80,9 @@ const SetsUsApart: React.FC = () => {
         </Text>
         <Text textStyle="body">
           The Web Development and Design (WDD) DeCal focuses much more on design
-          and less on programming than we do. In terms of programming, we cover
-          the content they cover in about 2-3 weeks of our curriculum. Our DeCal
-          covers much more when it comes to programming and development, but as
-          a result is very fast-paced for a DeCal. Students should definitely
-          treat the Full-Stack Development DeCal as a full 3-unit course.
-          Unfortunately, the WDD DeCal is not being offered in Spring &apos;22.
+          and less on programming than we do. In terms of development, they
+          teach HTML, CSS, and JavaScript. Unfortunately, the WDD DeCal is not
+          being offered in Spring &apos;22.
         </Text>
       </Box>
     </>
