@@ -49,29 +49,31 @@ const SetsUsApart: React.FC = () => {
           other technologies, so there wasn&apos;t a huge overlap between the
           two. There were some similar base topics, but overall they taught
           different technologies. They revamped their curriculum this semester,
-          however, and now their content is very similar to ours. I can&apos;t
-          speak to Cubstart, but we&apos;ve been teaching this curriculum for 4
-          semesters (2 as an internal education program, 2 as a DeCal now), so
-          our material is very fleshed out and tested, whereas this is
-          Cubstart&apos;s first semester teaching this content.
+          however, and now their curriculum is very similar to ours.
           <br /> <br />
-          We&apos;ve also expanded to a greater degree than Cubstart has in the
-          last year - Cubstart has 75 seats open in the academic guide, whereas
-          we plan on taking 110-120 students total. This is also an assumption,
-          but given that we have 2 lectures per week vs their lab and lecture
-          every week, we may cover more material. Without seeing their lesson
-          plans, however (ours our public, but there&apos;s haven&apos;t been
-          released on their site yet).
+          One of the biggest differentiating factors is our age. we&apos;ve been
+          teaching this curriculum for 4 semesters (2 as an internal education
+          program, 2 as a DeCal now), so our material is very fleshed out and
+          tested. Because of this we have a very comprehensive set of readings,
+          one for each lecture, that serve as a de facto textbook. In fact,
+          we&apos;re planning to turn our readings into a more formal textbook
+          this semester!
           <br /> <br />
-          Lasty, as stated at the top of this section, we have amazing guest
-          speakers from the industry who come to teach and offer their time to
-          our students. In addition to guest lecturers, we also have 1-2 career
-          and real-world oriented sessions where students can freely ask
-          questions to recent grads working in the technology industry, who use
-          the skills we teach in this course everyday! Many of these speakers
-          have actually been associatted with the course, either as a member of
-          course staff, past DeCal student, or as a significant contributer to
-          this course&apos;s existance.
+          We plan to take more students than Cubstart. Cubstart has 75 seats
+          open in the academic guide, whereas we plan on taking 110-120 students
+          total. We also cover 2-3 more topics than Cubstart does in their
+          curriculum. Additionally, we have 2 lectures per week, whereas
+          Cubstart has a lecture and a lab every week.
+          <br /> <br />
+          As stated at the top of this section, we have amazing guest speakers
+          from the industry who come to teach and offer their time to our
+          students. In addition to guest lecturers, we also have 1-2 career and
+          real-world oriented sessions where students can freely ask questions
+          to recent grads working in the technology industry, who use the skills
+          we teach in this course everyday! Many of these speakers have actually
+          been associatted with the course, either as a member of course staff,
+          past DeCal student, or as a significant contributer to this
+          course&apos;s existance.
         </Text>
         <Text textStyle="subtitle2" fontSize="3xl" my={4}>
           Web Development and Design DeCal
@@ -79,11 +81,11 @@ const SetsUsApart: React.FC = () => {
         <Text textStyle="body">
           The Web Development and Design (WDD) DeCal focuses much more on design
           and less on programming than we do. In terms of programming, we cover
-          all the content they cover in about 2-3 weeks of our curriculum. The
-          WDD DeCal is also much more relaxed, and is a great opportunity for
-          those looking to learn the basics of Web Development in a less
-          fast-paced and intense setting. Unfortunately, the WDD DeCal is not
-          being offered in Spring &apos;22.
+          the content they cover in about 2-3 weeks of our curriculum. Our DeCal
+          covers much more when it comes to programming and development, but as
+          a result is very fast-paced for a DeCal. Students should definitely
+          treat the Full-Stack Development DeCal as a full 3-unit course.
+          Unfortunately, the WDD DeCal is not being offered in Spring &apos;22.
         </Text>
       </Box>
     </>
