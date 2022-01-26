@@ -12,8 +12,7 @@ const SetsUsApart: React.FC = () => {
           We get this question a lot, especially in regrdance to CS 169, the Web
           Development and Design DeCal, and the Cubstart DeCal, so we decided to
           answer it here!
-          <br />
-          <br />
+          <br /> <br />
           Before delving into other programs, one major facet that sets us apart
           is the breadth of speakers we bring in. up to a third of our lectures
           are taught by guest speakers from the industry, and we routinely have
@@ -22,6 +21,12 @@ const SetsUsApart: React.FC = () => {
           Retool who come to teach our students about these technologies in
           addition to offering theit time answering questions about the industry
           and life after college.
+          <br /> <br />
+          One last fundamental difference is that we treat this DeCal as a
+          recruiting pipeline into WDB, the club that runs the DeCal. If
+          you&apos;re interested in joining WDB but don&apos;t have the
+          requisite exprience, the DeCal is a great way to learn what you need
+          to know before applying!
         </Text>
         <Text textStyle="subtitle2" fontSize="3xl" my={4}>
           CS 169
@@ -49,7 +54,9 @@ const SetsUsApart: React.FC = () => {
           other technologies, so there wasn&apos;t a huge overlap between the
           two. There were some similar base topics, but overall they taught
           different technologies. They revamped their curriculum this semester,
-          however, and now their curriculum is very similar to ours.
+          however, and now their curriculum is very similar to ours. One
+          difference, however, is that our curriculum includes lessons to teach
+          students about cloud technologies and DevOps.
           <br /> <br />
           One of the biggest differentiating factors is our age. we&apos;ve been
           teaching this curriculum for 4 semesters (2 as an internal education
@@ -61,9 +68,8 @@ const SetsUsApart: React.FC = () => {
           <br /> <br />
           We plan to take more students than Cubstart. Cubstart has 75 seats
           open in the academic guide, whereas we plan on taking 110-120 students
-          total. We also cover 2-3 more topics than Cubstart does in their
-          curriculum. Additionally, we have 2 lectures per week, whereas
-          Cubstart has a lecture and a lab every week.
+          total. Additionally, we have 2 lectures per week, whereas Cubstart has
+          a lecture and a lab every week.
           <br /> <br />
           If you&apos;re confused as to which course to apply to or take, feel
           free to email webatberkeley@gmail.com with your questions!
