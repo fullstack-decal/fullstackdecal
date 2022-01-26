@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import WeekCard from '../components/WeekCard';
-import SetsUsApart from '../components/SetsUsApart';
+// import SetsUsApart from '../components/SetsUsApart';
 // import Testimonials from '../components/Testimonials';
 import schedule from '../data/schedule';
 import { Container, Box, Flex, Text, Link, Button } from '@chakra-ui/react';
@@ -202,7 +202,7 @@ const Home: React.FC = () => {
         {/* <Testimonials /> */}
 
         {/* What Sets Us Apart Section */}
-        <SetsUsApart />
+        {/* <SetsUsApart /> */}
 
         <Text textStyle="title2" color="purple" mb={8}>
           Course Overview
