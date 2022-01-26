@@ -79,7 +79,7 @@ const SetsUsApart: React.FC = () => {
         <Text textStyle="body">
           The Web Development and Design (WDD) DeCal focuses much more on design
           and less on programming than we do. In terms of programming, we cover
-          lal the content they cover in about 2-3 weeks of our curriculum. The
+          all the content they cover in about 2-3 weeks of our curriculum. The
           WDD DeCal is also much more relaxed, and is a great opportunity for
           those looking to learn the basics of Web Development in a less
           fast-paced and intense setting. Unfortunately, the WDD DeCal is not

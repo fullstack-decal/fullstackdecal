@@ -3,6 +3,7 @@ import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import WeekCard from '../components/WeekCard';
 import SetsUsApart from '../components/SetsUsApart';
+// import Testimonials from '../components/Testimonials';
 import schedule from '../data/schedule';
 import { Container, Box, Flex, Text, Link, Button } from '@chakra-ui/react';
 
@@ -168,12 +169,12 @@ const Home: React.FC = () => {
               </Button>
             </Link>
             <Link
-              href="https://www.facebook.com/events/348063700170538/"
+              href="https://berkeley.zoom.us/rec/play/wyc5m8nybRmtaDBd5LRI7YGOokmxRw6iGchFYQcuoh2kFtjcO1Nm9sgUIGVZrGKGtlHFt9xmyBvqmiI.ktVnNi2Jlj5YKiQX?startTime=1643080239000"
               variant="button"
               isExternal
             >
               <Button variant="blue" minW="20rem">
-                DeCal Infosession 1 FB Event
+                DeCal Infosession 1 Zoom Recording
               </Button>
             </Link>
             <Link
@@ -196,6 +197,9 @@ const Home: React.FC = () => {
             </Link>
           </Flex>
         </Box>
+
+        {/* Testimonials Section */}
+        {/* <Testimonials /> */}
 
         {/* What Sets Us Apart Section */}
         <SetsUsApart />
