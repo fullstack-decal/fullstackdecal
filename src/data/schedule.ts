@@ -166,6 +166,9 @@ const schedule: Lesson[] = [
     topic: 'React 3',
     readingTitle: 'Node, NPM, Express',
     readingLink: '/docs/Lessons/Lesson13',
+    assigmentFormat: 'Homework 8',
+    assigmentTitle: 'Redesign Your Favorite Website',
+    assigmentDueDate: 'Apr 5',
   },
 
   {
@@ -175,7 +178,7 @@ const schedule: Lesson[] = [
     topic: 'Backend 2',
     readingTitle: 'MongoDB, Authentication',
     readingLink: '/docs/Lessons/Lesson14',
-    assigmentFormat: 'Homework 8',
+    assigmentFormat: 'Homework 9',
     assigmentTitle: 'RESTful API Creation and CRUD Opertions',
     assigmentDueDate: 'Apr 14',
   },
@@ -202,8 +205,8 @@ const schedule: Lesson[] = [
     topic: 'UI/UX 2',
     readingTitle: 'UI/UX Principles',
     readingLink: '/docs/Lessons/Lesson15',
-    assigmentFormat: 'Homework 9',
-    assigmentTitle: 'Redesign You Favorite Website',
+    assigmentFormat: 'Homework 10',
+    assigmentTitle: 'Human-Centered Design',
     assigmentDueDate: 'Apr 21',
   },
 
