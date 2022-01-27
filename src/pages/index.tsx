@@ -178,12 +178,12 @@ const Home: React.FC = () => {
               </Button>
             </Link>
             <Link
-              href="https://www.facebook.com/events/224636553192406/"
+              href="https://docs.google.com/presentation/d/16Kq4RvS5ccCTlzSR-Kq-ZTpY4x9CNYLQqnvcBvnxk20/edit?usp=sharing"
               variant="button"
               isExternal
             >
               <Button variant="orange" minW="20rem">
-                DeCal Infosession 2 FB Event
+                DeCal Infosession Slides
               </Button>
             </Link>
             <Link
