@@ -74,6 +74,14 @@ const staff = [
     // email: 'mailto: waleedlatif@berkeley.edu'
   },
   {
+    name: 'Rebecca Wom',
+    image: '/img/staff/rebecca.png',
+    role: 'Frontend TA',
+    linkedin: 'https://www.linkedin.com/in/rebecca-won-1ba6191b5/',
+    personal: '',
+    bio: 'Hi, I am a sophomore studying CS and this is my first semester being a course staff at WDB. I started learning web development with this decal and I am super excited to help you guys learn web dev at WDB just like how I started my learning! Outside of web development and teaching, I like to binge watch movies and try out some nice foods :D',
+  },
+  {
     name: 'Neil Kamdar',
     image: '/img/staff/neil.png',
     role: 'Frontend TA',
