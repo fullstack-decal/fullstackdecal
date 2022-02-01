@@ -1,12 +1,28 @@
 const staff = [
   {
+    name: 'Kimberley Fan',
+    image: '/img/staff/kim.png',
+    role: 'Facilitator',
+    linkedin: 'https://www.linkedin.com/in/kimberleyfan/',
+    personal: 'https://www.github.com/kimberleyfan',
+    bio: "Hi everyone! I'm Kimberley and I'm studying computer science from Walnut, California. I really like building websites from the ground up and being able to help other peers enjoy it too is fun to me. Besides web development, I'm into aesthetic cafes, anime, and kdrama, screaming, and retail therapy. Feel free to hit me up for whatever!",
+    email: 'mailto: kimberley.fan123@berkeley.edu',
+  },
+  {
+    name: 'Dhruv Vaish',
+    image: '/img/staff/dhruv.png',
+    role: 'Facilitator',
+    linkedin: 'https://www.linkedin.com/in/dhruv-vaish/',
+    bio: "Hi y'all! My name is Dhruv and I'm an EECS + BioE major from Santa Clarita, CA. I love anything about smart software design and organization and accessibility, in my case accessibility in healthcare. In my free time, I like to watch Netflix, listen to music, eat, and take adventures on the BART. See you all soon!",
+    email: 'mailto: dvaish@berkeley.edu',
+  },
+  {
     name: 'Caelin Sutch',
     image: '/img/staff/caelin.png',
-    role: 'Facilitator',
+    role: 'Full Stack TA',
     bio: 'Hi everyone! I am a second-year EECS and Business major currently taking a gap semester to intern at Tesla as a TPM and work on my startup Plots. When not working (rare), you will find me DJing at my frat, going for a run, or hanging with my friends.',
     linkedin: 'https://www.linkedin.com/in/caelinsutch/',
     personal: 'https://www.caelinsutch.com/',
-    email: 'mailto:caelinsutch@gmail.com',
   },
   {
     name: 'Alex Wu',
@@ -16,23 +32,6 @@ const staff = [
     personal:
       'https://jialin-wu.com/Hi-I-am-Alex-Wu-e214ae8665244ef8b086d669f2d21800',
     bio: 'Hi everyone! My name is Alex, and I am a fourth-year computer science major. Besides web development, I love drawing prototypes on Figma and building startups. In my free time, I practice magic & cardistry and play chess & hearthstone.',
-  },
-  {
-    name: 'Kimberley Fan',
-    image: '/img/staff/kim.png',
-    role: 'Frontend TA',
-    linkedin: 'https://www.linkedin.com/in/kimberleyfan/',
-    personal: 'https://www.github.com/kimberleyfan',
-    bio: "Hi everyone! I'm Kimberley and I'm studying computer science from Walnut, California. I really like building websites from the ground up and being able to help other peers enjoy it too is fun to me. Besides web development, I'm into aesthetic cafes, anime, and kdrama, screaming, and retail therapy. Feel free to hit me up for whatever!",
-    // email: 'mailto: kimberley.fan123@berkeley.edu',
-  },
-  {
-    name: 'Dhruv Vaish',
-    image: '/img/staff/dhruv.png',
-    role: 'Backend TA',
-    linkedin: 'https://www.linkedin.com/in/dhruv-vaish/',
-    bio: "Hi y'all! My name is Dhruv and I'm an EECS + BioE major from Santa Clarita, CA. I love anything about smart software design and organization and accessibility, in my case accessibility in healthcare. In my free time, I like to watch Netflix, listen to music, eat, and take adventures on the BART. See you all soon!",
-    // email: 'mailto: dvaish@berkeley.edu'
   },
   {
     name: 'Vicky Li',
@@ -74,7 +73,7 @@ const staff = [
     // email: 'mailto: waleedlatif@berkeley.edu'
   },
   {
-    name: 'Rebecca Wom',
+    name: 'Rebecca Won',
     image: '/img/staff/rebecca.png',
     role: 'Frontend TA',
     linkedin: 'https://www.linkedin.com/in/rebecca-won-1ba6191b5/',
