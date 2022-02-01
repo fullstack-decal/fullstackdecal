@@ -1,0 +1,129 @@
+# Node.js + MongoDB Homework
+
+## Introduction
+
+In this homework, we will utilize the nasa daily picture API to create a backend server that allows the user to store, delete, and retrieve their favorite pictures of planets and nebulas.
+
+Here is the NASA Open APIs Website:
+
+[NASA Open APIs](https://api.nasa.gov/)
+
+## Goal
+
+The goal is to build an Express.js server + MongoDB database that allows the users to store or delete any "Astronomy picture of the day" from NASA and view all their favorite ones in a list format.
+
+## Instructions
+
+### Routes Breakdown
+
+1. Implement a backend POST route that supports storing their favorite pictures.
+
+   1. Route should be at: `http://localhost:8080/api/add`
+   2. To find a list of APOD images, you can go to this Astronomy Picture of the Day Archive: https://apod.nasa.gov/apod/archivepix.html. Click on any
+      of the past image will bring you to a page containing the date, the description, and an image. You can right click on the image and choose "copy image address" to
+      get the url to the image.
+   3. When the user sends a POST request to the backend route that we built, we assume the request should come with a body of image_url & date properties, example:
+
+      ```jsx
+      {
+        "image_url": "https://apod.nasa.gov/apod/image/2102/rosette_goldman_960.jpg"
+        "date": "02-21-2021"
+      }
+      ```
+
+   4. After the backend receives the above request, it should store the image_url and the date of the image inside an mongoDB database.
+
+2. Implement a DELETE route to delete the favorited picture.
+
+   1. Route should be: `http://localhost:8080/api/delete`
+   2. The user's request should come with a body of date properties to filter and delete the picture, example:
+
+      ```jsx
+      {
+        "date": "02-21-2021"
+      }
+      ```
+
+   3. Once the backend receives the above request, it should find the image with this date, and then delete it from the database.
+
+3. Implement a backend GET route to fetch all favorited pictures from the database.
+
+   1. Route should be: `http://localhost:8080/api/favorite`
+   2. The user should be able to send a GET request to the backend, and then get a list of images properties returned.
+   3. For instance, the user has already stored two images in the database, then the user send a get request, they should receive something like:
+
+   ```jsx
+   {
+    "result": [
+   		{
+   			"image_url": "https://apod.nasa.gov/apod/image/2102/rosette_goldman_960.jpg"
+   			"date": "02-21-2021"
+   		},
+   		{
+   			"image_url": "some-other-image.jpg"
+   			"date": "02-20-2021"
+   		}
+   	]
+   }
+   ```
+
+All the routes you will be implementing will be in the file: `server/index.js`
+
+Here are some skeleton codes:
+
+```jsx
+...
+
+// The method of the root url. Be friendly and welcome our user :)
+router.get("/", function (req, res) {
+  res.json({ message: "Welcome to the APOD app." });
+});
+
+router.get("/favorite", function (req, res) {
+  // TODO:
+  res.json({ message: "TODO: here's the GET route" });
+});
+
+router.post("/add", function (req, res) {
+  // TODO:
+  res.json({ message: "TODO: Here's the add route" });
+});
+
+router.delete("/delete", function (req, res) {
+  // TODO:
+  res.json({ message: "TODO: Here's the delete route" });
+});
+
+app.use("/api", router); // API Root url at: http://localhost:8080/api
+
+app.listen(port);
+console.log("Server listenning on port " + port);
+```
+
+Resource on how to use the delete method:
+
+[How to Delete Documents with Mongoose](https://kb.objectrocket.com/mongo-db/how-to-delete-documents-with-mongoose-235)
+
+## Pointers
+
+- Begin by first creating a node project, similar to how you saw in lecture, running `npm init`
+- Proceed by running `npm install express --save` to install Express
+- Then, to install mongoose, we run `rpm install mongoose --save`
+- In your package.json file, ensure that the dependencies for both mongoose and express appear
+- Create your `index.js` file and similar to the way you saw in lecture, require express and ensure that the express app was setup using `const app = express()`
+  - After entering the required packages, listener, and port that you want node to run on, simply run `node index.js` to begin the application on your respective port
+- Setup your MongoDB Database to store the users' favorited APOD,
+
+## Submission
+
+Submit your github repo link to the gradescope.
+
+## Helpful Resources
+
+[Authentication in NodeJS With Express and Mongo - CodeLab #1](https://dev.to/dipakkr/implementing-authentication-in-nodejs-with-express-and-jwt-codelab-1-j5i)
+
+---
+
+**Contributors**
+
+- [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)
