@@ -18,7 +18,7 @@
 - Lecture 1: Tuesday @ 6:30pm - 8:00pm pacific time
 - Lecture 2: Thursday @ 6:30pm - 8:00pm pacific time
 
-**Location:** For the first 2 weeks (for now) of instruction, classes will be held over zoom. The zoom link for each lecture will be given in the course slack workspace. After this, we will transition to in-person instruction, held in the Physics 1 classroom.
+**Location:** Physics 1 classroom.
 
 ## Course Overview
 
