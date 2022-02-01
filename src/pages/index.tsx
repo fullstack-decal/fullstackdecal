@@ -6,6 +6,7 @@ import WeekCard from '../components/WeekCard';
 // import Testimonials from '../components/Testimonials';
 import schedule from '../data/schedule';
 import { Container, Box, Flex, Text, Link } from '@chakra-ui/react';
+import announcements from '../data/announcements';
 
 const Home: React.FC = () => {
   const { siteConfig } = useDocusaurusContext();
@@ -91,6 +92,7 @@ const Home: React.FC = () => {
           <Text textStyle="subtitle2" fontSize="3xl" mb={4}>
             Week 0
           </Text>
+          {announcements[1]}
         </Box>
 
         {/* Testimonials Section */}
