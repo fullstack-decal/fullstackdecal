@@ -49,7 +49,16 @@ const Content: React.FC<ContentProps> = ({
         </Text>
       </Tag>
       <Text textStyle="body1" color="white">
-        {link ? <Link to={link} style={{ textDecoration: 'underline' }}>{title}</Link> : title}
+        {link
+          ? (
+              <Link to={link} style={{ textDecoration: 'underline' }}>
+                {title}
+              </Link>
+            )
+          : (
+              title
+            )
+        }
         <Text as="span" textStyle="body" fontWeight="bold">
           {dueDate && ` (due ${dueDate})`}
         </Text>
@@ -84,7 +93,12 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, lessons }) => {
       borderRadius="3xl"
       direction={['column', null, 'row']}
     >
-      <Text textStyle="subtitle2" fontSize="3xl" color="white">
+      <Text
+        textStyle="subtitle2"
+        fontSize="3xl"
+        color="white"
+        whiteSpace="nowrap"
+      >
         Week {weekNumber}
       </Text>
       <Box display={['none', null, 'block']}>
@@ -109,9 +123,9 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, lessons }) => {
           mb={5}
         />
       </Box>
-      <Flex direction={['column', null, 'row']} gap={[8, null, 10, 24]}>
+      <Flex direction={['column', null, 'row']} gap={[8, null, 10]}>
         {lessons.map((lesson) => (
-          <Flex direction="column" gap={5} key={lesson.date}>
+          <Flex direction="column" gap={5} key={lesson.date} flex={1}>
             <Text textStyle="label1" textAlign={['center', null, 'left']}>
               {lesson.date}
             </Text>

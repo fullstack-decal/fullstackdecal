@@ -4,8 +4,877 @@ sidebar_position: 10
 
 # Lesson 9 - React 1: Intro to React
 
-Under construction!
+## Introduction
+
+### What is React?
+
+React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “UI components”.
+
+- Why use frameworks and libraries at all?
+    
+    At this point, we've done well to teach ourselves some "vanilla" HTML/CSS/JS. With the tools we have, we can build any front-end project. Combined with a little back-end Ruby on Rails/Node.JS/Django knowledge, you can build any web-based project whatsoever.
+    
+    However, there are problems with our vanilla approach. For one, we've already seen that HTML, CSS and JS are often a pain to write –– we swapped in JQuery to ease some problems for us. We added Bootstrap to ease the pain off of building something that we use repeatedly. Relying on the foundation of what others have built for our use is good programming practise.
+    
+    In pure HTML, CSS and JS, everything is defined globally, it leads to no separation of concerns. In one web development at Berkeley website, our feedback form doesn't need to know about the navigation bar! Pure HTML, CSS and JS also reduces reusability. How many times do we have to write the same piece of HTML/CSS? Many! Is there any way to do something once and then simply use it repeatedly As your project grows, pure HTML, CSS and JS will get more and more unweildy, harder to document, and difficult to maintain.
+    
+    All this may have started sounding very familiar to you. These are the same problems that lead us to the creation of classes in Python and Java. Could we use a similar concept here?
+    
+- Why use React?
+    
+    React.JS is one of the most popular libraries for front-end web development. It's open-source, and has a huge community of developers working on open source projects through it. Facebook (yes, that Facebook) uses React!
+    
+    React fits very cleanly into the MVC model of development we previously talked about. React is incredibly good at scoping and components –– ie, it is object oriented and does separation of concerns well. It's also similar to Bootstrap and Jquery in that it's unrestrictive –– you can use as much or as little of it as you desire!
+    
+    It also removes the barrier created by different languages being in different files (how? More on that later!), which helps in creating a more modular project. The biggest power of React, however, is its renderer. While Javascript is messy with how it handles dynamic re-render, React.JS is clean. Something that might take you 20 lines of code in JS takes you one in React.
+    
+    Cons of React: Sharp learning curve, JSX is confusing (I second this one, I still get confused!) and it's a big library, decreasing how light-weight your code can be. (Longer load times)
+    
+
+### Why React?
+
+- Development Speed
+- Combining HTML, CSS, and Javascript
+- App Performance
+- Testability
+- Dynamic Rendering
+- State
+
+[React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+
+[Why did we build React? - React Blog](https://reactjs.org/blog/2013/06/05/why-react.html)
+
+---
+
+## Basics
+
+### Installation Instructions
+
+- Mac Users
+    1. **Download Homebrew:** run `/bin/bash -c "$(curl -fsSL [https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh](https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh))"` in the terminal.
+    2. **Download Node.js:** run `brew install node` in the terminal.
+- Windows Users
+    1. [Download Node.js here.](https://nodejs.org/en/)
+
+### Node
+
+- What is Node?
+    
+    Node is a Javascript interpreter for the server. It is an open-source server side runtime environment built on Chrome's V8 JavaScript engine. It provides an event driven, non-blocking (asynchronous) I/O and cross-platform runtime environment for building highly scalable server-side application using JavaScript.
+    
+    The power of Node is that it takes JS out of your browser to your computer. With Node, you can write *all* parts of your programs in a single language –– Javascript. The powerful thing is that Node preserves the ability of JS to be async and event based, which is why it is so powerful.
+    
+
+### Servers
+
+- What are servers?
+    
+    When you see a website, the bits that make up your website are coming from somewhere. This place where your website is coming from is the website server. When you run websites locally, the server is your computer. The idea behind Node is that it takes the Javascript and interprets it and serves it for us.
+    
+
+### NPM
+
+- What is NPM?
+    
+    NPM is a package manager for the JavaScript programming language. It is the default package manager for the JavaScript runtime environment Node.js. It consists of a command-line client, also called npm, and an online database of public and paid-for private packages, called the npm registry.
+    
+
+### NPX
+
+- What is NPX?
+    
+    NPX is a tool intended to help round out the experience of using packages from the npm registry — the same way npm makes it super easy to install and manage dependencies hosted on the registry, npx makes it easy to use CLI tools and other executables hosted on the registry.
+    
+
+### Emmet
+
+- What is Emmet?
+    
+    Emmet is a set of plug-ins for text editors that allow for high-speed coding and editing in HTML, XML, XSL, and other structured code formats via content assist. The project was started by Vadim Makeev in 2008 and continues to be actively developed by Sergey Chikuyonok and Emmet users.
+    
+- Installation
+    
+    **Installation:** 
+    
+    - VS Code: [https://code.visualstudio.com/docs/editor/emmet](https://code.visualstudio.com/docs/editor/emmet)
+    - Atom: [https://atom.io/packages/emmet](https://atom.io/packages/emmet)
+    - Sublime Text: [https://emmet.io/blog/sublime-text-3/](https://emmet.io/blog/sublime-text-3/)
+
+## Trying Out React
+
+### What is `create-react-app`?
+
+*Create React App* is a comfortable environment for learning React, and is the best way to start building a new single-page application in React.
+
+Create React App doesn’t handle backend logic or databases; it just creates a frontend build pipeline, so you can use it with any backend you want. Under the hood, it uses [Babel](https://babeljs.io/) and [Webpack](https://webpack.js.org/), but you don’t need to know anything about them.
+
+```bash
+mkdir sandbox
+cd sandbox
+npm init
+npx create-react-app my-app
+cd my-app
+npm start
+```
+
+to start running the website locally.
+
+We're going to use `create-react-app` as a base for our React development!
+
+**Link for more details**: [https://github.com/facebook/create-react-app](https://github.com/facebook/create-react-app)
+
+### Messing Around With `create-react-app`
+
+Now, we'll play around with it!
+
+In `create-react-app`, look in `src/index.js`. We shall see this line:
+
+```bash
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+); 
+```
+
+What's going on here: We're asking React to render into the DOM, the App that we have created (strictly). We'll talk more about all the other tags, but right now, let's mess around with this!
+
+Let's change this into something simpler:
+
+```jsx
+ReactDOM.render(
+  <React.StrictMode>
+    <h1>Hi!</h1>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+Here, we see that we're putting HTML straight into JS. How is this happening?! This is through JSX, which we'll talk about more later.
+
+Now, we introduce the curly parenthesis: The way to incorporate javascript into HTML inside of Javascript!
+
+```jsx
+const display = "Cheers!"
+
+ReactDOM.render(
+  <React.StrictMode>
+    <h1>{display}</h1>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+Now, we take HTML out of the render call to show the flexibility of JSX. HTML tags can be used as any other JS expression.
+
+```jsx
+const display = <h1>Number 3</h1>
+
+ReactDOM.render(
+  <React.StrictMode>
+    {display}
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+## How React Works
+
+To understand how react works, we will talk about how `create-react-app` works. Let's go back to the `src/index.js` file and this line:
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+Let's address all of these.
+
+- What is ReactDOM?
+    
+    The DOM is a W3C (World Wide Web Consortium) standard. The DOM defines a standard for accessing documents: The W3C Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of a document.
+    
+    ReactDOM is a package that provides DOM specific methods that can be used at the top level of a web app to enable an efficient way of managing DOM elements of the web page. For now, we can think of it as a helpful API.
+    
+- What is React.StrictMode?
+    
+    StrictMode is a tool for highlighting potential problems in an application that may not immediately error. We'll get back to this later!
+    
+- What is <App />?
+    
+    Similar to how we have `<h1>` or `<img>` tag in HTML, we have the power to create custom tags in React. This is a custom App tag.
+    
+- What is document.getElementbyID('root')?
+    
+    This is plain JS! We're injecting our ReactDOM-rendered element into the "root" of the page. But where is this root? Check out `public/index.html`! You will see this:
+    
+    ```jsx
+    <div id="root"></div>
+    ```
+    
+    This is the div in which we are injecting our App.
+    
+
+## Introduction to JSX
+
+### Importing JSX
+
+When we import React through `import React from "react"`, we bring along JSX with it.
+
+### What is JSX?
+
+It is a syntax extension to JavaScript. JSX may remind you of a template language, but it comes with the full power of JavaScript.
+
+After compilation, JSX expressions become regular JavaScript function calls and evaluate to JavaScript objects. This means that you can use JSX inside of `if` statements and `for` loops, assign it to variables, accept it as arguments, and return it from functions.
+
+```jsx
+function displayDetails(user) {
+	  return "I am " + user.name + " and I am " + user.age + " years old";
+}
+
+const user = {
+  name: 'Arushi',
+  age: '19'
+};
+
+const element = (
+  <h1>
+    Hello, {displayDetails(user)}!
+		Hello, {displayDetails(null)}!
+  </h1>
+);
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
+
+We can also render conditionally!
+
+```jsx
+function displayDetails(user) {
+	if (user) {
+	  return "I am " + user.name + " and I am " + user.age + " years old";
+	}
+	else {
+		return "I don't know who I am";
+	}
+}
+```
+
+Since JSX is closer to JavaScript than to HTML, React DOM uses camelCase property naming convention instead of HTML attribute names. 
+
+### What is Happening in JSX Behind the Scenes? (Optional)
+
+Why can HTML exist in JS? What is JSX doing such that we can do all of these crazy things? The trick is to realize that JSX represents objects –– Babel compiles JSX down to  `React.createElement()`  calls.
+
+### What is Babel?
+
+Babel is a JavaScript compiler. Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments.  Here, Babel converts JSX syntax!
+
+Play around with it here: [Online Babel compiler](https://babeljs.io/repl/#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&spec=false&loose=false&code_lz=GYVwdgxgLglg9mABACwKYBt1wBQEpEDeAUIogE6pQhlIA8AJjAG4B8AEhlogO5xnr0AhLQD0jVgG4iAXyJA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=react&prettier=false&targets=&version=7.10.5&externalPlugins=)
+
+### A Simple `React.createElement`
+
+Consider the very simple HTML statement:
+
+```html
+<h1>Hello!</h1>
+```
+
+How would we take this and make it a React component? Well, with abstractions up, it would be something like this:
+
+```jsx
+const heading = <h1>Hello!</h1>
+```
+
+But here's what is going on behind the scenes:
+
+```jsx
+const heading = React.createElement('h1', null, 'Hello!');
+```
+
+This tells us something very interesting! The returned value for React.createElement is going something special behind the scenes –– it's using JS to create something like this:
+
+```jsx
+const element = {
+  type: 'h1',
+  props: {
+   children: 'Hello, world!'
+  }
+};
+```
+
+If this does not currently make sense, that's okay! There is a lot of information here that will come back as we learn more and more about React! 
+
+---
+
+## The Anatomy of a React App
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/62423b15-413f-4a1c-b3c4-707b6df9f4d6/Screen_Shot_2020-11-02_at_5.02.52_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/62423b15-413f-4a1c-b3c4-707b6df9f4d6/Screen_Shot_2020-11-02_at_5.02.52_PM.png)
+
+A React app is composed of many different files and filetypes - what do each of them do and why do we need them? Knowing the answer to this question isn't knowledge that applies just to frontend engineering, but crucial to becoming a full-fledged software engineer.
+
+### `README.md`
+
+Essentially a back-of-the-book summary of your code. Your [`README.md`](http://readme.md) should describe what your code is for, what it does, and if applicable, it should provide a detailed overview of each file and its functions. Think about your [`README.md`](http://readme.md) as a guide to your code.
+
+### `package.json` and `package-lock.json`
+
+package.json is essentially a list of the dependencies of your app!
+
+package-lock.json is a version-locked version of package.json, so that each new device that downloads the code downloads the correct dependencies. This is to prevent new updates to dependencies breaking your code.
+
+### `node_modules`
+
+Where all your dependencies live! You should never ship out node_modules because its YUGE (try opening it up and you'll see). Always include node_modules in your .gitignore.
+
+### `build`
+
+A minified build version of your app - All your code is transformed into an extremely compact version of itself, and this version is what is meant to be served to the public, since you get a huge speedup from using the build version! Run `npm run build` in the root directory of your app in the terminal to create the build folder!
+
+---
+
+## Code Quality (Optional)
+
+It's important to keep quality high when writing code. Or at least that's how I sell ESLint and Prettier. In reality, I'm lazy and want the machine to do as much work as possible so I can focus more on architecture and problem-solving and less on syntax and style. While there are many tools that can help you keep code quality high, these two I consider core to my workflow.
+
+### **Prettier**
+
+[Prettier](https://github.com/prettier/prettier) is an amazing tool from the brain of [James Long](https://twitter.com/jlongster). James, like many of us, was sick of having to constantly worry about the style of his code: where to stick indents, how many, when to break lines, etc. Coming from languages like Go, Reason, or Elm where all that is just taken care of by the tooling for the language, this quickly wears. James did something about it and made a tool to take care of it: Prettier.
+
+Prettier is a really fancy pretty printer. It takes the code you write and prints it back out using a predefined style. While this sounds a little scary, it's actually really cool. Since you no longer have control of the style of your code, you no longer have to think about it at all. Your code is always consistent, as is the code from the rest of your team.
+
+Prettier is great to use with [Visual Studio Code](https://code.visualstudio.com/?WT.mc_id=reactintro-github-brholt). Just download [this extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode&WT.mc_id=reactintro-github-brholt). Pro tip: set it to only run Prettier when it detects a Prettier config file. Makes it so you never have to turn it off. In order to do that, set `prettier.requireConfig` to `true` and `editor.formatOnSave` to true in your VScode settings.
+
+#### **How to access VSCode Settings**
+
+- Windows Users
+    
+    `File > Preferences > **Settings**`
+    
+- Mac Users
+    
+    `Code > Preferences > **Settings**`
+    
+
+So that our tool can know this is a Prettier project, we're going to create a file called `.prettierrc` in the root directory of our project (the highest file level) and put `{}` in it. Your `.prettierrc` file should be on the same level as package.json or your README file. This lets everyone know this is a Prettier project that uses the default configuration. You can put other configs here if you hold strong formatting opinions.
+
+#### **Alternatives**
+
+There really aren't any for Prettier. The alternative is just not to use a formatter.
+
+### ESLint
+
+On top of Prettier which takes care of all the formatting, you may want to enforce some code styles which pertain more to usage: for example, you may want to force people to never use `with` which is valid JS but ill-advised to use. [ESLint](https://eslint.org/) comes into play here. It will lint for this problems.
+
+First of all, run `npm install -D eslint eslint-config-prettier` to install eslint in your project development dependencies. the `-D` flag (short for `-dev` or `-development`) marks `eslint` and `eslint-config-prettier` as dev dependencies, meaning that while they work for you as a developer, they aren't shipped with the rest of the code to the end-user. The reasoning behind this is that the end-user doesn't really know about how the code looks as long as it works, so why give the production build of your project the extra weight of having to download unnecessary packages?
+
+There are dozens of present configs for ESLint and you're welcome to use any one of them. The Airbnb config is very popular, as is the standard config. I'm going to use a looser one for this class: `eslint:recommended`. Let's create an `.eslintrc.json` file in our root directory (the same place we created our `.prettierrc` file) to start linting our project.
+
+Create this file called `.eslintrc.json`
+
+```json
+{
+  "extends": ["eslint:recommended", "prettier", "prettier/react"],
+  "plugins": [],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  }
+}
+```
+
+This is a combination of the recommended configs of ESLint and Prettier. This will lint for both normal JS stuff as well as JSX stuff. 
+
+ESLint is a cinch to get working with Visual Studio Code. Just download [the extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint&WT.mc_id=reactintro-github-brholt).
+
+#### Alternatives
+
+- [jshint](https://jshint.com/)
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/51acf81c-923c-4ee7-8e88-a157c8af0b9a/wdblogogradient_1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/51acf81c-923c-4ee7-8e88-a157c8af0b9a/wdblogogradient_1.png)
+
+## Let's Develop!
+
+See the React 3 starter code in the starter code repo. By inspecting the code, you’ll notice that we have three React components:
+
+- `Square`
+- `Board`
+- `Game`
+
+**Let's start simple! Say, we want to display a number in each of the squares, in this way:** 
+
+What we are going to do to make this work is "pass a prop" from Board to Square. 
+
+### Props
+
+Props are a vital part of the React fabric! We can think of props as a dictionary that each React Component maintains to look out some values associated with it. If we don't give the attribute any props, then this dictionary is empty. However, if we were to pass some props in, say, in this way:
+
+```jsx
+function Board {
+  renderSquare(i) {
+    return <Square value={i} />;
+  }
+	...
+}
+```
+
+Now, the React component `square` has a prop called `value` with some...well, value associated with it.
+
+A very important note: **PROPS ARE IMMUTABLE**. Once some prop has been assigned to a component, it can never be changed, only accessed.
+
+So, how do we access this prop? Like so,
+
+```jsx
+function Square(props) {
+    return (
+      <button className="square">
+        {props.value}
+      </button>
+    );
+}
+```
+
+Quick explanation - the Square function is being given an argument (`props`) and one of those props is called `value` and we want whatever is associated with that variable name to be displayed as the text of a button. 
+
+Congratulations! You’ve just “passed a prop” from a parent Board component to a child Square component. Passing props is how information flows in React apps, from parents to children.
+
+### Making It Interactive
+
+What if we want our button to *do* something? Well, we have our classic JS way of doing that in such a way:
+
+```jsx
+function Square {
+    return (
+      <button className="square" onClick="alert('click')">
+        {this.props.value}
+      </button>
+    );
+}
+```
+
+We used to put our `onClick` JS in a string because we were writing in HTML, and I never liked embedding code like this, it feels very unclean. But there are no more such restrictions! So, let's change this to suit the fact that we're writing in JS now.
+
+```jsx
+<button className="square" onClick={function() { alert('click'); }}>
+```
+
+Or, even better
+
+```jsx
+<button className="square" onClick={() => alert('click')}>
+```
+
+Let's try to log the value for the square out using the onClick function:
+
+```jsx
+function Square(props) {
+  return (
+    <button className="square" onClick={() => console.log(props.value)}>
+      {props.value}
+    </button>
+  );
+}
+```
+
+Now, if you click on one of the square, it will log out its value!
+
+## References
+
+- JSX
+    - return jsx from component (function)
+    - jsx must be enclosed in a "master" container
+    - introduce syntactical differences
+        - className, readOnly (for inputs)
+        - in general, use camelCase
+    - Changes to CSS
+        - inline css (style={{}})
+        - styled components (let style = {}, style= {style.chosenStyle})
+        - using css while avoiding class overlap (make each class specific to component)
+    - Using javascript variables in jsx
+        - similar to how we used style components
+        - using javascript in html is the power of jsx
+        - onClick={} ({} to call functions instead of "")
+    - export default className
+- What is Happening In JSX Behind the Scenes?
+    - Explain What Babel Is
+    - One demonstration of a simple babel transition
+    - `React.createElement`
+    - What are props? Introduce, but don't explain
+    - What are children? Introduce and explain!
+    - Why you shouldn't ever use this, and why code being intuitive is important
+
+## Development, Continued
+
+### State
+
+Now, what if we want to change whichever box we click to stop displaying the number and start displaying an X? We've run into a problem, because we can't change what `this.props.value` is (remember: props are immutable!). Could we just do something like:
+
+```jsx
+this.storeValue = this.props.value;
+<button className="square" onClick={() => somehowUpdateStoreValue()}>
+	{this.storeValue}
+</button>
+```
+
+And yes, yes we could –– but we won't be able to see the change unless we re-render our component, in which case we lose `storeValue`. So we're stuck. How to resolve this issue?
+
+This is where we can start to use **State.** Props and state go hand-in-hand –– while props are the values you ask your parent component to give you and utilize, state is the value that you as a component want to maintain –– and change as necessary. 
+
+For this, we will introduce state to the Square React component.
+
+```jsx
+function Square(props)  {
+    return (
+      <button className="square" onClick={() => alert('click')}>
+        {this.props.value}
+      </button>
+    );
+}
+```
+
+Now, to introduce state.
+
+```jsx
+function Square(props) {
+	const [value, setValue] = useState(props.value);	
+  
+	return (
+      <button className="square" onClick={() => alert('click')}>
+        {value}
+      </button>
+    );
+  }
+}
+```
+
+Great! Now, we have a value "null" with which we do nothing. Let's change that, shall we?
+
+```jsx
+function Square(props) {
+  const [value, setValue] = useState(props.value);
+
+  return (
+    <button className="square" onClick={() => setValue("X")}>
+      {value}
+    </button>
+  );
+}
+```
+
+Notice a few changes: we're using `value` instead of `props.value` and our `onClick` function uses `setValue`. 
+
+The `setValue` function does two things –– it changes that value in the state that you pass in, and it rerenders the component while persisting the state and props.
+
+### Lifting State Up
+
+The last important topic of today!
+
+Currently, each Square component maintains the game’s state. To check for a winner, we’ll maintain the value of each of the 9 squares in one location. Could we make Board should just ask each Square for the Square’s state? Sure! But we discourage it because the code becomes difficult to understand, susceptible to bugs, and hard to refactor. Why? Because information flows downward in React, from parent to child component. To make information flow upwards is considered bad practise and is discouraged whenever possible!
+
+So how do we get information to Board without making Square tell Board its state? **Let Board remember the state of the Square.** Then we make the *Board* tell the *Square* what the square to display –– and we already know how to do this (shh its through props!)
+
+This practise is called "lifting state up" and is common when React components are refactored.
+
+Add a constructor to the Board and set the Board’s initial state to contain an array of 9 nulls corresponding to the 9 squares:
+
+```jsx
+function Board(props) {
+
+	const [squares, setSquares] = useState(Array(9).fill(null));
+	...
+}
+```
+
+This 3x3 Array is our game board! Right now, it displays an unplayed empty board. How do we make sure the square displays what it should? We change our `renderSquare` function.
+
+```jsx
+const renderSquare = (i) => {
+    return <Square value={squares[i]} />;
+};
+```
+
+Each Square will now receive a value prop that will either be 'X', 'O', or null for empty squares.
+
+There is still one problem–– when a square is clicked, we somehow need to inform `Board` of that. But we don't want to take the button out of `Square`. We need to create a way for the Square to update the Board’s state. Since *state is considered to be private to a component* that defines it, we cannot update the Board’s state directly from Square. What do we do?
+
+The answer is wonderfully simple –– pass in the a `handleClick` function defined *in* BOARD!
+
+```jsx
+const renderSquare = (i) => {
+    return <Square value={squares[i]} onClick={() => handleClick(i)} />;
+  };
+```
+
+And now, we make sure the Square class reflects these changes:
+
+```jsx
+function Square(props) {
+  render() {
+    return (
+      <button
+        className="square"
+        onClick={() => props.onClick()}>
+
+        {props.value}
+
+      </button>
+    );
+  }
+}
+```
+
+And now, finally, let's define `handleClick`
+
+```jsx
+const handleClick = (i) => {
+    const squares_copy = squares.slice();
+    squares_copy[i] = "X";
+    setSquares(squares_copy);
+};
+```
+
+Why do it like this? Because of `React` best practises! React suggests that we treat our state as immutable as well, even if it is very much mutable. This is to prevent the user from changing state and not causing a re-render when they do so (because they didn't do it right). Thus, to change `squares`, we make a copy of it, edit that copy, then set our state `squares` variable to that copy.
+
+### Conditional Rendering
+
+We now need to fix an obvious defect in our tic-tac-toe game: the “O”s cannot be marked on the board.
+
+We'll store this in our Board State!
+
+```jsx
+function Board(props) {
+	const [squares, setSquares] = useState(Array(9).fill(null));
+	const [xIsPlaying, setXIsPlaying] = useState(true);
+	...
+}
+```
+
+Everytime a click happens, we want to change the player. Thus, we change `handleClick`
+
+```jsx
+const handleClick = (i) => {
+    const squares_copy = squares.slice();
+    squares_copy[i] = xIsPlaying ? "X" : "O";
+    setSquares(squares_copy);
+    setXIsPlaying(!xIsPlaying);
+	};
+```
+
+And because we can, let's edit render to display who the player is at any given moment:
+
+```jsx
+const status = "Next player: " + (xIsPlaying ? "X" : "O");
+```
+
+### Helper Functions For Logic
+
+How do we define who the winner is? We could figure out some clever way of doing it inside the component, but here's another piece of React wisdom –– React is a UI Library. We should let React handle the UI part, and the logic part should stay outside, for the most part. In this vein, here's a helper function:
+
+```jsx
+const calculateWinner = (squares) => {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5], // ["o", "x", "o"]
+      [6, 7, 8], // ["x", "o", "x"]
+      [0, 3, 6], // ["x", "x", "x"]
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (
+        squares[a] &&
+        squares[a] === squares[b] &&
+        squares[a] === squares[c]
+      ) {
+        return squares[a]; // "x"
+      }
+    }
+    return null;
+};
+```
+
+Now, we want to update status depending on who the winner is. Let's update the render, then!
+
+```jsx
+const winner = calculateWinner(squares);
+let status = "Next player: " + (xIsPlaying ? "X" : "O");
+if (winner) {
+  status = "Winner is " + winner;
+}
+```
+
+And finally, we want to make sure that once the game is done, clicking the baord doesn't do anything. So, we change `handleClick` which is conviniently located inside of Board itself:
+
+```jsx
+handleClick(i) {
+    const squares = squares.slice();
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+	...
+ }
+```
+
+And we're done!!
+
+### Final Code Result
+
+```jsx
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+
+function Square(props) {
+  return (
+    <button className="square" onClick={() => props.onClick()}>
+      {props.value}
+    </button>
+  );
+
+  // Board() => renderSquare(0) => <Sqaure value={0} />
+  // Square:
+  //     stateValue = 0
+  //     onClick => setStateValue("X") => stateValue = "X"
+}
+
+function Board() {
+  const calculateWinner = (squares) => {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5], // ["o", "x", "o"]
+      [6, 7, 8], // ["x", "o", "x"]
+      [0, 3, 6], // ["x", "x", "x"]
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (
+        squares[a] &&
+        squares[a] === squares[b] &&
+        squares[a] === squares[c]
+      ) {
+        return squares[a]; // "x"
+      }
+    }
+    return null;
+  };
+
+  const [squaresState, setSquares] = useState(Array(9).fill(null));
+  const [xIsPlaying, setXIsPlaying] = useState(true);
+  // [null, null, null,
+  //  null, null, null,
+  //  null, null, null]
+  const winner = calculateWinner(squaresState); // "X"
+
+  let status = "Next player: " + (xIsPlaying ? "X" : "O");
+
+  if (winner) {
+    status = "Winner is " + winner;
+  }
+
+  // Board() => renderSquare(0) 0: array index (represents the state of one of the square)
+  // squares =
+  // [null, null, null,
+  //  null, null, null,
+  //  null, null, null]
+  // onClick => props.onClick => handleClick(0)
+  // squares =
+  // ["X", null, null,
+  //  null, null, null,
+  //  null, null, null]
+  // renderSqaure(0) => <Sqaure value={squares[0] (this would now be "X")}
+
+  const handleClick = (i) => {
+    const squares_copy = squaresState.slice();
+    if (calculateWinner(squaresState) || squaresState[i]) {
+      return;
+    }
+    squares_copy[i] = xIsPlaying ? "X" : "O";
+    setXIsPlaying(!xIsPlaying);
+    // if (xIsPlaying) {
+    //   squares_copy[i] = "X"
+    // } else {
+    //   squares_copy[i] = "O"
+    // }
+    setSquares(squares_copy);
+  };
+
+  const renderSquare = (i) => {
+    return <Square value={squaresState[i]} onClick={() => handleClick(i)} />;
+  };
+
+  return (
+    <div>
+      <div className="status">{status}</div>
+      <div className="board-row">
+        {renderSquare(0)}
+        {renderSquare(1)}
+        {renderSquare(2)}
+      </div>
+      <div className="board-row">
+        {renderSquare(3)}
+        {renderSquare(4)}
+        {renderSquare(5)}
+      </div>
+      <div className="board-row">
+        {renderSquare(6)}
+        {renderSquare(7)}
+        {renderSquare(8)}
+      </div>
+    </div>
+  );
+}
+
+function Game() {
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board />
+      </div>
+      <div className="game-info">
+        <div>{/* status */}</div>
+        <ol>{/* TODO */}</ol>
+      </div>
+    </div>
+  );
+}
+
+// ========================================
+
+ReactDOM.render(<Game />, document.getElementById("root"));
+```
 
 ---
 
 **Contributors**
+
+- [Arushi Somani](https://www.linkedin.com/in/arushisomani/)
+- [Samarth Goel](https://www.linkedin.com/in/samarth-goel-1047b8187/)
+- [Brian Holt](https://www.linkedin.com/in/btholt/)
+- [Nitya Krishnakumar](https://www.linkedin.com/in/nitya-krish/)

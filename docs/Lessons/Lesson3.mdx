@@ -118,9 +118,9 @@ In this case, we could call it something like `blog-post-title` or `post-head` o
 
 ---
 
-# Ways to Implement CSS
+## Ways to Implement CSS
 
-## style attribute
+### style attribute
 
 A way to write style directly into your HTML document is by using the `style` attribute.
 
@@ -136,7 +136,7 @@ A way to write style directly into your HTML document is by using the `style` at
 - This will only style the element that it’s applied to.
 - This is good for elements that do not follow a specific pattern
 
-## style tag
+### style tag
 
 Another way to use CSS is by inserting CSS classes directly into the HTML document at the very top.
 
@@ -161,7 +161,7 @@ Another way to use CSS is by inserting CSS classes directly into the HTML docume
 - This is usually not preferable for long CSS documents.
 - Overrides external stylesheets
 
-## link tag (external stylesheet)
+### link tag (external stylesheet)
 
 The most common way to implement CSS is by using the `<link>` tag to link an external stylesheet. 
 
@@ -178,6 +178,12 @@ The most common way to implement CSS is by using the `<link>` tag to link an ext
 - This is an organized way to keep track of code.
 - Typically you will put these CSS files into a directory called "style"
 
+:::tip 
+
+External stylesheets have a `.css` ending
+
+:::
+
 ---
 
 ## How to Style Specific Elements
@@ -189,7 +195,7 @@ We will discuss the concept of **specificity** of selected elements more in dept
 - Since there are so many ways to potentially style an element? What if two ways clash with each other?
 - There is a specific hierarchy in which styling overrides one another. We will go in depth into this order later with examples.
 
-## Universal selectors
+### Universal selectors
 
 - The `*` (universal) selector affects ALL the CSS classes in your document.
 - One class that you should include on top of every CSS document that uses the universal selector is this:
@@ -203,7 +209,7 @@ We will discuss the concept of **specificity** of selected elements more in dept
 informal “boilerplate” of your CSS file. It will make your life a lot easier! */
 ```
 
-## Tag selectors
+### Tag selectors
 
 - Tag selectors select elements by tags
 - For example, you can select all elements with the `<h1>` tag, or `<p>`, `<a>`, `<img>`, etc…
@@ -218,7 +224,7 @@ h2 {
 /* All elements of type h2 in your HTML will be affected. */
 ```
 
-## Class selectors
+### Class selectors
 
 - Class selectors select elements by classes
 - Offers you the flexibility of giving as many classes as needed within your document, but also classes can be shared by many elements.
@@ -234,7 +240,7 @@ h2 {
 /* All elements of class "team-photo" in your HTML will be affected. */
 ```
 
-## ID selectors
+### ID selectors
 
 - These selectors select by the specified ID of an element.
 - Try to avoid these as much as possible, usually not needed
@@ -251,7 +257,7 @@ h2 {
 /* The element of ID "header-block" in your HTML will be affected. */
 ```
 
-## Style tag
+### Style tag
 
 - As mentioned earlier, this is a way to style specific elements inside of your HTML document
 - No need to link external stylesheets!
@@ -269,7 +275,7 @@ h2 {
 <!-- This stylesheet lies within the HTML document and will affect the entire HTMl page -->
 ```
 
-## Grouping Selectors
+### Grouping Selectors
 
 - If you want to apply some styling onto a few classes, IDs, or tags at a time, you can do so!
 - This reduces code clutter and makes it less repetitive.
@@ -308,9 +314,9 @@ h1, h2, p {
 
 ```
 
-# Common CSS Properties
+## Common CSS Properties
 
-## Text
+### Text
 
 - `color`: changes color of the text
 
@@ -392,7 +398,7 @@ text-align defaults to center
 
 ![Text Align 2 Image](../assets/Lesson3/Lesson3-12.png)
 
-## Border
+### Border
 
 - `border-style` style of the border. there are many to explore!
 
@@ -522,9 +528,10 @@ More in detail demos and descriptions in Lesson 4!
         - Size relative to the viewport height (**vh**) or width (**vw**)
         - eg. 40vh = 40% of the height of the viewport
 
-## Background
+### Background
 
 - `background-color` specifies color to use as the background
+
     
     ```css
     body {
@@ -535,6 +542,7 @@ More in detail demos and descriptions in Lesson 4!
     ![Background Color Image](../assets/Lesson3/Lesson3-22.png)
     
 - `background-image` specify image url to use as background
+
     
     ```css
     body {
@@ -545,6 +553,7 @@ More in detail demos and descriptions in Lesson 4!
     ![Background Image Image](../assets/Lesson3/Lesson3-23.png)
     
 - `background-position` specify where the image goes relative to viewport
+
     
     ```css
     body {
@@ -556,6 +565,7 @@ More in detail demos and descriptions in Lesson 4!
     ![Background Position Image](../assets/Lesson3/Lesson3-24.png)
     
 - `background-repeat` specifies if the background image repeats (defaults repeat)
+
     
     ```css
     body {
@@ -568,6 +578,7 @@ More in detail demos and descriptions in Lesson 4!
     ![Background Repeat Image](../assets/Lesson3/Lesson3-25.png)
     
 - `background-attachment` you can choose how the background image moves as the user scrolls (default scroll)
+
     
     ```css
     body {
@@ -580,6 +591,7 @@ More in detail demos and descriptions in Lesson 4!
     ![Background Attachment Image](../assets/Lesson3/Lesson3-26.png)
     
 - `background` shorthand for all values in one line
+
     
     ```css
     body {
@@ -598,7 +610,7 @@ More in detail demos and descriptions in Lesson 4!
     ![Background Image](../assets/Lesson3/Lesson3-26.png)
     
 
-## Colors
+### Colors
 
 - `predefined colors` CSS comes with preset color values
     - eg. yellow, blue, pink, lavender, cyan, purple, etc...
@@ -677,3 +689,4 @@ From static sites to full-stack web applications, this will be your frontend bes
 **Contributors**
 
 - [Vicky Li](https://www.linkedin.com/in/victoriayli/)
+- [Nitya Krishnakumar](https://www.linkedin.com/in/nitya-krish/))

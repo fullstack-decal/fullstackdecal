@@ -1,0 +1,94 @@
+---
+sidebar_position: 3
+---
+
+# CSS - Country Flags
+
+## Introduction
+
+CSS is important because it allows web designers, developer, bloggers, and so forth to make our websites **unique** and **attractive**. CSS gives us the opportunity to play with a page layout, adjust colors and fonts, add effects to images, etc.
+
+## Your Tasks For This Assignment
+
+1. Recreate four flags from various countries using your new knowledge of HTML and CSS.
+2. Given an unstyled HTML file, add CSS to it accordingly to make it match an image.
+
+## Task One: Flags of the World
+
+### 1. Set up your file structure
+
+- **Step One:** Clone the starter code for this HW. There should be one HTML, one CSS file, and one PNG of an eagle. 
+
+```shell
+git clone https://github.com/fullstack-decal/sp22-assignment2-starter.git
+```
+
+- **Step Two:** Import the CSS stylesheet into the HTML document.
+    - You should be using something like this:
+    `<link rel="stylesheet" href="styles.css" />`
+
+### 2. Skeleton Code Walkthrough
+
+**HTML File**
+
+- All flags are organized inside the `insideborder` div.
+    - The `insideborder` is a flexbox with a flex-direction column.
+- We have provided the Poland flag as an example
+    
+    ```html
+    <div class="flag">
+      <div class="white twovert"></div>
+      <div class="red twovert"></div>
+    </div>
+    ```
+    
+    - `flag` is a container that has a width of 500px & a height of 300px
+    - `twovert` is a class that has 50% height, the class creates the upper & lower division of the flagg.
+    - `red` and `white` are two classes that provide the background color to the divisions.
+
+## Task Two: Season Your Site
+
+### Task #2
+
+1. Inside the HTML document, you need to recreate and display the following flags:
+    1. Luxembourg 
+    2. Thailand
+    3. Romania
+    4. Mexico  *Hint: Grab the Eagle using an image tag*
+        - Here's the eagle image:
+            
+            ![flag_eagle.png](../../assets/Assignment2/Assignment2-1.png)
+            
+    5. Greece *Hint: you need a LOT OF flexboxs*
+    
+    ### Optional
+    
+    These are some challenges for you, they are entirely optional.
+    
+    1. South Africa
+    2. Seychelles
+    3. North Macedonia
+    4. Finland  *Hint: Google CSS properties that would allow you to rotate or superimpose objects*
+2. In your CSS stylesheet, make sure to create and reuse classes (a lot of flags share similarities).  Within your stylesheet, you should use at least 5 classes and 2 IDs, although you will certainly use more than that. In addition, use the wildcard operator and at least 2 tag selectors (h1, p, etc…)
+    1. Don't stress too much on colors or sizes, A close enough will work just as fine!
+    2. Remember that google is your friend and that there is a multitude of CSS properties out there.
+3. Don't forget to enjoy your creative freedom and make the website as visually pleasing as you can! Aim to use as many different CSS properties as possible, spanning as many types or “buckets” as you can. Feel free to explore and use any interesting CSS properties!
+- Bonus Challenge: try to find **useful** CSS properties the teachers have never seen before.
+
+## Submission
+
+Submit your code on Gradescope as well as a live video of your code running.
+
+## Helpful Resources
+
+[CSS Tutorial](https://www.w3schools.com/css/)
+
+[Getting started with CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/Getting_started)
+
+---
+
+**Contributors**
+
+- [Hector Ramos](https://www.linkedin.com/in/hector-ramos-/)
+- [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)
+- [Nitya Krishnakumar](https://www.linkedin.com/in/nitya-krish/)

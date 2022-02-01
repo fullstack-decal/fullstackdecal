@@ -51,6 +51,13 @@ const staff = [
     bio: "Hey there! My name is Samarth and I'm majoring in CS and Business. Web Development and Education are both huge passions of mine, which is why I'm so excited to be helping with the Full-Stack DeCal. Besides coding, I practice martial arts, play guitar, and play the drums in the cal band.",
   },
   {
+    name: 'Rachel Ng',
+    image: '/img/staff/rachel.png',
+    role: 'Backend TA',
+    linkedin: 'https://www.linkedin.com/in/rachel-ngjiemin',
+    bio: 'Hi I am Rachel! A senior studying environmental science & data science :~) I am excited to share and learn alongside everyone!! in my free time I like to climb, run and maybe read!!!',
+  },
+  {
     name: 'Nitya Krishnakumar',
     image: '/img/staff/nitya.png',
     role: 'Frontend TA',
@@ -64,6 +71,29 @@ const staff = [
     role: 'Backend TA',
     linkedin: 'https://www.linkedin.com/in/waleedlatif/',
     bio: "Hi! My name's Waleed Latif and I'm a Junior studying CompSci and CogSci.  Web Development has enabled me to build any app or website completely from scratch, and we hope to enable you to do that as well! My interests include neuroscience, snowboarding, and fashion. Looking forward to getting to know the students this semester!",
+    // email: 'mailto: waleedlatif@berkeley.edu'
+  },
+  {
+    name: 'Rebecca Wom',
+    image: '/img/staff/rebecca.png',
+    role: 'Frontend TA',
+    linkedin: 'https://www.linkedin.com/in/rebecca-won-1ba6191b5/',
+    personal: '',
+    bio: 'Hi, I am a sophomore studying CS and this is my first semester being a course staff at WDB. I started learning web development with this decal and I am super excited to help you guys learn web dev at WDB just like how I started my learning! Outside of web development and teaching, I like to binge watch movies and try out some nice foods :D',
+  },
+  {
+    name: 'Neil Kamdar',
+    image: '/img/staff/neil.png',
+    role: 'Frontend TA',
+    linkedin: 'https://www.linkedin.com/in/neil-kamdar/',
+    bio: "Hey! My name is Neil and I'm a 3rd year majoring in Computer Science from Orange County, CA. I love web development because it allows me to creatively solve any problem and make it usable for anyone. My interests include playing pickup basketball, finding new places to eat, and exploring trails and cities. I'm really excited to TA this semester!",
+  },
+  {
+    name: 'Joshua Tsai',
+    image: '/img/staff/josh.png',
+    role: 'Backend TA',
+    linkedin: 'https://www.linkedin.com/in/joshua-tsai-01/',
+    bio: 'Hello, I am a sophomore studying EECS. This is my first semester on WDB’s course staff and I am excited to meet you all.',
     // email: 'mailto: waleedlatif@berkeley.edu'
   },
   {
