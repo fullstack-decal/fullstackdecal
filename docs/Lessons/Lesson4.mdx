@@ -3,52 +3,68 @@ sidebar_position: 5
 ---
 
 # Lesson 4 - Advanced CSS
+
 # Positioning and Display
 
 ## Positioning
 
-Positioning is how elements are placed on the screen relative to other elements around it
+Positioning is how elements are placed on the screen relative to other elements
+around it
 
 ### Static
 
-Static is the default positioning, where the elements will follow the normal flow of a web page.
+Static is the default positioning, where the elements will follow the normal
+flow of a web page.
 
 **What's the normal flow?** There are two types of elements inside a webpage:
 
-- **Block boxes** flow **vertically** **downward** starting at the top of their containing block and normally takes the full width of the containing “block level element” unless otherwise specified. One block element placed directly below the preceding block element. Block elements are DIV, P elements.
-- **Inline elements** reside in a block level container or inside a block level element and they appear side by side in normal flow. If they reach the right most wall of container then the inline elements (i.e their box model) wraps to next line within the container and stays horizontally.
+- **Block boxes** flow **vertically** **downward** starting at the top of their
+  containing block and normally takes the full width of the containing “block
+  level element” unless otherwise specified. One block element placed directly
+  below the preceding block element. Block elements are DIV, P elements.
+- **Inline elements** reside in a block level container or inside a block level
+  element and they appear side by side in normal flow. If they reach the right
+  most wall of container then the inline elements (i.e their box model) wraps to
+  next line within the container and stays horizontally.
 
-:::tip 
+:::tip
 
-If an element is static, it's not affected by top, bottom, left, and right properties. It doesn't want to listen to you!
+If an element is static, it's not affected by top, bottom, left, and right
+properties. It doesn't want to listen to you!
 
 :::
 
 ### Relative
 
-An element with `position: relative;` is positioned relative to its default static position.
+An element with `position: relative;` is positioned relative to its default
+static position.
 
-By setting `top: 20px;`, the element will be adjusted away from its default static position and move upward for 20px.
+By setting `top: 20px;`, the element will be adjusted away from its default
+static position and move upward for 20px.
 
 ### Fixed
 
-A fixed element is positioned relative to the **viewport**. 
+A fixed element is positioned relative to the **viewport**.
 
-The element's position relative to the screen will **not** change even if the user scrolls.
+The element's position relative to the screen will **not** change even if the
+user scrolls.
 
 ![Fixed Image](../assets/Lesson4/Lesson4-1.gif)
 
-**Does not leave space** in the page where it would statically have been located.
+**Does not leave space** in the page where it would statically have been
+located.
 
 Use **top**, **bottom**, **left**, and **right** to place.
 
 ### Absolute
 
-An absolute element is positioned relative to the **nearest positioned ancestor** (instead of positioned relative to the viewport, like fixed).
+An absolute element is positioned relative to the **nearest positioned
+ancestor** (instead of positioned relative to the viewport, like fixed).
 
 Can use this to layer on top or under other elements
 
-When there is no explicit positioned ancestor, it uses document body as the ancestor.
+When there is no explicit positioned ancestor, it uses document body as the
+ancestor.
 
 Use higher **z-index** to **layer on top of other elements**.
 
@@ -60,9 +76,10 @@ Gradient background is absolutely positioned.
 
 ### Sticky
 
-Sticky is very similar to relative in terms of positioning. 
+Sticky is very similar to relative in terms of positioning.
 
-However, when the user scroll to the element, the element will become `fixed` position and "stick" on the screen.
+However, when the user scroll to the element, the element will become `fixed`
+position and "stick" on the screen.
 
 Essentially toggles between relative and fixed.
 
@@ -73,6 +90,7 @@ Use **top**, **bottom**, **left**, and **right** to place.
 Once it hits a position on scroll, it will stick to it.
 
 ### Diagram for Positioning
+
 ![Positioning Image](../assets/Lesson4/Lesson4-4.png)
 
 ---
@@ -81,7 +99,8 @@ Once it hits a position on scroll, it will stick to it.
 
 ### Inline
 
-Displays an element as an inline element (like span). Any height and width properties will have **no effect**.
+Displays an element as an inline element (like span). Any height and width
+properties will have **no effect**.
 
 ```css
 span {
@@ -95,20 +114,24 @@ span {
 ```html
 <body>
   <h1>Hello World!</h1>
-  <p>This next <span>word</span> here is going to be inline styled! Notice 
-	how setting the height doesn't make it taller!
+  <p>
+    This next <span>word</span> here is going to be inline styled! Notice how
+    setting the height doesn't make it taller!
   </p>
 </body>
 ```
+
 ![Inline Image](../assets/Lesson4/Lesson4-5.png)
 
 ### Block
 
-Displays an element as a block element (like p). It starts on a new line, and takes up the whole width. (**default**)
+Displays an element as a block element (like p). It starts on a new line, and
+takes up the whole width. (**default**)
 
-:::tip 
+:::tip
 
-Notice how there is a gap under "word" due to the height property now being used! Compare to above example where height is ignored.
+Notice how there is a gap under "word" due to the height property now being
+used! Compare to above example where height is ignored.
 
 :::
 
@@ -140,7 +163,7 @@ Not supported by all browsers yet so **not usable** in most production sites.
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
-  background-color: #2196F3;
+  background-color: #2196f3;
   padding: 10px;
 }
 .grid-item {
@@ -156,19 +179,21 @@ Not supported by all browsers yet so **not usable** in most production sites.
 <div class="grid-container">
   <div class="grid-item">1</div>
   <div class="grid-item">2</div>
-  <div class="grid-item">3</div>  
+  <div class="grid-item">3</div>
   <div class="grid-item">4</div>
   <div class="grid-item">5</div>
-  <div class="grid-item">6</div>  
+  <div class="grid-item">6</div>
 </div>
 ```
+
 ![Grid Image](../assets/Lesson4/Lesson4-7.png)
 
 ### Flex-box
 
 This is our collective **favorite** display option.
 
-Makes it easier to design **flexible responsive layout** structure without positioning
+Makes it easier to design **flexible responsive layout** structure without
+positioning
 
 Can **specify** direction of flex, spacing, justifying, alignment, etc...
 
@@ -200,17 +225,22 @@ span {
 ```
 
 ```html
-<p>As the body has been set to have a color of blue this 
-is inherited through the descendants.</p>
-<p>We can change the color by targeting the element with a selector, 
-such as this <span>span</span>.</p>
+<p>
+  As the body has been set to have a color of blue this is inherited through the
+  descendants.
+</p>
+<p>
+  We can change the color by targeting the element with a selector, such as this
+  <span>span</span>.
+</p>
 ```
 
 ![Cascade Image](../assets/Lesson4/Lesson4-8.png)
 
 :::tip
 
-Order in CSS classes does matter! Whatever comes last in your CSS document is what stands. This is the concept of the cascade.
+Order in CSS classes does matter! Whatever comes last in your CSS document is
+what stands. This is the concept of the cascade.
 
 :::
 
@@ -218,15 +248,18 @@ Order in CSS classes does matter! Whatever comes last in your CSS document is wh
 
 We must be able to handle conflicts and troubleshoot our CSS in a logical way.
 
-Specificity is how specific a certain CSS styling attribute is. To determine specificity, you can follow this system.
+Specificity is how specific a certain CSS styling attribute is. To determine
+specificity, you can follow this system.
 
-More selector specificity means that it will override the styling of an element also styled by a less specific CSS selector.
+More selector specificity means that it will override the styling of an element
+also styled by a less specific CSS selector.
 
 ![Specificity Image](../assets/Lesson4/Lesson4-9.png)
 
 :::tip
 
-This convention is not a real CSS rule. It is just for the sake of remembering the hierarchy.
+This convention is not a real CSS rule. It is just for the sake of remembering
+the hierarchy.
 
 :::
 
@@ -238,13 +271,15 @@ Here are a few examples:
 
 ![Example 3 Image](../assets/Lesson4/Lesson4-12.png)
 
-The **green specificity numbers indicate the styling selector that overrides the other**. 
+The **green specificity numbers indicate the styling selector that overrides the
+other**.
 
-Notice how the highest number ALWAYS overrides the lowest. 
+Notice how the highest number ALWAYS overrides the lowest.
 
 :::tip
 
-Dev tools is great for when this gets confusing! Any overridden styling will appear with a ~~strikethrough~~.
+Dev tools is great for when this gets confusing! Any overridden styling will
+appear with a ~~strikethrough~~.
 
 :::
 
@@ -254,12 +289,13 @@ Dev tools is great for when this gets confusing! Any overridden styling will app
 
 A pseudo-class is used to define a **special state** of an element
 
-- *Some examples*: :hover, :focus, :first-child
-- *anchor specific tags*: :active, :link, :visited
+- _Some examples_: :hover, :focus, :first-child
+- _anchor specific tags_: :active, :link, :visited
 
 ### transform
 
-One powerful use of pseudo-classes is its cooperation with the **transform** property
+One powerful use of pseudo-classes is its cooperation with the **transform**
+property
 
 **Example**: size an element up when you hover over it
 

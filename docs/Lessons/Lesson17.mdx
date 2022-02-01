@@ -4,26 +4,37 @@ sidebar_position: 18
 
 # Lesson 17 - Devops and Cloud
 
-Congratulations on making it this far in the course. So far, we've learned a ton about different web technologies and how to build awesome, functional websites using modern web technologies.
+Congratulations on making it this far in the course. So far, we've learned a ton
+about different web technologies and how to build awesome, functional websites
+using modern web technologies.
 
-Now you're probably wondering - how do I actually get my website to a live URL? So far in this course, we've been mostly working locally and using a few tools to deploy our sites, but how do we do this at scale.
+Now you're probably wondering - how do I actually get my website to a live URL?
+So far in this course, we've been mostly working locally and using a few tools
+to deploy our sites, but how do we do this at scale.
 
-Obviously this is a very complex problems, companies like AWS or Google have spent billions on infrastructure to run platforms and services to support their applications.
+Obviously this is a very complex problems, companies like AWS or Google have
+spent billions on infrastructure to run platforms and services to support their
+applications.
 
-In this lesson, we'll be talking about the fields of Devops (Developer Operations) and Cloud.
+In this lesson, we'll be talking about the fields of Devops (Developer
+Operations) and Cloud.
 
 ## What is Devops?
 
-Devops is an acronym vgiven to the combination of Development Operations. It's the philosophy that surrounds ensuring software teams run smoothly, and get their code built, shipped, and deployed with ease.
+Devops is an acronym vgiven to the combination of Development Operations. It's
+the philosophy that surrounds ensuring software teams run smoothly, and get
+their code built, shipped, and deployed with ease.
 
-When you're building large scale applications, you start to run into a few questions:
+When you're building large scale applications, you start to run into a few
+questions:
 
 - How do you deploy your code?
 - How do you configure your servers so they all work together?
 - How do you monitor your deployed services for bugs or errors?
 - How do you check performance of your systems?
 - How do you plan for and fix problems that come up
-- How do you decrease the time spent on development cycles to ensure code is deployed products at speed and scale reliably
+- How do you decrease the time spent on development cycles to ensure code is
+  deployed products at speed and scale reliably
 
 ![Devops Image](../assets/Lesson17/Lesson17-1.png)
 
@@ -35,43 +46,66 @@ Imagine you're a software development team at Facebook releasing software
 
 ### Continuous Integration
 
-As a team, you want to ensure that each programmers code is integrated into the codebase, tested, and validated. This should be done at a regular basis to ensure there are always new features being pushed. This pracitce is Continuous IntegratioN (CI).
+As a team, you want to ensure that each programmers code is integrated into the
+codebase, tested, and validated. This should be done at a regular basis to
+ensure there are always new features being pushed. This pracitce is Continuous
+IntegratioN (CI).
 
-In industry, software teams build CI pipelines that run tests and check for bugs to ensure that every contribution to the code base will work properly. This is done using cloud services, something we'll talk more about.
+In industry, software teams build CI pipelines that run tests and check for bugs
+to ensure that every contribution to the code base will work properly. This is
+done using cloud services, something we'll talk more about.
 
 ### Continuous Delivery
 
-Now that your programmers code is tested, you want to deliver your software to the customer. Continuous Delivery (CD) is the practice of deploying your tested changes into a testing or production environment after being built.
+Now that your programmers code is tested, you want to deliver your software to
+the customer. Continuous Delivery (CD) is the practice of deploying your tested
+changes into a testing or production environment after being built.
 
-This means that developers will always have a working build and customers will always have a working build as fast as possible.
+This means that developers will always have a working build and customers will
+always have a working build as fast as possible.
 
 ### Microservices
 
-Facebook is a massive company. Having all their services under a single server would be ridiculous, both in size of code and in complexity. It also would mean that if this monolith server were to crash, all of Facebook would be down.
+Facebook is a massive company. Having all their services under a single server
+would be ridiculous, both in size of code and in complexity. It also would mean
+that if this monolith server were to crash, all of Facebook would be down.
 
-Instead, companies use a microservice architecture, a design approach that breaks up a large application into multiple distributed services. Each service is ran separately and communicates with other services through a well-defined API.
+Instead, companies use a microservice architecture, a design approach that
+breaks up a large application into multiple distributed services. Each service
+is ran separately and communicates with other services through a well-defined
+API.
 
-For example, a company like Facebook likely has a microservice for authentication, one for the news feed, etc. This also gives services the flexibility to be designed and built independently of each other.
+For example, a company like Facebook likely has a microservice for
+authentication, one for the news feed, etc. This also gives services the
+flexibility to be designed and built independently of each other.
 
 ### Infrastructure as Code
 
-Code infrastructure, or servers, is managed using code and software techniques instead of people. We'll talk more about this when we talk about cloud, but this is crucial to ensuring services remain scalable.
+Code infrastructure, or servers, is managed using code and software techniques
+instead of people. We'll talk more about this when we talk about cloud, but this
+is crucial to ensuring services remain scalable.
 
 ### Conclusion
 
-Devops is crucial for modern software companies to working code efficiently and consistently.
+Devops is crucial for modern software companies to working code efficiently and
+consistently.
 
 In this course, we'll go over a few Devops tools
 
 ## Beginner Devops Tools
 
-Since we can't cover all the devops tools out there, we'll cover some of the beginner services that should be immediately helpful for you to deploy your fullstack applications.
+Since we can't cover all the devops tools out there, we'll cover some of the
+beginner services that should be immediately helpful for you to deploy your
+fullstack applications.
 
 ### CI - Github Actions
 
-The most accessible CI tool is [Github Actions](https://github.com/features/actions). This is an automation tool that can run scripts or code on each git commit, branch, or pull request.
+The most accessible CI tool is
+[Github Actions](https://github.com/features/actions). This is an automation
+tool that can run scripts or code on each git commit, branch, or pull request.
 
-For example, this is the configuration for a github action that runs a linter on each commit.
+For example, this is the configuration for a github action that runs a linter on
+each commit.
 
 ```yaml
 name: CI
@@ -98,34 +132,51 @@ jobs:
 
 ### Frontend CD - Vercel or Netliify
 
-Tools like [Vercel](https://vercel.com/) or [Netlify](https://netlify.com) can automatically deploy your static site frontends to a working website in a few clicks. These run on each commit, ensuring that your code is always runnable/deployable.
+Tools like [Vercel](https://vercel.com/) or [Netlify](https://netlify.com) can
+automatically deploy your static site frontends to a working website in a few
+clicks. These run on each commit, ensuring that your code is always
+runnable/deployable.
 
 ### Backend CD - Digital Ocean
 
-For deploying a backend server, [Digital Ocean](https://www.digitalocean.com/) is a very simple service to deploy a NodeJS backend to a server in a few clicks. It can hook up to Github so every commit is automatically built and deployed to the web!
+For deploying a backend server, [Digital Ocean](https://www.digitalocean.com/)
+is a very simple service to deploy a NodeJS backend to a server in a few clicks.
+It can hook up to Github so every commit is automatically built and deployed to
+the web!
 
 ## Deploying your Code
 
-Once you've built your code, you now want to run it somewhere. Of course, you can run it on your machine, but it's only accessible to you.
+Once you've built your code, you now want to run it somewhere. Of course, you
+can run it on your machine, but it's only accessible to you.
 
-Now there's a whole suite of tools to expose your app to the internet or deploy it to a server (a server is simply a computer) to have it served to the internet, we talked about this a bit in CD.
+Now there's a whole suite of tools to expose your app to the internet or deploy
+it to a server (a server is simply a computer) to have it served to the
+internet, we talked about this a bit in CD.
 
-However, configuring your own server is costly, challenging, and risky. This is where cloud comes in.
+However, configuring your own server is costly, challenging, and risky. This is
+where cloud comes in.
 
 ## The Cloud
 
 To talk about cloud, we'll use an analogy.
 
-Imagine you're traveling to the sahara desert and want to drive on the sand dunes, but you don't have a car! You can either:
+Imagine you're traveling to the sahara desert and want to drive on the sand
+dunes, but you don't have a car! You can either:
 
 - Buy your own jeep
 - Borrow or rent a jeep
 
-Option 1 is similar to buying or maintaining a server yourself. There's a large upfront cost, you probably won't use it most of the time, and you have to do maintence yourself if it breaks. This is called _On Premise Computing_.
+Option 1 is similar to buying or maintaining a server yourself. There's a large
+upfront cost, you probably won't use it most of the time, and you have to do
+maintence yourself if it breaks. This is called _On Premise Computing_.
 
-Option 2 is similar to running your code on the cloud. You can use it for just the time you want, if something breaks the rental company will fix it, and it's relatively hands-off. This is called _Cloud Computing_.
+Option 2 is similar to running your code on the cloud. You can use it for just
+the time you want, if something breaks the rental company will fix it, and it's
+relatively hands-off. This is called _Cloud Computing_.
 
-Cloud computing is the practice of using a network of remote servers hosted on the Internet to store, manage, and process data, rather than a local server or a personal computer.
+Cloud computing is the practice of using a network of remote servers hosted on
+the Internet to store, manage, and process data, rather than a local server or a
+personal computer.
 
 ## Layers of the Cloud
 
@@ -133,19 +184,26 @@ Like all software, there are various layers of abstraction.
 
 ### SaaS - Software as a Service
 
-At the highest level, there's Software-as-a-Service (SaaS), like Squarespace or Weebly. With these tools, you can create and deploy a website all through their tools, you don't ever have to touch code!
+At the highest level, there's Software-as-a-Service (SaaS), like Squarespace or
+Weebly. With these tools, you can create and deploy a website all through their
+tools, you don't ever have to touch code!
 
 ### Paas - Platform as a Service
 
-At the next level, there's Platform as a Service, like Digital Ocean, Netlify, or Vercel. You control the implementation (code), but don't care about how the implementation is ran as long as it works.
+At the next level, there's Platform as a Service, like Digital Ocean, Netlify,
+or Vercel. You control the implementation (code), but don't care about how the
+implementation is ran as long as it works.
 
 ### IaaS - Infastructure as a Service
 
-This is the lowest level of cloud, like AWS, GCP, or Azure. Here, you can use hardware that the company manages, meaning you have to deal with the OS, running the code, etc.
+This is the lowest level of cloud, like AWS, GCP, or Azure. Here, you can use
+hardware that the company manages, meaning you have to deal with the OS, running
+the code, etc.
 
 ### The Ground
 
-This is buying your own infrastructure (servers) and dealing with all the BS that comes with hardware. For us webdevs, this is the ickiestt layer.
+This is buying your own infrastructure (servers) and dealing with all the BS
+that comes with hardware. For us webdevs, this is the ickiestt layer.
 
 ## Why Cloud (as a business major)?
 
@@ -205,28 +263,36 @@ This is buying your own infrastructure (servers) and dealing with all the BS tha
 
 ## IaaS -> AWS
 
-The most pouplar IaaS in the world is AWS. AWS provides hundreds of various services for cloud, from renting full OS's (EC2)
+The most pouplar IaaS in the world is AWS. AWS provides hundreds of various
+services for cloud, from renting full OS's (EC2)
 
 ### Why AWS
 
 - Global leader in cloud services
 - Has a global network composed of data centers around the world
 - Supports an enormous community of software and developer partners
-- Has a free tier for developers using applications and services for the first time
+- Has a free tier for developers using applications and services for the first
+  time
 
 ### Where AWS Exists
 
-Amazon owns a ton of data centers (like over 20 massive ones) and rents out others in various regions of the world.
+Amazon owns a ton of data centers (like over 20 massive ones) and rents out
+others in various regions of the world.
 
-For example, they have over 4 data centers in the West Coast alone! These contain storage and compute that is rented out to people all over the world!
+For example, they have over 4 data centers in the West Coast alone! These
+contain storage and compute that is rented out to people all over the world!
 
 ## Conclusion
 
 For the purpose of this class, we won't dive much farther into cloud.
 
-To learn more about AWS, I highly recommend checking out [this guide](https://aws.amazon.com/getting-started/hands-on/deploy-nodejs-web-app/) on deploying a NodeJS app onto Amazon using several of their most popular web services.
+To learn more about AWS, I highly recommend checking out
+[this guide](https://aws.amazon.com/getting-started/hands-on/deploy-nodejs-web-app/)
+on deploying a NodeJS app onto Amazon using several of their most popular web
+services.
 
-Either way, you should now be able to use PaaS tools like Netlify and Digital Ocean to deploy your app to production!
+Either way, you should now be able to use PaaS tools like Netlify and Digital
+Ocean to deploy your app to production!
 
 ---
 

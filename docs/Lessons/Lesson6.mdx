@@ -4,9 +4,13 @@ sidebar_position: 7
 
 # Lesson 6 - JavaScript 2: DOM
 
-So far we've been writing code pretty well in a vacuum. We've been using `console.log` as the output mechanism. We haven't really done anything in JavaScript that couldn't be done in any other language. Now we're going to start using JavaScript to interact with your webpage.
+So far we've been writing code pretty well in a vacuum. We've been
+using `console.log` as the output mechanism. We haven't really done anything in
+JavaScript that couldn't be done in any other language. Now we're going to start
+using JavaScript to interact with your webpage.
 
-Let's first chat about what a browser is and how your code gets from you writing it to being on run in a browser.
+Let's first chat about what a browser is and how your code gets from you writing
+it to being on run in a browser.
 
 In a typical circumstance.
 
@@ -16,29 +20,50 @@ In a typical circumstance.
    1. (Lots of stuff happens here. For now we're not going to talk about it)
    2. Their browser makes a request to your server for your index.html
    3. Your server sends them a copy of the html
-   4. The browser reads the HTML, sees you have a `my-script.js` script tag on there
+   4. The browser reads the HTML, sees you have a `my-script.js` script tag on
+      there
    5. Browsers makes another request for `my-script.js` from your server
    6. Your server sends them a copy of `my-script.js`
    7. The browser reads the JavaScript code and begins executing the code
 
 Same process happens with CSS too.
 
-Okay, so this is how it works if you have put your code on some server on the cloud using something like [AWS (Amazon Web Services)](https://aws.amazon.com/) or [GCP (Google Cloud Platform)](https://cloud.google.com/) or other places like [GoDaddy](https://www.godaddy.com/) or [Vercel](https://vercel.com/). So how are we doing it locally, without a server, just on our computers? Your computer is basically faking this process. It's acting as both the server and the client so that it's easier for you to write code. When you open a file in your browser from your computer, your hard drive is the server. This was a point of confusion for me when starting so I'm sharing it with you.
+Okay, so this is how it works if you have put your code on some server on the
+cloud using something like [AWS (Amazon Web Services)](https://aws.amazon.com/)
+or [GCP (Google Cloud Platform)](https://cloud.google.com/) or other places like
+[GoDaddy](https://www.godaddy.com/) or [Vercel](https://vercel.com/). So how are
+we doing it locally, without a server, just on our computers? Your computer is
+basically faking this process. It's acting as both the server and the client so
+that it's easier for you to write code. When you open a file in your browser
+from your computer, your hard drive is the server. This was a point of confusion
+for me when starting so I'm sharing it with you.
 
 ## The DOM
 
-DOM or DOM Tree is the data structure that the browser will create when it is loading up a page. It is based on all the html tags and contents and every tag is a separate node.
+DOM or DOM Tree is the data structure that the browser will create when it is
+loading up a page. It is based on all the html tags and contents and every tag
+is a separate node.
 
 ![Devops Image](../assets/Lesson6/Lesson6-1.png)
 ![Devops Image](../assets/Lesson6/Lesson6-2.png)
 
 ## Use Javascript to update DOM
 
-The way that JavaScript and HTML/CSS interact with each other is a thing called the DOM, the document object model. The DOM is basically a bunch of objects and methods that you can call from JavaScript to interact with the HTML/CSS of the page.
+The way that JavaScript and HTML/CSS interact with each other is a thing called
+the DOM, the document object model. The DOM is basically a bunch of objects and
+methods that you can call from JavaScript to interact with the HTML/CSS of the
+page.
 
 ## Document
 
-`document` is a globally available variable in the browser that you use to interact with the HTML and CSS (to access the DOM tree)**. It has a lot of methods that you can use. **Visit [https://developer.mozilla.org/en-US/docs/Web/API/Document](https://developer.mozilla.org/en-US/docs/Web/API/Document) for a list of them**. In this case, we're using the `querySelector` in which you pass in a CSS selector and it returns to you the **first\*\* one of that matches selector that it finds (if you have many of them on the page, you get just the first one.)
+`document` is a globally available variable in the browser that you use to
+interact with the HTML and CSS (to access the DOM tree)**. It has a lot of
+methods that you can use. **Visit
+[https://developer.mozilla.org/en-US/docs/Web/API/Document](https://developer.mozilla.org/en-US/docs/Web/API/Document)
+for a list of them**. In this case, we're using the `querySelector` in which you
+pass in a CSS selector and it returns to you the **first\*\* one of that matches
+selector that it finds (if you have many of them on the page, you get just the
+first one.)
 
 ## querySelector()
 
@@ -56,34 +81,50 @@ Let's see an example that uses `querySelector` :
 <div class="red-square"></div>
 
 <script>
-  const redSquare = document.querySelector(".red-square");
-  redSquare.style.backgroundColor = "limegreen";
+  const redSquare = document.querySelector('.red-square');
+  redSquare.style.backgroundColor = 'limegreen';
 </script>
 ```
 
-Notice that, despite the CSS class dicatating that the `div` should be `crimson` colored, it's actually `limegreen`. This is because we used JavaScript to change the color of it. So let's break it down.
+Notice that, despite the CSS class dicatating that the `div` should
+be `crimson` colored, it's actually `limegreen`. This is because we used
+JavaScript to change the color of it. So let's break it down.
 
 - We called a method on `document`.
-- From there, we have a JavaScript pointer to the `div.red-square` tag stored in the `redSquare` variable which means we can start manipulating it.
-- We then use the `style` object which represents all the CSS styles that are being applied to that object at that time.
-- We then set the `backgroundColor` of that element. Notice it is `backgroundColor` and not `background-color` (camelCasing vs kebab-casing). This is how you interact with CSS via JavaScript. Anything that's kebab-cased like `padding-right` becomes camelCased, like `paddingRight`. While annoying, it'd be even more annoying if they didn't switch it since everything in JavaScript is camelCased.
-- We then just assign that to be whatever value we want. This works with any CSS property, eg: `tag.style.marginBottom = '50px'`.
+- From there, we have a JavaScript pointer to the `div.red-square` tag stored in
+  the `redSquare` variable which means we can start manipulating it.
+- We then use the `style` object which represents all the CSS styles that are
+  being applied to that object at that time.
+- We then set the `backgroundColor` of that element. Notice it
+  is `backgroundColor` and not `background-color` (camelCasing vs kebab-casing).
+  This is how you interact with CSS via JavaScript. Anything that's kebab-cased
+  like `padding-right` becomes camelCased, like `paddingRight`. While annoying,
+  it'd be even more annoying if they didn't switch it since everything in
+  JavaScript is camelCased.
+- We then just assign that to be whatever value we want. This works with any CSS
+  property, eg: `tag.style.marginBottom = '50px'`.
 
-There's a lot more you can do with an element than just modifying its style. You can add more HTML into it, remove it, change the text, search for different elements inside of it, get its position on the page, clone it, and a lot more.
+There's a lot more you can do with an element than just modifying its style. You
+can add more HTML into it, remove it, change the text, search for different
+elements inside of it, get its position on the page, clone it, and a lot more.
 
 ## getElementByID()
 
 Let's see another example that uses `getElementById()` :
 
-Use the method `getElementById()` to reach specific tags within a DOM tree. It will return the object containing that tag.
+Use the method `getElementById()` to reach specific tags within a DOM tree. It
+will return the object containing that tag.
 
 `.innerHTML` is the property of the `<p>` tag object.
 
-Note: here we're going to use the `script` tag and put the JavaScript directly inside of it so we can keep all the code together for these small examples. This not something you'd typically do (just like you'd normally separate the CSS from the HTML too.) It is possible but not recommended.
+Note: here we're going to use the `script` tag and put the JavaScript directly
+inside of it so we can keep all the code together for these small examples. This
+not something you'd typically do (just like you'd normally separate the CSS from
+the HTML too.) It is possible but not recommended.
 
 ```html
 <script>
-  document.getElementById("demo").innerHTML = "Hello World!";
+  document.getElementById('demo').innerHTML = 'Hello World!';
 </script>
 ```
 
@@ -91,7 +132,9 @@ Note: here we're going to use the `script` tag and put the JavaScript directly
 
 ## Other Methods
 
-We can’t go over all methods of document so be sure to be ready to search the web for the documentation if you find yourself needing more than the ones we teach!
+We can’t go over all methods of document so be sure to be ready to search the
+web for the documentation if you find yourself needing more than the ones we
+teach!
 
 Here are examples of other document methods being used:
 
@@ -99,7 +142,8 @@ Here are examples of other document methods being used:
 
 ## Modify Multiple Elements
 
-Okay, so what if we had multiple elements we wanted to modify all at once. We have the tools to do that too!
+Okay, so what if we had multiple elements we wanted to modify all at once. We
+have the tools to do that too!
 
 ```html
 <ul>
@@ -111,10 +155,10 @@ Okay, so what if we had multiple elements we wanted to modify all at once. We ha
   <li class="js-target">Unchanged</li>
 </ul>
 <script>
-  const elementsToChange = document.querySelectorAll(".js-target");
+  const elementsToChange = document.querySelectorAll('.js-target');
   for (let i = 0; i < elementsToChange.length; i++) {
     const currentElement = elementsToChange[i];
-    currentElement.innerText = "Modified by JavaScript!";
+    currentElement.innerText = 'Modified by JavaScript!';
   }
 </script>
 ```
@@ -129,33 +173,51 @@ Okay, so what if we had multiple elements we wanted to modify all at once. We ha
 
 ## Events and Listeners
 
-We've been able to modify HTML and CSS using JavaScript using `document`. Awesome! We're going to go one step further and start involving the user. Web sites are meant to be reactive to users. In order to be reactive to them, we need to wait for them to do stuff, like click a button or type in an input. The way we do that is we wait for **events** to happen. An event is created every time certain events happens like when a user clicks something or when they type something. We respond to these events by having what are called **event listeners**. We give an event listener a function to run whenever an event happens.
+We've been able to modify HTML and CSS using JavaScript using `document`.
+Awesome! We're going to go one step further and start involving the user. Web
+sites are meant to be reactive to users. In order to be reactive to them, we
+need to wait for them to do stuff, like click a button or type in an input. The
+way we do that is we wait for **events** to happen. An event is created every
+time certain events happens like when a user clicks something or when they type
+something. We respond to these events by having what are called **event
+listeners**. We give an event listener a function to run whenever an event
+happens.
 
 Let's try to create a popup alert when a user clicks on a button:
 
 ![Devops Image](../assets/Lesson6/Lesson6-5.png)
 
-- **addEventListener:** attaches an event handler to the specified element without overriding existing event handlers. **T**his takes two parameters (no need to memorize this, you can always look it up): the name of the event you want respond to, which in this case is the `click` event, and a function that is called whenever that event happens. This function is often called a **callback** because it gets called back whenever the event happens.
-- **event.target**: Target is the tag that the event originated from. Ie. a button
+- **addEventListener:** attaches an event handler to the specified element
+  without overriding existing event handlers. **T**his takes two parameters (no
+  need to memorize this, you can always look it up): the name of the event you
+  want respond to, which in this case is the `click` event, and a function that
+  is called whenever that event happens. This function is often called
+  a **callback** because it gets called back whenever the event happens.
+- **event.target**: Target is the tag that the event originated from. Ie. a
+  button
 
 Let's take a look at responding to a click when a user clicks a button.
 
 ```html
 <button class="event-button">Click me!</button>
 <script>
-  const button = document.querySelector(".event-button");
-  button.addEventListener("click", function () {
-    alert("Hey there!");
+  const button = document.querySelector('.event-button');
+  button.addEventListener('click', function () {
+    alert('Hey there!');
   });
 </script>
 ```
 
 Let's break it down.
 
-- We grab the button via `querySelector` and store it in the JavaScript variable `button`.
+- We grab the button via `querySelector` and store it in the JavaScript
+  variable `button`.
 - We then call the `addEventListener` method on the button.
-- We then call a function called `alert`. `alert` is a super, super annoying function that pops up a dialog window with whatever you call it with.
-- People often get confused seeing `});` on the last line. The first `}` is closing the function, the second `)` is closing the function call of `addEventListener`, and the `;` ends the statement.
+- We then call a function called `alert`. `alert` is a super, super annoying
+  function that pops up a dialog window with whatever you call it with.
+- People often get confused seeing `});` on the last line. The first `}` is
+  closing the function, the second `)` is closing the function call
+  of `addEventListener`, and the `;` ends the statement.
 
 Let's do another example with an `input` tag.
 
@@ -163,20 +225,28 @@ Let's do another example with an `input` tag.
 <input placeholder="type into me!" class="input-to-copy" />
 <p class="p-to-copy-to">Nothing has happened yet.</p>
 <script>
-  const input = document.querySelector(".input-to-copy");
-  const paragraph = document.querySelector(".p-to-copy-to");
+  const input = document.querySelector('.input-to-copy');
+  const paragraph = document.querySelector('.p-to-copy-to');
 
-  input.addEventListener("keyup", function () {
+  input.addEventListener('keyup', function () {
     paragraph.innerText = input.value;
   });
 </script>
 ```
 
-Try typing into the input. You'll see whatever text you type into the input will instantly be reflected in the `p` tag. Pretty cool, right?
+Try typing into the input. You'll see whatever text you type into the input will
+instantly be reflected in the `p` tag. Pretty cool, right?
 
-- We're now using the `keyup` event. This event happens whenever you release a key after pressing it. As you may guess, there is a `keydown` event too that is fired whenever you press a key. We're using `keyup` because `keydown` happens *before* a key actually registers, which means we would always be one key behind.
-- We reference `input.value`. The value property of an input reflects whatever the user has typed into the input.
-- We're taking whatever is in `input.value` and passing that directly into the `paragraph.innerText`. Since that function is called every time a user types into the input, it keeps the two in sync!
+- We're now using the `keyup` event. This event happens whenever you release a
+  key after pressing it. As you may guess, there is a `keydown` event too that
+  is fired whenever you press a key. We're
+  using `keyup` because `keydown` happens *before* a key actually registers,
+  which means we would always be one key behind.
+- We reference `input.value`. The value property of an input reflects whatever
+  the user has typed into the input.
+- We're taking whatever is in `input.value` and passing that directly into
+  the `paragraph.innerText`. Since that function is called every time a user
+  types into the input, it keeps the two in sync!
 
 One more example and then we'll move on.
 
@@ -191,23 +261,29 @@ One more example and then we'll move on.
 <div class="color-box"></div>
 <input class="color-input" placeholder="Type a color here!" />
 <script>
-  const input = document.querySelector(".color-input");
-  const paragraph = document.querySelector(".color-box");
+  const input = document.querySelector('.color-input');
+  const paragraph = document.querySelector('.color-box');
 
-  input.addEventListener("change", function () {
+  input.addEventListener('change', function () {
     paragraph.style.backgroundColor = input.value;
   });
 </script>
 ```
 
-Similar to above. The key difference here is that we're listening for `change` events. `change` events happen whenever a user types something in the input and then unfocuses the input by clicking somewhere else or hitting tab to change the focus. Try typing "red" and then clicking somewhere else. Also, try something that isn't a color. Notice that if you give it an invalid color it just doesn't change anything.
+Similar to above. The key difference here is that we're listening for `change`
+events. `change` events happen whenever a user types something in the input and
+then unfocuses the input by clicking somewhere else or hitting tab to change the
+focus. Try typing "red" and then clicking somewhere else. Also, try something
+that isn't a color. Notice that if you give it an invalid color it just doesn't
+change anything.
 
 ## Inline Event Handlers
 
 - Inline Event Handlers
   - .onclick, .onchange, .onmouseover, etc.
   - Does same thing as addEventListener in this case
-  - But with onclick you may only assign one event at a time. If you assign another event to onclick you will overwrite the first event.
+  - But with onclick you may only assign one event at a time. If you assign
+    another event to onclick you will overwrite the first event.
 
 ![Devops Image](../assets/Lesson6/Lesson6-5.png)
 
@@ -217,11 +293,18 @@ Both do the same thing!
 
 ## Event Delegation
 
-**Event Bubbling:** After firing click handler attached to a target, the browser moves one level upward and executes any click handler attached if there is any. Keeps moving one level upward until reaches root. You may have only clicked on one element, but all the event handler with parent elements will be fired too.
+**Event Bubbling:** After firing click handler attached to a target, the browser
+moves one level upward and executes any click handler attached if there is any.
+Keeps moving one level upward until reaches root. You may have only clicked on
+one element, but all the event handler with parent elements will be fired too.
 
 ![Devops Image](../assets/Lesson6/Lesson6-7.png)
 
-If you have a bunch of elements that you need to listen for events on, you could attach an event listener to each but that's a bit tedious to do. Instead what is sometimes easier to do is event bubbling. When event fires on an element, after that "bubbles" up to its parent, and then its parent, and its parent, etc. until it's at the root element.
+If you have a bunch of elements that you need to listen for events on, you could
+attach an event listener to each but that's a bit tedious to do. Instead what is
+sometimes easier to do is event bubbling. When event fires on an element, after
+that "bubbles" up to its parent, and then its parent, and its parent, etc. until
+it's at the root element.
 
 ```html
 <div class="button-container">
@@ -233,20 +316,35 @@ If you have a bunch of elements that you need to listen for events on, you could
 </div>
 <script>
   document
-    .querySelector(".button-container")
-    .addEventListener("click", function (event) {
+    .querySelector('.button-container')
+    .addEventListener('click', function (event) {
       alert(`You clicked on button ${event.target.innerText}`);
     });
 </script>
 ```
 
-You can see that we only bound event listener, and that was the div above it. Then, when we click the button, we're using the event parameter that is being passed into the callback. You may be wondering where that came from. It was always there, we were just ignoring it. An event listener's first parameter is always an event object.
+You can see that we only bound event listener, and that was the div above it.
+Then, when we click the button, we're using the event parameter that is being
+passed into the callback. You may be wondering where that came from. It was
+always there, we were just ignoring it. An event listener's first parameter is
+always an event object.
 
-There's lots of information on the event object but we're most concerned withevent.target . In this case it'll be the button that caused the event. And we know that with tags you can use the innerText property to get the text inside of them. That's how we able to alert the correct number. Cool, right?
+There's lots of information on the event object but we're most concerned
+withevent.target . In this case it'll be the button that caused the event. And
+we know that with tags you can use the innerText property to get the text inside
+of them. That's how we able to alert the correct number. Cool, right?
 
 ## Note
 
-Our javascript lessons teaches Vanilla JS. When you learn a framework such as React, you won’t actually be needing to use Vanilla JS DOM manipulation that often since frameworks like React simplify the DOM through a layer of abstraction. HOWEVER, before jumping into a framework, we believe you should learn HTML CSS, and vanilla javascript properly, so still be sure to learn the DOM thoroughly. It is also super important in understanding the concept behind how Javascript, HTML, and the browser interact and work. As a bonus, you might find job interviewers asking you to code in 100% vanilla javascript sometimes too!
+Our javascript lessons teaches Vanilla JS. When you learn a framework such as
+React, you won’t actually be needing to use Vanilla JS DOM manipulation that
+often since frameworks like React simplify the DOM through a layer of
+abstraction. HOWEVER, before jumping into a framework, we believe you should
+learn HTML CSS, and vanilla javascript properly, so still be sure to learn the
+DOM thoroughly. It is also super important in understanding the concept behind
+how Javascript, HTML, and the browser interact and work. As a bonus, you might
+find job interviewers asking you to code in 100% vanilla javascript sometimes
+too!
 
 ---
 
