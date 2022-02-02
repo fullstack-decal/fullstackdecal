@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Content!
+title: Overview 
 ---
 
 # Welcome to the Full Stack Development Decal
