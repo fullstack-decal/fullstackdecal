@@ -65,14 +65,6 @@ const staff = [
     bio: 'Hi! I’m Nitya, a junior studying CS from Portland OR. I love web development so I’m super excited to be teaching this class! In my spare time, you can find me watching TV, beating my friends at card games, and catching up on sleep. Looking forward to meeting everyone this semester!',
   },
   {
-    name: 'Waleed Latif',
-    image: '/img/staff/waleed.png',
-    role: 'Backend TA',
-    linkedin: 'https://www.linkedin.com/in/waleedlatif/',
-    bio: "Hi! My name's Waleed Latif and I'm a Junior studying CompSci and CogSci.  Web Development has enabled me to build any app or website completely from scratch, and we hope to enable you to do that as well! My interests include neuroscience, snowboarding, and fashion. Looking forward to getting to know the students this semester!",
-    // email: 'mailto: waleedlatif@berkeley.edu'
-  },
-  {
     name: 'Rebecca Won',
     image: '/img/staff/rebecca.png',
     role: 'Frontend TA',

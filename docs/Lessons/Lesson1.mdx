@@ -2,6 +2,10 @@
 sidebar_position: 2
 ---
 
+import { Box, Text, Container, SimpleGrid } from '@chakra-ui/react';
+import StaffMember from '../../src/components/StaffMember';
+import staff from '../../src/data/staff';
+
 # Lesson 1 - Introduction
 
 ## Welcome to [Web Development at Berkeley](https://webatberkeley.org/)'s Introduction to Full-Stack Development DeCal!
@@ -26,12 +30,12 @@ wondered if they were cut out for the job, but what separated the ones who
 succeeded and the ones who didn't were making sure that those thoughts didn't
 stop them from achieving their goals.
 
-:::tip Note from Caelin
+:::tip
 
-Hey there! Full-Stack Development is super difficult, it took me probably two
-years before I even understood what I was really doing. Don't be afraid to ask
-questions and just keep plodding forward. Trust in the process and it'll all
-make sense eventually!
+Hey there! Full-Stack Development is super difficult, and it takes most people
+1-2 years before they're able to truly understand the field well. Don't be
+afraid to ask questions and just keep plodding forward. Trust in the process and
+it'll all make sense eventually!
 
 :::
 
@@ -71,73 +75,20 @@ get them with months of work, I guarantee you you'll have to work hard for them.
 
 ## Your TA's for this semester
 
-**[Caelin Sutch](https://www.linkedin.com/in/caelinsutch) - Facilitator**
-
-Hi everyone! My name is Caelin, and I'm a second year EECS and Business major
-(though currently on a gap semester). There is nothing I love more than building
-things, and web development is one of the easiest ways to quickly build and
-iterate products. When I'm not programming, you'll find me DJing, listening to
-music, and being a frat star.
-
-**[Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/) - Full Stack TA**
-
-Hi everyone! My name is Alex, and I am a third-year computer science major.
-Besides web development, I love drawing prototypes on Figma and building
-startups. In my free time, I practice magic & cardistry and play chess &
-hearthstone.
-
-**[Samarth Goel](https://www.linkedin.com/in/samarth-goel-1047b8187/) - Full
-Stack TA**
-
-Hey there! My name is Samarth and I'm majoring in CS and Business. Web
-Development and Education are both huge passions of mine, which is why I'm so
-excited to be helping with the Full-Stack DeCal. Besides coding, I practice
-martial arts, play guitar, and play the drums in the cal band.
-
-**[Vicky Li](https://www.linkedin.com/in/victoriayli/) - Design TA**
-
-Hi everyone, I am a third-year Computer Science major. I first encountered the
-wonderful world of web dev when cluelessly attending a hackathon and being
-bombarded with a bunch of stuff I didn’t know. I believe it’s a super rewarding
-and important topic that’s not extensively covered in Berkeley’s curriculum. I
-especially love web design and making sites look sexy. Outside of coding and
-staring at screens, I am an avid photographer and dancer. I enjoy making Youtube
-videos in my free time, so as they say, like and subscribe, and go bears!
-
-**[Kimberley Fan](https://www.linkedin.com/in/kimberleyfan/) - Frontend TA**
-
-Hi everyone! I'm Kimberley and I'm a sophomore studying computer science from
-Walnut, California. I really like building websites from ground up and being
-able to help other peers enjoy it too is fun to me. Besides web development, I'm
-into aesthetic cafes, anime and kdrama, screaming, and retail therapy. Feel free
-to hit me up for whatever!
-
-**[Nitya Krishnakumar](https://fullstack-decal.netlify.app/staff) - Frontend
-TA**
-
-**[Dhruv Vaish](https://www.linkedin.com/in/dhruv-vaish/) - Backend TA**
-
-Hi y'all! My name is Dhruv and I'm an EECS + BioE major from Santa Clarita, CA.
-I love anything about smart software design and organization and accessibility,
-in my case accessibility in healthcare. In my free time, I like to watch
-Netflix, listen to music, eat, and take adventures on the BART. See you all
-soon!
-
-**[Waleed Latif](https://www.linkedin.com/in/waleedlatif/) - Backend TA**
-
-Hi! My name's Waleed Latif and I'm a Junior studying CompSci and CogSci. Web
-Development has enabled me to build any app or website completely from scratch,
-and we hope to enable you to do that as well! My interests include neuroscience,
-snowboarding, and fashion. Looking forward to getting to know the students this
-semester!
-
-**[Isabel Zheng](https://www.linkedin.com/in/isabel-zheng-24003b1b2/) - Design
-TA**
-
-Hi all! I’m Isabel, a 2nd year Data Science major from LA. I love all things out
-of the box and empathetic, especially within tech. Outside of web development,
-you can find me watching astronomy videos, cafe hopping (peep the cafe pic), and
-listening to Ichika Nito.
+<SimpleGrid columns={[1, null, 2]} spacing={[12, 16]}>
+  {staff.map(({ name, image, role, linkedin, personal, bio, email }) => (
+    <StaffMember
+      name={name}
+      image={image}
+      role={role}
+      linkedin={linkedin}
+      personal={personal}
+      bio={bio}
+      email={email}
+      key={name}
+    />
+  ))}
+</SimpleGrid>
 
 ## Why was this course created?
 
@@ -366,25 +317,18 @@ your code, rendering the HTML and CSS and executing the JS to make your site
 functional. All that you send is the code (today that often bundled and
 condensed).
 
-:::info Caelin's Note
+:::info
 
 Every browser decides how to execute your code differently. This means there are
 variances between browsers in how rendering and execution is handled, which can
 cause some nasty bugs on certain platforms even though the code works fine on
 another.
 
-When I fist started programming, each browser handled CSS very differently. As
-such, we'd have different logic for different browsers, a complete pain in the
-ass.
-
 Today, much of HTML, CSS, and JS is standardized by various nonprofit
 organizations such as the [HTML Living Standard](https://html.spec.whatwg.org/)
 or the
 [ECMA Script standard](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/)
 for Javascript.
-
-If you want to learn more about this I'm happy to chat, the development of the
-web is super interesting.
 
 :::
 
@@ -483,10 +427,10 @@ the site and the site design is.
 Throughout this course you'll be applying your skills by building projects and
 websites that you can show off, pretty neat!
 
-:::note Caelin's Note
+:::note
 
-IMO this is the best part about Web Development, a final product that you can
-show off to friends and lives permanently on the internet!
+This is the best part about Web Development, a final product that you can show
+off to friends and lives permanently on the internet!
 
 :::
 
