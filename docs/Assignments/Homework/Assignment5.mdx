@@ -1,8 +1,14 @@
-# Node.js + MongoDB Homework
+---
+sidebar_position: 6
+---
+
+# HW 5 - Node.js & MongoDB
 
 ## Introduction
 
-In this homework, we will utilize the nasa daily picture API to create a backend server that allows the user to store, delete, and retrieve their favorite pictures of planets and nebulas.
+In this homework, we will utilize the nasa daily picture API to create a backend
+server that allows the user to store, delete, and retrieve their favorite
+pictures of planets and nebulas.
 
 Here is the NASA Open APIs Website:
 
@@ -10,7 +16,9 @@ Here is the NASA Open APIs Website:
 
 ## Goal
 
-The goal is to build an Express.js server + MongoDB database that allows the users to store or delete any "Astronomy picture of the day" from NASA and view all their favorite ones in a list format.
+The goal is to build an Express.js server + MongoDB database that allows the
+users to store or delete any "Astronomy picture of the day" from NASA and view
+all their favorite ones in a list format.
 
 ## Instructions
 
@@ -19,10 +27,14 @@ The goal is to build an Express.js server + MongoDB database that allows the use
 1. Implement a backend POST route that supports storing their favorite pictures.
 
    1. Route should be at: `http://localhost:8080/api/add`
-   2. To find a list of APOD images, you can go to this Astronomy Picture of the Day Archive: https://apod.nasa.gov/apod/archivepix.html. Click on any
-      of the past image will bring you to a page containing the date, the description, and an image. You can right click on the image and choose "copy image address" to
-      get the url to the image.
-   3. When the user sends a POST request to the backend route that we built, we assume the request should come with a body of image_url & date properties, example:
+   2. To find a list of APOD images, you can go to this Astronomy Picture of the
+      Day Archive: https://apod.nasa.gov/apod/archivepix.html. Click on any of
+      the past image will bring you to a page containing the date, the
+      description, and an image. You can right click on the image and choose
+      "copy image address" to get the url to the image.
+   3. When the user sends a POST request to the backend route that we built, we
+      assume the request should come with a body of image_url & date properties,
+      example:
 
       ```jsx
       {
@@ -31,12 +43,14 @@ The goal is to build an Express.js server + MongoDB database that allows the use
       }
       ```
 
-   4. After the backend receives the above request, it should store the image_url and the date of the image inside an mongoDB database.
+   4. After the backend receives the above request, it should store the
+      image_url and the date of the image inside an mongoDB database.
 
 2. Implement a DELETE route to delete the favorited picture.
 
    1. Route should be: `http://localhost:8080/api/delete`
-   2. The user's request should come with a body of date properties to filter and delete the picture, example:
+   2. The user's request should come with a body of date properties to filter
+      and delete the picture, example:
 
       ```jsx
       {
@@ -44,13 +58,17 @@ The goal is to build an Express.js server + MongoDB database that allows the use
       }
       ```
 
-   3. Once the backend receives the above request, it should find the image with this date, and then delete it from the database.
+   3. Once the backend receives the above request, it should find the image with
+      this date, and then delete it from the database.
 
-3. Implement a backend GET route to fetch all favorited pictures from the database.
+3. Implement a backend GET route to fetch all favorited pictures from the
+   database.
 
    1. Route should be: `http://localhost:8080/api/favorite`
-   2. The user should be able to send a GET request to the backend, and then get a list of images properties returned.
-   3. For instance, the user has already stored two images in the database, then the user send a get request, they should receive something like:
+   2. The user should be able to send a GET request to the backend, and then get
+      a list of images properties returned.
+   3. For instance, the user has already stored two images in the database, then
+      the user send a get request, they should receive something like:
 
    ```jsx
    {
@@ -106,12 +124,18 @@ Resource on how to use the delete method:
 
 ## Pointers
 
-- Begin by first creating a node project, similar to how you saw in lecture, running `npm init`
+- Begin by first creating a node project, similar to how you saw in lecture,
+  running `npm init`
 - Proceed by running `npm install express --save` to install Express
 - Then, to install mongoose, we run `rpm install mongoose --save`
-- In your package.json file, ensure that the dependencies for both mongoose and express appear
-- Create your `index.js` file and similar to the way you saw in lecture, require express and ensure that the express app was setup using `const app = express()`
-  - After entering the required packages, listener, and port that you want node to run on, simply run `node index.js` to begin the application on your respective port
+- In your package.json file, ensure that the dependencies for both mongoose and
+  express appear
+- Create your `index.js` file and similar to the way you saw in lecture, require
+  express and ensure that the express app was setup using
+  `const app = express()`
+  - After entering the required packages, listener, and port that you want node
+    to run on, simply run `node index.js` to begin the application on your
+    respective port
 - Setup your MongoDB Database to store the users' favorited APOD,
 
 ## Submission
