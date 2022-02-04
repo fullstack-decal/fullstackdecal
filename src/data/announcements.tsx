@@ -9,9 +9,8 @@ const announcements = [
       Thank you for applying to the Full-Stack DeCal! Decisions have been sent
       out so, make sure to check your email! If you were offered a spot in the
       DeCal and chose to accept, please attend our first class on Thursday,
-      February 3rd, 6:30pm - 8pm. If you&apos;re not enrolled but would still
-      like to come to the class, feel free to do so! Its not like we can stop
-      you or anything.
+      February 3rd, 6:30pm - 8pm, in the Physics 1 classroom. If you&apos;re not
+      enrolled but would still like to come to the class, feel free to do so!
       <br />
       <br />
       <Text fontWeight="bold">
@@ -41,7 +40,7 @@ const announcements = [
       curriculum by themselves and have told us that they learned a lot, so
       hopefully self-learning the material can help!
     </Text>
-  </Box>
+  </Box>,
 ];
 
 export default announcements;
