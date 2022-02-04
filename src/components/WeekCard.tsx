@@ -134,6 +134,13 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, lessons }) => {
               title={lesson.topic}
               color={colors[weekNumber]}
             />
+            {lesson.slides && (
+              <Content
+                label={'Slides'}
+                title={`${lesson.date} Lecture Slides`}
+                link={lesson.slides}
+              />
+            )}
             {lesson.readingTitle && (
               <Content
                 label="Reading"

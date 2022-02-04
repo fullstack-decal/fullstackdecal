@@ -40,7 +40,7 @@ const announcements = [
       curriculum by themselves and have told us that they learned a lot, so
       hopefully self-learning the material can help!
     </Text>
-  </Box>,
+  </Box>
 ];
 
 export default announcements;

@@ -8,6 +8,8 @@ const schedule: Lesson[] = [
     topic: 'Introduction',
     readingTitle: 'Setup, Overview, Motivation, Git, and the Terminal ',
     readingLink: '/docs/Lessons/Lesson1',
+    slides:
+      'https://docs.google.com/presentation/d/1va9wBGdcNBG_lkRS2t6zQ36nR9tZzBAojNmqqwSc_UQ/edit?usp=sharing',
     assigmentFormat: 'Homework 1',
     assigmentTitle: 'Getting Started',
     assigmentDueDate: 'Feb 8',
