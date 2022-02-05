@@ -32,16 +32,15 @@ website.
 
 ex. `<p>` → Text, `<h1>` → Header 1, `<img>` → Image
 
-A tag, whether it's opening or closing, are surrounded by angle
-brackets, `<` and `>`. Closing tags always have a slash, `/`, after the opening
-angle bracket, so it looks like `</h1>`. There are things called "self-closing
-tags" or "void tags" that open and close themselves. These will look like
-this: `<input />`. That slash at the end means it is self closing. To make it
-more confusing, that last slash is optional, so `<input>` (with no closing tag
-ever) is valid too since input tags are always self-closing. Even though the
-closing tag is optional in some cases, you should always include it since
-certain variants of HTML (like XML or JSX in React) require that every tag have
-a closing tag.
+A tag, whether it's opening or closing, are surrounded by angle brackets, `<`
+and `>`. Closing tags always have a slash, `/`, after the opening angle bracket,
+so it looks like `</h1>`. There are things called "self-closing tags" or "void
+tags" that open and close themselves. These will look like this: `<input />`.
+That slash at the end means it is self closing. To make it more confusing, that
+last slash is optional, so `<input>` (with no closing tag ever) is valid too
+since input tags are always self-closing. Even though the closing tag is
+optional in some cases, you should always include it since certain variants of
+HTML (like XML or JSX in React) require that every tag have a closing tag.
 
 You can **Inspect Element** `Right Click → Inspect` on any webpage to see the
 HTML building blocks of a web page.
@@ -102,7 +101,7 @@ There are 4 components to an HTML file:
 - **Headers** → `<h1>` - `<h6>` tags
   ```html
   <h1>I'm a big header!</h1>
-  <h3>I'm a slighly smaller header.</h3>
+  <h3>I'm a slightly smaller header.</h3>
   <h5>I'm a small header.</h5>
   ```
   - Header types are used for size and SEO (Search Engine Optimization)
@@ -262,10 +261,10 @@ part.
 
 This is where comments can be useful. You can leave little notes in your code
 that the computer won't read, it'll just ignore them. In HTML, the way you write
-a comment is `<!-- your comments go here -->`. Leave whatever notes you need in
-between the `<!--` and the `-->` so that later you can come back to your code
+a comment is `<!-- your comments go here -->`. Leave whatever notes you need in
+between the `<!--` and the `-->` so that later you can come back to your code
 and remember what you were doing. Be careful of going overboard because comments
-like `<h1>Title of the Article</h1><!-- the title -->` aren't useful because
+like `<h1>Title of the Article</h1><!-- the title -->` aren't useful because
 it's pretty obvious that's the title. It's best to have code that describes
 itself and doesn't need comments; however, when that falls apart comments can
 help.
@@ -311,23 +310,23 @@ you'll use for a long time to come.
 
 ### `<html lang="en"></html>`
 
-Everything (besides the doctype) goes into your `html` tag. You'll wrap
+Everything (besides the doctype) goes into your `html` tag. You'll wrap
 everything in here. You also should give it a language attribute to let the
-browser know what language your document is in which is what the `lang="en"` is
+browser know what language your document is in which is what the `lang="en"` is
 communicating. This is useful to the browser to know for a number of reasons.
 
 ### **`<head></head>`**
 
-First, there's `<head></head>` and also `<header></header>` and they are
-different. Be careful about that. We're talking about `<head></head>`.
+First, there's `<head></head>` and also `<header></header>` and they are
+different. Be careful about that. We're talking about `<head></head>`.
 
-We'll first talk about `head`. Inside of `head` goes all of the meta-data to
+We'll first talk about `head`. Inside of `head` goes all of the meta-data to
 help the browser understand how to read your document. In our case, the only
-thing we're putting in `head` is the title of the document. What goes inside
-of `title` is what will the name of the tab of the browser. It's also the name
-of the Google or Bing search result. Basically, anywhere that's going to display
+thing we're putting in `head` is the title of the document. What goes inside of
+`title` is what will the name of the tab of the browser. It's also the name of
+the Google or Bing search result. Basically, anywhere that's going to display
 the title of the web page will use what's inside of here. This is the theme of
-what goes in `head`: data that's useful for reasons other than displaying it. We
+what goes in `head`: data that's useful for reasons other than displaying it. We
 can put a tag in here that prevents pinch-to-zoom on mobile if we needed that
 (don't do that!) We can put a tag that identifies the description and image that
 Google would use for search results. We'll see some more later but for now we'll
@@ -335,7 +334,7 @@ stick with just a title.
 
 ### **`<body></body>`**
 
-All of our "visual" HTML will go in here. All your `div`s, `span`s, `img`s, etc.
+All of our "visual" HTML will go in here. All your `div`s, `span`s, `img`s, etc.
 
 ### Meta tags
 
