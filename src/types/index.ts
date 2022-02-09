@@ -5,8 +5,10 @@ export type Lesson = {
   topic: string;
   readingTitle?: string;
   readingLink?: string;
+  slides?: string;
   assigmentFormat?: string;
   assigmentTitle?: string;
   assigmentDueDate?: string;
+  assigmentLink?: string;
   starterCode?: string;
 };

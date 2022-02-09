@@ -1,0 +1,556 @@
+---
+sidebar_position: 11
+---
+
+# Lesson 8.5 - React 1: Example
+
+In this tutorial, we’ll show how to build an interactive tic-tac-toe game with
+React.
+
+You can see what we’ll be building here:
+[Final Result](https://codepen.io/gaearon/pen/gWWZgR?editors=0010). If the code
+doesn’t make sense to you, or if you are unfamiliar with the code’s syntax,
+don’t worry! The goal of this tutorial is to help you understand React and its
+syntax.
+
+We recommend that you check out the tic-tac-toe game before continuing with the
+tutorial. One of the features that you’ll notice is that there is a numbered
+list to the right of the game’s board. This list gives you a history of all of
+the moves that have occurred in the game, and it is updated as the game
+progresses.
+
+You can close the tic-tac-toe game once you’re familiar with it. We’ll be
+starting from a simpler template in this tutorial. Our next step is to set you
+up so that you can start building the game.
+
+## Setup
+
+Let's start by cloning the starter code for our project.
+
+Please clone
+[the lecture content Github repo](https://github.com/fullstack-decal/sp22-lectures)
+onto your machine if you haven't already. The code for this example can be found
+under the `react-example-1` directory. If you navigate into the
+`react-example-1` folder, you should see a `starter` and `solution` folder. If
+you ever get stuck, feel free to look at the `solution` folder, but for now
+let's get started by opening up and working in the `starter` folder.
+
+See the React 3 starter code in the starter code repo. By inspecting the code,
+you’ll notice that we have three React components:
+
+- `Square`
+- `Board`
+- `Game`
+
+**Let's start simple! Say, we want to display a number in each of the squares,
+in this way:**
+
+What we are going to do to make this work is "pass a prop" from Board to Square.
+
+### Props
+
+Props are a vital part of the React fabric! We can think of props as a
+dictionary that each React Component maintains to look out some values
+associated with it. If we don't give the attribute any props, then this
+dictionary is empty. However, if we were to pass some props in, say, in this
+way:
+
+```jsx
+function Board {
+  renderSquare(i) {
+    return <Square value={i} />;
+  }
+	...
+}
+```
+
+Now, the React component `square` has a prop called `value` with some...well,
+value associated with it.
+
+A very important note: **PROPS ARE IMMUTABLE**. Once some prop has been assigned
+to a component, it can never be changed, only accessed.
+
+So, how do we access this prop? Like so,
+
+```jsx
+function Square(props) {
+  return <button className="square">{props.value}</button>;
+}
+```
+
+Quick explanation - the Square function is being given an argument (`props`) and
+one of those props is called `value` and we want whatever is associated with
+that variable name to be displayed as the text of a button.
+
+Congratulations! You’ve just “passed a prop” from a parent Board component to a
+child Square component. Passing props is how information flows in React apps,
+from parents to children.
+
+### Making It Interactive
+
+What if we want our button to _do_ something? Well, we have our classic JS way
+of doing that in such a way:
+
+```jsx
+function Square {
+    return (
+      <button className="square" onClick="alert('click')">
+        {this.props.value}
+      </button>
+    );
+}
+```
+
+We used to put our `onClick` JS in a string because we were writing in HTML, and
+I never liked embedding code like this, it feels very unclean. But there are no
+more such restrictions! So, let's change this to suit the fact that we're
+writing in JS now.
+
+```jsx
+<button className="square" onClick={function() { alert('click'); }}>
+```
+
+Or, even better
+
+```jsx
+<button className="square" onClick={() => alert('click')}>
+```
+
+Let's try to log the value for the square out using the onClick function:
+
+```jsx
+function Square(props) {
+  return (
+    <button className="square" onClick={() => console.log(props.value)}>
+      {props.value}
+    </button>
+  );
+}
+```
+
+Now, if you click on one of the square, it will log out its value!
+
+## References
+
+- JSX
+
+  - return jsx from component (function)
+  - jsx must be enclosed in a "master" container
+  - introduce syntactical differences
+    - className, readOnly (for inputs)
+    - in general, use camelCase
+  - Changes to CSS
+    - inline css (style={{}})
+    - styled components (let style = {}, style= {style.chosenStyle})
+    - using css while avoiding class overlap (make each class specific to
+      component)
+  - Using javascript variables in jsx
+    - similar to how we used style components
+    - using javascript in html is the power of jsx
+    - onClick={} ({} to call functions instead of "")
+  - export default classNam;
+
+    e
+
+- What is Happening In JSX Behind the Scenes?
+  - Explain What Babel Is
+  - One demonstration of a simple babel transition
+  - `React.createElement`
+  - What are props? Introduce, but don't explain
+  - What are children? Introduce and explain!
+  - Why you shouldn't ever use this, and why code being intuitive is important
+
+## Development, Continued
+
+### State
+
+Now, what if we want to change whichever box we click to stop displaying the
+number and start displaying an X? We've run into a problem, because we can't
+change what `this.props.value` is (remember: props are immutable!). Could we
+just do something like:
+
+```jsx
+this.storeValue = this.props.value;
+<button className="square" onClick={() => somehowUpdateStoreValue()}>
+  {this.storeValue}
+</button>;
+```
+
+And yes, yes we could –– but we won't be able to see the change unless we
+re-render our component, in which case we lose `storeValue`. So we're stuck. How
+to resolve this issue?
+
+This is where we can start to use **State.** Props and state go hand-in-hand ––
+while props are the values you ask your parent component to give you and
+utilize, state is the value that you as a component want to maintain –– and
+change as necessary.
+
+For this, we will introduce state to the Square React component.
+
+```jsx
+function Square(props) {
+  return (
+    <button className="square" onClick={() => alert('click')}>
+      {this.props.value}
+    </button>
+  );
+}
+```
+
+Now, to introduce state.
+
+```jsx
+function Square(props) {
+	const [value, setValue] = useState(props.value);
+
+	return (
+      <button className="square" onClick={() => alert('click')}>
+        {value}
+      </button>
+    );
+  }
+}
+```
+
+Great! Now, we have a value "null" with which we do nothing. Let's change that,
+shall we?
+
+```jsx
+function Square(props) {
+  const [value, setValue] = useState(props.value);
+
+  return (
+    <button className="square" onClick={() => setValue('X')}>
+      {value}
+    </button>
+  );
+}
+```
+
+Notice a few changes: we're using `value` instead of `props.value` and our
+`onClick` function uses `setValue`.
+
+The `setValue` function does two things –– it changes that value in the state
+that you pass in, and it rerenders the component while persisting the state and
+props.
+
+### Lifting State Up
+
+The last important topic of today!
+
+Currently, each Square component maintains the game’s state. To check for a
+winner, we’ll maintain the value of each of the 9 squares in one location. Could
+we make Board should just ask each Square for the Square’s state? Sure! But we
+discourage it because the code becomes difficult to understand, susceptible to
+bugs, and hard to refactor. Why? Because information flows downward in React,
+from parent to child component. To make information flow upwards is considered
+bad practise and is discouraged whenever possible!
+
+So how do we get information to Board without making Square tell Board its
+state? **Let Board remember the state of the Square.** Then we make the _Board_
+tell the _Square_ what the square to display –– and we already know how to do
+this (shh its through props!)
+
+This practise is called "lifting state up" and is common when React components
+are refactored.
+
+Add a constructor to the Board and set the Board’s initial state to contain an
+array of 9 nulls corresponding to the 9 squares:
+
+```jsx
+function Board(props) {
+
+	const [squares, setSquares] = useState(Array(9).fill(null));
+	...
+}
+```
+
+This 3x3 Array is our game board! Right now, it displays an unplayed empty
+board. How do we make sure the square displays what it should? We change our
+`renderSquare` function.
+
+```jsx
+const renderSquare = (i) => {
+  return <Square value={squares[i]} />;
+};
+```
+
+Each Square will now receive a value prop that will either be 'X', 'O', or null
+for empty squares.
+
+There is still one problem–– when a square is clicked, we somehow need to inform
+`Board` of that. But we don't want to take the button out of `Square`. We need
+to create a way for the Square to update the Board’s state. Since _state is
+considered to be private to a component_ that defines it, we cannot update the
+Board’s state directly from Square. What do we do?
+
+The answer is wonderfully simple –– pass in the a `handleClick` function defined
+_in_ BOARD!
+
+```jsx
+const renderSquare = (i) => {
+  return <Square value={squares[i]} onClick={() => handleClick(i)} />;
+};
+```
+
+And now, we make sure the Square class reflects these changes:
+
+```jsx
+function Square(props) {
+  render() {
+    return (
+      <button
+        className="square"
+        onClick={() => props.onClick()}>
+
+        {props.value}
+
+      </button>
+    );
+  }
+}
+```
+
+And now, finally, let's define `handleClick`
+
+```jsx
+const handleClick = (i) => {
+  const squares_copy = squares.slice();
+  squares_copy[i] = 'X';
+  setSquares(squares_copy);
+};
+```
+
+Why do it like this? Because of `React` best practises! React suggests that we
+treat our state as immutable as well, even if it is very much mutable. This is
+to prevent the user from changing state and not causing a re-render when they do
+so (because they didn't do it right). Thus, to change `squares`, we make a copy
+of it, edit that copy, then set our state `squares` variable to that copy.
+
+### Conditional Rendering
+
+We now need to fix an obvious defect in our tic-tac-toe game: the “O”s cannot be
+marked on the board.
+
+We'll store this in our Board State!
+
+```jsx
+function Board(props) {
+	const [squares, setSquares] = useState(Array(9).fill(null));
+	const [xIsPlaying, setXIsPlaying] = useState(true);
+	...
+}
+```
+
+Everytime a click happens, we want to change the player. Thus, we change
+`handleClick`
+
+```jsx
+const handleClick = (i) => {
+  const squares_copy = squares.slice();
+  squares_copy[i] = xIsPlaying ? 'X' : 'O';
+  setSquares(squares_copy);
+  setXIsPlaying(!xIsPlaying);
+};
+```
+
+And because we can, let's edit render to display who the player is at any given
+moment:
+
+```jsx
+const status = 'Next player: ' + (xIsPlaying ? 'X' : 'O');
+```
+
+### Helper Functions For Logic
+
+How do we define who the winner is? We could figure out some clever way of doing
+it inside the component, but here's another piece of React wisdom –– React is a
+UI Library. We should let React handle the UI part, and the logic part should
+stay outside, for the most part. In this vein, here's a helper function:
+
+```jsx
+const calculateWinner = (squares) => {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5], // ["o", "x", "o"]
+    [6, 7, 8], // ["x", "o", "x"]
+    [0, 3, 6], // ["x", "x", "x"]
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a]; // "x"
+    }
+  }
+  return null;
+};
+```
+
+Now, we want to update status depending on who the winner is. Let's update the
+render, then!
+
+```jsx
+const winner = calculateWinner(squares);
+let status = 'Next player: ' + (xIsPlaying ? 'X' : 'O');
+if (winner) {
+  status = 'Winner is ' + winner;
+}
+```
+
+And finally, we want to make sure that once the game is done, clicking the baord
+doesn't do anything. So, we change `handleClick` which is conviniently located
+inside of Board itself:
+
+```jsx
+handleClick(i) {
+    const squares = squares.slice();
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+	...
+ }
+```
+
+And we're done!!
+
+### Final Code Result
+
+```jsx
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+
+function Square(props) {
+  return (
+    <button className="square" onClick={() => props.onClick()}>
+      {props.value}
+    </button>
+  );
+
+  // Board() => renderSquare(0) => <Sqaure value={0} />
+  // Square:
+  //     stateValue = 0
+  //     onClick => setStateValue("X") => stateValue = "X"
+}
+
+function Board() {
+  const calculateWinner = (squares) => {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5], // ["o", "x", "o"]
+      [6, 7, 8], // ["x", "o", "x"]
+      [0, 3, 6], // ["x", "x", "x"]
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (
+        squares[a] &&
+        squares[a] === squares[b] &&
+        squares[a] === squares[c]
+      ) {
+        return squares[a]; // "x"
+      }
+    }
+    return null;
+  };
+
+  const [squaresState, setSquares] = useState(Array(9).fill(null));
+  const [xIsPlaying, setXIsPlaying] = useState(true);
+  // [null, null, null,
+  //  null, null, null,
+  //  null, null, null]
+  const winner = calculateWinner(squaresState); // "X"
+
+  let status = 'Next player: ' + (xIsPlaying ? 'X' : 'O');
+
+  if (winner) {
+    status = 'Winner is ' + winner;
+  }
+
+  // Board() => renderSquare(0) 0: array index (represents the state of one of the square)
+  // squares =
+  // [null, null, null,
+  //  null, null, null,
+  //  null, null, null]
+  // onClick => props.onClick => handleClick(0)
+  // squares =
+  // ["X", null, null,
+  //  null, null, null,
+  //  null, null, null]
+  // renderSqaure(0) => <Sqaure value={squares[0] (this would now be "X")}
+
+  const handleClick = (i) => {
+    const squares_copy = squaresState.slice();
+    if (calculateWinner(squaresState) || squaresState[i]) {
+      return;
+    }
+    squares_copy[i] = xIsPlaying ? 'X' : 'O';
+    setXIsPlaying(!xIsPlaying);
+    // if (xIsPlaying) {
+    //   squares_copy[i] = "X"
+    // } else {
+    //   squares_copy[i] = "O"
+    // }
+    setSquares(squares_copy);
+  };
+
+  const renderSquare = (i) => {
+    return <Square value={squaresState[i]} onClick={() => handleClick(i)} />;
+  };
+
+  return (
+    <div>
+      <div className="status">{status}</div>
+      <div className="board-row">
+        {renderSquare(0)}
+        {renderSquare(1)}
+        {renderSquare(2)}
+      </div>
+      <div className="board-row">
+        {renderSquare(3)}
+        {renderSquare(4)}
+        {renderSquare(5)}
+      </div>
+      <div className="board-row">
+        {renderSquare(6)}
+        {renderSquare(7)}
+        {renderSquare(8)}
+      </div>
+    </div>
+  );
+}
+
+function Game() {
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board />
+      </div>
+      <div className="game-info">
+        <div>{/* status */}</div>
+        <ol>{/* TODO */}</ol>
+      </div>
+    </div>
+  );
+}
+
+// ========================================
+
+ReactDOM.render(<Game />, document.getElementById('root'));
+```
+
+---
+
+**Contributors**
+
+- [Arushi Somani](https://www.linkedin.com/in/arushisomani/)
+- [Samarth Goel](https://www.linkedin.com/in/samarth-goel-1047b8187/)
+- [Brian Holt](https://www.linkedin.com/in/btholt/)

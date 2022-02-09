@@ -2,11 +2,14 @@
 sidebar_position: 9
 ---
 
-# Advanced React - Building a Full-Stack Social Media Platform
+# HW 8 - Advanced React
 
-While we've worked on basic React sites that are static, real world applications interact with servers and databases over the internet. In ths homework, we'll be tieing together the frontend and the backend aspects of this course.
+While we've worked on basic React sites that are static, real world applications
+interact with servers and databases over the internet. In ths homework, we'll be
+tieing together the frontend and the backend aspects of this course.
 
 ## Goals
+
 - Further practice with React syntax
 - Introduce Axios
 - Use HTTP methods to access RESTful services
@@ -25,15 +28,17 @@ Take a look around the codebase and try to understand how it's put together.
 
 ## Task 1 - Start the Backend
 
-Before we start building anything, we have to set up our server first. For this instance we will be using Express. The server will already be pre-built for you, feel free to look to examine the code and don't stress if you don't understand it. You'll only be worrying about the React side of things:
+Before we start building anything, we have to set up our server first. For this
+instance we will be using Express. The server will already be pre-built for you,
+feel free to look to examine the code and don't stress if you don't understand
+it. You'll only be worrying about the React side of things:
 
 - cd into the directory: `cd sp22-assignment8-skeleton/node-server`
 - Install dependencies: `npm i`
 - Run the server: `npm start`
 
-
-
 You should see output that looks something like this:
+
 ```shell
 ❯ npm start
 
@@ -45,17 +50,28 @@ Block Server listening at http://localhost:3002
 
 ## Task 2 - Start the Frontend
 
-Congrats! The backend server is now running at `localhost:3001`. Now for a production application, we'd also often be running a database such as MongoDB, but if you examine the code, you'll see that we've hard-coded the data you're fetching.
+Congrats! The backend server is now running at `localhost:3001`. Now for a
+production application, we'd also often be running a database such as MongoDB,
+but if you examine the code, you'll see that we've hard-coded the data you're
+fetching.
 
 For this task, we'll introduce fetching data from a server from our frontend.
 
-As you know, we can use HTTP requests to send and receieve data over the internet. In fact, opening a website like `google.com` is an HTTP GET request! Servers are similar, they have various routes that contain HTTP endpoints that you can trigger.
+As you know, we can use HTTP requests to send and receieve data over the
+internet. In fact, opening a website like `google.com` is an HTTP GET request!
+Servers are similar, they have various routes that contain HTTP endpoints that
+you can trigger.
 
-By default, browsers have the `fetch` API built in to give your frontend javascript the ability to fetch resources across a network. You can read more about Fetch [here](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+By default, browsers have the `fetch` API built in to give your frontend
+javascript the ability to fetch resources across a network. You can read more
+about Fetch [here](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 
-While fetch is incredibly powerful, it's also a bit more barebones and complex, so we'll be using a wrapper around Fetch called (Axios)[https://axios-http.com/docs/intro].
+While fetch is incredibly powerful, it's also a bit more barebones and complex,
+so we'll be using a wrapper around Fetch called
+(Axios)[https://axios-http.com/docs/intro].
 
 First, lets install Axios:
+
 ```shell
 npm install axios
 ```
@@ -66,15 +82,15 @@ And now lets start the app:
 npm start
 ```
 
-:::info
-Make sure that your express server and React app are on different ports.
+:::info Make sure that your express server and React app are on different ports.
 :::
 
 ## Task 3 - Write an API request
 
 Now that your frontend and backend are working, lets write a HTTP request.
 
-Right now, our blocks are pretty bland and hard coded, lets spice this up with an API fetch.
+Right now, our blocks are pretty bland and hard coded, lets spice this up with
+an API fetch.
 
 First, lets see how Axios works in an example:
 
@@ -84,47 +100,60 @@ function Example() {
 
   const getPostsData = () => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts") //THIS IS YOUR URL OF YOUR API
-      .then(data => setData(data.data)) //PROMISE API, THAT MEANS WHEN YOU GET THE DATA WHAT DO I DO WITH IT
-      .catch(error => console.log(error));  //ERROR CATCHING IN CASE WE RECIEVE AN ERROR
+      .get('https://jsonplaceholder.typicode.com/posts') //THIS IS YOUR URL OF YOUR API
+      .then((data) => setData(data.data)) //PROMISE API, THAT MEANS WHEN YOU GET THE DATA WHAT DO I DO WITH IT
+      .catch((error) => console.log(error)); //ERROR CATCHING IN CASE WE RECIEVE AN ERROR
   };
 
   useEffect(() => {
-    getPostsData()
+    getPostsData();
   }, []);
 
-  return <p>{data ? JSON.stringify(data[0]) : "loading"}</p>;
+  return <p>{data ? JSON.stringify(data[0]) : 'loading'}</p>;
 }
 ```
 
-In this example, our function `getPostsData` calls the API using a `GET` request. This function is called in a `useEffect` hook on first render. We then wait for the promise resolve using a `.then`, and once resolved, set our state variable `data` to the returned data. We also catch the error if the promise returns an error.
+In this example, our function `getPostsData` calls the API using a `GET`
+request. This function is called in a `useEffect` hook on first render. We then
+wait for the promise resolve using a `.then`, and once resolved, set our state
+variable `data` to the returned data. We also catch the error if the promise
+returns an error.
 
 Confused by the hooks? As a reminder,
-- useEffect hooks run the function passed into the first parameter if any variable in the array passed in as the second parameter changes.
-  - In this example, there are no variables passed in the second arg, so this will run when the component first mounts (is rendered)
-- useState hold pieces of state, and a `setState` call will trigger a component re-render
 
-Cool, now that you know any example of how we might fetch data, how might you use this data to render out posts in our application?
+- useEffect hooks run the function passed into the first parameter if any
+  variable in the array passed in as the second parameter changes.
+  - In this example, there are no variables passed in the second arg, so this
+    will run when the component first mounts (is rendered)
+- useState hold pieces of state, and a `setState` call will trigger a component
+  re-render
+
+Cool, now that you know any example of how we might fetch data, how might you
+use this data to render out posts in our application?
 
 ### Action Items
 
-Fetch data from our server (`http://localhost:3002/posts`) and render out each array item using the `Post` component inside of the `Feed` component.
+Fetch data from our server (`http://localhost:3002/posts`) and render out each
+array item using the `Post` component inside of the `Feed` component.
 
 **Tips:**
+
 - Make sure your server URL is passed in the get logic correctly
 - Where would the fetch logic be placed?
 
 ## Task 4 - Creating a new post
 
-Now that we can view posts from our server, you'll notice that there's a form at the bottom to create a new post. We've already built the logic to get the form data, you'll be using a post request to add this data to our server.
+Now that we can view posts from our server, you'll notice that there's a form at
+the bottom to create a new post. We've already built the logic to get the form
+data, you'll be using a post request to add this data to our server.
 
 Axios post requests are very simple, as an example:
 
 ```js
 axios
   .post(url, data) // `url` is the url to post to, `data` is the data to send in the body of the HTTP request
-  .then(response => console.log(response))
-  .catch(error => console.log(error));
+  .then((response) => console.log(response))
+  .catch((error) => console.log(error));
 ```
 
 ### Action Item
@@ -132,29 +161,43 @@ axios
 Use a `POST` request to create a new post.
 
 **Tips**
+
 - To create a new post, you'll have to `POST` /post
 
 ## Task 5 - Working with Comments
 
-At this point, you should be able to view and create new posts. Now, we'll do the same for comments.
+At this point, you should be able to view and create new posts. Now, we'll do
+the same for comments.
 
-There's a `comments` field on the server data, and if you `POST` `/post/:id/comment`, you'll be able to add a new comment.
+There's a `comments` field on the server data, and if you `POST`
+`/post/:id/comment`, you'll be able to add a new comment.
 
 ### Action Item
 
-Create a new `Comments` component to view all the comments on a single post. Also create a new form for users to add a new comment. After adding a comment, it should be rendered on the frontend.
+Create a new `Comments` component to view all the comments on a single post.
+Also create a new form for users to add a new comment. After adding a comment,
+it should be rendered on the frontend.
 
 ## Submission
-Submit a live video of your code running to Gradescope and make sure to push all your changes!
+
+Submit a live video of your code running to Gradescope and make sure to push all
+your changes!
 
 ### Demo of Solution
 
 When finished, your website should be able to run like the follow:
 
-<iframe src="https://www.loom.com/embed/843dd029aa584d1398b129145b8d5968" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style={{ height: '300px'}}/>
+<iframe
+  src="https://www.loom.com/embed/843dd029aa584d1398b129145b8d5968"
+  frameborder="0"
+  webkitallowfullscreen
+  mozallowfullscreen
+  allowfullscreen
+  style={{ height: '300px' }}
+/>
 
 Note the UI doesn't have to be the samee
 
 ## Contributors
-- [Caelin Sutch](https://www.linkedin.com/in/caelinsutch)
 
+- [Caelin Sutch](https://www.linkedin.com/in/caelinsutch)

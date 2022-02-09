@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Lesson 3 - Introduction to CSS
+# Lesson 2 - Introduction to CSS
 
 Okay, now we've begun putting HTML elements on a page. Using our house-building
 analogy, this is like we have all the materials now in a pile in front of our
@@ -13,7 +13,7 @@ However, a pile of lumber ≠ a house.
 We're going to start reasoning about how to put together these things, how to
 create our blueprints, our plans and more with **Cascading Style Sheets (CSS)**
 
-CSS is a **list of rules** that you give the browser: "all `h1`s will be colored
+CSS is a **list of rules** that you give the browser: "all `h1`s will be colored
 red" or "all images will be 100 pixels wide".
 
 :::tip
@@ -87,10 +87,10 @@ science: cache invalidation, naming things, and off-by-one errors. (Cache
 invalidation is another topic for another day.)
 
 So if you struggle to come up with names for things like classes and IDs, you're
-not alone. As a programmer you get to name *a lot* of things.
+not alone. As a programmer you get to name _a lot_ of things.
 
-With classes, you want to name things **_semantically_**. This is a fancy word
-that you want to name things as close to what thing **is** and **not** **what it
+With classes, you want to name things **_semantically_**. This is a fancy word
+that you want to name things as close to what thing **is** and **not** **what it
 looks like**.
 
 **Example**: Imagine this is a blog post on my website.
@@ -119,15 +119,15 @@ mechanically, why should it matter to me?
 
 :::tip
 
-Screen readers and other accessibility tools *do not* read your class names or
+Screen readers and other accessibility tools _do not_ read your class names or
 IDs; choosing good names here purely affects you and others working on this code
 
 :::
 
 Given that, it means we need to choose a tag that means that's a title. In this
-case, we can use an `h1` because that is the main header of that subsection.
+case, we can use an `h1` because that is the main header of that subsection.
 
-For the name of the class, how about `red-title`? It's a title and it's red;
+For the name of the class, how about `red-title`? It's a title and it's red;
 fits, right?
 
 While that may seem appropriate and fitting now, what if you need to change your
@@ -601,7 +601,7 @@ More in detail demos and descriptions in Lesson 4!
 
   ```css
   body {
-    background-image: url('paper.gif');
+    background-image: url("paper.gif");
   }
   ```
 
@@ -611,7 +611,7 @@ More in detail demos and descriptions in Lesson 4!
 
   ```css
   body {
-    background-image: url('img_tree.png');
+    background-image: url("img_tree.png");
     background-position: left top;
   }
   ```
@@ -623,7 +623,7 @@ More in detail demos and descriptions in Lesson 4!
 
   ```css
   body {
-    background-image: url('img_tree.png');
+    background-image: url("img_tree.png");
     background-repeat: repeat;
     background-position: left top;
   }
@@ -636,7 +636,7 @@ More in detail demos and descriptions in Lesson 4!
 
   ```css
   body {
-    background-image: url('img_tree.png');
+    background-image: url("img_tree.png");
     background-attachment: fixed;
     background-position: right top;
   }
