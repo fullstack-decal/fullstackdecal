@@ -1,7 +1,7 @@
 const staff = [
   {
     name: 'Kimberley Fan',
-    image: '/img/staff/kim.png',
+    image: '/img/staff/Kim.png',
     role: 'Facilitator',
     linkedin: 'https://www.linkedin.com/in/kimberleyfan/',
     personal: 'https://www.github.com/kimberleyfan',
@@ -86,6 +86,15 @@ const staff = [
     linkedin: 'https://www.linkedin.com/in/joshua-tsai-01/',
     bio: 'Hello, I am a sophomore studying EECS. This is my first semester on WDB’s course staff and I am excited to meet you all.',
     // email: 'mailto: waleedlatif@berkeley.edu'
+  },
+  {
+    name: 'Emir Karabeg',
+    image: '/img/staff/emir.png',
+    role: 'Fullstack TA',
+    linkedin: 'https://www.linkedin.com/in/emir-karabeg-53ab52196/',
+    personal: 'https://github.com/emir-karabeg',
+    bio: 'Hey! My name is Emir, and I’m a sophomore from SoCal studying CS and Data Science. I love to ski (go Cal Ski Team), play video games, spearfish, and build startups. It’s my first semester in WDB, and I’m excited to meet everyone and get to know y’all!',
+    // email: 'mailto: emirkarabeg@berkeley.edu',
   },
   {
     name: 'Isabel Zheng',
