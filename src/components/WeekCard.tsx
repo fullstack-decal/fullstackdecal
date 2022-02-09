@@ -51,14 +51,13 @@ const Content: React.FC<ContentProps> = ({
       <Text textStyle="body1" color="white">
         {link
           ? (
-              <Link to={link} style={{ textDecoration: 'underline' }}>
-                {title}
-              </Link>
+            <Link to={link} style={{ textDecoration: 'underline' }}>
+              {title}
+            </Link>
             )
           : (
               title
-            )
-        }
+            )}
         <Text as="span" textStyle="body" fontWeight="bold">
           {dueDate && ` (due ${dueDate})`}
         </Text>
@@ -153,6 +152,7 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, lessons }) => {
                 label={lesson.assigmentFormat}
                 title={lesson.assigmentTitle}
                 dueDate={lesson.assigmentDueDate}
+                link={lesson.assigmentLink}
               />
             )}
           </Flex>

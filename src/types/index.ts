@@ -9,5 +9,6 @@ export type Lesson = {
   assigmentFormat?: string;
   assigmentTitle?: string;
   assigmentDueDate?: string;
+  assigmentLink?: string;
   starterCode?: string;
 };

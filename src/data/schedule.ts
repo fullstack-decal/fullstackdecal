@@ -4,7 +4,7 @@ const schedule: Lesson[] = [
   {
     week: 0,
     date: 'Feb 3',
-    format: 'Lecture 1',
+    format: 'Lecture 0',
     topic: 'Introduction',
     readingTitle: 'Setup, Overview, Motivation, Git, and the Terminal ',
     readingLink: '/docs/Lessons/Lesson1',
@@ -13,23 +13,25 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 0',
     assigmentTitle: 'Getting Started',
     assigmentDueDate: 'Feb 8',
+    assigmentLink: '/docs/Assignments/Homework/Assignment0',
   },
 
   {
     week: 1,
     date: 'Feb 8',
-    format: 'Lecture 2',
+    format: 'Lecture 1',
     topic: 'HTML',
     readingTitle: 'HTML',
     readingLink: '/docs/Lessons/Lesson2',
     assigmentFormat: 'Homework 1',
     assigmentTitle: 'Tribute Page',
     assigmentDueDate: 'Feb 15',
+    assigmentLink: '/docs/Assignments/Homework/Assignment1',
   },
   {
     week: 1,
     date: 'Feb 10',
-    format: 'Lecture 3',
+    format: 'Lecture 2',
     topic: 'CSS 1',
     readingTitle: 'Introduction to CSS',
     readingLink: '/docs/Lessons/Lesson3',
@@ -41,7 +43,7 @@ const schedule: Lesson[] = [
   {
     week: 2,
     date: 'Feb 15',
-    format: 'Lecture 4',
+    format: 'Lecture 3',
     topic: 'CSS 2',
     readingTitle: 'Advanced CSS',
     readingLink: '/docs/Lessons/Lesson4',
@@ -52,7 +54,7 @@ const schedule: Lesson[] = [
   {
     week: 2,
     date: 'Feb 17',
-    format: 'Lecture 5',
+    format: 'Lecture 4',
     topic: 'JavaScript 1',
     readingTitle: 'Basic JavaScript',
     readingLink: '/docs/Lessons/Lesson5',
@@ -64,7 +66,7 @@ const schedule: Lesson[] = [
   {
     week: 3,
     date: 'Feb 22',
-    format: 'Lecture 6',
+    format: 'Lecture 5',
     topic: 'JavaScript 2',
     readingTitle: 'DOM',
     readingLink: '/docs/Lessons/Lesson6',
@@ -72,7 +74,7 @@ const schedule: Lesson[] = [
   {
     week: 3,
     date: 'Feb 24',
-    format: 'Lecture 7',
+    format: 'Lecture 6',
     topic: 'JavaScript 3',
     readingTitle: 'Scope and Asynchronous JS',
     readingLink: '/docs/Lessons/Lesson7',
@@ -84,7 +86,7 @@ const schedule: Lesson[] = [
   {
     week: 4,
     date: 'Mar 1',
-    format: 'Lecture 8',
+    format: 'Lecture 7',
     topic: 'Node',
     readingTitle: 'Node.js, NPM, and Yarn',
     readingLink: '/docs/Lessons/Lesson8',
@@ -99,7 +101,7 @@ const schedule: Lesson[] = [
   {
     week: 5,
     date: 'Mar 8',
-    format: 'Lecture 9',
+    format: 'Lecture 8',
     topic: 'React 1',
     readingTitle: 'Intro to React',
     readingLink: '/docs/Lessons/Lesson9',
@@ -110,7 +112,7 @@ const schedule: Lesson[] = [
   {
     week: 5,
     date: 'Mar 10',
-    format: 'Lecture 10',
+    format: 'Lecture 9',
     topic: 'React 2',
     readingTitle: 'Routing, Styling, and Libraries',
     readingLink: '/docs/Lessons/Lesson10',
@@ -119,7 +121,7 @@ const schedule: Lesson[] = [
   {
     week: 6,
     date: 'Mar 15',
-    format: 'Lecture 11',
+    format: 'Lecture 10',
     topic: 'Backend 1',
     readingTitle: 'HTTP, REST, Postman',
     readingLink: '/docs/Lessons/Lesson11',
@@ -153,7 +155,7 @@ const schedule: Lesson[] = [
   {
     week: 8,
     date: 'Mar 29',
-    format: 'Lecture 12',
+    format: 'Lecture 11',
     topic: 'UI/UX 1',
     readingTitle: 'Basic UI/UX',
     readingLink: '/docs/Lessons/Lesson12',
@@ -164,7 +166,7 @@ const schedule: Lesson[] = [
   {
     week: 8,
     date: 'Mar 31',
-    format: 'Lecture 13',
+    format: 'Lecture 12',
     topic: 'React 3',
     readingTitle: 'Node, NPM, Express',
     readingLink: '/docs/Lessons/Lesson13',
@@ -176,7 +178,7 @@ const schedule: Lesson[] = [
   {
     week: 9,
     date: 'Apr 5',
-    format: 'Lecture 14',
+    format: 'Lecture 13',
     topic: 'Backend 2',
     readingTitle: 'MongoDB, Authentication',
     readingLink: '/docs/Lessons/Lesson14',
@@ -203,7 +205,7 @@ const schedule: Lesson[] = [
   {
     week: 10,
     date: 'Apr 14',
-    format: 'Lecture 15',
+    format: 'Lecture 14',
     topic: 'UI/UX 2',
     readingTitle: 'UI/UX Principles',
     readingLink: '/docs/Lessons/Lesson15',
@@ -215,13 +217,13 @@ const schedule: Lesson[] = [
   {
     week: 11,
     date: 'Apr 19',
-    format: 'Lecture 16',
+    format: 'Lecture 15',
     topic: 'Backend 3',
   },
   {
     week: 11,
     date: 'Apr 21',
-    format: 'Lecture 17',
+    format: 'Lecture 16',
     topic: 'Cloud & DevOps',
     readingTitle: 'Cloud & DevOps',
     readingLink: '/docs/Lessons/Lesson17',
