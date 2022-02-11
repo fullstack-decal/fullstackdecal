@@ -3,6 +3,7 @@ export type Lesson = {
   date: string;
   format: string;
   topic: string;
+  lectureLink?: string;
   readingTitle?: string;
   readingLink?: string;
   slides?: string;

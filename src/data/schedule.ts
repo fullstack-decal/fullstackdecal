@@ -6,10 +6,11 @@ const schedule: Lesson[] = [
     date: 'Feb 3',
     format: 'Lecture 0',
     topic: 'Introduction',
+    lectureLink: 'https://www.youtube.com/watch?v=myh16Fbk8Cw',
     readingTitle: 'Setup, Overview, Motivation, Git, and the Terminal ',
     readingLink: '/docs/Lessons/Lesson1',
     slides:
-      'https://docs.google.com/presentation/d/1va9wBGdcNBG_lkRS2t6zQ36nR9tZzBAojNmqqwSc_UQ/edit?usp=sharing',
+      'https://docs.google.com/presentation/d/1vsWzaipY1igy419rtm0f52rf8x3oWKxR9AISIJpGOSA/edit?usp=sharing',
     assigmentFormat: 'Homework 0',
     assigmentTitle: 'Getting Started',
     assigmentDueDate: 'Feb 8',
@@ -23,6 +24,8 @@ const schedule: Lesson[] = [
     topic: 'HTML',
     readingTitle: 'HTML',
     readingLink: '/docs/Lessons/Lesson2',
+    slides:
+      'https://docs.google.com/presentation/d/1IVrdLRavmnLHiFNZ6iteF6GMqoRJl1JwW1COxscqIsA/edit?usp=sharing',
     assigmentFormat: 'Homework 1',
     assigmentTitle: 'Tribute Page',
     assigmentDueDate: 'Feb 15',
@@ -35,9 +38,12 @@ const schedule: Lesson[] = [
     topic: 'CSS 1',
     readingTitle: 'Introduction to CSS',
     readingLink: '/docs/Lessons/Lesson3',
+    slides:
+    'https://docs.google.com/presentation/d/1hi1Wj05HK2tiB_Q0Zay5sH114mzBV_6Mxpcxb4tFAO8/edit?usp=sharing',
     assigmentFormat: 'Homework 2',
     assigmentTitle: 'Country Flags',
-    assigmentDueDate: 'Feb 17',
+    assigmentDueDate: 'Feb 18',
+    assigmentLink: '/docs/Assignments/Homework/Assignment2',
   },
 
   {

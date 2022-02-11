@@ -40,6 +40,38 @@ const announcements = [
       curriculum by themselves and have told us that they learned a lot, so
       hopefully self-learning the material can help!
     </Text>
+  </Box>,
+  <Box key={1}>
+    <Text textStyle="body" mb={6}>
+      <Text as="span" fontWeight="bold">Lecture 1 - Feb 8, Tuesday 6:30-8PM, Physics 1:</Text>
+      <br />
+      Get ready to learn HTML!!!
+      <br />
+      <br />
+      <Text as="span" textDecoration="underline">Reading, Slides, and Homework links can be found below.</Text>
+      <br />
+      Homework 0 - Getting Started  is due Tuesday, Feb 8.
+      <br />
+      Homework 1 - HTML  is due Tuesday, Feb 15.
+    </Text>
+    <Text textStyle="body" mb={6}>
+    <Text as="span" fontWeight="bold">Lecture 2 - Feb 10, Thursday 6:30-8PM, Physics 1:</Text>
+      <br />
+      WOOHOO it is CSS time! Let&apos;s style it up!
+      <br />
+      <br />
+      <Text as="span" textDecoration="underline">Reading, Slides, and Homework links can be found below.</Text>
+      <br />
+      Homework 1 - HTML  is due Tuesday, Feb 15.
+      <br />
+      Homework 2 - CSS  is due Tuesday, Feb 18.
+    </Text>
+    <Text textStyle="body" mb={6}>
+      ALSO - Adding courses on Calcentral deadline is Feb 9th! If you are having any trouble enrolling this decal, do make a private post and we will respond ASAP.
+      <br />
+      <br />
+      If you need assignment extensions, please make a private message, but we urge you to keep up with assignments early! Have a great week everyone :)
+    </Text>
   </Box>
 ];
 
