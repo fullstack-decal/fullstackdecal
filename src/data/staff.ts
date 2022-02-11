@@ -17,14 +17,6 @@ const staff = [
     email: 'mailto: dvaish@berkeley.edu',
   },
   {
-    name: 'Caelin Sutch',
-    image: '/img/staff/caelin.png',
-    role: 'Full Stack TA',
-    bio: 'Hi everyone! I am a second-year EECS and Business major currently taking a gap semester to intern at Tesla as a TPM and work on my startup Plots. When not working (rare), you will find me DJing at my frat, going for a run, or hanging with my friends.',
-    linkedin: 'https://www.linkedin.com/in/caelinsutch/',
-    personal: 'https://www.caelinsutch.com/',
-  },
-  {
     name: 'Alex Wu',
     image: '/img/staff/alex.png',
     role: 'Full Stack TA',

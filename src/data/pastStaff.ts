@@ -1,5 +1,10 @@
 const staff = [
   {
+    name: 'Caelin Sutch',
+    image: '/img/past-staff/caelin.png',
+    linkedin: 'https://www.linkedin.com/in/caelinsutch/',
+  },
+  {
     name: 'Waleed Latif',
     image: '/img/past-staff/waleed.png',
     linkedin: 'https://www.linkedin.com/in/waleedlatif/',
