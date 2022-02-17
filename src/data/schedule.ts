@@ -58,6 +58,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Project 1',
     assigmentTitle: 'Personal Website',
     assigmentDueDate: 'Feb 24',
+    assigmentLink: '/docs/Assignments/Projects/Project1',
   },
   {
     week: 2,
