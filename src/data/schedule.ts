@@ -22,6 +22,7 @@ const schedule: Lesson[] = [
     date: 'Feb 8',
     format: 'Lecture 1',
     topic: 'HTML',
+    lectureLink: 'https://www.youtube.com/watch?v=iH6YOlW6YtI',
     readingTitle: 'HTML',
     readingLink: '/docs/Lessons/Lesson2',
     slides:
@@ -36,6 +37,7 @@ const schedule: Lesson[] = [
     date: 'Feb 10',
     format: 'Lecture 2',
     topic: 'CSS 1',
+    lectureLink: 'https://www.youtube.com/watch?v=K3gbbhbjJJ4',
     readingTitle: 'Introduction to CSS',
     readingLink: '/docs/Lessons/Lesson3',
     slides:
