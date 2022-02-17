@@ -35,7 +35,7 @@ communicate clearly. Code is communication.
 Okay, given this, let's frame how this code works then. When you write code, the
 computer breaks it down into smaller pieces it can understand and then executes
 those one bit at a time. With JavaScript, only one thing is ever happening at a
-time (this is called being *single-threaded* but that is not a term you need to
+time (this is called being *single-threaded* but that is not a term you need to
 know.) In general, this means it executes line 1, then line 2, then line 3, etc.
 Let's see that in action:
 
@@ -52,49 +52,49 @@ console.log(yearlyRent);
 6000;
 ```
 
-The first thing that happens above is that we declare a variable, `monthlyRent`.
-The `const` keyword is how we let JavaScript know we're declaring a variable.
+The first thing that happens above is that we declare a variable, `monthlyRent`.
+The `const` keyword is how we let JavaScript know we're declaring a variable.
 Variable names always have to know no spaces in them, which is why we squish the
 words "monthly rent" together. In order to make this more readable, we use
-what's called *camel casing*, so-called because the capital letters in the
+what's called *camel casing*, so-called because the capital letters in the
 middle make it look like humps on a camel. You can also use other styles of
 captialization, there's no rule it must be camel case in JavaScript; everyone
 just happens to do camel casing in JavaScript.
 
-Notice the `;` at the end of every line. This semi colon lets JavaScript know
+Notice the `;` at the end of every line. This semi colon lets JavaScript know
 you've completed your thought. Think of this as the period/full-stop of the the
 programming world.
 
-Variable can be called *almost* anything. You **can't** use keywords. An example
-would be `const const = 15`. `const` is a keyword so it can't be used as a
+Variable can be called *almost* anything. You **can't** use keywords. An example
+would be `const const = 15`. `const` is a keyword so it can't be used as a
 variable name. You do want to give your variables good names. Imagine we have a
-huge file and 200 lines below we see the variable named `monthlyRent`: we'll
+huge file and 200 lines below we see the variable named `monthlyRent`: we'll
 know instantly what this variable does and we won't have to go try to read the
 code to figure it out. Always, always, always use good variable names.
 Seriously. Put time into it. Naming things is hard and it's a big part of your
 job.
 
-Okay, so after line one, I have a variable named `monthlyRent` that I can use as
-much as I want. In this case, it represents the number of `500` but it also
+Okay, so after line one, I have a variable named `monthlyRent` that I can use as
+much as I want. In this case, it represents the number of `500` but it also
 semantically represents monthlyRent. Imagine if I had 1000 lines between
-where `monthlyRent` is declared and where `yearlyRent` is calculated. I could
-have just put `500` directly in `yearlyRent` but I don't because I now
+where `monthlyRent` is declared and where `yearlyRent` is calculated. I could
+have just put `500` directly in `yearlyRent` but I don't because I now
 understand how that's calculated just by reading the code. Use variables. Use
 them everywhere. It makes your code way easier to read. Also, later, if my
 monthly rent changes, I can change it one place and everywhere I
-reference `monthlyRent` gets updated automatically. Powerful stuff.
+reference `monthlyRent` gets updated automatically. Powerful stuff.
 
-Okay, I think calculate `yearlyRent`. I use the `*` to represent multiplication.
+Okay, I think calculate `yearlyRent`. I use the `*` to represent multiplication.
 I'm also mixing variables and numbers which is just fine. I also could have
-said `const yearlyRent = monthlyRent * monthsInAYear;` (assuming I
-put `const monthsInAYear = 12;` somewhere else) too and that would be a good
+said `const yearlyRent = monthlyRent * monthsInAYear;` (assuming I
+put `const monthsInAYear = 12;` somewhere else) too and that would be a good
 idea. I would argue the two are roughly the same since it's obvious there are 12
 months in a year. But you do what you think is most clear. That's your job.
 
-`console.log(yearlyRent);` is going to print whatever is stored
-in `yearlyRent` to the JavaScript console. The JavaScript Console is a part of
+`console.log(yearlyRent);` is going to print whatever is stored
+in `yearlyRent` to the JavaScript console. The JavaScript Console is a part of
 the dev tools. If you need help finding
-them, [see here](https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers).
+them, [see here](https://webmasters.stackexchange.com/questions/8525/how-do-i-open-the-javascript-console-in-different-browsers).
 We'll explain how it works in a bit but for now just know that anything you put
 between the parenthesises gets logged out to your JavaScript console.
 
@@ -164,8 +164,8 @@ y = 6;
 z = x + y;
 ```
 
-Notice how we have to *declare* our variables first in Javascript.
-The `var` statement let's us do just that. We can also declare and assign a
+Notice how we have to *declare* our variables first in Javascript.
+The `var` statement let's us do just that. We can also declare and assign a
 variable at the same time like so:
 
 ```jsx
@@ -174,9 +174,9 @@ var y = 6;
 var z = x + y;
 ```
 
-One final thing to note is the use of *whitespacing*. In python, adding a new
-line ends the statement. `x = 5` and `y = 6` aren't confusing to python's
-interpreter because the new line is how python determines that `x = 5` is it's
+One final thing to note is the use of *whitespacing*. In python, adding a new
+line ends the statement. `x = 5` and `y = 6` aren't confusing to python's
+interpreter because the new line is how python determines that `x = 5` is it's
 own statement. Javascript doesn't do that, instead it relies on the semicolon
 (`;`) in order to split statements. Though we usually put statements on its own
 line, the following code is completely valid javascript:
@@ -189,7 +189,7 @@ var z = x + y;
 
 We will admit however that this is NOT good code practice and unless you're
 trying to minify and compact code for productionized use, you
-should *always* value readability over trying to get the least amount of lines
+should *always* value readability over trying to get the least amount of lines
 as possible.
 
 ## Syntax and Convention
@@ -197,7 +197,7 @@ as possible.
 Declaring integers and floating-point numbers are the same between python and
 javascript. Declaring strings is the same between python and javascript as well.
 And just like python, casing matters in
-javascript. `variable` and `variable` are two completely different things. All
+javascript. `variable` and `variable` are two completely different things. All
 of these are outlined below:
 
 ```jsx
@@ -214,7 +214,7 @@ var string_val = '420';
 var String_Val = '420';
 ```
 
-When trying to comment out javascript, use `//` instead of `#`:
+When trying to comment out javascript, use `//` instead of `#`:
 
 ```jsx
 int_val = 420 # This code is executed
@@ -244,9 +244,9 @@ var $variable = 5;
 
 Finally, a note about convention is that python usually uses underscores to
 declare variables. Javascript instead uses camel case as convention. Python
-variables like `new_variable`, `another_variable`, `really_long_variable` are
-instead stylized like `newVariable`, `anotherVariable`,
-and `reallyLongVariable` in javascript. Code-wise, there is no difference but in
+variables like `new_variable`, `another_variable`, `really_long_variable` are
+instead stylized like `newVariable`, `anotherVariable`,
+and `reallyLongVariable` in javascript. Code-wise, there is no difference but in
 industry you will be expected to follow best practices.
 
 ## Types
@@ -291,23 +291,34 @@ console.log(sentenceWithTemplate);
 'Hello Jonathan Ma! How are you!?';
 ```
 
-The first way is the old way. We can use the `+` to tell JavaScript to connect
+The first way is the old way. We can use the `+` to tell JavaScript to connect
 two strings. Notice how we have insert the space
-between `firstName` and `lastName`. The computer only does exactly what you tell
+between `firstName` and `lastName`. The computer only does exactly what you tell
 it to do. If you don't insert that space, it doesn't get put there.
 
 The second line is the new way of doing this. JavaScript got a large update in
 2015 and it made things a lot easier. Now you can use the back tick (notice the
 first uses a double quote, you must use back ticks to do template strings) to do
-template strings. If you do that, anything inside of `${yourVariableHere}` gets
+template strings. If you do that, anything inside of `${yourVariableHere}` gets
 output in the string. Cool, right?
+
+:::info
+
+Both Ben Awad and Jonathan Ma (Known as Joma Tech) are well-known
+tech/development YouTubers. Go check them out!
+
+[Ben Awad](https://www.youtube.com/user/99baddawg)
+
+[Joma Tech](https://www.youtube.com/channel/UCV0qA-eDDICsRR9rPcnG7tw)
+
+:::
 
 ### Booleans
 
 Sometimes you just need a simple true or false. These are where booleans are
 useful. Something like a light switch's state is best represented by a boolean.
 A light is either on (true) or off (false). You'd have something
-like `const lightIsOn = true;`. Useful and you'll see them everywhere.
+like `const lightIsOn = true;`. Useful and you'll see them everywhere.
 
 ### Number
 
@@ -342,7 +353,7 @@ console.log(friendsAtYourParty);
 
 Sometimes I want to modify the flow of how my program works, or in other words,
 some time I only want to run code if some condition is true. This is
-where `if` statements are very useful. Imagine if we tried this.
+where `if` statements are very useful. Imagine if we tried this.
 
 ```
 const skyIsBlue = true;
@@ -388,8 +399,8 @@ if statement. In this case, we are asking, is two plus two still equal to four.
 If this is true (I hope so) then again the first block will be run. If not, the
 second will be.
 
-Let's talk about `===` for a second. If you use just one `=` in JavaScript, it
-means **is assigned to**. So when we have `const isBrianCool = true;` you can
+Let's talk about `===` for a second. If you use just one `=` in JavaScript, it
+means **is assigned to**. So when we have `const isBrianCool = true;` you can
 verbalize that as "The variable isBrianCool is assigned to true". Thus we can't
 use that inside of the if statement because that's not we mean. We're trying to
 ask a question, not assign something. We're trying to ask "is two plus two equal
@@ -397,11 +408,11 @@ to four." Enter the triple equals. Triple equals is the same as asking "is this
 equal to that." We use the triple equals instead of the double equals because
 double equals does a lot of funny business that usually we don't want it to do.
 It does what's called coercion and we'll talk about that below. But in an
-example `2 == "2"` but it does not `2 === "2"`. String 2 is double equal to
+example `2 == "2"` but it does not `2 === "2"`. String 2 is double equal to
 number 2 but string 2 is not triple equal to number 2.
 
-There's also `!==`. This is asking "is this not equal to that". Lastly you can
-ask with numbers `>` `>=` `<` `<=` as well to ask if numbers less than or
+There's also `!==`. This is asking "is this not equal to that". Lastly you can
+ask with numbers `>` `>=` `<` `<=` as well to ask if numbers less than or
 greater than too. For another example:
 
 ```
@@ -422,7 +433,7 @@ if (friendsAtYourParty === 0) {
 "Perfect amount to play some Mario Kart."
 ```
 
-This also demonstrates the `else if` if you have more than just two different
+This also demonstrates the `else if` if you have more than just two different
 conditions.
 
 ### Loops and Iteration
@@ -454,18 +465,18 @@ console.log(friendsAtYourParty);
 That's annoying though. I wish there was a better way. Before we explore that,
 let's chat about this example a tad more.
 
-We used `let` instead of `const`. Things that are `const` cannot be reassigned
+We used `let` instead of `const`. Things that are `const` cannot be reassigned
 later. In general I find this be of minor help but others do not so I leave you
 to make your own judgement call. In general one should try to follow the
 "principle of least power." You should always choose the least powerful "thing"
 to accomplish whatever you're trying to do. Things with less power tend to be
 simpler and simple things are less prone to having or causing bugs. We instead
-use `let` here because you can see on the subsequent lines we do
-reassign `friendsAtYourParty` to be a different number. If you used `const` your
-code would crash because `const` won't let you do that. Thus here we use `let`.
-There's another one called `var` that is the old way of doing JavaScript. There
-are differences but I don't see a reason to use `var` at all anymore. It behaves
-more similar to `let`.
+use `let` here because you can see on the subsequent lines we do
+reassign `friendsAtYourParty` to be a different number. If you used `const` your
+code would crash because `const` won't let you do that. Thus here we use `let`.
+There's another one called `var` that is the old way of doing JavaScript. There
+are differences but I don't see a reason to use `var` at all anymore. It behaves
+more similar to `let`.
 
 Okay, so, we want to do this better, let's explore a few ways to do that using
 loops.
@@ -486,11 +497,11 @@ console.log(friendsAtYourParty);
 10;
 ```
 
-This is a while loop. The first part works similar to an `if` statement: as long
-as what's inside that statement is **true** it will continue running and
-re-running the body (what's between the `{ }`) until that statement is false.
+This is a while loop. The first part works similar to an `if` statement: as long
+as what's inside that statement is **true** it will continue running and
+re-running the body (what's between the `{ }`) until that statement is false.
 Once that statement is false, it'll break the loop and continue on. This case,
-we add 1 to `friendsAtYourParty` until it's 10, and then the next loop, when
+we add 1 to `friendsAtYourParty` until it's 10, and then the next loop, when
 it's 10, it'll stop because 10 is not less than 10.
 
 Okay, so now let's see a second kind of loop to achieve the same effect as
@@ -513,24 +524,24 @@ console.log(friendsAtYourParty);
 ```
 
 This is a for loop which is likely the most common kind of loop. Inside the
-parens are three statements and you need all of them. The `let i = 0;` is you
+parens are three statements and you need all of them. The `let i = 0;` is you
 defining your control variable that will control the loop. For some reason
-people always use `i`, not sure why. It's just that way. It really could be
-anything. The second statement `i <= 10` is just like the while loop, is that's
+people always use `i`, not sure why. It's just that way. It really could be
+anything. The second statement `i <= 10` is just like the while loop, is that's
 the statement that is as soon as it's false it breaks the loop. The last
-statement, `i++` is that happens at the end of every loop. In our case, we
-increment the control variable `i` so that it creeps closer to the end of the
+statement, `i++` is that happens at the end of every loop. In our case, we
+increment the control variable `i` so that it creeps closer to the end of the
 loop each time.
 
 An important note: in coding, we start counting from 0. In English, we
-count `1, 2, 3, 4, 5, etc.` but in coding we count `0, 1, 2, 3, 4, etc.`. So the
+count `1, 2, 3, 4, 5, etc.` but in coding we count `0, 1, 2, 3, 4, etc.`. So the
 fifth element of a string is index 4 (where index is how we'd refer to where
 that item is in the string). Index 0 is the first element. It's weird but you
 get used to it and it makes a lot of things easier.
 
 Sometimes, if you mess up what's inside the control condition for the loop,
-you'll get a runaway loop that'll never complete. This is called an **infinite
-loop** and it'll lock up and crash your code. Something like this:
+you'll get a runaway loop that'll never complete. This is called an **infinite
+loop** and it'll lock up and crash your code. Something like this:
 
 ```jsx
 let friendsAtYourParty = 1;
@@ -593,8 +604,8 @@ parameters. The order is important that we send in the parameters because this
 will be the order function receives these parameters. You can have as many or as
 few parameters as you like.
 
-The way we **call** a function is you add parens to the end of it, like
-this: `someFunctionName()`. If you see parens after a variable name, you
+The way we **call** a function is you add parens to the end of it, like
+this: `someFunctionName()`. If you see parens after a variable name, you
 instantly know that that's a function. Inside of the parens go the parameters.
 These variables will be passed to the function that is being called in the order
 that you put them there. Example:
@@ -617,6 +628,17 @@ logOutYourHome(myHomeCity, myHomeState, myHomeCountry);
 'You are from Salt Lake City, Utah USA.';
 ```
 
+:::info
+
+Clément Mihailescu and Patrick Shyu (Who goes by Techlead (as a millionare)) are
+both well-known tech youtubers. Check them out!
+
+[Clément Mihailescu](https://www.youtube.com/channel/UCaO6VoaYJv4kS-TQO_M-N_g)
+
+[TechLead](https://www.youtube.com/channel/UC4xKdmAXFh4ACyhpiQ_3qBw)
+
+:::
+
 ## Builtins
 
 Lots of functions already exist for you! Smart people have created this
@@ -636,19 +658,19 @@ console.log(sentence.toLowerCase());
 
 Always be looking for the parens. And the best place to look all this stuff up
 is from our friends at Mozilla (makers of
-Firefox): [the MDN](https://developer.mozilla.org/en-US/). MDN used to stand for
+Firefox): [the MDN](https://developer.mozilla.org/en-US/). MDN used to stand for
 "Mozilla Developer Network" I think but now it's just synonmous with the
 documentation for the web. I literally look at this website several times a day.
 As I said before, you are not expected to remember everything. Looking things up
-on the MDN is **not** cheating.
+on the MDN is **not** cheating.
 
-You can call `Math.round(5.1)` and it'll return that number rounded (in
-this, `5`). You can
-use `string.substr(indexToStart, howManyCharactersToInclude)` to return part of
+You can call `Math.round(5.1)` and it'll return that number rounded (in
+this, `5`). You can
+use `string.substr(indexToStart, howManyCharactersToInclude)` to return part of
 a string. For
-example `const name = "Brian Holt"; console.log(name.substr(6, 3))` logs
-out `"Hol"` (remember numbering starts at 0). We'll introduce them as we go but
-know there are a *lot* of them. You'll learn by doing.
+example `const name = "Brian Holt"; console.log(name.substr(6, 3))` logs
+out `"Hol"` (remember numbering starts at 0). We'll introduce them as we go but
+know there are a *lot* of them. You'll learn by doing.
 
 ```jsx
 console.log(Math.round(5.1));
@@ -666,12 +688,12 @@ console.log(name.substr(5, 4));
 
 ## Data Types
 
-- `undefined` vs `null` and use cases
+- `undefined` vs `null` and use cases
 
-A brief note on what is called **types** in JavaScript. We've danced the idea
+A brief note on what is called **types** in JavaScript. We've danced the idea
 already and I want to make it a little more concrete for you. Strings, booleans,
 objects, arrays, numbers, these are different types of types. JavaScript is a
-language where you don't have to concern yourself *a lot* with types since it
+language where you don't have to concern yourself *a lot* with types since it
 doesn't strictly enforce them (other languages do) but in this problem you are
 definitely going to have to deal with it.
 
@@ -691,13 +713,13 @@ undefined
 ```
 
 Since you're doing math here, you'll need the numbers to actually be of the
-number type. Otherwise you'll get `"5" + "5" = "55"`. There's a function
-called `parseInt(string)` that will turn a string of a number (`"5"`) to a
+number type. Otherwise you'll get `"5" + "5" = "55"`. There's a function
+called `parseInt(string)` that will turn a string of a number (`"5"`) to a
 number (`5`).
 
-You'll also see that we used the `typeof` operator. `typeof` tells whatever the
+You'll also see that we used the `typeof` operator. `typeof` tells whatever the
 type of the thing that comes right after it is. This is useful to quickly see
-what's happening in your code. Be careful because `typeof` is not always useful,
+what's happening in your code. Be careful because `typeof` is not always useful,
 but it is useful for telling numbers and strings apart.
 
 ## Objects
@@ -739,8 +761,8 @@ Object {
 This is called an object. They're extremely useful in JavaScript, and are very
 similar to dictionaries in python. They're how you'll group together
 like-information so that they can be used together. They contain a bunch
-of **keys** and **values**. The keys are on the left side of the `:` and
-represent how you get that piece data of out of the object. `name` is one such
+of **keys** and **values**. The keys are on the left side of the `:` and
+represent how you get that piece data of out of the object. `name` is one such
 key.
 
 Used in conjunction with functions they're very powerful. Take this example:
@@ -835,13 +857,13 @@ Object {
 
 ## JSON
 
-**JSON** — short for **JavaScript Object Notation** — is a format for sharing
+**JSON** — short for **JavaScript Object Notation** — is a format for sharing
 data. As its name suggests, JSON is derived from the JavaScript programming
 language, but it’s available for use by many languages including Python, Ruby,
 PHP, and Java. JSON is usually pronounced like the name “Jason.”
 
-JSON uses the `.json` extension when it stands alone. When it’s defined in
-another file format (as in `.html`), it can appear inside of quotes as a JSON
+JSON uses the `.json` extension when it stands alone. When it’s defined in
+another file format (as in `.html`), it can appear inside of quotes as a JSON
 string, or it can be an object assigned to a variable. This format is easy to
 transmit between web server and client or browser. Very readable and
 lightweight, JSON offers a good alternative to XML and requires much less
@@ -949,7 +971,7 @@ Array [
 "Sunday"
 ```
 
-You first can see how we declare an array, using `[ ]`. Inside of an array, you
+You first can see how we declare an array, using `[ ]`. Inside of an array, you
 can store anything you can store in a variable. You can have an array of
 numbers, an arry of strings, an array of objects, an array of arrays, an array
 of arrays of arrays, etc.
@@ -975,13 +997,13 @@ console.log(primeNumbers.join(' | '));
 ('1 | 2 | 3 | 5 | 7 | 11 | 13 | 17');
 ```
 
-`primeNumbers.length` gives you back an number that is how long the array is. In
+`primeNumbers.length` gives you back an number that is how long the array is. In
 this case there are eight elements in the array so it gives us
-back `8`. `primeNumbers.join(" | "))` takes your whole array and makes it into
-one string. THe `" | "` paramenter I'm passing is what I want put between each
-element, so you end up with the string `"1 | 2 | 3 | 5 | 7 | 11 | 13 | 17"`.
+back `8`. `primeNumbers.join(" | "))` takes your whole array and makes it into
+one string. THe `" | "` paramenter I'm passing is what I want put between each
+element, so you end up with the string `"1 | 2 | 3 | 5 | 7 | 11 | 13 | 17"`.
 
-So what if I want to add an element to the array after I've created. Use `push`!
+So what if I want to add an element to the array after I've created. Use `push`!
 
 ```jsx
 const courses = [
@@ -1058,7 +1080,7 @@ arrays have. It "pushes" the element on the end.
 Below that, we're overriding index 2 with a new course. This will throw away
 what was there before and set it to be what we've set it to be.
 
-Okay, now, given that, what if we wanted to `console.log` everything in the
+Okay, now, given that, what if we wanted to `console.log` everything in the
 array? You already have all the tools to do that? Let's see to do it.
 
 ```jsx
@@ -1096,15 +1118,15 @@ cities.forEach(function (city) {
 'Hong Kong';
 ```
 
-The first way, using a for loop, we're using that `i` control variable which
-gets incremented each loop. We use that `i` to access each item in the array on
-each iteration of the loop. We have the loop stop when `i` gets equal to
-the `length` of cities. Very useful pattern. You'll see it a lot.
+The first way, using a for loop, we're using that `i` control variable which
+gets incremented each loop. We use that `i` to access each item in the array on
+each iteration of the loop. We have the loop stop when `i` gets equal to
+the `length` of cities. Very useful pattern. You'll see it a lot.
 
-The second way is using a function that arrays have called `forEach`.
-This `forEach` method takes in a function and that function will be called once
+The second way is using a function that arrays have called `forEach`.
+This `forEach` method takes in a function and that function will be called once
 on each item of the array. It will pass that item into the function, which is
-what `city` is in this situation. Both are useful patterns to know. You'll use
+what `city` is in this situation. Both are useful patterns to know. You'll use
 both frequently. While you're getting started, just use the one you feel
 comfortable with. They have different things that make them preferable in
 different situations but usually you can use either. Method 2 may be a bit more
@@ -1119,22 +1141,6 @@ this operator makes the code concise and enhances its readability.
 let fruits = ['apple', 'orange', 'banana'];
 let another_fruits = [...fruits, 'papaya']; //["apple", "orange", "banana", "papaya"]
 ```
-
-## Aside
-
-Both Ben Awad and Jonathan Ma (Known as Joma Tech) are well-known
-tech/development YouTubers. Go check them out!
-
-[Ben Awad](https://www.youtube.com/user/99baddawg)
-
-[Joma Tech](https://www.youtube.com/channel/UCV0qA-eDDICsRR9rPcnG7tw)
-
-Clément Mihailescu and Patrick Shyu (Who goes by Techlead (as a millionare)) are
-both well-known tech youtubers. Check them out!
-
-[Clément Mihailescu](https://www.youtube.com/channel/UCaO6VoaYJv4kS-TQO_M-N_g)
-
-[TechLead](https://www.youtube.com/channel/UC4xKdmAXFh4ACyhpiQ_3qBw)
 
 ---
 
