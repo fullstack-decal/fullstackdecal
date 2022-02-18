@@ -55,6 +55,7 @@ const schedule: Lesson[] = [
     topic: 'CSS 2',
     readingTitle: 'Advanced CSS',
     readingLink: '/docs/Lessons/Lesson4',
+    slides: 'https://docs.google.com/presentation/d/16adVo8gHZYjOC5GJK9ou3j9iQf088LjYivQeEFJculk/edit?usp=sharing',
     assigmentFormat: 'Project 1',
     assigmentTitle: 'Personal Website',
     assigmentDueDate: 'Feb 24',
@@ -65,11 +66,13 @@ const schedule: Lesson[] = [
     date: 'Feb 17',
     format: 'Lecture 4',
     topic: 'JavaScript 1',
+    slides: 'https://docs.google.com/presentation/d/1wp8pkY9fQ4THzmCtZImdPN7Y5UAHAhXOcryRkn17g9Y/edit?usp=sharing',
     readingTitle: 'Basic JavaScript',
     readingLink: '/docs/Lessons/Lesson5',
     assigmentFormat: 'Homework 3',
     assigmentTitle: 'Fun With JavaScript',
     assigmentDueDate: 'Mar 1',
+    assigmentLink: '/docs/Assignments/Projects/Assignment3',
   },
 
   {
