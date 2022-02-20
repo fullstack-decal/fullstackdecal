@@ -197,7 +197,7 @@ const schedule: Lesson[] = [
     readingTitle: 'MongoDB, Authentication',
     readingLink: '/docs/Lessons/Lesson14',
     assigmentFormat: 'Homework 8',
-    assigmentTitle: 'RESTful API Creation and CRUD Opertions',
+    assigmentTitle: 'RESTful API Creation and CRUD Operations',
     assigmentDueDate: 'Apr 14',
   },
   {
