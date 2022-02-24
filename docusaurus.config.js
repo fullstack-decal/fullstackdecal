@@ -55,9 +55,9 @@ const config = {
             label: 'Content',
           },
           {
-            to: 'course-policies',
+            to: 'Syllabus',
             position: 'left',
-            label: 'Course Policies',
+            label: 'Syllabus',
           },
           {
             to: 'staff',

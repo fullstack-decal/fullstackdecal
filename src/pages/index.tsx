@@ -67,7 +67,7 @@ const Home: React.FC = () => {
               Web Development at Berkeley&apos;s
             </Link>{' '}
             <Text as="span" fontWeight="bold">
-              Introduction to Full Stack Development!
+              Introduction to Full Stack Development
             </Text>{' '}
             In this course, we cover the basics of web development, how the
             internet works, and the frameworks, technologies, and best practices

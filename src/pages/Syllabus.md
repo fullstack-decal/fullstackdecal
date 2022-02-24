@@ -1,4 +1,4 @@
-# Course Policies
+# Syllabus 
 
 ## Course Details
 
@@ -21,40 +21,38 @@ lectures every week.
 - Lecture 1: Tuesday @ 6:30pm - 8:00pm pacific time
 - Lecture 2: Thursday @ 6:30pm - 8:00pm pacific time
 
-**Location:** Physics 1 classroom.
+**Location:** Physics 1 
 
 ## Course Overview
 
 ### Course Description
 
-Welcome to Web Development at Berkeley's Introduction to Full Stack Web
-Development! In this course we cover the basics of web development, how the
-internet works, and the frameworks, technologies, and best practices that are
-used in the industry today while specializing in either frontend/design or
-backend development. No prior CS experience is required to participate and
-succeed in this course, but we do acknowledge that we cover a fairly large
-amount of material and that this course can feel like a lot, even for those with
-past CS experience.
+Welcome to CS 198-099! This is Introduction to Full Stack Web
+Development, presented by Web Development at Berkeley. 
 
-The subjects covered in this decal include frontend development, backend
-development, and design using HTML, CSS, Javascript, React, Node, Express,
-MongoDB, AWS, Figma, and various other development technologies.
+In this course we cover the basics of web development. This includes everything from the fundamental frameworks that ground web development, the inner workings of the Internet itself, and many of the frameworks, technologies, and best practices that are
+used in the industry today. 
+
+No prior CS experience is required to participate and
+succeed in this course, but we do acknowledge that we cover a fairly large
+amount of material and that makes this course fairly heavy, even for those with
+prior CS experience.
+
+In the spirit of full-stack development, we cover the three main pillars of modern web development: backend development, frontend development, and design. 
 
 ### Teaching Plan
 
 Every week you will attend 2 lectures that are held in the Physics 1 classroom,
 each of which are 1.5 hours long. Each week we will have either a homework
 assignment or a project due. Course staff will be holding office hours regularly
-throughout the week in case help is needed. Towards the end of the semester we
-will create project groups, and students are then expected to meet and
-communicate with their project groups regularly.
+throughout the week to provide guidance and feedback on the assignments. Towards the end of the semester your work in this class will culminate in a final project with a project group whom we will assign.
 
 ### Learning goals
 
 By going through this DeCal, you’ll learn
 
 - Full-stack web development
-- Important software engineering principles
+- Software engineering principles
 - The basics of the internet and cloud technologies
 - How to create large software projects from scratch
 - How to navigate and use popular web design software
@@ -71,13 +69,11 @@ by.
 
 Please do not expect TAs to debug your code. This is not a good use of their
 time, and part of the goal of this course is to turn you into a great tester and
-debugger. However, the TAs can help you find and fix your bugs.
+debugger. However, the TAs can help you find bugs and offer you the proper approach to resolving them.
 
 ### Discussion Forum
 
-All important course announcements will be made on Slack. We will be creating
-channels where students can ask for help and recieve input and feedback from
-both their fellow students as well as course staff.
+All communication this semester will be centralized on Piazza. Please ask all questions there, and feel free to make private posts if you need to communicate with course staff directly.
 
 ### Piazza Etiquette
 
