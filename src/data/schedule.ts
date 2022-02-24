@@ -74,7 +74,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 3',
     assigmentTitle: 'Fun With JavaScript',
     assigmentDueDate: 'Mar 1',
-    assigmentLink: '/docs/Assignments/Projects/Assignment3',
+    assigmentLink: '/docs/Assignments/Homework/Assignment3',
   },
 
   {
