@@ -89,7 +89,7 @@ console.log(a); // 25?
 Anything that defined inside a curly bracket (if, else, ...) is in **BLOCK**
 scope.
 
-![Devops Image](../assets/Lesson6/Lesson7-1.png)
+![Devops Image](../assets/Lesson7/Lesson7-1.png)
 
 ### var vs. let vs. const
 
@@ -149,7 +149,7 @@ errors right at the compiling stage.
 Also, they are **block scoped**, meaning that things defined in a if statement
 would not influence things outside the if statement.
 
-![Devops Image](../assets/Lesson6/Lesson7-1.png)
+![Devops Image](../assets/Lesson7/Lesson7-1.png)
 
 ### Lexical Scope
 
@@ -158,7 +158,7 @@ can be accessible inside another function defined after the variable
 declaration. But the opposite is not true; the variables defined inside a
 function will not be accessible outside that function.
 
-![Devops Image](../assets/Lesson6/Lesson7-2.png)
+![Devops Image](../assets/Lesson7/Lesson7-2.png)
 
 - the relationship between global & local scope can also be considered as a kind
   of lexical scope.
@@ -234,7 +234,7 @@ you start an action, your program continues to run. When the action finishes,
 the program is informed and gets access to the result (for example, the data
 read from a server).
 
-![Devops Image](../assets/Lesson6/Lesson7-3.png)
+![Devops Image](../assets/Lesson7/Lesson7-3.png)
 
 This is especially important for javascript, since we will be doing asynchronous
 action (fetching data) a lot! Javascript also relies on asynchronous rather than
@@ -297,7 +297,7 @@ A promise may be in one of 3 possible states: fulfilled, rejected, or pending.
 Promise users can attach callbacks to handle the fulfilled value or the reason
 for rejection.
 
-![Devops Image](../assets/Lesson6/Lesson7-4.png)
+![Devops Image](../assets/Lesson7/Lesson7-4.png)
 
 To handle a promise, you can use `.then` method of a promise to pass in two
 functions, one for the promise that resolves and one for the promise that
