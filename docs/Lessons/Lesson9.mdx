@@ -776,7 +776,7 @@ Nice! Now we've successfully given our `Button` component a prop called text.
 Now how do we use it? For demonstration purposes, let's go back to our old
 `Button` component.
 
-```jsx
+```jsx title="/src/Button.js"
 const Button = () => {
   return (
     <div>
@@ -789,7 +789,7 @@ const Button = () => {
 to use props, we have to pass `props` into our Button component by passing them
 as an input into our `Button` function like so.
 
-```jsx
+```jsx title="/src/Button.js"
 const Button = (props) => {
   return (
     <div>
@@ -803,7 +803,7 @@ We can now access all the props that we pass into our `Button` component when we
 use it! Let's access our text component like so. Remember that we can use
 variables in our HTML by adding `{}` around them.
 
-```jsx
+```jsx title="/src/Button.js"
 const Button = (props) => {
   return (
     <div>
@@ -821,7 +821,7 @@ Now lets say that we pass in a `title` prop into our `Button` component.
 
 We can then use it in a similar manner.
 
-```jsx
+```jsx title="/src/Button.js"
 const Button = (props) => {
   return (
     <div>
@@ -837,7 +837,7 @@ creating 3 different buttons in our `App.js` that all say different things, but
 all use our improved `Button` component. While we're doing so, let's clean up
 our `App` component a bit.
 
-```jsx
+```jsx title="/src/App.js"
 function App() {
   return (
     <div className="App">
@@ -871,49 +871,115 @@ component that those props are being passed to will cause an error.
 There are 2 main ways of passing around data in your new React app. The first
 one is props, which we introduced above, and the second one is state.
 
-## The Anatomy of a React App
+### State vs. Props
 
-![React Project File Structure](../assets/Lesson9/file-structure.png)
+Let's go back to our house analogy to conceptualize the difference between state
+and props. Let's focus on our door. The color of our door is a **property** of
+our door. This is, for the most part, hard to change, and only needs to change
+depending on our house. For example, say we create a `House` component, and
+we're trying to build a neighborhood. We might want to make `doorColor` a
+property that we pass into our `House` component. State, however, is meant for
+more dynamic changes. In this example, you could think of whether the door is
+opened or closed as the **state** of the door. This is something that is easily
+changeable, and says more about teh state of the door than the door itself. It
+doesn't matter what the properties of the door are - all doors open and close.
 
-A React app is composed of many different files and filetypes - what do each of
-them do and why do we need them? Knowing the answer to this question isn't
-knowledge that applies just to frontend engineering, but crucial to becoming a
-full-fledged software engineer.
+### Introduction to Hooks
 
-### `README.md`
+When we want to engage in state management within React (which you'll learn
+about extensively in the coming React lessons, examples, and labs), we use
+**hooks**. As contained within the term, state management has to do with
+controlling the state.
 
-Essentially a back-of-the-book summary of your code. Your
-[`README.md`](http://readme.md) should describe what your code is for, what it
-does, and if applicable, it should provide a detailed overview of each file and
-its functions. Think about your [`README.md`](http://readme.md) as a guide to
-your code.
+Going back to our door example, If we want to create a button to open or close
+the door, or just in general record when the door has opened or closed, we would
+use a hook to keep track and even change the state of the door. Using a more
+concrete web development example, let's say that we want to keep track of a
+user's account balance in some sort of banking website or web app. using React
+speak, the user's balance wouldn't be a property of their account, since it's
+dynamic and can change often. The balance would instead be part of the **state**
+of the account. An example of a prop that the account might instead have is it's
+account number, name, and other things that aren't dynamic and instead a mostly
+unchanging property of the account.
 
-### `package.json` and `package-lock.json`
+### useState
 
-package.json is essentially a list of the dependencies of your app!
+Now that we've explained the concept behind state in React, let's demonstrate
+how we can actually use it! To do so, we'll make a simple app that counts the
+number of times that our user has clicked a button.
 
-package-lock.json is a version-locked version of package.json, so that each new
-device that downloads the code downloads the correct dependencies. This is to
-prevent new updates to dependencies breaking your code.
+#### Setup
 
-### `node_modules`
+Before getting started, let's clean up what we currently have a bit. Please make
+sure your `App.js` looks like the following.
 
-Where all your dependencies live! You should never ship out node_modules because
-its YUGE (try opening it up and you'll see). Always include node_modules in your
-.gitignore.
+```jsx title="/src/App.js"
+import './App.css';
 
-### `build`
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Let's Count!</h1>
+        <button>click me!</button>
+      </header>
+    </div>
+  );
+}
 
-A minified build version of your app - All your code is transformed into an
-extremely compact version of itself, and this version is what is meant to be
-served to the public, since you get a huge speedup from using the build version!
-Run `npm run build` in the root directory of your app in the terminal to create
-the build folder!
+export default App;
+```
+
+You should see the following.
+
+![Start State](../assets/Lesson9/state-start.png)
+
+#### Importing Hooks
+
+Now lets import our `useState` hook. In order to use state, we have to import
+and use the `useState` hook in our app. We can import `useState` by doing the
+following at the top of our `App.js` file.
+
+```jsx
+import React, { useState } from 'react'.
+```
+
+In general, this is how we import hooks in React. If we wanted to import the
+useEffect and useMemo hooks as well (which you don't need to worry about), you
+would do the following.
+
+```jsx
+import React, { useState, useEffect, useMemo } from 'react'.
+```
+
+#### Using Hooks
+
+This is where it gets confusing. Going back to our `App.js`, let's add the
+following.
+
+```jsx {1,6}
+import React, { useState } from 'react';
+
+import './App.css';
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Let's Count!</h1>
+        <button>click me!</button>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
 
 ---
 
 **Contributors**
 
 - [Samarth Goel](https://www.linkedin.com/in/samarth-goel-1047b8187/)
-- [Arushi Somani](https://www.linkedin.com/in/arushisomani/)
-- [Brian Holt](https://www.linkedin.com/in/btholt/)

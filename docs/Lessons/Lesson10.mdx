@@ -706,6 +706,44 @@ component library. They offer a minimal, less opinionated CSS foundation that
 will help you speed up development, while at the same time allowing tremendous
 flexibility.
 
+## The Anatomy of a React App
+
+![React Project File Structure](../assets/Lesson9/file-structure.png)
+
+A React app is composed of many different files and filetypes - what do each of
+them do and why do we need them? Knowing the answer to this question isn't
+knowledge that applies just to frontend engineering, but crucial to becoming a
+full-fledged software engineer.
+
+### `README.md`
+
+Essentially a back-of-the-book summary of your code. Your `README.md` should
+describe what your code is for, what it does, and if applicable, it should
+provide a detailed overview of each file and its functions. Think about your
+`README.md` as a guide to your code.
+
+### `package.json` and `package-lock.json`
+
+package.json is essentially a list of the dependencies of your app!
+
+package-lock.json is a version-locked version of package.json, so that each new
+device that downloads the code downloads the correct dependencies. This is to
+prevent new updates to dependencies breaking your code.
+
+### `node_modules`
+
+Where all your dependencies live! You should never ship out node_modules because
+its YUGE (try opening it up and you'll see). Always include node_modules in your
+.gitignore.
+
+### `build`
+
+A minified build version of your app - All your code is transformed into an
+extremely compact version of itself, and this version is what is meant to be
+served to the public, since you get a huge speedup from using the build version!
+Run `npm run build` in the root directory of your app in the terminal to create
+the build folder!
+
 ---
 
 ## Package Managers (Optional)
