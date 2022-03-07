@@ -62,8 +62,9 @@ One of the biggest advantages to using a framework tends to be reusability. For
 example, every time you create a new page in your website, you have to copy
 paste in the same code for your navbar into each file, and if you want to make a
 small tweak to it, it has be repeated many times, once in each of your files.
-Frameworks help aleviate this problem, and many more related to data management,
-rendering, and the logic associated with different parts of our website.
+Frameworks help alleviate this problem, and many more related to data
+management, rendering, and the logic associated with different parts of our
+website.
 
 #### Why use React?
 
@@ -155,8 +156,8 @@ Let's go integrate this into our project.
 
 Either install Prettier globally `npm install --global prettier`, or use the
 [VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode&WT.mc_id=reactintro-github-brholt).
-I would reccomend using the VSCode extension if you are using Visual Studio Code
-as your primary IDE (which I also highly, _highly_, reccomend).
+I would recommend using the VSCode extension if you are using Visual Studio Code
+as your primary IDE (which I also highly, _highly_, recommend).
 
 If you're using the VSCode extension, set it to only run Prettier when it
 detects a Prettier config file. Makes it so you never have to turn it off. In
@@ -559,10 +560,10 @@ One way to do this is to use the regular html `button` tag 3 times and update
 each tag if I want to make a change to my button's text, but if we were to
 instead use the `Button` component we've just made, changing all 3 buttons would
 simply consist of making 1 edit to our `Button` component. Pretty neat, right!
-Now imagine you had 1000 buttons all accross your site. As we'll show later,
-even if they're slightly different, we still only need 1 component for all of
-these buttons, and consequently only need to make changes to one file if we want
-to change the buttons on our site.
+Now imagine you had 1000 buttons all across your site. As we'll show later, even
+if they're slightly different, we still only need 1 component for all of these
+buttons, and consequently only need to make changes to one file if we want to
+change the buttons on our site.
 
 Let's go through one example of what using our `Button` component may actually
 look like inside of our new website. Lets add our `Button` component to
@@ -673,8 +674,8 @@ ReactDOM.render(
 reportWebVitals();
 ```
 
-Let's disect this. As usual, we see `import React from 'react';` this is a given
-since we're trying to create a React App. Skipping around a bit we see
+Let's dissect this. As usual, we see `import React from 'react';` this is a
+given since we're trying to create a React App. Skipping around a bit we see
 `import './index.css';`. No surprise there either, just importing a CSS file to
 use. Let's look at the line after that.
 
@@ -716,7 +717,7 @@ later, but you'll rarely ever need to make changes to this file.
 
 In the code above you see that our `App` component is wrapped in a
 `React.StrictMode` tag. By wrapping a component in `React.StrictMode`, all we've
-done is make it so that we recieve a warning if React detects that there might
+done is make it so that we receive a warning if React detects that there might
 be potential problems with the code we write or any imports we use.
 
 :::
@@ -954,8 +955,61 @@ import React, { useState, useEffect, useMemo } from 'react'.
 
 #### Using Hooks
 
-This is where it gets confusing. Going back to our `App.js`, let's add the
-following.
+Let's take a step back and figure out how we want to go about accomplishing our
+task of creating a counter. We would need to have a `count` variable to figure
+out how many times that our button has been clicked, and we'd also need a
+function to increase the number of times that our button has been clocked. This
+function would need to occur whenever the button is clicked.
+
+Let's add these into our code like so.
+
+```jsx {2,4,5,6,13}
+function App() {
+  let count = 0;
+
+  const updateCount = () => {
+    count = count + 1;
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Let's Count!</h1>
+        <button>click me!</button>
+        <p>Count: {count}</p>
+      </header>
+    </div>
+  );
+}
+```
+
+Next, let's make sure that our `updateCount` is called every time our button is
+clicked. To accomplish this, simply pass our `updateCount` function into the
+`onClick` attribute of the button like so.
+
+```jsx
+<button onClick={updateCount}>click me!</button>
+```
+
+You should see the following.
+
+![No ReRender](../assets/Lesson9/no-rerender.png)
+
+Try clicking your new button. If you're confused about why your counter isn't
+going up, you've just run into the problem of **rendering**, an incredibly
+important React, and frontend issue. Rendering is an incredibly complicated
+topic within the frontend space, so we'll keep it simple in this lesson.
+Essentially, all you need to know about rendering is that React only re-renders
+your screen when state is updated. What does this mean? It means that every time
+state is updated, React runs through your JSX again and displays the new code in
+our browser. In our case, that would mean that it would show the exact same
+things, except our count variable would be different. Since in our above code
+snippet we didn't change state in any way, React didn't re-render what ou saw on
+screen, so the initial value of the count variable is all you could see on
+screen.
+
+So how do you use state? This is where it gets confusing. Going back to our
+`App.js`, let's make sure it looks like the following.
 
 ```jsx {1,6}
 import React, { useState } from 'react';
@@ -978,8 +1032,180 @@ function App() {
 export default App;
 ```
 
+Let's take a closer look at the following line.
+
+```jsx
+const [count, setCount] = useState(0);
+```
+
+Let's break down what we see above. Using the `useState` hook, we've created 2
+variables, `count` and `setCount`. `count` is a variable that is equal to a
+number. With the `useState` hook, whatever value we pass into the `useState`
+hook is the initial value of the first variable we're defining. Here we passed
+in `0` into `useState`, so `count` starts off being equal to 0. To solidify
+this, lets look at one more example.
+
+```jsx
+const [name, setName] = useState('Joshua');
+```
+
+Here, I'm creating a variable called `name` that is initialized to the value
+"Joshua". Thus, if I used the `name` variable in my JSX code, it would show up
+as "Joshua". Same with our counter code. Add the following line to your code.
+
+```jsx {13}
+import React, { useState } from 'react';
+
+import './App.css';
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Let's Count!</h1>
+        <button>click me!</button>
+        <p>Count: {count}</p>
+      </header>
+    </div>
+  );
+}
+```
+
+Now you should see the same thing that we saw earlier when we weren't using
+state. If you try to click the button, the counter still won't increment, but
+that sort of behavior should now make sense since we haven't told the button to
+call any function or do anything when it's clicked yet.
+
+Next let's talk about `setCount`. We've learnt that the first variable created
+by the `useState` hook is a variable that starts off with whatever value was
+passed into the `useState` hook, but how do we update this variable? We can't do
+`count = count + 1` or anything similar for variables declared through the
+`useState` hook. Instead, we have to use the **updater function** tied to that
+variable. The updater function is the second variable declared by the `useState`
+hook, In this case, `setCount` is our updater function for `count`.
+
+To use an updater function, simply pass in a value. This passed in value becomes
+the new value of the associated variable. For example, calling `setCount(5)`
+would se our `count` variable equal to 5. Calling setCount(-999) would make
+`count` equal to -999. Basically, our updater function sets whatever our
+variable is.
+
+Going back to our name example for some more clarity, let's say we have
+`const [name, setName] = useState('Joshua')` as before. If the `name` variable
+represents our username in a game, we might want to change it later. Let's say
+we want to change it to "reactgod007". We simply call `setName("reactgod007)`
+and now our `name` variable is equal to "reactgod007".
+
+We want to increase our `count` variable by 1 every time our button is clicked,
+however, and not just set `count` to whatever we want! To set this up in our
+code, let's bring back our old friend, the `updateCount` function, and pass it
+into our button.
+
+```jsx {4,11}
+function App() {
+  const [count, setCount] = useState(0);
+
+  const updateCount = () => {};
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Let's Count!</h1>
+        <button onClick={updateCount}>click me!</button>
+        <p>Count: {count}</p>
+      </header>
+    </div>
+  );
+}
+```
+
+Right now, our `updateCount` function is called every time our button is
+clicked, but nothing happens because the body of the function is empty. Going
+backwards, what we want `updateCount` to do is increment our `count` variable
+by 1. We can change our `count` variable by calling `setCount`. Thus, all we
+need to do is call `setCount(count + 1)`. This would set the value of our
+`count` variable equal to the old value of the `count` variable plus 1. Adding
+this to the body of our `updateCount` function, we get the following.
+
+```jsx {4,5,6}
+function App() {
+  const [count, setCount] = useState(0);
+
+  const updateCount = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Let's Count!</h1>
+        <button onClick={updateCount}>click me!</button>
+        <p>Count: {count}</p>
+      </header>
+    </div>
+  );
+}
+```
+
+Congrats! Every time you click your button, you should see the counter increment
+by 1. You've made a full-fledged counter!
+
+### Calling onClick with Parameters (Optional)
+
+Before concluding this lesson, I'd like to show you one last way to accomplish
+what we did above.
+
+Instead of creating a new `updateCount` function to call our `setCount` function
+every time our button is clicked, we can call our `setCount` function directly
+from our button like so.
+
+```jsx
+<button onClick={() => setCount(count + 1)}>click me!</button>
+```
+
+What we've done is create an arrow function that, when called, calls
+`setCount(count + 1)`, which is what we want to call in order to increment our
+`count` variable by 1. In general when you want to call a function with
+parameters when you click a button, you have to use this arrow function method.
+
+What if our `updateCount` function took in a parameter called `value` which
+dictated how much to increment our `count` variable by? It would look like this.
+
+```jsx
+const updateCount = (value) => {
+  setCount(count + value);
+};
+```
+
+We can no longer pass in `updateCount` into our button's `onClick` directly
+since it now has a parameter. Instead, we have to do what we did above.
+
+```jsx
+<button onClick={() => updateCount(1)}>click me!</button>
+```
+
+## Conclusion
+
+While this may seem like a somewhat straightforward application, you've learnt a
+LOT in this lesson. To recap, you've learnt the basics of components, JSX,
+props, and state in React. Using these fundamentals, you can build almost
+anything you want!
+
+Make sure to go through the example for this lesson after going through the
+reading:
+
+[React 1 example lab - building a game of tic-tac-toe](/docs/Lessons/Lesson9-2)
+
+Work through this example step-by-step by yourself. This will help put all the
+concepts we've learnt today into perspective and help you understand how we can
+use them outside of our simple counter example and in a more complicated use
+case.
+
 ---
 
 **Contributors**
 
 - [Samarth Goel](https://www.linkedin.com/in/samarth-goel-1047b8187/)
+- [Brian Holt](https://www.linkedin.com/in/btholt/)
