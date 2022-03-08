@@ -98,7 +98,7 @@ const schedule: Lesson[] = [
     readingLink: '/docs/Lessons/Lesson7',
     assigmentFormat: 'Project 2',
     assigmentTitle: 'Calculator',
-    assigmentDueDate: 'Mar 8',
+    assigmentDueDate: 'Mar 11',
   },
 
   {
