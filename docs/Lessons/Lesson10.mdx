@@ -2,36 +2,735 @@
 sidebar_position: 12
 ---
 
-# Lesson 9 - React 2: Routing, Styling, and Libraries
+# Lesson 9 - React 2: More Hooks, Libraries, Styling, and Routing
 
-Welcome to React 2! In this lesson, we'll introduce you to the react ecosystem,
-which is a very, VERY large part of what makes react so useful and why it's
-considered the dominant frontend framework.
+## Introduction
 
-We now have a solid understanding of React, and know how to use components,
-state, and props to build basic yet powerful web apps. This lessons introduces
-the tools most commonly used to build large-scale web applications. These tools
-allow you to go from basic single-page websites to sprawling apps likes Facebook
-and Airbnb.
+Welcome to the second React lesson of the course! In this reading, we'll begin
+with a review of hooks and the `useState` hook which we covered in our last
+reading. We'll then dive into the `useEffect` hook. Together, `useState` and
+`useEffect` are extremely powerful, and are probably the only 2 hooks you'll
+need in this course.
 
-Over the last couple lessons, we've used package managers — even if we didn't
-fully realize it. We'll start by diving into different package managers such as
-`npm` and `yarn`. We'll use these to add tools to your app.
+After looking at hooks, we'll delve into how styling works in React, covering a
+couple ways that you can use to ensure that your React apps look as beautiful as
+your websites did in the first part of the course.
 
-Next, we'll cover routing and how to add different pages to your web app. We'll
-aim to cover dynamic routing as well, to demonstrate what happens if you want a
-large number of pages or need a page for various pieces of data. Say goodbye to
-the `<a>` tag.
+Next, we'll dive into the notion of libraries in React and the powerful
+ecosystem that surrounds it. From there, we'll cover component libraries, a
+powerful way to write less code and create stunning UI's in minutes as compared
+to hours.
 
-Lastly, we'll go over using CSS in react and why the old method of simply
-importing CSS files may not be desirable, and the unintended consequences of not
-using a specialized solution. We'll talk about some of these solutions — CSS
-modules, styled components, or SASS.
+Finally, we'll touch upon routing and how to easily add multiple pages to your
+websites in React.
 
-We'll also talk about component libraries and their use cases, as well as
-introduce you to some popular ones that are commonly used. We'll do a demo with
-the most well-known one, `React-Bootstrap`, to get you familiar with the basics
-of using component libraries in react.
+## useEffect
+
+Let's start with a quick review of hooks!
+
+### Hook review
+
+`useEffect` is a hook. Hooks in React manage the state of your application.
+Essentially, hooks are functions that let you “hook into” React state and
+lifecycle features from functional components. React provides a few built-in
+Hooks like `useState`. You can also create your own Hooks to reuse stateful
+behavior between different components. In the
+[React 1 Reading](/docs/Lessons/Lesson9), you learnt about the `useState` hook,
+which we used to initialize a variable, along with an updater function for that
+variable. Let's do a quick review of `useState` before moving on.
+
+### useState Review
+
+Let's recreate a counter example, just like we did in the
+[React 1 Reading](/docs/Lessons/Lesson9).
+
+This example renders a counter. When you click the button, it increments the
+value of `count`.
+
+```jsx
+import React, { useState } from 'react';
+
+const Counter = () => {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+};
+```
+
+Here, `useState` is a Hook. We call it inside of a functional component in React
+to manage the state of our application. `useState` returns a pair: the current
+state value and a function that lets you update it. You can call this function
+from anywhere to update the current state value. In our example above, we
+initialized `count` to have a starting state value of `0` and `setCount` to a
+function which updates our `count` variable. The only argument to `useState` is
+the initial state. In the example above, it is 0 because our counter starts from
+zero.
+
+#### What Do Square Brackets Mean?
+
+You might have noticed the square brackets when we declare a state variable:
+
+```javascript
+const [count, setCount] = useState(0);
+```
+
+The names on the left aren’t a part of the React API. You can name your own
+state variables:
+
+```javascript
+const [fruit, setFruit] = useState('banana');
+```
+
+This JavaScript syntax is called “array destructuring”. It means that we’re
+making two new variables `fruit` and `setFruit`, where `fruit` is set to the
+first value returned by `useState`, and `setFruit` is the second. It is
+equivalent to this code:
+
+```javascript
+var fruitStateVariable = useState('banana'); // Returns a pair
+var fruit = fruitStateVariable[0]; // First item in a pair
+var setFruit = fruitStateVariable[1]; // Second item in a pair
+```
+
+When we declare a state variable with `useState`, it returns a pair — an array
+with two items. The first item is the current value, and the second is a
+function that lets us update it. Using `[0]` and `[1]` to access them is a bit
+confusing because they have a specific meaning. This is why we use array
+destructuring instead.
+
+##### Declaring Multiple State Variables
+
+Declaring state variables as a pair of `[something, setSomething]` is also handy
+because it lets us give different names to different state variables if we want
+to use more than one:
+
+```jsx
+const ExampleWithManyStates = () => {
+  // Declare multiple state variables!
+  const [age, setAge] = useState(42);
+  const [fruit, setFruit] = useState('banana');
+  const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+  // ...
+};
+```
+
+In the above component, we have `age`, `fruit`, and `todos` as local variables,
+and we can update them individually:
+
+```jsx
+function handleOrangeClick() {
+  setFruit('orange');
+}
+```
+
+You **don’t have to** use many state variables. State variables can hold objects
+and arrays just fine, so you can still group related data together.
+
+### Using useEffect
+
+#### Importing useEffect
+
+Similar to `useState` and any other hook we might want to use, we import
+`useEffect` like so.
+
+```javascript
+import React, { useState, useEffect } from 'react';
+```
+
+If we just wanted to import `useEffect` and not `useState`, we would do the
+following:
+
+```javascript
+import React, { useEffect } from 'react';
+```
+
+#### Counter Example
+
+The `useEffect` hook lets you perform side effects in function components:
+
+```jsx {1,6-10}
+import React, { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+```
+
+This code snippet is based on on our previous counter example, but we added a
+new feature to it: we set the document title to a custom message including the
+number of clicks.
+
+Data fetching, setting up a subscription, and manually changing the DOM in React
+components are all examples of side effects.
+
+Sometimes, we want to **run some additional code after React has updated the
+DOM.** Network requests, manual DOM mutations, and logging are some common
+examples of effects.
+
+#### Details
+
+**What does `useEffect` do?** By using this Hook, you tell React that your
+component needs to do something after render. React will remember the function
+you passed (we'll refer to it as our "effect"), and call it later after
+performing the DOM updates. In this effect, we set the document title, but we
+could also perform data fetching or call some other imperative API.
+
+**Why is `useEffect` called inside a component?** Placing `useEffect` inside the
+component lets us access the `count` state variable (or any props) right from
+the effect. We don't need a special API to read it -- it's already in the
+function scope.
+
+**Does `useEffect` run after every render?** Yes! By default, it runs both after
+the first render _and_ after every update. (We will later talk about how to
+customize this). Instead of thinking in terms of "mounting" and "updating", you
+might find it easier to think that effects happen "after render". React
+guarantees the DOM has been updated by the time it runs the effects.
+
+Now that we know more about effects, these lines should make sense:
+
+```jsx
+function Example() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
+}
+```
+
+We declare the `count` state variable, and then we tell React we need to use an
+effect. We pass a function to the `useEffect` Hook. This function we pass _is_
+our effect. Inside our effect, we set the document title using the
+`document.title` browser API. We can read the latest `count` inside the effect
+because it's in the scope of our function. When React renders our component, it
+will remember the effect we used, and then run our effect after updating the
+DOM. This happens for every render, including the first one.
+
+### General Usage
+
+Now that we've learnt the basics of hooks and `useEffect`, lets take another
+look at how to use `useEffect` in a more general setting. The general format of
+a`useEffect` hook is as follows.
+
+```jsx
+useEffect(() => {
+  // put your code here
+}, dependencies);
+```
+
+Essentially, `useEffect` is a function that takes in two arguements. The first
+arguement is a function with what you want your `useEffect` hook to do. This
+function takes in no arguements, hence the empty brackets at the beginning of
+our passed in arrow function. The second arguement, which is optional, is an
+array of dependencies. For example, let's say that inside of our `useEffect`
+hook, we want to update our `score` variable, but only if the `referee` variable
+has changed. It would look something like this:
+
+```jsx
+useEffect(() => {
+  setScore(someNewScore);
+}, [referee]);
+```
+
+Thus we only `setScore` to our new score value if the `referee` variable
+changes. If we wanted to set it so that we only updated the score based on
+either the `referee` variable or the `inning` variable changing, we could do
+something like this.
+
+```jsx
+useEffect(() => {
+  setScore(someNewScore);
+}, [referee, inning]);
+```
+
+#### Running useEffect on First render
+
+If the `useEffect` hook seemed confusing to you, that's totally fine! Just make
+sure to **pay attention here**.
+
+If you want to update something in your app, or have something happen right at
+page load, you can put it into the useEffect function, and **pass in an empty
+array into it's list of dependencies**. For example, say I wanted to print
+"Hello World" to the console right at page load. I would do the following.
+
+```jsx
+useEffect(() => {
+  console.log('Hello World');
+}, []);
+```
+
+Notice the empty array that was passed into the second arguement of our
+`useEffect`. This ensures that whatever's in our `useEffect` function only runs
+on page load. This will come up more often than not when you're building and
+testing any future projects.
+
+## Styling in React
+
+There are many, many ways to style your components and JSX code in React. In
+this reading we'll talk about CSS-in-JS, CSS Modules, and Styled Components.
+
+### CSS-in-JS
+
+CSS-in-JS is a term you'll hear often, but what exactly does it mean? CSS-in-JS
+usually means using an alternative method of styling than just plain CSS files,
+such as [styled-components](https://styled-components.com/) or
+[css-modules](https://github.com/css-modules/css-modules). These solutions often
+require some change in the javascript that is being written, which is why we
+call these solutions "CSS in JS".
+
+Why do we care about using CSS-in-JS? This is because all CSS in our react app
+is global. Say you have two components, Page1 and Page2. Even if you create
+`page1.css` and `page2.css` and only import page1.css into your Page1 component,
+all the classes you create in `page1.css` will apply to your Page2 component as
+well. Thus if you accidentally use the same class name across both components,
+or use a class name multiple times anywhere in your app, the CSS rules you've
+written in `page1.css` will apply everywhere, which in most cases is highly
+undesirable and can cause unintended and difficult to fix CSS collisions.
+
+### CSS Modules
+
+CSS modules transforms your CSS files from being globally scoped to being
+component scoped, which means that the CSS you import into your component only
+affects the component you've imported that CSS file into. To transform a CSS
+file into a CSS modules file, simply change the file name from `<file name>.css`
+to `<file name>.module.css`. CSS modules also works with sass. In order to use
+CSS modules in your app, make the following changes.
+
+```jsx
+//Importing Regular CSS
+import './styles.css';
+
+//Using Regular CSS
+<div className="container">
+  <h3>Hi There!</h3>
+</div>;
+```
+
+```jsx
+//Importing CSS Modules
+import styles from './styles.module.css';
+
+//Using CSS Modules
+<div className={styles['container']}>
+  <h3>Hi There!</h3>
+</div>;
+```
+
+The difference in your JavaScript files is that you treat your CSS file as an
+object and access the class names the same way you would access an object's
+attributes, but that's it! Your CSS files remain the same and now there's no
+need to worry about annoying CSS collisions.
+
+#### Installation
+
+CSS modules comes pre-installed with Create React App (sometimes referred to as
+CRA).
+
+#### Documentation
+
+[Documentation](https://github.com/css-modules/css-modules)
+
+---
+
+### Styled Components
+
+Using styled components is a bit more tricky.
+
+#### Why Use Styled Components
+
+- Write CSS in JS alongside HTML in JS, but don't have to inline the CSS
+- Keeps track of which components are rendered on a page and injects their
+  styles and nothing else, fully automatically.
+- You never have to worry about duplication, overlap or misspellings. No need to
+  keep track of class names.
+- Adapting the styling of a component based on its props or a global theme is
+  simple and intuitive without having to manually manage dozens of classes.
+
+#### Installation
+
+```bash
+npm i styled-components
+```
+
+#### Trying It Out
+
+In `app.js`,
+
+```jsx
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+const Wrapper = styled.section`
+  padding: 4em;
+  background: papayawhip;
+`;
+
+render(
+  <Wrapper>
+    <Title>Hello World!</Title>
+  </Wrapper>
+);
+```
+
+The naming is as intuitive as it seems — `Title` is an `<h1>` tag, but with some
+styles associated with it. `Wrapper` is a div, but with some styles associated
+with it. To add style, we no longer need to inline, we can simply change the
+definition of `Title` or `Wrapper`.
+
+#### Passing Arguments
+
+```jsx
+const Button = styled.button`
+  background: ${(props) =>
+    props.primary === true ? 'palevioletred' : 'white'};
+  color: ${(props) => (props.primary ? 'white' : 'palevioletred')};
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
+
+render(
+  <div>
+    <Button>Normal</Button>
+    <Button primary={true}>Primary</Button>
+  </div>
+);
+```
+
+#### Documentation
+
+[styled-components](https://styled-components.com/)
+
+## Component Libraries
+
+A UI component library is a set of ready-made UI components such as buttons,
+inputs, dialogs, and so on. They serve as building blocks for layouts. Thanks to
+their modular nature, we can arrange components in many different ways to
+achieve unique effects. Each library has a distinctive look and feel, but most
+of them offer theming, and their components are customizable to a certain
+degree.
+
+Popular component libraries for React include React-Bootstrap, Theme UI, and
+Chakra UI. We'll be focusing on Chakra UI.
+
+Libraries are made for one reason – to make developers’ lives easier. UI
+component libraries are no different in their purpose.
+
+#### Benefits
+
+- **Speed** – incorporating a UI component library can have a great impact on
+  development speed. Instead of creating each element from scratch, we simply
+  mix and match the existing components. Even if some additional customization
+  is required, it tends to be much quicker than writing styles on our own.
+- **Ease of use** – components are meant to be easy to use. Established
+  libraries are well-organized and have good documentation that is easy to
+  follow. Very often, it’s enough just to copy and paste code snippets to make
+  it work.
+- **Attractive look** – components look great without requiring any extra effort
+  from the developer; they’re carefully designed by professionals.
+- **Compatibility** – ensuring cross-browser and cross-device compatibility is
+  one of the biggest challenges of frontend development. UI component libraries
+  provide compatibility out of the box, which makes everything so simple!
+- **Accessibility** – good libraries adhere to accessibility guidelines, so
+  developers don’t even need to think about it.
+
+#### Drawbacks
+
+- **Generic look** – your app’s look and feel will be determined by the
+  library’s style in most parts. This is not necessarily an issue, but you need
+  to make sure that this is acceptable for your project.
+- **Change of design direction** – It’s very important that designers understand
+  and stick to components offered by the library. If the direction changes
+  towards a custom solution, it will become increasingly difficult and
+  time-consuming to overwrite the initial implementation.
+- **New team members** – every developer and designer needs to be familiar with
+  the particular library and its implementation (though this point is true for
+  any design system and any project).
+- **Bundle size** – UI component libraries tend to be big, so it’s probably not
+  the best idea to engage them in tiny projects.
+
+---
+
+### Chakra-UI
+
+Chakra UI is component library based on a few principles:
+
+- Style Props: All component styles can be overridden or extended via style
+  props to reduce the use of css prop or styled(). Compose new components from
+  Box.
+
+- Simplicity: Strive to keep the component API fairly simple and show real world
+  scenarios of using the component.
+
+- Composition: Break down components into smaller parts with minimal props to
+  keep complexity low, and compose them together. This will ensure that the
+  styles and functionality are flexible and extensible.
+
+- Accessibility: When creating a component, keep accessibility top of mind. This
+  includes keyboard navigation, focus management, color contrast, voice over,
+  and the correct aria-\* attributes.
+
+- Dark Mode: Make components dark mode compatible. Use useColorMode hook to
+  handle styling. Learn more about dark mode.
+
+- Naming Props: We all know naming is the hardest thing in this industry.
+  Generally, ensure a prop name is indicative of what it does. Boolean props
+  should be named using auxiliary verbs such as does, has, is and should. For
+  example, Button uses isDisabled, isLoading, etc.
+
+For more info on Chakra versus other component libraries, check out their
+[docs](https://chakra-ui.com/docs/comparison).
+
+#### Installation
+
+```shell
+yarn add @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^5
+```
+
+#### Setup Provider
+
+```jsx
+import * as React from 'react';
+
+// 1. import `ChakraProvider` component
+import { ChakraProvider } from '@chakra-ui/react';
+
+function App({ Component }) {
+  // 2. Use at the root of your app
+  return (
+    <ChakraProvider>
+      <Component />
+    </ChakraProvider>
+  );
+}
+```
+
+#### Incorporating
+
+```jsx live
+// Sample card from Airbnb
+
+function AirbnbExample() {
+  const property = {
+    imageUrl: 'https://bit.ly/2Z4KKcF',
+    imageAlt: 'Rear view of modern home with pool',
+    beds: 3,
+    baths: 2,
+    title: 'Modern home in city center in the heart of historic Los Angeles',
+    formattedPrice: '$1,900.00',
+    reviewCount: 34,
+    rating: 4,
+  };
+
+  return (
+    <Box
+      maxW="sm"
+      borderWidth="2px"
+      borderRadius="lg"
+      overflow="hidden"
+      borderStyle="solid"
+    >
+      <Image src={property.imageUrl} alt={property.imageAlt} />
+      <Box p="6">
+        <Box display="flex" alignItems="baseline">
+          <Badge borderRadius="full" px="2" colorScheme="teal">
+            New
+          </Badge>
+          <Box
+            color="gray.500"
+            fontWeight="semibold"
+            letterSpacing="wide"
+            fontSize="xs"
+            textTransform="uppercase"
+            ml="2"
+          >
+            {property.beds} beds &bull; {property.baths} baths
+          </Box>
+        </Box>
+
+        <Box
+          mt="1"
+          fontWeight="semibold"
+          as="h4"
+          lineHeight="tight"
+          isTruncated
+        >
+          {property.title}
+        </Box>
+
+        <Box>
+          {property.formattedPrice}
+          <Box as="span" color="gray.600" fontSize="sm">
+            / wk
+          </Box>
+        </Box>
+
+        <Box display="flex" mt="2" alignItems="center">
+          {Array(5)
+            .fill('')
+            .map((_, i) => (
+              <StarIcon
+                key={i}
+                color={i < property.rating ? 'teal.500' : 'gray.300'}
+              />
+            ))}
+          <Box as="span" ml="2" color="gray.600" fontSize="sm">
+            {property.reviewCount} reviews
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  );
+}
+```
+
+### React-Bootstrap
+
+React-Bootstrap is a complete re-implementation of the Bootstrap components
+using React. It has **no dependency on either `bootstrap.js` or jQuery.** If you
+have React setup and React-Bootstrap installed, you have everything you need.
+
+Methods and events using jQuery are done imperatively by directly manipulating
+the DOM. In contrast, React uses updates to the state to update the virtual DOM.
+In this way, React-Bootstrap provides a more reliable solution by incorporating
+Bootstrap functionality into React's virtual DOM.
+
+#### Installation
+
+```bash
+yarn add react-bootstrap bootstrap
+```
+
+#### Incorporating Bootstrap
+
+```jsx
+import React, { Component } from 'react';
+import Alert from 'react-bootstrap/Alert';
+
+const Example = () => {
+  return (
+    <Alert dismissible variant="danger">
+      <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+      <p>Change this and that and try again.</p>
+    </Alert>
+  );
+};
+
+export default Example;
+```
+
+Don't worry if you don't get what's going on here — you don't need to remember
+Bootstrap (and by extension ReactBootstrap!) Whatever you don't understand in
+the above block of text, google it!
+
+#### Documentation
+
+[React-Bootstrap](https://react-bootstrap.github.io/getting-started/introduction/)
+
+---
+
+### Other Libraries (Optional)
+
+There are many component libraries I haven't covered, and oftentimes larger
+projects and companies may create their own to fit their needs. I've included
+some other popular component libraries below. No component library is
+necessarily better than another, and each has pros and cons.
+
+[Material-UI: A popular React UI framework](https://material-ui.com/)
+
+Google's component library. The main complaint to using Material UI is that it's
+hard to customize and can thus leave some sites using a large amount of Material
+UI looking too much like something from Google.
+
+[Ant Design - The world's second most popular React UI framework](https://ant.design/)
+
+A library developed by the Chinese tech giant Alibaba.
+
+[Semantic UI](https://semantic-ui.com/)
+
+Lightweight CSS frameworks such as [Tailwind](https://tailwindcss.com/) or
+[Pure](https://purecss.io/) can also be considered as viable alternatives to a
+component library. They offer a minimal, less opinionated CSS foundation that
+will help you speed up development, while at the same time allowing tremendous
+flexibility.
+
+## Package Managers (Optional)
+
+### What is NPM?
+
+`npm` informally stands for **node package manager**. `npm` is a package manager
+for JavaScript and is the default package manager for Node.
+
+It consists of a command-line client, also called npm, and an online database of
+public and paid-for private packages called the npm registry.
+
+[npm](https://www.npmjs.com/)
+
+In order to install a package to use in your react project using npm, you run
+`npm install <name of package>` in the root directory of your react app. This
+adds the package as a dependency in `package.json`.
+
+It is important to note that the `package.json` is just a list of tools you are
+using. It doesn't do anything except to list them. The real magic happens in the
+`node_modules` folder, where the packages are stored for you.
+
+### What is Yarn?
+
+Yarn is a package manager released by Facebook in 2016 and is a common
+alternative to NPM.
+
+[Home](https://yarnpkg.com/)
+
+To install a package using yarn, run `yarn add <name of package>` in the root
+directory. \*\*
+
+### NPM vs Yarn
+
+And now, to have an age-old discussion — which one should you use?
+
+**In practice, there is no real difference between the effects of using `NPM`
+and `yarn`**, as both package managers work perfectly fine.
+
+Back in the day, npm used to be super buggy, so yarn was created as a solution
+to NPM's deficiencies. These days the people behind npm were able to fix the
+main complaints people had against NPM, but many people and companies still
+prefer yarn as a byproduct of that era. There are definitely still advantages to
+using yarn, such as:
+
+- Installing packages using yarn tends to be faster than installing packages
+  with npm
+- There are some slight security advantages to using yarn
+
+but there are no other drastic differences between the two package managers. I
+personally use yarn and recommend yarn to others starting projects, but the
+choice is entirely up to you. **Make sure you don't use both,** however, because
+that can cause some problems on the backend when attempting to host your app.
+
+If you are using npm, you should see a `package-lock.json` in your app. If you
+are using yarn, you should see a `yarn.lock` in your app.
 
 ## React Router
 
@@ -62,12 +761,12 @@ server-side routing, check out
 
 :::
 
-### Documentation
+#### Documentation
 
 React router documentation can be found
 [here](https://v5.reactrouter.com/web/guides/quick-start).
 
-### Installation
+#### Installation
 
 ```shell
 yarn add react-router-dom
@@ -312,498 +1011,7 @@ use `exact` or `landing` instead of the whole statement as shorthand.
 
 :::
 
----
-
-# CSS-in-JS
-
-CSS-in-JS is a term you'll hear often, but what exactly does it mean? CSS-in-JS
-usually means using an alternative method of styling than just plain CSS files,
-such as [styled-components](https://styled-components.com/) or
-[css-modules](https://github.com/css-modules/css-modules). These solutions often
-require some change in the javascript that is being written, which is why we
-call these solutions "CSS in JS".
-
-Why do we care about using CSS-in-JS? This is because all CSS in our react app
-is global. Say you have two components, Page1 and Page2. Even if you create
-`page1.css` and `page2.css` and only import page1.css into your Page1 component,
-all the classes you create in `page1.css` will apply to your Page2 component as
-well. Thus if you accidentally use the same class name across both components,
-or use a class name multiple times anywhere in your app, the CSS rules you've
-written in `page1.css` will apply everywhere, which in most cases is highly
-undesirable and can cause unintended and difficult to fix CSS collisions.
-
-## CSS Modules
-
-CSS modules transforms your CSS files from being globally scoped to being
-component scoped, which means that the CSS you import into your component only
-affects the component you've imported that CSS file into. To transform a CSS
-file into a CSS modules file, simply change the file name from `<file name>.css`
-to `<file name>.module.css`. CSS modules also works with sass. In order to use
-CSS modules in your app, make the following changes.
-
-```jsx
-//Importing Regular CSS
-import './styles.css';
-
-//Using Regular CSS
-<div className="container">
-  <h3>Hi There!</h3>
-</div>;
-```
-
-```jsx
-//Importing CSS Modules
-import styles from './styles.module.css';
-
-//Using CSS Modules
-<div className={styles['container']}>
-  <h3>Hi There!</h3>
-</div>;
-```
-
-The difference in your JavaScript files is that you treat your CSS file as an
-object and access the class names the same way you would access an object's
-attributes, but that's it! Your CSS files remain the same and now there's no
-need to worry about annoying CSS collisions.
-
-### Installation
-
-CSS modules comes pre-installed with Create React App (sometimes referred to as
-CRA).
-
-### Documentation
-
-[Documentation](https://github.com/css-modules/css-modules)
-
----
-
-## Styled Components
-
-Using styled components is a bit more tricky.
-
-### Why Use Styled Components
-
-- Write CSS in JS alongside HTML in JS, but don't have to inline the CSS
-- Keeps track of which components are rendered on a page and injects their
-  styles and nothing else, fully automatically.
-- You never have to worry about duplication, overlap or misspellings. No need to
-  keep track of class names.
-- Adapting the styling of a component based on its props or a global theme is
-  simple and intuitive without having to manually manage dozens of classes.
-
-### Installation
-
-```bash
-npm i styled-components
-```
-
-### Trying It Out
-
-In `app.js`,
-
-```jsx
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-`;
-
-const Wrapper = styled.section`
-  padding: 4em;
-  background: papayawhip;
-`;
-
-render(
-  <Wrapper>
-    <Title>Hello World!</Title>
-  </Wrapper>
-);
-```
-
-The naming is as intuitive as it seems — `Title` is an `<h1>` tag, but with some
-styles associated with it. `Wrapper` is a div, but with some styles associated
-with it. To add style, we no longer need to inline, we can simply change the
-definition of `Title` or `Wrapper`.
-
-### Passing Arguments
-
-```jsx
-const Button = styled.button`
-  background: ${(props) =>
-    props.primary === true ? 'palevioletred' : 'white'};
-  color: ${(props) => (props.primary ? 'white' : 'palevioletred')};
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-`;
-
-render(
-  <div>
-    <Button>Normal</Button>
-    <Button primary={true}>Primary</Button>
-  </div>
-);
-```
-
-### Documentation
-
-[styled-components](https://styled-components.com/)
-
----
-
-## Component Libraries
-
-A UI component library is a set of ready-made UI components such as buttons,
-inputs, dialogs, and so on. They serve as building blocks for layouts. Thanks to
-their modular nature, we can arrange components in many different ways to
-achieve unique effects. Each library has a distinctive look and feel, but most
-of them offer theming, and their components are customizable to a certain
-degree.
-
-Popular component libraries for React include React-Bootstrap, Theme UI, and
-Chakra UI. We'll be focusing on Chakra UI.
-
-Libraries are made for one reason – to make developers’ lives easier. UI
-component libraries are no different in their purpose.
-
-### Benefits to Using a Component Library
-
-- **Speed** – incorporating a UI component library can have a great impact on
-  development speed. Instead of creating each element from scratch, we simply
-  mix and match the existing components. Even if some additional customization
-  is required, it tends to be much quicker than writing styles on our own.
-- **Ease of use** – components are meant to be easy to use. Established
-  libraries are well-organized and have good documentation that is easy to
-  follow. Very often, it’s enough just to copy and paste code snippets to make
-  it work.
-- **Attractive look** – components look great without requiring any extra effort
-  from the developer; they’re carefully designed by professionals.
-- **Compatibility** – ensuring cross-browser and cross-device compatibility is
-  one of the biggest challenges of frontend development. UI component libraries
-  provide compatibility out of the box, which makes everything so simple!
-- **Accessibility** – good libraries adhere to accessibility guidelines, so
-  developers don’t even need to think about it.
-
-### Drawbacks to Using a Component Library
-
-- **Generic look** – your app’s look and feel will be determined by the
-  library’s style in most parts. This is not necessarily an issue, but you need
-  to make sure that this is acceptable for your project.
-- **Change of design direction** – It’s very important that designers understand
-  and stick to components offered by the library. If the direction changes
-  towards a custom solution, it will become increasingly difficult and
-  time-consuming to overwrite the initial implementation.
-- **New team members** – every developer and designer needs to be familiar with
-  the particular library and its implementation (though this point is true for
-  any design system and any project).
-- **Bundle size** – UI component libraries tend to be big, so it’s probably not
-  the best idea to engage them in tiny projects.
-
----
-
-## Chakra-UI
-
-Chakra UI is component library based on a few principles:
-
-- Style Props: All component styles can be overridden or extended via style
-  props to reduce the use of css prop or styled(). Compose new components from
-  Box.
-
-- Simplicity: Strive to keep the component API fairly simple and show real world
-  scenarios of using the component.
-
-- Composition: Break down components into smaller parts with minimal props to
-  keep complexity low, and compose them together. This will ensure that the
-  styles and functionality are flexible and extensible.
-
-- Accessibility: When creating a component, keep accessibility top of mind. This
-  includes keyboard navigation, focus management, color contrast, voice over,
-  and the correct aria-\* attributes.
-
-- Dark Mode: Make components dark mode compatible. Use useColorMode hook to
-  handle styling. Learn more about dark mode.
-
-- Naming Props: We all know naming is the hardest thing in this industry.
-  Generally, ensure a prop name is indicative of what it does. Boolean props
-  should be named using auxiliary verbs such as does, has, is and should. For
-  example, Button uses isDisabled, isLoading, etc.
-
-For more info on Chakra versus other component libraries, check out their
-[docs](https://chakra-ui.com/docs/comparison).
-
-### Installation
-
-```shell
-yarn add @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^5
-```
-
-#### Setup Provider
-
-```jsx
-import * as React from 'react';
-
-// 1. import `ChakraProvider` component
-import { ChakraProvider } from '@chakra-ui/react';
-
-function App({ Component }) {
-  // 2. Use at the root of your app
-  return (
-    <ChakraProvider>
-      <Component />
-    </ChakraProvider>
-  );
-}
-```
-
-### Incorporating
-
-```jsx live
-// Sample card from Airbnb
-
-function AirbnbExample() {
-  const property = {
-    imageUrl: 'https://bit.ly/2Z4KKcF',
-    imageAlt: 'Rear view of modern home with pool',
-    beds: 3,
-    baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
-    reviewCount: 34,
-    rating: 4,
-  };
-
-  return (
-    <Box
-      maxW="sm"
-      borderWidth="2px"
-      borderRadius="lg"
-      overflow="hidden"
-      borderStyle="solid"
-    >
-      <Image src={property.imageUrl} alt={property.imageAlt} />
-      <Box p="6">
-        <Box display="flex" alignItems="baseline">
-          <Badge borderRadius="full" px="2" colorScheme="teal">
-            New
-          </Badge>
-          <Box
-            color="gray.500"
-            fontWeight="semibold"
-            letterSpacing="wide"
-            fontSize="xs"
-            textTransform="uppercase"
-            ml="2"
-          >
-            {property.beds} beds &bull; {property.baths} baths
-          </Box>
-        </Box>
-
-        <Box
-          mt="1"
-          fontWeight="semibold"
-          as="h4"
-          lineHeight="tight"
-          isTruncated
-        >
-          {property.title}
-        </Box>
-
-        <Box>
-          {property.formattedPrice}
-          <Box as="span" color="gray.600" fontSize="sm">
-            / wk
-          </Box>
-        </Box>
-
-        <Box display="flex" mt="2" alignItems="center">
-          {Array(5)
-            .fill('')
-            .map((_, i) => (
-              <StarIcon
-                key={i}
-                color={i < property.rating ? 'teal.500' : 'gray.300'}
-              />
-            ))}
-          <Box as="span" ml="2" color="gray.600" fontSize="sm">
-            {property.reviewCount} reviews
-          </Box>
-        </Box>
-      </Box>
-    </Box>
-  );
-}
-```
-
-## React-Bootstrap
-
-React-Bootstrap is a complete re-implementation of the Bootstrap components
-using React. It has **no dependency on either `bootstrap.js` or jQuery.** If you
-have React setup and React-Bootstrap installed, you have everything you need.
-
-Methods and events using jQuery are done imperatively by directly manipulating
-the DOM. In contrast, React uses updates to the state to update the virtual DOM.
-In this way, React-Bootstrap provides a more reliable solution by incorporating
-Bootstrap functionality into React's virtual DOM.
-
-### Installation
-
-```bash
-yarn add react-bootstrap bootstrap
-```
-
-### Incorporating Bootstrap
-
-```jsx
-import React, { Component } from 'react';
-import Alert from 'react-bootstrap/Alert';
-
-const Example = () => {
-  return (
-    <Alert dismissible variant="danger">
-      <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-      <p>Change this and that and try again.</p>
-    </Alert>
-  );
-};
-
-export default Example;
-```
-
-Don't worry if you don't get what's going on here — you don't need to remember
-Bootstrap (and by extension ReactBootstrap!) Whatever you don't understand in
-the above block of text, google it!
-
-### Documentation
-
-[React-Bootstrap](https://react-bootstrap.github.io/getting-started/introduction/)
-
----
-
-## Other Libraries (Optional)
-
-There are many component libraries I haven't covered, and oftentimes larger
-projects and companies may create their own to fit their needs. I've included
-some other popular component libraries below. No component library is
-necessarily better than another, and each has pros and cons.
-
-[Material-UI: A popular React UI framework](https://material-ui.com/)
-
-Google's component library. The main complaint to using Material UI is that it's
-hard to customize and can thus leave some sites using a large amount of Material
-UI looking too much like something from Google.
-
-[Ant Design - The world's second most popular React UI framework](https://ant.design/)
-
-A library developed by the Chinese tech giant Alibaba.
-
-[Semantic UI](https://semantic-ui.com/)
-
-Lightweight CSS frameworks such as [Tailwind](https://tailwindcss.com/) or
-[Pure](https://purecss.io/) can also be considered as viable alternatives to a
-component library. They offer a minimal, less opinionated CSS foundation that
-will help you speed up development, while at the same time allowing tremendous
-flexibility.
-
-## The Anatomy of a React App
-
-![React Project File Structure](../assets/Lesson9/file-structure.png)
-
-A React app is composed of many different files and filetypes - what do each of
-them do and why do we need them? Knowing the answer to this question isn't
-knowledge that applies just to frontend engineering, but crucial to becoming a
-full-fledged software engineer.
-
-### `README.md`
-
-Essentially a back-of-the-book summary of your code. Your `README.md` should
-describe what your code is for, what it does, and if applicable, it should
-provide a detailed overview of each file and its functions. Think about your
-`README.md` as a guide to your code.
-
-### `package.json` and `package-lock.json`
-
-package.json is essentially a list of the dependencies of your app!
-
-package-lock.json is a version-locked version of package.json, so that each new
-device that downloads the code downloads the correct dependencies. This is to
-prevent new updates to dependencies breaking your code.
-
-### `node_modules`
-
-Where all your dependencies live! You should never ship out node_modules because
-its YUGE (try opening it up and you'll see). Always include node_modules in your
-.gitignore.
-
-### `build`
-
-A minified build version of your app - All your code is transformed into an
-extremely compact version of itself, and this version is what is meant to be
-served to the public, since you get a huge speedup from using the build version!
-Run `npm run build` in the root directory of your app in the terminal to create
-the build folder!
-
----
-
-## Package Managers (Optional)
-
-### What is NPM?
-
-`npm` informally stands for **node package manager**. `npm` is a package manager
-for JavaScript and is the default package manager for Node.
-
-It consists of a command-line client, also called npm, and an online database of
-public and paid-for private packages called the npm registry.
-
-[npm](https://www.npmjs.com/)
-
-In order to install a package to use in your react project using npm, you run
-`npm install <name of package>` in the root directory of your react app. This
-adds the package as a dependency in `package.json`.
-
-It is important to note that the `package.json` is just a list of tools you are
-using. It doesn't do anything except to list them. The real magic happens in the
-`node_modules` folder, where the packages are stored for you.
-
-### What is Yarn?
-
-Yarn is a package manager released by Facebook in 2016 and is a common
-alternative to NPM.
-
-[Home](https://yarnpkg.com/)
-
-To install a package using yarn, run `yarn add <name of package>` in the root
-directory. \*\*
-
-### NPM vs Yarn
-
-And now, to have an age-old discussion — which one should you use?
-
-**In practice, there is no real difference between the effects of using `NPM`
-and `yarn`**, as both package managers work perfectly fine.
-
-Back in the day, npm used to be super buggy, so yarn was created as a solution
-to NPM's deficiencies. These days the people behind npm were able to fix the
-main complaints people had against NPM, but many people and companies still
-prefer yarn as a byproduct of that era. There are definitely still advantages to
-using yarn, such as:
-
-- Installing packages using yarn tends to be faster than installing packages
-  with npm
-- There are some slight security advantages to using yarn
-
-but there are no other drastic differences between the two package managers. I
-personally use yarn and recommend yarn to others starting projects, but the
-choice is entirely up to you. **Make sure you don't use both,** however, because
-that can cause some problems on the backend when attempting to host your app.
-
-If you are using npm, you should see a `package-lock.json` in your app. If you
-are using yarn, you should see a `yarn.lock` in your app.
-
----
-
-# Conclusion
+## Conclusion
 
 This lesson is all about helping you realize that the React universe is massive,
 collaborative, and full of tools that make writing React faster and easier.
@@ -816,7 +1024,7 @@ there's probably an npm package for that.
 
 **Contributors**
 
-- [Caelin Sutch](https://www.linkedin.com/in/caelinsutch)
 - [Samarth Goel](https://www.linkedin.com/in/samarth-goel-1047b8187/)
+- [Caelin Sutch](https://www.linkedin.com/in/caelinsutch)
 - [Arushi Somani](https://www.linkedin.com/in/arushisomani/)
 - [Natalia Vetter-Neo](https://www.linkedin.com/in/nataliavetter/)
