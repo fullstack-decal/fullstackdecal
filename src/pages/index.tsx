@@ -92,7 +92,7 @@ const Home: React.FC = () => {
           <Text textStyle="subtitle2" fontSize="3xl" mb={4}>
             Week 3
           </Text>
-          {announcements[3]}
+          {announcements[5]}
         </Box>
 
         {/* Testimonials Section */}

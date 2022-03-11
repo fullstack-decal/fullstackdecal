@@ -54,7 +54,7 @@ fetching.
 
 For this task, we'll introduce fetching data from a server from our frontend.
 
-As you know, we can use HTTP requests to send and receieve data over the
+As you know, we can use HTTP requests to send and receive data over the
 internet. In fact, opening a website like `google.com` is an HTTP GET request!
 Servers are similar, they have various routes that contain HTTP endpoints that
 you can trigger.
@@ -99,7 +99,7 @@ function Example() {
     axios
       .get('https://jsonplaceholder.typicode.com/posts') //THIS IS YOUR URL OF YOUR API
       .then((data) => setData(data.data)) //PROMISE API, THAT MEANS WHEN YOU GET THE DATA WHAT DO I DO WITH IT
-      .catch((error) => console.log(error)); //ERROR CATCHING IN CASE WE RECIEVE AN ERROR
+      .catch((error) => console.log(error)); //ERROR CATCHING IN CASE WE RECEIVE AN ERROR
   };
 
   useEffect(() => {
@@ -196,8 +196,10 @@ When finished, your website should be able to run like the follow:
   style={{ height: '300px' }}
 />
 
-Note the UI doesn't have to be the samee
+Note the UI doesn't have to be the same.
 
-## Contributors
+---
+
+**Contributors**
 
 - [Caelin Sutch](https://www.linkedin.com/in/caelinsutch)
