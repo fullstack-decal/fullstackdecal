@@ -2,204 +2,169 @@
 sidebar_position: 9
 ---
 
-# HW 8 - Advanced React
+# HW 8 - Advanced Backend
 
-While we've worked on basic React sites that are static, real world applications
-interact with servers and databases over the internet. In ths homework, we'll be
-tieing together the frontend and the backend aspects of this course.
+## Goal
 
-## Goals
+Create a shopping list app using MongoDB + Express.js, where a user can signup
+and login to create a shopping list. The user should be able to add and delete
+items within the shopping list given the index. If the user is not logged in,
+all operations should not be allowed.
 
-- Further practice with React syntax
-- Introduce Axios
-- Use HTTP methods to access RESTful services
-- Create your first custom hook
-- Use fetched data to create a dynamic application
+## Routes
 
-## Setup
+Here is a list of routes required to build for this homework. Note that I am
+using 4000 as my port, but feel free to use any other port if you want.
 
-The starter code for this homework is here:
-https://github.com/fullstack-decal/sp22-assignment8-starter
+1. User Signup Route: POST http://localhost:4000/user/signup
 
-Take a look around the codebase and try to understand how it's put together.
+   1. Request Body (feel free to use your own test data):
 
-## Task 1 - Start the Backend
+      ```jsx
+      {
+          "username": "alexwu",
+          "password": "123456"
+      }
+      ```
 
-Before we start building anything, we have to set up our server first. For this
-instance we will be using Express. The server will already be pre-built for you,
-feel free to look to examine the code and don't stress if you don't understand
-it. You'll only be worrying about the React side of things:
+   2. the response should be a token of the user
 
-- cd into the directory: `cd sp22-assignment8-skeleton/node-server`
-- Install dependencies: `npm i`
-- Run the server: `npm start`
+2. User Login Route: POST http://localhost:4000/user/login
 
-You should see output that looks something like this:
+   1. Request Body
 
-```shell
-❯ npm start
+      ```jsx
+      {
+          "username": "alexwu",
+          "password": "123456"
+      }
+      ```
 
-> node-server@1.0.0 start
-> node index.js
+   2. the response should be a token of the user
 
-Block Server listening at http://localhost:3002
+3. Retrieve the current shopping list: GET http://localhost:4000/shop/list
+   1. The request should come with a header of `token: the_user_token_here`
+      1. the user token should be the one that you have received through the
+         login / signup routes
+      2. if the token is incorrect, return auth error
+   2. the response should be a list of items or an empty list
+4. Add a new item: POST http://localhost:4000/shop/add
+
+   1. The request should come with a header of `token: the_user_token_here`
+      1. if the token is incorrect, return auth error
+   2. Body
+
+      ```jsx
+      {
+          "item": "apple"
+      }
+      ```
+
+   3. the response should be the new list: (if you have already added an
+      "orange")
+
+      ```jsx
+      ['orange', 'apple'];
+      ```
+
+5. Delete an item: DELETE http://localhost:4000/shop/delete
+
+   1. The request should come with a header of `token: the_user_token_here`
+      1. if the token is incorrect, return auth error
+   2. Body
+
+      ```jsx
+      {
+          "item": "apple"
+      }
+      ```
+
+   3. the response should be a new list
+
+## Steps
+
+### Step One: Setup User Auth
+
+For all user authentication implementation, please refer to our course plan
+first:
+
+This resource is also particularly helpful in building user authentication:
+
+[Authentication in NodeJS With Express and Mongo - CodeLab #1](https://dev.to/dipakkr/implementing-authentication-in-nodejs-with-express-and-jwt-codelab-1-j5i)
+
+First of all, you need to `npm init` and then download all the relevant
+packages. Then, use `mongo` and `use auth-hw` to create a database named
+`auth-hw`.
+
+- Note that in the resource we provided, they use a cloud-based database, and we
+  are instead using a local database.
+
+With the user schema, since every user should be able to:
+
+1. signup & login
+2. create / modify shopping list
+
+```jsx
+const UserSchema = mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  shoppinglist: {
+    type: Array,
+    required: false,
+  },
+});
 ```
 
-## Task 2 - Start the Frontend
+You should be able to follow the resource above to create a successful
+authenticated app. After you have done so, now it's time to add in routes to
+support the shopping list app.
 
-Congrats! The backend server is now running at `localhost:3001`. Now for a
-production application, we'd also often be running a database such as MongoDB,
-but if you examine the code, you'll see that we've hard-coded the data you're
-fetching.
+- Note that the resource has forgot to include how to import the `auth`
+  middleware, here's how to do it:
+  ```jsx
+  const auth = require('../middleware/auth');
+  ```
 
-For this task, we'll introduce fetching data from a server from our frontend.
+### Step Two: Shopping list app
 
-As you know, we can use HTTP requests to send and receive data over the
-internet. In fact, opening a website like `google.com` is an HTTP GET request!
-Servers are similar, they have various routes that contain HTTP endpoints that
-you can trigger.
+To create the shopping list app, you need to support three routes. The GET,
+POST, and DELETE. All of them can be achieved by simple list operations and the
+help of `auth` middleware as seen in the resource.
 
-By default, browsers have the `fetch` API built in to give your frontend
-javascript the ability to fetch resources across a network. You can read more
-about Fetch [here](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+You would want to start by creating a new `shop.js` file inside routes folder
+that contains all the routes for shopping list related operations. Then import
+the shop.js file inside index.js similar to how you have imported the `user.js`
+file. Then, you can implement the three routes there.
 
-While fetch is incredibly powerful, it's also a bit more barebones and complex,
-so we'll be using a wrapper around Fetch called
-(Axios)[https://axios-http.com/docs/intro].
+Here's an example of how you might implement the `shop/list` route:
 
-First, lets install Axios:
-
-```shell
-npm install axios
+```jsx
+router.get('/list', auth, async (req, res) => {
+  try {
+    // TODO
+  } catch (e) {
+    res.send({ message: 'Error in Fetching user' });
+  }
+});
 ```
-
-And now lets start the app:
-
-```npm
-npm start
-```
-
-:::info Make sure that your express server and React app are on different ports.
-:::
-
-## Task 3 - Write an API request
-
-Now that your frontend and backend are working, lets write a HTTP request.
-
-Right now, our blocks are pretty bland and hard coded, lets spice this up with
-an API fetch.
-
-First, lets see how Axios works in an example:
-
-```jsx live
-function Example() {
-  const [data, setData] = useState();
-
-  const getPostsData = () => {
-    axios
-      .get('https://jsonplaceholder.typicode.com/posts') //THIS IS YOUR URL OF YOUR API
-      .then((data) => setData(data.data)) //PROMISE API, THAT MEANS WHEN YOU GET THE DATA WHAT DO I DO WITH IT
-      .catch((error) => console.log(error)); //ERROR CATCHING IN CASE WE RECEIVE AN ERROR
-  };
-
-  useEffect(() => {
-    getPostsData();
-  }, []);
-
-  return <p>{data ? JSON.stringify(data[0]) : 'loading'}</p>;
-}
-```
-
-In this example, our function `getPostsData` calls the API using a `GET`
-request. This function is called in a `useEffect` hook on first render. We then
-wait for the promise resolve using a `.then`, and once resolved, set our state
-variable `data` to the returned data. We also catch the error if the promise
-returns an error.
-
-Confused by the hooks? As a reminder,
-
-- useEffect hooks run the function passed into the first parameter if any
-  variable in the array passed in as the second parameter changes.
-  - In this example, there are no variables passed in the second arg, so this
-    will run when the component first mounts (is rendered)
-- useState hold pieces of state, and a `setState` call will trigger a component
-  re-render
-
-Cool, now that you know any example of how we might fetch data, how might you
-use this data to render out posts in our application?
-
-### Action Items
-
-Fetch data from our server (`http://localhost:3002/posts`) and render out each
-array item using the `Post` component inside of the `Feed` component.
-
-**Tips:**
-
-- Make sure your server URL is passed in the get logic correctly
-- Where would the fetch logic be placed?
-
-## Task 4 - Creating a new post
-
-Now that we can view posts from our server, you'll notice that there's a form at
-the bottom to create a new post. We've already built the logic to get the form
-data, you'll be using a post request to add this data to our server.
-
-Axios post requests are very simple, as an example:
-
-```js
-axios
-  .post(url, data) // `url` is the url to post to, `data` is the data to send in the body of the HTTP request
-  .then((response) => console.log(response))
-  .catch((error) => console.log(error));
-```
-
-### Action Item
-
-Use a `POST` request to create a new post.
-
-**Tips**
-
-- To create a new post, you'll have to `POST` /post
-
-## Task 5 - Working with Comments
-
-At this point, you should be able to view and create new posts. Now, we'll do
-the same for comments.
-
-There's a `comments` field on the server data, and if you `POST`
-`/post/:id/comment`, you'll be able to add a new comment.
-
-### Action Item
-
-Create a new `Comments` component to view all the comments on a single post.
-Also create a new form for users to add a new comment. After adding a comment,
-it should be rendered on the frontend.
 
 ## Submission
 
-After you finish, push these changes into your WDB-education repository.
+Since all the database are local, please:
 
-Turn your code into a GitHub pages link, and upload the link to your page to
-Gradescope. The Gradescope can be found on the syllabus, and instructions for
-creating a GitHub page link can be found at the end of homework 0.
-
-### Demo of Solution
-
-When finished, your website should be able to run like the follow:
-
-<iframe
-  src="https://www.loom.com/embed/843dd029aa584d1398b129145b8d5968"
-  frameborder="0"
-  webkitallowfullscreen
-  mozallowfullscreen
-  allowfullscreen
-  style={{ height: '300px' }}
-/>
-
-Note the UI doesn't have to be the same.
+1. Film a video of you using postman sending various requests to the server &
+   receiving the proper response back.
+2. Upload the video to google drive, and submit the link to gradescope.
+3. Submit the link to the Github repo to gradescope.
 
 ---
 
 **Contributors**
 
-- [Caelin Sutch](https://www.linkedin.com/in/caelinsutch)
+- [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)
