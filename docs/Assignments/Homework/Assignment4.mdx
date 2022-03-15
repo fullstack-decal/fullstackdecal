@@ -1,0 +1,101 @@
+---
+sidebar_position: 5
+---
+
+# HW4 - React
+
+## Introduction
+
+One of the reasons the React framework is so powerful is that instead of updating the entire 
+HTML website every time you change a component, you can simply just update that singular component,
+without having other parts of the website realize it! In this homework, 
+we will be using that notion and the idea of Components to create our own implementation of that.
+
+For this assignment, you will be making your own version of Tic Tac Toe using React Components! 
+
+## Part 0: Read through Lesson 8 and Example 8.5
+
+Make sure you read the [React 1](/docs/Lessons/Lesson9) notes before getting
+started on this homework. Additionally, [Example 8.5](/docs/Lessons/Lesson9-2)
+goes through how to make Tic Tac Toe using Class Components in React. For this assignment, 
+you will be working with functional components, but it is still worth checking out this 
+lesson to get a better understanding of the logic and overall structure of a React Project.
+
+## Setup
+
+For this homework, we are using Github Classroon. The starter code link is here: https://classroom.github.com/a/DRVJTOio. Follow the instructions from Project 2 on [Piazza](https://piazza.com/class/kz3kpbg3z8j57?cid=76). 
+
+
+### Starting a server on localhost
+
+In order to see your changes in a brower, you need to start a local server. 
+- cd into the directory: `cd sp22-homework4-starter-{your_username}`
+- Install dependencies: `npm install`
+- Run the server: `npm start`
+
+```shell
+❯ npm start
+
+> node-server@1.0.0 start
+> node index.js
+
+Block Server listening at http://localhost:3000
+```
+
+### Setting up the project to deploy with Github Pages
+
+There are a few extra steps you need to go through in order to host your Tic Tac Toe website through Github Pages.
+
+1. In your `package.json`, add a `homepage` property
+
+``` jsx
+{
+  "name": "hw4-starter",
+  "version": "0.1.0",
++ "homepage": "https://your_username.github.io/sp22-homework4-starter-{your_username}",
+  "private": true,
+
+```
+
+2. Add deployment scripts to your `package.json`
+
+``` jsx 
+
+"scripts": {
++   "predeploy": "npm run build",
++   "deploy": "gh-pages -b main -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+
+```
+
+3. Run `npm run deploy` from your project directory to run both the `predeploy` and `deploy` scripts. 
+When you navigate to https://{your_username}.github.io/sp22-homework4-starter-{your_username}, 
+you should be able to see the website you made with React!
+
+## Requirements
+
+### 1. Use Functional Components to split up the logic
+
+The starter code we give has already broken down the game into three components: 
+Game, Board, and Square. Make sure to use functional components in your solution. 
+We have already provided a skeleton on how to create functional components in React.
+
+### 2. useState Hook
+
+Implement the logic and state of the game with `useState` hooks. 
+This is how we regulate state in React functional components.
+
+### 3. Optional: Keep track of history of moves
+
+For each click on a sqaure, make sure to keep track of the player that clicked on the square 
+and which sqaure was clicked (numbered 1-9). Display this list of moves on your page.
+
+
+## Submission
+
+Push your Tic Tac Toe solution to your repository and submit a link your website made with 
+Github Pages. Make sure to follow all setup instructions to see your webiste. 
+
+**Contributors**
+- [Nitya Krishnakumar](https://www.linkedin.com/in/nitya-krish/)

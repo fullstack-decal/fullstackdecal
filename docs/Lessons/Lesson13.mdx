@@ -2,9 +2,9 @@
 sidebar_position: 15
 ---
 
-# Lesson 12 - React 3: Axios and Ecosystem
+# Lesson 12 - React 3: Axios, Project Structure, and Ecosystem
 
-# Introduction
+## Introduction
 
 Welcome to the course's 4th and final react lesson. In the previous lesson, you
 were introduced to key parts of the React ecosystem in the form of package
@@ -29,7 +29,7 @@ you'll be able to keep up with conversations about frontend technologies, as
 well as have a couple of points to dive deeper into frontend technologies after
 we finish the react section of the course's frontend curriculum.
 
-# Axios
+## Axios
 
 **Axios** **is how we connect the frontend to the backend.** In technical speak,
 Axios is a promise-based HTTP client for the browser and Node.js. Informally,
@@ -57,13 +57,13 @@ the same process by tying our calls to the useEffect() hook.
 
 :::
 
-### Documentation
+####Documentation
 
 [Axios](https://axios-http.com/)
 
 [GitHub - axios/axios: Promise based HTTP client for the browser and node.js](https://github.com/axios/axios)
 
-### Installation
+#### Installation
 
 ```bash
 yarn add axios
@@ -182,21 +182,59 @@ export default class App extends React.Component {
 }
 ```
 
-# Architecture and Design Methodologies
+## The Anatomy of a React App
 
-## Read These First
+![React Project File Structure](../assets/Lesson9/file-structure.png)
+
+A React app is composed of many different files and filetypes - what do each of
+them do and why do we need them? Knowing the answer to this question isn't
+knowledge that applies just to frontend engineering, but crucial to becoming a
+full-fledged software engineer.
+
+#### `README.md`
+
+Essentially a back-of-the-book summary of your code. Your `README.md` should
+describe what your code is for, what it does, and if applicable, it should
+provide a detailed overview of each file and its functions. Think about your
+`README.md` as a guide to your code.
+
+#### `package.json` and `package-lock.json`
+
+package.json is essentially a list of the dependencies of your app!
+
+package-lock.json is a version-locked version of package.json, so that each new
+device that downloads the code downloads the correct dependencies. This is to
+prevent new updates to dependencies breaking your code.
+
+#### `node_modules`
+
+Where all your dependencies live! You should never ship out node_modules because
+its YUGE (try opening it up and you'll see). Always include node_modules in your
+.gitignore.
+
+#### `build`
+
+A minified build version of your app - All your code is transformed into an
+extremely compact version of itself, and this version is what is meant to be
+served to the public, since you get a huge speedup from using the build version!
+Run `npm run build` in the root directory of your app in the terminal to create
+the build folder!
+
+## Architecture and Design Methodologies
+
+#### Read These First
 
 [Thinking in React - React](https://reactjs.org/docs/thinking-in-react.html)
 
 [Design Principles - React](https://reactjs.org/docs/design-principles.html)
 
-## Extra Reading
+#### Extra Reading
 
 [React Architecture Best Practices and Tips from Community Experts](https://www.simform.com/react-architecture-best-practices/)
 
 [Atomic Design Methodology | Atomic Design by Brad Frost](https://atomicdesign.bradfrost.com/chapter-2/)
 
-# Server-Side Rendering
+## Server-Side Rendering
 
 :::note
 
@@ -233,7 +271,7 @@ is Next.js.
 
 **TLDR:** Server Side Rendering makes websites go faster (usually).
 
-# Redux
+## Redux
 
 :::note
 
@@ -272,12 +310,15 @@ for that.
 **TLDR:** Redux is used to manage global state in React, but is being phased out
 by React's Context hook.
 
-# TypeScript
+## TypeScript
 
-<aside>
-💡 Typescript is a more advanced tool in the react ecosystem so while we've decided not to teach it in-depth, it's still useful to know what it is and what its use case might be.
+:::note
 
-</aside>
+Typescript is a more advanced tool in the react ecosystem so while we've decided
+not to teach it in-depth, it's still useful to know what it is and what its use
+case might be.
+
+:::
 
 Typescript is a static type object-oriented programming language maintained by
 Microsoft. It can be seen as a superset of JavaScript. With the help of
@@ -295,10 +336,12 @@ scenarios where JavaScript may not function that well.
 
 As a result, Typescript is rapidly gaining in popularity nowadays.
 
-<aside>
-💡 We used to teach a lesson on TypeScript. You can find the old reading for it below.
+:::note
 
-</aside>
+We used to teach a lesson on TypeScript. You can find the
+[old reading for it here.](/docs/Guides/Typescript)
+
+:::
 
 **Full-Stack DeCal Typescript Lesson:**
 
@@ -306,7 +349,7 @@ As a result, Typescript is rapidly gaining in popularity nowadays.
 
 **TLDR:** Typescript = type-checked Javascript.
 
-# Conclusion
+## Conclusion
 
 After this lesson, you hopefully have all the tools you'd need to build robust,
 large-scale web applications, and if not then you know where to look to learn
