@@ -5,3 +5,63 @@ title: 1.2 HTML
 
 # HTML
 
+### Learning Objectives
+
+## The Frame
+
+## Tags
+
+HTML is a declaritive language. 
+As a declarative language, HTML lacks common computer science paradigms like control flow and functions.  
+Essentially, that means that you define _exactly_ what the HTML will do.
+
+You can think of HTML as an outline. You outline the sections that you want, and then you fill them with the desired content. 
+We can control exactly what our HTML document to look like and we do this with _tags_.
+
+Tags are the building blocks of HTML.
+A tag serves two main purposes:
+
+1. It labels a section, giving the programmer an easy way to refer to that section and the content inside.
+2. It gives the content in that section certain features, 
+defining the most fundamental ways that a user can interact with a website.
+
+A section is labeled by an opening tag and a closing tag. The opening tag has the tag name with the `<` on the left and the `>`
+on the right. The closing tag is similar, but has `</` on the left and `>` on the right. 
+
+Each type of tag defines specific features for the content inside.
+For example, plain text is wrapped in a `<p></p>` tag while links are wrapped in an `<a></a>` tag, making them clickable.
+
+## Nesting
+
+The power of HTML comes from the fact that you can nest tags. Sections of your document can contain subsections
+which can contains even more subsections and so on. HTML can be nested arbitrarily, which means there is no technical
+limit to your nesting. There is, however, a pracitcal one, as we will discover, but hold tight for that.
+
+## The Basics
+
+The simplest possible HTML document is the empty document. The empty document still contains four sections which 
+define the barest bones of any HTML document. Let us look at it below.
+
+```
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+
+    </body>
+</html>
+```
+
+First we use `<!DOCTYPE html>` to define this as an HTML document for the browser. We then declare all of our HTML
+with the `<html></html>` tag. Inside our document, we have two main sections: `<head>` and `<body>`. 
+
+The `<head>` is what we use to hold the _metadata_ of the website. Metadata is the part
+of the website that you never see. The browser automatically knows not to render the `<head>`. 
+We use the `<head>` to contain all the important information about the website: the title, the author,
+and links to the other components of the website, namely the CSS and JS files that we use to style and functionalize
+the website. 
+
+The `<body>` of the website is where all of the content goes. The `<body>` is rendered by the browser, and our CSS and JS
+calls to content in the body to style and functionalize respectively. 
