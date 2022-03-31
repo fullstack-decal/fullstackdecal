@@ -6,148 +6,287 @@ sidebar_position: 6
 
 ## Introduction
 
-In this homework, we will utilize the nasa daily picture API to create a backend
-server that allows the user to store, delete, and retrieve their favorite
+In this homework, we will utilize the NASA daily picture API to create a backend
+server that allows users to store, delete, and retrieve their favorite
 pictures of planets and nebulas.
+
+
+## The API
 
 Here is the NASA Open APIs Website:
 
 [NASA Open APIs](https://api.nasa.gov/)
 
+We will be using the APOD API to retrieve the pictures that we are going to store. To do so, please familiarize yourself with the API and its endpoints.
+We will need these later as we write our own API to interface with the NASA API (yes, APIs can be used to read from other APIs). 
+
 ## Goal
 
-The goal is to build an Express.js server + MongoDB database that allows the
-users to store or delete any "Astronomy picture of the day" from NASA and view
+The goal is to build an Express.js server that reads and writes to a MongoDB database.
+This will allow the user to store or delete any "Astronomy Picture of the Day" from NASA and view
 all their favorite ones in a list format.
 
 ## Instructions
 
-### Routes Breakdown
+Before we dig into it, be sure to pull the assignment repository down from GitHub. Note that for this asignment, 
+the repository is empty. This is because we will be going over starter code as part of the written instructions here.
 
-1. Implement a backend POST route that supports storing their favorite pictures.
+1. Navigate to https://classroom.github.com/a/8yZbCLq8
+2. Accept the assignment. Once the repository has been generated, navigate to repository, and clone it onto your local machine.
 
-   1. Route should be at: `http://localhost:8080/api/add`
-   2. To find a list of APOD images, you can go to this Astronomy Picture of the
-      Day Archive: https://apod.nasa.gov/apod/archivepix.html. Click on any of
-      the past image will bring you to a page containing the date, the
-      description, and an image. You can right click on the image and choose
-      "copy image address" to get the url to the image.
-   3. When the user sends a POST request to the backend route that we built, we
-      assume the request should come with a body of image_url & date properties,
-      example:
+### Database Setup
 
-      ```jsx
-      {
-        "image_url": "https://apod.nasa.gov/apod/image/2102/rosette_goldman_960.jpg"
-        "date": "02-21-2021"
-      }
-      ```
+We need to ensure that MongoDB is installed on our machine first. To install MongoDB Community Edition on your machine, 
+follow the instructions [here](https://www.mongodb.com/docs/manual/administration/install-community/).
 
-   4. After the backend receives the above request, it should store the
-      image_url and the date of the image inside an mongoDB database.
+We will be creating a database called `apod` to store our entries. To create this database on our machine,
+we will use the mongo shell, a very convenient utility for peeking into our machine's mongo databases.
 
-2. Implement a DELETE route to delete the favorited picture.
+On your machine's command line, we will do the following:
 
-   1. Route should be: `http://localhost:8080/api/delete`
-   2. The user's request should come with a body of date properties to filter
-      and delete the picture, example:
+1. Enter the shell with `mongo`
+2. Initialize our `apod` database with `use`
 
-      ```jsx
-      {
-        "date": "02-21-2021"
-      }
-      ```
-
-   3. Once the backend receives the above request, it should find the image with
-      this date, and then delete it from the database.
-
-3. Implement a backend GET route to fetch all favorited pictures from the
-   database.
-
-   1. Route should be: `http://localhost:8080/api/favorite`
-   2. The user should be able to send a GET request to the backend, and then get
-      a list of images properties returned.
-   3. For instance, the user has already stored two images in the database, then
-      the user send a get request, they should receive something like:
-
-   ```jsx
-   {
-    "result": [
-   		{
-   			"image_url": "https://apod.nasa.gov/apod/image/2102/rosette_goldman_960.jpg"
-   			"date": "02-21-2021"
-   		},
-   		{
-   			"image_url": "some-other-image.jpg"
-   			"date": "02-20-2021"
-   		}
-   	]
-   }
-   ```
-
-All the routes you will be implementing will be in the file: `server/index.js`
-
-Here are some skeleton codes:
-
-```jsx
-...
-
-// The method of the root url. Be friendly and welcome our user :)
-router.get("/", function (req, res) {
-  res.json({ message: "Welcome to the APOD app." });
-});
-
-router.get("/favorite", function (req, res) {
-  // TODO:
-  res.json({ message: "TODO: here's the GET route" });
-});
-
-router.post("/add", function (req, res) {
-  // TODO:
-  res.json({ message: "TODO: Here's the add route" });
-});
-
-router.delete("/delete", function (req, res) {
-  // TODO:
-  res.json({ message: "TODO: Here's the delete route" });
-});
-
-app.use("/api", router); // API Root url at: http://localhost:8080/api
-
-app.listen(port);
-console.log("Server listening on port " + port);
+Into the command line, type the following
+```
+mongo
+use apod
+exit
 ```
 
-Resource on how to use the delete method:
+You should get a message that says `switched to db apod`. This signifies that our database has been created correctly.
 
-[How to Delete Documents with Mongoose](https://kb.objectrocket.com/mongo-db/how-to-delete-documents-with-mongoose-235)
+Once MongoDB is installed and our database initialized, we need a tool to communicate between our Express server and our MongoDB databse.
+For this, we use an NPM package called [mongoose](https://www.npmjs.com/package/mongoose).
 
-## Pointers
+Navigate to your assignment repository, and once _inside_ the repository, we will install the necessary packages.
 
-- Begin by first creating a node project, similar to how you saw in lecture,
-  running `npm init`
-- Proceed by running `npm install express --save` to install Express
-- Then, to install mongoose, we run `rpm install mongoose --save`
-- In your package.json file, ensure that the dependencies for both mongoose and
-  express appear
-- Create your `index.js` file and similar to the way you saw in lecture, require
-  express and ensure that the express app was setup using
-  `const app = express()`
-  - After entering the required packages, listener, and port that you want node
-    to run on, simply run `node index.js` to begin the application on your
-    respective port
-- Setup your MongoDB Database to store the users' favorited APOD,
+```js
+npm init
+npm install express
+npm install mongoose
+```
+
+Now, create a `server.js` file and open it. 
+
+To use mongoose, we must import the module and establish the connection.
+
+In `server.js`, we need the following:
+
+```
+const mongoose = require('mongoose')
+
+const db = mongoose.connection
+const url = "mongodb://127.0.0.1:27017/apod"
+
+mongoose.connect(url, { useUnifiedTopology: true, useNewUrlParser: true })
+```
+
+This creates a connection to our APOD database (hosted on our local machine at port 27017), for mongoose to talk to.
+
+Finally, we need to create a Schema for mongoose to use to store our data in it's model object.
+
+```
+const Schema = mongoose.Schema
+const apodSchema = Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  url: {
+    type: String,
+    required: true
+  },
+  rating: {
+    type: Integer,
+    required: true
+  }
+}, {collection: 'images'})
+
+const APOD = mongoose.model('APOD', apodSchema)
+```
+
+### Express Setup
+
+We must now setup Express before we continue with writing to our database. 
+
+To setup Express, we need to initialize our app object.
+
+```
+const express = require('express')
+const app = express()
+
+app.use(express.json())
+app.use(express.urlencoded())
+
+const port = process.env.PORT || 3000
+
+// CODE GOES Here
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`)
+})
+```
+
+### API Development
+
+Now, let us define the routes that we are going to be using to read and write to our API.
+
+We will be using the following routes to define our functionality.
+
+```
+app.get("/", function (req, res) {
+  // GET "/" should return a list of all APOD images stored in our database
+});
+
+app.get("/favorite", function (req, res) {
+  // GET "/favorite" should return our favorite image by highest rating
+});
+
+app.post("/add", function (req, res) {
+  // POST "/add" adds an APOD image to our database
+});
+
+app.delete("/delete", function (req, res) {
+  // DELETE "/delete" deletes an image according to the title
+});
+```
+
+### Database Functions
+
+Here is an example of how to implement the functions by database query. 
+```jsx
+app.get("/favorite", function (req, res) {
+  // GET "/favorite" should return our favorite image by highest rating
+    APOD.find().sort({'rating': 'desc'}).exec((error, images) => {
+    if (error) {
+      console.log(error)
+      res.send(500)
+    } else {
+      res.json({favorite: images[0]})
+    }
+  })
+})
+```
+
+The rest of the endpoints are for you to implement. Here are some tips to help you.
+
+### Tips
+
+1. POST and DELETE methods do not have to send data back. Only a confirmation of successful implementation.
+2. [mongoose documentation](https://mongoosejs.com/docs/guide.html) 
+You may find the Queries section helpful, specifically `.find()` and `.deleteOne()`. To create, you may find Models helpful, 
+specifically `.save()`
+
+### Checkpoint
+
+Your file should look like this
+
+```js
+const express = require('express')
+const app = express()
+
+const port = process.env.PORT || 3000
+
+app.use(express.json())
+app.use(express.urlencoded())
+
+const mongoose = require('mongoose')
+
+const db = mongoose.connection
+const url = "mongodb://127.0.0.1:27017/apod"
+
+mongoose.connect(url, { useUnifiedTopology: true, useNewUrlParser: true })
+
+const Schema = mongoose.Schema
+const apodSchema = Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  url: {
+    type: String,
+    required: true
+  },
+  rating: {
+    type: Number,
+    required: true
+  }
+}, {collection: 'images'}) \\ Note that within our DB, we are storing these images in a collection called images. 
+
+const APOD = mongoose.model('APOD', apodSchema)
+
+app.get("/", function (req, res) {
+  // GET "/" should return a list of all APOD images stored in our database
+});
+
+app.get("/favorite", function (req, res) {
+  // GET "/favorite" should return our favorite image by highest rating
+    APOD.find().sort({'rating': 'desc'}).exec((error, images) => {
+    if (error) {
+      console.log(error)
+      res.send(500)
+    } else {
+      res.json({favorite: images[0]})
+    }
+  })
+})
+
+app.post("/add", function (req, res) {
+  // POST "/add" adds an APOD image to our database
+});
+
+app.delete("/delete", function (req, res) {
+  // DELETE "/delete" deletes an image according to the title
+});
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`)
+})
+```
+
+### Testing
+
+To test your code, we highly encourage you to use Postman. Postman is a very thorough backend testing service, 
+that we use to send structured queries to our APIs. Here, we are hosting our API at `http://localhost:3000/`. 
+
+Because this is a local API, you will need to download the Postman Desktop Agent.
+
+Once you have done that successfully, you can make requests as you heart desires.
+
+First, navigate to the collections tab, and create a new collection "Homework 5".
+Now, let us add a new request.
+
+#### Testing GET "/"
+1. Next to the name of your collection in the sidebar, click the three dots and click `add new request`. 
+2. Title the request "Test Simple GET"
+3. Set the URL to be `http://localhost:3000/`
+4. Hit send.
+5. If the API is working correctly, you should get a list of all the images you saved to the API. If not
+keep debugging, and use Postman to test continuously.
+
+#### Testing POST "/add"
+1. Again, add a new request and an appropriate title
+2. Set the URL to be `http://localhost:3000/add/"
+3. This is a POST, so we need a body. Go to body, then set it to raw. Finally, change text to JSON. 
+4. Write your payload 
+```
+{
+  "title": "Hello World",
+  "url": "example.com",
+  "rating": 5
+}
+```
+
+The rest of the functions can be tested in a similar manner
 
 ## Submission
 
-Submit your github repo link to the gradescope.
-
-## Helpful Resources
-
-[Authentication in NodeJS With Express and Mongo - CodeLab #1](https://dev.to/dipakkr/implementing-authentication-in-nodejs-with-express-and-jwt-codelab-1-j5i)
+Push all of your code to the remote repository and submit the repository to Gradescope
 
 ---
 
 **Contributors**
 
+- [Dhruv Vaish](https://www.linkedin.com/in/dhruv-vaish)
 - [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)
