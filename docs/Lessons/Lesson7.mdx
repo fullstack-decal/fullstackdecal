@@ -60,11 +60,11 @@ scope.
 
 ```jsx
 // Global scope
-var carName = "Tesla";
+var carName = 'Tesla';
 
 function myFunction() {
   // local scope
-  var myName = "Alex";
+  var myName = 'Alex';
 }
 ```
 
@@ -102,10 +102,10 @@ var in the global scope, you can access it through local scope and update it if
 you want.
 
 ```jsx
-var tester = "hey hi";
+var tester = 'hey hi';
 
 function newFunction() {
-  var hello = "hello";
+  var hello = 'hello';
 }
 
 console.log(hello); // error: hello is not defined
@@ -114,8 +114,8 @@ console.log(hello); // error: hello is not defined
 `var` can also be redeclared and updated and won't get an error.
 
 ```jsx
-var greeter = "hey hi";
-var greeter = "say Hello instead";
+var greeter = 'hey hi';
+var greeter = 'say Hello instead';
 ```
 
 However, this creates a problem! If you have unknowingly declare a variable that
@@ -128,11 +128,11 @@ that error.
   previous username variable.
 
 ```jsx
-var username = "Alex";
+var username = 'Alex';
 var shouldFetch = true;
 
 if (shouldFetch) {
-  var username = "Bob";
+  var username = 'Bob';
   fetch(username);
 }
 
@@ -213,7 +213,7 @@ window.age = 10;
 function Person() {
   this.age = 42;
   setTimeout(() => {
-    console.log("this.age", this.age); // will yield 42.
+    console.log('this.age', this.age); // will yield 42.
   }, 1000);
 }
 ```
@@ -250,7 +250,7 @@ As an example, the `setTimeout` function waits a given number of milliseconds 
 second is a thousand milliseconds) and then calls a function.
 
 ```jsx
-setTimeout(() => console.log("Tick"), 500);
+setTimeout(() => console.log('Tick'), 500);
 ```
 
 We can nest multiple callbacks with one another, to handle multiple asynchronous
@@ -323,8 +323,8 @@ const wait = (time) => new Promise((resolve) => setTimeout(resolve, time));
 
 const responsePromise = wait(3000); // this is a promise returned by the wait function
 responsePromise.then(
-  () => console.log("Hello!"),
-  () => console.log("error")
+  () => console.log('Hello!'),
+  () => console.log('error')
 ); // 'Hello!'
 ```
 
@@ -349,7 +349,7 @@ Let's try fetch something from the NASA API!
 [NASA Open APIs](https://api.nasa.gov/)
 
 ```jsx
-fetch("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
+fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
   .then((response) => response.json())
   .then((data) => console.log(data));
 ```
@@ -365,7 +365,3 @@ fetch("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
 **Contributors**
 
 - [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)
-
----
-
-**Contributors**

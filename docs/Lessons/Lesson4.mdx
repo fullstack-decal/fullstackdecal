@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Lesson 3 - Advanced CSS
 
-# Positioning, Display, and Float
+## Introduction
 
 We'll be discussing three properties of elements that are important for building
 a layout using CSS.
@@ -104,12 +104,12 @@ Once it hits a position on scroll, it will stick to it.
 
 ## Display properties
 
-Elements you create are rendered as boxes on a page. Previously, we looked
-at how we can position these boxes on the page, but you can actually do a
-lot more with this. That's where the display property comes in.
+Elements you create are rendered as boxes on a page. Previously, we looked at
+how we can position these boxes on the page, but you can actually do a lot more
+with this. That's where the display property comes in.
 
-Display properties describe the type of rendering box around an element. Some
-of the different styles we can use include...
+Display properties describe the type of rendering box around an element. Some of
+the different styles we can use include...
 
 - Inline
 - Block
@@ -122,9 +122,9 @@ of the different styles we can use include...
 Displays an element as an inline element (like span). Any height and width
 properties will have **no effect**.
 
-Inline elements are arranged one after the other. Like any othr style,
-these elements are contained in boxes that are placed adjacent to one another.
-A common use for inline elements is for buttons placed side-by-side.
+Inline elements are arranged one after the other. Like any othr style, these
+elements are contained in boxes that are placed adjacent to one another. A
+common use for inline elements is for buttons placed side-by-side.
 
 ```css
 span {
@@ -180,34 +180,38 @@ span {
 
 ### Grid
 
-This is an easy way to lay out your elements in a **grid**. A Grid places the elements
-in a two-dimensional matrix. The vertical lines are columns and the horizontal lines are
-rows. Using a Grid allows you to change the dimensions of the columns and rows, making it
-a strong choice for placing elements. However, realize that the Grid doesn't have to be
-a perfect matrix. You can merge columns at specific rows, wrap content, and give individual
-items different widths to customize the layout.
+This is an easy way to lay out your elements in a **grid**. A Grid places the
+elements in a two-dimensional matrix. The vertical lines are columns and the
+horizontal lines are rows. Using a Grid allows you to change the dimensions of
+the columns and rows, making it a strong choice for placing elements. However,
+realize that the Grid doesn't have to be a perfect matrix. You can merge columns
+at specific rows, wrap content, and give individual items different widths to
+customize the layout.
 
 #### Grid container
 
-A Grid container is the element that contains the items of the Grid. We can create a
-Grid container by specifying the display properties (see the example at the bottom of this section).
+A Grid container is the element that contains the items of the Grid. We can
+create a Grid container by specifying the display properties (see the example at
+the bottom of this section).
 
 #### Grid lines
 
-Grid lines form the grid layout that divides the container into rows and columns. They
-can be referenced using an index that starts at 1 from the top left corner. This means
-that the first row grid line is index 1 (not 0, unlike Python and Java arrays/matrices).
+Grid lines form the grid layout that divides the container into rows and
+columns. They can be referenced using an index that starts at 1 from the top
+left corner. This means that the first row grid line is index 1 (not 0, unlike
+Python and Java arrays/matrices).
 
 #### Grid cells
 
-Grid cells are formed at the intersection of a row and column Grid line. They are bounded
-by exactly 2 row lines and 2 column lines to form a box. This is where you can place
-elements into the Grid. Grid cells are the smallest possible unit of space on the Grid
+Grid cells are formed at the intersection of a row and column Grid line. They
+are bounded by exactly 2 row lines and 2 column lines to form a box. This is
+where you can place elements into the Grid. Grid cells are the smallest possible
+unit of space on the Grid
 
 #### Grid area
 
-Grid areas are formed by combining one or more adjacent Grid cells to form a larger space.
-Therefore, Grid cells are also Grid areas.
+Grid areas are formed by combining one or more adjacent Grid cells to form a
+larger space. Therefore, Grid cells are also Grid areas.
 
 Not supported by all browsers yet so **not usable** in most production sites.
 
@@ -251,25 +255,27 @@ Here are some resources to learn more about the usage of the Grid layout:
 This is our collective **favorite** display option.
 
 Makes it easier to design **flexible responsive layout** structure without
-positioning. The main purpose of a flex-box is to fit all elements within
-the container by changing the flex dimensions. The flex container can shrink
-and stretch as needed, making it very useful in responsive websites where element
+positioning. The main purpose of a flex-box is to fit all elements within the
+container by changing the flex dimensions. The flex container can shrink and
+stretch as needed, making it very useful in responsive websites where element
 sizes change.
 
-A huge benefit of the Flex-box is that it is content aware. Different rows uniquely respond
-to elements within based on available space. It is one-dimensional along rows, so it can
-change item widths without notice of columns. Take advantage of this by avoiding specifying
-a width when creating the CSS for a Flex-box. This removes the main flexible purpose of using
-the Flex-box since items will no longer be dynamic.
+A huge benefit of the Flex-box is that it is content aware. Different rows
+uniquely respond to elements within based on available space. It is
+one-dimensional along rows, so it can change item widths without notice of
+columns. Take advantage of this by avoiding specifying a width when creating the
+CSS for a Flex-box. This removes the main flexible purpose of using the Flex-box
+since items will no longer be dynamic.
 
-The flex-grow propery specifies how items in the flex-box should take up available
-space. The value defaults at 0, and it must be specified within a CSS class specific
-to the element. This is similar to the flex-wrap property, which will wrap items To
-the next line if there are too many elements present in the container.
+The flex-grow propery specifies how items in the flex-box should take up
+available space. The value defaults at 0, and it must be specified within a CSS
+class specific to the element. This is similar to the flex-wrap property, which
+will wrap items To the next line if there are too many elements present in the
+container.
 
 You can use the justify-content property to align the elements contained within.
-When items are inflexible, it helps with using available space in the flex-box to
-align them across the container.
+When items are inflexible, it helps with using available space in the flex-box
+to align them across the container.
 
 By default, a flex-box attempts to place all elements on the same line. However,
 by specifying flex-wrap, you can spread elements across multiple lines.
@@ -291,7 +297,8 @@ Can **specify** direction of flex, spacing, justifying, alignment, etc...
 
 [Flexbox Froggy](https://flexboxfroggy.com/)
 
-Here are some resources to learn more about the usage of the Flex-box display option:
+Here are some resources to learn more about the usage of the Flex-box display
+option:
 
 - [CSS Flexbox Documentation](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
 - [W3 Flex Cheatsheet](https://yoksel.github.io/flex-cheatsheet/)
@@ -308,27 +315,27 @@ Here are some resources to learn more about the usage of the Flex-box display op
 #### Is your design complex?
 
 Use a Grid. Grids are far more powerful because of the row and column
-specification that makes designs look cleaner and well aligned. You can
-lay out items easily by placing them into Grids that encapsulate a large
-number of components on your page.
+specification that makes designs look cleaner and well aligned. You can lay out
+items easily by placing them into Grids that encapsulate a large number of
+components on your page.
 
 #### Which is better if I'm concerned about the flow of my content?
 
-Try Flex-box. Flex-box is useful because the container changes the
-height and width of elements within, which makes it more responsive
-to the page. However, if you're looking for something more rigid and
-focuses more on the placement of elements, Grid would be better.
+Try Flex-box. Flex-box is useful because the container changes the height and
+width of elements within, which makes it more responsive to the page. However,
+if you're looking for something more rigid and focuses more on the placement of
+elements, Grid would be better.
 
 ## Float
 
-We won't go into float too much in this reading, but know that setting
-float to either "left" or "right" shifts the element to the left or right,
-respectively, of the container that it is encapsulated in. The rest of the
-content will be wrapped around it.
+We won't go into float too much in this reading, but know that setting float to
+either "left" or "right" shifts the element to the left or right, respectively,
+of the container that it is encapsulated in. The rest of the content will be
+wrapped around it.
 
-Suppose we had an inline `<img>` nested within a `<p>`. Setting the image's float
-property to "right" would place the image to the right of the container and
-wrap the text above, to the left of, and below it.
+Suppose we had an inline `<img>` nested within a `<p>`. Setting the image's
+float property to "right" would place the image to the right of the container
+and wrap the text above, to the left of, and below it.
 
 ---
 
@@ -337,17 +344,19 @@ wrap the text above, to the left of, and below it.
 ## Parents and the Cascade
 
 - Classes inherit parent class properties!
-- Cascade allows you to differentiate child properties from that of their parent.
+- Cascade allows you to differentiate child properties from that of their
+  parent.
 - It creates a hierarchy of styling.
 
 At a simple level, cascading puts importance to the ordering of CSS rules. We'll
 look into specificity in the next section, but when two CSS rules have the same
 specificity, the rule that comes last will be selected.
 
-Why is this important? Well suppose you are working on your styles for a component.
-If your applied CSS styles don't seem to show up, take a dive into understanding
-whether there are other conflicting rules with the same specificity. You might not
-be expecting another rule to be overwriting what you wanted.
+Why is this important? Well suppose you are working on your styles for a
+component. If your applied CSS styles don't seem to show up, take a dive into
+understanding whether there are other conflicting rules with the same
+specificity. You might not be expecting another rule to be overwriting what you
+wanted.
 
 ```css
 p {
@@ -478,5 +487,5 @@ Can check **width**, **height**, **resolution**, and **orientation** of device.
 **Contributors**
 
 - [Vicky Li](https://www.linkedin.com/in/victoriayli/)
-- [Nitya Krishnakumar](https://www.linkedin.com/in/nitya-krish/))
+- [Nitya Krishnakumar](https://www.linkedin.com/in/nitya-krish/)
 - [Neil Kamdar](https://www.linkedin.com/in/neil-kamdar)

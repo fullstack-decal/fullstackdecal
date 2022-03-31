@@ -90,9 +90,9 @@ const Home: React.FC = () => {
         </Text>
         <Box mb={16}>
           <Text textStyle="subtitle2" fontSize="3xl" mb={4}>
-            Week 3
+            Week 8
           </Text>
-          {announcements[5]}
+          {announcements[7]}
         </Box>
 
         {/* Testimonials Section */}
