@@ -88,7 +88,7 @@ const Home: React.FC = () => {
         <Text textStyle="title2" color="purple" mt={[8, 16]} mb={4}>
           Announcements
         </Text>
-        <Box mb={16}>
+        <Box mb={16} className="darkMode">
           <Text textStyle="subtitle2" fontSize="3xl" mb={4}>
             Week 8
           </Text>
