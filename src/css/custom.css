@@ -7,7 +7,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 /* You can override the default Infima variables here. */
- 
+
 :root {
   --ifm-color-primary: #2463c9;
   --ifm-color-primary-dark: #2463c9;
@@ -26,9 +26,29 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
+[data-theme='dark'] {
+  background-color: white;
+}
+
+[data-theme='dark'] .table-of-contents__link {
+  color: #52585f;
+}
+
+[data-theme='dark'] .table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+}
+
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
   font-family: 'Poppins';
+}
+
+html[data-theme='dark'] .darkMode {
+  color: white;
+}
+
+html[data-theme='dark'] .darkModeContainer {
+  background-color: black;
 }
 
 .content a {

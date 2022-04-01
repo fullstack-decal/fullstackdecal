@@ -1,6 +1,5 @@
 const defaultTextStyle = {
   fontFamily: 'Poppins',
-  color: '#000000',
   m: 0,
 };
 

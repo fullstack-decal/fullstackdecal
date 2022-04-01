@@ -15,8 +15,8 @@ const Staff = () => {
       title={siteConfig.title}
       description="Description will go into a meta tag in <head />"
     >
-      <Box w="100vw">
-        <Container maxW="container.lg" mt={12} mb={20} pt={1.5} px={[7, 10]}>
+      <Box w="100vw" className='darkModeContainer'>
+        <Container maxW="container.lg" pt={16} pb={20} px={[7, 10]}>
           <Text textStyle="title2" color="blue" mb={[8, 12]}>
             SPRING 2022 COURSE STAFF
           </Text>
