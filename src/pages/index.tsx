@@ -23,6 +23,7 @@ const Home: React.FC = () => {
           '/img/background.png'
         ]}
         backgroundSize="100% 100%"
+        className="darkModeContainer"
       >
         <Container maxW="container.lg">
           <Text
@@ -84,7 +85,7 @@ const Home: React.FC = () => {
           </Text>
         </Container>
       </Box>
-      <Container maxW="container.lg" pb={16}>
+      <Container maxW="container.lg" pb={16} className="darkModeContainer">
         <Text textStyle="title2" color="purple" mt={[8, 16]} mb={4}>
           Announcements
         </Text>
