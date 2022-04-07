@@ -260,7 +260,7 @@ const schedule: Lesson[] = [
     week: 12,
     date: 'Apr 26',
     format: 'Special Lecture',
-    topic: 'Speaker TBD',
+    topic: 'Joey Besgen, Software Engineer @ Facebook',
   },
   {
     week: 12,
