@@ -39,7 +39,7 @@ const config = {
     ({
       colorMode: {
         defaultMode: 'light',
-        disableSwitch: true,
+        disableSwitch: false,
       },
       navbar: {
         title: 'Full Stack Decal',
