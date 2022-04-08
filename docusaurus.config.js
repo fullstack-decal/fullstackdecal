@@ -65,6 +65,11 @@ const config = {
             label: 'Staff',
           },
           {
+            to: 'resources',
+            position: 'left',
+            label: 'Resources',
+          },
+          {
             href: 'https://github.com/fullstack-decal',
             label: 'GitHub',
             position: 'right',
