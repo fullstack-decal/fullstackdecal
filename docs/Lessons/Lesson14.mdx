@@ -47,7 +47,7 @@ Now, we must install the requisite packages. This example will begin without
 validating the sent data, and then we will add that into the end.
 
 ```bash
-npm install --save express cors mongoose express bcryptjs jsonwebtoken
+npm install --save express cors mongoose express bcryptjs jsonwebtoken express-validator
 ```
 
 ## Setting up the web server
@@ -183,7 +183,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 
-const User = require("../model/User");
+const User = require("../models/User");
 
 /**
  * @method - POST
@@ -262,7 +262,7 @@ module.exports = router;
 - We will go through the above code line by line during lectures, but here are a
   few interesting lines of code:
   - `const errors = validationResult(req);` is a function that the validator
-    includes, it checks whether the JWT is a valid token.
+    includes; it checks whether the request is a valid request.
   - `const salt = await bcrypt.genSalt(10); user.password = await bcrypt.hash(password, salt);`
     these two lines generate a “salt”, which is a random string of length 10,
     and use it to hash the password. This way, even if the database is breached,
@@ -336,7 +336,7 @@ router.post(
     const { email, password } = req.body;
     try {
       let user = await User.findOne({
-        email,
+        email: email,
       });
       if (!user)
         return res.status(400).json({

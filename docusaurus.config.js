@@ -39,7 +39,7 @@ const config = {
     ({
       colorMode: {
         defaultMode: 'light',
-        disableSwitch: true,
+        disableSwitch: false,
       },
       navbar: {
         title: 'Full Stack Decal',
@@ -63,6 +63,11 @@ const config = {
             to: 'staff',
             position: 'left',
             label: 'Staff',
+          },
+          {
+            to: 'resources',
+            position: 'left',
+            label: 'Resources',
           },
           {
             href: 'https://github.com/fullstack-decal',
