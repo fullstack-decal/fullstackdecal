@@ -329,9 +329,9 @@ send data to the server (`POST`, `PUT`, `DELETE`).
 
 Here is an example of a GET request with the fields in JSON.
 
-![Screen Shot 2021-08-16 at 12.43.40 AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d2ca40d2-c8cb-4ecf-929f-7a05a916331a/Screen_Shot_2021-08-16_at_12.43.40_AM.png)
+![Screen Shot 2021-08-16 at 12.43.40 AM.png](../assets/Lesson10-2/image2.png)
 
-![Screen Shot 2021-08-16 at 12.47.16 AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/56d72407-d36d-4fc9-a1a4-edfdd63458d7/Screen_Shot_2021-08-16_at_12.47.16_AM.png)
+![Screen Shot 2021-08-16 at 12.47.16 AM.png](../assets/Lesson10-2/image3.png)
 
 You do not need to worry about what all these fields mean, just notice the way
 that necessary information is organized and easily accessible. Status Code:
@@ -487,7 +487,7 @@ Once you download and install postman, click `new collection` on the left side
 bar to create a new collection of API requests. Let's call it
 `RESTful server test requests`.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3abb55f3-73b2-457a-bc9c-c86bb238e1e1/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3abb55f3-73b2-457a-bc9c-c86bb238e1e1/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3abb55f3-73b2-457a-bc9c-c86bb238e1e1/Untitled.png](../assets/Lesson10-2/image4.png)
 
 Then, click on the more button and add a request. Let's first test out the API
 for the root URL:
@@ -504,9 +504,9 @@ Create a request and make sure its HTTP method is GET. Our root API url is at
 you should be seeing a JSON response body, which consists of a message with the
 content of "Welcome to the TODO app."
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/03941e2c-a074-48b4-a526-2a4a2f18be38/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/03941e2c-a074-48b4-a526-2a4a2f18be38/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/03941e2c-a074-48b4-a526-2a4a2f18be38/Untitled.png](../assets/Lesson10-2/image5.png)
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1aa74a60-3351-49d6-b23a-0a3aa071b8dc/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1aa74a60-3351-49d6-b23a-0a3aa071b8dc/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1aa74a60-3351-49d6-b23a-0a3aa071b8dc/Untitled.png](../assets/Lesson10-2/image6.png)
 
 ## Create API requests using POSTMAN
 
@@ -548,7 +548,7 @@ Now let's try out the `POST` request, unlike the `GET` request, the `POST`
 request contains a **request body**. If the post request does not contain any
 body, you would receive something like this:
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a6b67769-4da2-43e5-b3b4-4a08409f9c63/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a6b67769-4da2-43e5-b3b4-4a08409f9c63/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a6b67769-4da2-43e5-b3b4-4a08409f9c63/Untitled.png](../assets/Lesson10-2/image7.png)
 
 This `undefined` in the message means that the server does not receive the
 content of the todo, which should be included in the request body.
@@ -560,7 +560,7 @@ body.
 Let's say I want to create a todo with content "hello world todo". Then, we
 create a JSON like this:
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bf032666-e48f-4e58-9d44-2958a234cc8b/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bf032666-e48f-4e58-9d44-2958a234cc8b/Untitled.png)
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bf032666-e48f-4e58-9d44-2958a234cc8b/Untitled.png](../assets/Lesson10-2/image8.png)
 
 You should be receiving the message with the content you just created in the
 body.
