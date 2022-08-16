@@ -1,0 +1,135 @@
+# HW 2 - CSS
+
+Assigned To:   
+Reviewers:     
+Tags: Homework, In Review
+
+# HW 2 - CSS
+
+### Introduction
+
+In HW2, we want students to practice (1) CSS selectors and (2) CSS properties by replicating country flags. The homework will consist of five questions — for q1 to q4, you will implement the flags of Luxembourg, Thailand, Romania, and Mexico respectively. These questions will help students understand the concepts of flexbox as well as height and width properties. For q5, the students will change the font and the size of the heading/subscripts for each flag to practice the styling of texts using CSS.
+
+### Learning Objectives
+
+- Concept - Objective #1 : selectors, id vs. class (relating html to css)
+- Concept - Objective #2: basic properties used by css: background-color, height, width
+- Concept - Objective #3: flexbox of CSS
+- Concept - Objective #4: margin/padding (possible?)
+- Concept - Objective #5: want to incorporate text (title/ heading, subscripts)
+
+## Setup
+
+## Walkthrough - Poland
+
+## Q1 - Luxembourg
+
+The first exercise is to replicate the flag of Luxembourg. Fill out the blank with correct selectors in styles.css to set the width, height, and background color of each `<div/>`. Do NOT change the HTML for this question.
+
+**Hint:** Recall specificity rule for CSS. The more specific the selector is, the higher priority it has. (For example, class will override element tag if they have conflicting properties.)
+
+![Untitled](HW%202%20-%20CSS%20ea9b2ef851d946b4aee1209698c26208/Untitled.png)
+
+```html
+<h2>Luxembourg</h2>
+<div class="flag">
+  <div class="red threevert"></div>
+  <div class="red threevert" id="white"></div>
+  <div class="light-blue threevert"></div>
+</div>
+```
+
+Now that you’ve seen how to style the HTML elements that you want using selectors, you can leverage that fact that multiple elements can share the same class (remember this is not true for id’s, these are unique). So, elements with the same class will also share the same style properties that you set, and you only need to set it once!
+
+## Q2 - Thailand
+
+Replicate the Thailand flag. Style each horizontal stripe with CSS properties like `width`, `height`, and `background-color`. The hex codes you’ll need are
+
+- red: #B5002D
+- blue: #2E2A4C
+
+![Untitled](HW%202%20-%20CSS%20ea9b2ef851d946b4aee1209698c26208/Untitled%201.png)
+
+**Hint:** See if you can set the width property of the entire flag just once, so that all of the individual stripes automatically have the same width: check out **inheritance** in CSS!
+
+```html
+<h2>Thailand</h2>
+<div class = "thailand-flag"> 
+    <div class = "thailand-red">
+    </div>
+    <div class = "thailand-white">
+   </div>
+    <div class = "thailand-blue">
+    </div>
+    <div class = "thailand-white">
+    </div>
+    <div class = "thailand-red">
+    </div>
+</div>
+```
+
+## Q3 - Romania
+
+[https://css-tricks.com/snippets/css/a-guide-to-flexbox/](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+
+Replicate the Romania flag. For this question, write HTML code by yourself and use flexbox to correctly arrange stripes within the given border.
+
+**Hint:** Try setting `display` and `flex-direction` properties for the parent class `.horiz`.
+
+![Untitled](HW%202%20-%20CSS%20ea9b2ef851d946b4aee1209698c26208/Untitled%202.png)
+
+```html
+<h2>Romania</h2>
+<div class="flag horiz">
+  <!-- insert flag here -->
+</div>
+```
+
+## Q4 - Mexico
+
+Replicate the Mexico flag. Again write HTML code by yourself and use the image provided below. Don’t create a separate `<div/>` tag for a white tag since you can also apply flexbox to `<img/>`.
+
+**Hint:** To handle the image’s size, consider using `max-height`, `max-width` and `align-self`. As always, don’t be afraid to Google all of these properties!
+
+![Untitled](HW%202%20-%20CSS%20ea9b2ef851d946b4aee1209698c26208/Untitled%203.png)
+
+```html
+<h2>Mexico</h2>
+<div class="flag horiz mexico">
+  <!-- insert flag here -->
+</div>
+```
+
+## Q5 - Text Styling
+
+[https://www.geeksforgeeks.org/css-text-formatting/](https://www.geeksforgeeks.org/css-text-formatting/)
+
+[https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)
+
+Go back to the headings for the flags you made: the `<h2>` tags, and give each a different text style. You’ll need to assign each `<h2>` tag a custom class in the HTML in order to select it through CSS.
+
+Luxembourg: change the color to purple
+
+Thailand: make the text underlined
+
+Romania: use the `:hover` to make the text grow larger upon hovering over it (you should be using two properties for this)
+
+Mexico: use the `:hover` pseudo-class to make the text blue and underlined when hovering your cursor over it
+
+**Hint:** If you’re stuck on changing the Romania text, check out the `transition` and `transform` properties
+
+## Q6 - Margin and Padding
+
+When spacing between and around elements there is a subtle distinction between margin and padding. Recall the margin is space **outside** of the element’s border while padding is space between the element and its border.
+
+Margin exercise: provide a set of two flags that are right next to each other and have students separate those two flags apart by a certain distance (10px for example). They should use margin for this.
+
+Padding exercise: provide a flag with 2-3 elements. Make students shrink the flag by certain amount by setting the padding. (Note for later: we can use `background-clip` property to color padding)
+
+First, separate the two given boxes with a distance of 30px, 15px on the right side of the left box and 15px on the left side of the right box.
+
+Then shrink the next flag by 30px in total vertically and horizontally, but keep its border the same size.
+
+### Conclusion
+
+Try to leave the students with some closing thoughts, and feel free to [link](http://google.com) some resources for additional learning and help.
