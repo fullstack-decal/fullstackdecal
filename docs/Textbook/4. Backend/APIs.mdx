@@ -1,0 +1,87 @@
+---
+sidebar_position: 2
+---
+
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+} from '@chakra-ui/react';
+import Admonition from '@theme/Admonition';
+
+# APIs
+
+### Learning Objectives
+
+## Application Programming interface
+
+An Application Programming Interface, more commonly known as an _API_, is a set of rules that define how users interact with
+software. APIs are not only found in web development. Instead, they are found up and down the EECS stack. For us, the user, 
+the vast majority of software is a black box. Instead of trying to understand every line of code for software that we use, 
+we often rely on the developer to define methods that we can use to interact with that software. If we only need to learn 
+those methods, we should be able to utilize the full functionality of the software without ever having to peek inside.
+
+In web development, an API is used to define what methods a server has. For example, let us say our website has endpoints that
+where users can GET data, endpoints where users can POST data, and endpoints that do both. As the developer, we need to
+make clear to the user which endpoints accept data, which endpoints send responses with data, and what kind of data is send
+and received. The user will need all of this knowledge in order to work with our server. 
+To keep track of all of our needs, we use REST to create APIs that are robust, well-organized, and most importantly,
+_language-agnostic_.
+
+If an API is language-agnostic, that means that APIs written in any language can interact with our API. For example, if we 
+write our API in JavaScript, an API written in Python, or Swift, or Kotlin, can access our API just as easily as one written
+in JavaScript. This is form of standardization in the industry, and is an incredibly powerful tool. With proper utilization
+of API, there is no limit to the reach of your data, and much of the power of the Internet comes from the fact that it is 
+accessible to all. 
+
+## REST API
+
+REST API is an acronym for **RE**presentational **S**tate **T**ransfer. REST APIs are specific to web development.
+REST defines a loose set of rules and general style for how web APIs should be constructed and how data is handled.
+
+Here are the six guiding principles of REST from
+[https://restfulapi.net/](https://restfulapi.net/):
+
+1. **Client-server** – By separating the user interface concerns from the data
+   storage concerns, we improve the portability of the user interface across
+   multiple platforms and improve scalability by simplifying the server
+   components.
+2. **Stateless** – Each request from client to server must contain all of the
+   information necessary to understand the request, and cannot take advantage of
+   any stored context on the server. Session state is therefore kept entirely on
+   the client.
+3. **Cacheable** – Cache constraints require that the data within a response to
+   a request be implicitly or explicitly labeled as cacheable or non-cacheable.
+   If a response is cacheable, then a client cache is given the right to reuse
+   that response data for later, equivalent requests.
+4. **Uniform interface** – By applying the software engineering principle of
+   generality to the component interface, the overall system architecture is
+   simplified and the visibility of interactions is improved. In order to obtain
+   a uniform interface, multiple architectural constraints are needed to guide
+   the behavior of components. REST is defined by four interface constraints:
+   identification of resources; manipulation of resources through
+   representations; self-descriptive messages; and, hypermedia as the engine of
+   application state.
+5. **Layered system** – The layered system style allows an architecture to be
+   composed of hierarchical layers by constraining component behavior such that
+   each component cannot “see” beyond the immediate layer with which they are
+   interacting.
+6. **Code on demand (optional)** – REST allows client functionality to be
+   extended by downloading and executing code in the form of applets or scripts.
+   This simplifies clients by reducing the number of features required to be
+   pre-implemented.
+
+A server application that implements a REST API is also called a **RESTful** server.
+
+RESTful APIs are the industry standard. They offer an extremely powerful and extensible model of development that 
+can be scaled from small projects to complex web frameworks and apps. In the upcoming chapters, we will learn how to
+build and deploy our own RESTful APIs.
+---
+
+**Contributors**
+
+- [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)
+- [Dhruv Vaish](https://www.linkedin.com/in/dhruv-vaish) 

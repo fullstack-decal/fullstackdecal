@@ -1,0 +1,196 @@
+---
+sidebar_position: 3
+---
+
+# Postman
+
+Postman is an incredibly helpful tool for testing and validating our APIs. In
+this case, REST APIs. Postman is essentially a systematic and user-friendly way
+to send predefined requests.
+
+Let's open Postman together.
+
+Once you create an account and login, you will be met with a picture of your
+workspace. Click on Workspaces > My Workspace. There should be nothing there
+except maybe an example request that we could make. We will now be returning to
+our previous examples to show how we can make systematic GET requests to the
+same APIs.
+
+[Example API](https://www.notion.so/6550d800e50149b1ab4d789485dc1969)
+
+Additionally, `/db/all` supports a query param specifying the maximum number of
+items to return.
+
+I will teach you how to run this program fully, but for the purpose of this
+exercise,
+
+# EXTRA: RESTful Server in Action and Postman
+
+To understand REST API and HTTP methods a step further, let us take a look at a
+RESTful server in action.
+
+Let's say we are building a TODO app. Take a look at the following code. Pay
+close attention to what the comments address.
+
+```jsx
+const express = require('express');
+
+const app = express();
+
+var port = process.env.PORT || 8080;
+
+var router = express.Router();
+
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// The method of the root url. Be friendly and welcome our user :)
+router.get('/', function (req, res) {
+  res.json({ message: 'Welcome to the TODO app.' });
+});
+
+// All HTTP methods under the /todos URL.
+router
+  .route('/todos')
+  // This GET method is in charge of returnning all the todos.
+  .get((req, res) => {
+    res.json({ message: 'Return all todos.' });
+  })
+  // This POST methods is used to create a new todo.
+  // Its request will have a body, containing the content of the new todo.
+  .post((req, res) => {
+    res.json({
+      message: 'Create a new todo: ' + '1' + ' - ' + req.body.content,
+      todo_id: '1',
+      content: req.body.content,
+    });
+  });
+
+// All HTTP methods under the /todos/:todo_id URL.
+// The /:todo_id is a parameter within the URL that specifies a particular todo.
+router
+  .route('/todos/:todo_id')
+  // This GET method is used to get the content from a specific todo.
+  .get((req, res) => {
+    res.json({ message: 'Get the content from a todo.' });
+  })
+  // We use PUT method to update a todo's content.
+  .put((req, res) => {
+    res.json({
+      message:
+        'Update the todo: ' + req.params.todo_id + ' - ' + req.body.content,
+      todo_id: req.params.todo_id,
+      content: req.body.content,
+    });
+  })
+  // DELETE method is used to delete a todo.
+  .delete((req, res) => {
+    res.json({ message: 'Delete a todo.' });
+  });
+
+app.use('/api', router); // API Root url at: http://localhost:8080/api
+
+app.listen(port);
+console.log('Server listenning on port ' + port);
+```
+
+Now with the dummy server ready, how should we send all the HTTP requests?
+Introduce a new tool in our workflow —— postman.
+
+Let's start the server with `npm run start` and see how can we interact with the
+server.
+
+## Postman
+
+Postman is a platform for API development. It can easily build and send out API
+requests.
+
+Once you download and install postman, click `new collection` on the left side
+bar to create a new collection of API requests. Let's call it
+`RESTful server test requests`.
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3abb55f3-73b2-457a-bc9c-c86bb238e1e1/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3abb55f3-73b2-457a-bc9c-c86bb238e1e1/Untitled.png)
+
+Then, click on the more button and add a request. Let's first test out the API
+for the root URL:
+
+```jsx
+// The method of the root url. Be friendly and welcome our user :)
+router.get('/', function (req, res) {
+  res.json({ message: 'Welcome to the TODO app.' });
+});
+```
+
+Create a request and make sure its HTTP method is GET. Our root API url is at
+[`http://localhost:8080/api`](http://localhost:8080/api). After you click send,
+you should be seeing a JSON response body, which consists of a message with the
+content of "Welcome to the TODO app."
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/03941e2c-a074-48b4-a526-2a4a2f18be38/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/03941e2c-a074-48b4-a526-2a4a2f18be38/Untitled.png)
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1aa74a60-3351-49d6-b23a-0a3aa071b8dc/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1aa74a60-3351-49d6-b23a-0a3aa071b8dc/Untitled.png)
+
+## Create API requests using POSTMAN
+
+Postman is a very powerful tool as it can save your API request and resend it
+again and again at your will. Let's save this and create mroe API requests to
+test the `GET` request that fetch all todos and `POST` that create a new todo.
+
+```jsx
+// All HTTP methods under the /todos URL.
+router
+  .route('/todos')
+  // This GET method is in charge of returnning all the todos.
+  .get((req, res) => {
+    res.json({ message: 'Return all todos.' });
+  })
+  // This POST methods is used to create a new todo.
+  // Its request will have a body, containing the content of the new todo.
+  .post((req, res) => {
+    res.json({
+      message: 'Create a new todo: ' + '1' + ' - ' + req.body.content,
+      todo_id: '1',
+      content: req.body.content,
+    });
+  });
+```
+
+Let's first create a new request, and use
+[`http://localhost:8080/api/todos`](http://localhost:8080/api/todos) as the
+request URL. We start by testing out the `GET` request, and after clicking send,
+you should see the following JSON as a response:
+
+```jsx
+{
+    "message": "Return all todos."
+}
+```
+
+Now let's try out the `POST` request, unlike the `GET` request, the `POST`
+request contains a **request body**. If the post request does not contain any
+body, you would receive something like this:
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a6b67769-4da2-43e5-b3b4-4a08409f9c63/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a6b67769-4da2-43e5-b3b4-4a08409f9c63/Untitled.png)
+
+This `undefined` in the message means that the server does not receive the
+content of the todo, which should be included in the request body.
+
+To add a request body, click on **Body** and then select `raw`. Change the
+format from `TEXT` to `JSON`, and you are ready to write your first request
+body.
+
+Let's say I want to create a todo with content "hello world todo". Then, we
+create a JSON like this:
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bf032666-e48f-4e58-9d44-2958a234cc8b/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bf032666-e48f-4e58-9d44-2958a234cc8b/Untitled.png)
+
+You should be receiving the message with the content you just created in the
+body.
+
+# Resources
+
+[Build a RESTful API Using Node and Express 4](https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4)
+
+[What is REST](https://restfulapi.net/)

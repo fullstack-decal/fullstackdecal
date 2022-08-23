@@ -1,0 +1,329 @@
+---
+sidebar_position: 1
+---
+
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+} from '@chakra-ui/react';
+import Admonition from '@theme/Admonition';
+
+# HTTP
+
+### Learning Objectives
+
+## What is the Internet?
+
+When we think of the Internet, we often think only of the websites which we are
+visiting. What we don't see is the vast numer of resources that it takes to request and receive that website.
+
+Modern web applications consist of two major parts: a frontend and a backend. I
+like to use the restaurant analogy to visualize the difference. A traditional
+restaurant consists of two main parts: a dining room and a kitchen. When we
+order, we only ever see the nicely-furnished, well-decorated dining room. But
+when we order, we only give our order to the waiter. The waiter relays that order to the kitchen.
+A complicated set of instructions is then executed to produce our order and the
+waiter, like magic, returns with our food.
+
+Similarly, when we use a website, we interact only with the frontend. The
+frontend is content that the user can interact with
+directly. However, when we interact with that frontend, the frontend is responsible for
+interacting with a backend that produces the content that we want. Practically, the frontend requests
+content from the backend, and renders that content for the user.
+
+The natural question, then, is how do the frontend and backend communicate? The
+answer is HTTP. HTTP is the backbone of the Internet. The Internet is, largely, just a
+constant exchange HTTP requests being sent back and forth across a vast
+network. It is the language of the network.
+
+HTTP(S) comes in two main flavors, the _request_ and the _response_. Being full-stack engineers,
+we must understand both how to send requests and how to send responses. For a full-stack application, the frontend sends requests,
+while the backend sends responses.
+
+## HTTP Requests
+
+An HTTP requests consist of two parts: the _header_ and the _body_.
+
+Imagine we are sending a letter to a friend. The body of the request is like the letter itself, it contains the content
+that we are interested in relaying.
+The header is like the envelope. It contains all the pertinent information about where the letter needs to go.
+It tells us where, how, and when the content of the request is to be sent, and communicates where the response needs to go.
+
+Below is an example of an HTTP(S) header.
+
+```plaintext
+GET /home.html HTTP/1.1
+Host: developer.mozilla.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: https://developer.mozilla.org/testpage.html
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Mon, 18 Jul 2016 02:36:04 GMT
+If-None-Match: "c561c68d0ba92bbeb8b0fff2a9199f722e3a621a"
+Cache-Control: max-age=0
+```
+
+The first line defines three key components: the method, the request location, and the protocol. 
+
+
+The remaining lines are used to specify information about the request. This
+includes potential authorization, cacheing, handling, etc. At this level, we
+won't be using these too much, but as your applications become more complicated,
+taking advantage of these headers may allow for significantly more
+functionality.
+
+### Methods
+
+Methods define what kind of request we are sending. These are also commonly known as HTTP _verbs_. 
+We use HTTP verbs to simplify and organize our requests. When a server receives a request, it uses the method
+to determine what information it needs to complete the request, and what information the user is expecting in return.
+
+There are many HTTP verbs, but the most commonly used ones are listed below:
+
+1. **[`GET`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET):**
+   The `GET` method requests a representation of the specified resource.
+   Requests using `GET` should only retrieve data.
+2. **[`HEAD`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/HEAD):**
+   The `HEAD` method asks for a response identical to that of a `GET` request,
+   but without the response body.
+3. **[`POST`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST):**
+   The `POST` method is used to submit an entity (a form) to the specified
+   resource, often causing a change in state or side effects on the server.
+4. **[`PUT`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT):**
+   The `PUT` method replaces all current representations of the target resource
+   with the request payload. In other words, you can use `PUT` to update a
+   resource.
+5. **[`DELETE`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE):**
+   The`DELETE` method deletes the specified resource.
+6. **[`CONNECT`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT):**
+   The`CONNECT` method establishes a tunnel to the server identified by the
+   target resource.
+7. **[`OPTIONS`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS):**
+   The `OPTIONS` method is used to describe the communication options for the
+   target resource.
+8. **[`TRACE`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/TRACE):**
+   The `TRACE` method performs a message loop-back test along the path to the
+   target resource.
+9. **[`PATCH`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH):**
+   The `PATCH` method is used to apply partial modifications to a resource.
+
+You **do not need to know all of these**. The most relevant ones to us, and for most use cases, are `GET`,
+`POST`, `PUT`, and `DELETE`.
+
+In future lessons, we will go into more detail about where, when, and how to use these methods,
+but for now, just know that when we make a request, we should have a good idea of what kind of request it is,
+and what information we need to provide to complete the request, as well as what content we should expect in return.
+
+### HTTP Responses
+
+Just as we make requests to a server for information, we also expect a response.
+Even if we do not expect data in return, the server always sends a response
+indiciating that it received the request. 
+
+Responses are essentially our "return" value.
+They act as our only way to understand what the server is doing. There are two main cases with responses:
+- If the server is performing correctly, then we receive as a response carrying the content that we requested
+- If the server errors or we did not request content, we expect our response to be a success message or an error message indicating what went wrong. 
+
+Below is an example of response codes.
+
+- `1XX`: Informational
+- `2XX`: Successful
+- `3XX`: Redirection
+- `4XX`: Client Error
+- `5XX`: Server Error
+
+Response codes are categories of response types. Depending on what type of response or what type of error it is,
+the response code will be different, helping us trace exactly what is wrong with our request.
+
+Here are some of the most common response codes.
+
+- `200`: OK. Meaning that the request of a specific resource (list of TODOs) are
+  successful.
+- `201`: Created. Meaning that a resource is created / updated successfully.
+- `401`: Unauthorized. Meaning that the request is unauthorized, the client
+  needs to be logged in.
+- `403`: Forbidden. Meaning that the resource is not available for the client.
+- `404`: Not found. Meaning that the resource accessing is not served.
+- `418`: I'm a teapot. Meaning that the server refuses the attempt to brew
+  coffee with a teapot.
+- `500`: Server error.
+
+Again, you do not need to know every response code, but you shoudl familiarize yourself with what they mean, broadly, 
+and understand when you make a request, what response codes you expect and what response error codes you might get. 
+
+# Anatomy of a Request
+
+When we make HTTP requests, we use a particular organization to ensure that the
+receiving server can process our request. Note: This example focuses on requests
+without a body.
+
+Let's look at the following request
+
+```bash
+GET 'https://pokeapi.co/api/v2/pokemon/ditto'
+```
+
+Now let's look at the components of our request.
+
+`https://` defines the protocol we are using. In this case, we are using the
+HTTP secure protocol
+
+`[pokeapi.co/](http://pokeapi.com/)` defines the server (computer) to which we
+are making our request. When we make a request, we are essentially making it to
+a particular IP address. In the case of domain names, your Internet service
+provider does some cool stuff (which I won't go into here) which essentially
+aliases this domain name to an IP address to complete your request.
+
+`/api/v2/` We will learn later about the importance of this. For now, think of
+it like this: In order to make our request, we have to request a certain part of
+the website where the content we want is kept. For example, navigate to the WDB
+website [webatberkeley.org](http://webatberkeley.org). As you click on the
+different options in the menu, notice that the URL in the search bar is
+changing. To get the information you want, you need to go to the location where
+it is stored. Our requests follow a similar (In fact, directly related) pattern.
+We must make our request in the right place to get what we want. In this case,
+we are making a request to the API, specifically v2 of the API. You can also
+think of it as a large file system, where to access the files we want, we
+navigate to their location at the server (again directly related to how websites
+function).
+
+`/pokemon/ditto` It may not be immediately clear why these are the search terms,
+or why they differ from `/api/v2` in terms of functionality, but bear with me.
+Ultimately, all of these `/` 's represent how the designers of the website have
+chosen to organize the website. When we make a request to an API, we must make
+the request directly to the API, or else the website will likely return HTML
+files to be rendered. That is why this particular website used `/api/v2`.
+**_Every website will be different._** It is up to the designer how they
+organize their website, and as the client, it is your responsibility to check
+the docs for how you can get what you need. After we access the API, we are
+telling the website: "Please look at Pokemon, and of those, please look at
+Ditto." The last term is usually a unique key which maps to a single entry of
+data which is what _you_ want.
+
+## Fancier requests
+
+URL encoding is a fairly straightforward part of web development so we won't
+dive too deeply into this, it is more of something you learn as you go, and a
+lot of the packages that we use handle these kinds of things for you. If you
+were curious, we can in fact add more information to our get request.
+
+Instead of just telling the web server _where_ to get the data, we can, in some
+cases specify the type of data that we want to get. Where as the previous
+request returned exactly the data item that we need, think of this as more like
+a search. We can give the website some query parameters to return the data we
+want. This is done with the `/?key1=value1&key2=value2` syntax. The `?`
+specifies that we are encoding query parameters, and the `&` key allows for
+encoding of multiple parameters.
+
+The following API returns a random number when called.
+
+```bash
+https://csrng.net/csrng/csrng.php
+```
+
+Let us try calling it with no parameters.
+
+```bash
+curl 'https://csrng.net/csrng/csrng.php'
+```
+
+You should see something like this:
+
+```bash
+[
+	{
+		"status":"success",
+		"min":0,
+		"max":9007199254740991,
+		"random":1462051404510535
+	}
+]
+```
+
+Now let's try calling it with some encoded parameters. Type in the following to
+your terminal.
+
+```bash
+curl 'https://csrng.net/csrng/csrng.php?min=1&max=100'
+```
+
+You should now see something like this:
+
+```bash
+[
+	{
+		"status":"success",
+		"min":1,
+		"max":100,
+		"random":44
+	}
+]
+```
+
+Notice that now, the API is only returning random numbers between the parameters
+that we specified! In fact, we can clearly see that the API received our
+parameters and set the min and max accordingly. This becomes important in
+applications like search and efficient design (querying instead of constantly
+subdividing resources). For example, type something into Google and look at the
+URL! What might this tell you? Think on it.
+
+# JSON
+
+Look at our last example. You may be wondering, why does the response look like
+that? When we make requests to an API, if we get a status `200` code we can
+expect that the server will return some data. What kind of data it returns
+depends on what kind of data we are seeking. In some cases, it might return
+entire HTML pages, that is what your browser will render into a "website". In
+other cases, we simply want a snippet of data from our server, not an entire
+page. In order to the server to return this kind of data in a standardized and
+easily accessible way, we use JSON to send the data. JavaScript Object Notation
+is an open standard file format and data interchange format. While it does say
+JavaScript in the name, think of JSON as _completely language agnostic._ It is
+fair to say that JSON is one of the backbones of the Internet. Much of the data
+that is exchanged between servers and clients is sent in JSON. Here is an
+example of JSON:
+
+```jsx
+	{
+		"status":"success",
+		"min":1,
+		"max":100,
+		"random":[44, 20, 30],
+		"extra": {
+			"hello": "goodbye",
+			"goodday": "goodnight"
+		}
+	}
+```
+
+**NOTE: I've added the "extra" field to demonstrate that JSON can nest JSON,
+this would not have been in your response from the previous example.**
+
+JSON is much like a dictionary in Python or a Map in Java. Contained within the
+object are several keys which map to values. These values can be strings
+(wrapped in quotes), numbers, lists, or even more objects.
+
+JSON is critical to understanding how we exchange data. It not only defines how
+we receive data from the server (`GET` for example), but it also defines how we
+send data to the server (`POST`, `PUT`, `DELETE`).
+
+You do not need to worry about what all these fields mean, just notice the way
+that necessary information is organized and easily accessible. Status Code:
+`200`, url, method: `GET` , and data, are all incredibly important pieces of
+information, and JSON makes them significantly easier to access in a
+standardized way.
+
+---
+
+**Contributors**
+
+- [Dhruv Vaish](https://www.linkedin.com/in/dhruv-vaish)
+- [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)
