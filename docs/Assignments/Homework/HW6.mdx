@@ -86,9 +86,6 @@ npm start
 
 Now that your frontend and backend are working, lets write a HTTP request.
 
-Right now, our blocks are pretty bland and hard coded, lets spice this up with
-an API fetch.
-
 First, lets see how Axios works in an example:
 
 ```jsx live
@@ -130,8 +127,8 @@ use this data to render out posts in our application?
 
 ### Action Items
 
-Fetch data from our server (`http://localhost:3002/posts`) and render out each
-array item using the `Post` component inside of the `Feed` component.
+In `Feed.js`, fill in the blanks to make an API request. Fetch data from our server (`http://localhost:3002/posts`) and render out each
+array item using the `Post` component inside of the `Feed` component. (You can leave line 50 as a blank for now!)
 
 **Tips:**
 
@@ -155,7 +152,9 @@ axios
 
 ### Action Item
 
-Use a `POST` request to create a new post.
+1. In `Feed.js`, fill in the blank in line 50. Pass in a function to a `NewPost` component through a prop.
+2. In `NewPost.js`, fill in the blanks for creating a new post by making a `POST` request.
+3. Fill in the blank in line 4 to accept the passed in property and use that property after the post request.
 
 **Tips**
 
@@ -171,9 +170,12 @@ There's a `comments` field on the server data, and if you `POST`
 
 ### Action Item
 
-Create a new `Comments` component to view all the comments on a single post.
-Also create a new form for users to add a new comment. After adding a comment,
-it should be rendered on the frontend.
+1. Fill in the blanks in `Comments.js` to handle and submit the new comment.
+2. Fill in the blanks in `Post.js` to pass in correct props to `Comments` component.
+
+**Tips**
+- In `.then` body, change the states to reflect the new comment and clear the `newComment` state.
+
 
 ## Submission
 
@@ -203,3 +205,5 @@ Note the UI doesn't have to be the same.
 **Contributors**
 
 - [Caelin Sutch](https://www.linkedin.com/in/caelinsutch)
+- Rebecca Won
+- Ethan Pang
