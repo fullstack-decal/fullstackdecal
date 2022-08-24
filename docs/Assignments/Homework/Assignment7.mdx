@@ -17,6 +17,13 @@ In this homework, we wish to provide students with a hands-on experience in crea
 
 ## Set-Up
 
+First, navigate to your root directory. Initialize npm and install the necessary packages with the following commands.
+
+```jsx
+npm init
+npm install --save express cors mongoose express bcryptjs jsonwebtoken express-validator
+```
+
 Create a file called `index.js`. This will be where we set up your Express server. Take note that there are several commented lines of code. Make sure to uncomment these lines once you have finished the parts with their implementation.
 
 ```jsx
@@ -38,6 +45,13 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.json({ message: "API Working" });
 });
+
+// /**
+//  * Router Middleware
+//  * Router - /user/*
+//  * Method - *
+//  */
+//  app.use("/user", user);
 
 app.listen(PORT, (req, res) => {
   console.log(`Server Started at PORT ${PORT}`);
@@ -309,6 +323,8 @@ module.exports = function (req, res, next) {
 
 Next, add an endpoint that will delete your account from the database.
 
+** Hint: ** Take a look [here](https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteOne/) to find the documentation for deleting from a MongoDB database.
+
 ```jsx
 router.delete("/remove-user", auth, async (req, res) => {
   try {
@@ -325,12 +341,14 @@ router.delete("/remove-user", auth, async (req, res) => {
 
 Finally, create an endpoint that will allow users to update their information in the database.
 
-**Hint:** The new information should be sent in `req.body`.
+**Hint 1:** The new information should be sent in `req.body`.
+
+**Hint 2:** Look [here](https://www.mongodb.com/docs/manual/reference/method/db.collection.updateOne/) under "Examples" for documentation on updating documents.
 
 ```jsx
 router.put("/update-user", auth, async (req, res) => {
   try {
-    const response = await User.updateOne(req.user.id, req.body);
+    const response = await User.updateOne(______, ______);
     res.json(response);
   } catch (e) {
     res.send({ message: "There was an error with updating your information." });
@@ -338,4 +356,4 @@ router.put("/update-user", auth, async (req, res) => {
 });
 ```
 
-Don’t forget to make use of Postman to test out your API endpoints!
+Don’t forget to make use of Postman to test out your API endpoints! An example can be found in the lecture notes.
