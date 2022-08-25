@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
 ---
 
 # HW 0 - Getting Started
@@ -12,207 +12,175 @@ your machine for web development this semester.
 
 ## Learning Objectives
 
-1. How to read technical documentation
-2. Set up git on your local computer and how to use git
-3. Set up a GitHub account and create a GitHub repository
-4. Save your work from your local computer into a Github repo.
-5. Set up your first website using GitHub pages!
+- How to read technical documentation
+- Set up git on your local computer and how to use git
+- Set up a GitHub account and create a GitHub repository
+- Save your work from your local computer into a GitHub repo.
 
-## Part 0: Syllabus
+## Q0 - Syllabus
 
-Please refer to the [syllabus](\syllabus) and familiarize yourself with course policies. 
-Please answer the following questions:
+Please refer to the [syllabus](/syllabus) and familiarize yourself with course policies. 
 
-## Part 1: Setting Up
+## Q1 - Installation
 
-For this course, you will need both client-side and server-side JavaScript clients. You do not need to know what this means,
-we will walk you through the necessary software.
+For this course, you will need both client-side and server-side JavaScript. You do not need to know what this means,
+we will walk you through how to install the software, and explain later why these are necessary.
 
-- Version Control: Git
-- Client-Side JavaScript: [Google Chrome]
-- Server-Side Javascript: [Node]
+- Version Control: [Git](https://git-scm.com/downloads)
+- Client-Side JavaScript: [Google Chrome](https://www.google.com/chrome/downloads/)
+- Server-Side Javascript: [Node](https://nodejs.org/en/download/)
 
-## Part 1: Learning The Language
+Be sure to download each of these softwares and follow the installation instructions to set up each of them.
+Ensure that both Git and Node are in your PATH. In your terminal of choice, enter the following
 
-For people without a technical background, having to navigate through the vast
-set of terminology required to understand the world of development can be a
-daunting task, so we'll start by having you go through some documentation.
-Documentation is often the best way to get started with learning a new language,
-and one of the most important references you can use when programming. All
-programmers regardless of experience and background use documentation
-religiously, for the simple reason that it's near impossible, and most
-definitely inefficient, to memorize every single thing about a language or
-technology when the information is easily accessible on the internet.
+```bash
+git --version
+node -v
+npm -v
+```
 
-Start by scanning through this guide:
-[A Beginner's Guide to Using Developer Documentation Like a Pro](http://cassandrawilcox.me/beginners-guide-developer-documentation/).
-If you don't have a technical background and have trouble understanding the
-guide, that's totally fine, just try your best to understand the underlying
-ideas and principles the guide is conveying.
+These should print the version numbers for each of these softwares. It is perfectly ok if the numbers do not match,
+so long as it prints something.
+```
+git version 2.32.1 (Apple Git-133)
+v18.0.0
+8.6.0
+```
 
-Another important resource is StackOverflow, a Q and A site used religiously by
-developers to find the answers to their questions. Please read
-[How to ask a good Stack Overflow question](https://stackoverflow.com/help/how-to-ask)
-and
-[Writing the perfect Stack Overflow question](https://codeblog.jonskeet.uk/2010/08/29/writing-the-perfect-question/)
-next in order to understand how to best use and navigate StackOverflow.
+You will also need an editor to help you write code for the semester. We recommend using VS Code, which is a lightweight text-editor
+that is nearly standard at Berkeley.
 
-## Part 2: Verifying git And Creating a GitHub Repository
+[VS Code](https://code.visualstudio.com/download)
 
-First, lets make sure that you have git installed, and if you don't, that we
-install it.
+If you have any questions, feel free to come to OH or ask after lecture, and we should be able to help.
 
-### Installation
+## Q2 - Debugging
 
-#### Windows Users
+There are two main methods of debugging. The first is the traditional method: refer to the developer documentation and try to
+find the errors in your code based on the intended behaviors of the technology you are using. The second is the more common and
+sometimes quicker method: finding someone who has had the same question as you and checking their solution.
 
-If you don't already have git installed, download [git](https://git-scm.com/downloads). This should also download
-git bash, which is what we'll reference when we talk about the terminal.
+The former method is the most robust. The documentation is considered the single source of truth for many of the tools that we will use.
+That means that no matter what, the documentation should explain what a function does an how to use it. More often than not, 
+that is not the case. Not all documentation is thorough. However, that being said, the documentation is always the first place
+to look when something is not working the way that you thought it would. 
 
-#### Mac Users
+## Q3 - GitHub
 
-If you're using a Mac, you should already have git installed by default.
+Now that you've installed git, let's create a GitHub account. If you do not have one, you can make one at the link below:
 
-To verify that you have git installed, follow the following instructions.
-
-1.  Open up Windows (On Mac it can be found under the applications folder ⇒
-    Utilities ⇒ Windows). It should like this.
-
-    ![Windows Image](../assets/Assignment0/Assign0-0.png)
-
-2.  Type in this command
-
-    ```bash
-    $ git --version
-    ```
-
-3.  If your response looks like this (it's fine if you have a different version
-    number), you have git installed.
-
-    ```bash
-    $ git --version
-    git version 2.20.1
-    ```
-
-4.  (Mac users only) If your response does not look like the above, install git
-    from here: [https://git-scm.com/downloads](https://git-scm.com/downloads).
-
-:::info
-
-Lines that start with a $ are commands that we type in. Lines that don't start
-with $ are responses we get from the terminal!
-
-:::
-
-### Create a Github Account
-
-Nice, now you've installed git! Next, let's create a Github account.
-
-Create an account here:
-
-[Github: Where the world builds software](https://github.com/)
+[GitHub](https://github.com/)
 
 Now that you've installed and verified git and created a Github account, let's
 talk about why these are necessary tools for all developers and programmers. git
 is a distributed source control management tool. That's a fancy way of saying
 that it's an easy way to share code and work on it together with a large team.
-It's also a very convenient way to backup your code off your computer and an
-easy way for you to post code online so other people can use it.
-[Here's a great high-level overview of git](https://docs.microsoft.com/en-us/azure/devops/learn/git/what-is-git).
-Github is a centralized repository for git projects. It allows strangers across
-the world to collaborate on code and make cool stuff. It has become the modern
-developer's resume. Many companies host their code there for all their various
-open and closed source projects. It's a cool way to browse other people's code
-and see how they do things. If you see a mistake, you can **fork** their code,
-which means make your own copy of and fix it yourself. Once fixed, you can open
-a **pull request** against it. A pull request (often abbreviated as PR) is a
-request for them to merge your commits in with theirs. They will then decide if
-they want to (since it's their repo) and will merge it or not.
+It's also a very convenient way to backup your code off your computer and onto a location 
+online so other people can use it.
+[Here](https://docs.microsoft.com/en-us/azure/devops/learn/git/what-is-git)'s a great high-level overview of git.
 
-## Part 3: Interacting with the terminal and git
+## Q4 - Using the Terminal
 
 We are going to interact with git from the terminal. If you're on Mac or Linux,
-just open your terminal.
+just open your terminal. Because different machines has different ways to navigate, we may refer to the terminal as the git client.
+This just means that the terminal is what you use to use git. On Windows, 
+the workflow is not centralized to the terminal, so the git client may be something else.
 
-### Windows Basics
+:::note 
+For this courses, our examples will use a UNIX environment, more suited for macOS and Linux. 
+If you're on Windows, you can either try to adjust all of our instructions for Windows. 
+You will have to translate everything from the UNIX-style terminal to the Windows analogue, cmd.exe.
+Alternatively, you can set upp your development environment to use Windows powershell. 
+Powershell is a UNIX-like tool, similar to terminal. 
+For any questions or help setting up, please feel free to come to OH. 
+:::
 
-If you're on Windows, either find a way to interact with the Linux subsystem or
-go download [git for Windows](https://gitforwindows.org/). git for Windows is
-very bash-like so most of the commands we'll be using should just work. If
-you're using the Linux subsystem, everything will definitely work.
+Now, open your Terminal and let's get comfortable with navigating in bash.
+You can think of bash (or zsh in the case of macOS) as a utility for navigating files and executing commands.
+We use bash to quickly execute commands on our computer. For example, I can easily navigate to a repository on my computer and 
+open it in VS Code from the Terminal using a combination of file navigation and commands. Bash is a powerful utility with many more
+feautres, but for now, let's just focus on those two. 
 
-#### **bash**
+You should be able to just enter the following commands into your terminal and hit enter to see a result.
 
-Open your terminal, let's get comfortable with navigating in bash. In bash,
-you're just navigating around the folders in your computer. You know how you use
-the File Finder (or whatever your operating system has) to find files and you
-click in and out-of folders? It's the same for bash, we're just using text
-commands to do it now.
+**pwd**
 
-#### **pwd**
+Type `pwd` and hit enter.
 
-You should see a fairly empty screen. Type `pwd` and hit enter. `pwd` stands for
-"print working directory" (directory is synonymous with folder) and sure enough
-it prints where you are in your terminal. It's basically asking bash "where am I
-right now?" It should print something like: `/Users/<your user name here>`. This
-is probably your home directory. Every user on your computer has their own home
-directory. Usually you want to be working out of here to keep things organized.
+The terminal will print the folder that you are currently *inside*. 
+You will likely see something starting with "\Users".
+`pwd` stands for "print working directory", where a "directory" is just a "folder". 
 
-#### **ls**
+**ls**
 
-Now type `ls`. `ls` stands for "list". It lists everything in the directory.
-It'll show you a bunch of files and folders you can open or run. `ls` is like
-asking "what's here?" Try typing `ls -l`. You'll notice the same files and
-folders are being outputted but it's formatted in a different way. `-l` is
-what's called a **flag**. It's something that's passed to the `ls` program and
-it modifies what it does. In this case, `-l` means give us the long output. Try
-typing `ls -lah`. This will show you even more files because `-a` means show all
-files, including hidden files (which are the ones that start with a `.`) and it
-will show you the file sizes in more readable sizes because of `-h`.
+Type `ls` and hit enter.
 
-If you forget what these means,
-[explainshell.com](https://explainshell.com/explain?cmd=ls+-lah) is an extremely
-helpful site.
+The terminal will print all of the folders and files *contained* inside the current folder.
+`ls` stands for "list". 
 
-#### **mkdir**
+**cd**
 
-Hopefully you're in your home directory right now. If not, type `cd ~` (I'll
-explain what that is in the next section.) Okay, now that we're here, type
-`mkdir webdev`. This will create a new directory (it stands for "make
-directory") and now you can type `ls` and see it.
+`cd` is how we actually move between files. To move into a subdirectory, or a directory contained inside the current directory
+we type `cd [directory name]`. We can also move relative to the current directory. `..` and `.` are what are known as *symbolic links*.
+A symbolic link moves us to a relative location. In this case, `..` moves us one folder up, to the inside of the parent folder.
+
+For example, imagine that I got `\Users\username\folder\subfolder` when I do `pwd`. That means this is my current directory.
+If I do `cd ..`, then `pwd` again, it will pring `\Users\username\folder`. It moved us one folder up. Now, if I do `cd subfolder`,
+and then `pwd` again, it will show `\Users\username\folder\subfolder`. Here, it moved us to the specified subfolder.  
+
+Now, we will create a directory to contain all of our assignments for this class. Using `cd`, 
+navigate to the location that you want this new directoy.
+
+**mkdir**
+
+`mkdir` stands for "make directory" and will make a new folder inside the current folder. To run this, we need to specify
+the name of the new folder. 
 
 ```bash
-cd ~
-mkdir webdev
+mkdir cs198-099
 ls
 ```
 
-#### **cd**
+`mkdir` will make the directory named `cs198-99` in the current location, and `ls` will print all of the directories and files
+in the current location. Therefore, we should see the terminal print `cs198-99`. Now `cd` into `cs198-99`. 
 
-Type `cd webdev`. This will move us from the home directory into the `webdev`
-folder we just created. Type `pwd` to see that we're inside the directory. Type
-`ls` to see that there's nothing inside the directory. Type `cd ..` to get out
-of this directory and back into your home directory. `..` means up one
-directory. Type `cd webdev` to get back into the directory.
+## Q5 - Using git
 
+For this class, we will use the following workflow
+
+1. You must go the the following link, and accept the assignment: https://classroom.github.com/a/t6QfJQ59
+2. Accepting the assignment automatically creates a repository in GitHub, refresh the page to see the repository.
+3. Now that our repository is on GitHub, we need to clone it to a local machine. Click the link to go to the repository.
+4. Now, you should be on the GitHub site. You can use either the HTTPS or SSH options. HTTPS may be easier. Copy the link and 
+then navigate to your git client.
+5. Navigate *into* to the directory that we made earlier `cs198-99`
+6. Once inside, type the following 
 ```bash
-cd webdev
-ls
+git clone git@github.com:fullstack-decal-fa22/hw0-[username].git
+```
+7. Now, `ls` and you should see a new folder in that location called <code>hw0-[username]</code>. <code>cd</code> into this new directory
+```
+cd hw0-[username]
+```
+8. `cd` into the new folder. 
+
+Now, you have a repository on your local computer and on GitHub. You can think of repositories as a set of files.
+We make changes on our local machine, and then we *push* those changes to GitHub. GitHub is just an online "mirror" of our work.
+If you would like, you can always review git in Lesson 0. 
+
+## Q6 - Creating a webpage
+
+Okay, let's use git now. Make sure you are in the `hw0-[username]` folder. That *is* the git repository, and you will need to 
+be inside of it to make changes to be tracked by git. 
+Start by creating a file called `index.html` in your
+newly created `cs198-99` folder. From terminal, you can do this with 
+```bash
+touch index.html
 ```
 
-#### more bash
-
-If you want more bash skills, please check out Jem Young's
-[Full Stack for Front-End Engineers](https://frontendmasters.com/courses/fullstack-v2/)
-course, or check out
-[Programming 101: How to Use the Windows & Command Line](https://blog.galvanize.com/how-to-use-the-terminal-command-line/).
-
-### git
-
-Okay, let's use git now. Start by creating a file called `index.html` in your
-newly created `webdev` folder, then put the following code inside your
+Open the file in your preferred text editor, and then copy and paste the following code into your
 `index.html` you create. Don't worry if you don't understand any of this, we
-will teach html in the next lesson!
+will teach HTML in the coming lessons.
 
 ```html
 <!DOCTYPE html>
@@ -226,134 +194,59 @@ will teach html in the next lesson!
   </body>
 </html>
 ```
+Remember to replace `INSERT YOUR NAME HERE` with your name.
 
-- Remember to replace `INSERT YOUR NAME HERE.` by your name!
+After you create this index.html file, try to open it up using a browser. You can do this by typing in `file:///` and hitting
+enter on Google Chrome, then navigating to the file. Alternatively you can use `file:///` and paste the entire filepath.
 
-After you create this index.html file, try to open it up using a browser. You
-should see something like this:
+You should see a rought rendering of your text on the screen. This your first webpage!
 
-![Windows Image](../assets/Assignment0/Assign0-6.png)
+## Q7 - Using git
 
-#### git init
+When we cloned our git repository, there was nearly nothing in it. Now, we have added a file, and made changes to that file.
+In order to git to truly save these changes, we need to tell git that we are ready to "commit" them. When we commit code,
+we git saves the state of the working directory in it's history. But since we do not want to do that on every change 
+(it would get very cumbersome to navigate), git only saves when we commit. 
 
-Make sure you are inside the `webdev` folder. Then type `git init`. This begins
-a git project. If you type `ls -lah` you'll see that it creates a secret `.git`
-folder where it keeps track of everything (you don't have to look in there or do
-anything with it.)
+First, we need to tell git which files to track. Git only saves the state of tracked files. To tell git which changes to commit,
+we add files to the *stage*. The stage is an intermediate step between making changes and committing them. 
+Git will only save changes that are on the stage. This gives us control over which changes we want to save and which we don't.
 
-#### **git status**
+To add our file to the stage, ensure that you are in the git repository. Then, in your git client, use the following command
 
-Type `git status`. This will tell you that `index.html` is an untracked file.
+```bash
+git add .
+```
 
-The way git is organized is that you group you changes into what are called
-**commits**. A commit is one group of changes that are made permanent. A git
-repository will have many commits. Some will have just one commit, some will
-have many. As of May 12, 2018, the git repository for the Linux project has
-753,310 commits. A commit is made up of all the changes, the differences between
-where the code was and where the code is now. This will add new files, remove
-old files, delete some lines in some files, and add lines in others.
+This adds all changed files to the stage. This is the most common use case. You can also add file by file by specifying
+the names of the file instead of using the `.` symbolic link.
 
-So let's make our first commit in this repository.
+Now that our changes are on the stage, let's commit them. 
 
-#### **git add**
+```bash
+git commit -m "initial commit
+```
 
-The way you add files to a commit is that they have to go through two stages:
-being staged and then being committed. Type `git add index.html`. This will make
-index.html staged and ready to be committed. Type `git status` and it will show
-index.html as a change ready to be committed. You can also type `git add .` to
-make everything in this directory staged, or type `git add -A` to add everything
-_and_ include anything you deleted to also be deleted from the repo.
+Here, we tell git to commit the current set of changes on the stage to its history. Now, the current state of the working directory
+will always be available to us from the git history.
 
-#### **git commit**
+Finally, we have to reflect our changes on the GitHub. Remember, the GitHub is just a synced copy of our repo. If we make changes,
+we have to force GitHub to sync those changes in. To do that, we use 
 
-Type `git commit -m "My first commit"`. It should tell you added your first
-commit. Type `git status` and it should tell you you haven't changed anything
-since last commit. The `-m` is important because each commit must have a message
-with it and it's best to say what you did in that commit, something like "fixed
-this bug" or "added this feature". If you forget the `-m` it'll probably throw
-you into vim, so be prepared!
+```bash
+git push
+```
 
-### Github
-
-Now, we're going to create our own Github repo.
-
-![Windows Image](../assets/Assignment0/Assign0-1.png)
-
-Click the + (highlighted in red) in the nav and create a new repository. Name
-the new repo whatever you would like, do not add the license or README, and
-continue.
-
-#### **git remote**
-
-Back to your terminal, navigate to your project using `cd` and write the
-following command: `git remote add origin <your project url here>`. Notice about
-half way down the page you can see that command, feel free to copy and paste
-that.
-
-- you can also find your project url here:
-  ![Windows Image](../assets/Assignment0/Assign0-2.png)
-
-This command is going to add a new remote to your project called `origin`. A
-remote is somewhere for you to push your computer. If you use a Github-based
-flow (most of us do) this will be one of the very few remotes you'll ever use.
-git can be used in a more decentralized way; you could have a remote that's your
-buddy's computer. But I've never worked that way. We called the remote "origin"
-but we could have called it anything. But everyone calls it origin. "origin"
-should always be called where _your_ repo is. Sometimes you'll fork someone
-else's code and keep track of that repo too, and typically you'd call that
-"upstream".
-
-Type `git remote -v` and you should see your newly-added remote. It adds the
-remote twice because you can fetch (which is what you call when you pull code
-down) from one place and you can push (which is what you call when you send your
-code up) to another. I've never seen anyone do that though.
-
-#### **git push**
-
-Okay, now that we're here, type `git push origin main`. `push` is the command
-to send your code up to Github `origin` is the name of the remote that we just
-added. `main` is the name of the branch that we're on. git has the ability to
-keep track of multiple branches of code so that you and your colleague can work
-on the same code at the same time but each keep your own copy. For now we're
-working out of the main branch which the main branch that everyone will
-eventually merge their code into.
-
-#### **more git**
-
-git is so powerful. There are a lot of really cool features. Probably the
-biggest thing we didn't talk about here is merging code with others. See
-[Nina Zakharenko's course](https://frontendmasters.com/courses/git-in-depth/) to
-become a git master. Some other basic functions you'll want to learn is how to
-`git log` `git pull`, `git clone`, `git merge`, `git rebase`, `git stash`,
-`git checkout`, and `git branch`. Those are the ones that are needed for base
-level proficiency in git. There are many more commands that make git an integral
-tool to comprehend, but the important ones for the course are the ones mentioned
-here.
-
-### Github Pages
-
-Github Pages is a service provided by Github to allow users to host website for
-free! It's also very simple and straightforward to use.
-
-First of all, make sure that on your Github repo, you have your `index.html` in
-place.
-
-![Windows Image](../assets/Assignment0/Assign0-3.png)
-
-Next, Go to `Settings` ⇒ `Pages`, and then select the Github pages option. You
-should see this:
-
-![Windows Image](../assets/Assignment0/Assign0-4.png)
-
-Wait a few minutes, and then click on the url to your site, you should see
-something like this:
-
-![Windows Image](../assets/Assignment0/Assign0-5.png)
+Now, you should be able to navigate to the repository on GitHub and in the code, 
+you will see the file that you created in the repository!
 
 ## Submission
 
-Congratulations! Now you have just created your first web page and Github repo!
-Copy the link to your new webpage and submit it to Gradescope.
+Congratulations! Now you have just created your first GitHub repository for your first webpage.
+To submit, please proceed to Gradescope. You will see an assignment for HW0. To submit, it will prompt you to submit code from
+GitHub by searching all of your GitHub repositories. Find your repository, and submit the `main` branch. 
+
+Once the autograder has run, if you have full points then you have successfully completed this assignment.
 
 ## Helpful Resources
 

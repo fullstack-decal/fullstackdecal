@@ -6,22 +6,24 @@
 
 **Course number:** CS 198-099
 
-**Course term:** Spring 2022
+**Units:** 3
+
+**Course term:** Fall 2022
 
 **Faculty Sponsor:** Josh Hug
 
-**Course Number:** 33156
+**Course Number:** 33565
 
 **Course Catalog Link:**
-[https://classes.berkeley.edu/content/2022-spring-compsci-198-099-grp-099](https://classes.berkeley.edu/content/2022-spring-compsci-198-099-grp-099)
+[https://classes.berkeley.edu/content/2022-fall-compsci-198-099-grp-099](https://classes.berkeley.edu/content/2022-fall-compsci-198-099-grp-099)
 
-**Time:** There are 2 lectures every week. Students are expected to attend both
-lectures every week.
+**Time:** There are 2 lectures every week. Lectures are remote and recorded. Attendance is not required, but students are
+expected to watch the lectures and keep up with the material. 
 
-- Lecture 1: Tuesday @ 6:30pm - 8:00pm pacific time
-- Lecture 2: Thursday @ 6:30pm - 8:00pm pacific time
+- Lecture 1: Monday @ 6:30pm - 8:00pm PST
+- Lecture 2: Wednesday @ 6:30pm - 8:00pm PST
 
-**Location:** Physics 1 
+**Location:** Remote (Physics 4 for in-person activities)
 
 ## Course Overview
 
@@ -42,8 +44,7 @@ In the spirit of full-stack development, we cover the three main pillars of mode
 
 ### Teaching Plan
 
-Every week you will attend 2 lectures that are held in the Physics 1 classroom,
-each of which are 1.5 hours long. Each week we will have either a homework
+Every week you will watch 2 lectures, each 1.5 hours. Each week we will have either a homework
 assignment or a project due. Course staff will be holding office hours regularly
 throughout the week to provide guidance and feedback on the assignments. Towards the end of the semester your work in this class will culminate in a final project with a project group whom we will assign.
 
@@ -73,9 +74,9 @@ debugger. However, the TAs can help you find bugs and offer you the proper appro
 
 ### Discussion Forum
 
-All communication this semester will be centralized on Piazza. Please ask all questions there, and feel free to make private posts if you need to communicate with course staff directly.
+All communication this semester will be centralized on Ed. Please ask all questions there, and feel free to make private posts if you need to communicate with course staff directly.
 
-### Piazza Etiquette
+### Ed Etiquette
 
 - Search before posting. Your question may have already been answered by us or
   other students in the past. Reading other students' posts will let you refine
@@ -110,39 +111,27 @@ All communication this semester will be centralized on Piazza. Please ask all qu
 
 ### Attendance
 
-Attendance at lectures is mandatory. If you cannot make it to the lecture for
-any reason, please fill out the excused absence form for each lecture. If you
-neglect to fill out this form within 24 hours of the missed lecture, it will be
-marked as an unexcused absence. If you are more than 15 minutes late to a
-lecture or leave a lecture more than 15 minutes early, this will count as an
-absence. You are allowed up to 3 unexcused absences before receiving a NP in the
-class. If you miss a lecture, watch the recorded lecture as soon as possible so
-that you don't fall behind. Our curriculum moves fairly quickly in order to
-cover everything you need in order to become a full-fledged developer, so it's
-imperative that you stay up-to-date with each lesson.
+Since attendance is not mandatory this semester, "attendance" will certify that you have watched the lectures.
+To enforce this, we will release content quizzes that cover the week's material. You will expected to fill these out as
+part of your grade, and they will make up the attendance category. 
 
 ### Grading Overview
 
-All Decal's are taken pass-no-pass, this one is no exception. Your final grade
-will be based primarily upon completion of Homework and the 3 projects.
-Attendance is required to pass the course - more than 3 unexplained abcenses
-will result in a grade of NP. See the above "Attendance" section for more detail
-on the attendance policy. A "pass" is a 70% in the class.
+This DeCal is exclusively available on a P/NP bases. Your final grade
+will be based primarily upon completion of work in the class.
+A "pass" is a 70% in the class. Gradescope will be used to host a majority of the grading scheme.
+The grading breakdown is as is below.
 
 ### Grading Breakdown
 
 | Item                       | Percent |
 | -------------------------- | ------- |
-| Homework                   | 50%     |
-| Project 1                  | 10%     |
-| Project 2                  | 10%     |
-| Final Project Proposal     | 10%     |
+| Homework                   | 30%     |
+| Project 1                  | 15%     |
+| Project 2                  | 15%     |
+| Project 3                  | 10%     |
+| Attendance                 | 10%     |
 | Final Project Presentation | 20%     |
-
-### Deadlines
-
-Any assignment which is due by the end of the day is due by 11:59:59PM Pacific
-Time.
 
 ### Homework
 

@@ -14,7 +14,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 0',
     assigmentTitle: 'Getting Started',
     assigmentDueDate: 'Feb 8',
-    assigmentLink: '/docs/Assignments/Homework/Assignment0',
+    assigmentLink: '/docs/Assignments/Homework/HW0',
   },
 
   {
@@ -30,7 +30,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 1',
     assigmentTitle: 'Tribute Page',
     assigmentDueDate: 'Feb 15',
-    assigmentLink: '/docs/Assignments/Homework/Assignment1',
+    assigmentLink: '/docs/Assignments/Homework/HW1',
   },
   {
     week: 1,
@@ -45,7 +45,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 2',
     assigmentTitle: 'Country Flags',
     assigmentDueDate: 'Feb 18',
-    assigmentLink: '/docs/Assignments/Homework/Assignment2',
+    assigmentLink: '/docs/Assignments/Homework/HW2',
   },
 
   {
@@ -74,7 +74,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 3',
     assigmentTitle: 'Fun With JavaScript',
     assigmentDueDate: 'Mar 1',
-    assigmentLink: '/docs/Assignments/Homework/Assignment3',
+    assigmentLink: '/docs/Assignments/Homework/HW3',
   },
 
   {
@@ -132,7 +132,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 4',
     assigmentTitle: 'Tic-Tac-Toe',
     assigmentDueDate: 'Mar 20',
-    assigmentLink: '/docs/Assignments/Homework/Assignment4',
+    assigmentLink: '/docs/Assignments/Homework/HW4',
   },
   {
     week: 5,
@@ -156,7 +156,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 5',
     assigmentTitle: 'Using the NASA API',
     assigmentDueDate: 'Apr 1',
-    assigmentLink: '/docs/Assignments/Homework/Assignment5',
+    assigmentLink: '/docs/Assignments/Homework/HW5',
   },
   {
     week: 6,

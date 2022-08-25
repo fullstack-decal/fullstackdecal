@@ -32,7 +32,7 @@ const Home: React.FC = () => {
             pt={[10, 16]}
             mb={3}
           >
-            CS 198-099&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;SPRING 22
+            CS 198-99 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;FALL 22
           </Text>
           <Text
             textStyle="title2"
@@ -54,9 +54,8 @@ const Home: React.FC = () => {
             mt={2}
             mb={[8, 12]}
           >
-            Tuesday & Thursday, 6:30pm -
-            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;Physics 1
-            Classroom
+            Monday & Wednesday, 6:30pm -
+            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; Remote + Recorded
           </Text>
           <Text textStyle="body2" color="white" mb={[6, 8]}>
             Welcome to{' '}
@@ -91,9 +90,9 @@ const Home: React.FC = () => {
         </Text>
         <Box mb={16} className="darkMode">
           <Text textStyle="subtitle2" fontSize="3xl" mb={4}>
-            Week 8
+            Enrollment
           </Text>
-          {announcements[7]}
+          {announcements[0]}
         </Box>
 
         {/* Testimonials Section */}
