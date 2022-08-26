@@ -2,208 +2,227 @@
 sidebar_position: 6
 ---
 
-# HW 6 - Advanced React
+# HW 6 - Backend I
 
-While we've worked on basic React sites that are static, real world applications
-interact with servers and databases over the internet. In ths homework, we'll be
-tieing together the frontend and the backend aspects of this course.
+Assigned To:   
+Reviewers:     
+Tags: Homework, In Progress
 
-## Goals
+# Introduction
 
-- Further practice with React syntax
-- Introduce Axios
-- Use HTTP methods to access RESTful services
-- Create your first custom hook
-- Use fetched data to create a dynamic application
+In this homework, we will utilize the NASA daily picture API to create a backend server that allows users to store, delete, and retrieve their favorite pictures of planets and nebulas. 
+
+## **Learning Objectives:**
+
+- What is an API?
+    - What is the backend and how does the frontend communicate with the backend
+- What is HTTP? How to use Postman?
+- What is NodeJS
+- What is Express and how to use Express to develop APIs
+
+## Basic Intro referring to Lesson 1
+
+**Query Parameters**
+
+Query Parameters are a defined set of parameters attached to the end of a url. You have probably seen this on almost every website you visit. If you are watching a video on Netflix, the url will look something like:
+
+> [https://www.netflix.com/watch/80186941?trackId=14170286](https://www.netflix.com/watch/80186941?trackId=14170286)
+> 
+
+The Query Parameters begin after a question mark (?) in the url, and a series of key-value pairs. In this example, the key is *trackId* and the value is *14170286*. If there were multiple query parameters, they would be concatenated by an ‘&’. 
+
+To access a query parameter in Express, we use **req.query**, which returns an object of key-value pairs.
+
+**NASA APOD (Astronomy Picture of the Day) API** 
+
+In this homework, we will be using the NASA APOD API, an API which returns details about the Astronomy Picture of the Day for a specific day. For example, the APOD for Christmas 2018 was the following:
+
+![https://apod.nasa.gov/apod/image/1812/M100_HubbleWfc3_960.jpg](https://apod.nasa.gov/apod/image/1812/M100_HubbleWfc3_960.jpg)
+
+Read the details of the APOD API at [https://api.nasa.gov/](https://api.nasa.gov/) before starting on this homework.
 
 ## Setup
 
-The starter code for this homework is here:
-https://github.com/fullstack-decal/sp22-assignment8-starter
+To use the NASA API, you will need an API key. This is a way of authenticating with the NASA API server, and it is how NASA prevents unauthorized users from calling the API.
 
-Take a look around the codebase and try to understand how it's put together.
+To generate an API key, go to [https://api.nasa.gov/](https://api.nasa.gov/) and scroll down to the “Generate API Key” section. Fill in your first name, last name, and email, and click sign up. You should be presented with a similar screen to the following:
 
-## Task 1 - Start the Backend
+![Untitled](HW%206%20-%20Backend%20I%20dfe4551ecd2447d1b2555a88568a776f/Untitled.png)
 
-Before we start building anything, we have to set up our server first. For this
-instance we will be using Express. The server will already be pre-built for you,
-feel free to look to examine the code and don't stress if you don't understand
-it. You'll only be worrying about the React side of things:
+Keep track of your API key, you will need it for the first of the homework when making requests to the NASA API.
 
-- cd into the directory: `cd sp22-assignment8-skeleton/node-server`
-- Install dependencies: `npm i`
-- Run the server: `npm start`
+We also need to setup Express before we begin.
 
-You should see output that looks something like this:
+To setup Express, we need to initialize our app object.
 
-```shell
-❯ npm start
+```jsx
+const express = require('express')
+const app = express()
 
-> node-server@1.0.0 start
-> node index.js
+app.use(express.json())
+app.use(express.urlencoded())
 
-Block Server listening at http://localhost:3002
+const port = process.env.PORT || 3000
+
+// CODE GOES Here
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`)
+})
 ```
 
-## Task 2 - Start the Frontend
+## Q1 - Which API Call is Correct?
 
-Congrats! The backend server is now running at `localhost:3001`. Now for a
-production application, we'd also often be running a database such as MongoDB,
-but if you examine the code, you'll see that we've hard-coded the data you're
-fetching.
+Below are 4 different HTTP calls to the NASA API. Which call will result in all images for the 4th of July weekend on 2022 (2 July to 4 July)? Assume that the API key you have been given is `abc123`.
 
-For this task, we'll introduce fetching data from a server from our frontend.
+**Hint:** Which 2 parameters can you use to specify a date range for the APOD API?
 
-As you know, we can use HTTP requests to send and receive data over the
-internet. In fact, opening a website like `google.com` is an HTTP GET request!
-Servers are similar, they have various routes that contain HTTP endpoints that
-you can trigger.
-
-By default, browsers have the `fetch` API built in to give your frontend
-javascript the ability to fetch resources across a network. You can read more
-about Fetch [here](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
-
-While fetch is incredibly powerful, it's also a bit more barebones and complex,
-so we'll be using a wrapper around Fetch called
-(Axios)[https://axios-http.com/docs/intro].
-
-First, lets install Axios:
-
-```shell
-npm install axios
+```
+1. https://api.nasa.gov/planetary/apod?api_key:abc123&start_date:2022-07-02&end_date:2022-07-04
+2. https://api.nasa.gov/planetary/apod?api_key=abc123&start=2022-07-02&end=2022-07-04
+3. https://api.nasa.gov/planetary/apod?api_key=abc123&start_date=2022-07-02&end_date=2022-07-04
+4. https://api.nasa.gov/planetary/apod?api_key=abc123,start_date=2022-07-02,end_date=2022-07-04
 ```
 
-And now lets start the app:
+## Q2 - Spaceman Postman
 
-```npm
-npm start
-```
+Your first task is to write a GET route that returns the URL for the NASA Astronomy Picture of the Day for a specific date. 
 
-:::info Make sure that your express server and React app are on different ports.
-:::
+**Query Parameters**
 
-## Task 3 - Write an API request
+- `date`: the date to fetch the APOD for in `YYYY-MM-DD` format
 
-Now that your frontend and backend are working, lets write a HTTP request.
+<aside>
+💡 You can assume that any date passed in matches the `YYYY-MM-DD` format
 
-First, lets see how Axios works in an example:
+</aside>
 
-```jsx live
-function Example() {
-  const [data, setData] = useState();
+**JSON Response**
 
-  const getPostsData = () => {
-    axios
-      .get('https://jsonplaceholder.typicode.com/posts') //THIS IS YOUR URL OF YOUR API
-      .then((data) => setData(data.data)) //PROMISE API, THAT MEANS WHEN YOU GET THE DATA WHAT DO I DO WITH IT
-      .catch((error) => console.log(error)); //ERROR CATCHING IN CASE WE RECEIVE AN ERROR
-  };
+- `name`: the name of the image (taken from the `title` field of the NASA API response)
+- `img_url`: the URL of the image (taken from the `url` field of the NASA API response)
 
-  useEffect(() => {
-    getPostsData();
-  }, []);
+After you’re done with this, use Postman to test your new `/apod-for-date` API to make sure that it’s returning the correct value. For example, if you call the API with the `date`  set to `2020-12-25` , the response should **exactly** match the following:
 
-  return <p>{data ? JSON.stringify(data[0]) : 'loading'}</p>;
+```json
+{
+  "name": "Northern Winter Night", 
+  "img_url": "https://apod.nasa.gov/apod/image/2012/WinterSceneBlock.jpg"
 }
 ```
 
-In this example, our function `getPostsData` calls the API using a `GET`
-request. This function is called in a `useEffect` hook on first render. We then
-wait for the promise resolve using a `.then`, and once resolved, set our state
-variable `data` to the returned data. We also catch the error if the promise
-returns an error.
+After you are done, open `apod.html` and look at the first section. Choose a date and click the “Get Image” button. If you have implemented the API correctly, you should see the corresponding APOD appear along with its name! Feel free to play around with this before moving on to the next section.
 
-Confused by the hooks? As a reminder,
+**Hint:** You can access the query parameters in your API handler using `req.query`
 
-- useEffect hooks run the function passed into the first parameter if any
-  variable in the array passed in as the second parameter changes.
-  - In this example, there are no variables passed in the second arg, so this
-    will run when the component first mounts (is rendered)
-- useState hold pieces of state, and a `setState` call will trigger a component
-  re-render
-
-Cool, now that you know any example of how we might fetch data, how might you
-use this data to render out posts in our application?
-
-### Action Items
-
-In `Feed.js`, fill in the blanks to make an API request. Fetch data from our server (`http://localhost:3002/posts`) and render out each
-array item using the `Post` component inside of the `Feed` component. (You can leave line 50 as a blank for now!)
-
-**Tips:**
-
-- Make sure your server URL is passed in the get logic correctly
-- Where would the fetch logic be placed?
-
-## Task 4 - Creating a new post
-
-Now that we can view posts from our server, you'll notice that there's a form at
-the bottom to create a new post. We've already built the logic to get the form
-data, you'll be using a post request to add this data to our server.
-
-Axios post requests are very simple, as an example:
-
-```js
-axios
-  .post(url, data) // `url` is the url to post to, `data` is the data to send in the body of the HTTP request
-  .then((response) => console.log(response))
-  .catch((error) => console.log(error));
+```jsx
+app.get("/apod-for-date", function (req, res) {
+  // GET "/apod-for-date" should information for the APOD on a specific date
+  const date = req.query.date;
+  fetch(`https://api.nasa.gov/planetary/apod?api_key=API_KEY&date=${date}`)
+    .then(response => response.json())
+    .then(data => res.json({name: data.title, img_url: data.url}));
+});
 ```
 
-### Action Item
+## Q3 - March to the Moooon 🚀
 
-1. In `Feed.js`, fill in the blank in line 50. Pass in a function to a `NewPost` component through a prop.
-2. In `NewPost.js`, fill in the blanks for creating a new post by making a `POST` request.
-3. Fill in the blank in line 4 to accept the passed in property and use that property after the post request.
+Now that you have worked with the API for a bit, write a GET route that returns a list of all APODs in March 2020. you **MUST** only use **ONE** call to NASA’s API to answer this question.
 
-**Tips**
+**JSON Response**
 
-- To create a new post, you'll have to `POST` /post
+- `results`: an array of APOD objects, where each entry is in the same form as your response to question 2
 
-## Task 5 - Working with Comments
+**Hint:** How many days are in March?
 
-At this point, you should be able to view and create new posts. Now, we'll do
-the same for comments.
+```jsx
+app.get("/march", function (req, res) {
+  // GET "/march" should return a list of all APOD images for the month of March, 2020.
+	const start_date = "2020-03-01";
+	const end_date = "2020-03-31";
+	return await fetch("https://api.nasa.gov/planetary/apod?api_key=TwSwee1ghzduoBQE1en0Dam3kxhUWPfsgbB850Tg&start_date=2020-03-01&end_date=2020-03-31")
+	.then(res => res.json())
+  .then((json) => {
+    return_list = []
+    for (let apod in json) { //blank the inside of this for loop
+    	let result = { "title": json[apod]["title"],
+      					"url": json[apod]["url"]}
+      return_list.append(result)
+    }
+    return {"results": return_list}
+});
+```
 
-There's a `comments` field on the server data, and if you `POST`
-`/post/:id/comment`, you'll be able to add a new comment.
+## Q4 - All month long (GET)
 
-### Action Item
+<aside>
+💡 **NOTE:** For this question, your method **only** has to work for the year **2020.** We will not be testing for any other years.
 
-1. Fill in the blanks in `Comments.js` to handle and submit the new comment.
-2. Fill in the blanks in `Post.js` to pass in correct props to `Comments` component.
+</aside>
 
-**Tips**
-- In `.then` body, change the states to reflect the new comment and clear the `newComment` state.
+Building off of the previous question, write a GET route that takes in a query parameter for a month, and returns all images during that month. 
 
+**Query Parameters**
 
-## Submission
+- `month`: the month to fetch all of the APODs for. It will be a lowercase string of the full month name (`january`, `february`, `march`, etc.)
 
-After you finish, push these changes into your WDB-education repository.
+**JSON Response**
 
-Turn your code into a GitHub pages link, and upload the link to your page to
-Gradescope. The Gradescope can be found on the syllabus, and instructions for
-creating a GitHub page link can be found at the end of homework 0.
+- `results`: an array of APOD objects, of the form below, where each entry is in the same form as your response to question 2.
 
-### Demo of Solution
+```json
+{
+	"results": [
+		{
+				"name": "The Milky Way Galaxy",
+				"img_url": "https://apod.nasa.gov/apod/image/2207/SaharaAndromeda_Coy_1080.jpg"
+		},
+		{
+				"name": "The Chocolate Milk Galaxy",
+				"img_url": "https://apod.nasa.gov/apod/image/2207/SaharaAndromeda_Coy_1080.jpg"
+	]
+}
+```
 
-When finished, your website should be able to run like the follow:
+**Hint**: As you implement this API, you might notice that it is similar to your solution for Q3. How might you reuse the code in Q3 for this question as well?
 
-<iframe
-  src="https://www.loom.com/embed/843dd029aa584d1398b129145b8d5968"
-  frameborder="0"
-  webkitallowfullscreen
-  mozallowfullscreen
-  allowfullscreen
-  style={{ height: '300px' }}
-/>
+**Hint:** Use the built in javascript object, Date().
 
-Note the UI doesn't have to be the same.
+**Hint:** const moonLanding = new Date('July 20, 69 00:20:18');
 
----
+```jsx
+app.get("/monthly-apods", function (req, res) {
+  // GET "/monthly-apods" returns a JSON object that contains a list of all
+	// APOD photos for the given month.
+	let last_date = new Date(`${req.query.month} 1, 2020`);
+	last_date.setMonth(last_date.getMonth() + 1)
+	last_date.setDate(0)
+	let last_day = last_date.getDate()
+	let month = last_date.getMonth()
+	if (month < 10) {
+		month = "0" + month;
+	const start_date = `2020-${month}-01`;
+	const end_date = `2020-${month}-${last_day}`;
+	return await fetch("https://api.nasa.gov/planetary/apod?api_key=TwSwee1ghzduoBQE1en0Dam3kxhUWPfsgbB850Tg&start_date=2020-03-01&end_date=2020-03-31")
+	.then(res => res.json())
+  .then((json) => {
+    return_list = []
+    for (let apod in json) { //blank the inside of this for loop
+    	let result = { "title": json[apod]["title"],
+      					"url": json[apod]["url"]}
+      return_list.append(result)
+    }
+    return {"results": return_list}
+});
+```
 
-**Contributors**
+### Conclusion
 
-- [Caelin Sutch](https://www.linkedin.com/in/caelinsutch)
-- Rebecca Won
-- Ethan Pang
+Congratulations! You should now be familiar with using Postman, formatting an API call, and create custom API endpoints of your own. These are all very valuable skills that you will use extensively as you explore further into backend development.
+
+ 
+
+### Contributors
+
+- William Henderson
+- Issac Ong
