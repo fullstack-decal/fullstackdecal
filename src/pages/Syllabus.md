@@ -119,19 +119,19 @@ part of your grade, and they will make up the attendance category.
 
 This DeCal is exclusively available on a P/NP bases. Your final grade
 will be based primarily upon completion of work in the class.
-A "pass" is a 70% in the class. Gradescope will be used to host a majority of the grading scheme.
+A "pass" is a 70% (700 points) in the class. Gradescope will be used to host a majority of the grading scheme.
 The grading breakdown is as is below.
 
 ### Grading Breakdown
 
-| Item                       | Percent |
+| Item                       | Points  |
 | -------------------------- | ------- |
-| Homework                   | 30%     |
-| Project 1                  | 15%     |
-| Project 2                  | 15%     |
-| Project 3                  | 10%     |
-| Attendance                 | 10%     |
-| Final Project Presentation | 20%     |
+| Homework                   | 300     |
+| Project 1                  | 150     |
+| Project 2                  | 150     |
+| Project 3                  | 100     |
+| Attendance                 | 100     |
+| Final Project Presentation | 200     |
 
 ### Homework
 
