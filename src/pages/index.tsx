@@ -100,16 +100,10 @@ const Home: React.FC = () => {
         </Text>
         <Box mb={16} className="darkMode">
           <Text textStyle="subtitle2" fontSize="3xl" mb={4}>
-            Week 0
+            Week 1
           </Text>
-          {announcements[1]}
+          {announcements[2]}
         </Box>
-
-        {/* Testimonials Section */}
-        {/* <Testimonials /> */}
-
-        {/* What Sets Us Apart Section */}
-        {/* <SetsUsApart /> */}
 
         <Text textStyle="title2" color="purple" mb={8}>
           Course Overview

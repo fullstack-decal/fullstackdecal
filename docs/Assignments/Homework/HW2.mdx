@@ -15,24 +15,27 @@ for each flag to practice the styling of texts using CSS.
 
 ### Learning Objectives
 
-- selectors, id vs. class
-- basic properties used by css: background-color, height, width
-- flexbox of CSS
-- margin and padding
-- want to incorporate text (title, heading, subscripts)
+- Selectors, id vs. class
+- Basic properties of CSS
+- Inline styling
+- Flexbox, Margin, and Padding
+- Text styling
 
 ## Setup
-The starter code for this homework is here:
+The starter code for this homework available on GitHub Classroom, and should be submitted
+to Gradescope. 
 
-https://github.com/fullstack-decal/homework2-starter
-
-## Q0 - Poland
+[Homework 2](https://classroom.github.com/a/5fEn7SHk)
 
 ## Q1 - Luxembourg
 
-The first exercise is to replicate the flag of Luxembourg. Fill out the blank with correct selectors in styles.css to set the width, height, and background color of each `<div/>`. Do NOT change the HTML for this question.
+First, we will replicate the flag of Luxembourg. 
+Fill out the blank with correct selectors in `styles.css` to set the width, height, and background color of
+of each `<div/>`. 
+**Do not change the HTML for this question.**
+You may need to add selectors or modify existing classes.
 
-**Hint:** Recall specificity rule for CSS. The more specific the selector is, the higher priority it has. (For example, class will override element tag if they have conflicting properties.)
+**Hint:** Recall specificity rule for CSS. The more specific the selector is, the higher priority it has.
 
 ![Luxembourg](../assets/Assignment2/Luxembourg.png)
 
@@ -45,11 +48,20 @@ The first exercise is to replicate the flag of Luxembourg. Fill out the blank wi
 </div>
 ```
 
-Now that you’ve seen how to style the HTML elements that you want using selectors, you can leverage that fact that multiple elements can share the same class (remember this is not true for id’s, these are unique). So, elements with the same class will also share the same style properties that you set, and you only need to set it once!
+Now that you’ve seen how to style the HTML elements that you want using selectors, 
+you can leverage that fact that multiple elements can share the same class 
+
+:::caution
+This is **not** true for `id`s
+::: 
+
+Elements with the same class will also share the same style properties that you set, and you only need to set it once.
 
 ## Q2 - Thailand
 
-Replicate the Thailand flag. Style each horizontal stripe with CSS properties like `width`, `height`, and `background-color`. The hex codes you’ll need are
+Now, we will replicate the Thailand flag. 
+Style each horizontal stripe with CSS properties like `width`, `height`, and `background-color`. 
+The hex codes you'll need are
 
 - red: #B5002D
 - blue: #2E2A4C
@@ -61,86 +73,91 @@ Replicate the Thailand flag. Style each horizontal stripe with CSS properties li
 ```html
 <h2>Thailand</h2>
 <div class = "thailand-flag"> 
-    <div class = "thailand-red">
-    </div>
-    <div class = "thailand-white">
-   </div>
-    <div class = "thailand-blue">
-    </div>
-    <div class = "thailand-white">
-    </div>
-    <div class = "thailand-red">
-    </div>
+  <div class = "thailand-red"></div>
+  <div class = "thailand-white"></div>
+  <div class = "thailand-blue"></div>
+  <div class = "thailand-white"></div>
+  <div class = "thailand-red"></div>
 </div>
 ```
 
 ## Q3 - Romania
 
 
-Replicate the Romania flag. For this question, write HTML code by yourself and use flexbox to correctly arrange stripes within the given border.
+Replicate the Romania flag. 
+For this question, write HTML code by yourself using only existing CSS classes.
+Use inline styling to properly arrange the HTML elements of the flag.
 
-Here is a nice resource for flexbox:
+**Hint:** Try setting `display` and `flex-direction` properties to get the correct direction. 
+You may find the `.threehoriz` class useful.
 
-[https://css-tricks.com/snippets/css/a-guide-to-flexbox/](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-
-**Hint:** Try setting `display` and `flex-direction` properties for the parent class `.horiz`.
+:::note
+It is best practice to do all of your styling in the style sheet. 
+However, inline styling is a very common debugging method and a very useful skill for quickly developing frontend.
+:::
 
 ![Romania](../assets/Assignment2/Romania.png)
 
 ```html
 <h2>Romania</h2>
-<div class="flag horiz">
-  <!-- insert flag here -->
+<div class="flag" style="">
+  <!-- INSERT FLAG HERE -->
 </div>
 ```
 
 ## Q4 - Mexico
 
-Replicate the Mexico flag. Again write HTML code by yourself and use the image provided below. Don’t create a separate `<div/>` tag for a white tag since you can also apply flexbox to `<img/>`.
+Replicate the Mexico flag. Again write HTML code by yourself and use the image provided below. 
+Don’t create a separate `<div/>` tag for a white tag since you can also apply flexbox to `<img/>`.
 
-**Hint:** To handle the image’s size, consider using `max-height`, `max-width` and `align-self`. As always, don’t be afraid to Google all of these properties!
+**Hint:** To handle the image’s size, consider using `max-height`, `max-width` and `align-self`. 
+As always, don’t be afraid to Google all of these properties! Feel free to use the provided `eagle.png`
 
 ![Mexico](../assets/Assignment2/Mexico.png)
 
 ```html
 <h2>Mexico</h2>
-<div class="flag horiz mexico">
+<div class="flag">
   <!-- insert flag here -->
 </div>
 ```
 
 ## Q5 - Text Styling
 
-Go back to the headings for the flags you made: the `<h2>` tags, and give each a different text style. You’ll need to assign each `<h2>` tag a custom class in the HTML in order to select it through CSS.
+The flags are pretty, but I want to make my website a bit more interactive. Each flag is labeled using the `label` heading.
+To make it more fun, give the labels a color.
 
-Luxembourg: change the color to purple
+Now, let's go further. I want to show the text changing when I `hover` over each text title. Specifically, I want it to 
+get bigger and change to a warm color of your choice. 
 
-Thailand: make the text underlined
-
-Romania: use the `:hover` to make the text grow larger upon hovering over it (you should be using two properties for this)
-
-Mexico: use the `:hover` pseudo-class to make the text blue and underlined when hovering your cursor over it
-
-Here are some resources to help you out:
-
-[https://www.geeksforgeeks.org/css-text-formatting/](https://www.geeksforgeeks.org/css-text-formatting/)
-
-[https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)
-
-**Hint:** If you’re stuck on changing the Romania text, check out the `transition` and `transform` properties
+**Hint: Try using the `hover` pseudoclass**
 
 ## Q6 - Margin and Padding
 
-When spacing between and around elements there is a subtle distinction between margin and padding. Recall the margin is space **outside** of the element’s border while padding is space between the element and its border.
+When spacing between and around elements there is a subtle distinction between margin and padding. 
+Recall the margin is space **outside** of the element’s border while padding is space **between** the element and its border.
+To see this, feel free to open inspect element and play around with the margin and padding settings.
 
-Margin exercise: provide a set of two flags that are right next to each other and have students separate those two flags apart by a certain distance (10px for example). They should use margin for this.
+1. Provide a set of two flags that are right next to each other. Separate those two flags by 10px using margin.
+2. Provide a flag with 2-3 elements. Shrink the flag by 60% using the padding.
 
-Padding exercise: provide a flag with 2-3 elements. Make students shrink the flag by certain amount by setting the padding. (Note for later: we can use `background-clip` property to color padding)
+## Submission
 
-First, separate the two given boxes with a distance of 30px, 15px on the right side of the left box and 15px on the left side of the right box.
+Because this is a frontend project, the staff would like to see both the code and the render. 
+To enable this, we will be publishing your work to GitHub pages. GitHub pages is a lightweight website deployment
+tool which we will use for many of our frontend assignments. 
 
-Then shrink the next flag by 30px in total vertically and horizontally, but keep its border the same size.
+1. Ensure that all of your code is in the classroom repository, and ensure that you have pushed to GitHub
+2. To publish a page, go to `Settings > Pages`. Ensure that `Source` is "Deploy from branch". For branch, choose `main`, and for folder, choose `/(root)`
+3. Click `build` or `save`. This will start the build process. 
+4. Wait a few moments, and refresh the page. The top of the page should say "Your site is live at [url]"
+5. Copy the url into the `README.md` in your repository. Commit and push that change.
+6. Submit to Gradescope
 
 ### Conclusion
 
-That's the end of this styling exercise! Now you should be familiar with some different flags and how CSS can cleverly transform simple HTML boxes into these different designs. Remember, you have a ton of flexibility with selecting elements and modifying them with an endless amount of properties that we have not covered - feel free to search them up!
+That's the end of this styling exercise! 
+Now you should be familiar with some different flags 
+and how CSS can cleverly transform simple HTML boxes into these different designs. 
+Remember, you have a ton of flexibility with selecting elements 
+and modifying them with an endless amount of properties that we have not even covered but are available to you!
