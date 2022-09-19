@@ -237,13 +237,13 @@ const schedule: Lesson[] = [
     week: 10,
     date: 'Nov. 21',
     format: 'Fall Break',
-    topic: ''
+    topic: '',
   },
   {
     week: 10,
     date: 'Nov. 23',
     format: 'Fall Break',
-    topic: ''
+    topic: '',
   },
   {
     week: 11,
@@ -258,7 +258,7 @@ const schedule: Lesson[] = [
     date: 'Nov. 30',
     format: 'Special Lecture',
     topic: '',
-  },
+  }
 ];
 
 export default schedule;
