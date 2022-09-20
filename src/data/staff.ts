@@ -96,7 +96,8 @@ const staff = [
     image: '/img/staff/kartik.png',
     role: 'Full Stack TA',
     linkedin: 'https://www.linkedin.com/in/-kartikaggarwal/',
-    bio: 'Hi!',
+    bio: "Hi y'all! I'm Kartik and I'm a sophomore studying EECS with a minor in IEOR. This is my first semester on WDB's course staff. In my free time, I love to play squash, pool, or just go for a swim at RSF. Looking forward to meeting all of you!",
+    email: 'mailto: kartikaggarwal@berkeley.edu',
   }
 ];
 
