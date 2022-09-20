@@ -29,7 +29,7 @@ const staff = [
     role: 'Design TA',
     linkedin: 'https://www.linkedin.com/in/isabel-zheng-24003b1b2/',
     personal: '',
-    bio: 'Hi all! I’m Isabel, a 2nd year Data Science major from LA. I love all things out of the box and empathetic, especially within tech. Outside of web development, you can find me watching astronomy videos, cafe hopping (peep the cafe pic), and listening to Ichika Nito.',
+    bio: 'Hi all! I’m Isabel, a 3rd year Data Science major from LA. I love all things out of the box and empathetic, especially within tech. Outside of web development, you can find me watching astronomy videos, cafe hopping (peep the cafe pic), and listening to Ichika Nito.',
   },
   {
     name: 'Nitya Krishnakumar',
@@ -37,7 +37,7 @@ const staff = [
     role: 'Frontend TA',
     linkedin: 'https://www.linkedin.com/in/nitya-krish/',
     personal: '',
-    bio: 'Hi! I’m Nitya, a junior studying CS from Portland OR. I love web development so I’m super excited to be teaching this class! In my spare time, you can find me watching TV, beating my friends at card games, and catching up on sleep. Looking forward to meeting everyone this semester!',
+    bio: 'Hi! I’m Nitya, a senior studying CS from Portland OR. I love web development so I’m super excited to be teaching this class! In my spare time, you can find me watching TV, beating my friends at card games, and catching up on sleep. Looking forward to meeting everyone this semester!',
   },
   {
     name: 'Ethan Pang',
@@ -52,7 +52,7 @@ const staff = [
     role: 'Design TA',
     linkedin: 'https://www.linkedin.com/in/victoriayli/',
     personal: 'https://vickyli248.github.io/',
-    bio: "Hello friends! I'm a 3rd-year majoring in Computer Science. I'm from Minnesota so if you really like snow you can ask me questions about it. Anyway, other than that I love to dance, play Toon Blast on my phone, code, and make websites look sexy. Excited to meet you all, get hyped for an amazing semester!",
+    bio: "Hello friends! I'm a 4th-year majoring in Computer Science. I'm from Minnesota so if you really like snow you can ask me questions about it. Anyway, other than that I love to dance, play Toon Blast on my phone, code, and make websites look sexy. Excited to meet you all, get hyped for an amazing semester!",
   },
   {
     name: 'Samarth Goel',
@@ -75,14 +75,14 @@ const staff = [
     role: 'Frontend TA',
     linkedin: 'https://www.linkedin.com/in/rebecca-won-1ba6191b5/',
     personal: '',
-    bio: 'Hi, I am a sophomore studying CS and this is my first semester being a course staff at WDB. I started learning web development with this decal and I am super excited to help you guys learn web dev at WDB just like how I started my learning! Outside of web development and teaching, I like to binge watch movies and try out some nice foods :D',
+    bio: 'Hi, I am a junior studying CS and this is my second semester being a course staff at WDB. I started learning web development with this decal and I am super excited to help you guys learn web dev at WDB just like how I started my learning! Outside of web development and teaching, I like to binge watch movies and try out some nice foods :D',
   },
   {
     name: 'Joshua Tsai',
     image: '/img/staff/josh.png',
     role: 'Backend TA',
     linkedin: 'https://www.linkedin.com/in/joshua-tsai-01/',
-    bio: 'Hello, I am a sophomore studying EECS. This is my second semester on WDB’s course staff and I am excited to meet you all.',
+    bio: 'Hello, I am a junior studying EECS. This is my second semester on WDB’s course staff and I am excited to meet you all.',
   },
   {
     name: 'Abigail Delgado',
