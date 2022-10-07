@@ -3,34 +3,41 @@ sidebar_position: 4
 ---
 
 # HW 4 - React
+### Introduction
 
-One of the reasons the React framework is so powerful, is that instead of updating the the entire HTML website every time you change a component, you can simply just update that singular component, without having other parts of the website realize it! In this homework we will be using that notion and the idea of Components to create our own implementation of that.
+One of the reasons that the React framework is so powerful, is that instead of updating the the entire HTML website every time you change a component, you can simply just update that singular component, without having other parts of the website realize it! In this homework we will be using that notion and the idea of components to create our own implementation of that.
 
-We are going to be implementing a website very similar to Instagram, but much simpler... Let's call it Blockstagram. Blockstagram has 2 key features: 
+We are going to be building a website very similar to Instagram, but much simpler... Let's call it Blockstagram. Blockstagram has 2 key features: 
 
-1. It lets you post your very own special square block ranging from 4 colors (more if you're feeling ambitious)
-2. It updates your main feed automatically, to whatever block was recently posted at the top of the screen.
+1. It lets you post your very own special square block ranging from 4 colors (more if you're feeling ambitious).
+2. It updates your main feed automatically, so whatever block that was recently posted is at the top of the screen.
 
 ![Blockstagram Demo](../assets/Assignment4/demo.gif)
 
 ## Learning Objectives
 
-- Why use/learn React? - Objective #1
-- Building familiarity with React syntax - Objective #2
-- Knowledge of both class and functional components - Objective #3
+- Why use/learn React?
+- Building familiarity with React syntax
+- Knowledge of both class and functional components
 
 ## Setup
 
-The starter code for this homework available on GitHub Classroom, and should be submitted
-to Gradescope.
+The starter code for this homework is available on GitHub Classroom. After cloning, run the below command to install the packages this app depends on!
+```bash
+npm install
+```
 
 ## Q1 - HTML vs. React
 
-Once setup, you’ll find two folders within your new repo named ‘html-example’ and ‘react-example’. Below are quick mockups of a social media user’s profile, on the left built with HTML and on the right with React. We encourage you to look at the different files and see how exactly you can condense code into re-usable components! 
+Once setup, you’ll find two folders within your new repo named ‘html-example’ and ‘react-example’. 
+Inside you'll find quick mockups of a social media user’s profile component, including their username, a bio, a circular profile picture, and a follow button.
+Below you'll see both examples, HTML on the left and React on the right. 
+We encourage you to look at the different files and see how exactly you can condense HTML/CSS code into re-usable components in React! 
 
 ![Q1 Example](../assets/Assignment4/q1-img.png)
 
-### Answer on Gradescope: What’s another feature of a social media site you think should be made a component?
+### Answer on Gradescope: 
+What’s another feature of a social media site you think would be helpful if made a component?
 
 ## Q2 - Functional Components vs. Class Components
 
@@ -38,7 +45,7 @@ If you look at the Color component in `Color.js` you will notice that it looks d
 
 Your task for this question is to convert the Color component from a class component to a functional component. Look at the structure of the other components in this project as a reference for how to do this. Additionally, none of the logic for this component should change.
 
-```bash
+```jsx
 import React from "react"
 
 class Color extends React.Component {
@@ -64,13 +71,14 @@ Your second task is to build out the Menu component for Blockstagram! This compo
     
 
 ```jsx
-import { React } from 'react';
+import React from 'react';
+// Add any imports you think you might need here!
 
 const Menu = () => { 
 
     return (
       <div className="colorOptions">
-		{/* TODO */}
+          {/* TODO */}
       </div>
     );
 }
@@ -78,7 +86,7 @@ const Menu = () => {
 export default Menu;
 ```
 
-## Q4 - Constructing the Blockstagram Feed and “Posts”
+## Q4 - Constructing the Blockstagram Feed and Posts
 
 Now it’s time to build the rest of Blockstagram! Your task now is to create the Block component (aka an “instagram post”) and the Feed component. This might seem a little daunting at first, but let’s first break it down and just focus on what a “Block” will look like: We see it has a square filled with a color, and then a small outlined rectangle at the bottom representing where a caption may go.
 
@@ -91,13 +99,19 @@ Now it’s time to build the rest of Blockstagram! Your task now is to create th
 
 ```jsx
 import '../Styles/Block.css';
+import React from 'react';
 
 const Block = (props) => {
     /* YOUR CODE HERE */
 
     return (
-        <div>
-			{/* Refer to Hint 1 if stuck on coloring the posts */}
+        // ignore this data-testid, it's purely for testing :)
+        <div data-testid='main-component'>
+            {/* You'll notice pre-assigned class names 'post' and 'caption', 
+            we took care of the basic block styling! 
+            If curious, check out the css in Styles/Block.css */}
+
+            {/* Refer to hint if stuck on how to color the posts */}
             <div className="post"></div>
             <div className="caption"></div>
         </div>
@@ -107,31 +121,31 @@ const Block = (props) => {
 export default Block;
 ```
 
-1. Once you think you’ve completed Block (you can always go back and edit if necessary!), navigate to the ***Components/Feed.js*** file. You essentially have two tasks:
+2. Once you think you’ve completed Block (you can always go back and edit if necessary), navigate to the ***Components/Feed.js*** file. You essentially have two tasks:
     1. Create a variable that keeps track of your posts/blocks
     2. Edit the `posts` variable to represent multiple `<Block/>` components
 - **Hint:** 
-    Consider the useState hook for the new state variable! Think of the state of the feed as a **LIST** of Block components, where every time you add a block the list updates with a new list of Block components :]
+    Consider the useState hook for the new variable! Think of the state of the feed as a **LIST** of Block components, where every time you add a block, the list now contains the newly added block :]
     
 
 ```jsx
 import { useState } from 'react';
-
-import Block from './Block';
+import React from 'react';
 import Menu from './Menu';
+import Block from './Block';
 
 const Feed = () => {
-    /* Declare a new state variable to keep track of the blocks on your Blockstagram feed! */
-		// YOUR VAR HERE - Refer to Hint 2 for more help!
+    /* TODO: Declare a new state variable to keep track of the blocks on your Blockstagram feed! */
+    // Refer to Hint 2 for more help!
 
-		/* Use the map() function to render multiple Blocks! */
-		const posts = null; // EDIT THIS VAR
+    /* Use the map() function to render multiple Blocks! */
+    const posts = null; // TODO: edit this variable
 
     return (
         <div>
             <Menu></Menu>
 
-			{/* Below is where all of your Blocks should render! */}
+            {/* Below is where all of your Blocks should render! */}
             {posts}
         </div>
     );
@@ -139,12 +153,18 @@ const Feed = () => {
 
 export default Feed;
 ```
+
+Remember you can run your React app locally to see what you've built so far with the below command!
+```bash 
+npm start
+```
+
 ## Conclusion
 
 Congrats on finishing your first React assignment! We hope you're a bit more comfortable with React now, and feel free to play around and add more features to Blockstagram!
-Even though it's just a static page right now, in the next assignment you will see how to make your React app more dynamic with APIs!
+Even though it's just a static page right now, in the next assignment you will see how to make your React app more dynamic with APIs.
 
-To submit, proceed to Gradescope > Homework 4. If you have any issues, feel free to post on Ed.
+To submit, proceed to Gradescope > Homework 4. If you have any issues, feel free to post on Ed and we'd be happy to help.
 
 ## Resources
 
