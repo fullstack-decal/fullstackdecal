@@ -63,14 +63,26 @@ When objects are created, we use getters to set their initial values. Getters al
 during initialization. In the following function, complete the getter to compute the Euclidean distance between **(a, b)** and **(x, y)**
 
 ```js
-
+const thiser = {
+    a: (Math.random() * 100),
+    b: (Math.random() * 100),
+    x: (Math.random() * 100),
+    y: (Math.random() * 100),
+    get distance() {
+        return Math.sqrt(
+            // return the Euclidean distance between the point (a, b) and (x, y)
+            // hint: Euclidean distance is given by sqrt((a - x)^2 + (b - y)^2) 
+            1 // replace this with your solution
+        )   
+    }  
+}
 ```
 
 ## Q4: Objects Gworl
 
 **Warning: Read the following spec very carefully**
 
-We want to create a general purpose function to keep records. We pass a JSON
+We want to create a general purpose function to keep records. We pass a JavaScript
 object, key, and value to our function, and in return, our function should do
 the following:
 

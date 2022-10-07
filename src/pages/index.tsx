@@ -95,7 +95,7 @@ const Home: React.FC = () => {
           // scrolling: "no"
         }}
       />
-        <Text textStyle="title2" color="purple" mt={[8, 16]} mb={4}>
+        {/* <Text textStyle="title2" color="purple" mt={[8, 16]} mb={4}>
           Announcements
         </Text>
         <Box mb={16} className="darkMode">
@@ -103,7 +103,7 @@ const Home: React.FC = () => {
             Week 1
           </Text>
           {announcements[2]}
-        </Box>
+        </Box> */}
 
         <Text textStyle="title2" color="purple" mb={8}>
           Course Overview
