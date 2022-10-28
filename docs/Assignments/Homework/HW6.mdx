@@ -113,16 +113,6 @@ After you are done, open `apod.html` and look at the first section. Choose a dat
 
 **Hint:** You can access the query parameters in your API handler using `req.query`
 
-```jsx
-app.get("/apod-for-date", function (req, res) {
-  // GET "/apod-for-date" should information for the APOD on a specific date
-  const date = req.query.date;
-  fetch(`https://api.nasa.gov/planetary/apod?api_key=API_KEY&date=${date}`)
-    .then(response => response.json())
-    .then(data => res.json({name: data.title, img_url: data.url}));
-});
-```
-
 ## Q3 - March to the Moooon 🚀
 
 Now that you have worked with the API for a bit, write a GET route that returns a list of all APODs in March 2020. you **MUST** only use **ONE** call to NASA’s API to answer this question.
@@ -132,24 +122,6 @@ Now that you have worked with the API for a bit, write a GET route that returns 
 - `results`: an array of APOD objects, where each entry is in the same form as your response to question 2
 
 **Hint:** How many days are in March?
-
-```jsx
-app.get("/march", function (req, res) {
-  // GET "/march" should return a list of all APOD images for the month of March, 2020.
-	const start_date = "2020-03-01";
-	const end_date = "2020-03-31";
-	return await fetch("https://api.nasa.gov/planetary/apod?api_key=TwSwee1ghzduoBQE1en0Dam3kxhUWPfsgbB850Tg&start_date=2020-03-01&end_date=2020-03-31")
-	.then(res => res.json())
-  .then((json) => {
-    return_list = []
-    for (let apod in json) { //blank the inside of this for loop
-    	let result = { "title": json[apod]["title"],
-      					"url": json[apod]["url"]}
-      return_list.append(result)
-    }
-    return {"results": return_list}
-});
-```
 
 ## Q4 - All month long (GET)
 
@@ -188,39 +160,11 @@ Building off of the previous question, write a GET route that takes in a query p
 
 **Hint:** const moonLanding = new Date('July 20, 69 00:20:18');
 
-```jsx
-app.get("/monthly-apods", function (req, res) {
-  // GET "/monthly-apods" returns a JSON object that contains a list of all
-	// APOD photos for the given month.
-	let last_date = new Date(`${req.query.month} 1, 2020`);
-	last_date.setMonth(last_date.getMonth() + 1)
-	last_date.setDate(0)
-	let last_day = last_date.getDate()
-	let month = last_date.getMonth()
-	if (month < 10) {
-		month = "0" + month;
-	const start_date = `2020-${month}-01`;
-	const end_date = `2020-${month}-${last_day}`;
-	return await fetch("https://api.nasa.gov/planetary/apod?api_key=TwSwee1ghzduoBQE1en0Dam3kxhUWPfsgbB850Tg&start_date=2020-03-01&end_date=2020-03-31")
-	.then(res => res.json())
-  .then((json) => {
-    return_list = []
-    for (let apod in json) { //blank the inside of this for loop
-    	let result = { "title": json[apod]["title"],
-      					"url": json[apod]["url"]}
-      return_list.append(result)
-    }
-    return {"results": return_list}
-});
-```
-
 ### Conclusion
 
 Congratulations! You should now be familiar with using Postman, formatting an API call, and create custom API endpoints of your own. These are all very valuable skills that you will use extensively as you explore further into backend development.
 
- 
-
 ### Contributors
 
 - William Henderson
-- Issac Ong
+- Isaac Ong
