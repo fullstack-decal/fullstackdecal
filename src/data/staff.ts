@@ -21,7 +21,7 @@ const staff = [
     image: '/img/staff/isaac.png',
     role: 'Backend TA',
     linkedin: 'https://www.linkedin.com/in/isaacong/',
-    bio: 'Hi!',
+    bio: 'Hi everyone! I’m Isaac, a 3rd year CS student from Singapore. I love building things and systems research. In my free time, I like traveling, musicals, and reading.' ,
   },
   {
     name: 'Isabel Zheng',
