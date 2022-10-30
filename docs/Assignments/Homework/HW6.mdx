@@ -1,35 +1,28 @@
----
-sidebar_position: 6
----
-
-# HW 6 - Backend I
-
 # Introduction
 
-In this homework, we will utilize the NASA daily picture API to create a backend server that allows users to store, delete, and retrieve their favorite pictures of planets and nebulas. 
+In this homework, we will utilize the NASA daily picture API to create a backend server that allows users to store, delete, and retrieve their favorite pictures of planets and nebulas.
 
 ## **Learning Objectives:**
 
 - What is an API?
-    - What is the backend and how does the frontend communicate with the backend
+  - What is the backend and how does the frontend communicate with the backend
 - What is HTTP? How to use Postman?
 - What is NodeJS
 - What is Express and how to use Express to develop APIs
 
-## Basic Intro referring to Lesson 1
+## Introduction
 
 **Query Parameters**
 
-Query Parameters are a defined set of parameters attached to the end of a url. You have probably seen this on almost every website you visit. If you are watching a video on Netflix, the url will look something like:
+Query parameters are a defined set of parameters attached to the end of a url. You have probably seen this on almost every website you visit. If you are watching a video on Netflix, the url will look something like:
 
 > [https://www.netflix.com/watch/80186941?trackId=14170286](https://www.netflix.com/watch/80186941?trackId=14170286)
-> 
 
-The Query Parameters begin after a question mark (?) in the url, and a series of key-value pairs. In this example, the key is *trackId* and the value is *14170286*. If there were multiple query parameters, they would be concatenated by an ‘&’. 
+The query parameters begin after a question mark (?) in the url, and a series of key-value pairs. In this example, the key is _trackId_ and the value is _14170286_. If there were multiple query parameters, they would be concatenated by an ‘&’.
 
 To access a query parameter in Express, we use **req.query**, which returns an object of key-value pairs.
 
-**NASA APOD (Astronomy Picture of the Day) API** 
+**NASA APOD (Astronomy Picture of the Day) API**
 
 In this homework, we will be using the NASA APOD API, an API which returns details about the Astronomy Picture of the Day for a specific day. For example, the APOD for Christmas 2018 was the following:
 
@@ -43,44 +36,57 @@ To use the NASA API, you will need an API key. This is a way of authenticating w
 
 To generate an API key, go to [https://api.nasa.gov/](https://api.nasa.gov/) and scroll down to the “Generate API Key” section. Fill in your first name, last name, and email, and click sign up. You should be presented with a similar screen to the following:
 
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/71d0efc7-ca0c-4af4-b6a3-31bda1e19354/Untitled.png)
+
 Keep track of your API key, you will need it for the first of the homework when making requests to the NASA API.
 
-We also need to setup Express before we begin.
+[](https://fullstackdecal.com/docs/Assignments/Homework/HW5#setup)
 
-To setup Express, we need to initialize our app object.
+The starter code for this homework is in Classroom:
 
-```jsx
+[Homework 6](https://classroom.github.com/a/k9_Yh6kP)
+
+Take a look around the codebase and try to understand how it's put together. It contains an Express server, as well as the [axios](https://axios-http.com/) library, which we will be using to make calls to the APOD API.
+
+## Task 0 - Start the Backend
+
+Before we start building anything, we have to ensure that all of the dependecies have been properly installed for the Express server:
+
+- cd into the directory: `cd homework6-starter/node-server`
+- Install dependencies: `npm i`
+
+The starter code that we have provided sets up a basic Express server, and then launches it such is it’s listening on the port 3000:
+
+```go
 const express = require('express')
-const app = express()
-
-app.use(express.json())
-app.use(express.urlencoded())
+const axios = require("axios");
+const cors = require('cors');
 
 const port = process.env.PORT || 3000
+const app = express();
 
-// CODE GOES Here
+app.use(express.json());
+app.use(cors());
 
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`)
-})
+	console.log(`Listening on port ${port}`)
+});
 ```
 
-## Q1 - Which API Call is Correct?
+To run the server, call `npm start`.
 
-Below are 4 different HTTP calls to the NASA API. Which call will result in all images for the 4th of July weekend on 2022 (2 July to 4 July)? Assume that the API key you have been given is `abc123`.
+You should see output that looks something like this:
 
-**Hint:** Which 2 parameters can you use to specify a date range for the APOD API?
+```go
+> node-server@1.0.0 start
+> node index.js
 
-```
-1. https://api.nasa.gov/planetary/apod?api_key:abc123&start_date:2022-07-02&end_date:2022-07-04
-2. https://api.nasa.gov/planetary/apod?api_key=abc123&start=2022-07-02&end=2022-07-04
-3. https://api.nasa.gov/planetary/apod?api_key=abc123&start_date=2022-07-02&end_date=2022-07-04
-4. https://api.nasa.gov/planetary/apod?api_key=abc123,start_date=2022-07-02,end_date=2022-07-04
+Listening on port 3000
 ```
 
-## Q2 - Spaceman Postman
+## Task 1 - Spaceman Postman
 
-Your first task is to write a GET route that returns the URL for the NASA Astronomy Picture of the Day for a specific date. 
+Your first task is to implement the `/apod-for-date` GET route that returns the NASA Astronomy Picture of the Day for a specific date.
 
 **Query Parameters**
 
@@ -94,67 +100,103 @@ Your first task is to write a GET route that returns the URL for the NASA Astron
 **JSON Response**
 
 - `name`: the name of the image (taken from the `title` field of the NASA API response)
-- `img_url`: the URL of the image (taken from the `url` field of the NASA API response)
+- `url`: the URL of the image
+- `date` the date of the image
 
-After you’re done with this, use Postman to test your new `/apod-for-date` API to make sure that it’s returning the correct value. For example, if you call the API with the `date`  set to `2020-12-25` , the response should **exactly** match the following:
+**Hint:** You can access the query parameters in your API handler using `req.query`.
+
+After you’re done with this, use Postman to test your new `/apod-for-date` API to make sure that it’s returning the correct value. For example, if you call the API with the `date` parameter set to `2020-12-25` , the response should **exactly** match the following:
 
 ```json
 {
-  "name": "Northern Winter Night", 
-  "img_url": "https://apod.nasa.gov/apod/image/2012/WinterSceneBlock.jpg"
+  "name": "Northern Winter Night",
+  "url": "https://apod.nasa.gov/apod/image/2012/WinterSceneBlock.jpg",
+  "date": "2020-12-25"
 }
 ```
 
-After you are done, open `apod.html` and look at the first section. Choose a date and click the “Get Image” button. If you have implemented the API correctly, you should see the corresponding APOD appear along with its name! Feel free to play around with this before moving on to the next section.
+After you are done, open `index.html` and look at the first section. Choose a date and click the “Load” button. If you have implemented the API correctly, you should see the corresponding APOD appear along with its name! Feel free to play around with this before moving on to the next section.
 
-**Hint:** You can access the query parameters in your API handler using `req.query`
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/880b7091-01a4-4acc-ba82-56bf77e766b0/Untitled.png)
 
-## Q3 - March to the Moooon 🚀
+## Task 2 - To the Moon 🚀
 
-Now that you have worked with the API for a bit, write a GET route that returns a list of all APODs in March 2020. you **MUST** only use **ONE** call to NASA’s API to answer this question.
-
-**JSON Response**
-
-- `results`: an array of APOD objects, where each entry is in the same form as your response to question 2
-
-**Hint:** How many days are in March?
-
-## Q4 - All month long (GET)
-
-<aside>
-💡 **NOTE:** For this question, your method **only** has to work for the year **2020.** We will not be testing for any other years.
-
-</aside>
-
-Building off of the previous question, write a GET route that takes in a query parameter for a month, and returns all images during that month. 
+Now that you have worked with the API, implement the `/apods-for-april` GET route that returns a list of all APODs in April 2022. you must only use **ONE** call to NASA’s API to answer this question.
 
 **Query Parameters**
 
-- `month`: the month to fetch all of the APODs for. It will be a lowercase string of the full month name (`january`, `february`, `march`, etc.)
+None
 
 **JSON Response**
 
-- `results`: an array of APOD objects, of the form below, where each entry is in the same form as your response to question 2.
+- an array of APOD objects, where each element is in the same format as your response to Task 1
+
+```jsx
+[
+	{
+		"name": "Leaning Tower, Active Sun",
+		"url": "https://apod.nasa.gov/apod/image/2204/sunspotsleaningtowerofpisa1024.jpg",
+		"date": "2022-04-01"
+	},
+	{
+		"name": "Nova Scotia Northern Lights",
+		"url": "https://apod.nasa.gov/apod/image/2204/Z62_5747-Edit1090.jpg",
+		"date": "2022-04-02"
+	},
+	...
+]
+```
+
+**Hint:** How many days are in April?
+
+****\*\*\*\*****Hint:****\*\*\*\***** What parameters does the NASA API provide other than `date`?
+
+After you are done, look at the second section of `index.html` and click the “Load” button. If you have implemented the API correctly, you should see the all of the images for April 2022 being loaded onto the webpage!
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/57714c55-5977-4b33-8cf8-8f20a0794dc6/Untitled.png)
+
+## Q3 - All Month Long
+
+Now, to top it all off, implement the `/apods-for-month` route that takes in 2 query parameters for the month and year, and returns all APOD images for that month.
+
+**Query Parameters**
+
+- `month`: the month to fetch APODs for e.g. `01` for January, `02` for February, and so on
+- `year`: the year to fetch APODs for
+
+**JSON Response**
+
+- an array of APOD objects, of the form below, where each element is in the same forma as your response to Task 1
 
 ```json
-{
-	"results": [
-		{
-				"name": "The Milky Way Galaxy",
-				"img_url": "https://apod.nasa.gov/apod/image/2207/SaharaAndromeda_Coy_1080.jpg"
-		},
-		{
-				"name": "The Chocolate Milk Galaxy",
-				"img_url": "https://apod.nasa.gov/apod/image/2207/SaharaAndromeda_Coy_1080.jpg"
-	]
-}
+[
+	{
+		"name": "Leaning Tower, Active Sun",
+		"url": "https://apod.nasa.gov/apod/image/2204/sunspotsleaningtowerofpisa1024.jpg",
+		"date": "2022-04-01"
+	},
+	{
+		"name": "Nova Scotia Northern Lights",
+		"url": "https://apod.nasa.gov/apod/image/2204/Z62_5747-Edit1090.jpg",
+		"date": "2022-04-02"
+	},
+	...
+]
 ```
 
 **Hint**: As you implement this API, you might notice that it is similar to your solution for Q3. How might you reuse the code in Q3 for this question as well?
 
-**Hint:** Use the built in javascript object, Date().
+**Hint:** Use the built in Javascript object, Date() to figure out the end date for a given month - Google is your friend! (Note that the `month` parameter for Date is zero-indexed, so January has an index of 0).
 
-**Hint:** const moonLanding = new Date('July 20, 69 00:20:18');
+After you are done, look at the last section of `index.html` and click the “Load” button after selecting a specific month. If you have implemented the API correctly, the page should load a random image from the month you selected!
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d0e41f1b-d14a-405f-a831-f32a99de1a96/Untitled.png)
+
+### Submission
+
+After you finish, push these changes into your Classroom repository.
+
+Turn your code into Gradescope for the assignment Homework 6.
 
 ### Conclusion
 
@@ -162,5 +204,5 @@ Congratulations! You should now be familiar with using Postman, formatting an AP
 
 ### Contributors
 
-- William Henderson
 - Isaac Ong
+- William Henderson
