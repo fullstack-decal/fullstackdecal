@@ -2,6 +2,8 @@
 sidebar_position: 12
 ---
 
+import VividDemo from "../../static/img/vivid-demo.gif"
+
 # Lesson 9 - React 2: More Hooks, Libraries, Styling, and Routing
 
 ## Introduction
@@ -285,7 +287,70 @@ testing any future projects.
 ## Styling in React
 
 There are many, many ways to style your components and JSX code in React. In
-this reading we'll talk about CSS-in-JS, CSS Modules, and Styled Components.
+this reading we'll talk about Tailwind CSS with Vivid, CSS-in-JS, CSS Modules, and Styled Components.
+
+### Tailwind CSS 
+Tailwind CSS is a utility-first CSS framework. This means that instead of writing traditional global CSS like `background-color: #f63344`, you apply styles in-line via small “utility classes” like `p-4` for padding or `bg-red-500` for a red background.
+
+Each of these utility classes is atomic, so they only apply one style rule at a time. While you can use them to write arbitrary CSS using their arbitrary notation (e.g., `bg-[#f63344]`), most of the time you’ll be using the color and sizing scales that Tailwind provides for you. All of these features can also be easily configured be changing your `tailwind.config.js`.
+
+#### Why Use Tailwind
+Tailwind offers benefits for beginners and experts alike!
+
+For beginners or simple applications, **Tailwind is a fast way to write all your styling inline.** By not having to deal with the abstraction of component-based classnames or fine-tuning colors and pixel values, you can move faster with Tailwind than with alternative CSS frameworks.
+
+For more advanced use-cases, **Tailwind forms a useful part of a design system by streamlining modularity and reducing unneeded abstractions.** Since Tailwind lets you configure a set of common sizes, colors, and utilities, you can easily write consistent styling across your app. By removing modularity at the CSS level (since styling is done inline), you can focus on just making your React code modular.
+
+To prevent long class strings at all levels of your code, you generally have to be more thoughtful about your component modularity when using Tailwind CSS.
+
+#### Installation
+The official [Tailwind installation guide](https://tailwindcss.com/docs/installation) does a great job of walking you through the easy 4 step setup. You can follow the “PostCSS” or “Framework Guides” sections there to get started.
+
+#### Usage
+
+Once Tailwind is set up, you can use any of the classes in their [docs](https://tailwindcss.com/docs/installation) right in your code:
+
+```html
+<h1 class="text-3xl font-bold underline">
+  Hello world!
+</h1>
+```
+
+This snippet makes your heading large, bolded, and underlined — pretty self-explanatory!
+
+### Vivid
+
+Vivid is an in-browser visual editor that lets you test out Tailwind styles and automatically write them directly to your code.
+
+With Vivid, you can click on any component in your page and have its code pop up right in your browser. From there, you can edit its code in the code pane, or preview and apply styles with shortcuts through the command palette.
+
+#### Installation
+To summarize the [Vivid docs](https://docs.vivid.lol):
+
+1. Install Vivid with `npm i -D vivid-studio`
+2. Initialize it by pasting the following code at the top of your root file outside of any functions:
+
+```jsx
+if (
+  typeof window !== "undefined" &&
+  process.env.NODE_ENV === "development"
+) {
+  import("vivid-studio").then((v) => v.run());
+  import("vivid-studio/style.css");
+}
+```
+
+#### Usage
+
+Once Vivid is set up, you just have to start your app in development mode (usually with `npm run start` or `npm run dev`). From there, Vivid will walk you through its functionality!
+
+Instead of the usual loop of opening your IDE, looking for a component’s code, and testing out styles in the browser, you can just <kbd>Cmd</kbd>-Click (Windows/Linux: <kbd>Ctrl</kbd>-Click) any part of your page and start editing its code from your browser.
+
+Once you get comfortable with editing code in the code pane, you can iterate through styles even faster with the command palette shortcuts Vivid provides (<kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + K). 
+
+<img src={VividDemo} alt = "Vivid Demo"/>
+
+---
 
 ### CSS-in-JS
 
