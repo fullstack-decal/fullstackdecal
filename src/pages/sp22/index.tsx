@@ -1,13 +1,13 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import WeekCard from './components/WeekCard';
-import OldNav from './components/OldNav';
+import WeekCard from '../../components/sp22/WeekCard';
+import OldNav from '../../components/sp22/OldNav';
 // import SetsUsApart from '../components/SetsUsApart';
 // import Testimonials from '../components/Testimonials';
-import schedule from './data/schedule';
+import schedule from '../../data/sp22/schedule';
 import { Container, Box, Flex, Text, Link } from '@chakra-ui/react';
-import announcements from './data/announcements';
+import announcements from '../../data/sp22/announcements';
 
 const Home: React.FC = () => {
   const { siteConfig } = useDocusaurusContext();

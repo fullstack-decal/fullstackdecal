@@ -1,12 +1,12 @@
 import React from 'react';
-import staff from './data/staff';
-import pastStaff from './data/pastStaff';
+import staff from '../../data/sp22/staff';
+import pastStaff from '../../data/sp22/pastStaff';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import { Box, Text, Container, SimpleGrid } from '@chakra-ui/react';
-import StaffMember from './components/StaffMember';
-import PastStaffMember from './components/PastStaffMember';
-import OldNav from './components/OldNav';
+import StaffMember from '../../components/sp22/StaffMember';
+import PastStaffMember from '../../components/sp22/PastStaffMember';
+import OldNav from '../../components/sp22/OldNav';
 
 const Staff = () => {
   const { siteConfig } = useDocusaurusContext();
@@ -17,7 +17,7 @@ const Staff = () => {
       description="Description will go into a meta tag in <head />"
     >
       <OldNav />
-      <Box w="100vw" className='darkModeContainer'>
+      <Box w="100vw" className="darkModeContainer">
         <Container maxW="container.lg" pt={16} pb={20} px={[7, 10]}>
           <Text textStyle="title2" color="blue" mb={[8, 12]}>
             SPRING 2022 COURSE STAFF

@@ -1,0 +1,110 @@
+---
+sidebar_position: 4
+---
+
+# HW 3 - JavaScript
+
+In this homework, we will be covering the essentials of JavaScript for web
+development. JavaScript, unlike many other languages, was specifically designed
+to make web development easier and more powerful. This homework will touch on
+both the normal structures of the language, like what you would learn in the
+first few weeks of 61A, and also on the language-specific features of
+JavaScript. This homework is **hard**. Do not be afraid to ask for help. This
+homework is designed to challenge you to understand the nuances of JavaScript.
+Do not be discouraged if you do not understand it immediately.
+
+## Part 0: Read the Notes
+
+Make sure you read all the JavaScript notes while doing this homework. While you
+don't need to read all of the JavaScript notes in order to start this homework,
+the problems here touch upon all of the JavaScript content at some point. We do,
+however, recommend starting before we've gone over all of the JavaScript content
+so you can get a head start on the homework. The JavaScript notes contain a
+lesson, [Fundamental JavaScript Concepts](/docs/Lessons/Lesson5), a
+[Review of the Document Object Model (DOM)](/docs/Lessons/Lesson6), and
+[Async and Scope Concepts](/docs/Lessons/Lesson7).
+
+## Q1: Function This
+
+Implement the following function to take an iterable (essentially a list of
+things) and return the item in the list corresponding to the maximum value in
+list after applying `key` to each item.
+
+```js
+function max(iterable, key) {
+  var maximum = _____;
+  for (var _____ in ______) {
+    var _____ = key(_____);
+    if (______ >= _____) {
+      ______ = ______;
+    }
+  }
+  return maximum;
+}
+```
+
+## Q2: Flip It and Reverse It
+
+Based on the previous question, in one line, write an anonymous function which,
+when passed as `key` to `max` would cause `max` to return the smallest value in
+the list.
+
+```js
+const reverser = _____;
+```
+
+## Q3: What is This?
+
+## THIS QUESTION IS INCORRECT AND WILL NOT BE GRADED.
+
+### You may skip this question
+
+## Q4: Objects Gworl
+
+**Warning: Read the following spec very carefully**
+
+We want to create a general purpose function to keep records. We pass a JSON
+object, key, and value to our function, and in return, our function should do
+the following:
+
+- If the current value of the item at `key` is a singular item, update the `key`
+  to correspond to `value`
+- If the current value of the item at `key` is a list, append `value` to the
+  list
+- If the current value of the item at `key` is another JSON object, create a new
+  entry using `key` as the key and `value` as the value
+
+```js
+function changer(object, key, value) {
+  var ______ = ______;
+  if (Array.isArray(prev)) {
+    ______;
+  } else if (typeof prev == 'object' && prev != null) {
+    ______ = ______;
+  } else {
+    ______ = ______;
+  }
+  return null;
+}
+```
+
+## Q5: Promises Promises
+
+In this function, we want to print the numbers `1, 2, 3, 4, 5` in numerical
+order. Using Promises, fill in the function to print numbers in the correct
+order
+
+```js
+async function promise_me(truthy) {
+    const a = new Promise((resolve, reject) => {
+        console.log(_____)
+        ______(______)
+    })
+    console.log(2)
+    console.log(3)
+    console.log(4)
+    const five = ______ ______
+    console.log(five)
+    return five
+}
+```

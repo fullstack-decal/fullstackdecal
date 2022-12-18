@@ -29,26 +29,26 @@ const Content: React.FC<ContentProps> = ({
   }
 
   return (
-    <Flex align="center" className="content">
+    <Flex align='center' className='content'>
       <Tag
         mr={[5, 4, 3]}
-        borderRadius="full"
+        borderRadius='full'
         px={4}
         py={1.5}
         minW={[36]}
-        justifyContent="center"
+        justifyContent='center'
         border={category === 'lecture' ? 'none' : '2px solid white'}
         bg={category === 'lecture' ? 'white' : 'transparent'}
       >
         <Text
-          textStyle="body1"
-          whiteSpace="nowrap"
+          textStyle='body1'
+          whiteSpace='nowrap'
           color={category === 'lecture' ? color : 'white'}
         >
           {label}
         </Text>
       </Tag>
-      <Text textStyle="body1" color="white">
+      <Text textStyle='body1' color='white'>
         {link
           ? (
             <Link to={link} style={{ textDecoration: 'underline' }}>
@@ -58,7 +58,7 @@ const Content: React.FC<ContentProps> = ({
           : (
               title
             )}
-        <Text as="span" textStyle="body" fontWeight="bold">
+        <Text as='span' textStyle='body' fontWeight='bold'>
           {dueDate && ` (due ${dueDate})`}
         </Text>
       </Text>
@@ -85,29 +85,29 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, lessons }) => {
 
   return (
     <Flex
-      align="center"
+      align='center'
       bg={`${colors[weekNumber]}Gradient`}
       px={[4, 8, 10, 12]}
       py={[6, 8]}
-      borderRadius="3xl"
+      borderRadius='3xl'
       direction={['column', null, 'row']}
     >
       <Text
-        textStyle="subtitle2"
-        fontSize="3xl"
-        color="white"
-        whiteSpace="nowrap"
+        textStyle='subtitle2'
+        fontSize='3xl'
+        color='white'
+        whiteSpace='nowrap'
       >
         Week {weekNumber}
       </Text>
       <Box display={['none', null, 'block']}>
         <Divider
-          orientation="vertical"
+          orientation='vertical'
           h={60}
           w={1}
-          borderRadius="full"
+          borderRadius='full'
           opacity={1}
-          bg="white"
+          bg='white'
           mx={10}
         />
       </Box>
@@ -115,17 +115,17 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, lessons }) => {
         <Divider
           h={1}
           w={60}
-          borderRadius="full"
+          borderRadius='full'
           opacity={1}
-          bg="white"
+          bg='white'
           mt={2}
           mb={5}
         />
       </Box>
       <Flex direction={['column', null, 'row']} gap={[8, null, 10]}>
         {lessons.map((lesson) => (
-          <Flex direction="column" gap={5} key={lesson.date} flex={1}>
-            <Text textStyle="label1" textAlign={['center', null, 'left']}>
+          <Flex direction='column' gap={5} key={lesson.date} flex={1}>
+            <Text textStyle='label1' textAlign={['center', null, 'left']}>
               {lesson.date}
             </Text>
             <Content
@@ -143,7 +143,7 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, lessons }) => {
             )}
             {lesson.readingTitle && (
               <Content
-                label="Reading"
+                label='Reading'
                 title={lesson.readingTitle}
                 link={lesson.readingLink}
               />

@@ -55,7 +55,8 @@ const Home: React.FC = () => {
             mb={[8, 12]}
           >
             Monday & Wednesday, 6:30pm -
-            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; Remote + Recorded
+            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; Remote +
+            Recorded
           </Text>
           <Text textStyle="body2" color="white" mb={[6, 8]}>
             Welcome to{' '}
@@ -85,16 +86,16 @@ const Home: React.FC = () => {
         </Container>
       </Box>
       <Container maxW="container.lg" pb={16} className="darkModeContainer">
-      <iframe
-        src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&mode=WEEK&src=Y18xanJ0a21hbzN2ajhmN3NjYXJydDUxZWdpY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23E4C441"
-        style={{
-          // border: "solid 1px #777",
-          width: '80%',
-          height: '600px',
-          // frameborder: "0",
-          // scrolling: "no"
-        }}
-      />
+        <iframe
+          src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&mode=WEEK&src=Y18xanJ0a21hbzN2ajhmN3NjYXJydDUxZWdpY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23E4C441"
+          style={{
+            // border: "solid 1px #777",
+            width: '80%',
+            height: '600px',
+            // frameborder: "0",
+            // scrolling: "no"
+          }}
+        />
         {/* <Text textStyle="title2" color="purple" mt={[8, 16]} mb={4}>
           Announcements
         </Text>
@@ -110,7 +111,7 @@ const Home: React.FC = () => {
         </Text>
         <Flex direction="column" gap={7}>
           <>
-            {Array(13)
+            {Array(12)
               .fill(0)
               .map((_, index) => {
                 const weekLessons = schedule.filter(

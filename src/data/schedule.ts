@@ -39,7 +39,7 @@ const schedule: Lesson[] = [
     readingTitle: 'Introduction to CSS',
     readingLink: '/docs/Lessons/Lesson3',
     slides:
-    'https://docs.google.com/presentation/d/1hi1Wj05HK2tiB_Q0Zay5sH114mzBV_6Mxpcxb4tFAO8/edit?usp=sharing',
+      'https://docs.google.com/presentation/d/1hi1Wj05HK2tiB_Q0Zay5sH114mzBV_6Mxpcxb4tFAO8/edit?usp=sharing',
     assigmentFormat: 'Homework 2',
     assigmentTitle: 'CSS',
     assigmentDueDate: 'Sept. 26',
@@ -54,7 +54,8 @@ const schedule: Lesson[] = [
     lectureLink: 'https://www.youtube.com/watch?v=iqzrTGMYNe0',
     readingTitle: 'Advanced CSS',
     readingLink: '/docs/Lessons/Lesson4',
-    slides: 'https://docs.google.com/presentation/d/16adVo8gHZYjOC5GJK9ou3j9iQf088LjYivQeEFJculk/edit?usp=sharing',
+    slides:
+      'https://docs.google.com/presentation/d/16adVo8gHZYjOC5GJK9ou3j9iQf088LjYivQeEFJculk/edit?usp=sharing',
     assigmentFormat: 'Project 1',
     assigmentTitle: 'Personal Website',
     assigmentDueDate: 'Sept. 28',
@@ -66,7 +67,8 @@ const schedule: Lesson[] = [
     format: 'Lecture 4',
     topic: 'JavaScript 1',
     lectureLink: 'https://www.youtube.com/watch?v=Uuw9_iuFeZs',
-    slides: 'https://docs.google.com/presentation/d/1wp8pkY9fQ4THzmCtZImdPN7Y5UAHAhXOcryRkn17g9Y/edit?usp=sharing',
+    slides:
+      'https://docs.google.com/presentation/d/1wp8pkY9fQ4THzmCtZImdPN7Y5UAHAhXOcryRkn17g9Y/edit?usp=sharing',
     readingTitle: 'Basic JavaScript',
     readingLink: '/docs/Lessons/Lesson5',
     assigmentFormat: 'Homework 3',
@@ -81,7 +83,8 @@ const schedule: Lesson[] = [
     format: 'Lecture 5',
     topic: 'JavaScript 2',
     lectureLink: 'https://www.youtube.com/watch?v=UM3ClbuYmdo',
-    slides: 'https://docs.google.com/presentation/d/16gdrUI-P53lplgECG9JXF0Qv8mb0Zb1rOZ6fNPu2HCo/edit?usp=sharing',
+    slides:
+      'https://docs.google.com/presentation/d/16gdrUI-P53lplgECG9JXF0Qv8mb0Zb1rOZ6fNPu2HCo/edit?usp=sharing',
     readingTitle: 'DOM',
     readingLink: '/docs/Lessons/Lesson6',
   },
@@ -91,7 +94,8 @@ const schedule: Lesson[] = [
     format: 'Lecture 6',
     topic: 'JavaScript 3',
     lectureLink: 'https://www.youtube.com/watch?v=Zlwg-wLmMwo',
-    slides: 'https://docs.google.com/presentation/d/1N4-R0It5U2bWUIObQBxhgQhuQRfcvzB1ze_bjp0ghWs/edit?usp=sharing',
+    slides:
+      'https://docs.google.com/presentation/d/1N4-R0It5U2bWUIObQBxhgQhuQRfcvzB1ze_bjp0ghWs/edit?usp=sharing',
     readingTitle: 'Scope and Asynchronous JS',
     readingLink: '/docs/Lessons/Lesson7',
     assigmentFormat: 'Project 2',
@@ -106,7 +110,8 @@ const schedule: Lesson[] = [
     format: 'Lecture 7',
     topic: 'React 1',
     lectureLink: 'https://www.youtube.com/watch?v=IKZFtisGlac',
-    slides: 'https://docs.google.com/presentation/d/1gLizHQbpwoYQMVq8SD4dqy5zz4EogoUlSKQt81MkPCY/edit?usp=share_link',
+    slides:
+      'https://docs.google.com/presentation/d/1gLizHQbpwoYQMVq8SD4dqy5zz4EogoUlSKQt81MkPCY/edit?usp=share_link',
     readingTitle: 'Intro to React',
     readingLink: '/docs/Lessons/Lesson9',
     assigmentFormat: 'Homework 4',
@@ -120,7 +125,8 @@ const schedule: Lesson[] = [
     format: 'Lecture 8',
     topic: 'React 2',
     lectureLink: 'https://www.youtube.com/watch?v=PsQMsiLw7ec',
-    slides: 'https://docs.google.com/presentation/d/1vm-ZrkdxKuyom6t_DSI_kMIVTcO-4zB84WBzmGbms7w/edit?usp=share_link',
+    slides:
+      'https://docs.google.com/presentation/d/1vm-ZrkdxKuyom6t_DSI_kMIVTcO-4zB84WBzmGbms7w/edit?usp=share_link',
     readingTitle: 'Routing, Styling, and Libraries',
     readingLink: '/docs/Lessons/Lesson10',
   },
@@ -138,7 +144,8 @@ const schedule: Lesson[] = [
     format: 'Lecture 9',
     topic: 'Node',
     lectureLink: 'https://www.youtube.com/watch?v=2arB_t7XYUs',
-    slides: 'https://docs.google.com/presentation/d/1Nj44Ea63FUc9AxHIeK0WyxcGckx2mJlT8S6aS76XBRE/edit?usp=share_link',
+    slides:
+      'https://docs.google.com/presentation/d/1Nj44Ea63FUc9AxHIeK0WyxcGckx2mJlT8S6aS76XBRE/edit?usp=share_link',
     readingTitle: 'Node.js, NPM, Yarn',
   },
 
@@ -172,7 +179,8 @@ const schedule: Lesson[] = [
     format: 'Lecture 11',
     topic: 'Backend 2',
     lectureLink: 'https://www.youtube.com/watch?v=mkZXOIAs7v0',
-    slides: 'https://docs.google.com/presentation/d/1-Bfus_s1-c6GUQgrQnx3PMLtdnD8HPweXtr_4PzspRU/edit?usp=share_link',
+    slides:
+      'https://docs.google.com/presentation/d/1-Bfus_s1-c6GUQgrQnx3PMLtdnD8HPweXtr_4PzspRU/edit?usp=share_link',
     readingTitle: 'MongoDB, Authentication',
     readingLink: '/docs/Lessons/Lesson14',
     assigmentFormat: 'Homework 7',
@@ -196,7 +204,8 @@ const schedule: Lesson[] = [
     format: 'Lecture 13',
     topic: 'React 3',
     lectureLink: 'https://www.youtube.com/watch?v=M0L3eVu0oQM',
-    slides: 'https://docs.google.com/presentation/d/12rcSu0lHcr0b35MHOHqTQuPGp-H-40eNWBe_xUFH5UQ/edit?usp=share_link',
+    slides:
+      'https://docs.google.com/presentation/d/12rcSu0lHcr0b35MHOHqTQuPGp-H-40eNWBe_xUFH5UQ/edit?usp=share_link',
     readingTitle: 'React 3',
     readingLink: '/docs/Lessons/Lesson13',
     assigmentFormat: 'Project 4',
@@ -259,9 +268,9 @@ const schedule: Lesson[] = [
   },
   {
     week: 11,
-    date: 'Nov. 30',
+    date: 'Dec. 2',
     format: 'Special Lecture',
-    topic: '',
+    topic: 'Final Project Presentations',
   }
 ];
 

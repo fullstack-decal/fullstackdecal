@@ -1,4 +1,4 @@
-# Syllabus 
+# Syllabus
 
 ## Course Details
 
@@ -18,7 +18,7 @@
 [https://classes.berkeley.edu/content/2022-fall-compsci-198-099-grp-099](https://classes.berkeley.edu/content/2022-fall-compsci-198-099-grp-099)
 
 **Time:** There are 2 lectures every week. Lectures are remote and recorded. Attendance is not required, but students are
-expected to watch the lectures and keep up with the material. 
+expected to watch the lectures and keep up with the material.
 
 - Lecture 1: Monday @ 6:30pm - 8:00pm PST
 - Lecture 2: Wednesday @ 6:30pm - 8:00pm PST
@@ -30,17 +30,17 @@ expected to watch the lectures and keep up with the material.
 ### Course Description
 
 Welcome to CS 198-099! This is Introduction to Full Stack Web
-Development, presented by Web Development at Berkeley. 
+Development, presented by Web Development at Berkeley.
 
 In this course we cover the basics of web development. This includes everything from the fundamental frameworks that ground web development, the inner workings of the Internet itself, and many of the frameworks, technologies, and best practices that are
-used in the industry today. 
+used in the industry today.
 
 No prior CS experience is required to participate and
 succeed in this course, but we do acknowledge that we cover a fairly large
 amount of material and that makes this course fairly heavy, even for those with
 prior CS experience.
 
-In the spirit of full-stack development, we cover the three main pillars of modern web development: backend development, frontend development, and design. 
+In the spirit of full-stack development, we cover the three main pillars of modern web development: backend development, frontend development, and design.
 
 ### Teaching Plan
 
@@ -113,7 +113,7 @@ All communication this semester will be centralized on Ed. Please ask all questi
 
 Since attendance is not mandatory this semester, "attendance" will certify that you have watched the lectures.
 To enforce this, we will release content quizzes that cover the week's material. You will expected to fill these out as
-part of your grade, and they will make up the attendance category. 
+part of your grade, and they will make up the attendance category.
 
 ### Grading Overview
 
@@ -124,14 +124,14 @@ The grading breakdown is as is below.
 
 ### Grading Breakdown
 
-| Item                       | Points  |
-| -------------------------- | ------- |
-| Homework                   | 300     |
-| Project 1                  | 150     |
-| Project 2                  | 150     |
-| Project 3                  | 100     |
-| Attendance                 | 100     |
-| Final Project Presentation | 200     |
+| Item                       | Points |
+| -------------------------- | ------ |
+| Homework                   | 300    |
+| Project 1                  | 150    |
+| Project 2                  | 150    |
+| Project 3                  | 100    |
+| Attendance                 | 100    |
+| Final Project Presentation | 200    |
 
 ### Homework
 
