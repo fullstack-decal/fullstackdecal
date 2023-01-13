@@ -1,292 +1,303 @@
 ---
-sidebar_position: 17
+sidebar_position: 18
 ---
 
-# Lesson 14 - UI/UX 2: HCD Principles
+# Lesson 15 - Devops and Cloud
 
 ## Introduction
 
-IDEO defines human centered design as a “creative approach to problem-solving
-that starts with people and ends with innovative solutions that are tailor-made
-to suit their needs”.
-
-## The Human Centered Design Process
-
-The HCD process can be summed up in a cycle of converging and diverging. In
-order to be intentional with all your decisions make sure at every step you step
-concrete goals and relate them to how they will relate to the solution for your
-users. No design process is the exact same. Many times, you may jump from one
-stage to another or even go back and iterate between two stages. That being
-said, here is the skeleton to the HCD process:
-
-### 0. Define Your Problem Scope
-
-Before launching into the HCD process, it is important to understand your
-problem scope. Ultimately, you are creating a product that is attempting to
-solve a problem, improve a process, or provide aid in some area. You must be
-clear of what the current problem is. To clearly define your problem scope, many
-designers use a “how might we” question to guide their designing. Here are some
-examples:
+Congratulations on making it this far in the course. So far, we've learned a ton
+about different web technologies and how to build awesome, functional websites
+using modern web technologies.
 
-- “HMW support users in their tax filing journey to create a seamless experience
-  to reduce confusion and frustration?”
-- “HMW improve food packaging that will reduce waste but also be feasible for
-  mass production?”
-- “HMW educate incoming college freshmen about Berkeley culture in a virtual
-  setting so they will be included and integrated into the school?”
+Now you're probably wondering - how do I actually get my website to a live URL?
+So far in this course, we've been mostly working locally and using a few tools
+to deploy our sites, but how do we do this at scale.
 
-To read more about “how might we” questions, I suggest reading
-[this article](https://dscout.com/people-nerds/how-might-we-statements).
+Obviously this is a very complex problems, companies like AWS or Google have
+spent billions on infrastructure to run platforms and services to support their
+applications.
 
-### 1. Research: Diverging
+In this lesson, we'll be talking about the fields of Devops (Developer
+Operations) and Cloud.
 
-The general goal of the first stage is all about understanding your user group
-and their pain points/needs as well as keeping an open mind to all possibilities
-and solutions. Research is considered diverging because you are to collect as
-much research as possible about your user group. Here are some methods in
-conducting research:
+## What is Devops?
 
-- Interviews
-- Surveys
-- Diary Study
-- Competitive Analysis
-- Secondary Research
-- Field Study
+Devops is an acronym vgiven to the combination of Development Operations. It's
+the philosophy that surrounds ensuring software teams run smoothly, and get
+their code built, shipped, and deployed with ease.
 
-### 2. Synthesis: Converging
+When you're building large scale applications, you start to run into a few
+questions:
 
-In the second stage, the data of research gets broken down and visualized in
-more digestable pieces. The goal of synthesis is to consolidate and personify
-the research and identify commonality between users. Synthesis is considered
-converging as you are consolidating your data. Here are some methods of research
-synthesis:
+- How do you deploy your code?
+- How do you configure your servers so they all work together?
+- How do you monitor your deployed services for bugs or errors?
+- How do you check performance of your systems?
+- How do you plan for and fix problems that come up
+- How do you decrease the time spent on development cycles to ensure code is
+  deployed products at speed and scale reliably
 
-- Affinity Mapping
-- User Personas
-- Journey Maps
-- Empathy Maps
+![Devops Image](../assets/Lesson17/Lesson17-1.png)
 
-### 3. Ideation: Diverging
+## Parts of Devops
 
-In the ideation phase, ideas are first churned out quickly using rapid ideation.
-By diverging through throwing all the ideas onto the table, you can maintain an
-open and creative mind as a designer. The goal of ideation is to come up with as
-many solutions as possible. As you’re ideating, make sure all your solutions
-stay centered around the user and their needs.
+We'll be talking a bit about some Devops best practices.
 
-### 4. Prototyping: Converging
+Imagine you're a software development team at Facebook releasing software
 
-The goal of the prototyping phase is to design your final product. Within web
-development, this would mean your final high fidelity UI design. Here, you weigh
-the different solutions that were ideated in the last stage and consider their
-advantages and disadvantages, slowly eliminating them. Once a solution has been
-decided upon, you are launched into low fidelity prototypes then high fidelity
-prototypes along with user flows. Here are some common tools used to prototype
-in web development:
+### Continuous Integration
 
-- Figma
-- Sketch
-- Illustrator
+As a team, you want to ensure that each programmers code is integrated into the
+codebase, tested, and validated. This should be done at a regular basis to
+ensure there are always new features being pushed. This pracitce is Continuous
+IntegratioN (CI).
 
-### 5. User Testing
+In industry, software teams build CI pipelines that run tests and check for bugs
+to ensure that every contribution to the code base will work properly. This is
+done using cloud services, something we'll talk more about.
 
-Depending on your project, you will want to conduct user testing at some point
-during your prototyping. During user testing, you give your users your current
-prototype and ask for feedback through the form of questions, walk throughs, and
-more. You can then use this feedback to adjust your designs to be further
-tailored towards your users.
+### Continuous Delivery
 
-:::tip
+Now that your programmers code is tested, you want to deliver your software to
+the customer. Continuous Delivery (CD) is the practice of deploying your tested
+changes into a testing or production environment after being built.
 
-This is a simple outline of the HCD process. It is not rigid or linear at all.
-In fact, you will likely loop back to different stages multiple times. Don’t be
-afraid of taking a few steps back!
+This means that developers will always have a working build and customers will
+always have a working build as fast as possible.
 
-:::
+### Microservices
 
-To learn more about the HCD Process, I suggest reading
-[this article](https://www.usertesting.com/blog/how-ideo-uses-customer-insights-to-design-innovative-products-users-love).
+Facebook is a massive company. Having all their services under a single server
+would be ridiculous, both in size of code and in complexity. It also would mean
+that if this monolith server were to crash, all of Facebook would be down.
 
-## HCD Process Example: Gig Car Share
+Instead, companies use a microservice architecture, a design approach that
+breaks up a large application into multiple distributed services. Each service
+is ran separately and communicates with other services through a well-defined
+API.
 
-Gig is a car-sharing service operating in the Bay Area, Sacramento, and Seattle.
-Gig’s main service is their car rentals with the flexibility to pick up and drop
-off cars in different locations.
+For example, a company like Facebook likely has a microservice for
+authentication, one for the news feed, etc. This also gives services the
+flexibility to be designed and built independently of each other.
 
-### The Problem Scope
+### Infrastructure as Code
 
-Though Gig has many member support resources, Gig members often call member
-support for issues for non-urgent issues, backlogging urgent issues. This proves
-to be unsafe and inefficient for both users and Gig. My team followed this
-problem statement through our process:
+Code infrastructure, or servers, is managed using code and software techniques
+instead of people. We'll talk more about this when we talk about cloud, but this
+is crucial to ensuring services remain scalable.
 
-<aside>
-❓ “How might we create a seamless and intuitive Gig vehicle experience to help Gig Members during their trip so they don’t need to look at their phone for the FAQ or call support for general questions to reduce Member frustration and call volume for non-urgent issues?”
+### Conclusion
 
-</aside>
+Devops is crucial for modern software companies to working code efficiently and
+consistently.
 
-### The Process
+In this course, we'll go over a few Devops tools
 
-#### 1. Research: Diverging
+## Beginner Devops Tools
 
-In order to understand our user base (Bay Area students who are also Gig users),
-we conducted surveys, interviews, and competitive analysis.
+Since we can't cover all the devops tools out there, we'll cover some of the
+beginner services that should be immediately helpful for you to deploy your
+fullstack applications.
 
-Surveys
+### CI - Github Actions
 
-- Goal: Understand reasons behind user preferences and current behavior
+The most accessible CI tool is
+[Github Actions](https://github.com/features/actions). This is an automation
+tool that can run scripts or code on each git commit, branch, or pull request.
 
-- Outcome: Understood users’ most common pain points and what they value when
-  troubleshooting
+For example, this is the configuration for a github action that runs a linter on
+each commit.
 
-Interviews
+```yaml
+name: CI
 
-- Goal: Gain a deeper visualization of the user journey and how they approach
-  troubleshooting; understand user needs and how we can design our solution to
-  prevent current pain points
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
 
-- Outcome: Pivot project focus on problem prevention instead of call diversion;
-  gained a greater understanding of user values and progressed towards narrowing
-  down project scope
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm run ci
+      - run: yarn lint
+```
 
-Competitive Analysis
+### Frontend CD - Vercel or Netliify
 
-- Goal: Find potential competitors and learn about the pros and cons of their
-  features and solutions
+Tools like [Vercel](https://vercel.com/) or [Netlify](https://netlify.com) can
+automatically deploy your static site frontends to a working website in a few
+clicks. These run on each commit, ensuring that your code is always
+runnable/deployable.
 
-- Outcome: Learned about user needs and how different competitors address their
-  needs; gained inspiration for solution ideation
+### Backend CD - Digital Ocean
 
-#### 2. Synthesis: Converging
+For deploying a backend server, [Digital Ocean](https://www.digitalocean.com/)
+is a very simple service to deploy a NodeJS backend to a server in a few clicks.
+It can hook up to Github so every commit is automatically built and deployed to
+the web!
 
-After conducting research, we ended up with a lot of raw data that was hard to
-consolidate. To make the data more readable, we created multiple affinity maps
-and sorted all our key findings and quotes into different categories.
+## Deploying your Code
 
-![](../assets/Lesson15/Lesson15-1.png)
+Once you've built your code, you now want to run it somewhere. Of course, you
+can run it on your machine, but it's only accessible to you.
 
-#### 3. Synthesis: Converging
+Now there's a whole suite of tools to expose your app to the internet or deploy
+it to a server (a server is simply a computer) to have it served to the
+internet, we talked about this a bit in CD.
 
-The affinity map made it clear that there were two main areas of the user
-journey that needed improvement: finding/reserving a car and parking/ending the
-trip. To narrow the scope even further, we further affinity mapped and sorted
-our ideas into those two areas.
+However, configuring your own server is costly, challenging, and risky. This is
+where cloud comes in.
 
-![](../assets/Lesson15/Lesson15_Route_Aff_Map.png)
+## The Cloud
 
-#### 4. Ideation: Diverging
+To talk about cloud, we'll use an analogy.
 
-Though the affinity mapping consolidated our ideas, we still were unsure which
-route to take. To make that decision, we conducted rapid ideation for each route
-then plotted them on an impact effort chart.
+Imagine you're traveling to the sahara desert and want to drive on the sand
+dunes, but you don't have a car! You can either:
 
-![](../assets/Lesson15/Lesson15_Rapid_Ideation.png)
-![](../assets/Lesson15/Lesson15_Impact_Effort.png)
+- Buy your own jeep
+- Borrow or rent a jeep
 
-#### 5. Prototyping: Converging
+Option 1 is similar to buying or maintaining a server yourself. There's a large
+upfront cost, you probably won't use it most of the time, and you have to do
+maintence yourself if it breaks. This is called _On Premise Computing_.
 
-To further visualize some of our top solutions, we created low fidelity
-prototypes.
+Option 2 is similar to running your code on the cloud. You can use it for just
+the time you want, if something breaks the rental company will fix it, and it's
+relatively hands-off. This is called _Cloud Computing_.
 
-![](../assets/Lesson15/Lesson15_Lofi.png)
+Cloud computing is the practice of using a network of remote servers hosted on
+the Internet to store, manage, and process data, rather than a local server or a
+personal computer.
 
-Our visualizations along with our impact effort graph made it clear
-parking/ending the ride was too high of an engineering lift. Because of this
-along with a few other business related reasons, we went with the stage of
-finding cars/reservations.
+## Layers of the Cloud
 
-#### 6. Synthesis: Converging
+Like all software, there are various layers of abstraction.
 
-Now that we’ve chosen a route, we needed to focus on the research gathered
-specifically for the reservation stage. In order to personify our data and focus
-on a human centered approach, we created a persona of a Gig user, Jennifer, who
-would later interact with our solution. We also developed a journey map to
-further showcase the pain points of the current Gig user flow.
+### SaaS - Software as a Service
 
-![](../assets/Lesson15/Lesson15_Persona.png)
-![](../assets/Lesson15/Lesson15_Journey_Map.png)
+At the highest level, there's Software-as-a-Service (SaaS), like Squarespace or
+Weebly. With these tools, you can create and deploy a website all through their
+tools, you don't ever have to touch code!
 
-#### 7. Ideation: Diverging
+### Paas - Platform as a Service
 
-Once our problem was chosen, we settled upon three main solutions that were high
-impact and low effort. We dove deeper into each one and listed out their pros
-and cons.
+At the next level, there's Platform as a Service, like Digital Ocean, Netlify,
+or Vercel. You control the implementation (code), but don't care about how the
+implementation is ran as long as it works.
 
-![](../assets/Lesson15/Lesson15_Idea1.png)
-![](../assets/Lesson15/Lesson15_Idea2.png)
-![](../assets/Lesson15/Lesson15_Idea3.png)
+### IaaS - Infastructure as a Service
 
-We reviewed our maps, research, and insights and ended up going with idea #3,
-auto extended pickup time.
+This is the lowest level of cloud, like AWS, GCP, or Azure. Here, you can use
+hardware that the company manages, meaning you have to deal with the OS, running
+the code, etc.
 
-#### 8. Prototyping + User Testing: Converging
+### The Ground
 
-In order to visualize our solution, we created a user flow map that showcased
-every possible user interaction with our product.
+This is buying your own infrastructure (servers) and dealing with all the BS
+that comes with hardware. For us webdevs, this is the ickiestt layer.
 
-![](../assets/Lesson15/Lesson15_Flow_Map.png)
+## Why Cloud (as a business major)?
 
-Once we laid out the user flow, we continued onto iterating through our designs
-and conducting user testing between iterations. Here are some examples of our
-final prototype:
+### Variable Expenses instead of Capital Expenses
 
-![](../assets/Lesson15/Lesson15_Gig_Total.png)
+- Capital Expense
+  - Upfront Costs
+  - Pay for servers, server engineers, etc.
+  - Variable Expense
+- Pay as you go
+  - Only pay for what you use
+  - Hard to overpay
 
-:::tip
+### Economies of Scale
 
-Notice how the process isn’t linear. We were not afraid of going back to
-synthesis or ideating multiple times. As long as you ensure your product is user
-centered a messy process is ok.
+- You’re not the only one using cloud
+  - Servers are shared with thousands to millions of customers
+- Thus, cost of servers is also shared
+  - Unbeatable savings
 
-:::
+### Spend Money on Software, not Hardware
 
-_Credits to the project team:
-[Me (Isabel Zheng)](https://www.linkedin.com/in/isabel-zheng-24003b1b2/),
-[Jasmine Chen](https://www.linkedin.com/in/jasminewschen/),
-[Jirachaya Kiriruangchai](https://www.linkedin.com/in/jirachaya-kiriruangchai/), [Cici Wei](https://www.linkedin.com/in/ciciwei/), [Etheline Nguyen](https://www.linkedin.com/in/ethelinen/)_
+- Lots of money spent not just on servers but the Server Engineers
+  - Servers are expensive to run and maintain
+  - Server engineers are more expensive
+- Spend this money on software instead
+  - More bang for you back
+  - Greater focus on product
 
-## Design Systems
+## Why Cloud (as an EECS major)?
 
-As defined by the
-[Nielsen Norman Group](https://www.nngroup.com/articles/design-systems-101/),
-design systems are “a set of standards to manage design at scale by reducing
-redundancy while creating a shared language and visual consistency across
-different pages and channels”.
+### Eliminate Under and Over Utilization
 
-> “Design systems are always evolving, and the way you share and encourage
-> adoption of new iterations will evolve along the way as well.” –Diana Mounter,
-> design systems manager at GitHub
+- Use only what you need
+  - Similar to Haas Reason #1
+  - Pay as you go
+- Since you only pay as you go...
+  - Don’t overpay for servers you don’t use
+  - No more worries about underestimating demand
 
-Often, a design systems includes:
+### Build Faster
 
-- Color Palette
-- Typography
-- Sizing and spacing
-- Imagery
-- Components
-- Icons
+- Server time is now just development time
+  - On-premise requires set up of OS, virtualization, networking, etc.
+  - Also includes setting up and changing hardware
+- This can now all be done on the fly
+  - Deploy in minutes, not hours
 
-Here are some great examples of design systems:
+### Immediate Global Deployment
 
-- [Google](https://material.io/)
-- [Apple](https://developer.apple.com/design/)
-- [Shopify](https://polaris.shopify.com/)
+- Handling a global infrastructure is HARD
+  - Needs lots of data centers
+  - Needs lots of servers
+  - Needs a lot of networking
+- IaaS Cloud Providers do this for you
+  - Go global in minutes, not years
 
-When building your own sites or working with smaller companies, your design
-system will likely be a lot smaller as there wouldn’t be a need to create a
-system so comprehensive. Here are a few examples:
+## IaaS -> AWS
 
-![](../assets/Lesson15/Lesson15_Clicked.png)
+The most pouplar IaaS in the world is AWS. AWS provides hundreds of various
+services for cloud, from renting full OS's (EC2)
 
-Clicked Co’s Design System (developed through a WDB industry project)
+### Why AWS
 
-![](../assets/Lesson15/Lesson15_Des_Syst.png)
+- Global leader in cloud services
+- Has a global network composed of data centers around the world
+- Supports an enormous community of software and developer partners
+- Has a free tier for developers using applications and services for the first
+  time
 
-A design system built by
-[justinmind.com](https://www.justinmind.com/blog/create-and-manage-a-design-system-with-justinmind/)
+### Where AWS Exists
+
+Amazon owns a ton of data centers (like over 20 massive ones) and rents out
+others in various regions of the world.
+
+For example, they have over 4 data centers in the West Coast alone! These
+contain storage and compute that is rented out to people all over the world!
+
+## Conclusion
+
+For the purpose of this class, we won't dive much farther into cloud.
+
+To learn more about AWS, I highly recommend checking out
+[this guide](https://aws.amazon.com/getting-started/hands-on/deploy-nodejs-web-app/)
+on deploying a NodeJS app onto Amazon using several of their most popular web
+services.
+
+Either way, you should now be able to use PaaS tools like Netlify and Digital
+Ocean to deploy your app to production!
 
 ---
 
 **Contributors**
 
-- [Isabel Zheng](https://www.linkedin.com/in/isabel-zheng-24003b1b2/)
+- [Caelin Sutch](https://www.linkedin.com/in/caelinsutch)

@@ -1,0 +1,599 @@
+---
+sidebar_position: 2
+---
+
+import { Box, Text, Container, SimpleGrid } from '@chakra-ui/react';
+import StaffMember from '../../src/components/StaffMember';
+import staff from '../../src/data/staff';
+
+# Lesson 0 - Introduction
+
+## Welcome to [Web Development at Berkeley](https://webatberkeley.org/)'s Introduction to Full-Stack Development DeCal!
+
+Welcome! Learning a new skill set, whether you're a seasoned developer or an
+interested beginner, can always be a daunting task. Full-stack web development,
+with its many aspects, facets, and tools can be especially daunting to
+newcomers, and having years of programming experience may not necessarily help
+you if you're never learned these tools or the skillset required to be a
+developer before. This is going to be a long journey, but by the end of our
+curriculum, you'll have a solid grasp of web development (hopefully), along with
+an introduction to tech culture, the tech community, and the tools you need to
+succeed in any engineering-related role.
+
+At times it may feel as if all you're learning is what to google, or what tech
+YouTubers to watch to solve a problem, or even how to say big words without
+understanding their meaning - we're here to tell you that that's perfectly
+normal. If you ever feel out of place, or that you may not be up to the
+challenge, I can assure you that we've all felt that way at some point in time.
+Every programmer in their learning journey has had moments where they've
+wondered if they were cut out for the job, but what separated the ones who
+succeeded and the ones who didn't were making sure that those thoughts didn't
+stop them from achieving their goals.
+
+:::tip
+
+Hey there! Full-Stack Development is super difficult, and it takes most people
+1-2 years before they're able to truly understand the field well. Don't be
+afraid to ask questions and just keep plodding forward. Trust in the process and
+it'll all make sense eventually!
+
+:::
+
+## Tips to Succeed In This Course
+
+Contrary to what many people believe, you do not have to be a wizard with math
+to write code. The two subjects share some overlap but also are quite different.
+Many artists, lawyers, historians, linguists, and others have great success
+learning how to code. Don't let those preconceived notions hold you back at all.
+
+Also keep in mind that this is _hard_. Learning how to code is hard. It's
+similar to learning a foreign language where you have to learn a lot of small
+pieces of information to be able to make sense of the larger picture. It's easy
+to feel discouraged, especially when you feel like you _should_ get something
+but don't. Keep your head up and keep trying. Walk away from the problem and
+come back later. Try explaining your problem to someone / your dog / a
+[rubber ducky](https://en.wikipedia.org/wiki/Rubber_duck_debugging) (seriously,
+it works.)
+
+Never feel afraid to Google _anything_. Every programmer you know, from the top
+person in the field to the newest student is Googling things _constantly_. This
+isn't cheating; it's a skill. It's a requirement. There is so much information
+coming at you that cannot possibly remember it all. Copy and paste code. Look at
+[StackOverflow](https://stackoverflow.com/). Ask dumb questions. You get better
+by repeatedly exposing yourself to information. Each time a bit more will sink
+in.
+
+Don't try to understand every piece all at once. There are times where it's okay
+to just trust that something works and come back later to understand how. It's a
+tough balance because you do want to try to understand what's going on. I'll try
+to signal to you what's worth diving into and what's worth leaving for another
+day but just know you don't have to understand it all at once.
+
+Lastly, this isn't a get-rich-quick scheme. Learning to code is hard and
+requires a lot of hard work. While entry-level jobs are out there and you can
+get them with months of work, I guarantee you you'll have to work hard for them.
+
+## Your TA's for this semester
+
+<SimpleGrid columns={[1, null, 2]} spacing={[12, 16]}>
+  {staff.map(({ name, image, role, linkedin, personal, bio, email }) => (
+    <StaffMember
+      name={name}
+      image={image}
+      role={role}
+      linkedin={linkedin}
+      personal={personal}
+      bio={bio}
+      email={email}
+      key={name}
+    />
+  ))}
+</SimpleGrid>
+
+## Why was this course created?
+
+I firmly believe that web development is an indispensable skill in today's
+online society. Every idea, organization, and initiative needs some sort of
+online presence in order to grow and succeed, and the internet is the backbone
+of our modern society. In order to create a startup, web development is needed.
+In order to start a club, you need a website. In order to succeed at a
+hackathon, web development skills are typically indispensable.
+
+Web Development comes in all shapes and sizes, from API Development to easily
+using Artificial Intelligence to connecting people all over the world. Web
+Development is far more than just creating a website, and the skills that fall
+under the field of web development are an essential tool for anybody looking to
+create something cool.
+
+Why then, is Web Development so undertaught in the UC Berkeley community?
+Courses like CS 169 (Software Engineering) are typically inaccessible to non-CS
+majors and use outdated technologies. Decals like the Web Development and Web
+Design Decals teach the basics, but they don't cover the tools that are actually
+used in the industry to create beautiful and functional web applications at
+scale. Lastly, while there are a few clubs that offer Web Development experience
+to students, this experience typically consists of working with real clients,
+and these clubs can often require high levels of experience to join.
+
+With all these factors in mind, we set out to create Web Development at
+Berkeley's Introduction to Full-Stack Development DeCal, a course where students
+with all sorts of backgrounds and experiences with development and design could
+come together to learn these fundamental technologies while also learning about
+the tools used by professionals, to create meaningful projects that serve as
+opportunities to learn, and get the chance to gain real-world experience by
+(hopefully) joining WDB as an industry developer or designer, all in a
+no-pressure, supportive environment.
+
+We want each and every one of you to succeed and have the ability to build
+whatever you want, and to that end, we've created this course :) hope y'all
+enjoy it!
+
+:::tip
+
+The course staff cares about one thing - making sure that you can learn and
+succeed in this course. Don't hesitate to contact us with any questions or
+comments as the course proceeds!
+
+:::
+
+## Syllabus
+
+Before continuing, please look over the [syllabus](/syllabus) to
+get an idea of how this course is structured, what you'll be learning, and what
+our expectations are.
+
+## Important Logistics
+
+1. All materials are on this course website. This includes course readings,
+   homework, and project specs.
+2. All communications will happen on Ed. You will have access to the Ed if you are enrolled in the course.
+3. Read through the [syllabus](/syllabus) for information on
+   grading, absence policies, and more if you haven't already. _This is
+   incredibly important for you to understand how to succeed in this course_
+
+# What You'll Be Learning
+
+A big part of what's hard upfront is all the terminology people throw around
+when talking about programming and web development. Some of it is unavoidable
+due to this being a separate field of thought, study, and practice, and then
+some of it just people inflating their egos by using esoteric and/or academic
+terms to describe something that could be described in much simpler terms.
+
+Some of these words you really need to know (like HTML tags, functions, scope)
+and some you can just ignore (like monads and functors.) We'll try to
+differentiate that for you. But if there's a word you keep seeing here often or
+hear often in the context of what you're studying, it's probably a good time to
+go look it up and get a good grasp on it.
+
+Let's fundamentally define what you're going to be learning in this course.
+
+You will learn everything you need to know to create your own website, from back
+to front. In order to do this, you will have to learn several "languages." I put
+languages in quotes because not all of these are technically languages but it's
+a good approximation for now. For now, we're calling them languages. The first
+three languages you are going to learn as part of our "basic stack" are HTML,
+CSS, and JavaScript.
+
+## The House Metaphor
+
+### HTML - THe Frame
+
+Why do you need three languages? Let's make the imperfect metaphor of building a
+house. To build a house you need tools (like your text editor, your browser,
+your command line.) After you have tools, you need all the building material:
+the 2x4s, the shingles, the dry wall, the windows: all the things you need to
+put together to make a house. This is the HTML, or hypertext markup language.
+However this house thus far isn't going to be very pretty to look and not very
+functional. It's not going to have any color or any sort of elaborate
+structures. It's going to be bland, inert, and boring.
+
+Likewise, you can create a website that's _just_ HTML but it's going to be a
+black-and-white text document with no style or interactivity.
+
+### CSS - The Decorations
+
+In order to arrange, style, and generally make this house more useful, you're
+going to have some blueprints. In an overly-reductive way, you could think of
+the blueprints as being a set of rules: this 2x4 goes here, that shingling goes
+on the roof, this particular wall be blue, and this window goes here. You define
+a bunch of rules that dictates that if some item matches this condition, then
+some rule is applied to it.
+
+If it is a 9x15 wall, it goes on the south side of the house. This is the CSS of
+your house, or the cascading style sheets. CSS is a series of rules that define
+that if you are an HTML thing that matches this condition, then apply some style
+to it. If you are the first paragraph in an article, your font size is 25px and
+your font color is blue.
+
+### JS - The Interaction
+
+Okay, so now we have a well arranged and nice looking house. Now, being the
+modern age and me wanting all the gadgets, I want to install a whole slew of
+smart home devices. I want it so when I pull in the driveway with my
+smart-enabled car that the garage door opens, the lights turn on, the thermostat
+turns on the heat, the TV is set to continue my favorite TV show, and the smart
+cooker begins cooking dinner.
+
+I am adding behavior to my house; I am adding a layer of programming on top of
+what exists. This is like frontend, or client-side, JavaScript. It's adding a
+layer of behavior on top of your website. Do you want to pop up a message if a
+user clicks a button? Do you want to refresh the stock-ticker on the page so
+it's accurate? Do you want to change the picture that's showing on your page
+every few seconds? These are things you'd typically do with JavaScript. And like
+all the smart home devices, having JavaScript on your page isn't always
+necessary.
+
+This website, for example, probably wouldn't need javascript (it's actually just
+markdown), but any interactions that you see (for example the scrolling sidebar
+on the right or the dropdown menus on the left) use Javascript to add animations
+and additional spice to the website.
+
+### Backend - Services
+
+Now, if I want to order delivery to my house, I have to call someone else.
+Someone not at my house. I'd use my smart assistant and ask them to call a pizza
+place and ask them to deliver pizza to my house. The pizza place in this example
+would be like a backend server. One pizza place can serve many houses, and it
+probably only does a few things (like make pizza, salad, drinks, etc.) and
+deliver that to all sorts of clients.
+
+The clients, in this case, could be different peoples' computers, phones, smart
+assistants, smartwatches, smart ovens, who knows!? So one server can service
+many clients. In this case, we're just worried about people's browsers (like
+Chrome, Firefox, Edge, Safari, etc.) on their computers and phones. While the
+frontend code (the smart house stuff) is almost always in JavaScript (there's
+stuff like Web Assembly but for the purposes of this course just JS), the
+backend code can be in any number of languages: Python, Ruby, JavaScript, Java,
+Go, C#, etc.
+
+Today we will only be using JavaScript on both the frontend and the backend so
+you don't have to learn two languages, but just know you _could_ use a different
+language on the backend.
+
+To recap:
+
+1. The HTML is the structure. It's going to contain all the text, the various
+   images tied to the text, and it will generally group things together. Just
+   like the drywall in your house, HTML doesn't do anything other than exist. It
+   relies on other things to do things for it and to it.
+2. The CSS is the blueprint. It's all the rules of what goes where, what color
+   it is, what size it is, what font it is, what the decorative background
+   images are, like HTML, CSS doesn't *do* anything, it's just a set of rules
+   that describe what things go where and how they look.
+3. The frontend / client JavaScript is the smart home. It's all the cool
+   pre-programmed stuff you can tell your house to do. JavaScript is what can
+   change the HTML and CSS to react to various stimuli.
+4. The backend code (we'll still use JavaScript) is the pizza place. It's a
+   place where we can request things from and it will send back what we ask for.
+   Or we can send things to it, like when you upload a new photo to your social
+   media account. One server serves many clients, just like one pizza place
+   serves many homes.
+
+## Evolution of the Web
+
+### Web 1.0
+
+Web 1.0, also referred to as Syntactic web or read-only web was the first stage
+of the internet. The role of the user was static, they could consume information
+provided by content producers in the form of HTML and CSS.
+
+This was before the widespread use of Javascript (which was created in 1995) and
+since Javascript is what enabled much interactivity, users couldn't actually
+interact with these sites.
+
+Today, Web1.0 platforms are still common. Portfolio sites for example, can be
+completely static HTML and CSS pages with no interaction.
+
+### Web 2.0
+
+Of course read-only is pretty boring, so when Javascript became more widespread
+developers went nuts to provide interaction to websites. Thus, Web2.0, also
+known as the Social Web or read-write web was created.
+
+In this era, users can produce content and interact with websites. Today, most
+websites like Amazon, Twitter, ore ven this one are Web2.0 websites.
+
+### Web 3.0
+
+I won't talk too much about this one since it's out of scope, but it's basically
+the semantic web (read-write-execute) and most commonly associated with
+Blockchain. feel free to google more about it.
+
+## The Development of Web2.0
+
+HTML, CSS, and JavaScript are all powerful tools in their own right, and these
+are the languages that the entire internet is built on. Try inspecting the
+browser `right click → inspect element`. If you go to the "elements" tab at the
+top of the inspector, you'll be able to see the HTML, CSS, and some of the
+JavaScript for the site you're inspecting!
+
+When Web2.0 first started, people manually wrote HTML, CSS, and JS files,
+linking them together and using
+[Web API](https://developer.mozilla.org/en-US/docs/Web/API)'s to allow the JS to
+interact with the HTML.
+
+When you write a webpage, the browser is what actually interprets and executes
+your code, rendering the HTML and CSS and executing the JS to make your site
+functional. All that you send is the code (today that often bundled and
+condensed).
+
+:::info
+
+Every browser decides how to execute your code differently. This means there are
+variances between browsers in how rendering and execution is handled, which can
+cause some nasty bugs on certain platforms even though the code works fine on
+another.
+
+Today, much of HTML, CSS, and JS is standardized by various nonprofit
+organizations such as the [HTML Living Standard](https://html.spec.whatwg.org/)
+or the
+[ECMA Script standard](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/)
+for Javascript.
+
+:::
+
+An example of a basic HTML site is below:
+
+```html
+<!-- All of this would be in a file like `index.html` -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page Title</title>
+  </head>
+  <!-- CSS -->
+  <style>
+    body {
+      background-color: powderblue;
+    }
+    h1 {
+      color: blue;
+    }
+    p {
+      color: red;
+    }
+  </style>
+  <body>
+    <h1>This is a Heading</h1>
+    <p>This is a paragraph.</p>
+    <span id="demo" />
+  </body>
+  <!-- Javascript-->
+  <script>
+    // This will set the `span` with an id of `demo` to have the child "Hello Javascript"
+    document.getElementById('demo').innerHTML = 'Hello JavaScript!';
+  </script>
+</html>
+```
+
+However, you can quickly see how this can become a mess when having to deal with
+tons of interactions. For example, the simple act of "signing up" can involve
+over a hundred of lines of vanilla javascript. You have to watch for changes on
+inputs, collect these values in Javascript, handle when the user presses submit,
+deal with loading states, and deal with response dates (among other things).
+
+Javascript libraries like [JQuery](https://jquery.com/) were built to help this
+problem by giving Javascript more power in less lines of code by abstracting
+some of the tedious logic behind a library.
+
+Even this wasn't enough, and thus frameworks were born.
+
+Frameworks are tools or languages built on top of HTML, CSS, and Javascript to
+expand their power and make them easier to use. Some popular frameworks include
+[React](https://reactjs.org/),
+[Springboot](https://spring.io/projects/spring-boot) for Java, and
+[Flask](https://flask.palletsprojects.com/en/2.0.x/) for Python.
+
+Frameworks can encompass Frontend, Backend, or even both (fullstack).
+
+As you can see, the web is a series of abstractions around abstractions.
+Frameworks are simply abstractions around Javascript which is an abstraction
+around the instruction set for the browser to run your code. Pretty neat!
+
+Now that we've introduced the concepts of frameworks, let's talk about the
+structure of the course and what frameworks you'll be learning.
+
+### How This Course is Structured
+
+We've structured this course in a linear way that should make sense from a
+development perspective.
+
+First, we'll be starting with basic HTML, CSS, and Javascript to give you the
+fundamental building blocks for creating websites.
+
+After, we'll talk about `Node.js` (Javascript on your local machine) and `npm`
+(a package manager for Javascript) and some other common development tools
+
+Next, we'll dive into React.js, a frontend framework created by Facebook and the
+most popular one today.
+
+Once you've nailed the fundamentals of React, we'll start to look at Backend
+code, learning about HTTP and how to spin up your first Backend server.
+
+With some knowledge of frontend and backend, we'll combine the two and create a
+full stack site that reads and writes data to a server.
+
+To persist that data, we'll look at databases (specifically a NoSQL database
+called MongoDB) and hook it all together to make a username/password
+authentication flow.
+
+Finally, we'll move to UI/UX principles. UI/UX stands for User Interface and
+User Experience respectively. UI is essentially the actual design of the site
+and what it looks like. UX is how easy the site is to navigate, how the user
+feels when they use the site, and essentially all about how
+[accessible](https://www.interaction-design.org/literature/topics/accessibility)
+the site and the site design is.
+
+Throughout this course you'll be applying your skills by building projects and
+websites that you can show off, pretty neat!
+
+:::note
+
+This is the best part about Web Development, a final product that you can show
+off to friends and lives permanently on the internet!
+
+:::
+
+# Getting Started
+
+## Tools
+
+Before we get started, we need to set you up with all the necessary tools you're
+going to need to get up and going. I use macOS to write code on but nearly
+everything I'm going to suggest has Windows equivalents and some have Linux
+equivalents as well.
+
+What's important here is that you find what works for you. Every developer has
+very strong opinions about their tools and will tell you that is some reason you
+_have_ to use their tool. Don't listen to them. Find what works for you. If you
+find yourself fighting your tools more than they're helping you, consider trying
+something else. Keep an open mind.
+
+What's shiny or popular is not necessarily going to work for you. Take time to
+invest in making your tools work the best for you. Small wins amount to huge
+boosts in productivity in the long term.
+
+## The Browser
+
+One of your biggest allies in writing websites is the web browser. You may not
+be yet aware but your browser has a myriad of developer tools built into it that
+help you understand your code, helps you find bugs, and helps you experiment
+directly on your running website. All of the modern browsers are great and you
+can use any one of them to develop sites with. I recommend you pick one and
+really get to know its developers tools.
+
+### My Recommendation: Chrome
+
+[Chrome](https://www.google.com/chrome/)
+
+Chrome dev tools are incredibly powerful, and it's the most-used web browser, so
+if it works on Chrome, it'll work for most of your users.
+
+That being said, Edge, Safari, or Firefox are all very, very good browsers with
+great dev tools too. If you feel comfortable with one of these already, stick
+with it. If you're using Safari,
+[make sure you enable dev tools](https://developer.apple.com/library/content/documentation/NetworkingInternetWeb/Conceptual/Web_Inspector_Tutorial/EnableWebInspector/EnableWebInspector.html).
+
+## The Editor
+
+One of the most controversial things you can ask a developer is which editor is
+the best. There are so many strongly-held opinions that it's hard to tell which
+one is going to work for you. There are many flavors and it all depends on what
+you want out of your editor: do you want it to hold your hand as much as
+possible? Do you want it to get out of the way? I'm going to give you several
+choices but let's start with what I've been using.
+
+### My Recommendation: Visual Studio Code
+
+[Download Visual Studio Code](https://aka.ms/visual-studio-code)
+
+Super fast and easy to use, Visual Studio Code has a lot of convenient features
+and helpers while being relatively lightweight. It's free, open-source, and
+works well on Mac, Linux, and Windows. And perhaps one of the best features of
+VSCode is it has a
+[huge amount of available plugins](https://aka.ms/vscode-marketplace).
+
+If you're not feeling VSCode, two other editors that are similar in their
+offering
+are [Sublime Text 3](https://www.sublimetext.com/) and [Atom](https://atom.io/).
+Both are great. I used Sublime for CS 61A and still use it for everything I do
+with [python](https://www.python.org/). Both are free to download. Sublime has
+an unlimited trial that asks you to pay $80 when you can.
+
+If you want a more complete offering, you may investigate using an integrated
+development environment (commonly called an IDE.) The reigning IDE for front-end
+development is [WebStorm](https://www.jetbrains.com/webstorm/).
+
+WebStorm is a very powerful IDE that has a lot of features and tools built into
+it. It aims to be more than just an editor; it aims to be the entire development
+suite.
+
+This is my tool of choice and a great integrated solution.
+
+Lastly, I'm going to simply state there are two more tools you could use:
+[vim](https://www.vim.org/) and [emacs](https://www.gnu.org/software/emacs/).
+These are tools that you use in the command line / terminal and use _just_ the
+keyboard, no mouse. These tools have difficult learning curves, but once you're
+productive in them, they allow you to go very fast.
+
+My advice for you is: don't, especially right now as you're learning to code. If
+you want to revisit it later then you could do that. But just know that it is
+indeed quite difficult.
+
+## The Terminal
+
+You're going to have to learn to use a terminal during this course. It's less
+scary than it seems, I promise! There are two things to worry about when talking
+about the terminal, and I'll try to help you tell the difference between the
+two: the **shell** and the **terminal emulator**. The terminal emulator is the
+actual window in your operating system; it itself doesn't execute or understand
+your commands you're sending to it. The shell is the code running inside of the
+terminal emulator. This shell can be swapped out to whatever shell you want to
+run. Unlike the things I recommended above, these various terminal emulators and
+shells vary a lot more by operating system.
+
+If this is confusing to you, it's okay. It's a minor detail that you can come
+back to later.
+
+For the terminal emulator, it doesn't matter a whole lot which one you use. I
+personally use [iTerm2](https://www.iterm2.com/) but you can just as easily use
+the default Mac Terminal.app or [Hyper](https://hyper.is/) for Mac. For Windows,
+I'm told the aforementioned Hyper also works well as well
+as [cmder](http://cmder.app/). If you're on Linux, I'd say just use whatever the
+OS's default emulator is.
+
+For the shell, we are going to use [bash](https://www.gnu.org/software/bash/).
+You don't need to install it unless you're using Windows
+([then use these steps to enable it](https://docs.microsoft.com/en-us/windows/wsl/install-win10)).
+It's 99% already there on your computer unless you're using some obscure flavor
+of Linux. Whenever you open your Mac terminal, it'll be running bash by default
+unless you've changed it.
+
+There are other options. The reason we use bash is because it is *so prevalent*.
+Bash is everywhere. Everything you Google will have the answers written in bash.
+My favorite shell is actually [fish](https://fishshell.com/) but it's not very
+popular. Another shell people swear by is [zsh](http://www.zsh.org/). These are
+all very cool but I recommend looking at these later.
+
+## Trusted Resources
+
+Something really important is that you choose to learn from good sources. Just
+like it's important to get your news from quality sources, it's important to get
+your technical information from sound sources. Here are some of my personal
+favorites:
+
+- For anything to do with HTML, CSS, or JavaScript, Mozilla's
+  [MDN](https://developer.mozilla.org/en-US/) is my go-to. I literally have it
+  open all the time.
+- [CSS Tricks](https://css-tricks.com/) has fashioned itself into a premier
+  development website. It has great content not just for CSS but for HTML and
+  JavaScript too. If I want a tutorial, I'll head there. If I want more
+  technical how-to info, I head to MDN.
+- For video content, you really can't beat the content on
+  [Frontend Masters](https://frontendmasters.com/). I love it.
+- If I'm working with a library or a framework, it's a good idea to head
+  directly to their GitHub (we'll talk about GitHub later) page or their
+  official documentation. It's best to head straight to the source.
+
+Frontend Masters also puts out a really awesome book every year called the
+[Frontend Handbook](https://frontendmasters.com/books/front-end-handbook/2018/).
+It's a good way to get an overview of the whole industry.
+
+# Installations and Basics
+
+HTML, CSS, and JavaScript already come pre-installed on your computer, but
+there'll be technologies we utilize later in the course that you'll need to
+install in order to use. Along with that, you'll be using Github and Github
+pages to hold and showcase your homework, so you'll need to set up an account
+there. For the sake of time, we've decided to make setup and installation the
+first homework of the semester so that you have time to download everything you
+need and make sure it works without any pressure. Even if you think that you've
+already downloaded web development software in the past, please look through and
+complete the first homework in case we cover something you don't have.
+
+---
+
+**Contributors**
+
+- [Caelin Sutch](https://www.linkedin.com/in/caelinsutch)
+- [Samarth Goel](https://www.linkedin.com/in/samarth-goel-1047b8187/)
+- [Brian Holt](https://www.linkedin.com/in/btholt/)

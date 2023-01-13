@@ -1,492 +1,1211 @@
 ---
-sidebar_position: 9
+sidebar_position: 10
 ---
 
-# Lesson 7 - Node.js, NPM, and Yarn
+# Lesson 8 - React 1: Intro to React, Props, and State
 
 ## Introduction
 
-You are very familiar with Javascript by now, and you may notice that we can
-only run Javascript in our browser using the `<script>` tag. What if we want to
-write scripts using Javascript and run them using the local machines, just like
-how python is.
+Up to now you've learnt HTML, CSS, and JavaScript. These 3 technologies form the
+basis of the web as we know it, and using just these 3 technologies, you can
+build any web-based software product you could imagine! Given that, what else is
+there to learn? Let me actually give you a list.
 
-This is where Node comes into play. It is a JavaScript runtime engine built on
-Chrome's V8 Javascript engine that allows you to run JavaScript even without a
-browser. This means that you are able to do a lot more with JavaScript: managing
-local files, connecting and setting up a server, and much more.
+#### Frontend Technologies
 
-### Learning Objectives
+- Frontend Frameworks
+- Routers
+- Component Libraries
+- Package Managers
+- Frontend/Backend Integration
 
-1. How npm & node works
-2. Create Backend APIs using Node & Express
-3. How to make API calls using axios
-4. File system with node & express
+#### Backend Technologies
 
-### Getting Started
+- Databases
+- Cloud Services
+- REST APIs
+- HTTP
+- Postman
+- Authentication
 
-Let's start by creating a folder for us to put our code in. Let's call this
-folder `example` and then let's cd` into it using the console.
+#### Misc.
 
-```bash
-mkdir example
-cd example
-```
+- UI/UX
+- HCD
+- DevOps
 
-## NPM
+Whew! That's a lot more than you probably expected, right? Well strap in,
+because in the coming sections we'll be covering all of these technologies, and
+prefacing even more. Let's get started by focusing on one of the coremost
+frontend technologies: React.js.
 
-With the ability to run JavaScript locally on our machine (with the help of
-Node) and the contribution of a rich number of packages from a large community,
-the possibilities for JavaScript are endless!
+### What is React?
 
-To manage many of the packages that give Node its most powerful abilities, we
-use NPM. Node package manager (NPM) is a place where you can find and download
-node packages.
+React is a declarative, efficient, and flexible JavaScript library for building
+user interfaces. It lets you compose complex UIs from small and isolated pieces
+of code called “UI components”.
 
-[npm](https://www.npmjs.com/)
+If that didn't make any sense, don't worry! I still don't even fully understand
+what that means. The use cases of React, as well as what exactly React is, is
+something you'll understand the answer to as we dive deeper into React and how
+to use it. For now, all you need to know is that you use React to build
+frontends, it's based on JavaScript, and that it makes our lives A LOT easier.
 
-## Installing Node
+#### Why use frameworks and libraries at all?
 
-Go to [https://nodejs.org/en/](https://nodejs.org/en/) to install node.js for
-free.
+The biggest reason to use frameworks like React is to make your life as a
+developer easier. Frameworks tend to address a common set of concerns that
+"vanilla" HTML/CSS/JavaScript has, but each framework addresses them in their
+own unique way and has its own philosophy.
 
-Let us confirm that you have correctly downloaded Node.js and npm.
+One of the biggest advantages to using a framework tends to be reusability. For
+example, every time you create a new page in your website, you have to copy
+paste in the same code for your navbar into each file, and if you want to make a
+small tweak to it, it has be repeated many times, once in each of your files.
+Frameworks help alleviate this problem, and many more related to data
+management, rendering, and the logic associated with different parts of our
+website.
 
-In the terminal, type
+#### Why use React?
 
-```bash
-node -v
-npm -v
-```
+React is by far the most popular frontend framework used today. In my opinion,
+it is also one of the easiest to work with and has a huge amount of online
+support.
 
-If both lines output the version number then we are good.
+A little bit about React:
 
-Now, let us install out first package. The remainder of this example we will be
-using Axios to make HTTP requests as necessary, so let us install Axios.
+- It's Open-Source (open source refers to software for which the original source
+  code is made freely available and may be redistributed and modified.)
+- It was created by Facebook (and is thus consequently used by Facebook, and
+  many more companies you've probably heard of).
+- It's a very "heavy" framework, which means that it potentially slow down your
+  app since it uses a lot of data. Keep in mind, however, that this decrease in
+  speed tends to not matter whatsoever, so don't let this be a concern when
+  using React in this class! On the contrary, a "light" package or framework
+  doesn't add much data to your app, and they tend to perform faster than
+  "heavier" counterparts.
 
-Navigate to the folder where we are storing our project, in this case `example/`
-while there, type the following command:
+Some other facts if you have some CS experience (these aren't important in this
+course, but cool to know):
 
-```bash
-npm init -y
-npm install axios
-```
+- React fits very cleanly into the MVC model of development
+- React is incredibly good at scoping and components –– ie, it is object
+  oriented and does separation of concerns well.
+- It's similar to Bootstrap and Jquery in that it's unrestrictive –– you can use
+  as much or as little of it as you desire.
+- The biggest power of React, is its renderer. While Javascript is messy with
+  how it handles dynamic re-render, React.JS is clean. Something that might take
+  you 20 lines of code in JS takes you one in React.
 
-The `npm init` command is used to create a new npm package, essentially every
-node script that we will write can be treated as a npm package. The `-y` flag
-just skip all the configuration step and creates a most basic npm package with
-all default settings.
+Some last "technical" benefits to using React:
 
-Now when we list the files in our `example/` directory, we should see three
-things:
+- Development Speed
+- Combining HTML, CSS, and Javascript
+- App Performance
+- Testability
+- Dynamic Rendering
+- State
 
-- `node_modules` folder
-- `package.json` file
-- `package-lock.json` file (optional)
+#### Cool Resources:
 
-Essentially, each of these helps npm organize the packages we installed. In the
-node_modules folder is where we can find our actual packages. Many times, our
-node_modules file grows incredibly large and can take up quite a bit of space.
-It is discouraged to go directly into the node_modules, instead, npm provides a
-variety of utilities which we can use to keep our projects clean and efficient.
-I won't go into them here, but as you develop, you will run across them or you
-can read the docs [here](https://docs.npmjs.com/packages-and-modules). The other
-file is the package.json file. The package.json file is the file which record
-and defines the top-level packages and dependencies for our project.
-package-lock.json is a similar idea but with some nuances, you do not need to
-worry about those.
+[React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 
-## Hello World
+[Why did we build React? - React Blog](https://reactjs.org/blog/2013/06/05/why-react.html)
 
-Now let's move back to Node for a second. Let's create a file called
-`helloworld.js` in the `example/` folder. Enter `console.log("hello world.")` in
-the file.
+---
 
-You can run any node file by using the Node command.
+## Installation
 
-```bash
-node helloworld.js
-```
+Let's start by making sure that node and npm are installed on your computer. You
+should have installed Node and npm in the previous lesson. If you haven't, you
+can jump to the relevant section of the last reading by
+[clicking here](/docs/Lessons/Lesson8#installing-node). If you have Node and npm
+installed, there are no extra downloads required to use React.
 
-The console should print "hello world." and then exit.
+## Useful Tools
 
-## JS in Browser vs. Node.js
+### Prettier
 
-Node in browser and Node.js are technically the same form of JavaScript. Both
-run on the browser's JavaScript engine, usually Chrome V8. However, there are
-some fundamental difference which make Node.js just different enough to be
-annoying. The most prominent difference is that Node.js uses the `require`
-module to import other modules which define functionality. All Node projects are
-organized into modules, and we use `require` to import them. For example, the
-following code imports Axios, a package commonly used to make HTTP requests.
+It's important to keep quality high when writing code. Or at least that's how I
+sell ESLint and Prettier. In reality I'm super lazy and want the machine to do
+as much work as possible so I can focus more on architecture and problem-solving
+and less on syntax and style. While there are many tools that can help you keep
+code quality high, these two I consider core to my workflow.
 
-```jsx
-const axios = require('axios');
-```
+[Prettier](https://github.com/prettier/prettier) is an amazing tool from the
+brain of [James Long](https://twitter.com/jlongster). James, like many of us,
+was sick of having to constantly worry about the style of his code: where to
+stick indents, how many, when to break lines, etc etc. Coming from languages
+like Go, Reason, or Elm where all that is just taken care of by the tooling for
+the language, this quickly wears. James did something about it and made a tool
+to take care of it: Prettier.
 
-Another difference is that since there is no web page to be manipulated, there
-is no `document` object for Node.js, which means that DOM manipulation cannot be
-carried out in Node.js (with the help of some packages, it can).
+Prettier is a really fancy pretty printer. It takes the code you write, breaks
+it down, throws away all of your code style you made and prints it back out
+using a predefined style. While this sounds a little scary, it's actually really
+cool. Since you no longer have control of the style of your code, you no longer
+have to think about it at all. Your code is always consistent, as is the code
+from the rest of your team. No more bikeshedding!! As I like to put it: if your
+brain is a processor, you get to free up the thread of your brain that worries
+about code styles and readability: it just happens for you. Don't like
+semicolons? Don't write them! It puts them in for you. I _love_ Prettier.
 
-Since Node is a server side language, it can interact with the local file system
-easily, it also provides ways to setup a server with ease.
+**Trust me.** Use Prettier. Don't write messy code. This is **MANDATORY**.
 
-If you are familiar with the `fetch` function in JS, there is no fetch function
-in Node. You can use the http package or some other third party package to
-handle sending a request.
+Let's go integrate this into our project.
 
-# Web Server with Node & Express
+Either install Prettier globally `npm install --global prettier`, or use the
+[VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode&WT.mc_id=reactintro-github-brholt).
+I would recommend using the VSCode extension if you are using Visual Studio Code
+as your primary IDE (which I also highly, _highly_, recommend).
 
-## Install Express
+If you're using the VSCode extension, set it to only run Prettier when it
+detects a Prettier config file. Makes it so you never have to turn it off. In
+order to do that, set `prettier.requireConfig` to `true` and
+`editor.formatOnSave` to `true`. This can be done in the VSCode settings.
 
-Let's build a web server using Node! Since building a server can be very hard
-using Node, a package called Express is often used to set up a web server in a
-faster and simpler way.
+#### **How to access VSCode Settings**
 
-Let's install it by `npm install express`.
+- Windows Users `File > Preferences > **Settings**`
+- Mac Users `Code > Preferences > **Settings**`
 
-After installing express, you would find it under the dependencies attribute in
-the `package.json` file.
+So that our IDE can know to use prettier, we're going to create a file called
+`.prettierrc` in the root of our project and put `{}` in it. Your `.prettierrc`
+file should be on the same level as package.json and your README file. This lets
+everyone know this is a Prettier project that uses the default configuration.
+You can put other configs here if you hold strong formatting opinions.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2e0ac7d2-506e-4963-948a-6b38c28908a5/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2e0ac7d2-506e-4963-948a-6b38c28908a5/Untitled.png)
+### ESLint
 
-Reminder: this is how node keeps track of all the packages we used.
+On top of Prettier which takes of all the formatting, you may want to enforce
+some code styles which pertain more to usage: for example you may want to force
+people to never use `with` which is valid JS but ill advised to use.
+[ESLint](https://eslint.org/) comes into play here. It will lint for these
+problems. Essentially, it will yell at you when you make mistakes like these by
+underlining your code in red or yellow, depending on the severity of the
+mistake.
 
-## Hello World Web Server
+First of all, run `npm install -D eslint eslint-config-prettier` in your console
+while in your project directory to install eslint in your project development
+dependencies. Then you may configure its functionalities.
 
-```jsx
-const axios = require('axios');
-const express = require('express');
-const port = 3000;
-
-const app = express();
-
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
-```
-
-Above is the code for the most basic web server. Let's analyze it line by line.
-
-To import any npm packages that we download, we use the `require()` function
-provided by Node. Thus, the `const express = require('express')`
-
-`const app = express()` creates an app object that provides various useful
-methods.
-
-```jsx
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-```
-
-The `get` method will return "Hello world!" once a web browser visits
-[http://localhost:3000](http://localhost:3000) Essentially, we are telling node
-that when the user makes a `GET` request to the `/` url (this is the root url),
-define this response and send it.
-
-```jsx
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
-```
-
-The `listen` method will set up and start the server that listens for any
-requests at a specific port.
-
-Let's start our application by typing `node index.js` then visiting
-[`http://localhost:3000`](http://localhost:3000/)
-
-You would see a Hello World displayed on the screen, which means that our server
-is up and running.
-
-## Adding routes and sending requests
-
-Now let's define some more functionality for our server.
-
-Before we jump into actually writing code, let's take a moment to consider
-design. With smarter design, we can make our code intuitive, clean, and
-efficient. The goal of software is to make life intuitive, clean, and efficient!
-
-We will be implementing a "dumb" version of a database, meaning that we will be
-emulating what a database would do with a very stupid implementation. We will
-use a JSON object to store the items at a certain index and then return those
-items as needed.
-
-First, let's think about what types of data we will be interfacing with. There
-are two main types: metadata and the actual database data. Our metadata is the
-data that we use to define the state of our database and its characteristics,
-and the actual database data will be the items we put.
-
-Some examples of a metadata are the database capacity and current index. Let's
-define two routes in our API: `/info` and `/db` . These are where we will make
-our requests.
-
-### GET Requests
+There are dozens of preset configs for ESLint and you're welcome to use any one
+of them. The [Airbnb config](https://github.com/airbnb/javascript) is very
+popular, as is the standard config. I'm going to use a looser one for this
+class: `eslint:recommended`. Let's create an `.eslintrc.json` file in the root
+directory of our project to start linting our project.
 
 ```jsx
-const axios = require('axios');
-const express = require('express');
-const port = 3000;
-const app = express();
-
-app.use(express.json()); // Utilities for request bodies
-app.use(express.urlencoded({ extended: true })); // Utilities for query params
-
-let counter = 0; // inner implmentation
-stupidDB = {}; // initialize our dumb database
-
-// GET Requests
-
-app.get('/', (req, res) => {
-  // homepage
-  res.send('stupidDB API');
-});
-
-app.get('/info/index', (req, res) => {
-  // get the current index
-  res.send({ counter: counter });
-});
-
-app.get('/info/capacity', (req, res) => {
-  // get the capacity
-  res.send({ capacity: Object.keys(stupidDB).length });
-});
-
-app.get('/db/all', (req, res) => {
-  // get all items from the db
-  res.send(stupidDB);
-});
-
-app.get('/db/:id', (req, res) => {
-  // get a certain item from the db
-  const id = req.params.id;
-  if (id in stupidDB) {
-    res.send(stupidDB[id]);
-  } else {
-    res.send({ error: 'no object found with this id' });
+{
+  "extends": ["eslint:recommended", "prettier"],
+  "plugins": [],
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
   }
-});
-
-// Server Setup
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+}
 ```
 
-GET requests have a lot of flexibility and power in the way that we make them.
-We can get information generically or we can encode the information that we want
-into our API. Theoretically, we could also put that information into the body of
-the request, but in general, that is not in line with our REST API principles.
-GET returns information that we query to it.
+ESLint is a cinch to get working with Visual Studio Code. Just down
+[the extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
-### POST & PUT Requests
+## Getting started
 
-```jsx
-const axios = require('axios');
-const express = require('express');
-const port = 3000;
-const app = express();
+That was a lot of setup work, but trust me when I say that downloading prettier
+and ESLint will probably the best decision you'll make in your development
+career. Second to taking this course of course! And of course, without Node and
+npm installed you won't be able to get anything to work in the first place, so
+make sure that those are good to go.
 
-app.use(express.json()); // Utilities for request bodies
-app.use(express.urlencoded({ extended: true })); // Utilities for query params
+Lets get started by creating a basic "boilerplate" file structure for our React
+App. To do so, we'll use a service called
+[Create-React-App](https://create-react-app.dev/), sometimes abbreviated as CRA.
 
-let counter = 0; // inner implmentation
-stupidDB = {}; // initialize our dumb database
-
-// GET Requests
-
-app.get('/', (req, res) => {
-  // homepage
-  res.send('stupidDB API');
-});
-
-app.get('/info/index', (req, res) => {
-  // get the current index
-  res.send({ counter: counter });
-});
-
-app.get('/info/capacity', (req, res) => {
-  // get the capacity
-  res.send({ capacity: Object.keys(stupidDB).length });
-});
-
-app.get('/db/all', (req, res) => {
-  // get all items from the db
-  res.send(stupidDB);
-});
-
-app.get('/db/:id', (req, res) => {
-  // get a certain item from the db
-  const id = req.params.id;
-  if (id in stupidDB) {
-    res.send(stupidDB[id]);
-  } else {
-    res.send({ error: 'no object found with this id' });
-  }
-});
-
-// POST Requests
-
-app.post('/db', (req, res) => {
-  console.log(req);
-  const item = req.body.item; // access our request body
-  stupidDB[counter] = item; // add body item at index
-  counter += 1; // increment counter
-  res.send(`POST Request Successful. Item placed: ${item}`); // Send HTTP response
-});
-
-// PUT Requests
-
-app.put('/db/:id', (req, res) => {
-  const id = req.params.id; // get the index of the data to update
-  const item = req.body.item; // access the body of the request which holds new data
-  if (id in stupidDB) {
-    stupidDB[id] = item; // insert destructively
-    res.send({ newItem: item });
-  } else {
-    res.send({ error: 'no object found with this id' });
-  }
-});
-
-// Server Setup
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
-```
-
-POST and PUT are, in my opinion, what separate a static website from a true web
-application. POST and PUT are how we actually collect and store relevant data
-for the user. They are the methods which give our website **functionality** _for
-the user._
-
-Let's look at POST first. To pass data along a POST request, we place data in
-the body. Because we don't know the "shape" and size of our data, we utilize the
-body as a sort of empty container to hold the data that we want to send. (Note:
-It would be overkill to put request parameters into this space for GET
-requests).
-
-Exercise: Go to Postman and set up a POST request. Go to body and look at all of
-the potential options for request bodies. By and large, we will be using "raw"
-in this class. Click on raw and view the options in the dropdown for data
-formats. Lot's of options! In this class, we will largely stick to JSON but if
-you are curious, you can always explore others. (Note: other formats may require
-extra setup on the Express side).
-
-Now let's look at PUT. PUT is an excellent example of how versatile a request
-is. In our PUT request, we use both url encoding and the body to send relevant
-data to our server. In the URL, we put where we want the data to go, and in our
-body we define what data we want to go there. This is exactly aligned to the
-design principles we laid our for our GET and POST requests! With smarter design
-we can vastly simplify the complexity of our systems.
-
-Let's get some pictures from NASA using this API that they are providing and
-send the descriptions back.
-
-- [https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY](https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY)
-
-To send a request to a particular api, we use the package called Axios. Remember
-that we have already npm installed `axios` so it should be available for us to
-use.
+Let's get started by running the following.
 
 ```bash
-const express = require('express')
-const app = express()
-const port = 3000
-
-const axios = require('axios');
-
-app.get('/nasa', (req, res) => {
-  axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
-  .then(response => {
-    res.send(response.data);
-  })
-  .catch(error => {
-    res.send(error);
-  });
-})
+npx create-react-app my-app
 ```
 
-We will try to send an API request to NASA whenever a user visits the `/nasa`
-route of our website.
+What this does is create a directory named `my-app` that contains the
+boilerplate React code that's generated by Create React App. If you open up
+`my-app`, you'll see the following:
 
-Now to send an API request, we will use axios.get(). This will _send_ a `get`
-request to the particular url provided.
+![CRA Project File Structure](../assets/Lesson9/file-structure.png)
 
-Now go ahead and visit the
-[`http://localhost:3000/nasa`](http://localhost:3000/nasa) url, you would find
-this displaying on the screen.
+That's a lot to take in! We'll explain exactly what each of these files and
+folders represents in a typical React project soon, but first we'll dive into
+basic React principles and aim to move towards the bigger picture as we explain
+how React works.
 
-![expected output](../assets/Lesson8/output.png)
+Let's start by running
 
-We will learn more about API requests and web server in the future.
+```bash
+yarn start
+```
 
-## Node and File System
+in the root directory of your newly initialized React app. After some time, you
+should see the following pop up in your browser. If nothing happens, navigate to
+[localhost:3000](http://localhost:3000/) on your favorite browser. You should
+see the following.
 
-Nodejs just like python, provides a very easy way to handle file system.
+![CRA Start](../assets/Lesson9/cra-default.png)
 
-Let's build on top of the web server that we have. Say we want to build a API
-where the user can input the name and type of a file and the server can create
-it.
+By running `yarn start`, we started up our React app, similarly to how we opened
+up an HTML file to view our websites. Going forward, running a command in the
+console will be how we run and view the output of our code.
 
-- [http://localhost:3000/create/?name=resume&type=txt](http://localhost:3000/create/?name=resume&type=txt)
-- The API will look something like this, where the ? indicates parameters, and
-  name=resume and type=txt are two of the parameters included in this API, they
-  are connected by the & sign.
+### Making Changes
+
+Navigate to `src/App.js`. You should see the following. We'll explain each part
+of this file soon, but for now, pay attention to what is being returned by our
+function `App`.
 
 ```jsx
-app.get('/create', (req, res) => {
-  let name = req.query.name;
-  let type = req.query.type;
-	...
-})
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+
+export default App;
 ```
 
-In the `/create` route, we simply can access all the parameter like this.
+Hmmm. What's being returned looks exactly like what's being rendered on our
+browser! Lets try changing the line that says
+`Edit <code>src/App.js</code> and save to reload.` such that it reads
+`Hello World!`. Now save the file and navigate back to your browser. Your screen
+should now look like this. if it doesn't then give it a couple seconds and make
+sure that you saved your changes to App.js.
 
-Now, let us create a file using the file system package that node provides.
+![Hello World](../assets/Lesson9/hello-world.png)
+
+We've just made a change to our website without having to reload it! This is a
+pretty nifty feature of Create React App called _hot reloading_. This feature
+already makes our lives much easier, and all we needed to do was start using
+some of the cool tools at our disposal when working with React!
+
+### Looking at `App.js`
+
+As you've probably figured out, whatever is returned by our function `App` is
+what will show up on our screen, and that our function has to return some form
+of HTML. There are a few differences, but well go over them shortly. first, lets
+start by defining some ground rules when using React.
+
+All React files must return a function or a class. These are respectively called
+functional components and class components. In this course we will exclusively
+use functional components as class components are being phased out of the React
+ecosystem and moving in the direction of functional components. As you can see
+in `App.js`, we define a function `App` that returns some HTML. We then
+`export default` our function at the bottom of our file, which is a common
+practice with React components. We will get to what we mean by component shortly
+as well. Don't worry too much about what `export default` means and `export` vs.
+`export default`. We will cover that later. Just know that by having
+`export default App` at the bottom of our file, we are exporting our function
+`App` so that it may be used by other files in our application.
+
+Now lets go to the top and look at the following.
 
 ```jsx
-const fs = require("fs");
-
-...
-
-app.get('/create', (req, res) => {
-  let name = req.query.name;
-  let type = req.query.type;
-  let filename = name + '.' + type;
-  fs.appendFile(filename, ' ', (err) => {
-    if (err) res.send(err);
-    res.send({
-      "message": "File created!",
-      "name": name,
-      "type": type
-    })
-  })
-})
+import logo from './logo.svg';
+import './App.css';
 ```
 
-The `fs.appendFile()` method creates a file with the given name in the current
-folder that the server is in. Now try to visit
-[`http://localhost:3000/create/?name=resume&type=txt`](http://localhost:3000/create/?name=resume&type=txt)
-and see whether a file named resume.txt is created.
+This is how we import anything into our React component. Looking at our files,
+we can see `App.css`. In order to use the CSS in `App.css`, we don't need to use
+a style tag like we used to. Instead, we can simply import its
+[relative path](https://desktop.arcgis.com/en/arcmap/10.3/tools/supplement/pathnames-explained-absolute-relative-unc-and-url.htm#:~:text=A%20relative%20path%20refers%20to,moving%20up%20in%20the%20hierarchy.)
+into our component. As for images, we no longer put the path of the image into
+the `src` attribute of our `img` tags. Instead, we import them using their
+relative path and define their import as shown in `App.js` I understand that
+this may be confusing now, but a lot of learning React is simply learning the
+correct syntax, and learning why we use that syntax will come with time.
 
-## Resources
+Looking downward, we see that our `img` tag looks like the following.
 
-[Express "Hello World" example](https://expressjs.com/en/starter/hello-world.html)
+```jsx
+<img src={logo} className="App-logo" alt="logo" />
+```
 
-[NASA Open APIs](https://api.nasa.gov/)
+Notice how we have curly brackets around the `src` attribute. Using curly
+brackets, we can pass in variables to our HTML. More on this later.
 
-[Get Query Strings and Parameters in Express.js](https://stackabuse.com/get-query-strings-and-parameters-in-express-js/)
+Lastly, I'd like to point out the fact that our code uses `className` instead of
+`class` when trying to use classes to specify the CSS that is being applied to
+each HTML element. This is simply because `class` is a reserved word in
+JavaScript, and since we are writing our HTML in a JavaScript file, we have to
+make this small change in order for our code to work properly.
+
+### Variables in Our Code
+
+Lets dive deeper into `{logo}`. One powerful feature of React is that we can use
+variables in our code simply by surrounding the variable name with curly
+brackets! Lets take an example. Define the following in `App.js`, right above
+our return statement.
+
+```jsx
+const myFavoriteNumber = 7;
+```
+
+And so we've defined a new variable that we can use in our `App` function. But
+how can we display this data in our browser? Sure, we could replace our current
+"Hello World!" with "My favorite number is 7", but what if we're really
+indecisive and our favorite number changes daily? Alternatively, What if we want
+to let the user have their favorite number be displayed in the browser? We could
+use JavaScript and some DOM methods to do this, but React makes this task much
+easier.
+
+Lets go down to the following
+
+```jsx
+<p>Hello World!</p>
+```
+
+and replace it so that it uses our new `myFavoriteNumber` variable. Now it
+should look like the following.
+
+```jsx
+<p>My favorite number is {myFavoriteNumber}</p>
+```
+
+Lets go back to the browser and see what's happened.
+
+![Favorite Number](../assets/Lesson9/favorite-number.png)
+
+Viola! We've successfully used a JavaScript variable in our HTML code. Play
+around with the value of `myFavoriteNumber` and make sure to save `App.js` each
+time before going back and checking your browser. You'll see that what's shown
+on your screen will reflect whatever value your variable holds. This capability
+extends to introducing any logic into your HTML. For example, you could do the
+following.
+
+```jsx
+<p>My favorite number is 7</p>
+```
+
+```jsx
+<p>My favorite number is {'7'}</p>
+```
+
+```jsx
+<p>My favorite number is {3 + parseNumber('4')}</p>
+```
+
+```jsx
+<p>My favorite number is {(myFavoriteNumber * 2) / 2}</p>
+```
+
+These snippets will all result in the same thing being shown in the browser.
+We've learnt a powerful way to combine JavaScript, HTML, and CSS.
+
+Our `App.js` should now look like the following.
+
+```jsx
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  const myFavoriteNumber = 7;
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>My favorite number is {myFavoriteNumber}</p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+## Components
+
+We've used the term component a lot in the last few sections, and now its
+finally time to explain what exactly that means. Conceptually speaking, a
+component is any piece of code that's used in your app, and components are
+typically meant to help with resuability and segmenting in your code. For
+example, in a website, you may want to make your Navbar a component since it's
+used on every page. If you're building a social media platform, you may want to
+make a generic Post component that can display different information depending
+on the post, but which contains all the attributes and styling that all posts
+share. Going further into the social media example, think about writing the
+entirety of Facebook in one JavaScript file. That would be a lot of code in one
+place! This is where components come in handy. We can make a Post component, a
+Reply component, a Navbar component, a Profile Component, etc... and each
+component can handle its own data and logic. For example, the User Profile logic
+and the Post logic could be completely different, so seperating them into
+components makes it easier to manage your code.
+
+In `App.js`, we have created a component called `App`. We did this by defining a
+function called `App` which returns JSX (this is what we will call our HTML when
+we use HTML in a React setting), and exporting that function `App`. Our `App`
+function can have whatever logic you need it to contain, but it must return JSX
+(more on this later). How do we use these components? Good question! To answer
+this, lets try creating a new component called `Button`, and then using it in
+our newly created React App.
+
+### Creating Components
+
+For any new component we create, we have to import React. This is because React
+isn't a language, its simply a framework that we import into our existing
+JavaScript files. Let's start by creating a new file called `Button.js` and
+writing down the following.
+
+```
+import React from 'react';
+```
+
+Next, we want to create our new `Button` component. Remember that to create a
+React component, we have to create a function that returns JSX. We then
+`export default` that new component. Lets create a bare bones button component
+using what we've seen so far.
+
+```
+import React from 'react';
+
+const Button = () => {
+  return(
+    <button>Cool Button</button>
+  )
+}
+
+export default Button
+```
+
+One small detail to note is that here we defined our `Button` component as a
+JavaScript arrow function, vs our `App` component used a more traditional
+JavaScript function syntax. Both are functions in JavaScript, but for React
+people tend to use arrow functions to create components over traditional
+function syntax.
+
+Now we have a button component, but if we look at our browser, it doesn't show
+up anywhere. This is because we haven't included it in our `App.js` file. In the
+structure of Create React App, everything you want to be shown in the browser
+must be included in your `App.js` file. We can use our new `Button` component in
+`App.js` by importing it like so at the top of our `App.js` file.
+
+```jsx
+import Button from './Button';
+```
+
+Notice how we didn't need to import from `'./Button.js'`, and were able to leave
+out the ".js". This is a small feature of React, where we just import the file
+names of JavaScript files and can leave out the ".js" part of the filename.
+Other filetypes, however, have to be written in full, as we see with our
+`import './App.css'` statement.
+
+### Using Components
+
+We've now imported our Button component into `App.js`, but how do we actually
+use it? Here's the cool part of using React, and what sets JSX apart from plain
+HTML - we can use our `Button` component as we would a regular tag! If that
+doesn't make total sense, lets look at an example.
+
+```jsx
+<Button />
+```
+
+This is equivelent to writing the following.
+
+```jsx
+<button>Cool Button</button>
+```
+
+But now we've been able to simplify how much code we need to write. This is a
+pretty small example, but let's say we want to create a Navbar component - it
+would be a lot easier to write all the HTML for a Navbar in it's own file, and
+then simply add `import Navbar from './Navbar'` and
+`<Navbar /> to your main file (which in our case is `App.js`) than writing all
+that HTML in one file!
+
+Another benefit is reusability. Continuing out button example, let's say that I
+want 3 buttons in my website, and I want them all to say the exact same thing.
+One way to do this is to use the regular html `button` tag 3 times and update
+each tag if I want to make a change to my button's text, but if we were to
+instead use the `Button` component we've just made, changing all 3 buttons would
+simply consist of making 1 edit to our `Button` component. Pretty neat, right!
+Now imagine you had 1000 buttons all across your site. As we'll show later, even
+if they're slightly different, we still only need 1 component for all of these
+buttons, and consequently only need to make changes to one file if we want to
+change the buttons on our site.
+
+Let's go through one example of what using our `Button` component may actually
+look like inside of our new website. Lets add our `Button` component to
+`App.js`. Your `App.js` should now look like the following.
+
+```jsx
+import logo from './logo.svg';
+import './App.css';
+
+import Button from './Button';
+
+function App() {
+  const myFavoriteNumber = 7;
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>My favorite number is {myFavoriteNumber}</p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+        <Button />
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Make sure to save your file and go back to your browser. You should now see the
+following.
+
+![Button](../assets/Lesson9/button.png)
+
+What if we wanted a bunch of buttons in our app? Instead of writing
+
+```jsx
+<button>Cool Button</button>
+<button>Cool Button</button>
+<button>Cool Button</button>
+<button>Cool Button</button>
+<button>Cool Button</button>
+```
+
+we can simply use our `Button` component like so.
+
+```jsx
+<Button />
+<Button />
+<Button />
+<Button />
+<Button />
+```
+
+We should now see the following.
+
+![Multiple Buttons](../assets/Lesson9/multiple-buttons.png)
+
+Here's where a big part of React's power comes in - we can change all of our 5
+buttons by only making edits to our `Button.js` file! Lets make some changes to
+`Button.js` and make it a bit more complicated. Let's have our `Button`
+component return the following.
+
+```jsx
+<div>
+  <h1>Alert: New Button</h1>
+  <button>The latest version of my button!</button>
+</div>
+```
+
+Save the file, and go back to the browser to see the changes you've made! While
+you won't be able to see all of the `Button` components on your screen at once,
+they're all there! Just scroll a bit and you'll see all 5.
+
+![Multiple Updated Buttons](../assets/Lesson9/multiple-buttons-updated.png)
+
+### Rendering in Index
+
+We might have said that everything in `App.js` is what's shown in your browser,
+but we actually lied (sorry). In reality, everything in `Index.js` is what's
+displayed in your browser. Open up `Index.js` in your IDE. You should see the
+following.
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+```
+
+Let's dissect this. As usual, we see `import React from 'react';` this is a
+given since we're trying to create a React App. Skipping around a bit we see
+`import './index.css';`. No surprise there either, just importing a CSS file to
+use. Let's look at the line after that.
+
+```jsx
+import App from './App';
+```
+
+Let's think about why this makes sense. We defined a component as a function
+that returns JSX, which we learned is a combination of HTML, components that
+we've created and imported, and JavaScript variables we use inside of our HTML.
+Looking at `App.js`, we see that we've simply created a component called `App`!
+In `Index.js`, though, it doesn't look like we're creating a component. This is
+because in `Index.js` we're actually trying to render all of our components (in
+this case, just the `App` component) in the browser. How we do that is with
+`ReactDOM`, another package that's imported along with React. While React is
+used to make components, ReactDOM is used to render them on the screen. This is
+made obvious by looking at the body of `Index.js`
+
+```jsx
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+It's self-evident that ReactDOM renders our `App` component given the calling of
+`ReactDOM.render`.
+
+:::note
+
+Don't worry about what's going on in `Index.js` too heavily. We'll explain it
+later, but you'll rarely ever need to make changes to this file.
+
+:::
+
+:::info
+
+In the code above you see that our `App` component is wrapped in a
+`React.StrictMode` tag. By wrapping a component in `React.StrictMode`, all we've
+done is make it so that we receive a warning if React detects that there might
+be potential problems with the code we write or any imports we use.
+
+:::
+
+Now we'll explain what the line `document.getElementById('root')` does, and why
+we pass it in to `ReactDOM.render`. First, a question - How do you think we're
+able to get all of our fancy JavaScript and JSX to show up on our browsers, when
+HTML and CSS are supposed to be what shows up on your screen? Simple. We just
+create an HTML document with a single `div` with `id="root"`, and then use our
+magical ReactDOM library to attach turn all of our JSX into plain HTML, and then
+insert that HTML into our main HTML document! If that seemed like a lot, let's
+take a look at what we're talking about.
+
+Navigate to `/public/index.html`. You should see a regular HTML file, similar to
+the one's we've worked with in the past. If you scroll to the body of our HTML
+document, you'll see `<div id="root"></div>`. Our `ReactDOM.render` function
+essentially just compiles all of our React code into HTML, which is the first
+argument we pass it, and then puts it into a div in an HTML file, and this HTML
+file is actually what's being displayed in our browser. We tell
+`ReactDOM.render` where to put our newly compiled React code by using
+`document.getElementById('root')`, which tells our function to put it indide of
+the element in our HTML document that has `id="root"`, as you should have
+learned in the [JavaScript DOM Lesson](/docs/Lessons/Lesson6).
+
+Viola! We've covered a lot of ground, and now understand how to create and use
+components, as well as gaining a rough understanding of how our React code is
+rendered in the browser. Strap in, however, because that's just the start of
+what React can do.
+
+## Props
+
+The next big React concept we'll cover is props. Props are basically a way to
+pass in data to your components. For example, what if you want all of your 5
+buttons to have the same styling, but to say different things? Instead of
+manually creating 5 different buttons using HTML and not using components, or
+god-forbid, creating 5 different button components, we can use props to stick
+with just one button component, even though we want all of our buttons to look
+different in our browser.
+
+:::info
+
+props is short for properties!
+
+:::
+
+The way we pass in props and use them is fairly simple. We can pass props to one
+of our components the same way that we pass in an attribute to a regular HTML
+element. For example, we want our `Button` component to have a prop (property)
+called text, which is what the text that the button should display. We can
+achieve that by doing the following.
+
+```jsx
+<Button text="What I want my button to say!" />
+```
+
+Nice! Now we've successfully given our `Button` component a prop called text.
+Now how do we use it? For demonstration purposes, let's go back to our old
+`Button` component.
+
+```jsx title="/src/Button.js"
+const Button = () => {
+  return (
+    <div>
+      <button>Cool Button</button>
+    </div>
+  );
+};
+```
+
+to use props, we have to pass `props` into our Button component by passing them
+as an input into our `Button` function like so.
+
+```jsx title="/src/Button.js"
+const Button = (props) => {
+  return (
+    <div>
+      <button>Cool Button</button>
+    </div>
+  );
+};
+```
+
+We can now access all the props that we pass into our `Button` component when we
+use it! Let's access our text component like so. Remember that we can use
+variables in our HTML by adding `{}` around them.
+
+```jsx title="/src/Button.js"
+const Button = (props) => {
+  return (
+    <div>
+      <button>{props.text}</button>
+    </div>
+  );
+};
+```
+
+Now lets say that we pass in a `title` prop into our `Button` component.
+
+```jsx
+<Button text="example text" title="Cool Button">
+```
+
+We can then use it in a similar manner.
+
+```jsx title="/src/Button.js"
+const Button = (props) => {
+  return (
+    <div>
+      <p>{props.title}</p>
+      <button>{props.text}</button>
+    </div>
+  );
+};
+```
+
+Hopefully this example makes sense! To solidify that this works, let's try
+creating 3 different buttons in our `App.js` that all say different things, but
+all use our improved `Button` component. While we're doing so, let's clean up
+our `App` component a bit.
+
+```jsx title="/src/App.js"
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Button text="wow," title="First Button" />
+        <Button text="props are" title="Middle Button" />
+        <Button text="so useful!" title="Last Button" />
+      </header>
+    </div>
+  );
+}
+```
+
+Save your file and go back to the browser. You should see the following.
+
+![Buttons Using Props](../assets/Lesson9/button-props.png)
+
+Congrats! You've successfully learnt the basic of props in React.
+
+:::info
+
+Please note that props are **immutable**. What this means is that trying to do
+something like `props.text = "new text" inside of your `Button` component will
+cause an error. More generally, trying to change your props inside of the
+component that those props are being passed to will cause an error.
+
+:::
+
+## State
+
+There are 2 main ways of passing around data in your new React app. The first
+one is props, which we introduced above, and the second one is state.
+
+### State vs. Props
+
+Let's go back to our house analogy to conceptualize the difference between state
+and props. Let's focus on our door. The color of our door is a **property** of
+our door. This is, for the most part, hard to change, and only needs to change
+depending on our house. For example, say we create a `House` component, and
+we're trying to build a neighborhood. We might want to make `doorColor` a
+property that we pass into our `House` component. State, however, is meant for
+more dynamic changes. In this example, you could think of whether the door is
+opened or closed as the **state** of the door. This is something that is easily
+changeable, and says more about teh state of the door than the door itself. It
+doesn't matter what the properties of the door are - all doors open and close.
+
+### Introduction to Hooks
+
+When we want to engage in state management within React (which you'll learn
+about extensively in the coming React lessons, examples, and labs), we use
+**hooks**. As contained within the term, state management has to do with
+controlling the state.
+
+Going back to our door example, If we want to create a button to open or close
+the door, or just in general record when the door has opened or closed, we would
+use a hook to keep track and even change the state of the door. Using a more
+concrete web development example, let's say that we want to keep track of a
+user's account balance in some sort of banking website or web app. using React
+speak, the user's balance wouldn't be a property of their account, since it's
+dynamic and can change often. The balance would instead be part of the **state**
+of the account. An example of a prop that the account might instead have is it's
+account number, name, and other things that aren't dynamic and instead a mostly
+unchanging property of the account.
+
+### useState
+
+Now that we've explained the concept behind state in React, let's demonstrate
+how we can actually use it! To do so, we'll make a simple app that counts the
+number of times that our user has clicked a button.
+
+#### Setup
+
+Before getting started, let's clean up what we currently have a bit. Please make
+sure your `App.js` looks like the following.
+
+```jsx title="/src/App.js"
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Let's Count!</h1>
+        <button>click me!</button>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+You should see the following.
+
+![Start State](../assets/Lesson9/state-start.png)
+
+#### Importing Hooks
+
+Now lets import our `useState` hook. In order to use state, we have to import
+and use the `useState` hook in our app. We can import `useState` by doing the
+following at the top of our `App.js` file.
+
+```jsx
+import React, { useState } from 'react'.
+```
+
+In general, this is how we import hooks in React. If we wanted to import the
+useEffect and useMemo hooks as well (which you don't need to worry about), you
+would do the following.
+
+```jsx
+import React, { useState, useEffect, useMemo } from 'react'.
+```
+
+#### Using Hooks
+
+Let's take a step back and figure out how we want to go about accomplishing our
+task of creating a counter. We would need to have a `count` variable to figure
+out how many times that our button has been clicked, and we'd also need a
+function to increase the number of times that our button has been clocked. This
+function would need to occur whenever the button is clicked.
+
+Let's add these into our code like so.
+
+```jsx {2,4,5,6,13}
+function App() {
+  let count = 0;
+
+  const updateCount = () => {
+    count = count + 1;
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Let's Count!</h1>
+        <button>click me!</button>
+        <p>Count: {count}</p>
+      </header>
+    </div>
+  );
+}
+```
+
+Next, let's make sure that our `updateCount` is called every time our button is
+clicked. To accomplish this, simply pass our `updateCount` function into the
+`onClick` attribute of the button like so.
+
+```jsx
+<button onClick={updateCount}>click me!</button>
+```
+
+You should see the following.
+
+![No ReRender](../assets/Lesson9/no-rerender.png)
+
+Try clicking your new button. If you're confused about why your counter isn't
+going up, you've just run into the problem of **rendering**, an incredibly
+important React, and frontend issue. Rendering is an incredibly complicated
+topic within the frontend space, so we'll keep it simple in this lesson.
+Essentially, all you need to know about rendering is that React only re-renders
+your screen when state is updated. What does this mean? It means that every time
+state is updated, React runs through your JSX again and displays the new code in
+our browser. In our case, that would mean that it would show the exact same
+things, except our count variable would be different. Since in our above code
+snippet we didn't change state in any way, React didn't re-render what ou saw on
+screen, so the initial value of the count variable is all you could see on
+screen.
+
+So how do you use state? This is where it gets confusing. Going back to our
+`App.js`, let's make sure it looks like the following.
+
+```jsx {1,6}
+import React, { useState } from 'react';
+
+import './App.css';
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Let's Count!</h1>
+        <button>click me!</button>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Let's take a closer look at the following line.
+
+```jsx
+const [count, setCount] = useState(0);
+```
+
+Let's break down what we see above. Using the `useState` hook, we've created 2
+variables, `count` and `setCount`. `count` is a variable that is equal to a
+number. With the `useState` hook, whatever value we pass into the `useState`
+hook is the initial value of the first variable we're defining. Here we passed
+in `0` into `useState`, so `count` starts off being equal to 0. To solidify
+this, lets look at one more example.
+
+```jsx
+const [name, setName] = useState('Joshua');
+```
+
+Here, I'm creating a variable called `name` that is initialized to the value
+"Joshua". Thus, if I used the `name` variable in my JSX code, it would show up
+as "Joshua". Same with our counter code. Add the following line to your code.
+
+```jsx {13}
+import React, { useState } from 'react';
+
+import './App.css';
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Let's Count!</h1>
+        <button>click me!</button>
+        <p>Count: {count}</p>
+      </header>
+    </div>
+  );
+}
+```
+
+Now you should see the same thing that we saw earlier when we weren't using
+state. If you try to click the button, the counter still won't increment, but
+that sort of behavior should now make sense since we haven't told the button to
+call any function or do anything when it's clicked yet.
+
+Next let's talk about `setCount`. We've learnt that the first variable created
+by the `useState` hook is a variable that starts off with whatever value was
+passed into the `useState` hook, but how do we update this variable? We can't do
+`count = count + 1` or anything similar for variables declared through the
+`useState` hook. Instead, we have to use the **updater function** tied to that
+variable. The updater function is the second variable declared by the `useState`
+hook, In this case, `setCount` is our updater function for `count`.
+
+To use an updater function, simply pass in a value. This passed in value becomes
+the new value of the associated variable. For example, calling `setCount(5)`
+would se our `count` variable equal to 5. Calling setCount(-999) would make
+`count` equal to -999. Basically, our updater function sets whatever our
+variable is.
+
+Going back to our name example for some more clarity, let's say we have
+`const [name, setName] = useState('Joshua')` as before. If the `name` variable
+represents our username in a game, we might want to change it later. Let's say
+we want to change it to "reactgod007". We simply call `setName("reactgod007)`
+and now our `name` variable is equal to "reactgod007".
+
+We want to increase our `count` variable by 1 every time our button is clicked,
+however, and not just set `count` to whatever we want! To set this up in our
+code, let's bring back our old friend, the `updateCount` function, and pass it
+into our button.
+
+```jsx {4,11}
+function App() {
+  const [count, setCount] = useState(0);
+
+  const updateCount = () => {};
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Let's Count!</h1>
+        <button onClick={updateCount}>click me!</button>
+        <p>Count: {count}</p>
+      </header>
+    </div>
+  );
+}
+```
+
+Right now, our `updateCount` function is called every time our button is
+clicked, but nothing happens because the body of the function is empty. Going
+backwards, what we want `updateCount` to do is increment our `count` variable
+by 1. We can change our `count` variable by calling `setCount`. Thus, all we
+need to do is call `setCount(count + 1)`. This would set the value of our
+`count` variable equal to the old value of the `count` variable plus 1. Adding
+this to the body of our `updateCount` function, we get the following.
+
+```jsx {4,5,6}
+function App() {
+  const [count, setCount] = useState(0);
+
+  const updateCount = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Let's Count!</h1>
+        <button onClick={updateCount}>click me!</button>
+        <p>Count: {count}</p>
+      </header>
+    </div>
+  );
+}
+```
+
+Congrats! Every time you click your button, you should see the counter increment
+by 1. You've made a full-fledged counter!
+
+### Calling onClick with Parameters (Optional)
+
+Before concluding this lesson, I'd like to show you one last way to accomplish
+what we did above.
+
+Instead of creating a new `updateCount` function to call our `setCount` function
+every time our button is clicked, we can call our `setCount` function directly
+from our button like so.
+
+```jsx
+<button onClick={() => setCount(count + 1)}>click me!</button>
+```
+
+What we've done is create an arrow function that, when called, calls
+`setCount(count + 1)`, which is what we want to call in order to increment our
+`count` variable by 1. In general when you want to call a function with
+parameters when you click a button, you have to use this arrow function method.
+
+What if our `updateCount` function took in a parameter called `value` which
+dictated how much to increment our `count` variable by? It would look like this.
+
+```jsx
+const updateCount = (value) => {
+  setCount(count + value);
+};
+```
+
+We can no longer pass in `updateCount` into our button's `onClick` directly
+since it now has a parameter. Instead, we have to do what we did above.
+
+```jsx
+<button onClick={() => updateCount(1)}>click me!</button>
+```
+
+## Conclusion
+
+While this may seem like a somewhat straightforward application, you've learnt a
+LOT in this lesson. To recap, you've learnt the basics of components, JSX,
+props, and state in React. Using these fundamentals, you can build almost
+anything you want!
+
+Make sure to go through the example for this lesson after going through the
+reading:
+
+[React 1 example lab - building a game of tic-tac-toe](/docs/Lessons/Lesson9-2)
+
+Work through this example step-by-step by yourself. This will help put all the
+concepts we've learnt today into perspective and help you understand how we can
+use them outside of our simple counter example and in a more complicated use
+case.
 
 ---
 
 **Contributors**
 
-- [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)
+- [Samarth Goel](https://www.linkedin.com/in/samarth-goel-1047b8187/)
+- [Brian Holt](https://www.linkedin.com/in/btholt/)

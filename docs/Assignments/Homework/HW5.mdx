@@ -48,12 +48,12 @@ Block Server listening at http://localhost:3002
 
 ## Task 2 - Start the Frontend
 
-Congrats! The backend server is now running at `localhost:3001`. Now for a
+Congrats! The backend server is now running at `localhost:3002`. Now for a
 production application, we'd also often be running a database such as MongoDB,
-but if you examine the code, you'll see that we've hard-coded the data you're
+but if you examine the `index.js` file, you'll see that we've hard-coded the data you're
 fetching.
 
-For this task, we'll introduce fetching data from a server from our frontend.
+For this task, we'll introduce fetching data to a server from our frontend.
 
 As you know, we can use HTTP requests to send and receive data over the
 internet. In fact, opening a website like `google.com` is an HTTP GET request!
@@ -68,7 +68,7 @@ While fetch is incredibly powerful, it's also a bit more barebones and complex,
 so we'll be using a wrapper around Fetch called
 [Axios](https://axios-http.com/docs/intro).
 
-First, lets install Axios:
+First, lets install Axios! Open a new terminal and navigate to the `react-app` folder and run the below command:
 
 ```shell
 npm install axios
@@ -96,8 +96,8 @@ function Example() {
   const getPostsData = () => {
     axios
       .get('https://jsonplaceholder.typicode.com/posts') //THIS IS YOUR URL OF YOUR API
-      .then((data) => setData(data.data)) //PROMISE API, THAT MEANS WHEN YOU GET THE DATA WHAT DO I DO WITH IT
-      .catch((error) => console.log(error)); //ERROR CATCHING IN CASE WE RECEIVE AN ERROR
+      .then((data) => setData(data.data)) //PROMISE API, ONCE YOU GET THE DATA WHAT DO YOU WANT TO DO WITH IT?
+      .catch((error) => console.log(error)); //ERROR CATCHING IN CASE WE RECEIVE AN ERROR RECIEVING THE DATA
   };
 
   useEffect(() => {
@@ -185,10 +185,10 @@ After you finish, push these changes into your Classroom repository.
 1. Turn your code into Gradescope for the assignment **Homework 5**.
 2. This assignment has a **checkoff** component. To get credit,
 you must get checked off. You may get checked off at any TA office hour,
-or you may come to HWP on Friday and get checked off there. Homework is
-*due* on Friday, November 4, 2022 at 11:59 PM PST, which means that you
+or you may come up after lecture to get checked off there. Homework is
+*due* TBD, which means that you
 must submit to Gradescope by then. You must then get checked off by the following
-Friday, November 11, 2022.
+TBD.
 
 
 ### Demo of Solution

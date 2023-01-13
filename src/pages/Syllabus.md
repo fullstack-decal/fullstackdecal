@@ -8,22 +8,21 @@
 
 **Units:** 3
 
-**Course term:** Fall 2022
+**Course term:** Spring 2023
 
 **Faculty Sponsor:** Josh Hug
 
 **Course Number:** 33565
 
 **Course Catalog Link:**
-[https://classes.berkeley.edu/content/2022-fall-compsci-198-099-grp-099](https://classes.berkeley.edu/content/2022-fall-compsci-198-099-grp-099)
+[https://classes.berkeley.edu/content/2023-spring-compsci-198-099-grp-099](https://classes.berkeley.edu/content/2023-spring-compsci-198-099-grp-099)
 
-**Time:** There are 2 lectures every week. Lectures are remote and recorded. Attendance is not required, but students are
-expected to watch the lectures and keep up with the material.
+**Time:** There are 2 lectures every week. Students are expected to attend both lectures every week.
 
-- Lecture 1: Monday @ 6:30pm - 8:00pm PST
-- Lecture 2: Wednesday @ 6:30pm - 8:00pm PST
+- Lecture 1: Monday @ 8:00pm - 9:30pm PT
+- Lecture 2: Wednesday @ 8:00pm - 9:30pm PT
 
-**Location:** Remote (Physics 4 for in-person activities)
+**Location:** Valley Life Sciences Building 2040
 
 ## Course Overview
 
@@ -111,9 +110,14 @@ All communication this semester will be centralized on Ed. Please ask all questi
 
 ### Attendance
 
-Since attendance is not mandatory this semester, "attendance" will certify that you have watched the lectures.
-To enforce this, we will release content quizzes that cover the week's material. You will expected to fill these out as
-part of your grade, and they will make up the attendance category.
+Attendance at lectures is mandatory. If you cannot make it to the lecture for
+any reason, please fill out the excused absence form for each lecture. If you
+neglect to fill out this form within 24 hours of the missed lecture, it will be
+marked as an unexcused absence. You are allowed up to 3 unexcused absences before receiving a NP in the
+class. If you miss a lecture, watch the recorded lecture as soon as possible so
+that you don't fall behind. Our curriculum moves fairly quickly in order to
+cover everything you need in order to become a full-fledged developer, so it's
+imperative that you stay up-to-date with each lesson.
 
 ### Grading Overview
 
@@ -126,12 +130,10 @@ The grading breakdown is as is below.
 
 | Item                       | Points |
 | -------------------------- | ------ |
-| Homework                   | 300    |
+| Homework                   | 400    |
 | Project 1                  | 150    |
 | Project 2                  | 150    |
-| Project 3                  | 100    |
-| Attendance                 | 100    |
-| Final Project Presentation | 200    |
+| Final Project Presentation | 300    |
 
 ### Homework
 
@@ -166,22 +168,13 @@ California, Berkeley's Center for Student Conduct and Community Standards.”
 
 ### Accommodations and Extensions
 
-Some forms:
 
 - Extension Requests: This is to request extensions on deadlines for any
-  assignments. Requests will be reviewed approximately every two business days.
-  Note that approved lab extensions are rounded up to a week so you can attend
-  your assigned section. Extensions will not be visible on Gradescope and
-  PrairieLearn, but they will show up on grading reports.
-- Extenuating Circumstances: This form is for any circumstances that can't be
+  assignments. Requests will be reviewed approximately every 2-3 business days. 
+  Extensions will not be visible on Gradescope and but they will show up on grading reports.
+- Extenuating Circumstances: Private message on Ed or email our facilitators for any circumstances that can't be
   resolved with extensions or lab section changes. Don't be afraid to reach out!
-  We're here to help you succeed in our course. Extenuating Circumstances and
-  Inclusion
-
-We recognize that our students come from varied backgrounds and have
-widely-varying experiences. If you encounter extenuating circumstances, please
-do not hesitate to let us know. The sooner we are made aware, the more options
-we have available to us to help.
+  We're here to help you succeed in our course. The sooner we are made aware, the more options we have available to us to help.
 
 ## Inclusion
 

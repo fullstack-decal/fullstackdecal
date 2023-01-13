@@ -1,370 +1,489 @@
 ---
-sidebar_position: 8
+sidebar_position: 9
 ---
 
-# Lesson 6 - JavaScript 3: Scope and Asynchronous JS
+# Lesson 7 - Node.js, NPM, and Yarn
 
 ## Introduction
 
-In JavaScript, scope is the set of variables, objects, and functions you have access to. The main types of scope are global scope and local scope. Global scope means that you have access to everything in the program. Local scope means that you have access to only the things in the current block.
+You are very familiar with Javascript by now, and you may notice that we can
+only run Javascript in our browser using the `<script>` tag. What if we want to
+write scripts using Javascript and run them using the local machines, just like
+how python is.
 
-In recent years, asynchronous programming has become increasingly popular. Asynchronous programming is a programming paradigm that allows programmers to write code that is not tied to the order in which it will be executed. This can be extremely useful in situations where the order of execution is not known in advance, or when code needs to be executed in parallel.
+This is where Node comes into play. It is a JavaScript runtime engine built on
+Chrome's V8 Javascript engine that allows you to run JavaScript even without a
+browser. This means that you are able to do a lot more with JavaScript: managing
+local files, connecting and setting up a server, and much more.
 
-## Functions
+### Learning Objectives
 
-There are two kinds of functions:
+1. How npm & node works
+2. Create Backend APIs using Node & Express
+3. How to make API calls using axios
+4. File system with node & express
 
-- Regular function
-- Arrow function
+### Getting Started
 
-## Regular Function
+Let's start by creating a folder for us to put our code in. Let's call this
+folder `example` and then let's cd` into it using the console.
 
-Here's a regular JS function defined via `function` keyword:
-
-```jsx
-function adder(x, y) {
-  return x + y;
-}
+```bash
+mkdir example
+cd example
 ```
 
-- Regular function has `this` keyword and also `arguments` binding.
-  - We will be covering `this` and `arguments` binding later.
+## NPM
 
-## Arrow Function
+With the ability to run JavaScript locally on our machine (with the help of
+Node) and the contribution of a rich number of packages from a large community,
+the possibilities for JavaScript are endless!
 
-- Similar to the lambda function in python, arrow function is used to make code
-  simpler and more elegant.
-- Arrow function does not have its own `this`, `argument`, `new` keyword.
-- Do not use arrow function for objects.
-  - Use them for callbacks!
+To manage many of the packages that give Node its most powerful abilities, we
+use NPM. Node package manager (NPM) is a place where you can find and download
+node packages.
 
-```jsx
-const add = (x, y) => {
-  return x + y;
-};
+[npm](https://www.npmjs.com/)
 
-// ...or
-const add = (x, y) => x + y;
+## Installing Node
+
+Go to [https://nodejs.org/en/](https://nodejs.org/en/) to install node.js for
+free.
+
+Let us confirm that you have correctly downloaded Node.js and npm.
+
+In the terminal, type
+
+```bash
+node -v
+npm -v
 ```
 
-## Scope
+If both lines output the version number then we are good.
 
-Scope is the accessibility of variables, functions, and objects in some
-particular part of your code during runtime.
+Now, let us install out first package. The remainder of this example we will be
+using Axios to make HTTP requests as necessary, so let us install Axios.
 
-Four types of scope in JS:
+Navigate to the folder where we are storing our project, in this case `example/`
+while there, type the following command:
 
-- Global Scope
-- Local Scope (function)
-- Block Scope (curly bracket: if)
-- Lexical Scope (nested function)
-
-### Global Scope
-
-Any variables / functions defined outside of a function becomes **GLOBAL**
-scope.
-
-```jsx
-// Global scope
-var carName = 'Tesla';
-
-function myFunction() {
-  // local scope
-  var myName = 'Alex';
-}
+```bash
+npm init -y
+npm install axios
 ```
 
-### Local Scope
+The `npm init` command is used to create a new npm package, essentially every
+node script that we will write can be treated as a npm package. The `-y` flag
+just skip all the configuration step and creates a most basic npm package with
+all default settings.
 
-Any variables / functions defined inside of a function becomes **LOCAL** scope.
-You cannot access a local scope variable within global scope. However, you can
-access a global scope variable through local scope!
+Now when we list the files in our `example/` directory, we should see three
+things:
 
-```jsx
-var a = 20;
+- `node_modules` folder
+- `package.json` file
+- `package-lock.json` file (optional)
 
-function change() {
-  a = 25;
-}
+Essentially, each of these helps npm organize the packages we installed. In the
+node_modules folder is where we can find our actual packages. Many times, our
+node_modules file grows incredibly large and can take up quite a bit of space.
+It is discouraged to go directly into the node_modules, instead, npm provides a
+variety of utilities which we can use to keep our projects clean and efficient.
+I won't go into them here, but as you develop, you will run across them or you
+can read the docs [here](https://docs.npmjs.com/packages-and-modules). The other
+file is the package.json file. The package.json file is the file which record
+and defines the top-level packages and dependencies for our project.
+package-lock.json is a similar idea but with some nuances, you do not need to
+worry about those.
 
-console.log(a); // 25?
+## Hello World
+
+Now let's move back to Node for a second. Let's create a file called
+`helloworld.js` in the `example/` folder. Enter `console.log("hello world.")` in
+the file.
+
+You can run any node file by using the Node command.
+
+```bash
+node helloworld.js
 ```
 
-### Block Scope
+The console should print "hello world." and then exit.
 
-Anything that defined inside a curly bracket (if, else, ...) is in **BLOCK**
-scope.
+## JS in Browser vs. Node.js
 
-![Devops Image](../assets/Lesson7/Lesson7-1.png)
-
-### var vs. let vs. const
-
-Before we talk about lexical scope, let's look at the differences between var
-vs. let vs. const.
-
-Scope of var is either **global** or **local**. When you define a var in the
-local scope, you cannot access it in global scope. However, when you define a
-var in the global scope, you can access it through local scope and update it if
-you want.
+Node in browser and Node.js are technically the same form of JavaScript. Both
+run on the browser's JavaScript engine, usually Chrome V8. However, there are
+some fundamental difference which make Node.js just different enough to be
+annoying. The most prominent difference is that Node.js uses the `require`
+module to import other modules which define functionality. All Node projects are
+organized into modules, and we use `require` to import them. For example, the
+following code imports Axios, a package commonly used to make HTTP requests.
 
 ```jsx
-var tester = 'hey hi';
-
-function newFunction() {
-  var hello = 'hello';
-}
-
-console.log(hello); // error: hello is not defined
+const axios = require('axios');
 ```
 
-`var` can also be redeclared and updated and won't get an error.
+Another difference is that since there is no web page to be manipulated, there
+is no `document` object for Node.js, which means that DOM manipulation cannot be
+carried out in Node.js (with the help of some packages, it can).
+
+Since Node is a server side language, it can interact with the local file system
+easily, it also provides ways to setup a server with ease.
+
+If you are familiar with the `fetch` function in JS, there is no fetch function
+in Node. You can use the http package or some other third party package to
+handle sending a request.
+
+# Web Server with Node & Express
+
+## Install Express
+
+Let's build a web server using Node! Since building a server can be very hard
+using Node, a package called Express is often used to set up a web server in a
+faster and simpler way.
+
+Let's install it by `npm install express`.
+
+After installing express, you would find it under the dependencies attribute in
+the `package.json` file.
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2e0ac7d2-506e-4963-948a-6b38c28908a5/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2e0ac7d2-506e-4963-948a-6b38c28908a5/Untitled.png)
+
+Reminder: this is how node keeps track of all the packages we used.
+
+## Hello World Web Server
 
 ```jsx
-var greeter = 'hey hi';
-var greeter = 'say Hello instead';
-```
+const axios = require('axios');
+const express = require('express');
+const port = 3000;
 
-However, this creates a problem! If you have unknowingly declare a variable that
-shares the same name with another previous variable, you would change the value
-of that previous variable unintentionally! The compiler would also not catch
-that error.
+const app = express();
 
-- For instance, in the example below, someone has created a temporary username
-  variable inside the if statement, that username variable overwrite the
-  previous username variable.
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
 
-```jsx
-var username = 'Alex';
-var shouldFetch = true;
-
-if (shouldFetch) {
-  var username = 'Bob';
-  fetch(username);
-}
-
-console.log(username); // "Bob"
-```
-
-As a result, we have `let` and `const`.
-
-`let` and `const` cannot be redeclared, which means that we would catch those
-errors right at the compiling stage.
-
-- `let` cannot be redeclared in a function / block scope
-
-Also, they are **block scoped**, meaning that things defined in a if statement
-would not influence things outside the if statement.
-
-![Devops Image](../assets/Lesson7/Lesson7-1.png)
-
-### Lexical Scope
-
-A lexical scope in JavaScript means that a variable defined outside a function
-can be accessible inside another function defined after the variable
-declaration. But the opposite is not true; the variables defined inside a
-function will not be accessible outside that function.
-
-![Devops Image](../assets/Lesson7/Lesson7-2.png)
-
-- the relationship between global & local scope can also be considered as a kind
-  of lexical scope.
-
-## `this`
-
-This keyword has multiple different meanings in different context in javascript.
-Essentially, it is a keyword that refers to the object it belongs to.
-
-### `this` in a method
-
-When you use `this` in a method of an object, it refers to the owner of the
-method, in our case, it is the `obj`.
-
-However, when using `this` in a method, it should only be used in a regular
-function rather than an arrow function, since arrow function does not have a
-this binding.
-
-```jsx
-var obj = {
-  i: 10,
-  b: () => console.log(this.i, this),
-  c: function () {
-    console.log(this.i, this);
-  },
-};
-
-obj.b(); // prints undefined, Window {...} (or the global object)
-obj.c(); // prints 10, Object {...}
-```
-
-### `this` alone
-
-When used alone, the **owner** is the Global object, so `this` refers to the
-Global object.
-
-In a browser window the Global object is `[object Window]`:
-
-### `this` in arrow function
-
-Though arrow function doesn't have a this binding, it doesn't mean that we
-cannot use this in an arrow function.
-
-In this example, we use an arrow function inside the setTimeout function, and it
-correctly produce the age in Person as 42. The reason behind this is that since
-arrow function does not have a this binding, it searches the value of "this"
-upwards from its parent scope. As a result, `this.age = 42` is found and used.
-
-```jsx
-window.age = 10;
-
-function Person() {
-  this.age = 42;
-  setTimeout(() => {
-    console.log('this.age', this.age); // will yield 42.
-  }, 1000);
-}
-```
-
-If we use a normal function here, we would have the result 10.
-
-## Asynchronous
-
-### Introduction
-
-In a *synchronous* programming model, things happen one at a time. When you call
-a function that performs a long-running action, it returns only when the action
-has finished and it can return the result. This stops your program for the time
-the action takes.
-
-An *asynchronous* model allows multiple things to happen at the same time. When
-you start an action, your program continues to run. When the action finishes,
-the program is informed and gets access to the result (for example, the data
-read from a server).
-
-![Devops Image](../assets/Lesson7/Lesson7-3.png)
-
-This is especially important for javascript, since we will be doing asynchronous
-action (fetching data) a lot! Javascript also relies on asynchronous rather than
-thread model.
-
-### Callbacks
-
-One approach to asynchronous programming is to make functions that perform a
-slow action take an extra argument, a *callback function*. The action is
-started, and when it finishes, the callback function is called with the result.
-
-As an example, the `setTimeout` function waits a given number of milliseconds (a
-second is a thousand milliseconds) and then calls a function.
-
-```jsx
-setTimeout(() => console.log('Tick'), 500);
-```
-
-We can nest multiple callbacks with one another, to handle multiple asynchronous
-data. For instance, if we want to fetch a data from a server, and then process
-the data and load it to the user:
-
-```jsx
-// fetchData(username, callback)
-// processData(data, callback)
-// loadData(data, callback)
-
-fetchData(username, callback) {
-	result = fetch(username)
-	callback(result)
-}
-
-fetchData(username, (response) => {
-	processData(response, (processedData) => {
-		loadData(processedData);
-	});
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
 });
 ```
 
-Here, the function `fetchData` takes two arguments: the username and a callback
-function. This callback function will be called once the action of fetchData is
-finished.
+Above is the code for the most basic web server. Let's analyze it line by line.
 
-The function `processData`, likewise, also takes two arguments: the response
-from fetchData and a callback function.
+To import any npm packages that we download, we use the `require()` function
+provided by Node. Thus, the `const express = require('express')`
 
-As you can see, we can chain multiple callbacks together to form a large
-callback chain to process asynchronous data.
-
-### Promises
-
-Callbacks are great. However, when the callback chains get too long, it will be
-very hard to maintain. Promise is another way to write asynchronous code without
-using callbacks.
-
-A promise is an object that may produce a single value some time in the future:
-either a resolved value, or a reason that it’s not resolved.
-
-A promise may be in one of 3 possible states: fulfilled, rejected, or pending.
-Promise users can attach callbacks to handle the fulfilled value or the reason
-for rejection.
-
-![Devops Image](../assets/Lesson7/Lesson7-4.png)
-
-To handle a promise, you can use `.then` method of a promise to pass in two
-functions, one for the promise that resolves and one for the promise that
-rejects.
-
-### Example
-
-Our `wait(3000)` call will wait 3000ms (3 seconds), and then log `'Hello!'`. All
-spec-compatible promises define a `.then()` method which you use to pass
-handlers which can take the resolved or rejected value.
-
-The ES6 promise constructor takes a function. That function takes two
-parameters, `resolve()`, and `reject()`. In the example above, we’re only
-using `resolve()`, so I left `reject()` off the parameter list. Then we
-call `setTimeout()` to create the delay, and call `resolve()` when it’s
-finished.
-
-You can optionally `resolve()` or `reject()` with values, which will be passed
-to the callback functions attached with `.then()`.
+`const app = express()` creates an app object that provides various useful
+methods.
 
 ```jsx
-const wait = (time) => new Promise((resolve) => setTimeout(resolve, time));
-
-const responsePromise = wait(3000); // this is a promise returned by the wait function
-responsePromise.then(
-  () => console.log('Hello!'),
-  () => console.log('error')
-); // 'Hello!'
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 ```
 
-## Fetch
-
-Fetch API is a way for us to fetch data from another API. This gives us a great
-chance to practice our newly learned asynchronous coding skill!
-
-Fetch takes a request url and will send a HTTP request to that particular url,
-fetching all the related data from that API.
-
-It will return a promise, which then we can resolve it by using `.then` method.
+The `get` method will return "Hello world!" once a web browser visits
+[http://localhost:3000](http://localhost:3000) Essentially, we are telling node
+that when the user makes a `GET` request to the `/` url (this is the root url),
+define this response and send it.
 
 ```jsx
-fetch(some_random_url)
-  .then((response) => response.json())
-  .then((data) => console.log(data));
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
 ```
 
-Let's try fetch something from the NASA API!
+The `listen` method will set up and start the server that listens for any
+requests at a specific port.
 
-[NASA Open APIs](https://api.nasa.gov/)
+Let's start our application by typing `node index.js` then visiting
+[`http://localhost:3000`](http://localhost:3000/)
+
+You would see a Hello World displayed on the screen, which means that our server
+is up and running.
+
+## Adding routes and sending requests
+
+Now let's define some more functionality for our server.
+
+Before we jump into actually writing code, let's take a moment to consider
+design. With smarter design, we can make our code intuitive, clean, and
+efficient. The goal of software is to make life intuitive, clean, and efficient!
+
+We will be implementing a "dumb" version of a database, meaning that we will be
+emulating what a database would do with a very stupid implementation. We will
+use a JSON object to store the items at a certain index and then return those
+items as needed.
+
+First, let's think about what types of data we will be interfacing with. There
+are two main types: metadata and the actual database data. Our metadata is the
+data that we use to define the state of our database and its characteristics,
+and the actual database data will be the items we put.
+
+Some examples of a metadata are the database capacity and current index. Let's
+define two routes in our API: `/info` and `/db` . These are where we will make
+our requests.
+
+### GET Requests
 
 ```jsx
-fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
-  .then((response) => response.json())
-  .then((data) => console.log(data));
+const axios = require('axios');
+const express = require('express');
+const port = 3000;
+const app = express();
+
+app.use(express.json()); // Utilities for request bodies
+app.use(express.urlencoded({ extended: true })); // Utilities for query params
+
+let counter = 0; // inner implmentation
+stupidDB = {}; // initialize our dumb database
+
+// GET Requests
+
+app.get('/', (req, res) => {
+  // homepage
+  res.send('stupidDB API');
+});
+
+app.get('/info/index', (req, res) => {
+  // get the current index
+  res.send({ counter: counter });
+});
+
+app.get('/info/capacity', (req, res) => {
+  // get the capacity
+  res.send({ capacity: Object.keys(stupidDB).length });
+});
+
+app.get('/db/all', (req, res) => {
+  // get all items from the db
+  res.send(stupidDB);
+});
+
+app.get('/db/:id', (req, res) => {
+  // get a certain item from the db
+  const id = req.params.id;
+  if (id in stupidDB) {
+    res.send(stupidDB[id]);
+  } else {
+    res.send({ error: 'no object found with this id' });
+  }
+});
+
+// Server Setup
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
 ```
+
+GET requests have a lot of flexibility and power in the way that we make them.
+We can get information generically or we can encode the information that we want
+into our API. Theoretically, we could also put that information into the body of
+the request, but in general, that is not in line with our REST API principles.
+GET returns information that we query to it.
+
+### POST & PUT Requests
+
+```jsx
+const axios = require('axios');
+const express = require('express');
+const port = 3000;
+const app = express();
+
+app.use(express.json()); // Utilities for request bodies
+app.use(express.urlencoded({ extended: true })); // Utilities for query params
+
+let counter = 0; // inner implmentation
+stupidDB = {}; // initialize our dumb database
+
+// GET Requests
+
+app.get('/', (req, res) => {
+  // homepage
+  res.send('stupidDB API');
+});
+
+app.get('/info/index', (req, res) => {
+  // get the current index
+  res.send({ counter: counter });
+});
+
+app.get('/info/capacity', (req, res) => {
+  // get the capacity
+  res.send({ capacity: Object.keys(stupidDB).length });
+});
+
+app.get('/db/all', (req, res) => {
+  // get all items from the db
+  res.send(stupidDB);
+});
+
+app.get('/db/:id', (req, res) => {
+  // get a certain item from the db
+  const id = req.params.id;
+  if (id in stupidDB) {
+    res.send(stupidDB[id]);
+  } else {
+    res.send({ error: 'no object found with this id' });
+  }
+});
+
+// POST Requests
+
+app.post('/db', (req, res) => {
+  console.log(req);
+  const item = req.body.item; // access our request body
+  stupidDB[counter] = item; // add body item at index
+  counter += 1; // increment counter
+  res.send(`POST Request Successful. Item placed: ${item}`); // Send HTTP response
+});
+
+// PUT Requests
+
+app.put('/db/:id', (req, res) => {
+  const id = req.params.id; // get the index of the data to update
+  const item = req.body.item; // access the body of the request which holds new data
+  if (id in stupidDB) {
+    stupidDB[id] = item; // insert destructively
+    res.send({ newItem: item });
+  } else {
+    res.send({ error: 'no object found with this id' });
+  }
+});
+
+// Server Setup
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
+```
+
+POST and PUT are, in my opinion, what separate a static website from a true web
+application. POST and PUT are how we actually collect and store relevant data
+for the user. They are the methods which give our website **functionality** _for
+the user._
+
+Let's look at POST first. To pass data along a POST request, we place data in
+the body. Because we don't know the "shape" and size of our data, we utilize the
+body as a sort of empty container to hold the data that we want to send. (Note:
+It would be overkill to put request parameters into this space for GET
+requests).
+
+Exercise: Go to Postman and set up a POST request. Go to body and look at all of
+the potential options for request bodies. By and large, we will be using "raw"
+in this class. Click on raw and view the options in the dropdown for data
+formats. Lot's of options! In this class, we will largely stick to JSON but if
+you are curious, you can always explore others. (Note: other formats may require
+extra setup on the Express side).
+
+Now let's look at PUT. PUT is an excellent example of how versatile a request
+is. In our PUT request, we use both url encoding and the body to send relevant
+data to our server. In the URL, we put where we want the data to go, and in our
+body we define what data we want to go there. This is exactly aligned to the
+design principles we laid our for our GET and POST requests! With smarter design
+we can vastly simplify the complexity of our systems.
+
+Let's get some pictures from NASA using this API that they are providing and
+send the descriptions back.
+
+- [https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY](https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY)
+
+To send a request to a particular api, we use the package called Axios. Remember
+that we have already npm installed `axios` so it should be available for us to
+use.
+
+```bash
+const express = require('express')
+const app = express()
+const port = 3000
+
+const axios = require('axios');
+
+app.get('/nasa', (req, res) => {
+  axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
+  .then(response => {
+    res.send(response.data);
+  })
+  .catch(error => {
+    res.send(error);
+  });
+})
+```
+
+We will try to send an API request to NASA whenever a user visits the `/nasa`
+route of our website.
+
+Now to send an API request, we will use axios.get(). This will _send_ a `get`
+request to the particular url provided.
+
+Now go ahead and visit the
+[`http://localhost:3000/nasa`](http://localhost:3000/nasa) url, you would find
+this displaying on the screen.
+
+![expected output](../assets/Lesson8/output.png)
+
+We will learn more about API requests and web server in the future.
+
+## Node and File System
+
+Nodejs just like python, provides a very easy way to handle file system.
+
+Let's build on top of the web server that we have. Say we want to build a API
+where the user can input the name and type of a file and the server can create
+it.
+
+- [http://localhost:3000/create/?name=resume&type=txt](http://localhost:3000/create/?name=resume&type=txt)
+- The API will look something like this, where the ? indicates parameters, and
+  name=resume and type=txt are two of the parameters included in this API, they
+  are connected by the & sign.
+
+```jsx
+app.get('/create', (req, res) => {
+  let name = req.query.name;
+  let type = req.query.type;
+	...
+})
+```
+
+In the `/create` route, we simply can access all the parameter like this.
+
+Now, let us create a file using the file system package that node provides.
+
+```jsx
+const fs = require("fs");
+
+...
+
+app.get('/create', (req, res) => {
+  let name = req.query.name;
+  let type = req.query.type;
+  let filename = name + '.' + type;
+  fs.appendFile(filename, ' ', (err) => {
+    if (err) res.send(err);
+    res.send({
+      "message": "File created!",
+      "name": name,
+      "type": type
+    })
+  })
+})
+```
+
+The `fs.appendFile()` method creates a file with the given name in the current
+folder that the server is in. Now try to visit
+[`http://localhost:3000/create/?name=resume&type=txt`](http://localhost:3000/create/?name=resume&type=txt)
+and see whether a file named resume.txt is created.
 
 ## Resources
 
-[Asynchronous Programming :: Eloquent JavaScript](https://eloquentjavascript.net/11_async.html)
+[Express "Hello World" example](https://expressjs.com/en/starter/hello-world.html)
 
-[Master the JavaScript Interview: What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261)
+[NASA Open APIs](https://api.nasa.gov/)
+
+[Get Query Strings and Parameters in Express.js](https://stackabuse.com/get-query-strings-and-parameters-in-express-js/)
 
 ---
 

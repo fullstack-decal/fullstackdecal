@@ -1,295 +1,370 @@
 ---
-sidebar_position: 14
+sidebar_position: 15
 ---
 
-# Lesson 11 - Basic UI/UX
+# Lesson 12 - React 3: Axios, Project Structure, and Ecosystem
 
-## Intro to Design
+## Introduction
 
-Design is the foundation to products and solutions all around us. It is the
-instruction manual for developers and it is the roadmap that allows us to
-achieve the goals of our site.
+Welcome to the course's 4th and final react lesson. In the previous lesson, you
+were introduced to key parts of the React ecosystem in the form of package
+managers, routing, CSS solutions, and component libraries. In this lesson, we'll
+continue delving into the react ecosystem, the frontend ecosystem as a whole,
+and talk about some general software development principles as well.
 
-> “Design is not just what it looks like and feels like. Design is how it
-> works.” –Steve Jobs
+We'll start by introducing axios, a package in react which helps us connect our
+frontend to our backend. Through axios we can send data to the backend, and
+receive data from the backend, helping us create truly full-stack and powerful
+applications.
 
-Where is design? Everywhere. From the keyboard you type on to the shoes you wear
-to this page you’re looking at now, design hides in plain sight in our every day
-lives.
+We'll then introduce basic architecture and file design principles to help
+delineate efficient organization practices and gear everyone up for how to
+structure a large front-end project.
 
-### Importance of Design
+Lastly, we'll touch upon a number of more advanced frontend technologies such as
+Server-Side Rendering (SSR), Typescript, and Redux. We won't be going in-depth
+into these technologies, but we feel like they're good to know about at a
+surface level at the very least. Once you know what these technologies mean
+you'll be able to keep up with conversations about frontend technologies, as
+well as have a couple of points to dive deeper into frontend technologies after
+we finish the react section of the course's frontend curriculum.
 
-Design is the first impression, the face of your product. Your design represents
-your product in the most easily judged ways: visually and usability. Design is
-also how your user interacts with your product. Good design ensures your users
-will have the intended experience with your product. Without good design, the
-user experience of your product will be negatively impacted greatly.
+## Axios
 
-### What is Good Design?
+**Axios** **is how we connect the frontend to the backend.** In technical speak,
+Axios is a promise-based HTTP client for the browser and Node.js. Informally,
+Axios is a way to make API calls to the backend (GET requests, POST requests,
+etc...) and how we send data to and receive data from the backend.
 
-Good design is **user centered**. By keeping your designs user centered, your
-products/solutions will be designed specifically for your user needs. This will
-create a more targeted and effective solution. Good design is also
-**accessible**. There are many different kinds of people in the world. Good
-design targets user groups but also understands that even within user groups,
-there are many different kinds of people with different needs. Finally, good
-design is **intuitive and seamless**. Users should interact with your designs
-easily. There should be absolutely no confusion as to how to use or navigate
-your product.
+:::note
 
-:::tip
-
-Attractiveness ≠ good design! Good design is a marriage of usefulness and
-beauty.
-
-:::
-
-> “Just because something looks good doesn’t mean it’s useful. And just because
-> something is useful does not make it beautiful.” — Joshua Brewer, Co-founder
-> and CEO of [Abstract](https://www.goabstract.com/)
-
-### Norman’s Door: A Case of Bad Design
-
-Many times, it’s easier to spot bad design than good design. Good design allows
-you to flow seamlessly through the experience while bad design creates bumps in
-your experience.
-
-Norman’s Door is a door that is difficult or confusing to use. For any door, it
-should be apparent how you should interact with it. You should easily tell
-whether to push or pull and which side the hinges are on. A Norman door brings
-about confusion and self doubt over how you interact with it. With even the most
-creative and artistic door, a plain door with a doorknob wins in goal
-completion. In design, usability always wins over creativity.
-
-Feel free to read more about Norman’s Door
-[here](https://uxdesign.cc/intro-to-ux-the-norman-door-61f8120b6086).
-
-## UI/UX
-
-![UI/UX Comparison](../assets/Lesson12/Lesson12_UI_UX.png)
-
-### UI: User Interface
-
-UI design concerns the visual experience of a product. With good UI, you create
-a visually appealing product. Examples of UI include:
-
-- Typography and Color Palettes
-- Images
-- Buttons
-
-### UX: User Experience
-
-UX design focuses on the customer experience with a product. It mainly concerns
-how it feels to use a product. UX is user centered. With good UX, you create a
-useful and user targeted product.
-
-**UX Research**: research often aimed to further understand your users
-
-:::tip
-
-UI and UX go hand in hand. Your UX research should determine how your UI should
-be designed. Similarly, the way the UI is designed heavily influences the
-experience of your product.
+Axios is how we connect the frontend to the backend. Other libraries, like the
+native fetch() JS API and jQuery's AJAX, can also be used for web service
+requests, but Axios is the preferred library for this course.
 
 :::
 
-## UI Elements
+Once again: Axios is how we connect the frontend to the backend. Please remember
+this point, for it will be important when trying to create almost any functional
+web project.
 
-Choose/design all your UI elements with intention and your users in mind! Make
-sure to be consistent with your choices as well. This list is also not
-completely comprehensive. There are many UI Elements, too many to go over in one
-lesson. For a more comprehensive list check out
-[this site](https://designvault.io/patterns/).
+:::note
 
-### Fonts/Typography
-
-**Typeface**
-
-- Definition: the design of lettering; a particular set of glyphs that share a
-  common design
-
-**Sans Serif vs Serif**
-
-- Serifs = embellished
-- Sans Serif = without embellishments
-- When choosing fonts for your site, typically designers pick one serif and one
-  sans serif.
-
-![Fonts](../assets/Lesson12/Lesson12_Fonts.png)
-
-**Hierarchy**
-
-- Role: keep the website organized so users can easily identify which category
-  of information they are viewing
-- Heading 1, heading 2, text etc.
-
-**Weights**
-
-- Bold, italics, condensed etc.
-
-**Size**
-
-- Desktop: > 15px
-- Mobile: > 12px
-
-This is a very simple breakdown of fonts and typography. For more information,
-feel free to check out
-[this medium article](https://medium.com/gravitdesigner/typography-elements-everyone-needs-to-understand-5fdea82f470d).
-
-### Colors
-
-You can ensure your colors go together by utilizing the color wheel. Here are
-some additional resources to help you choose your colors
-
-[Adobe Color](https://color.adobe.com/create/color-wheel)
-
-[Coolors](https://coolors.co/)
-
-![Colors](../assets/Lesson12/Lesson12_Colors.png)
-
-:::tip
-
-"Less is more" - the more colors you have to work with, the harder it is to get
-them all to work together
+In class-based components, we would tie our API calls to lifecycle methods to be
+invoked at a particular point in a component's lifecycle. As you know, the
+functional equivalent of lifecycle methods are React Hooks, so we can simulate
+the same process by tying our calls to the useEffect() hook.
 
 :::
 
-**Contrast**
+#### Documentation
 
-Make sure your colors are contrasting with each other. Also, make sure the color
-of your text contrasts the color of the background. Here is a good use of colors
-and contrast:
+[Axios](https://axios-http.com/)
 
-![Contrast](../assets/Lesson12/Lesson12_Contrast.png)
+[GitHub - axios/axios: Promise based HTTP client for the browser and node.js](https://github.com/axios/axios)
 
-**Accessibility**
+#### Installation
 
-Color blindness is a common visual impairment that designers must consider when
-choosing their colors. Here are some tips in designing with accessibility in
-mind with colors:
+```bash
+yarn add axios
+```
 
-- Use icons and colors
-- Keep it minimal
-- Use textures
-- Use contrasting hues
-- Avoid bad color combos popular with color blindness
+### Using Axios
 
-For a more detailed breakdown of how to choose colors with accessibility in
-mind, check out
-[this article](https://www.getfeedback.com/resources/ux/how-to-design-for-color-blindness/).
+Don't forget to replace your username in the place of `{#your github name}`.
 
-Again, this is a very simple breakdown of colors. For additional information on
-choosing your colors, check out
-[this youtube video](https://www.youtube.com/watch?v=C1rQQ_YpgcI).
+```jsx
+import axios from "axios";
+...
+axios.get('https://api.github.com/users/{#your github name}')
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+```
 
-### Cards
+Let's dissect this piece of code into two parts: the API call, and everything
+else.
 
-As content has become more compartmentalized and personalized over the last few
-years, cards have been proven to be a great way to aggregate individual pieces
-of information in one place.
+```jsx
+axios.get("https://api.github.com/users/{#your github name}");
+```
 
-![Cards](../assets/Lesson12/Lesson12_Cards.png)
+This piece of code is where the magic happens. Here we use axios to make a GET
+request to `https://api.github.com/users/{#your github name}`.
 
-### Nav Bar
+If you're unfamiliar with what GET and POST requests are:
 
-The Nav Bar is your user’s directory. It gives easy access to the main pages and
-simplifies flows.
+1. **`[GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET)`:**
+   The `GET` method requests a representation of the specified resource.
+   Requests using `GET` should only retrieve data.
+2. **`[POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST)`:**
+   The `POST` method is used to submit an entity (a form) to the specified
+   resource, often causing a change in state or side effects on the server.
+3. **`[PUT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT)`:**
+   The `PUT` method replaces all current representations of the target resource
+   with the request payload. In other words, you can use `PUT` to update a
+   resource.
+4. **`[DELETE](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE)`:**
+   The `DELETE` method deletes the specified resource.
+5. **`[PATCH](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH)`:**
+   The `PATCH` method is used to apply partial modifications to a resource.
 
-![Nav Bar 1](../assets/Lesson12/Lesson12_NavBar1.png)
+You should be familiar with the most commonly used ones, which are `GET`,
+`POST`, `PUT`, and `DELETE` requests.
 
-![Nav Bar 2](../assets/Lesson12/Lesson12_NavBar2.png)
+This GET request returns a promise, which is why we follow up the above line of
+code with
 
-![Nav Bar 3](../assets/Lesson12/Lesson12_NavBar3.png)
+```jsx
+.then(function (response) {
+   console.log(response);
+ })
+ .catch(function (error) {
+   console.log(error);
+ })
+```
 
-### Carousels
+This piece of code, however, isn't specific to axios, and we can choose to deal
+with the promise returned by our axios method any way we want.
 
-Carousels optimize screen space by allowing multiple pieces of content to occupy
-a single rotatable space.
+### Using Axios Inside React
 
-![Carousels](../assets/Lesson12/Lesson12_Carousels.png)
+```jsx
+import React, {useState} from 'react';
 
-### Buttons
+import axios from 'axios';
 
-Pressing a button allows a user to perform some sort of action designated by the
-designer.
+//As a functional component
 
-![Buttons](../assets/Lesson12/Lesson12_Buttons.png)
+const App = () => {
+	const [person, setPerson] = useState("");
 
-### States
+	useEffect( () => {
+			axios.get(`https://api.github.com/users/{#your github name}`)
+				.then( res => {
+					const fetchedPerson = res.name;
+					setPerson(fetchedPerson);
+				})
+		}, []);
 
-States communicate the status of a UI element.
+	return (
+		<h1>{person}</h1>
+	);
+}
 
-![States](../assets/Lesson12/Lesson12_States.png)
+export default App
 
-### Forms
+//or, as a class component...
 
-Forms allow the product to collect a set of information from the user.
+export default class App extends React.Component {
+	constructor(props) {
+		this.state = {
+	    person: ""
+	  }
+	}
 
-![Forms](../assets/Lesson12/Lesson12_Forms.png)
+  componentDidMount() {
+    axios.get(`https://api.github.com/users/{#your github name}`)
+      .then(res => {
+        const personName = res.name;
+        this.setState({ person: personName });
+      })
+  }
 
-## Role of the Designer
+  render() {
+    return (
+      <h1>{this.state.person}</h1>
+    )
+  }
+}
+```
 
-Every user who interacts with your product will have some need: buying
-something, acquiring information, signing up, logging in, or using a certain
-feature. **It’s up to the designer to ensure the smoothest and most attractive
-way for the user to accomplish their goal.**
+## The Anatomy of a React App
 
-Here are some typical responsibilities of a web designer:
+![React Project File Structure](../assets/Lesson9/file-structure.png)
 
-- Create graphics and features
-  - Designing the UI of the website
-  - Deciding what is the best way to implement (or not implement) a certain
-    feature
-- Design the user flow
-  - Where does this button lead to? How do we get to a certain page?
-- Conduct UX research
-  - Conduct interviews, develop surveys etc
-  - Define user personas and storyboard to identify target users and their pain
-    points/needs
-- Communicate with developers and clients
-  - Visualize and put to paper the needs and visions of clients
-  - Ensure their designs are feasible for developers to build
-  - Relay intended behaviors of features and designs to developers
+A React app is composed of many different files and filetypes - what do each of
+them do and why do we need them? Knowing the answer to this question isn't
+knowledge that applies just to frontend engineering, but crucial to becoming a
+full-fledged software engineer.
 
-## Tools of the Trade
+#### `README.md`
 
-### Adobe Illustrator
+Essentially a back-of-the-book summary of your code. Your `README.md` should
+describe what your code is for, what it does, and if applicable, it should
+provide a detailed overview of each file and its functions. Think about your
+`README.md` as a guide to your code.
 
-Illustrator is a powerful tool that is typically used for graphic design. It’s not commonly used for web or interface design but is often used to create graphics that are used in an interface. Examples of designs made in Illustrator:
+#### `package.json` and `package-lock.json`
 
-![Illustrator](../assets/Lesson12/Lesson12_IL.png)
+package.json is essentially a list of the dependencies of your app!
 
-### Figma
+package-lock.json is a version-locked version of package.json, so that each new
+device that downloads the code downloads the correct dependencies. This is to
+prevent new updates to dependencies breaking your code.
 
-Figma is a tool for prototyping and designing interfaces. Compared to Illustrator, it is not as good for complex graphics, however, Figma is also occasionally used for more simple graphic designs. The tool is targeted towards UI/UX and Product Designers with features such as simulating clicks, buttons, swipes, animations, and live updates/collaboration. To download Figma for education, follow [this link](https://www.figma.com/education/). Examples of designs made in Figma:
+#### `node_modules`
 
-[Barra Labs](https://www.figma.com/proto/5V6vxbrBIjTiboGlLeaE33/BarraLabs-Drafts?node-id=308%3A4&scaling=min-zoom)
+Where all your dependencies live! You should never ship out node_modules because
+its YUGE (try opening it up and you'll see). Always include node_modules in your
+.gitignore.
 
-[Best Path Transport](https://www.figma.com/proto/XyvI8u5I8NvhFey7gkUrnN/Table-Pages?node-id=257%3A1506&scaling=contain)
+#### `build`
 
-### Other Tools
+A minified build version of your app - All your code is transformed into an
+extremely compact version of itself, and this version is what is meant to be
+served to the public, since you get a huge speedup from using the build version!
+Run `npm run build` in the root directory of your app in the terminal to create
+the build folder!
 
-- **Framer**: for prototyping interfaces specifically, integration with Figma
-- **Sketch**: not a web application, similar to Figma though
-- **Adobe _XD_**: An Adobe product, not for teams. Interface design tool.
+## Architecture and Design Methodologies
 
-## Industry Jobs
+#### Read These First
 
-The ability to design is a hard skill that can be applied to many different
-industry careers. Here are some popular design jobs you can further explore:
+[Thinking in React - React](https://reactjs.org/docs/thinking-in-react.html)
 
-- UI/UX Designer: Designing the user interface and user experience of a digital
-  product
-- Product Designer: Designing and evaluating the features of a product
-- UX Researcher: Conducting research that will be the backbone of the product’s
-  design
-- Graphic Designer: Designing graphics and visuals
+[Design Principles - React](https://reactjs.org/docs/design-principles.html)
+
+#### Extra Reading
+
+[React Architecture Best Practices and Tips from Community Experts](https://www.simform.com/react-architecture-best-practices/)
+
+[Atomic Design Methodology | Atomic Design by Brad Frost](https://atomicdesign.bradfrost.com/chapter-2/)
+
+## Server-Side Rendering
+
+:::note
+
+Server-Side Rendering (SSR) is a more advanced tool in the react ecosystem so
+while we've decided not to teach it in-depth, it's still useful to know what it
+is and what its use case might be.
+
+:::
+
+Performance is a central concern for frontend developers. We should always be
+striving to serve the leanest web apps that perform faster than humans can
+think. This is as much a game of psychology as it is a technological challenge.
+It's a challenge of loading the correct content first so a user can see a site
+and begin to make a decision of what they want to do (scroll down, click a
+button, log in, etc.) and then be prepared for that action before they make that
+decision.
+
+Enter server-side rendering. This is a technique where you run React on your
+Node.js server _before_ you serve the request to the user and send down the
+first rendering of your website already done. This saves precious milliseconds+
+on your site because otherwise, the user has to download the HTML, then download
+the JavaScript, then execute the JS to get the app. In this case, they'll just
+download the HTML and see the first rendered page while React is loading in the
+background.
+
+While the total time to when the page is actually interactive is comparable, if
+a bit slower, the time to when the user _sees_ something for the first time
+should be much faster, hence why this is a popular technique.
+
+A popular framework built on top of React that comes with server-side rendering
+is Next.js.
+
+[Next.js by Vercel - The React Framework](https://nextjs.org/)
+
+**TLDR:** Server Side Rendering makes websites go faster (usually).
+
+## Redux
+
+:::note
+
+Redux is a more advanced tool in the react ecosystem so while we've decided not
+to teach it in-depth, it's still useful to know what it is and what its use case
+might be.
+
+:::
+
+Redux is a well-known library that does state management for you, similar to
+[context in react](https://reactjs.org/docs/context.html). With context, you use
+the provider and consumer as a sort of portal to skip passing parameters through
+every component. With Redux, we're taking the state management _out_ of React
+entirely and moving it to a separate store.
+
+Why do we have Redux?
+
+1. Context used to be a lot worse to use and less useful. This made Redux (or
+   Redux-like) management tools the only option
+2. Redux code is _extremely testable_. This is probably the most compelling
+   reason to use it. Having your state mutation be broken up in such a way to
+   make it easy to test is fantastic. This is also mitigated because we have
+   `useReducer` now.
+3. The debugging story is pretty good.
+
+How often will we use Redux? Never, I anticipate. I rarely had problems that
+Redux solved (they exist; I just didn't have them) and in the few cases now
+where I would see myself using Redux I think React's context hook would cover
+it. But if Redux speaks to you, do it! Don't let me stop you. It's a great
+library. Just be cautious. And there are reasons to use it: if you have complex
+orchestrations of async data, Redux can be immensely useful and I _would_ use it
+for that.
+
+[Redux - A predictable state container for JavaScript apps. | Redux](https://redux.js.org/)
+
+**TLDR:** Redux is used to manage global state in React, but is being phased out
+by React's Context hook.
+
+## TypeScript
+
+:::note
+
+Typescript is a more advanced tool in the react ecosystem so while we've decided
+not to teach it in-depth, it's still useful to know what it is and what its use
+case might be.
+
+:::
+
+Typescript is a static type object-oriented programming language maintained by
+Microsoft. It can be seen as a superset of JavaScript. With the help of
+Typescript Compiler (TSC), we can convert typescript code to JavaScript, and
+then it would be made understandable to the browser and to Node.
+
+So, why do we use Typescript if we can directly write in JavaScript? There are
+scenarios where JavaScript may not function that well.
+
+- Since Typescript is a statically typed language, meaning that all the types
+  can be checked during compile time, it can limit the number of mistakes during
+  the run time. Thus easier to debug.
+- Static typing also provides highly productive development tools for JavaScript
+  IDEs and practices, like static type checking.
+
+As a result, Typescript is rapidly gaining in popularity nowadays.
+
+:::note
+
+We used to teach a lesson on TypeScript. You can find the
+[old reading for it here.](/docs/Guides/Typescript)
+
+:::
+
+**Full-Stack DeCal Typescript Lesson:**
+
+[Typescript](https://www.notion.so/Typescript-693b0785d1e648a7a91cf4301ebd91fd)
+
+**TLDR:** Typescript = type-checked Javascript.
+
+## Conclusion
+
+After this lesson, you hopefully have all the tools you'd need to build robust,
+large-scale web applications, and if not then you know where to look to learn
+about the information you'd need to do so. Frontend development is a vast
+landscape and is always changing, so make sure to keep that in mind while
+developing. We've introduced you to the core tools and ideas you'll need, but
+these tools and methodologies are constantly being updated. Software engineering
+is a constant learning cycle, so never be afraid to look into a new solution or
+an alternative method of implementing your ideas!
 
 ---
 
 **Contributors**
 
-- [Isabel Zheng](https://www.linkedin.com/in/isabel-zheng-24003b1b2/)
-- [Vicky Li](https://www.linkedin.com/in/victoriayli/)
-- [Tijmen Sep](https://www.linkedin.com/in/tijmen-sep-582469175/)
-- [Jasmine Chen](https://www.linkedin.com/in/jasmine-chen-8894901b6/)
+- [Samarth Goel](https://berkeley.zoom.us/my/samarthgoel)
+- [Alex Wu](https://www.linkedin.com/in/jialin-wu-alex/)
+- [Arushi Somani](https://www.linkedin.com/in/arushisomani/)
+- [Brian Holt](https://www.linkedin.com/in/btholt/)

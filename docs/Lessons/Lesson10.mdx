@@ -1,1095 +1,586 @@
 ---
-sidebar_position: 12
+sidebar_position: 13
 ---
 
-import VividDemo from "../../static/img/vivid-demo.gif"
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+} from '@chakra-ui/react';
+import Admonition from '@theme/Admonition';
 
-# Lesson 9 - React 2: More Hooks, Libraries, Styling, and Routing
+# Lesson 10 - HTTP, REST, Postman
 
 ## Introduction
 
-Welcome to the second React lesson of the course! In this reading, we'll begin
-with a review of hooks and the `useState` hook which we covered in our last
-reading. We'll then dive into the `useEffect` hook. Together, `useState` and
-`useEffect` are extremely powerful, and are probably the only 2 hooks you'll
-need in this course.
+In today's internet, HTTP is the most widely used protocol. It's simple, efficient, and easy to use. However, it wasn't designed with modern web applications in mind. This is where REST comes in.
 
-After looking at hooks, we'll delve into how styling works in React, covering a
-couple ways that you can use to ensure that your React apps look as beautiful as
-your websites did in the first part of the course.
+REST is a newer architectural style for building web services. It's more flexible and scalable than HTTP, and is better suited for modern web applications.
 
-Next, we'll dive into the notion of libraries in React and the powerful
-ecosystem that surrounds it. From there, we'll cover component libraries, a
-powerful way to write less code and create stunning UI's in minutes as compared
-to hours.
+One of the best ways to learn REST is to use a tool like Postman. Postman is a free, cross-platform app that makes it easy to send and receive REST requests.
 
-Finally, we'll touch upon routing and how to easily add multiple pages to your
-websites in React.
+## HTTP
 
-## useEffect
+When we think of the Internet, we often think only of the websites which we are
+visiting. What we often fail to see is the vast network of resources that are
+utilized when we use that website.
 
-Let's start with a quick review of hooks!
+Modern web applications consist of two major parts: a frontend and a backend. I
+like to use the restaurant analogy to visualize the difference. A traditional
+restaurant consists of two main parts: a dining room and a kitchen. When we
+order, we only ever see the nicely-furnished, well-decorated dining room. But
+when we give our order to the waiter, they must relay that order to the kitchen.
+A complicated set of instructions is then executed to produce our order and our
+waiter, like magic, returns with our food.
 
-### Hook review
+Similarly, when we use a website, we interact only with the frontend. The
+frontend is simply a rendering of content that the user can interact with
+directly. However, when we interact with that frontend, the frontend itslef is
+normally interacting with a backend that produces the content that we want.
 
-`useEffect` is a hook. Hooks in React manage the state of your application.
-Essentially, hooks are functions that let you “hook into” React state and
-lifecycle features from functional components. React provides a few built-in
-Hooks like `useState`. You can also create your own Hooks to reuse stateful
-behavior between different components. In the
-[React 1 Reading](/docs/Lessons/Lesson9), you learnt about the `useState` hook,
-which we used to initialize a variable, along with an updater function for that
-variable. Let's do a quick review of `useState` before moving on.
+The natural question, then, is how do the frontend and backend communicate? The
+answer is HTTP. HTTP is the backbone of the Internet. Put simply, it is how
+computers in a network talk to one another. The Internet is, largely, just a
+continuous stream of millions of HTTP requests sent back and forth across a vast
+network. If your computer is a node in the graph of the Internet, then HTTP is
+the edge connecting it to all others.
 
-### useState Review
+### HTTP Requests
 
-Let's recreate a counter example, just like we did in the
-[React 1 Reading](/docs/Lessons/Lesson9).
+To communicate across many different machines and across vast networks, we
+require some standardized form of communication to be able to both send and
+receive information reliably.
 
-This example renders a counter. When you click the button, it increments the
-value of `count`.
+To do this, we turn to HTTP requests. HTTP requests are essentially objects
+containing information about the type, time, and relevant information as it
+pertains to a request. We fill out this request and then send it to the server
+of interest. If that server is meant to respond, it will send back an HTTP
+response and the relevant data to answer your request.
 
-```jsx
-import React, { useState } from 'react';
+HTTP requests consist of two parts: the header and the body.
 
-const Counter = () => {
-  // Declare a new state variable, which we'll call "count"
-  const [count, setCount] = useState(0);
+Below is an example of an HTTP header.
 
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
-    </div>
-  );
-};
+```plaintext
+GET /home.html HTTP/1.1
+Host: developer.mozilla.org
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: https://developer.mozilla.org/testpage.html
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Mon, 18 Jul 2016 02:36:04 GMT
+If-None-Match: "c561c68d0ba92bbeb8b0fff2a9199f722e3a621a"
+Cache-Control: max-age=0
 ```
 
-Here, `useState` is a Hook. We call it inside of a functional component in React
-to manage the state of our application. `useState` returns a pair: the current
-state value and a function that lets you update it. You can call this function
-from anywhere to update the current state value. In our example above, we
-initialized `count` to have a starting state value of `0` and `setCount` to a
-function which updates our `count` variable. The only argument to `useState` is
-the initial state. In the example above, it is 0 because our counter starts from
-zero.
-
-#### What Do Square Brackets Mean?
-
-You might have noticed the square brackets when we declare a state variable:
-
-```javascript
-const [count, setCount] = useState(0);
-```
-
-The names on the left aren’t a part of the React API. You can name your own
-state variables:
-
-```javascript
-const [fruit, setFruit] = useState('banana');
-```
-
-This JavaScript syntax is called “array destructuring”. It means that we’re
-making two new variables `fruit` and `setFruit`, where `fruit` is set to the
-first value returned by `useState`, and `setFruit` is the second. It is
-equivalent to this code:
-
-```javascript
-var fruitStateVariable = useState('banana'); // Returns a pair
-var fruit = fruitStateVariable[0]; // First item in a pair
-var setFruit = fruitStateVariable[1]; // Second item in a pair
-```
-
-When we declare a state variable with `useState`, it returns a pair — an array
-with two items. The first item is the current value, and the second is a
-function that lets us update it. Using `[0]` and `[1]` to access them is a bit
-confusing because they have a specific meaning. This is why we use array
-destructuring instead.
-
-##### Declaring Multiple State Variables
-
-Declaring state variables as a pair of `[something, setSomething]` is also handy
-because it lets us give different names to different state variables if we want
-to use more than one:
-
-```jsx
-const ExampleWithManyStates = () => {
-  // Declare multiple state variables!
-  const [age, setAge] = useState(42);
-  const [fruit, setFruit] = useState('banana');
-  const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
-  // ...
-};
-```
-
-In the above component, we have `age`, `fruit`, and `todos` as local variables,
-and we can update them individually:
-
-```jsx
-function handleOrangeClick() {
-  setFruit('orange');
-}
-```
-
-You **don’t have to** use many state variables. State variables can hold objects
-and arrays just fine, so you can still group related data together.
-
-### Using useEffect
-
-#### Importing useEffect
-
-Similar to `useState` and any other hook we might want to use, we import
-`useEffect` like so.
-
-```javascript
-import React, { useState, useEffect } from 'react';
-```
-
-If we just wanted to import `useEffect` and not `useState`, we would do the
-following:
-
-```javascript
-import React, { useEffect } from 'react';
-```
-
-#### Counter Example
-
-The `useEffect` hook lets you perform side effects in function components:
-
-```jsx {1,6-10}
-import React, { useState, useEffect } from 'react';
-
-function Example() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    // Update the document title using the browser API
-    document.title = `You clicked ${count} times`;
-  });
-
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
-    </div>
-  );
-}
-```
-
-This code snippet is based on on our previous counter example, but we added a
-new feature to it: we set the document title to a custom message including the
-number of clicks.
-
-Data fetching, setting up a subscription, and manually changing the DOM in React
-components are all examples of side effects.
-
-Sometimes, we want to **run some additional code after React has updated the
-DOM.** Network requests, manual DOM mutations, and logging are some common
-examples of effects.
-
-#### Details
-
-**What does `useEffect` do?** By using this Hook, you tell React that your
-component needs to do something after render. React will remember the function
-you passed (we'll refer to it as our "effect"), and call it later after
-performing the DOM updates. In this effect, we set the document title, but we
-could also perform data fetching or call some other imperative API.
-
-**Why is `useEffect` called inside a component?** Placing `useEffect` inside the
-component lets us access the `count` state variable (or any props) right from
-the effect. We don't need a special API to read it -- it's already in the
-function scope.
-
-**Does `useEffect` run after every render?** Yes! By default, it runs both after
-the first render _and_ after every update. (We will later talk about how to
-customize this). Instead of thinking in terms of "mounting" and "updating", you
-might find it easier to think that effects happen "after render". React
-guarantees the DOM has been updated by the time it runs the effects.
-
-Now that we know more about effects, these lines should make sense:
-
-```jsx
-function Example() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    document.title = `You clicked ${count} times`;
-  });
-}
-```
-
-We declare the `count` state variable, and then we tell React we need to use an
-effect. We pass a function to the `useEffect` Hook. This function we pass _is_
-our effect. Inside our effect, we set the document title using the
-`document.title` browser API. We can read the latest `count` inside the effect
-because it's in the scope of our function. When React renders our component, it
-will remember the effect we used, and then run our effect after updating the
-DOM. This happens for every render, including the first one.
-
-### General Usage
-
-Now that we've learnt the basics of hooks and `useEffect`, lets take another
-look at how to use `useEffect` in a more general setting. The general format of
-a`useEffect` hook is as follows.
-
-```jsx
-useEffect(() => {
-  // put your code here
-}, dependencies);
-```
-
-Essentially, `useEffect` is a function that takes in two arguements. The first
-arguement is a function with what you want your `useEffect` hook to do. This
-function takes in no arguements, hence the empty brackets at the beginning of
-our passed in arrow function. The second arguement, which is optional, is an
-array of dependencies. For example, let's say that inside of our `useEffect`
-hook, we want to update our `score` variable, but only if the `referee` variable
-has changed. It would look something like this:
-
-```jsx
-useEffect(() => {
-  setScore(someNewScore);
-}, [referee]);
-```
-
-Thus we only `setScore` to our new score value if the `referee` variable
-changes. If we wanted to set it so that we only updated the score based on
-either the `referee` variable or the `inning` variable changing, we could do
-something like this.
-
-```jsx
-useEffect(() => {
-  setScore(someNewScore);
-}, [referee, inning]);
-```
-
-#### Running useEffect on First render
-
-If the `useEffect` hook seemed confusing to you, that's totally fine! Just make
-sure to **pay attention here**.
-
-If you want to update something in your app, or have something happen right at
-page load, you can put it into the useEffect function, and **pass in an empty
-array into it's list of dependencies**. For example, say I wanted to print
-"Hello World" to the console right at page load. I would do the following.
-
-```jsx
-useEffect(() => {
-  console.log('Hello World');
-}, []);
-```
-
-Notice the empty array that was passed into the second arguement of our
-`useEffect`. This ensures that whatever's in our `useEffect` function only runs
-on page load. This will come up more often than not when you're building and
-testing any future projects.
-
-## Styling in React
-
-There are many, many ways to style your components and JSX code in React. In
-this reading we'll talk about Tailwind CSS with Vivid, CSS-in-JS, CSS Modules, and Styled Components.
-
-### Tailwind CSS 
-Tailwind CSS is a utility-first CSS framework. This means that instead of writing traditional global CSS like `background-color: #f63344`, you apply styles in-line via small “utility classes” like `p-4` for padding or `bg-red-500` for a red background.
-
-Each of these utility classes is atomic, so they only apply one style rule at a time. While you can use them to write arbitrary CSS using their arbitrary notation (e.g., `bg-[#f63344]`), most of the time you’ll be using the color and sizing scales that Tailwind provides for you. All of these features can also be easily configured be changing your `tailwind.config.js`.
-
-#### Why Use Tailwind
-Tailwind offers benefits for beginners and experts alike!
-
-For beginners or simple applications, **Tailwind is a fast way to write all your styling inline.** By not having to deal with the abstraction of component-based classnames or fine-tuning colors and pixel values, you can move faster with Tailwind than with alternative CSS frameworks.
-
-For more advanced use-cases, **Tailwind forms a useful part of a design system by streamlining modularity and reducing unneeded abstractions.** Since Tailwind lets you configure a set of common sizes, colors, and utilities, you can easily write consistent styling across your app. By removing modularity at the CSS level (since styling is done inline), you can focus on just making your React code modular.
-
-To prevent long class strings at all levels of your code, you generally have to be more thoughtful about your component modularity when using Tailwind CSS.
-
-#### Installation
-The official [Tailwind installation guide](https://tailwindcss.com/docs/installation) does a great job of walking you through the easy 4 step setup. You can follow the “PostCSS” or “Framework Guides” sections there to get started.
-
-#### Usage
-
-Once Tailwind is set up, you can use any of the classes in their [docs](https://tailwindcss.com/docs/installation) right in your code:
-
-```html
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
-```
-
-This snippet makes your heading large, bolded, and underlined — pretty self-explanatory!
-
-### Vivid
-
-Vivid is an in-browser visual editor that lets you test out Tailwind styles and automatically write them directly to your code.
-
-With Vivid, you can click on any component in your page and have its code pop up right in your browser. From there, you can edit its code in the code pane, or preview and apply styles with shortcuts through the command palette.
-
-#### Installation
-To summarize the [Vivid docs](https://docs.vivid.lol):
-
-1. Install Vivid with `npm i -D vivid-studio`
-2. Initialize it by pasting the following code at the top of your root file outside of any functions:
-
-```jsx
-if (
-  typeof window !== "undefined" &&
-  process.env.NODE_ENV === "development"
-) {
-  import("vivid-studio").then((v) => v.run());
-  import("vivid-studio/style.css");
-}
-```
-
-#### Usage
-
-Once Vivid is set up, you just have to start your app in development mode (usually with `npm run start` or `npm run dev`). From there, Vivid will walk you through its functionality!
-
-Instead of the usual loop of opening your IDE, looking for a component’s code, and testing out styles in the browser, you can just <kbd>Cmd</kbd>-Click (Windows/Linux: <kbd>Ctrl</kbd>-Click) any part of your page and start editing its code from your browser.
-
-Once you get comfortable with editing code in the code pane, you can iterate through styles even faster with the command palette shortcuts Vivid provides (<kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + K). 
-
-<img src={VividDemo} alt = "Vivid Demo"/>
-
----
-
-### CSS-in-JS
-
-CSS-in-JS is a term you'll hear often, but what exactly does it mean? CSS-in-JS
-usually means using an alternative method of styling than just plain CSS files,
-such as [styled-components](https://styled-components.com/) or
-[css-modules](https://github.com/css-modules/css-modules). These solutions often
-require some change in the javascript that is being written, which is why we
-call these solutions "CSS in JS".
-
-Why do we care about using CSS-in-JS? This is because all CSS in our react app
-is global. Say you have two components, Page1 and Page2. Even if you create
-`page1.css` and `page2.css` and only import page1.css into your Page1 component,
-all the classes you create in `page1.css` will apply to your Page2 component as
-well. Thus if you accidentally use the same class name across both components,
-or use a class name multiple times anywhere in your app, the CSS rules you've
-written in `page1.css` will apply everywhere, which in most cases is highly
-undesirable and can cause unintended and difficult to fix CSS collisions.
-
-### CSS Modules
-
-CSS modules transforms your CSS files from being globally scoped to being
-component scoped, which means that the CSS you import into your component only
-affects the component you've imported that CSS file into. To transform a CSS
-file into a CSS modules file, simply change the file name from `<file name>.css`
-to `<file name>.module.css`. CSS modules also works with sass. In order to use
-CSS modules in your app, make the following changes.
-
-```jsx
-//Importing Regular CSS
-import './styles.css';
-
-//Using Regular CSS
-<div className="container">
-  <h3>Hi There!</h3>
-</div>;
-```
-
-```jsx
-//Importing CSS Modules
-import styles from './styles.module.css';
-
-//Using CSS Modules
-<div className={styles['container']}>
-  <h3>Hi There!</h3>
-</div>;
-```
-
-The difference in your JavaScript files is that you treat your CSS file as an
-object and access the class names the same way you would access an object's
-attributes, but that's it! Your CSS files remain the same and now there's no
-need to worry about annoying CSS collisions.
-
-#### Installation
-
-CSS modules comes pre-installed with Create React App (sometimes referred to as
-CRA).
-
-#### Documentation
-
-[Documentation](https://github.com/css-modules/css-modules)
-
----
-
-### Styled Components
-
-Using styled components is a bit more tricky.
-
-#### Why Use Styled Components
-
-- Write CSS in JS alongside HTML in JS, but don't have to inline the CSS
-- Keeps track of which components are rendered on a page and injects their
-  styles and nothing else, fully automatically.
-- You never have to worry about duplication, overlap or misspellings. No need to
-  keep track of class names.
-- Adapting the styling of a component based on its props or a global theme is
-  simple and intuitive without having to manually manage dozens of classes.
-
-#### Installation
+The first line defines the type of request, also known as the method (more on
+this below), the location on the server to which the request is made, and the
+protocol. This first line is also called the start line. The second line
+contains the name of the server to which the request is made. This is the
+information that is used to send your request to the appropriate machine to
+handle it.
+
+The remaining lines are used to specify information about the request. This
+includes potential authorization, cacheing, handling, etc. At this level, we
+won't be using these too much, but as your applications become more complicated,
+taking advantage of these headers may allow for significantly more
+functionality.
+
+### Methods
+
+HTTP defines a set of request methods to indicate the desired action to be
+performed for a given resource.
+
+1. **[`GET`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET):**
+   The `GET` method requests a representation of the specified resource.
+   Requests using `GET` should only retrieve data.
+2. **[`HEAD`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/HEAD):**
+   The `HEAD` method asks for a response identical to that of a `GET` request,
+   but without the response body.
+3. **[`POST`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST):**
+   The `POST` method is used to submit an entity (a form) to the specified
+   resource, often causing a change in state or side effects on the server.
+4. **[`PUT`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT):**
+   The `PUT` method replaces all current representations of the target resource
+   with the request payload. In other words, you can use `PUT` to update a
+   resource.
+5. **[`DELETE`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE):**
+   The`DELETE` method deletes the specified resource.
+6. **[`CONNECT`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT):**
+   The`CONNECT` method establishes a tunnel to the server identified by the
+   target resource.
+7. **[`OPTIONS`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS):**
+   The `OPTIONS` method is used to describe the communication options for the
+   target resource.
+8. **[`TRACE`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/TRACE):**
+   The `TRACE` method performs a message loop-back test along the path to the
+   target resource.
+9. **[`PATCH`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH):**
+   The `PATCH` method is used to apply partial modifications to a resource.
+
+You don't need to know all of them, the most commonly used ones are `GET`,
+`POST`, `PUT`, and `DELETE`.
+
+### HTTP Responses
+
+Just as we make requests to a server for information, we also expect a response.
+Even if we do not expect data in return, the server always sends a response
+indiciating that it received the request.
+
+Below is an example of a response header. At the very top, you'll see a status
+code which indicates the type of response. Based on the digit in the hundreths
+place, we can determine if the request was successful or not.
+
+- `1XX`: Informational
+- `2XX`: Successful
+- `3XX`: Redirection
+- `4XX`: Client Error
+- `5XX`: Server Error
+
+Here are some of the most common response codes.
+
+- `200`: OK. Meaning that the request of a specific resource (list of TODOs) are
+  successful.
+- `201`: Created. Meaning that a resource is created / updated successfully.
+- `401`: Unauthorized. Meaning that the request is unauthorized, the client
+  needs to be logged in.
+- `403`: Forbidden. Meaning that the resource is not available for the client.
+- `404`: Not found. Meaning that the resource accessing is not served.
+- `418`: I'm a teapot. Meaning that the server refuses the attempt to brew
+  coffee with a teapot.
+- `500`: Server error.
+
+# Making a request
+
+## curl vs. browser
+
+curl is your machine's built in way of making requests to external websites.
+Here, we will use curl to show that an HTTP request is nothing but two computers
+talking to each other.
+
+Open your terminal and type the following:
 
 ```bash
-npm i styled-components
+curl https://pokeapi.co/api/v2/pokemon/ditto
 ```
 
-#### Trying It Out
+You should see a response that looks absolutely enormous, but something like
+this:
+[https://pokeapi.co/api/v2/pokemon/ditto](https://pokeapi.co/api/v2/pokemon/ditto).
+**THIS IS THE KEY INTUITION:** Notice, that entering a URL into your browser is
+exactly the same thing as making a GET request to that URL. Now you understand
+how we navigate the Internet! `curl` and your browser are just two of many, many
+different ways to make a request, and the data returned is just one of many
+types we _can_ return.
 
-In `app.js`,
+# Anatomy of a Request
 
-```jsx
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-`;
+When we make HTTP requests, we use a particular organization to ensure that the
+receiving server can process our request. Note: This example focuses on requests
+without a body.
 
-const Wrapper = styled.section`
-  padding: 4em;
-  background: papayawhip;
-`;
-
-render(
-  <Wrapper>
-    <Title>Hello World!</Title>
-  </Wrapper>
-);
-```
-
-The naming is as intuitive as it seems — `Title` is an `<h1>` tag, but with some
-styles associated with it. `Wrapper` is a div, but with some styles associated
-with it. To add style, we no longer need to inline, we can simply change the
-definition of `Title` or `Wrapper`.
-
-#### Passing Arguments
-
-```jsx
-const Button = styled.button`
-  background: ${(props) =>
-    props.primary === true ? 'palevioletred' : 'white'};
-  color: ${(props) => (props.primary ? 'white' : 'palevioletred')};
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-`;
-
-render(
-  <div>
-    <Button>Normal</Button>
-    <Button primary={true}>Primary</Button>
-  </div>
-);
-```
-
-#### Documentation
-
-[styled-components](https://styled-components.com/)
-
-## Component Libraries
-
-A UI component library is a set of ready-made UI components such as buttons,
-inputs, dialogs, and so on. They serve as building blocks for layouts. Thanks to
-their modular nature, we can arrange components in many different ways to
-achieve unique effects. Each library has a distinctive look and feel, but most
-of them offer theming, and their components are customizable to a certain
-degree.
-
-Popular component libraries for React include React-Bootstrap, Theme UI, and
-Chakra UI. We'll be focusing on Chakra UI.
-
-Libraries are made for one reason – to make developers’ lives easier. UI
-component libraries are no different in their purpose.
-
-#### Benefits
-
-- **Speed** – incorporating a UI component library can have a great impact on
-  development speed. Instead of creating each element from scratch, we simply
-  mix and match the existing components. Even if some additional customization
-  is required, it tends to be much quicker than writing styles on our own.
-- **Ease of use** – components are meant to be easy to use. Established
-  libraries are well-organized and have good documentation that is easy to
-  follow. Very often, it’s enough just to copy and paste code snippets to make
-  it work.
-- **Attractive look** – components look great without requiring any extra effort
-  from the developer; they’re carefully designed by professionals.
-- **Compatibility** – ensuring cross-browser and cross-device compatibility is
-  one of the biggest challenges of frontend development. UI component libraries
-  provide compatibility out of the box, which makes everything so simple!
-- **Accessibility** – good libraries adhere to accessibility guidelines, so
-  developers don’t even need to think about it.
-
-#### Drawbacks
-
-- **Generic look** – your app’s look and feel will be determined by the
-  library’s style in most parts. This is not necessarily an issue, but you need
-  to make sure that this is acceptable for your project.
-- **Change of design direction** – It’s very important that designers understand
-  and stick to components offered by the library. If the direction changes
-  towards a custom solution, it will become increasingly difficult and
-  time-consuming to overwrite the initial implementation.
-- **New team members** – every developer and designer needs to be familiar with
-  the particular library and its implementation (though this point is true for
-  any design system and any project).
-- **Bundle size** – UI component libraries tend to be big, so it’s probably not
-  the best idea to engage them in tiny projects.
-
----
-
-### Chakra-UI
-
-Chakra UI is component library based on a few principles:
-
-- Style Props: All component styles can be overridden or extended via style
-  props to reduce the use of css prop or styled(). Compose new components from
-  Box.
-
-- Simplicity: Strive to keep the component API fairly simple and show real world
-  scenarios of using the component.
-
-- Composition: Break down components into smaller parts with minimal props to
-  keep complexity low, and compose them together. This will ensure that the
-  styles and functionality are flexible and extensible.
-
-- Accessibility: When creating a component, keep accessibility top of mind. This
-  includes keyboard navigation, focus management, color contrast, voice over,
-  and the correct aria-\* attributes.
-
-- Dark Mode: Make components dark mode compatible. Use useColorMode hook to
-  handle styling. Learn more about dark mode.
-
-- Naming Props: We all know naming is the hardest thing in this industry.
-  Generally, ensure a prop name is indicative of what it does. Boolean props
-  should be named using auxiliary verbs such as does, has, is and should. For
-  example, Button uses isDisabled, isLoading, etc.
-
-For more info on Chakra versus other component libraries, check out their
-[docs](https://chakra-ui.com/docs/comparison).
-
-#### Installation
-
-```shell
-yarn add @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^5
-```
-
-#### Setup Provider
-
-```jsx
-import * as React from 'react';
-
-// 1. import `ChakraProvider` component
-import { ChakraProvider } from '@chakra-ui/react';
-
-function App({ Component }) {
-  // 2. Use at the root of your app
-  return (
-    <ChakraProvider>
-      <Component />
-    </ChakraProvider>
-  );
-}
-```
-
-#### Incorporating
-
-```jsx live
-// Sample card from Airbnb
-
-function AirbnbExample() {
-  const property = {
-    imageUrl: 'https://bit.ly/2Z4KKcF',
-    imageAlt: 'Rear view of modern home with pool',
-    beds: 3,
-    baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
-    reviewCount: 34,
-    rating: 4,
-  };
-
-  return (
-    <Box
-      maxW="sm"
-      borderWidth="2px"
-      borderRadius="lg"
-      overflow="hidden"
-      borderStyle="solid"
-    >
-      <Image src={property.imageUrl} alt={property.imageAlt} />
-      <Box p="6">
-        <Box display="flex" alignItems="baseline">
-          <Badge borderRadius="full" px="2" colorScheme="teal">
-            New
-          </Badge>
-          <Box
-            color="gray.500"
-            fontWeight="semibold"
-            letterSpacing="wide"
-            fontSize="xs"
-            textTransform="uppercase"
-            ml="2"
-          >
-            {property.beds} beds &bull; {property.baths} baths
-          </Box>
-        </Box>
-
-        <Box
-          mt="1"
-          fontWeight="semibold"
-          as="h4"
-          lineHeight="tight"
-          isTruncated
-        >
-          {property.title}
-        </Box>
-
-        <Box>
-          {property.formattedPrice}
-          <Box as="span" color="gray.600" fontSize="sm">
-            / wk
-          </Box>
-        </Box>
-
-        <Box display="flex" mt="2" alignItems="center">
-          {Array(5)
-            .fill('')
-            .map((_, i) => (
-              <StarIcon
-                key={i}
-                color={i < property.rating ? 'teal.500' : 'gray.300'}
-              />
-            ))}
-          <Box as="span" ml="2" color="gray.600" fontSize="sm">
-            {property.reviewCount} reviews
-          </Box>
-        </Box>
-      </Box>
-    </Box>
-  );
-}
-```
-
-### React-Bootstrap
-
-React-Bootstrap is a complete re-implementation of the Bootstrap components
-using React. It has **no dependency on either `bootstrap.js` or jQuery.** If you
-have React setup and React-Bootstrap installed, you have everything you need.
-
-Methods and events using jQuery are done imperatively by directly manipulating
-the DOM. In contrast, React uses updates to the state to update the virtual DOM.
-In this way, React-Bootstrap provides a more reliable solution by incorporating
-Bootstrap functionality into React's virtual DOM.
-
-#### Installation
+Let's look at the following request
 
 ```bash
-yarn add react-bootstrap bootstrap
+GET 'https://pokeapi.co/api/v2/pokemon/ditto'
 ```
 
-#### Incorporating Bootstrap
+Now let's look at the components of our request.
+
+`https://` defines the protocol we are using. In this case, we are using the
+HTTP secure protocol
+
+`[pokeapi.co/](http://pokeapi.com/)` defines the server (computer) to which we
+are making our request. When we make a request, we are essentially making it to
+a particular IP address. In the case of domain names, your Internet service
+provider does some cool stuff (which I won't go into here) which essentially
+aliases this domain name to an IP address to complete your request.
+
+`/api/v2/` We will learn later about the importance of this. For now, think of
+it like this: In order to make our request, we have to request a certain part of
+the website where the content we want is kept. For example, navigate to the WDB
+website [webatberkeley.org](http://webatberkeley.org). As you click on the
+different options in the menu, notice that the URL in the search bar is
+changing. To get the information you want, you need to go to the location where
+it is stored. Our requests follow a similar (In fact, directly related) pattern.
+We must make our request in the right place to get what we want. In this case,
+we are making a request to the API, specifically v2 of the API. You can also
+think of it as a large file system, where to access the files we want, we
+navigate to their location at the server (again directly related to how websites
+function).
+
+`/pokemon/ditto` It may not be immediately clear why these are the search terms,
+or why they differ from `/api/v2` in terms of functionality, but bear with me.
+Ultimately, all of these `/` 's represent how the designers of the website have
+chosen to organize the website. When we make a request to an API, we must make
+the request directly to the API, or else the website will likely return HTML
+files to be rendered. That is why this particular website used `/api/v2`.
+**_Every website will be different._** It is up to the designer how they
+organize their website, and as the client, it is your responsibility to check
+the docs for how you can get what you need. After we access the API, we are
+telling the website: "Please look at Pokemon, and of those, please look at
+Ditto." The last term is usually a unique key which maps to a single entry of
+data which is what _you_ want.
+
+## Fancier requests
+
+URL encoding is a fairly straightforward part of web development so we won't
+dive too deeply into this, it is more of something you learn as you go, and a
+lot of the packages that we use handle these kinds of things for you. If you
+were curious, we can in fact add more information to our get request.
+
+Instead of just telling the web server _where_ to get the data, we can, in some
+cases specify the type of data that we want to get. Where as the previous
+request returned exactly the data item that we need, think of this as more like
+a search. We can give the website some query parameters to return the data we
+want. This is done with the `/?key1=value1&key2=value2` syntax. The `?`
+specifies that we are encoding query parameters, and the `&` key allows for
+encoding of multiple parameters.
+
+The following API returns a random number when called.
+
+```bash
+https://csrng.net/csrng/csrng.php
+```
+
+Let us try calling it with no parameters.
+
+```bash
+curl 'https://csrng.net/csrng/csrng.php'
+```
+
+You should see something like this:
+
+```bash
+[
+	{
+		"status":"success",
+		"min":0,
+		"max":9007199254740991,
+		"random":1462051404510535
+	}
+]
+```
+
+Now let's try calling it with some encoded parameters. Type in the following to
+your terminal.
+
+```bash
+curl 'https://csrng.net/csrng/csrng.php?min=1&max=100'
+```
+
+You should now see something like this:
+
+```bash
+[
+	{
+		"status":"success",
+		"min":1,
+		"max":100,
+		"random":44
+	}
+]
+```
+
+Notice that now, the API is only returning random numbers between the parameters
+that we specified! In fact, we can clearly see that the API received our
+parameters and set the min and max accordingly. This becomes important in
+applications like search and efficient design (querying instead of constantly
+subdividing resources). For example, type something into Google and look at the
+URL! What might this tell you? Think on it.
+
+# JSON
+
+Look at our last example. You may be wondering, why does the response look like
+that? When we make requests to an API, if we get a status `200` code we can
+expect that the server will return some data. What kind of data it returns
+depends on what kind of data we are seeking. In some cases, it might return
+entire HTML pages, that is what your browser will render into a "website". In
+other cases, we simply want a snippet of data from our server, not an entire
+page. In order to the server to return this kind of data in a standardized and
+easily accessible way, we use JSON to send the data. JavaScript Object Notation
+is an open standard file format and data interchange format. While it does say
+JavaScript in the name, think of JSON as _completely language agnostic._ It is
+fair to say that JSON is one of the backbones of the Internet. Much of the data
+that is exchanged between servers and clients is sent in JSON. Here is an
+example of JSON:
 
 ```jsx
-import React, { Component } from 'react';
-import Alert from 'react-bootstrap/Alert';
-
-const Example = () => {
-  return (
-    <Alert dismissible variant="danger">
-      <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-      <p>Change this and that and try again.</p>
-    </Alert>
-  );
-};
-
-export default Example;
+	{
+		"status":"success",
+		"min":1,
+		"max":100,
+		"random":[44, 20, 30],
+		"extra": {
+			"hello": "goodbye",
+			"goodday": "goodnight"
+		}
+	}
 ```
 
-Don't worry if you don't get what's going on here — you don't need to remember
-Bootstrap (and by extension ReactBootstrap!) Whatever you don't understand in
-the above block of text, google it!
+**NOTE: I've added the "extra" field to demonstrate that JSON can nest JSON,
+this would not have been in your response from the previous example.**
 
-#### Documentation
+JSON is much like a dictionary in Python or a Map in Java. Contained within the
+object are several keys which map to values. These values can be strings
+(wrapped in quotes), numbers, lists, or even more objects.
 
-[React-Bootstrap](https://react-bootstrap.github.io/getting-started/introduction/)
+JSON is critical to understanding how we exchange data. It not only defines how
+we receive data from the server (`GET` for example), but it also defines how we
+send data to the server (`POST`, `PUT`, `DELETE`).
 
----
+Here is an example of a GET request with the fields in JSON.
 
-### Other Libraries (Optional)
+![Screen Shot 2021-08-16 at 12.43.40 AM.png](../assets/Lesson10-2/image2.png)
 
-There are many component libraries I haven't covered, and oftentimes larger
-projects and companies may create their own to fit their needs. I've included
-some other popular component libraries below. No component library is
-necessarily better than another, and each has pros and cons.
+![Screen Shot 2021-08-16 at 12.47.16 AM.png](../assets/Lesson10-2/image3.png)
 
-[Material-UI: A popular React UI framework](https://material-ui.com/)
+You do not need to worry about what all these fields mean, just notice the way
+that necessary information is organized and easily accessible. Status Code:
+`200`, url, method: `GET` , and data, are all incredibly important pieces of
+information, and JSON makes them significantly easier to access in a
+standardized way.
 
-Google's component library. The main complaint to using Material UI is that it's
-hard to customize and can thus leave some sites using a large amount of Material
-UI looking too much like something from Google.
+# REST API
 
-[Ant Design - The world's second most popular React UI framework](https://ant.design/)
+REST API is an acronym for **RE**presentational **S**tate **T**ransfer. It is
+simply a style for how API should be constructed and how data is transmitted.
 
-A library developed by the Chinese tech giant Alibaba.
+Here are the six guiding principles of REST from
+[https://restfulapi.net/](https://restfulapi.net/):
 
-[Semantic UI](https://semantic-ui.com/)
+1. **Client-server** – By separating the user interface concerns from the data
+   storage concerns, we improve the portability of the user interface across
+   multiple platforms and improve scalability by simplifying the server
+   components.
+2. **Stateless** – Each request from client to server must contain all of the
+   information necessary to understand the request, and cannot take advantage of
+   any stored context on the server. Session state is therefore kept entirely on
+   the client.
+3. **Cacheable** – Cache constraints require that the data within a response to
+   a request be implicitly or explicitly labeled as cacheable or non-cacheable.
+   If a response is cacheable, then a client cache is given the right to reuse
+   that response data for later, equivalent requests.
+4. **Uniform interface** – By applying the software engineering principle of
+   generality to the component interface, the overall system architecture is
+   simplified and the visibility of interactions is improved. In order to obtain
+   a uniform interface, multiple architectural constraints are needed to guide
+   the behavior of components. REST is defined by four interface constraints:
+   identification of resources; manipulation of resources through
+   representations; self-descriptive messages; and, hypermedia as the engine of
+   application state.
+5. **Layered system** – The layered system style allows an architecture to be
+   composed of hierarchical layers by constraining component behavior such that
+   each component cannot “see” beyond the immediate layer with which they are
+   interacting.
+6. **Code on demand (optional)** – REST allows client functionality to be
+   extended by downloading and executing code in the form of applets or scripts.
+   This simplifies clients by reducing the number of features required to be
+   pre-implemented.
 
-Lightweight CSS frameworks such as [Tailwind](https://tailwindcss.com/) or
-[Pure](https://purecss.io/) can also be considered as viable alternatives to a
-component library. They offer a minimal, less opinionated CSS foundation that
-will help you speed up development, while at the same time allowing tremendous
-flexibility.
+A server application that offers a REST API is also called a **RESTful** server.
 
-## Package Managers (Optional)
+## Postman
 
-### What is NPM?
+Postman is an incredibly helpful tool for testing and validating our APIs. In
+this case, REST APIs. Postman is essentially a systematic and user-friendly way
+to send predefined requests.
 
-`npm` informally stands for **node package manager**. `npm` is a package manager
-for JavaScript and is the default package manager for Node.
+Let's open Postman together.
 
-It consists of a command-line client, also called npm, and an online database of
-public and paid-for private packages called the npm registry.
+Once you create an account and login, you will be met with a picture of your
+workspace. Click on Workspaces > My Workspace. There should be nothing there
+except maybe an example request that we could make. We will now be returning to
+our previous examples to show how we can make systematic GET requests to the
+same APIs.
 
-[npm](https://www.npmjs.com/)
+[Example API](https://www.notion.so/6550d800e50149b1ab4d789485dc1969)
 
-In order to install a package to use in your react project using npm, you run
-`npm install <name of package>` in the root directory of your react app. This
-adds the package as a dependency in `package.json`.
+Additionally, `/db/all` supports a query param specifying the maximum number of
+items to return.
 
-It is important to note that the `package.json` is just a list of tools you are
-using. It doesn't do anything except to list them. The real magic happens in the
-`node_modules` folder, where the packages are stored for you.
+I will teach you how to run this program fully, but for the purpose of this
+exercise,
 
-### What is Yarn?
+# EXTRA: RESTful Server in Action and Postman
 
-Yarn is a package manager released by Facebook in 2016 and is a common
-alternative to NPM.
+To understand REST API and HTTP methods a step further, let us take a look at a
+RESTful server in action.
 
-[Home](https://yarnpkg.com/)
-
-To install a package using yarn, run `yarn add <name of package>` in the root
-directory. \*\*
-
-### NPM vs Yarn
-
-And now, to have an age-old discussion — which one should you use?
-
-**In practice, there is no real difference between the effects of using `NPM`
-and `yarn`**, as both package managers work perfectly fine.
-
-Back in the day, npm used to be super buggy, so yarn was created as a solution
-to NPM's deficiencies. These days the people behind npm were able to fix the
-main complaints people had against NPM, but many people and companies still
-prefer yarn as a byproduct of that era. There are definitely still advantages to
-using yarn, such as:
-
-- Installing packages using yarn tends to be faster than installing packages
-  with npm
-- There are some slight security advantages to using yarn
-
-but there are no other drastic differences between the two package managers. I
-personally use yarn and recommend yarn to others starting projects, but the
-choice is entirely up to you. **Make sure you don't use both,** however, because
-that can cause some problems on the backend when attempting to host your app.
-
-If you are using npm, you should see a `package-lock.json` in your app. If you
-are using yarn, you should see a `yarn.lock` in your app.
-
-## React Router
-
-We've learned about state, hooks, and components, and now we can build a nice
-single-page web app (commonly referred to as a SPA).
-
-But now what? Most websites have multiple pages and some even have dynamic
-routes, routes that use data to determine what's shown to the user.
-
-Think about youtube. The homepage showing you all the suggestions of videos you
-might want to see is `youtube.com`. At the same time, however, each video must
-have its own route. Instead of having some poor intern create a route for each
-video on youtube manually, we can use dynamic routing to display countless
-similar pages by using a variable in the URL that's determined by the video or
-piece of content that was clicked on. We can then go to that page and pull the
-variable from the URL to determine which piece of content to display.
-
-To be doing all this, we'll be using React Router. React Router is by far the
-most popular client-side router in the React community. It is mature, being used
-by big companies, and battle-tested at large scales. It also has a lot of really
-cool capabilities, some of which we'll examine here.
-
-:::info More on Routing
-
-If you want to learn more about client-side routing and its alternative,
-server-side routing, check out
-[this resource](https://medium.com/@wilbo/server-side-vs-client-side-routing-71d710e9227f).
-
-:::
-
-#### Documentation
-
-React router documentation can be found
-[here](https://v5.reactrouter.com/web/guides/quick-start).
-
-#### Installation
-
-```shell
-yarn add react-router-dom
-```
-
-### Why use Routers?
-
-Why use a React Router at all? Didn't the `<a>` work? It did but with a flaw:
-every link you clicked would end up in the browser navigating to a whole new
-page which means React would totally reload your entire app all over again. With
-Routers, and its special features, it can intercept this and just handle that
-all client-side. Much faster and a better user experience. The base URL and page
-never actually change.
-
-React Router is, at the end of the day, a conditional rendering wrapper that
-only shows you the component associated with the link you've selected or are on.
-
-### Basic Routing
-
-Let's implement a basic example of routing.
-
-:::info Introducing a New Tag Introducing a new tag: `<nav>` ! It is intended to
-wrap major navigation blocks on your webpage. Here's more information about it.
-:::
+Let's say we are building a TODO app. Take a look at the following code. Pay
+close attention to what the comments address.
 
 ```jsx
-import React from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+const express = require('express');
 
-const App = () => {
-  return (
-    <BrowserRouter>
-      <div>
-        {/* The HTML */}
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
+const app = express();
 
-        {/* The React Router that makes the HTML above work */}
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </BrowserRouter>
-  );
-};
+var port = process.env.PORT || 8080;
 
-const Home = () => <h2>Home</h2>;
-const About = () => <h2>About</h2>;
-const Users = () => <h2>Users</h2>;
+var router = express.Router();
 
-export default App;
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// The method of the root url. Be friendly and welcome our user :)
+router.get('/', function (req, res) {
+  res.json({ message: 'Welcome to the TODO app.' });
+});
+
+// All HTTP methods under the /todos URL.
+router
+  .route('/todos')
+  // This GET method is in charge of returnning all the todos.
+  .get((req, res) => {
+    res.json({ message: 'Return all todos.' });
+  })
+  // This POST methods is used to create a new todo.
+  // Its request will have a body, containing the content of the new todo.
+  .post((req, res) => {
+    res.json({
+      message: 'Create a new todo: ' + '1' + ' - ' + req.body.content,
+      todo_id: '1',
+      content: req.body.content,
+    });
+  });
+
+// All HTTP methods under the /todos/:todo_id URL.
+// The /:todo_id is a parameter within the URL that specifies a particular todo.
+router
+  .route('/todos/:todo_id')
+  // This GET method is used to get the content from a specific todo.
+  .get((req, res) => {
+    res.json({ message: 'Get the content from a todo.' });
+  })
+  // We use PUT method to update a todo's content.
+  .put((req, res) => {
+    res.json({
+      message:
+        'Update the todo: ' + req.params.todo_id + ' - ' + req.body.content,
+      todo_id: req.params.todo_id,
+      content: req.body.content,
+    });
+  })
+  // DELETE method is used to delete a todo.
+  .delete((req, res) => {
+    res.json({ message: 'Delete a todo.' });
+  });
+
+app.use('/api', router); // API Root url at: http://localhost:8080/api
+
+app.listen(port);
+console.log('Server listenning on port ' + port);
 ```
 
-### Dynamic Routing
+Now with the dummy server ready, how should we send all the HTTP requests?
+Introduce a new tool in our workflow —— postman.
 
-What if we have too many routes to write down manually? For example, what if we
-want a route for every listing on Airbnb? Here's where dynamic routing comes
-into play.
+Let's start the server with `npm run start` and see how can we interact with the
+server.
 
-We can set our routes to use a variable by simply putting a colon in front of
-the term we want to use as a variable in our route. See the example below where
-we use `:id` in our route, creating a variable `id` that is then later accessed.
+## Postman
+
+Postman is a platform for API development. It can easily build and send out API
+requests.
+
+Once you download and install postman, click `new collection` on the left side
+bar to create a new collection of API requests. Let's call it
+`RESTful server test requests`.
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3abb55f3-73b2-457a-bc9c-c86bb238e1e1/Untitled.png](../assets/Lesson10-2/image4.png)
+
+Then, click on the more button and add a request. Let's first test out the API
+for the root URL:
 
 ```jsx
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-} from 'react-router-dom';
+// The method of the root url. Be friendly and welcome our user :)
+router.get('/', function (req, res) {
+  res.json({ message: 'Welcome to the TODO app.' });
+});
+```
 
-function DynamicRouting() {
-  const data = [
-    { name: 'Netflix', route: 'netflix' },
-    { name: 'Zillow', route: 'zillow' },
-    { name: 'Yahoo', route: 'yahoo' },
-    { name: 'Instagram', route: 'instagram' },
-  ];
+Create a request and make sure its HTTP method is GET. Our root API url is at
+[`http://localhost:8080/api`](http://localhost:8080/api). After you click send,
+you should be seeing a JSON response body, which consists of a message with the
+content of "Welcome to the TODO app."
 
-  return (
-    <Router>
-      <div>
-        <h2>Accounts</h2>
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/03941e2c-a074-48b4-a526-2a4a2f18be38/Untitled.png](../assets/Lesson10-2/image5.png)
 
-        <div>
-          {data.map((item) => (
-            <Link to={`/${item.route}`}>
-              <div>
-                <h3>{item.name}</h3>
-              </div>
-            </Link>
-          ))}
-        </div>
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1aa74a60-3351-49d6-b23a-0a3aa071b8dc/Untitled.png](../assets/Lesson10-2/image6.png)
 
-        <Switch>
-          <Route path="/:id" children={<Child />} />
-        </Switch>
-      </div>
-    </Router>
-  );
+## Create API requests using POSTMAN
+
+Postman is a very powerful tool as it can save your API request and resend it
+again and again at your will. Let's save this and create mroe API requests to
+test the `GET` request that fetch all todos and `POST` that create a new todo.
+
+```jsx
+// All HTTP methods under the /todos URL.
+router
+  .route('/todos')
+  // This GET method is in charge of returnning all the todos.
+  .get((req, res) => {
+    res.json({ message: 'Return all todos.' });
+  })
+  // This POST methods is used to create a new todo.
+  // Its request will have a body, containing the content of the new todo.
+  .post((req, res) => {
+    res.json({
+      message: 'Create a new todo: ' + '1' + ' - ' + req.body.content,
+      todo_id: '1',
+      content: req.body.content,
+    });
+  });
+```
+
+Let's first create a new request, and use
+[`http://localhost:8080/api/todos`](http://localhost:8080/api/todos) as the
+request URL. We start by testing out the `GET` request, and after clicking send,
+you should see the following JSON as a response:
+
+```jsx
+{
+    "message": "Return all todos."
 }
-
-function Child() {
-  let { id } = useParams();
-
-  return (
-    <div>
-      <h3>{id}</h3>
-    </div>
-  );
-}
-
-export default DynamicRouting;
 ```
 
-As you can see, we use `/:id` as a variable route, or a dynamic route rather
-than a static route. There is no path `/id` (unless we want there to be),
-rather, the `id` variable is a URL parameter, or param. We specifically the
-children of the `/:id` route in our `<Route>` tag, and this component is what
-will be rendered to the user. As we can see above, the `Child` component changes
-what it displays depending on the route that it is displayed from. We can grab
-the `id` param from the URL by using the `useParams` hook as shown in the
-example, then proceed to use it as a variable in our component.
+Now let's try out the `POST` request, unlike the `GET` request, the `POST`
+request contains a **request body**. If the post request does not contain any
+body, you would receive something like this:
 
-To add an example, say you were looking at a list of cards in airbnb, each with
-basic listing info on them. When you want to learn more about a listing, you
-clock on that card, which then takes you to another page with more complete info
-about that listing. Relating that action to dynamic routing, each listing has a
-unique id. The browser takes you to a URL with that id when you click on a card.
-In this way Airbnb implements dynamic routing, setting the URL to the id of the
-listing you chose. Next, the router realizes that it has a dynamic route
-(`/listing/12345` might match to `/listing/:id` for example) and renders that
-route's assigned component, which we'll call `Listing`. `Listing` then uses
-hooks such as `useParam` to determine the id of the requested listing, then
-queries Airbnb's database to get the info for that listing before displaying it
-to the user.
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a6b67769-4da2-43e5-b3b4-4a08409f9c63/Untitled.png](../assets/Lesson10-2/image7.png)
 
-### Complex Routing — A Practical Example (Optional)
+This `undefined` in the message means that the server does not receive the
+content of the todo, which should be included in the request body.
 
-I've included an example from the [WDB](https://webatberkeley.org/) website
-below.
+To add a request body, click on **Body** and then select `raw`. Change the
+format from `TEXT` to `JSON`, and you are ready to write your first request
+body.
 
-```jsx
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+Let's say I want to create a todo with content "hello world todo". Then, we
+create a JSON like this:
 
-import Navbar from './components/navbar';
-import Footer from './components/footer';
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bf032666-e48f-4e58-9d44-2958a234cc8b/Untitled.png](../assets/Lesson10-2/image8.png)
 
-import Landing from './pages/landing';
-import About from './pages/about';
-import Initiatives from './pages/initiatives';
-import Error from './pages/error';
+You should be receiving the message with the content you just created in the
+body.
 
-import './App.scss';
+# Resources
 
-function App() {
-  return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Navbar landing />
-        </Route>
-        <Route path="*">
-          <Navbar />
-        </Route>
-      </Switch>
+[Build a RESTful API Using Node and Express 4](https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4)
 
-      <Switch>
-        {/* About Us */}
-        <Route path="/about">
-          <About />
-        </Route>
-
-        {/* Initiatives */}
-        <Route path="/initiatives">
-          <Initiatives />
-        </Route>
-
-        {/* Landing Page */}
-        <Route exact path="/">
-          <Landing />
-        </Route>
-
-        {/* 404 no page found */}
-        <Route path="*">
-          <Error />
-        </Route>
-      </Switch>
-
-      <Footer />
-    </Router>
-  );
-}
-
-export default App;
-```
-
-Let's take a closer look at the following snippet from the above
-
-```jsx
-<Switch>
-  <Route exact path="/">
-    <Navbar landing />
-  </Route>
-  <Route path="*">
-    <Navbar />
-  </Route>
-</Switch>
-```
-
-The `exact` prop tells our router to only show the landing version of the navbar
-when there are no extensions to the URL, which makes sense since we want our
-landing page to be the default page. Using `*` as the path for our regular
-navbar tells the router that for all other pages, render the regular navbar.
-
-:::info
-
-Using a single variable as a prop (such as `exact` or `landing` above) is
-equivalent to setting `exact={true}` or `landing={true}` as a prop. Thus we just
-use `exact` or `landing` instead of the whole statement as shorthand.
-
-:::
-
-## Conclusion
-
-This lesson is all about helping you realize that the React universe is massive,
-collaborative, and full of tools that make writing React faster and easier.
-There are many more tools to the React ecosystem that we were unable to touch on
-today and that you may not need at any point in the course, but keep in mind
-that if you're trying to solve a general problem or create something specific,
-there's probably an npm package for that.
+[What is REST](https://restfulapi.net/)
 
 ---
 
 **Contributors**
 
-- [Samarth Goel](https://www.linkedin.com/in/samarth-goel-1047b8187/)
-- [Caelin Sutch](https://www.linkedin.com/in/caelinsutch)
-- [Arushi Somani](https://www.linkedin.com/in/arushisomani/)
-- [Natalia Vetter-Neo](https://www.linkedin.com/in/nataliavetter/)
+- [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)
