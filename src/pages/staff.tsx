@@ -18,7 +18,7 @@ const Staff = () => {
       <Box w="100vw" className="darkModeContainer">
         <Container maxW="container.lg" pt={16} pb={20} px={[7, 10]}>
           <Text textStyle="title2" color="blue" mb={[8, 12]}>
-            SPRING 2022 COURSE STAFF
+            SPRING 2023 COURSE STAFF
           </Text>
 
           <SimpleGrid columns={[1, null, 2]} spacing={[12, 16]}>
@@ -53,13 +53,6 @@ const Staff = () => {
               />
             ))}
           </SimpleGrid>
-          {/*
-          - [Arushi Somani](https://www.linkedin.com/in/arushisomani/)
-          - [Hector Ramos](https://www.linkedin.com/in/hector-ramos-/)
-          - [Abhi Wadekar](https://www.linkedin.com/in/abhiraam-wadekar/)
-          - [Ervin Baccay](https://www.linkedin.com/in/ebaccay/)
-          - [Brian Holt](https://www.linkedin.com/in/btholt/)
-        */}
         </Container>
       </Box>
     </Layout>
