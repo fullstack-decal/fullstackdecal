@@ -2,11 +2,8 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import WeekCard from '../components/WeekCard';
-// import SetsUsApart from '../components/SetsUsApart';
-// import Testimonials from '../components/Testimonials';
 import schedule from '../data/schedule';
 import { Container, Box, Flex, Text, Link } from '@chakra-ui/react';
-// import announcements from '../data/announcements';
 
 const Home: React.FC = () => {
   const { siteConfig } = useDocusaurusContext();
@@ -32,7 +29,7 @@ const Home: React.FC = () => {
             pt={[10, 16]}
             mb={3}
           >
-            CS 198-99 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;FALL 22
+            CS 198-99 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;SPRING 23
           </Text>
           <Text
             textStyle="title2"
@@ -54,9 +51,8 @@ const Home: React.FC = () => {
             mt={2}
             mb={[8, 12]}
           >
-            Monday & Wednesday, 6:30pm -
-            8:00pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; Remote +
-            Recorded
+            Monday & Wednesday, 8:00pm -
+            9:30pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; VLSB 2040
           </Text>
           <Text textStyle="body2" color="white" mb={[6, 8]}>
             Welcome to{' '}
@@ -96,15 +92,6 @@ const Home: React.FC = () => {
             // scrolling: "no"
           }}
         />
-        {/* <Text textStyle="title2" color="purple" mt={[8, 16]} mb={4}>
-          Announcements
-        </Text>
-        <Box mb={16} className="darkMode">
-          <Text textStyle="subtitle2" fontSize="3xl" mb={4}>
-            Week 1
-          </Text>
-          {announcements[2]}
-        </Box> */}
 
         <Text textStyle="title2" color="purple" mb={8}>
           Course Overview
