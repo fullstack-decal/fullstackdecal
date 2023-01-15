@@ -2,464 +2,542 @@
 sidebar_position: 16
 ---
 
-# Lesson 13 - MongoDB, Authentication
+# Lesson 13 - Express and MongoDB
 
-## Introduction
+## Preparation
 
-Many of our modern webservers use authentication to control access to
-information. Think about any account you might have on social media. Think about
-your bank account. These are all mediums which hold your private information
-tied to your account, and it is therefore necessary to control access to this
-information. So how do we use a database to implement controlled access? This is
-called authentication. We must authenticate a user when they wish to use a
-particular endpoint in our API. Our API cannot simply give information to anyone
-without compromising privacy and security.
-
-## Token-based Authentication Explained
-
-![Untitled](../assets/Lesson13/Lesson13-6.png)
-
-- We use JSON Web Token (JWT) to help with authentication!
-- The users, instead of keeping sending their login data, will be sent a JWT
-  token once they successfully logged in.
-- Then, in the future login attempts and until the JWT expires, the users can
-  simply send the server the JWT token, and the server will verify the user’s
-  identity based on that JWT token.
-
-### Accessing Resources using JWT
-
-![Lesson13-1](../assets/Lesson13/Lesson13-1.png)
-
-## Prerequisites
-
-Create a new folder
-
-```bash
-mkdir auth_example
-```
-
-and initialize npm in that folder.
-
-```bash
-cd auth_example
-npm init
-```
-
-Now, we must install the requisite packages. This example will begin without
-validating the sent data, and then we will add that into the end.
-
-```bash
-npm install --save express cors mongoose express bcryptjs jsonwebtoken express-validator
-```
-
-## Setting up the web server
-
-First, let’s create a `index.js` file:
+### Setup
 
 ```jsx
 const express = require("express");
-const bodyParser = require("body-parser");
-// const InitiateMongoServer = require("./config/db");
-
-// Initiate Mongo Server
-// InitiateMongoServer();
-
+const port = process.env.PORT || 3000;
 const app = express();
 
-// PORT
-const PORT = process.env.PORT || 4000;
+var router = express.Router()
 
-// Middleware
-app.use(bodyParser.json());
+app.use(express.json()); // Utilities for request bodies
+app.use(express.urlencoded({ extended: true })); // Utilities for query params
 
-app.get("/", (req, res) => {
-  res.json({ message: "API Working" });
+// GET Requests
+
+router.get("/", (req, res) => {
+  // homepage
+  res.send("stupidDB API");
 });
 
-app.listen(PORT, (req, res) => {
-  console.log(`Server Started at PORT ${PORT}`);
+router.get("/info/index", (req, res) => {
+  // get the current index
+  res.send({ counter: counter });
+});
+
+router.get("/info/capacity", (req, res) => {
+  // get the capacity
+  res.send({ capacity: Object.keys(stupidDB).length });
+});
+
+router.get("/db/all", (req, res) => {
+  // get all items from the db
+  res.send(stupidDB);
+});
+
+// Combining endpoints into a single "route"
+
+router.route("/db/:id")
+	.get((req, res) => {
+	  // get a certain item from the db
+	  const id = req.params.id;
+	  if (id in stupidDB) {
+	    res.send(stupidDB[id]);
+	  } else {
+	    res.send({ error: "no object found with this id" });
+	  }
+	}).
+	.put("/db/:id", (req, res) => {
+	  const id = req.params.id;   // get the index of the data to update
+	  const item = req.body.item; // access the body of the request which holds new data
+	  if (id in stupidDB) {
+	    stupidDB[id] = item;      // insert destructively
+	    res.send({ newItem: item });
+	  } else {
+	    res.send({ error: "no object found with this id" });
+	  }
+	});
+	.delete("/db/:id", (req, res) => {})
+
+// POST Requests
+
+router.post("/db", (req, res) => {
+  console.log(req);
+  const item = req.body.item; // access our request body
+  stupidDB[counter] = item;   // add body item at index
+  counter += 1;               // increment counter
+  res.send(`POST Request Successful. Item placed: ${item}`); // Send HTTP response
+});
+
+// Server Setup
+
+app.use('/', router)
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
 });
 ```
 
-The above code should already be pretty familiar to you, and now let’s run the
-app with command:
+Let us first setup the MongoDB. Use homebrew to install mongoDB. Here are the macOS instructions. Here is the link to the instructions in general for other systems (Linux and Windows) [https://docs.mongodb.com/manual/administration/install-community/](https://docs.mongodb.com/manual/administration/install-community/) .
 
+`brew install mongodb-community`
+
+```bash
+$ brew tap mongodb/brew
+$ brew install mongodb-community
+$ brew services start mongodb-community
 ```
-node index.js
+
+Now type `mongo` to start the mongo shell to interact with the database.
+
+Let's create a database called `database-tutorial`. Use the `use` keyword in the mongo shell.
+
+```bash
+$ use database-tutorial
 ```
 
-You should see a success message.
+Now, we have the database ready in our computer. To connect with mongoDB, let's install mongoose, a library that helps mongoDB easier to use in express.
 
-- Notice here there are two lines that we have commented out, namely
-  `const InitiateMongoServer = require("./config/db");` and
-  `InitiateMongoServer();`
-  - We will uncomment these two lines after we setup our database!
+```bash
+$ npm install mongoose --save
+```
 
-## Setting up the database
-
-Create a mongodb database by first, opening up the mongo shell by `mongo`
-command. After you typed mongo, you should see the following in the terminal:
+Now add the following lines to the server.js file, it serves to connect with the mongoDB database that we just set up.
 
 ```jsx
-MongoDB shell version v4.2.8
-connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
-...
+const mongoose = require('mongoose')
+const url = 'mongodb://127.0.0.1:27017/database-tutorial'
+
+mongoose.connect(url, { useNewUrlParser: true })
+
+const db = mongoose.connection
+
+db.once('open', _ => {
+  console.log('Database connected:', url)
+})
+
+db.on('error', err => {
+  console.error('connection error:', err)
+})
 ```
 
-- We will use the first half of the URI in after the “connecting to”, aka,
-  `mongodb://127.0.0.1:27017/` as our URI to the database.
-- Then, type `use example-auth-db` to create a database with name
-  `example-auth-db`, and the database URI would be at:
-  "mongodb://127.0.0.1:27017/example-auth-db”
+When you rerun the server.js script, you can see the following message: `Database connected: mongodb://127.0.0.1:27017/database-tutorial`, which means you have successfully connected to the database.
 
-Now, create a `config` folder and a `db.js` file there:
+# Create MongoDB Model
+
+Let's first create a model for our mongoDB database. We first need to create a schema. MongoDB will automatically add a `_id` field to schema. Thus, we only need to create a content field. 
+
+After creating the schema, use `mongoose.model` to create a TODO model.
 
 ```jsx
-const mongoose = require("mongoose");
+const Schema = mongoose.Schema
 
-// Replace this with your MONGOURI.
-const MONGOURI = "mongodb://127.0.0.1:27017/example-auth-db";
-const InitiateMongoServer = async () => {
-  try {
-    await mongoose.connect(MONGOURI, {
-      useNewUrlParser: true,
+const item = new Schema({
+  title: String
+	task: String,
+	date: String,
+	urgency: Number,
+})
+
+const TODO = mongoose.model("TODO", item)
+```
+
+# CURD Operations for MongoDB & Express
+
+## Create
+
+Let's first implement the endpoint for creating a new TODO.
+
+To create a new TODO, we call `new TODO()`, and by passing in an object that corresponds to the schema, we can successfully create a todo object. To save this todo object into the database, use `todo.save()`.
+
+After we create and save the todo, we can access the `todo._id` field that mongoDB automatically provides.
+
+```jsx
+router.post("/db", (req, res) => {
+    const todo = new TODO({        // Create TODO item with the appropriate fields
+        title: req.body.title,
+        task: req.body.task,
+        date: req.body.date,
+        urgency: req.body.urgency,
     });
-    console.log("Connected to DB !!");
-  } catch (e) {
-    console.log(e);
-    throw e;
-  }
-};
-
-module.exports = InitiateMongoServer;
-```
-
-- this uses mongoose and will help keep the connection with our database.
-
-### Configuring the User Model
-
-Create a `models` folder and then create a `User.js` file, this file will define
-our database schema.
-
-```jsx
-const mongoose = require("mongoose");
-
-const UserSchema = mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now(),
-  },
-});
-
-// export model user with UserSchema
-module.exports = mongoose.model("user", UserSchema);
-```
-
-Finally, uncomment the two lines inside `index.js`, and run `node index.js`
-again, you should see this if you have successfully connected with the db:
-
-![Lesson13-2](../assets/Lesson13/Lesson13-2.png)
-
-## User Signup
-
-Now, it's time to implement the Signup router which will be mounted on
-`/user/signup`. Create a folder called `routes`, and inside, create a file
-called `user.js`:
-
-```jsx
-const express = require("express");
-const { check, validationResult } = require("express-validator");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const router = express.Router();
-
-const User = require("../models/User");
-
-/**
- * @method - POST
- * @param - /signup
- * @description - User SignUp
- */
-
-router.post(
-  "/signup",
-  [
-    check("username", "Please Enter a Valid Username").not().isEmpty(),
-    check("email", "Please enter a valid email").isEmail(),
-    check("password", "Please enter a valid password").isLength({
-      min: 6,
-    }),
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({
-        errors: errors.array(),
-      });
-    }
-
-    const { username, email, password } = req.body;
-    try {
-      let user = await User.findOne({
-        email,
-      });
-      if (user) {
-        return res.status(400).json({
-          msg: "User Already Exists",
-        });
-      }
-
-      user = new User({
-        username,
-        email,
-        password,
-      });
-
-      const salt = await bcrypt.genSalt(10);
-      user.password = await bcrypt.hash(password, salt);
-
-      await user.save();
-
-      const payload = {
-        user: {
-          id: user.id,
-        },
-      };
-
-      jwt.sign(
-        payload,
-        "randomString",
-        {
-          expiresIn: 10000,
-        },
-        (err, token) => {
-          if (err) throw err;
-          res.status(200).json({
-            token,
-          });
+    todo.save((error, document) => {
+        if (error) {
+            res.json({ status: "failure" });
+        } else {
+            res.json({               // Save TODO item to the database
+                status: "success",
+                id: todo._id,
+                content: req.body
+            });
         }
-      );
-    } catch (err) {
-      console.log(err.message);
-      res.status(500).send("Error in Saving");
-    }
-  }
-);
-
-module.exports = router;
+    })
+});
 ```
 
-- We will go through the above code line by line during lectures, but here are a
-  few interesting lines of code:
-  - `const errors = validationResult(req);` is a function that the validator
-    includes; it checks whether the request is a valid request.
-  - `const salt = await bcrypt.genSalt(10); user.password = await bcrypt.hash(password, salt);`
-    these two lines generate a “salt”, which is a random string of length 10,
-    and use it to hash the password. This way, even if the database is breached,
-    the hacker will not be able to see the actual password used by the users.
+Try it out in the postman, you can see that the new todo is created successfully.
 
-Also remember to import the user route and update it inside `index.js`:
+![image5](../assets/Lesson14/image5.png)
+
+## Retrieve
+
+Let's continue to build upon the existing APIs!
+
+We can use `.find()` to retrieve all todos.
+
+```jsx
+router.get("/db/all", (req, res) => {
+		TODO.find().then((todos) => {
+      res.json({ message: 'Return all todos.', todos: todos});
+    })
+});
+```
+
+Test it out in the postman api request, you would get something like this.
+
+![image1](../assets/Lesson14/image1.png)
+
+Let's see whether we can retrieve the content of only one todo. `.findById()` method allows you to find the object in the database given an ID. 
+
+```jsx
+router.route("/db/:id")
+	.get((req, res) => {
+	  // get a certain item from the db
+		TODO.findById(req.params.id, (error, todo) => {
+			if (error) {
+					res.json({ status: "failure" })
+			} else {
+					res.json(todo)
+	  }
+	}).
+	.put("/db/:id", (req, res) => {
+	  const id = req.params.id;   // get the index of the data to update
+	  const item = req.body.item; // access the body of the request which holds new data
+	  if (id in stupidDB) {
+	    stupidDB[id] = item;      // insert destructively
+	    res.send({ newItem: item });
+	  } else {
+	    res.send({ error: "no object found with this id" });
+	  }
+	});
+	.delete("/db/:id", (req, res) => {})
+```
+
+Test it out using Postman by adding one of your todo id. You should receive this from the API.
+
+![img2](../assets/Lesson14/image2.png)
+
+## Update
+
+To update a TODO, we use the method called `findByIdAndUpdate()`.
+
+```jsx
+router.route("/db/:id")
+	.get((req, res) => {
+	  // get a certain item from the db
+	  const id = req.params.id;
+		TODO.findById(req.params.id, (error, todo) => {
+			if (error) {
+					res.json({ status: "failure" })
+			} else {
+					res.json(todo)
+	  }
+	}).
+	.put("/db/:id", (req, res) => {
+	  TODO.findByIdAndUpdate(req.params.id, req.body, (error, todo) => {
+			if (error) {
+				res.json({ status: "failure" })
+			else {
+				res.json(todo)
+			}
+	});
+	.delete("/db/:id", (req, res) => {})
+
+```
+
+![img3](../assets/Lesson14/image3.png)
+
+## Delete
+
+To delete a TODO, we use the method called `findByIdAndDelete()`.
+
+```jsx
+router.route("/db/:id")
+	.get((req, res) => {
+		TODO.findById(req.params.id, (error, todo) => {
+			if (error) {
+					res.json({ status: "failure" })
+			} else {
+					res.json(todo)
+	  }
+	}).
+	.put("/db/:id", (req, res) => {
+	  TODO.findByIdAndUpdate(req.params.id, req.body, (error, todo) => {
+			if (error) {
+				res.json({ status: "failure" })
+			else {
+				res.json(todo)
+			}
+	});
+	.delete("/db/:id", (req, res) => {
+		TODO.findByIdAndDelete(req.params.id, (error, todo) => {
+			if (error) {
+				res.json({ status: "failure"})
+			} else {
+				res.json(todo)
+			}
+	})
+```
+
+![img4](../assets/Lesson14/image4.png)
+
+# Final Product
 
 ```jsx
 const express = require("express");
-const bodyParser = require("body-parser");
-const user = require("./routes/user"); //new addition
-const InitiateMongoServer = require("./config/db");
-
-// Initiate Mongo Server
-InitiateMongoServer();
-
+const port = process.env.PORT || 3000;
 const app = express();
 
-// PORT
-const PORT = process.env.PORT || 4000;
+var router = express.Router()
 
-// Middleware
-app.use(bodyParser.json());
+app.use(express.json());                         // Utilities for request bodies
+app.use(express.urlencoded({ extended: true })); // Utilities for query params
 
-app.get("/", (req, res) => {
-  res.json({ message: "API Working" });
+// begin mongoose setup
+const mongoose = require('mongoose')
+const url = 'mongodb://127.0.0.1:27017/database-tutorial'
+
+mongoose.connect(url, { useNewUrlParser: true })
+
+const db = mongoose.connection
+db.once('open', _ => {
+  console.log('Database connected:', url)
+})
+
+db.on('error', err => {
+  console.error('connection error:', err)
+})
+// end setup
+
+// define mongoose schema
+const Schema = mongoose.Schema
+
+const item = new Schema({
+  title: String
+	task: String,
+	date: String,
+	urgency: Integer,
+})
+
+const TODO = mongoose.model("TODO", item)
+
+// begin router
+router.get("/", (req, res) => {
+  // homepage
+  res.send("smartDB API");
 });
 
-/**
- * Router Middleware
- * Router - /user/*
- * Method - *
- */
-app.use("/user", user);
-
-app.listen(PORT, (req, res) => {
-  console.log(`Server Started at PORT ${PORT}`);
+router.get("/db/all", (req, res) => {
+		TODO.find().then((todos) => {
+      res.json({ message: 'Return all todos.', todos: todos});
+    })
 });
-```
 
-Now we are ready to go! Re-run the server, and using Postman, we can send a POST
-request and test the route:
+// Combining endpoints into a single "route"
 
-![Lesson13-3](../assets/Lesson13/Lesson13-3.png)
+router.route("/db/:id")
+	.get((req, res) => {
+		TODO.findById(req.params.id, (error, todo) => {
+			if (error) {
+					res.status(500).json({ status: "failure" })
+			} else {
+					res.json(todo)
+	  }
+	}).
+	.put("/db/:id", (req, res) => {
+	  TODO.findByIdAndUpdate(req.params.id, req.body, (error, todo) => {
+			if (error) {
+				res.status(500).json({ status: "failure" })
+			else {
+				res.status(200).json(todo)
+			}
+	});
+	.delete("/db/:id", (req, res) => {
+		TODO.findByIdAndDelete(req.params.id, (error, todo) => {
+			if (error) {
+				res.status(500).json({ status: "failure"})
+			} else {
+				res.json(todo)
+			}
+	})
 
-- as you can see, we’ve received a token back. This is our JWT token, where the
-  browser is going to store it in local storage and reuse it for the next login.
+// POST Requests
 
-## User Login
+router.post("/db", (req, res) => {
+  const todo = TODO({        // Create TODO item with the appropriate fields
+		title: req.body.title,
+		task: req.body.task,
+		date: req.body.date,
+		urgency: req.body.urgency,
+	})
+	todo.save((error, document) => {
+		res.json({               // Save TODO item to the database
+			status: "success",
+			id: todo._id,
+			content: req.body
+		)
+	)
+});
 
-Add the following code to `user.js` to support login:
+// Server Setup
 
-```jsx
-router.post(
-  "/login",
-  [
-    check("email", "Please enter a valid email").isEmail(),
-    check("password", "Please enter a valid password").isLength({
-      min: 6,
-    }),
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
+app.use('/', router)
 
-    if (!errors.isEmpty()) {
-      return res.status(400).json({
-        errors: errors.array(),
-      });
-    }
-
-    const { email, password } = req.body;
-    try {
-      let user = await User.findOne({
-        email: email,
-      });
-      if (!user)
-        return res.status(400).json({
-          message: "User Not Exist",
-        });
-
-      const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch)
-        return res.status(400).json({
-          message: "Incorrect Password !",
-        });
-
-      const payload = {
-        user: {
-          id: user.id,
-        },
-      };
-
-      jwt.sign(
-        payload,
-        "randomString",
-        {
-          expiresIn: 3600,
-        },
-        (err, token) => {
-          if (err) throw err;
-          res.status(200).json({
-            token,
-          });
-        }
-      );
-    } catch (e) {
-      console.error(e);
-      res.status(500).json({
-        message: "Server Error",
-      });
-    }
-  }
-);
-```
-
-- note that
-  `const isMatch = await [bcrypt.compare](http://bcrypt.compare)(password, user.password);`
-  we use the `bcrypt.compare` method to compare the two passwords. Remember that
-  all the password is hashed, and as a result, the usual == will not work!
-
-![Lesson13-4](../assets/Lesson13/Lesson13-4.png)
-
-## Get LoggedIn User
-
-So, our next task will be to Retrieve the LoggedIn user using the **token**.
-Let's go and add this functionality.
-
-The `/user/me` route will return your user if you pass the token in the header.
-In the file **route.js**, add the below code snippet.
-
-```jsx
-/**
- * @method - GET
- * @description - Get LoggedIn User
- * @param - /user/me
- */
-
-router.get("/me", auth, async (req, res) => {
-  try {
-    // request.user is getting fetched from Middleware after token authentication
-    const user = await User.findById(req.user.id);
-    res.json(user);
-  } catch (e) {
-    res.send({ message: "Error in Fetching user" });
-  }
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
 });
 ```
 
-As you can see, we added the auth middleware as a parameter in
-the **/user/me** GET route, so let's define **auth** function.
+## Errors
 
-Go ahead and create a new folder named **middleware**. Inside this folder,
-create a file named **auth.js**
+Part of proper programming practice is enforcing our REST API design principles. Part of that API design is ensuring that we are following the HTTPS best practices, and that includes sending error codes whenever 
 
-> This auth middleware will be used to verify the token, retrieve user based on
-> the token payload.
+# Resources
 
-```jsx
-const jwt = require("jsonwebtoken");
+[Build a RESTful API Using Node and Express 4](https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4)
 
-module.exports = function (req, res, next) {
-  const token = req.header("token");
-  if (!token) return res.status(401).json({ message: "Auth Error" });
-
-  try {
-    const decoded = jwt.verify(token, "randomString");
-    req.user = decoded.user;
-    next();
-  } catch (e) {
-    console.error(e);
-    res.status(500).send({ message: "Invalid Token" });
-  }
-};
-```
-
-- Remember to import the auth middleware inside user.js!
-  - `const auth = require("./../middleware/auth");`
-
-### How to Test the application?
-
-PostMan is required for Testing the API. If you don't have PostMan installed
-first, install it.
-
-1. First, register the user or login if you are already registered.
-2. From step 1, you will get a token. Copy that token and put in the **header**.
-3. Hit Submit
-
-![Untitled](../assets/Lesson13/Lesson13-4.png)
-
-## Resources:
-
-[Authentication in NodeJS With Express and Mongo - CodeLab #1](https://dev.to/dipakkr/implementing-authentication-in-nodejs-with-express-and-jwt-codelab-1-j5i)
+[What is REST](https://restfulapi.net/)
 
 ---
 
 **Contributors**
 
 - [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)
+- Dhruv Vaish
+
+## EXTRA:
+
+```jsx
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+var port = process.env.PORT || 8080;
+
+var router = express.Router();
+
+// The method of the root url. Be friendly and welcome our user :)
+router.get('/', function(req, res) {
+    res.json({ message: 'Welcome to the TODO app.' });   
+});
+
+// /api/todos
+// All HTTP methods under the /todos URL.
+router.route('/todos')
+  // This GET method is in charge of returnning all the todos.
+  .get((req, res) => {
+    res.json({ message: 'Return all todos.'});   
+  })
+  // This POST methods is used to create a new todo. 
+  // Its request will have a body, containing the content of the new todo.
+  .post((req, res) => {
+    res.json({ 
+      message: ('Create a new todo: ' + "1" + " - " + req.body.content),
+      todo_id:  "1",
+      content: req.body.content,
+    }); 
+  })
+
+// All HTTP methods under the /todos/:todo_id URL.
+// The /:todo_id is a parameter within the URL that specifies a particular todo.
+router.route('/todos/:todo_id')
+  // This GET method is used to get the content from a specific todo.
+  .get((req, res) => {
+    res.json({ message: 'Get the content from a todo.'});   
+  })
+  // We use PUT method to update a todo's content.
+  .put((req, res) => {
+    res.json({ 
+              message: ('Update the todo: ' + req.params.todo_id + " - " + req.body.content),
+              todo_id: req.params.todo_id,
+              content: req.body.content,
+            });   
+  })
+  // DELETE method is used to delete a todo.
+  .delete((req, res) => {
+    res.json({ message: 'Delete a todo.' }); 
+  })
+
+app.use('/api', router); // API Root url at: http://localhost:8080/api
+
+app.listen(port);
+console.log('Server listenning on port ' + port);
+```
+
+```bash
+// All HTTP methods under the /todos URL.
+router.route('/todos')
+  // ...
+  // This POST methods is used to create a new todo. 
+  // Its request will have a body, containing the content of the new todo.
+	.post((req, res) => {
+    const todo = new TODO({
+      content: req.body.content
+    })
+    todo.save((error, document) => {
+      res.json({ 
+        message: ('Create a new todo: ' + todo._id + " - " + req.body.content),
+        todo_id:  todo._id,
+        content: req.body.content,
+      }); 
+    })
+  })
+
+// All HTTP methods under the /todos/:todo_id URL.
+// The /:todo_id is a parameter within the URL that specifies a particular todo.
+router.route('/todos/:todo_id')
+  // This GET method is used to get the content from a specific todo.
+ .get((req, res) => {
+    TODO.findById(req.params.todo_id, (err, todo) => {
+	      if (err) {
+        res.json({ message: 'Error when getting the content of the todo.'});
+      }
+      res.json({ message: 'Get the content from a todo.', todo});
+    })
+  })
+
+// All HTTP methods under the /todos/:todo_id URL.
+// The /:todo_id is a parameter within the URL that specifies a particular todo.
+router.route('/todos/:todo_id')
+  // ...
+  // We use PUT method to update a todo's content.
+  .put((req, res) => {
+    TODO.findByIdAndUpdate(req.params.todo_id, {content: req.body.content}, (err, todo) => {
+      if (err) {
+        res.json({ message: 'Error when updating todo.'});
+      }
+      res.json({ message: 'Update the todo: ' + req.params.todo_id, old: todo, new: {_id: req.params.todo_id, content: req.body.content}});
+    });
+  })
+
+// All HTTP methods under the /todos/:todo_id URL.
+// The /:todo_id is a parameter within the URL that specifies a particular todo.
+router.route('/todos/:todo_id')
+	// ...
+  // DELETE method is used to delete a todo.
+  .delete((req, res) => {
+    TODO.findByIdAndDelete(req.params.todo_id, (err, todo) => {
+      if (err) {
+        res.json({ message: 'Error when deleting todo.'});
+      }
+      res.json({ message: 'Delete the todo: ' + todo._id, todo: {_id: todo._id, content: todo.content}});
+    });
+  })
+```

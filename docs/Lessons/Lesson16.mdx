@@ -2,7 +2,7 @@
 sidebar_position: 18
 ---
 
-# Lecture 15 - User Authentication with MongoDB
+# Lesson 15 - MongoDB, Authentication
 
 ## Introduction
 
@@ -17,7 +17,7 @@ without compromising privacy and security.
 
 ## Token-based Authentication Explained
 
-![Devops Image](../assets/Lesson16/Lesson16-1.png)
+![Untitled](../assets/Lesson13/Lesson13-6.png)
 
 - We use JSON Web Token (JWT) to help with authentication!
 - The users, instead of keeping sending their login data, will be sent a JWT
@@ -28,7 +28,7 @@ without compromising privacy and security.
 
 ### Accessing Resources using JWT
 
-![Devops Image](../assets/Lesson16/Lesson16-6.png)
+![Lesson13-1](../assets/Lesson13/Lesson13-1.png)
 
 ## Prerequisites
 
@@ -49,7 +49,7 @@ Now, we must install the requisite packages. This example will begin without
 validating the sent data, and then we will add that into the end.
 
 ```bash
-npm install --save express cors mongoose express bcryptjs jsonwebtoken
+npm install --save express cors mongoose express bcryptjs jsonwebtoken express-validator
 ```
 
 ## Setting up the web server
@@ -57,8 +57,8 @@ npm install --save express cors mongoose express bcryptjs jsonwebtoken
 First, let’s create a `index.js` file:
 
 ```jsx
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require("express");
+const bodyParser = require("body-parser");
 // const InitiateMongoServer = require("./config/db");
 
 // Initiate Mongo Server
@@ -72,8 +72,8 @@ const PORT = process.env.PORT || 4000;
 // Middleware
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.json({ message: 'API Working' });
+app.get("/", (req, res) => {
+  res.json({ message: "API Working" });
 });
 
 app.listen(PORT, (req, res) => {
@@ -115,16 +115,16 @@ connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName
 Now, create a `config` folder and a `db.js` file there:
 
 ```jsx
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Replace this with your MONGOURI.
-const MONGOURI = 'mongodb://127.0.0.1:27017/example-auth-db';
+const MONGOURI = "mongodb://127.0.0.1:27017/example-auth-db";
 const InitiateMongoServer = async () => {
   try {
     await mongoose.connect(MONGOURI, {
       useNewUrlParser: true,
     });
-    console.log('Connected to DB !!');
+    console.log("Connected to DB !!");
   } catch (e) {
     console.log(e);
     throw e;
@@ -142,7 +142,7 @@ Create a `models` folder and then create a `User.js` file, this file will define
 our database schema.
 
 ```jsx
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const UserSchema = mongoose.Schema({
   username: {
@@ -164,13 +164,13 @@ const UserSchema = mongoose.Schema({
 });
 
 // export model user with UserSchema
-module.exports = mongoose.model('user', UserSchema);
+module.exports = mongoose.model("user", UserSchema);
 ```
 
 Finally, uncomment the two lines inside `index.js`, and run `node index.js`
 again, you should see this if you have successfully connected with the db:
 
-![Devops Image](../assets/Lesson16/Lesson16-2.png)
+![Lesson13-2](../assets/Lesson13/Lesson13-2.png)
 
 ## User Signup
 
@@ -179,13 +179,13 @@ Now, it's time to implement the Signup router which will be mounted on
 called `user.js`:
 
 ```jsx
-const express = require('express');
-const { check, validationResult } = require('express-validator');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const express = require("express");
+const { check, validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const router = express.Router();
 
-const User = require('../model/User');
+const User = require("../models/User");
 
 /**
  * @method - POST
@@ -194,11 +194,11 @@ const User = require('../model/User');
  */
 
 router.post(
-  '/signup',
+  "/signup",
   [
-    check('username', 'Please Enter a Valid Username').not().isEmpty(),
-    check('email', 'Please enter a valid email').isEmail(),
-    check('password', 'Please enter a valid password').isLength({
+    check("username", "Please Enter a Valid Username").not().isEmpty(),
+    check("email", "Please enter a valid email").isEmail(),
+    check("password", "Please enter a valid password").isLength({
       min: 6,
     }),
   ],
@@ -217,7 +217,7 @@ router.post(
       });
       if (user) {
         return res.status(400).json({
-          msg: 'User Already Exists',
+          msg: "User Already Exists",
         });
       }
 
@@ -240,7 +240,7 @@ router.post(
 
       jwt.sign(
         payload,
-        'randomString',
+        "randomString",
         {
           expiresIn: 10000,
         },
@@ -253,7 +253,7 @@ router.post(
       );
     } catch (err) {
       console.log(err.message);
-      res.status(500).send('Error in Saving');
+      res.status(500).send("Error in Saving");
     }
   }
 );
@@ -264,7 +264,7 @@ module.exports = router;
 - We will go through the above code line by line during lectures, but here are a
   few interesting lines of code:
   - `const errors = validationResult(req);` is a function that the validator
-    includes, it checks whether the JWT is a valid token.
+    includes; it checks whether the request is a valid request.
   - `const salt = await bcrypt.genSalt(10); user.password = await bcrypt.hash(password, salt);`
     these two lines generate a “salt”, which is a random string of length 10,
     and use it to hash the password. This way, even if the database is breached,
@@ -273,10 +273,10 @@ module.exports = router;
 Also remember to import the user route and update it inside `index.js`:
 
 ```jsx
-const express = require('express');
-const bodyParser = require('body-parser');
-const user = require('./routes/user'); //new addition
-const InitiateMongoServer = require('./config/db');
+const express = require("express");
+const bodyParser = require("body-parser");
+const user = require("./routes/user"); //new addition
+const InitiateMongoServer = require("./config/db");
 
 // Initiate Mongo Server
 InitiateMongoServer();
@@ -289,8 +289,8 @@ const PORT = process.env.PORT || 4000;
 // Middleware
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.json({ message: 'API Working' });
+app.get("/", (req, res) => {
+  res.json({ message: "API Working" });
 });
 
 /**
@@ -298,7 +298,7 @@ app.get('/', (req, res) => {
  * Router - /user/*
  * Method - *
  */
-app.use('/user', user);
+app.use("/user", user);
 
 app.listen(PORT, (req, res) => {
   console.log(`Server Started at PORT ${PORT}`);
@@ -308,7 +308,7 @@ app.listen(PORT, (req, res) => {
 Now we are ready to go! Re-run the server, and using Postman, we can send a POST
 request and test the route:
 
-![Devops Image](../assets/Lesson16/Lesson16-3.png)
+![Lesson13-3](../assets/Lesson13/Lesson13-3.png)
 
 - as you can see, we’ve received a token back. This is our JWT token, where the
   browser is going to store it in local storage and reuse it for the next login.
@@ -319,10 +319,10 @@ Add the following code to `user.js` to support login:
 
 ```jsx
 router.post(
-  '/login',
+  "/login",
   [
-    check('email', 'Please enter a valid email').isEmail(),
-    check('password', 'Please enter a valid password').isLength({
+    check("email", "Please enter a valid email").isEmail(),
+    check("password", "Please enter a valid password").isLength({
       min: 6,
     }),
   ],
@@ -338,17 +338,17 @@ router.post(
     const { email, password } = req.body;
     try {
       let user = await User.findOne({
-        email,
+        email: email,
       });
       if (!user)
         return res.status(400).json({
-          message: 'User Not Exist',
+          message: "User Not Exist",
         });
 
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch)
         return res.status(400).json({
-          message: 'Incorrect Password !',
+          message: "Incorrect Password !",
         });
 
       const payload = {
@@ -359,7 +359,7 @@ router.post(
 
       jwt.sign(
         payload,
-        'randomString',
+        "randomString",
         {
           expiresIn: 3600,
         },
@@ -373,7 +373,7 @@ router.post(
     } catch (e) {
       console.error(e);
       res.status(500).json({
-        message: 'Server Error',
+        message: "Server Error",
       });
     }
   }
@@ -385,15 +385,15 @@ router.post(
   we use the `bcrypt.compare` method to compare the two passwords. Remember that
   all the password is hashed, and as a result, the usual == will not work!
 
-![Devops Image](../assets/Lesson16/Lesson16-4.png)
+![Lesson13-4](../assets/Lesson13/Lesson13-4.png)
 
 ## Get LoggedIn User
 
-So, our next task will be to Retrieve the LoggedIn user using the **token**.
+So, our next task will be to Retrieve the LoggedIn user using the **token**.
 Let's go and add this functionality.
 
-The `/user/me` route will return your user if you pass the token in the header.
-In the file **route.js**, add the below code snippet.
+The `/user/me` route will return your user if you pass the token in the header.
+In the file **route.js**, add the below code snippet.
 
 ```jsx
 /**
@@ -402,40 +402,40 @@ In the file **route.js**, add the below code snippet.
  * @param - /user/me
  */
 
-router.get('/me', auth, async (req, res) => {
+router.get("/me", auth, async (req, res) => {
   try {
     // request.user is getting fetched from Middleware after token authentication
     const user = await User.findById(req.user.id);
     res.json(user);
   } catch (e) {
-    res.send({ message: 'Error in Fetching user' });
+    res.send({ message: "Error in Fetching user" });
   }
 });
 ```
 
-As you can see, we added the auth middleware as a parameter in the **/user/me**
-GET route, so let's define **auth** function.
+As you can see, we added the auth middleware as a parameter in
+the **/user/me** GET route, so let's define **auth** function.
 
-Go ahead and create a new folder named **middleware**. Inside this folder,
-create a file named **auth.js**
+Go ahead and create a new folder named **middleware**. Inside this folder,
+create a file named **auth.js**
 
 > This auth middleware will be used to verify the token, retrieve user based on
 > the token payload.
 
 ```jsx
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 module.exports = function (req, res, next) {
-  const token = req.header('token');
-  if (!token) return res.status(401).json({ message: 'Auth Error' });
+  const token = req.header("token");
+  if (!token) return res.status(401).json({ message: "Auth Error" });
 
   try {
-    const decoded = jwt.verify(token, 'randomString');
+    const decoded = jwt.verify(token, "randomString");
     req.user = decoded.user;
     next();
   } catch (e) {
     console.error(e);
-    res.status(500).send({ message: 'Invalid Token' });
+    res.status(500).send({ message: "Invalid Token" });
   }
 };
 ```
@@ -449,10 +449,10 @@ PostMan is required for Testing the API. If you don't have PostMan installed
 first, install it.
 
 1. First, register the user or login if you are already registered.
-2. From step 1, you will get a token. Copy that token and put in the **header**.
+2. From step 1, you will get a token. Copy that token and put in the **header**.
 3. Hit Submit
 
-![Devops Image](../assets/Lesson16/Lesson16-5.png)
+![Untitled](../assets/Lesson13/Lesson13-4.png)
 
 ## Resources:
 
@@ -462,4 +462,4 @@ first, install it.
 
 **Contributors**
 
-- Alex Wu
+- [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)

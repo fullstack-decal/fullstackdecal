@@ -205,6 +205,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 9',
     assigmentTitle: 'User Auth',
     assigmentDueDate: 'Apr 12',
+    assigmentLink: '/docs/Assignments/Homework/HW9',
   },
   {
     week: 10,
