@@ -23,18 +23,24 @@ const staff = [
     bio: 'Hi!',
   },
   {
-    name: 'Vihan Bhargava',
-    // image: '/img/staff/[name].png',
-    role: 'Fullstack TA',
-    bio: 'Hi!',
-  },
-  {
     name: 'Michelle Wang',
     image: '/img/staff/michelle.png',
     role: 'Fullstack TA',
     bio: "Hi! I'm Michelle and I'm a freshman studying CS. In my free time, I love drawing, anime, and video games (esp the cute relaxing ones). I'm always down to chat or hang out, so feel free to hmu! :)",
     linkedin: 'https://www.linkedin.com/in/michelle-wang-3aa12a227',
     email: 'michelle.wang@berkeley.edu',
+  },
+  {
+    name: 'Vihan Bhargava',
+    // image: '/img/staff/[name].png',
+    role: 'Fullstack TA',
+    bio: 'Hi!',
+  },
+  {
+    name: 'Iki Puri',
+    // image: '/img/staff/[name].png',
+    role: 'Frontend TA',
+    bio: 'Hi!',
   },
   {
     name: 'Juliet Kim',
