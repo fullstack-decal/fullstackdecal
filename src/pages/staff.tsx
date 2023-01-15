@@ -18,7 +18,7 @@ const Staff = () => {
       <Box w="100vw" className="darkModeContainer">
         <Container maxW="container.lg" pt={16} pb={20} px={[7, 10]}>
           <Text textStyle="title2" color="blue" mb={[8, 12]}>
-            SPRING 2022 COURSE STAFF
+            SPRING 2023 COURSE STAFF
           </Text>
 
           <SimpleGrid columns={[1, null, 2]} spacing={[12, 16]}>

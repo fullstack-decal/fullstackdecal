@@ -1,4 +1,61 @@
 const staff = [
+  // Fall 2022
+  {
+    name: 'Kimberley Fan',
+    image: '/img/past-staff/kim.png',
+    role: 'Facilitator',
+    linkedin: 'https://www.linkedin.com/in/kimberleyfan/',
+  },
+  {
+    name: 'Dhruv Vaish',
+    image: '/img/past-staff/dhruv.png',
+    linkedin: 'https://www.linkedin.com/in/dhruv-vaish/',
+  },
+  {
+    name: 'Isaac Ong',
+    image: '/img/past-staff/isaac.png',
+    linkedin: 'https://www.linkedin.com/in/isaacong/',
+  },
+  {
+    name: 'Isabel Zheng',
+    image: '/img/past-staff/isabel.png',
+    linkedin: 'https://www.linkedin.com/in/isabel-zheng-24003b1b2/',
+  },
+  {
+    name: 'Ethan Pang',
+    image: '/img/past-staff/ethan.png',
+    linkedin: 'https://www.linkedin.com/in/ethanpang5/',
+  },
+  {
+    name: 'Vicky Li',
+    image: '/img/past-staff/vicky.png',
+    linkedin: 'https://www.linkedin.com/in/victoriayli/',
+  },
+  {
+    name: 'Samarth Goel',
+    image: '/img/past-staff/samarth.png',
+    linkedin: 'https://www.linkedin.com/in/samarth-goel-07/',
+  },
+  {
+    name: 'William Henderson',
+    image: '/img/past-staff/william.png',
+    linkedin: 'https://www.linkedin.com/in/william-b-henderson/',
+  },
+  {
+    name: 'Rebecca Won',
+    image: '/img/past-staff/rebecca.png',
+    linkedin: 'https://www.linkedin.com/in/rebecca-won-1ba6191b5/',
+  },
+  {
+    name: 'Joshua Tsai',
+    image: '/img/past-staff/josh.png',
+    linkedin: 'https://www.linkedin.com/in/joshua-tsai-01/',
+  },
+  {
+    name: 'Kartik Aggarwal',
+    image: '/img/past-staff/kartik.png',
+    linkedin: 'https://www.linkedin.com/in/-kartikaggarwal/',
+  },
   // Spring 2022
   {
     name: 'Alex Wu',
