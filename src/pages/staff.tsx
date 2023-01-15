@@ -53,13 +53,6 @@ const Staff = () => {
               />
             ))}
           </SimpleGrid>
-          {/*
-          - [Arushi Somani](https://www.linkedin.com/in/arushisomani/)
-          - [Hector Ramos](https://www.linkedin.com/in/hector-ramos-/)
-          - [Abhi Wadekar](https://www.linkedin.com/in/abhiraam-wadekar/)
-          - [Ervin Baccay](https://www.linkedin.com/in/ebaccay/)
-          - [Brian Holt](https://www.linkedin.com/in/btholt/)
-        */}
         </Container>
       </Box>
     </Layout>
