@@ -23,7 +23,7 @@ const Staff = () => {
 
           <SimpleGrid columns={[1, null, 2]} spacing={[12, 16]}>
             {staff.map(
-              ({ name, image, role, linkedin, personal, bio, email }) => (
+              ({ name, image, role, linkedin, personal, bio, email, github }) => (
                 <StaffMember
                   name={name}
                   image={image}
@@ -33,6 +33,7 @@ const Staff = () => {
                   bio={bio}
                   email={email}
                   key={name}
+                  github={github}
                 />
               )
             )}

@@ -13,7 +13,7 @@ const staff = [
     image: '/img/staff/abby.png',
     role: 'Facilitator',
     linkedin: 'https://www.linkedin.com/in/abigail-gee-delgado/',
-    bio: "Helloo! I'm Abby and I'm a junior studying EECS, born and raised in Berkeley! Other than web development, I really love sushi, my pinterest boards, going to RSF group classes, and having fun with my WDBesties. Can't wait to meet all of you!",
+    bio: "Helloo! I'm Abby and I'm a junior studying EECS, born and raised in Berkeley! Other than web development, I really love sushi, the color pink, going to RSF group classes, and having fun with my WDBesties. Can't wait to meet all of you!",
     email: 'mailto: abigaildelgado@berkeley.edu',
   },
   {
@@ -28,13 +28,15 @@ const staff = [
     role: 'Fullstack TA',
     bio: "Hi! I'm Michelle and I'm a freshman studying CS. In my free time, I love drawing, anime, and video games (esp the cute relaxing ones). I'm always down to chat or hang out, so feel free to hmu! :)",
     linkedin: 'https://www.linkedin.com/in/michelle-wang-3aa12a227',
-    email: 'michelle.wang@berkeley.edu',
+    email: 'mailto: michelle.wang@berkeley.edu',
   },
   {
     name: 'Vihan Bhargava',
-    // image: '/img/staff/[name].png',
+    image: '/img/staff/vihan.png',
     role: 'Fullstack TA',
-    bio: 'Hi!',
+    bio: 'Hi! I’m Vihan a junior studying CS. I love building cool products, playing guitar, and meeting dogs. Come talk to me if you love blues rock and John Mayer or want to chat about tech! I’m excited for an awesome semester with all of you!',
+    personal: 'https://vihan.org',
+    github: 'https://github.com/vihanb',
   },
   {
     name: 'Iki Puri',
