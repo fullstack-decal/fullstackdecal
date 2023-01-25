@@ -40,6 +40,12 @@ const staff = [
     email: 'mailto: michelle.wang@berkeley.edu',
   },
   {
+    name: 'Nemerjit Singh',
+    image: '/img/staff/nemer.png',
+    role: 'Fullstack TA',
+    bio: 'Hi!',
+  },
+  {
     name: 'Ikshita Puri',
     image: '/img/staff/iki.png',
     role: 'Frontend TA',

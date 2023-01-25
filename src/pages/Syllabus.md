@@ -2,17 +2,17 @@
 
 ## Course Details
 
-**Course name:** Introduction to Full-Stack Development
+**Course Name:** Introduction to Full-Stack Development
 
-**Course number:** CS 198-099
+**Course Number:** CS 198-099
 
 **Units:** 3
 
-**Course term:** Spring 2023
+**Course Term:** Spring 2023
 
 **Faculty Sponsor:** Josh Hug
 
-**Course Number:** 33565
+**Class Number:** 33617
 
 **Course Catalog Link:**
 [https://classes.berkeley.edu/content/2023-spring-compsci-198-099-grp-099](https://classes.berkeley.edu/content/2023-spring-compsci-198-099-grp-099)
