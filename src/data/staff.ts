@@ -43,7 +43,10 @@ const staff = [
     name: 'Nemerjit Singh',
     image: '/img/staff/nemer.png',
     role: 'Fullstack TA',
-    bio: 'Hi!',
+    bio: "Howdy. I'm Nemer, a freshmen studying Computer Science and (maybe) Economics. I like anime, eating good food, and playing basketball. I'm excited to work with everyone this upcoming semester.",
+    linkedin: 'https://www.linkedin.com/in/nemerjit-singh/',
+    github: 'https://github.com/nemerjit',
+    email: 'mailto: nemerjitsingh@berkeley.edu',
   },
   {
     name: 'Ikshita Puri',

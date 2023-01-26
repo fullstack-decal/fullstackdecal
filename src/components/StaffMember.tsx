@@ -61,17 +61,6 @@ const StaffMember: React.FC<StaffMemberProps> = ({
               <Icon as={BsGlobe} h={5} w={5} color="blue" />
             </Link>
           )}
-          {email && (
-            <Link
-              href={email}
-              target="_blank"
-              rel="noreferrer"
-              ml={0.5}
-              isExternal
-            >
-              <Icon as={MdEmail} h={7} w={9} color="blue" />
-            </Link>
-          )}
           {github && (
             <Link
               href={github}
@@ -81,6 +70,17 @@ const StaffMember: React.FC<StaffMemberProps> = ({
               isExternal
             >
               <Icon as={BsGithub} h={5} w={5} color="blue" />
+            </Link>
+          )}
+          {email && (
+            <Link
+              href={email}
+              target="_blank"
+              rel="noreferrer"
+              ml={0.5}
+              isExternal
+            >
+              <Icon as={MdEmail} h={7} w={9} color="blue" />
             </Link>
           )}
         </Flex>
