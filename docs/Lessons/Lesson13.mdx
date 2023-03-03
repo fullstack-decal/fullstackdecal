@@ -2,185 +2,479 @@
 sidebar_position: 15
 ---
 
-# Lesson 12 - React 3: Axios, Project Structure, and Ecosystem
+import VividDemo from "../../static/img/vivid-demo.gif"
+
+# Lesson 12 - React 3: Styling and Libraries/Global State/Deployment
 
 ## Introduction
 
-Welcome to the course's 4th and final react lesson. In the previous lesson, you
-were introduced to key parts of the React ecosystem in the form of package
-managers, routing, CSS solutions, and component libraries. In this lesson, we'll
-continue delving into the react ecosystem, the frontend ecosystem as a whole,
-and talk about some general software development principles as well.
+Welcome to the course's 3rd and final react lesson. In the previous lesson, you were introduced to key parts of the React ecosystem in the form of package managers, routing, and axios. In this lesson, we'll continue delving into the react ecosystem, the frontend ecosystem as a whole, and talk about some general software development principles as well.
 
-We'll start by introducing axios, a package in react which helps us connect our
-frontend to our backend. Through axios we can send data to the backend, and
-receive data from the backend, helping us create truly full-stack and powerful
-applications.
+We'll start by introducing  how styling works in React, covering a couple ways that you can use to ensure that your React apps look as beautiful as your websites did in the first part of the course.
 
-We'll then introduce basic architecture and file design principles to help
-delineate efficient organization practices and gear everyone up for how to
-structure a large front-end project.
+Next, we'll dive into the notion of libraries in React and the powerful ecosystem that surrounds it. From there, we'll cover component libraries, a powerful way to write less code and create stunning UI's in minutes as compared to hours.
 
-Lastly, we'll touch upon a number of more advanced frontend technologies such as
-Server-Side Rendering (SSR), Typescript, and Redux. We won't be going in-depth
-into these technologies, but we feel like they're good to know about at a
-surface level at the very least. Once you know what these technologies mean
-you'll be able to keep up with conversations about frontend technologies, as
-well as have a couple of points to dive deeper into frontend technologies after
-we finish the react section of the course's frontend curriculum.
+We'll then introduce basic architecture and file design principles to help delineate efficient organization practices and gear everyone up for how to structure a large front-end project.
 
-## Axios
+Lastly, we'll touch upon a number of more advanced frontend technologies such as Server-Side Rendering (SSR), Typescript, and Redux. We won't be going in-depth into these technologies, but we feel like they're good to know about at a surface level at the very least. Once you know what these technologies mean you'll be able to keep up with conversations about frontend technologies, as well as have a couple of points to dive deeper into frontend technologies after we finish the react section of the course's frontend curriculum.
 
-**Axios** **is how we connect the frontend to the backend.** In technical speak,
-Axios is a promise-based HTTP client for the browser and Node.js. Informally,
-Axios is a way to make API calls to the backend (GET requests, POST requests,
-etc...) and how we send data to and receive data from the backend.
+## Styling in React
 
-:::note
+There are many, many ways to style your components and JSX code in React. In
+this reading we'll talk about Tailwind CSS with Vivid, CSS-in-JS, CSS Modules, and Styled Components.
 
-Axios is how we connect the frontend to the backend. Other libraries, like the
-native fetch() JS API and jQuery's AJAX, can also be used for web service
-requests, but Axios is the preferred library for this course.
+### Tailwind CSS 
+Tailwind CSS is a utility-first CSS framework. This means that instead of writing traditional global CSS like `background-color: #f63344`, you apply styles in-line via small “utility classes” like `p-4` for padding or `bg-red-500` for a red background.
 
-:::
+Each of these utility classes is atomic, so they only apply one style rule at a time. While you can use them to write arbitrary CSS using their arbitrary notation (e.g., `bg-[#f63344]`), most of the time you’ll be using the color and sizing scales that Tailwind provides for you. All of these features can also be easily configured be changing your `tailwind.config.js`.
 
-Once again: Axios is how we connect the frontend to the backend. Please remember
-this point, for it will be important when trying to create almost any functional
-web project.
+#### Why Use Tailwind
+Tailwind offers benefits for beginners and experts alike!
 
-:::note
+For beginners or simple applications, **Tailwind is a fast way to write all your styling inline.** By not having to deal with the abstraction of component-based classnames or fine-tuning colors and pixel values, you can move faster with Tailwind than with alternative CSS frameworks.
 
-In class-based components, we would tie our API calls to lifecycle methods to be
-invoked at a particular point in a component's lifecycle. As you know, the
-functional equivalent of lifecycle methods are React Hooks, so we can simulate
-the same process by tying our calls to the useEffect() hook.
+For more advanced use-cases, **Tailwind forms a useful part of a design system by streamlining modularity and reducing unneeded abstractions.** Since Tailwind lets you configure a set of common sizes, colors, and utilities, you can easily write consistent styling across your app. By removing modularity at the CSS level (since styling is done inline), you can focus on just making your React code modular.
 
-:::
+To prevent long class strings at all levels of your code, you generally have to be more thoughtful about your component modularity when using Tailwind CSS.
 
-####Documentation
+#### Installation
+The official [Tailwind installation guide](https://tailwindcss.com/docs/installation) does a great job of walking you through the easy 4 step setup. You can follow the “PostCSS” or “Framework Guides” sections there to get started.
 
-[Axios](https://axios-http.com/)
+#### Usage
 
-[GitHub - axios/axios: Promise based HTTP client for the browser and node.js](https://github.com/axios/axios)
+Once Tailwind is set up, you can use any of the classes in their [docs](https://tailwindcss.com/docs/installation) right in your code:
+
+```html
+<h1 class="text-3xl font-bold underline">
+  Hello world!
+</h1>
+```
+
+This snippet makes your heading large, bolded, and underlined — pretty self-explanatory!
+
+### Vivid
+
+Vivid is an in-browser visual editor that lets you test out Tailwind styles and automatically write them directly to your code.
+
+With Vivid, you can click on any component in your page and have its code pop up right in your browser. From there, you can edit its code in the code pane, or preview and apply styles with shortcuts through the command palette.
+
+#### Installation
+To summarize the [Vivid docs](https://docs.vivid.lol):
+
+1. Install Vivid with `npm i -D vivid-studio`
+2. Initialize it by pasting the following code at the top of your root file outside of any functions:
+
+```jsx
+if (
+  typeof window !== "undefined" &&
+  process.env.NODE_ENV === "development"
+) {
+  import("vivid-studio").then((v) => v.run());
+  import("vivid-studio/style.css");
+}
+```
+
+#### Usage
+
+Once Vivid is set up, you just have to start your app in development mode (usually with `npm run start` or `npm run dev`). From there, Vivid will walk you through its functionality!
+
+Instead of the usual loop of opening your IDE, looking for a component’s code, and testing out styles in the browser, you can just <kbd>Cmd</kbd>-Click (Windows/Linux: <kbd>Ctrl</kbd>-Click) any part of your page and start editing its code from your browser.
+
+Once you get comfortable with editing code in the code pane, you can iterate through styles even faster with the command palette shortcuts Vivid provides (<kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + K). 
+
+<img src={VividDemo} alt = "Vivid Demo"/>
+
+---
+
+### CSS-in-JS
+
+CSS-in-JS is a term you'll hear often, but what exactly does it mean? CSS-in-JS
+usually means using an alternative method of styling than just plain CSS files,
+such as [styled-components](https://styled-components.com/) or
+[css-modules](https://github.com/css-modules/css-modules). These solutions often
+require some change in the javascript that is being written, which is why we
+call these solutions "CSS in JS".
+
+Why do we care about using CSS-in-JS? This is because all CSS in our react app
+is global. Say you have two components, Page1 and Page2. Even if you create
+`page1.css` and `page2.css` and only import page1.css into your Page1 component,
+all the classes you create in `page1.css` will apply to your Page2 component as
+well. Thus if you accidentally use the same class name across both components,
+or use a class name multiple times anywhere in your app, the CSS rules you've
+written in `page1.css` will apply everywhere, which in most cases is highly
+undesirable and can cause unintended and difficult to fix CSS collisions.
+
+### CSS Modules
+
+CSS modules transforms your CSS files from being globally scoped to being
+component scoped, which means that the CSS you import into your component only
+affects the component you've imported that CSS file into. To transform a CSS
+file into a CSS modules file, simply change the file name from `<file name>.css`
+to `<file name>.module.css`. CSS modules also works with sass. In order to use
+CSS modules in your app, make the following changes.
+
+```jsx
+//Importing Regular CSS
+import './styles.css';
+
+//Using Regular CSS
+<div className="container">
+  <h3>Hi There!</h3>
+</div>;
+```
+
+```jsx
+//Importing CSS Modules
+import styles from './styles.module.css';
+
+//Using CSS Modules
+<div className={styles['container']}>
+  <h3>Hi There!</h3>
+</div>;
+```
+
+The difference in your JavaScript files is that you treat your CSS file as an
+object and access the class names the same way you would access an object's
+attributes, but that's it! Your CSS files remain the same and now there's no
+need to worry about annoying CSS collisions.
+
+#### Installation
+
+CSS modules comes pre-installed with Create React App (sometimes referred to as
+CRA).
+
+#### Documentation
+
+[Documentation](https://github.com/css-modules/css-modules)
+
+---
+
+### Styled Components
+
+Using styled components is a bit more tricky.
+
+#### Why Use Styled Components
+
+- Write CSS in JS alongside HTML in JS, but don't have to inline the CSS
+- Keeps track of which components are rendered on a page and injects their
+  styles and nothing else, fully automatically.
+- You never have to worry about duplication, overlap or misspellings. No need to
+  keep track of class names.
+- Adapting the styling of a component based on its props or a global theme is
+  simple and intuitive without having to manually manage dozens of classes.
 
 #### Installation
 
 ```bash
-yarn add axios
+npm i styled-components
 ```
 
-### Using Axios
+#### Trying It Out
 
-Don't forget to replace your username in the place of `{#your github name}`.
+In `app.js`,
 
 ```jsx
-import axios from "axios";
-...
-axios.get('https://api.github.com/users/{#your github name}')
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+const Wrapper = styled.section`
+  padding: 4em;
+  background: papayawhip;
+`;
+
+render(
+  <Wrapper>
+    <Title>Hello World!</Title>
+  </Wrapper>
+);
 ```
 
-Let's dissect this piece of code into two parts: the API call, and everything
-else.
+The naming is as intuitive as it seems — `Title` is an `<h1>` tag, but with some
+styles associated with it. `Wrapper` is a div, but with some styles associated
+with it. To add style, we no longer need to inline, we can simply change the
+definition of `Title` or `Wrapper`.
+
+#### Passing Arguments
 
 ```jsx
-axios.get("https://api.github.com/users/{#your github name}");
+const Button = styled.button`
+  background: ${(props) =>
+    props.primary === true ? 'palevioletred' : 'white'};
+  color: ${(props) => (props.primary ? 'white' : 'palevioletred')};
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
+
+render(
+  <div>
+    <Button>Normal</Button>
+    <Button primary={true}>Primary</Button>
+  </div>
+);
 ```
 
-This piece of code is where the magic happens. Here we use axios to make a GET
-request to `https://api.github.com/users/{#your github name}`.
+#### Documentation
 
-If you're unfamiliar with what GET and POST requests are:
+[styled-components](https://styled-components.com/)
 
-1. **`[GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET)`:**
-   The `GET` method requests a representation of the specified resource.
-   Requests using `GET` should only retrieve data.
-2. **`[POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST)`:**
-   The `POST` method is used to submit an entity (a form) to the specified
-   resource, often causing a change in state or side effects on the server.
-3. **`[PUT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT)`:**
-   The `PUT` method replaces all current representations of the target resource
-   with the request payload. In other words, you can use `PUT` to update a
-   resource.
-4. **`[DELETE](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE)`:**
-   The `DELETE` method deletes the specified resource.
-5. **`[PATCH](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH)`:**
-   The `PATCH` method is used to apply partial modifications to a resource.
+## Component Libraries
 
-You should be familiar with the most commonly used ones, which are `GET`,
-`POST`, `PUT`, and `DELETE` requests.
+A UI component library is a set of ready-made UI components such as buttons,
+inputs, dialogs, and so on. They serve as building blocks for layouts. Thanks to
+their modular nature, we can arrange components in many different ways to
+achieve unique effects. Each library has a distinctive look and feel, but most
+of them offer theming, and their components are customizable to a certain
+degree.
 
-This GET request returns a promise, which is why we follow up the above line of
-code with
+Popular component libraries for React include React-Bootstrap, Theme UI, and
+Chakra UI. We'll be focusing on Chakra UI.
 
-```jsx
-.then(function (response) {
-   console.log(response);
- })
- .catch(function (error) {
-   console.log(error);
- })
+Libraries are made for one reason – to make developers’ lives easier. UI
+component libraries are no different in their purpose.
+
+#### Benefits
+
+- **Speed** – incorporating a UI component library can have a great impact on
+  development speed. Instead of creating each element from scratch, we simply
+  mix and match the existing components. Even if some additional customization
+  is required, it tends to be much quicker than writing styles on our own.
+- **Ease of use** – components are meant to be easy to use. Established
+  libraries are well-organized and have good documentation that is easy to
+  follow. Very often, it’s enough just to copy and paste code snippets to make
+  it work.
+- **Attractive look** – components look great without requiring any extra effort
+  from the developer; they’re carefully designed by professionals.
+- **Compatibility** – ensuring cross-browser and cross-device compatibility is
+  one of the biggest challenges of frontend development. UI component libraries
+  provide compatibility out of the box, which makes everything so simple!
+- **Accessibility** – good libraries adhere to accessibility guidelines, so
+  developers don’t even need to think about it.
+
+#### Drawbacks
+
+- **Generic look** – your app’s look and feel will be determined by the
+  library’s style in most parts. This is not necessarily an issue, but you need
+  to make sure that this is acceptable for your project.
+- **Change of design direction** – It’s very important that designers understand
+  and stick to components offered by the library. If the direction changes
+  towards a custom solution, it will become increasingly difficult and
+  time-consuming to overwrite the initial implementation.
+- **New team members** – every developer and designer needs to be familiar with
+  the particular library and its implementation (though this point is true for
+  any design system and any project).
+- **Bundle size** – UI component libraries tend to be big, so it’s probably not
+  the best idea to engage them in tiny projects.
+
+---
+
+### Chakra-UI
+
+Chakra UI is component library based on a few principles:
+
+- Style Props: All component styles can be overridden or extended via style
+  props to reduce the use of css prop or styled(). Compose new components from
+  Box.
+
+- Simplicity: Strive to keep the component API fairly simple and show real world
+  scenarios of using the component.
+
+- Composition: Break down components into smaller parts with minimal props to
+  keep complexity low, and compose them together. This will ensure that the
+  styles and functionality are flexible and extensible.
+
+- Accessibility: When creating a component, keep accessibility top of mind. This
+  includes keyboard navigation, focus management, color contrast, voice over,
+  and the correct aria-\* attributes.
+
+- Dark Mode: Make components dark mode compatible. Use useColorMode hook to
+  handle styling. Learn more about dark mode.
+
+- Naming Props: We all know naming is the hardest thing in this industry.
+  Generally, ensure a prop name is indicative of what it does. Boolean props
+  should be named using auxiliary verbs such as does, has, is and should. For
+  example, Button uses isDisabled, isLoading, etc.
+
+For more info on Chakra versus other component libraries, check out their
+[docs](https://chakra-ui.com/docs/comparison).
+
+#### Installation
+
+```shell
+yarn add @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^5
 ```
 
-This piece of code, however, isn't specific to axios, and we can choose to deal
-with the promise returned by our axios method any way we want.
-
-### Using Axios Inside React
+#### Setup Provider
 
 ```jsx
-import React, {useState} from 'react';
+import * as React from 'react';
 
-import axios from 'axios';
+// 1. import `ChakraProvider` component
+import { ChakraProvider } from '@chakra-ui/react';
 
-//As a functional component
-
-const App = () => {
-	const [person, setPerson] = useState("");
-
-	useEffect( () => {
-			axios.get(`https://api.github.com/users/{#your github name}`)
-				.then( res => {
-					const fetchedPerson = res.name;
-					setPerson(fetchedPerson);
-				})
-		}, []);
-
-	return (
-		<h1>{person}</h1>
-	);
+function App({ Component }) {
+  // 2. Use at the root of your app
+  return (
+    <ChakraProvider>
+      <Component />
+    </ChakraProvider>
+  );
 }
+```
 
-export default App
+#### Incorporating
 
-//or, as a class component...
+```jsx live
+// Sample card from Airbnb
 
-export default class App extends React.Component {
-	constructor(props) {
-		this.state = {
-	    person: ""
-	  }
-	}
+function AirbnbExample() {
+  const property = {
+    imageUrl: 'https://bit.ly/2Z4KKcF',
+    imageAlt: 'Rear view of modern home with pool',
+    beds: 3,
+    baths: 2,
+    title: 'Modern home in city center in the heart of historic Los Angeles',
+    formattedPrice: '$1,900.00',
+    reviewCount: 34,
+    rating: 4,
+  };
 
-  componentDidMount() {
-    axios.get(`https://api.github.com/users/{#your github name}`)
-      .then(res => {
-        const personName = res.name;
-        this.setState({ person: personName });
-      })
-  }
+  return (
+    <Box
+      maxW="sm"
+      borderWidth="2px"
+      borderRadius="lg"
+      overflow="hidden"
+      borderStyle="solid"
+    >
+      <Image src={property.imageUrl} alt={property.imageAlt} />
+      <Box p="6">
+        <Box display="flex" alignItems="baseline">
+          <Badge borderRadius="full" px="2" colorScheme="teal">
+            New
+          </Badge>
+          <Box
+            color="gray.500"
+            fontWeight="semibold"
+            letterSpacing="wide"
+            fontSize="xs"
+            textTransform="uppercase"
+            ml="2"
+          >
+            {property.beds} beds &bull; {property.baths} baths
+          </Box>
+        </Box>
 
-  render() {
-    return (
-      <h1>{this.state.person}</h1>
-    )
-  }
+        <Box
+          mt="1"
+          fontWeight="semibold"
+          as="h4"
+          lineHeight="tight"
+          isTruncated
+        >
+          {property.title}
+        </Box>
+
+        <Box>
+          {property.formattedPrice}
+          <Box as="span" color="gray.600" fontSize="sm">
+            / wk
+          </Box>
+        </Box>
+
+        <Box display="flex" mt="2" alignItems="center">
+          {Array(5)
+            .fill('')
+            .map((_, i) => (
+              <StarIcon
+                key={i}
+                color={i < property.rating ? 'teal.500' : 'gray.300'}
+              />
+            ))}
+          <Box as="span" ml="2" color="gray.600" fontSize="sm">
+            {property.reviewCount} reviews
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  );
 }
 ```
+
+### React-Bootstrap
+
+React-Bootstrap is a complete re-implementation of the Bootstrap components
+using React. It has **no dependency on either `bootstrap.js` or jQuery.** If you
+have React setup and React-Bootstrap installed, you have everything you need.
+
+Methods and events using jQuery are done imperatively by directly manipulating
+the DOM. In contrast, React uses updates to the state to update the virtual DOM.
+In this way, React-Bootstrap provides a more reliable solution by incorporating
+Bootstrap functionality into React's virtual DOM.
+
+#### Installation
+
+```bash
+yarn add react-bootstrap bootstrap
+```
+
+#### Incorporating Bootstrap
+
+```jsx
+import React, { Component } from 'react';
+import Alert from 'react-bootstrap/Alert';
+
+const Example = () => {
+  return (
+    <Alert dismissible variant="danger">
+      <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+      <p>Change this and that and try again.</p>
+    </Alert>
+  );
+};
+
+export default Example;
+```
+
+Don't worry if you don't get what's going on here — you don't need to remember
+Bootstrap (and by extension ReactBootstrap!) Whatever you don't understand in
+the above block of text, google it!
+
+#### Documentation
+
+[React-Bootstrap](https://react-bootstrap.github.io/getting-started/introduction/)
+
+---
+
+### Other Libraries (Optional)
+
+There are many component libraries I haven't covered, and oftentimes larger
+projects and companies may create their own to fit their needs. I've included
+some other popular component libraries below. No component library is
+necessarily better than another, and each has pros and cons.
+
+[Material-UI: A popular React UI framework](https://material-ui.com/)
+
+Google's component library. The main complaint to using Material UI is that it's
+hard to customize and can thus leave some sites using a large amount of Material
+UI looking too much like something from Google.
+
+[Ant Design - The world's second most popular React UI framework](https://ant.design/)
+
+A library developed by the Chinese tech giant Alibaba.
+
+[Semantic UI](https://semantic-ui.com/)
+
+Lightweight CSS frameworks such as [Tailwind](https://tailwindcss.com/) or
+[Pure](https://purecss.io/) can also be considered as viable alternatives to a
+component library. They offer a minimal, less opinionated CSS foundation that
+will help you speed up development, while at the same time allowing tremendous
+flexibility.
 
 ## The Anatomy of a React App
 
@@ -367,4 +661,5 @@ an alternative method of implementing your ideas!
 - [Samarth Goel](https://berkeley.zoom.us/my/samarthgoel)
 - [Alex Wu](https://www.linkedin.com/in/jialin-wu-alex/)
 - [Arushi Somani](https://www.linkedin.com/in/arushisomani/)
+- [Nitya Krishnakumar](https://www.linkedin.com/in/nitya-krish/)
 - [Brian Holt](https://www.linkedin.com/in/btholt/)
