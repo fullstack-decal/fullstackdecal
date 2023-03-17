@@ -9,15 +9,16 @@ In this homework, we will utilize the NASA daily picture API to create a backend
 ## Learning Objectives:
 
 - What is an API?
-  - What is the backend and how does the frontend communicate with the backend
+  - What is the backend and how does the frontend communicate with the backend?
 - What is HTTP? How to use Postman?
-- What is NodeJS
+- What is NodeJS?
 - What is Express and how to use Express to develop APIs
 
 ## Setup
 
-[You may find the starter here.](https://classroom.github.com/a/YXd3Ov4_)
+You may find the starter here.
 
+[Homework 6](https://classroom.github.com/assignment-invitations/a8631a81fcb1bc7b951c8f7233a94361)
 
 **Query Parameters**
 
@@ -41,13 +42,13 @@ Read the details of the APOD API at [https://api.nasa.gov/](https://api.nasa.gov
 To use the NASA API, you will need an API key. This is a way of authenticating with the NASA API server, and it is how NASA prevents unauthorized users from calling the API.
 To generate an API key, go to [https://api.nasa.gov/](https://api.nasa.gov/) and scroll down to the “Generate API Key” section. Fill in your first name, last name, and email, and click sign up. You should be presented with a similar screen to the following:
 ![api_key](../assets/Assignment6/api_key.png)
-Keep track of your API key, you will need it for the first of the homework when making requests to the NASA API.
+In `apod-server/index.js`, you can now set the value of `API_KEY` to your newly generated API key. You will need to use it for the first part of the homework when making requests to the NASA API. 
 
 Take a look around [the starter codebase](https://classroom.github.com/assignment-invitations/a8631a81fcb1bc7b951c8f7233a94361) and try to understand how it's put together. It contains an Express server, as well as the [axios](https://axios-http.com/) library, which we will be using to make calls to the APOD API.
 
 ## Task 0 - Start the Backend
 
-Before we start building anything, we have to ensure that all of the dependecies have been properly installed for the Express server:
+Before we start building anything, we have to ensure that all of the dependencies have been properly installed for the Express server:
 
 - cd into the directory: `cd homework6-starter/apod-server`
 - Install dependencies: `npm i`
@@ -99,7 +100,9 @@ Your first task is to implement the `/apod-for-date` GET route in `apod-server/i
 
 **Hint:** You can access the query parameters in your API handler using `req.query`.
 
-After you’re done with this, use Postman to test your new `/apod-for-date` API to make sure that it’s returning the correct value. For example, if you call the API with the `date` parameter set to `2020-12-25` , the response should **exactly** match the following:
+**Hint:** You can access the response body of an API response using the `data` property
+
+After you’re done with this, use Postman to test your new `/apod-for-date` API to make sure that it’s returning the correct value. For example, if you call the API with the `date` parameter set to `2020-12-25`, the response should **exactly** match the following:
 
 ```json
 {
@@ -115,7 +118,7 @@ After you are done, open `apod-frontend/index.html` and look at the first sectio
 
 ## Task 2 - To the Moon 🚀
 
-Now that you have worked with the API, implement the `/apods-for-april` GET route in `apod-server/index.js` that returns a list of all APODs in April 2022. you must only use **ONE** call to NASA’s API to answer this question.
+Now that you have worked with the API, implement the `/apods-for-april` GET route in `apod-server/index.js` that returns a list of all APODs in April 2022. You must only use **ONE** call to NASA’s API to answer this question.
 
 **Query Parameters**
 
@@ -143,7 +146,7 @@ None
 
 **Hint:** How many days are in April?
 
-**Hint:** What parameters does the NASA API provide other than `date`?
+**Hint:** What parameters does the NASA API provide other than `date`? You can find this on the https://api.nasa.gov/ website -> "Browse APIs" -> "APOD". 
 
 After you are done, look at the second section of `apod-frontend/index.html` and click the “Load” button. If you have implemented the API correctly, you should see the all of the images for April 2022 being loaded onto the webpage!
 
@@ -202,3 +205,4 @@ Congratulations! You should now be familiar with using Postman, formatting an AP
 
 - Isaac Ong
 - William Henderson
+- Michelle Wang
