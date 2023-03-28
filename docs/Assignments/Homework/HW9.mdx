@@ -6,7 +6,7 @@ sidebar_position: 9
 
 ## Introduction
 
-In this homework, we wish to provide students with a hands-on experience in creating their own API endpoints that are protected with authentication. Students will learn how to set up API endpoints and have them interact with a MongoDB database while also implementing an authentication system to verify if incoming requests are from verified users.
+In this homework, we wish to provide students with a hands-on experience in creating their own API endpoints that are protected with authentication. Students will learn how to set up API endpoints and have them interact with a MongoDB database while also implementing an authentication system to verify if incoming requests are from verified users. The first tasks of this assingment are supported by [Lesson 15] (https://fullstackdecal.com/docs/Lessons/Lesson16#how-to-test-the-application) and can be used as a guide when stuck. 
 
 ## Learning Objectives
 
@@ -272,7 +272,7 @@ Ask students to create an endpoint that gets some information from the database.
 
 So, our next task will be to retrieve the logged-in user using the **token**. Let's go and add this functionality.
 
-The `/user/me` route will return your user if you pass the token in the header. In the file **route.js**, add the below code snippet.
+The `/user/me` route will return your user if you pass the token in the header. In the file **user.js**, add the below code snippet.
 
 ```jsx
 /**
@@ -294,7 +294,7 @@ router.get("/me", auth, async (req, res) => {
 
 As you can see, we added the auth middleware as a parameter in the **/user/me** GET route, so let's define **auth** function.
 
-Go ahead and create a new folder named **middleware**. Inside this folder, create a file named **auth.js**
+Go ahead and create a new folder named **middleware**. Inside this folder, create a file named **auth.js**.
 
 > This auth middleware will be used to verify the token, and retrieve the user based on the token payload.
 
@@ -356,4 +356,4 @@ router.put("/update-user", auth, async (req, res) => {
 });
 ```
 
-Don’t forget to make use of Postman to test out your API endpoints! An example can be found in the lecture notes.
+Don’t forget to make use of Postman to test out your API endpoints! A few examples can be found in Lesson 15.
