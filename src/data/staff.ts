@@ -1,6 +1,6 @@
 const staff = [
   {
-    name: '42',
+    name: 'Forty Two',
     image: '/img/staff/sebi.png',
     role: 'Number',
     linkedin: 'https://www.linkedin.com/school/42born2code/',
