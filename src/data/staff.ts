@@ -1,5 +1,14 @@
 const staff = [
   {
+    name: '42',
+    image: '/img/staff/sebi.png',
+    role: 'Number',
+    linkedin: 'https://www.linkedin.com/school/42born2code/',
+    personal: 'https://www.fortytwo.zip/',
+    bio: 'Hi! I’m 42! Testing push privileges',
+    email: 'mailto: 42@berkeley.edu',
+  },
+  {
     name: 'Nitya Krishnakumar',
     image: '/img/staff/nitya.png',
     role: 'Facilitator',
