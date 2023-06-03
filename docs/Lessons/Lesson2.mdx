@@ -6,12 +6,13 @@ sidebar_position: 3
 
 ## Introduction
 
-We're going to start building our very first website. At first our website is
-going be pretty ugly but it's still going to be functional! We're going to be
-using the language HTML, or hypertext markup language. This isn't a programming
-language since it doesn't actually _do_ anything. It's like how English isn't a
+A basic website is just a set of `.html`, `.css` and `.js` files stored somewhere. The `.html` file is the most important, laying the foundation of the website,
+with `.css` and `.js` files adding extra visuals and functionality. In this lesson, you'll learn the HTML language, which is
+what `.html` files are written with. Be prepared for your website to look like it's from the 90s!
+
+HTML isn't actually a programming language since it's not composed of computer _instructions_ like "if" or "while". It's like how English isn't a
 programming language either: you can't "run" English. Same idea with HTML: you
-can't "run" HTML. HTML is simply the language and pictures on the page. It's the
+can't "run" HTML. Instead, you can "view" an HTML file, you like you "view" an essay. HTML is simply the language and pictures on the page. It's the
 static (which is another word for unchanging) content.
 
 ### Learning Objectives
@@ -21,86 +22,161 @@ static (which is another word for unchanging) content.
 3. What is metadata
 4. How to write comments
 
-## Tags
+## Basics of HTML
 
-HTML's base building block is the tag `</>`. A tag is a building block. It
-describes what's inside it. Every tag has an opening and a closing tag (some
-tags open and close at the same point.)
+### Elements and tags
 
-There are many tags, each of which correspond to a different element of a
-website.
-
-ex. `<p>` → Text, `<h1>` → Header 1, `<img>` → Image
-
-A tag, whether it's opening or closing, are surrounded by angle brackets, `<`
-and `>`. Closing tags always have a slash, `/`, after the opening angle bracket,
-so it looks like `</h1>`. There are things called "self-closing tags" or "void
-tags" that open and close themselves. These will look like this: `<input />`.
-That slash at the end means it is self closing. To make it more confusing, that
-last slash is optional, so `<input>` (with no closing tag ever) is valid too
-since input tags are always self-closing. Even though the closing tag is
-optional in some cases, you should always include it since certain variants of
-HTML (like XML or JSX in React) require that every tag have a closing tag.
-
-You can **Inspect Element** `Right Click → Inspect` on any webpage to see the
-HTML building blocks of a web page.
-
-### Accessibility
-
-Browsers aren't the only thing reading websites. Blind and people who can't see
-well will use screen readers to read web pages out loud to them; it uses things
-like headers to understand what information is important to read to the users.
-It's also how Google and Bing will understand the important details of your
-website. In other words, it's important which type of tag you use. More than
-just the visual aesthetic is using those tags. For example, instead of styling a
-`p` tag to look like a button, you should always use a `p` tag inside of a
-`button` tag.
-
-```html live
-<button>
-  <p>Click me!</p>
-</button>
+Here's an example `.html` file:
+```html
+Welcome to my website!
 ```
 
-This way, screen readers can tell that what you wrote is a button and not just a
-fancy block of text.
+That's right, plain text is valid HTML! But that's not very useful. If you viewed this file on a browser, you'd just see
+the words "Welcome to my website!" in tiny font on the top left. HTML stands for **H**yper**t**ext **M**arkup **L**anguage. Essentially it lets you 
+do cooler things than just plain text.
 
-### Hello World!
+For example, you can make text **bold** or *italicized*.
 
-There are 4 components to an HTML file:
+```html
+<b>This text is bold!</b>
+<i>This text is italicized!</i>
+```
+
+HTML's base building block is the **element**. Above you can see the `<b>` and `<i>` elements. An element is a building block, acting
+on what's inside it. Every element has an opening and a closing **tag**. For example, `<b>` is the opening tag for the bold element, and `</b>` is the closing tag.
+Everything in between the opening and closing tag is affected by the element. In this case, the text is bolded.
+
+If you opened this `.html` file, you would see this:
+> **This text is bold!**
+> *This text is italicized!*
+
+### Self-closing tags
+
+See how both the bold and italicized text are on the same line? If you want to put them on separate lines, you can use the `<br>` element, which stands for **b**reak **r**ule.
+
+```html
+<b>This text is bold!</b><br/>
+<i>This text is italicized!</i>
+```
+
+Note that the choice to put multiple elements on the same line or to seperate them out is entirely irrelevant. You could write your HTML file all in one line if you wanted to.
+
+Now, if you opened this `.html` file, you would see this:
+> **This text is bold!**
+>
+> *This text is italicized!*
+
+Note that the break rule element is a "self-closing tag" or "void
+tag" that open and close themselves. This is because it doesn't have allow any content.
+
+Since it's obvious all `<br>` tags are self-closing, you can omit the closing tag and just write `<br>` instead of `<br/>`. 
+You don't need to close this tag with `</br>` since it's self-closing'.
+
+### Attributes
+
+Some elements have extra things you can configure about them. For example:
+```html
+<a href="https://webatberkeley.org">This is a link!</a>
+```
+
+The `<a>` makes whatever is inside of it into a link! But to where? It needs extra information!
+Here, we give the `<a>` element the `href` attribute, and set the value of the attribute to the URL of the desired destination.
+
+Now, if you opened this `.html` file, you would see this:
+> [This is a link!](https://webatberkeley.org)
+
+So, putting it all together, HTML is composed of elements, which have opening and closing tags (or self-closing tags), and optionally can take attributes:
+
+![Example 1 Image](../assets/Lesson2/Lesson2-1.png)
+
+### Nesting
+
+You can also put elements inside of other elements. For example:
+```html
+<b>This text is bold and <i>italicized!</i></b>
+```
+
+Now, if you opened this `.html` file, you would see this:
+> **This text is bold and *italicized*!**
+
+### File Layout
+
+All HTML files must have the following elements:
 
 1. `<!DOCTYPE html>` ⇒ Declares the document as being of type html
 2. `<html>` ⇒ anything within this tag is to be interpreted as html
 3. `<head>` ⇒ holds the metadata for the document
 4. `<body>` ⇒ contains all the actual html that will be displayed on the site
 
+For example:
+
 ```html
 <!DOCTYPE html>
 <html>
   <head>
     <!-- *Metadata goes in here -->
-    <title>Page Title</title>
-    <meta charset="UTF-8" />
-    <meta name="author" content="John Doe" />
-    <meta name="description" content="Hello World!" />
   </head>
 
   <body>
     <!-- *Actual Content Goes in Here -->*
-    <p>Hello World!</p>
+    <b>Hello World!</b>
   </body>
 </html>
 ```
 
-### Common HTML Tags
+This will look exactly the same as just `<b>Hello World!<b>` when you open it because the browser realizes you forgot to add the four required elements and adds them for you.
+However, it is good practice to add them yourself.
 
-- **Regular text** → `<p>` tag
+The green text are comments. They start with `<!--` and end with `-->`. Comments are ignored by the browser, so you can write whatever you want in them.
+
+### Metadata
+
+Everything we've learned so far would go in the `<body>` element. However, there's some data that you may want to specify about the website that isn't necessarily
+visible in the page. These options go in the `<head>`. For example, you can specify the title of the page:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Website</title>
+  </head>
+
+  <body>
+    <b>Hello World!</b>
+  </body>
+</html>
+```
+
+Now, if you opened this `.html` file, the **tab** that the page is on would say `My Website`.
+
+### What does Google.com look like?
+
+You can **Inspect Element** on any webpage to see the HTML code that is actually being run.
+
+Right click anywhere (even right here!), and choose **Inspect Element**. You can even edit it!
+
+This is super useful for understanding why a website you may be making looks the way it does.
+
+## Common HTML Tags
+
+Alright, so let's learn all the tags, right? No. Depending on who you ask, there's up to 142 tags,
+some of which have been deprecated (phased out) since before the turn of the century.
+
+Not even the most experienced web developers know all the tags. Instead, whenever you need to do something, you can just google it.
+
+To get some familiarity for what's out there, we'll cover the most common tags.
+
+### `<p>` tag → **Just regular text**
 
 ```html live
 <p>Text!</p>
 ```
 
-- **Headers** → `<h1>` - `<h6>` tags
+Sounds useless? It's not! It adds a line-break (equivalent to `<br>`) before and after the text.
+So why not just use `<br>`? Because it's bad practice to use `<br>` to separate paragraphs. `<p>` is the correct way to do it.
+A lot of HTML comes down to good and bad practice. You can do a lot of things in a lot of ways, but some ways are better than others.
+
+### `<h1>` - `<h6>` tags → **Headers**
 
 ```html live
 <div>
@@ -110,40 +186,23 @@ There are 4 components to an HTML file:
 </div>
 ```
 
-- Header types are used for size and SEO (Search Engine Optimization)
-  - Each header tag has a different default font size
-    - `<h1>` tags have the largest font size and decrease down to `<h6>` being
-      the smallest
-  - Google uses header tags to divide up a website
-    - `<h1>` tags are seen as main subjects for a website, while `<h3>` tags are
-      seen as subsections
-- **Link** → `<a>` tag
+`<h1>` makes the text super big. `<h2>` makes it a little smaller. `<h3>` makes it a little smaller than that. `<h4>` makes it a little smaller than that. `<h5>` makes it a little smaller than that. `<h6>` makes it a little smaller than that.
+
+Furthermore, header types are used for SEO (Search Engine Optimization). Google uses header tags to divide up a website. 
+`<h1>` tags are seen as main subjects for a website, while `<h3>` tags are seen as subsections.
+
+`<h1>`-`<h6>` tags also add a line-break before and after the text. How do you know which elements add a line break (e.g. `<p>`) and which don't (e.g. `<i>`)?
+You don't! You either know or you don't. Because of this and so many more reasons, you'll be googling (or binging) a lot.
+
+### `<a>` tag → **Link**
 
 ```html live
 <a href="https://webatberkeley.org">This is a link!</a>
 ```
 
-- the `href` is an attribute of the `<a>` tag
-  - attributes are simply **_characteristics_** of tags
-  - When clicked, the page will redirect to the URL specified by the `href`
-    attribute
-  - **ex.** this `href` points to the
-    [Web Dev at Berkeley](https://webatberkeley.org/) site
-- **Lists** → `<ul>`, `<ol>`, `<li>` tags
-  - `<ul>` stands for _unordered list_ (bullet points ⇒ Where order doesn't
-    matter)
-  - `<ol>` stands for _ordered list_ (1. 2. 3. ⇒ Where order matters)
-  - `<li>` stands for _list item_
+We covered these above, but basically they are just links. They've got a couple more attributes you can configure, you should google them!
 
-```html live
-<ul>
-  <li>This is an</li>
-  <li>unordered list</li>
-  <li>with 3 items</li>
-</ul>
-```
-
-- **Buttons** → `<button>` tag
+### `<button>` tag → **Buttons**
 
   - Creates a clickable button
   - Put elements inside and around the button to make it functional and pretty
@@ -156,14 +215,21 @@ There are 4 components to an HTML file:
 </a>
 ```
 
-- **Divs** → `<div>` tag
-  - Short for division
-  - Generic container tag
-  - You'll use a lot of divs even though they may not make total sense right now
-- **Spans** → `<span>` tag (optional)
+This would look like
+<a href="https://webatberkeley.org/" style={{all: "revert"}}>
+  <button style={{all: "revert"}}>
+    <p style={{all: "revert"}}>Go to Web Dev at Berkeley's site</p>
+  </button>
+</a>
+
+Awesome? Yes.
+
+### `<span>` tag (optional) → **Spans**
   - A container for small pieces of text
-- **Image** → `<img>` tag
-  - Displays images
+  - Will be more useful when we learn about CSS
+
+### `<img>` tag → **Image**
+ Displays images
   - `src` attribute points to the image
   - `alt` attribute is displayed as text if the photo is unavailable or cannot
     be used
@@ -182,8 +248,8 @@ There are 4 components to an HTML file:
 />
 ```
 
-- Inputs → `<input>` tag
-  - Inputs can have different types, such as text, password, email, file, and
+### Inputs → `<input>` tag
+  - Inputs can have different types, such as text (default), password, email, file, and
     many more that all come with their own unique validation and behavior
 
 ```html live
@@ -204,7 +270,100 @@ There are 4 components to an HTML file:
 
 :::
 
-- **Textarea** → `<textarea>` tag **(optional)**
+### `<select>`, `<option>` tags → **Selects and Option**
+
+```html live
+<div>
+  <select id="farm-animals">
+    <option class="animal" value="pig">Pig</option>
+    <option class="animal" value="cow">Cow</option>
+    <option class="animal" value="rooster">Rooster</option>
+  </select>
+</div>
+```
+
+Allows the user to pick one of the options.
+
+### `<div>` tag → **Divs** 
+  - Short for division
+  - Generic container tag
+  - They don't do anything on their own, but they are used to group elements
+    together
+
+For example, somewhere on your page you may have some sign-up page:
+```html live
+<div id="signupPage">
+  <h1>Sign up for our newsletter!</h1>
+  <p>Enter your email below to receive updates on our latest products.</p>
+  <input type="email" placeholder="Email" />
+  <button>Sign up</button>
+</div>
+```
+
+Notice we gave the `<div>` an `id` attribute. This is so we can reference it later. In this case, we set it to `signupPage`.
+
+Now imagine the sign-up page is very far down, and you'd like to make a button to take the user down to it. Easy!
+Since we wrapped the sign-up page in a `<div id="signupPage">`, we can just do this:
+
+```html live
+<a href="#signupPage">
+  <button>Sign up for our newsletter!</button>
+</a>
+```
+
+Here, the `href` attribute of the `<a>` tag is set to `#signupPage`. This is called a **hash**. It's a special type of link that takes you to a specific part of the page.
+
+Note that you can give **any** element an `id` attribute, not just `<div>`s. You shouldn't give more than one element the same `id` though. For example, we could
+have achieved the same effect by ommiting the div entirely:
+
+```html live
+<h1 id="signupPage">Sign up for our newsletter!</h1>
+<p>Enter your email below to receive updates on our latest products.</p>
+<input type="email" placeholder="Email" />
+<button>Sign up</button>
+```
+
+But this is formatted worse, because the `<h1>` tag is just the beginning of the sign-up page. If you ever remove it or change it for something else, you could
+accidentally break the link. You can think of `<div>`s as a way to organize your website.
+
+### `<form>` tag → **Form** 
+  - A group of html tags related to gathering data from a user
+  - This will be some combination of `input`, `textarea`, and `select` tags
+  - A form is just a container for the other tags
+
+```html live
+<form>
+  <input type="text" />
+  <textarea></textarea>
+</form>
+```
+
+Sounds like just another `<div>` tag, right? Well, there's a key difference. Forms can contain information about _where the data should go_ once the user submits.
+We'll learn this later in the course.
+
+## More tags
+These are tags you can just search up if you need them. They aren't required to build your intuition.
+
+### `<ul>`, `<ol>`, `<li>` tags → **Lists**
+  - `<ul>` stands for _unordered list_ (bullet points ⇒ Where order doesn't
+    matter)
+  - `<ol>` stands for _ordered list_ (1. 2. 3. ⇒ Where order matters)
+  - `<li>` stands for _list item_
+
+```html live
+<ul>
+  <li>This is an</li>
+  <li>unordered list</li>
+  <li>with 3 items</li>
+</ul>
+```
+
+This would look like
+> - This is an
+> - unordered list
+> - with 3 items
+
+### `<textarea>` tag → **Textarea**
   - A larger input for text
   - The `placeholder` attribute specifies what shows up in the textarea when the
     user hasn't entered any input (Optional)
@@ -222,31 +381,9 @@ There are 4 components to an HTML file:
 ></textarea>
 ```
 
-- **Selects and Option** → `<select>`, `<option>` tags **(optional)**
+You can think of this as a very large `<input/>` tag (with no type attribute set).
 
-```html live
-<div>
-  <select id="farm-animals">
-    <option class="animal" value="pig">Pig</option>
-    <option class="animal" value="cow">Cow</option>
-    <option class="animal" value="rooster">Rooster</option>
-  </select>
-</div>
-```
-
-- **Form** → `<form>` tag
-  - A group of html tags related to gathering data from a user
-  - This will be some combination of `input`, `textarea`, and `select` tags
-  - A form is just a container for the other tags
-
-```html live
-<form class="my-form">
-  <input type="text" />
-  <textarea></textarea>
-</form>
-```
-
-- **Table** → `<table>`,`<tr>`, `<td>` tags
+### `<table>`,`<tr>`, `<td>` tags → **Table** 
   - `table` creates a table
   - `tr` stands for table row
   - `td` stands for table data, basically represents a cell in
@@ -421,5 +558,6 @@ information about your site.
 **Contributors**
 
 - [Samarth Goel](https://www.linkedin.com/in/samarth-goel-1047b8187/)
+- [Sebastiaan Szafir](https://sebiszafir.com/)
 - [Brian Holt](https://www.linkedin.com/in/btholt/)
 - [Nitya Krishnakumar](https://www.linkedin.com/in/nitya-krish/)
