@@ -70,6 +70,11 @@ const config = {
             label: 'Resources',
           },
           {
+            to: 'enroll',
+            position: 'left',
+            label: 'Enroll',
+          },
+          {
             href: 'https://github.com/fullstack-decal',
             label: 'GitHub',
             position: 'right',
