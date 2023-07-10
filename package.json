@@ -18,6 +18,9 @@
     "typecheck": "tsc",
     "prepare": "husky install"
   },
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.1",
     "@chakra-ui/react": "^1.7.3",
