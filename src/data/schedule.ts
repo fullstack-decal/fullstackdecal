@@ -11,7 +11,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 0',
     assigmentTitle: 'Getting Started',
     assigmentDueDate: 'Feb 8',
-    assigmentLink: '/docs/Assignments/Homework/HW0',
+    assigmentLink: '/',
   },
   {
     week: 0,
@@ -23,7 +23,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 1',
     assigmentTitle: 'Tribute Page',
     assigmentDueDate: 'Feb 8',
-    assigmentLink: '/docs/Assignments/Homework/HW1',
+    assigmentLink: '/',
   },
   {
     week: 1,
@@ -43,7 +43,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 2',
     assigmentTitle: 'Country Flags',
     assigmentDueDate: 'Feb 15',
-    assigmentLink: '/docs/Assignments/Homework/HW2',
+    assigmentLink: '/',
   },
 
   {
@@ -56,7 +56,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Project 1',
     assigmentTitle: 'Personal Website',
     assigmentDueDate: 'Feb 22',
-    assigmentLink: '/docs/Assignments/Projects/Project1',
+    assigmentLink: '/',
   },
   {
     week: 2,
@@ -82,7 +82,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 3',
     assigmentTitle: 'Fun With JavaScript!',
     assigmentDueDate: 'Mar 1',
-    assigmentLink: '/docs/Assignments/Homework/HW3',
+    assigmentLink: '/',
   },
 
   {
@@ -93,7 +93,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Final Project',
     assigmentTitle: 'Phase 1',
     assigmentDueDate: 'Mar 22',
-    assigmentLink: '/docs/Assignments/Projects/FinalProjectPresentation',
+    assigmentLink: '/',
   },
   {
     week: 4,
@@ -105,7 +105,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 4',
     assigmentTitle: 'Blockstagram',
     assigmentDueDate: 'Mar 8',
-    assigmentLink: '/docs/Assignments/Homework/HW4',
+    assigmentLink: '/',
   },
 
   {
@@ -118,7 +118,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 5',
     assigmentTitle: 'Advanced React',
     assigmentDueDate: 'Mar 13',
-    assigmentLink: '/docs/Assignments/Homework/HW5',
+    assigmentLink: '/',
   },
   {
     week: 5,
@@ -139,7 +139,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 6',
     assigmentTitle: 'Using the NASA API',
     assigmentDueDate: 'Mar 20',
-    assigmentLink: '/docs/Assignments/Homework/HW6',
+    assigmentLink: '/',
   },
   {
     week: 6,
@@ -151,7 +151,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 7',
     assigmentTitle: 'Advanced Backend',
     assigmentDueDate: 'Mar 22',
-    assigmentLink: '/docs/Assignments/Homework/HW7',
+    assigmentLink: '/',
   },
   {
     week: 7,
@@ -163,7 +163,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 8',
     assigmentTitle: 'Favorite Website Redesign',
     assigmentDueDate: 'Apr 5',
-    assigmentLink: '/docs/Assignments/Homework/HW8',
+    assigmentLink: '/',
   },
   {
     week: 7,
@@ -205,7 +205,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Homework 9',
     assigmentTitle: 'User Auth',
     assigmentDueDate: 'Apr 12',
-    assigmentLink: '/docs/Assignments/Homework/HW9',
+    assigmentLink: '/',
   },
   {
     week: 10,
