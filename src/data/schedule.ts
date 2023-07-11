@@ -173,7 +173,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Final Project',
     assigmentTitle: 'Phase 2',
     assigmentDueDate: 'Apr 17',
-    assigmentLink: '/docs/Assignments/Projects/FinalProjectPresentation',
+    assigmentLink: '/',
   },
   {
     week: 8,
@@ -229,7 +229,7 @@ const schedule: Lesson[] = [
     assigmentFormat: 'Final Project',
     assigmentTitle: 'Phase 3',
     assigmentDueDate: 'Apr 24',
-    assigmentLink: '/docs/Assignments/Projects/FinalProjectPresentation',
+    assigmentLink: '/',
   },
   {
     week: 11,
