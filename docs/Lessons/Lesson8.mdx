@@ -2,7 +2,7 @@
 sidebar_position: 9
 ---
 
-# Lesson 7 - Node.js, NPM, and Yarn
+# Lesson 7 - Node.js, and SSR
 
 ## Introduction
 
@@ -22,6 +22,7 @@ local files, connecting and setting up a server, and much more.
 2. Create Backend APIs using Node & Express
 3. How to make API calls using axios
 4. File system with node & express
+5. Understand cookies
 
 ### Getting Started
 
@@ -135,9 +136,75 @@ If you are familiar with the `fetch` function in JS, there is no fetch function
 in Node. You can use the http package or some other third party package to
 handle sending a request.
 
-# Web Server with Node & Express
+# SSR - Server Side Rendering
 
-## Install Express
+So far we have just been double-clicking on our `index.html` file and letting our browser read the file from disk. This isn't how real websites work! This is just a handy feature browsers have. Just like they can read PDFs, they can read HTML files. But don't be confused, what you're seeing is not a website. For example, browsers will not respect cookies that you set from an HTML file that you are just viewing (they will not be persisted).
+
+So how to websites really work? Basically, a compute has a special application running (called a `server`) which is constantly listening to incomming requests via the internet. When requests come in, it sends back the HTML file.
+
+Alright, but what's the internet?
+
+## The internet
+
+The internet is simple. There are a bunch of computers, each with an IP, that send each other information. They refer to each other by IP address.
+
+Here is a diagram of five computers connected to the internet. Each has it's own IP address that uniquely identifies it. You are on the left, playing Minecraft while writing your History essay. Those are the `processes` running on your machine. On the right is Vikhyath (Vik for short) on another computer. They are also playing Minecraft but you've never met them.
+
+![Devops Image](../assets/Lesson8/internet-1.png)
+
+Vik would like to make a website, so he creates a bunch of HTML files and stores them somewhere on his compute.
+
+However, only he can see them! So he spins up a new `process`. Processes that make websites public to the world are known as `servers`. Vik starts up a server, telling it where the HTML files are in his computer.
+
+![Devops Image](../assets/Lesson8/internet-2.png)
+
+To visit Vik's website, you need to send a request to Vik's server. So you send an internet request to Vik's IP address. However, upon arrival his computer is scared it may have a virus, so it's designed not to tell all it's processes about all incoming requests. So it ignores your request.
+
+Aw shucks! You have to be more specific, you have to tell Vik's computer you'd like to talk to the server. Luckily, operating systems let processes reserve `ports`. Then, when they get requests, the requests can specify what port they're looking for and whichever process has reserved that port will be able to see the request.
+
+You ask Vik for help, and he tells you the server is listening on port 80.
+
+![Devops Image](../assets/Lesson8/internet-3.png)
+
+So you go to your Chrome process and type `64.125.25.35:80` into the URL bar. When you hit enter, your computer sends an internet request to Vik's computer, specifying that it wants to talk to the process on port 80. The server receives this along with the port that you're listening to so that it can send the HTML page right to you!
+
+![Devops Image](../assets/Lesson8/internet-4.png)
+
+Chrome reserves some random temporary port in an instant right as you press enter so that it can receive a response. The processes can now communicate securely without other processes on the respective machines ever finding out.
+
+### Configuring your network
+
+Sadly we ran out of IP addresses a while ago so we don't have enough for every device. Instead, your house has a router which has an IP address. Then each computer that conencts to it gets a fake IP address, which the router convinces your computer is real so that your computer never even has to deal with the fact that it's fake. When it sends or receives requests, the router deals with switching out the IP addresses every time.
+
+However, for security reasons routers will NOT allow incoming internet requests into computers in its network :( So if you start up a server right now, your friends will not be able to see it unless you configure your router appropriately.
+
+Furthermore, it's possible your computer itself has a firewall, which is a program that blocks incoming requests. You can configure your firewall to allow incoming requests to certain ports.
+
+Luckily, you don't have to do any of this. Nowadays it is far more common to use a cloud service to rent out someone else's computer, and they will figure this all out for you and give you an IP address you can use.
+
+### Domains
+
+Alright now Vik has a website, but it's not very easy to remember his IP address. So he buys a domain name, which is just a string of characters that maps to an IP address. He buys `vikhyath.com` and sets it to map to his IP address.
+
+Now Chrome has even more work to do... Every time you type in a domain name, it has to go to the DNS server (yes, another server, with an IP that ALL browsers come pre-loaded with), which will tell it the IP address of the domain name. Then it can send the request to the IP address.
+
+For redundancy there are many DNS servers, and they all have the same information. So if one is down, Chrome can just go to another one. Chrome has a list of all the DNS servers, and it will try them in order until it gets a response.
+
+If they all went down, we'd have to go back to memorizing IP addresses :(
+
+### Default port
+
+So, when you type `google.com`, it finds that the IP is `51.68.47.158`. But what port?
+
+Browsers default to port `80`, so it will send the request to `51.68.47.158:80`.
+
+Try it out! Go to `google.com:80`. You'll see your browser sneakily gets rid of the port. But if you try any other port, it won't work!
+
+## Web Server with Node & Express
+
+Let's make a server! (It's called a server because it `serves` files to people who request them).
+
+### Install Express
 
 Let's build a web server using Node! Since building a server can be very hard
 using Node, a package called Express is often used to set up a web server in a
@@ -148,13 +215,9 @@ Let's install it by `npm install express`.
 After installing express, you would find it under the dependencies attribute in
 the `package.json` file.
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2e0ac7d2-506e-4963-948a-6b38c28908a5/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2e0ac7d2-506e-4963-948a-6b38c28908a5/Untitled.png)
+### Basic Web Server
 
-Reminder: this is how node keeps track of all the packages we used.
-
-## Hello World Web Server
-
-```jsx
+```js
 const axios = require('axios');
 const express = require('express');
 const port = 3000;
@@ -170,7 +233,24 @@ app.listen(port, () => {
 });
 ```
 
-Above is the code for the most basic web server. Let's analyze it line by line.
+We tell express what port to listen to. Now, if a request comes to your IP address at port 3000, this Javascript process will be able to see it.
+
+Luckily, instead of finding and memorizing your IP, you can use the shorthand `localhost`. This is a special domain name that always refers to your own computer.
+
+So you can go to `localhost:3000` to see your website. It should say `Hello world`.
+
+Lets look at this part more closely:
+```js
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+```
+
+When you type out your website, you could have typed `localhost:3000/about`, and you'd expect a different page!
+
+Luckily, we don't have to make any `if` statements to pick what site to send. Express will do that for us. We just have to tell it what to do for each site.
+
+Let's analyze the rest line by line.
 
 To import any npm packages that we download, we use the `require()` function
 provided by Node. Thus, the `const express = require('express')`
@@ -204,13 +284,49 @@ Let's start our application by typing `node index.js` then visiting
 You would see a Hello World displayed on the screen, which means that our server
 is up and running.
 
+### Sending HTML
+
+Let's send some HTML instead of just text.
+
+```js
+app.get('/', (req, res) => {
+  res.send('<h1>Hello World</h1>');
+});
+```
+
+You have to stop and restart your server to see the changes.
+
+So if you were to paste your entire HTML file in there, it would work! But that's not very efficient. Let's make a separate file for our HTML.
+
+```js
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+```
+
+`__dirname` is a special variable that refers to the directory of the current file. So this will send the file `index.html` in the same directory as `index.js`.
+
+What if your HTML file makes reference to other files, like CSS or JS files? You have to send those too!
+
+```js
+app.get('/styles.css', (req, res) => {
+  res.sendFile(__dirname + '/styles.css');
+});
+```
+
+Now you can go to `localhost:3000/styles.css` and see your CSS file. Or even better, you can add a `<link>` tag in your HTML file to link to the CSS file.
+
+Your browser will then make another request to your server for the CSS file! If you wanted to have fun, you could return a random CSS file every time, and your website would look different every time you refresh!
+
+### SSR (Server Side Rendering)
+
+So what is the point of all this? Why not just make a static HTML file and send it to everyone?
+
+We want to be able to send different HTML files to different people. For example, if you go to `youtube.com`, you'll see a different page than if I go to `youtube.com`.
+
 ## Adding routes and sending requests
 
 Now let's define some more functionality for our server.
-
-Before we jump into actually writing code, let's take a moment to consider
-design. With smarter design, we can make our code intuitive, clean, and
-efficient. The goal of software is to make life intuitive, clean, and efficient!
 
 We will be implementing a "dumb" version of a database, meaning that we will be
 emulating what a database would do with a very stupid implementation. We will

@@ -25,7 +25,7 @@ Other (real) examples from fellow bears:
  - [https://www.rtaneja.com/](https://www.rtaneja.com/)
  - [https://www.nicogalin.com/](https://www.nicogalin.com/)
 
-A personal website is your chance to show thw world who you are; A great way to showcase your skills, interests and personality.
+A personal website is your chance to show the world who you are; A great way to showcase your skills, interests and personality.
 
 ### ChatGPT policy
 
@@ -230,7 +230,7 @@ The [Javascript 1](/docs/Lessons/Lesson5) reading is a prerequisite to this chec
 
 - Getting elements from the HTML document
 - Changing innerHTML and css properties
-- Event listeners 
+- Event listeners
 - Arrow functions & callbacks
 - Promises & fetch
 
@@ -243,6 +243,43 @@ We will look for adequate use and understanding of all the learning objectives d
 Again, if you're unsure where to start, do the project as you read through the readings. The learning objectives are in the order that you will encounter the concepts in the readings.
 
 It is not obvious how some of the Javascript features in the learning objectives can be applied. Be creative, it doesn't need to make too much sense.
+
+### Tip 1 - Inspect element
+
+You can also use the developer tools to run Javascript. Open the developer tools but this time select the console tab.
+
+You can type Javascript into the console and run it. This is a great way to test out Javascript code before you put it into your website.
+
+From the console, you can access all the variables you have defined and try things before running them to move faster :)
+
+### Tip 2 - When does your Javascript run?
+
+Your Javascript will run wherever it is in the HTML document. If it's higher up, it will run before the rest of the HTML document is even processed!
+
+Be careful with referencing elements that haven't been created yet. You can use the `DOMContentLoaded` event to run some Javascript after the HTML document is loaded, no matter where the actual script tag is.
+
+```js
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Your code here
+});
+
+```
+
+Note the use of an event listener and an arrow function callback. You should be familiar with these already.
+
+## Checkpoint 4 - SSR
+
+You must now create a server that will serve your HTML website. So far, your browser has been loading your HTML files directly from your computer. Now, you will be able to access your website from your disk, but this only works with local files (public websites need a server to serve the HTMl files!).
+
+### Learning Objectives
+
+- Understand the server's role in serving HTML files
+- Serve HTML files from disk
+- Use a template engine to generate HTML files dynamically
+- Return information about the client's IP address in the HTML
+- Using cookies
+- Keep some state on the server
 
 ## Other Resources
 

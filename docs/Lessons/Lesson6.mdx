@@ -336,6 +336,94 @@ withevent.target . In this case it'll be the button that caused the event. And
 we know that with tags you can use the innerText property to get the text inside
 of them. That's how we able to alert the correct number. Cool, right?
 
+## Cookies
+
+Cookies are small pieces of data that are stored on your computer. Each website can store cookies on your computer and read them. Cookies are often used to store things like your login information so you don't have to log in every time you visit a website.
+
+You can think of cookies as a large key-value pair dictionary. Each cookie has a name and a value. The name is a string and the value can be anything.
+
+Unfortunately the way to read and write cookies is a bit of a pain. Let's take a look at how to do it.
+
+```js
+  document.cookie = 'name=Brian';
+  console.log(document.cookie); // "name=Brian"
+```
+
+Now if we reload the page, we'll see that the cookie is still there:
+
+```js
+  console.log(document.cookie); // "name=Brian"
+```
+
+That's the magic of cookies! They persist even after you close the browser. Starting to understand why they're all the rage?
+
+Things get a little messy when we add another cookie:
+
+```js
+  document.cookie = 'favoriteFood=ice cream';
+  console.log(document.cookie); // "name=Brian; favoriteFood=ice cream"
+```
+
+You may say, surely we overrode the "name" cookie when we set the "favoriteFood" cookie. But no! We didn't. Welcome to Javascript, where the rules are made up and the points don't matter.
+
+Alright, so we add new cookies by assigning `document.cookie`, and when we read `document.cookie` we get *all* the cookies, but as a long annoying string that we'd have to parse ourselves.
+
+This is why most people just copy and paste cookie reading and writing code from StackOverflow. It's a pain to do it yourself.
+
+Here's a handy `setCookie` and `getCookie` function:
+
+```js
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+```
+[Source: w3schools](https://www.w3schools.com/js/js_cookies.asp)
+
+You may say, aren't those a little long? Aren't these just key-value pairs? What's all this `expires` and `path` stuff?
+
+Well... There's a lot of nuance to cookies. You can set cookies to expire after a certain amount of time. You can also set cookies to only be accessible on certain paths on your website. For example, you can set a cookie to only be accessible on `/login` and `/signup` and not on `/`. This is useful for things like authentication.
+
+This is how you would set a cookie with an expiration date and a path:
+
+```js
+  document.cookie = 'name=Brian; expires=Fri, 21 Jul 2025 23:48:25 GMT; path=/';
+```
+
+The browser will automatically delete the cookie after the expiration date. You can also set the expiration date to be in the past to delete the cookie (yes, that's how you delete cookies).
+
+And this is just the surface of the cookie world.
+
+Why so complicated? Because when you log into your bank, it is one small piece of information stored as a cookie (called a `session token`) that allows you to send all your money to your friends. Cookies are powerful and dangerous. This is why apart from a `value`, `path` and `expiry`, cookies also have:
+ - `HttpOnly`: This means that the cookie can only be read by the server and not by Javascript. This is to prevent malicious Javascript from stealing your cookies.
+ - `Secure`: This means that the cookie can only be sent over HTTPS. This is to prevent malicious network sniffers from stealing your cookies.
+ - `SameSite`: This means that the cookie can only be sent on requests that originate from the same domain. This is to prevent malicious websites from stealing your cookies.
+ - `Partition Key`: This is a key that is used to separate cookies into different buckets. This is to prevent malicious websites from stealing your cookies.
+ - `Domain`: This is the domain that the cookie is valid for. This is to prevent malicious websites from stealing your cookies.
+ - `Priority`: This is the priority of the cookie. This is to prevent malicious websites from stealing your cookies.
+
+You may ask why I reiterate "This is to prevent malicious websites from stealing your cookies" so many times. Well idk ChatGPT tends to repeat itself a lot. But it's also important! Security will be a recurring theme in web development.
+
+Most of these won't make sense to you, but we will revisit cookies when we learn about servers.
+
 ## Note
 
 Our javascript lessons teach what's known as "vanilla JavaScript". When you
