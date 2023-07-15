@@ -51,8 +51,8 @@ const Home: React.FC = () => {
             mt={2}
             mb={[8, 12]}
           >
-            Monday & Wednesday, 8:00pm -
-            9:30pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; VLSB 2040
+            Wednesday & Friday, 5:00pm -
+            6:30pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 390 HMMB
           </Text>
           <Text textStyle="body2" color="white" mb={[6, 8]}>
             Welcome to{' '}

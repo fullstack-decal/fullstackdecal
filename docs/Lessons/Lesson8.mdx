@@ -2,7 +2,7 @@
 sidebar_position: 9
 ---
 
-# Lesson 7 - Node.js, and SSR
+# Lesson 7 - Server-side rendering
 
 ## Introduction
 
@@ -152,13 +152,13 @@ Here is a diagram of five computers connected to the internet. Each has it's own
 
 ![Devops Image](../assets/Lesson8/internet-1.png)
 
-Vik would like to make a website, so he creates a bunch of HTML files and stores them somewhere on his compute.
+Vik would like to make a website, so he creates a bunch of HTML files and stores them somewhere on his computer.
 
 However, only he can see them! So he spins up a new `process`. Processes that make websites public to the world are known as `servers`. Vik starts up a server, telling it where the HTML files are in his computer.
 
 ![Devops Image](../assets/Lesson8/internet-2.png)
 
-To visit Vik's website, you need to send a request to Vik's server. So you send an internet request to Vik's IP address. However, upon arrival his computer is scared it may have a virus, so it's designed not to tell all it's processes about all incoming requests. So it ignores your request.
+To visit Vik's website, you need to send a request to Vik's server. So you send an internet request to Vik's IP address. However, upon arrival, his computer is scared it may have a virus, so it's designed not to tell all it's processes about all incoming requests. So it ignores your request.
 
 Aw shucks! You have to be more specific, you have to tell Vik's computer you'd like to talk to the server. Luckily, operating systems let processes reserve `ports`. Then, when they get requests, the requests can specify what port they're looking for and whichever process has reserved that port will be able to see the request.
 
@@ -324,274 +324,261 @@ So what is the point of all this? Why not just make a static HTML file and send 
 
 We want to be able to send different HTML files to different people. For example, if you go to `youtube.com`, you'll see a different page than if I go to `youtube.com`.
 
-## Adding routes and sending requests
+## Web server with state
 
 Now let's define some more functionality for our server.
 
-We will be implementing a "dumb" version of a database, meaning that we will be
-emulating what a database would do with a very stupid implementation. We will
-use a JSON object to store the items at a certain index and then return those
-items as needed.
+We will be implementing a view-count tracker. Every time a user visits our site, we will log their visit, and
+inform them on how many people have visited the site.
 
-First, let's think about what types of data we will be interfacing with. There
-are two main types: metadata and the actual database data. Our metadata is the
-data that we use to define the state of our database and its characteristics,
-and the actual database data will be the items we put.
+In principle, this is simple:
 
-Some examples of a metadata are the database capacity and current index. Let's
-define two routes in our API: `/info` and `/db` . These are where we will make
-our requests.
+1. Create a variable to store the number of visits
+2. Increment the variable every time someone visits
+3. Send the variable to the user
 
-### GET Requests
-
-```jsx
+```js
 const axios = require('axios');
 const express = require('express');
 const port = 3000;
+
 const app = express();
 
-app.use(express.json()); // Utilities for request bodies
-app.use(express.urlencoded({ extended: true })); // Utilities for query params
-
-let counter = 0; // inner implmentation
-stupidDB = {}; // initialize our dumb database
-
-// GET Requests
+let totalViews = 0;
 
 app.get('/', (req, res) => {
-  // homepage
-  res.send('stupidDB API');
+  totalViews++;
+  res.send("<h1>Welcome to my website!</h1> Total views: " + totalViews);
 });
-
-app.get('/info/index', (req, res) => {
-  // get the current index
-  res.send({ counter: counter });
-});
-
-app.get('/info/capacity', (req, res) => {
-  // get the capacity
-  res.send({ capacity: Object.keys(stupidDB).length });
-});
-
-app.get('/db/all', (req, res) => {
-  // get all items from the db
-  res.send(stupidDB);
-});
-
-app.get('/db/:id', (req, res) => {
-  // get a certain item from the db
-  const id = req.params.id;
-  if (id in stupidDB) {
-    res.send(stupidDB[id]);
-  } else {
-    res.send({ error: 'no object found with this id' });
-  }
-});
-
-// Server Setup
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
 ```
 
-GET requests have a lot of flexibility and power in the way that we make them.
-We can get information generically or we can encode the information that we want
-into our API. Theoretically, we could also put that information into the body of
-the request, but in general, that is not in line with our REST API principles.
-GET returns information that we query to it.
+Now, if we restart the server, we'll notice it tells us the total views is 1. Every time we reload the site, it increments!
 
-### POST & PUT Requests
+Even if we close out the tab, or even visit it from another browser, it will remember the total and increment it.
 
-```jsx
+And if it wasn't for the many reasons [outlined above](#configuring-your-network), we could even have our friends visit the site and it would still work, with one global number for the number of views!
+
+### Templating
+
+However, what if we still want our HTML to be in a separate file? We can't just send the HTML file, because we need to insert the number of views into the HTML file.
+
+Welcome to templating!
+
+In principle, this is very simple. Just make an index.html file with a placeholder for the number of views, and then replace the placeholder with the number of views.
+
+index.html
+```html
+<h1>Welcome to my website!</h1> Total views: {{views}}
+```
+
+main.js
+```js
 const axios = require('axios');
 const express = require('express');
+const fs = require('fs');
 const port = 3000;
+
 const app = express();
 
-app.use(express.json()); // Utilities for request bodies
-app.use(express.urlencoded({ extended: true })); // Utilities for query params
-
-let counter = 0; // inner implmentation
-stupidDB = {}; // initialize our dumb database
-
-// GET Requests
+let totalViews = 0;
 
 app.get('/', (req, res) => {
-  // homepage
-  res.send('stupidDB API');
+  totalViews++;
+  let html = fs.readFileSync(__dirname + '/index.html', 'utf8');
+  html = html.replace('{{views}}', totalViews);
+  res.send(html);
 });
-
-app.get('/info/index', (req, res) => {
-  // get the current index
-  res.send({ counter: counter });
-});
-
-app.get('/info/capacity', (req, res) => {
-  // get the capacity
-  res.send({ capacity: Object.keys(stupidDB).length });
-});
-
-app.get('/db/all', (req, res) => {
-  // get all items from the db
-  res.send(stupidDB);
-});
-
-app.get('/db/:id', (req, res) => {
-  // get a certain item from the db
-  const id = req.params.id;
-  if (id in stupidDB) {
-    res.send(stupidDB[id]);
-  } else {
-    res.send({ error: 'no object found with this id' });
-  }
-});
-
-// POST Requests
-
-app.post('/db', (req, res) => {
-  console.log(req);
-  const item = req.body.item; // access our request body
-  stupidDB[counter] = item; // add body item at index
-  counter += 1; // increment counter
-  res.send(`POST Request Successful. Item placed: ${item}`); // Send HTTP response
-});
-
-// PUT Requests
-
-app.put('/db/:id', (req, res) => {
-  const id = req.params.id; // get the index of the data to update
-  const item = req.body.item; // access the body of the request which holds new data
-  if (id in stupidDB) {
-    stupidDB[id] = item; // insert destructively
-    res.send({ newItem: item });
-  } else {
-    res.send({ error: 'no object found with this id' });
-  }
-});
-
-// Server Setup
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
 ```
 
-POST and PUT are, in my opinion, what separate a static website from a true web
-application. POST and PUT are how we actually collect and store relevant data
-for the user. They are the methods which give our website **functionality** _for
-the user._
+Notice we're now using the `fs` package, which is a built-in package for reading and writing files.
 
-Let's look at POST first. To pass data along a POST request, we place data in
-the body. Because we don't know the "shape" and size of our data, we utilize the
-body as a sort of empty container to hold the data that we want to send. (Note:
-It would be overkill to put request parameters into this space for GET
-requests).
+We read the file, replace the placeholder, and send it. Very simple.
 
-Exercise: Go to Postman and set up a POST request. Go to body and look at all of
-the potential options for request bodies. By and large, we will be using "raw"
-in this class. Click on raw and view the options in the dropdown for data
-formats. Lot's of options! In this class, we will largely stick to JSON but if
-you are curious, you can always explore others. (Note: other formats may require
-extra setup on the Express side).
+### Persisting data
 
-Now let's look at PUT. PUT is an excellent example of how versatile a request
-is. In our PUT request, we use both url encoding and the body to send relevant
-data to our server. In the URL, we put where we want the data to go, and in our
-body we define what data we want to go there. This is exactly aligned to the
-design principles we laid our for our GET and POST requests! With smarter design
-we can vastly simplify the complexity of our systems.
+However, you may have noticed that when we restart the server, the number of views resets to 1. This is because every time we restart the server, the variable resets to 0.
 
-Let's get some pictures from NASA using this API that they are providing and
-send the descriptions back.
+For now, we'll store it in a file. Later, we'll learn how to store it in a database (databases have higher reliability, speed and are better organized than raw files).
 
-- [https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY](https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY)
-
-To send a request to a particular api, we use the package called Axios. Remember
-that we have already npm installed `axios` so it should be available for us to
-use.
-
-```bash
-const express = require('express')
-const app = express()
-const port = 3000
-
+```js
 const axios = require('axios');
+const express = require('express');
+const fs = require('fs');
+const port = 3000;
 
-app.get('/nasa', (req, res) => {
-  axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
-  .then(response => {
-    res.send(response.data);
-  })
-  .catch(error => {
-    res.send(error);
-  });
-})
+const app = express();
+
+let totalViews = 0;
+
+if (fs.existsSync('views.txt')) {
+  totalViews = parseInt(fs.readFileSync('views.txt', 'utf8'));
+}
+
+app.get('/', (req, res) => {
+  totalViews++;
+
+  fs.writeFileSync('views.txt', totalViews);
+  
+  let html = fs.readFileSync(__dirname + '/index.html', 'utf8');
+  html = html.replace('{{views}}', totalViews);
+
+  res.send(html);
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
 ```
 
-We will try to send an API request to NASA whenever a user visits the `/nasa`
-route of our website.
+Now you can restart the server all the times you want, and it will remember the total views! Sweet.
 
-Now to send an API request, we will use axios.get(). This will _send_ a `get`
-request to the particular url provided.
+You may think all these weird `fs` functions we're using are complicated and that we haven't 
+taught them. What's `__dirname` or `utf8`? Truth is, noone knows these by heart. 
+Tools like Google and ChatGPT will spit them out, and as long as you understand what they're there for, you're all set.
 
-Now go ahead and visit the
-[`http://localhost:3000/nasa`](http://localhost:3000/nasa) url, you would find
-this displaying on the screen.
+### An alternative tale: Cookies
 
-![expected output](../assets/Lesson8/output.png)
+During [Lesson 5 - Javascript 2](/docs/Lessons/Lesson6#cookies), we promised to come back to the topic of cookies
+when we understand servers. Well, here we are.
 
-We will learn more about API requests and web server in the future.
+As a refresher, cookies are a way of storing information that survives page refreshes.
 
-## Node and File System
+Even though we introduced cookies as being set and read by Javascript that you write and send to the client (the `client` is the browser that receives the files sent by the `server`),
+cookies were initially envisioned to be set and read by the server!
 
-Nodejs just like python, provides a very easy way to handle file system.
+For this reason, every time you visit a site, all cookies stored by that site are sent as part of the request to the server. You may have been
+asking yourself what the `req` variable is in the line `app.get('/', (req, res) => {`. Well, alongside information like the 
+client's IP, you get the cookies! That's right, *all* the cookies.
 
-Let's build on top of the web server that we have. Say we want to build a API
-where the user can input the name and type of a file and the server can create
-it.
+The server can then read the cookies, and send back a response with new and updated cookies. The client will then store these cookies and send them back next time.
 
-- [http://localhost:3000/create/?name=resume&type=txt](http://localhost:3000/create/?name=resume&type=txt)
-- The API will look something like this, where the ? indicates parameters, and
-  name=resume and type=txt are two of the parameters included in this API, they
-  are connected by the & sign.
+So why not just store the number of views in a cookie instead? That way we won't even need to persist the number to a file!
 
-```jsx
-app.get('/create', (req, res) => {
-  let name = req.query.name;
-  let type = req.query.type;
-	...
-})
+```js
+const axios = require('axios');
+const express = require('express');
+const fs = require('fs');
+const port = 3000;
+
+const app = express();
+
+function getCookie(cookieString, name) {
+  let cookie = cookieString.split(';').find(cookie => cookie.trim().startsWith('views='));
+  if (cookie) {
+    return cookie.split('=')[1];
+  }
+  return 0;
+}
+
+app.get('/', (req, res) => {
+  
+  let totalViews = getCookie(req.headers.cookie, 'views');
+
+  totalViews++;
+  
+  let html = fs.readFileSync(__dirname + '/index.html', 'utf8');
+  html = html.replace('{{views}}', totalViews);
+
+  res.setHeader('Set-Cookie', `views=${totalViews}`);
+
+  res.send(html);
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
 ```
 
-In the `/create` route, we simply can access all the parameter like this.
+As you can see, stored in `req.headers.cookie` are all the cookies the client sends us. But what's a `header`? Well, websites communicate with the client using something called the HTTP protocol. And in this protocol, the world `header` signifies extra bits of information that tag along with the rest of the message.
+In this case, we're interested in the bit of information called `cookie`, hence `req.headers.cookie`.
 
-Now, let us create a file using the file system package that node provides.
+You may notice that, just like in the client-side, we need to create a complicated function to extract the cookie from a long string. The string with all the cookies comes in the form `cookie1=value1; cookie2=value2; cookie3=value3`. We need to split it by `;`, then find the cookie we want, then split it by `=` to get the value.
 
-```jsx
-const fs = require("fs");
+Just like the client sends us the cookies as a header, we send the client the new cookies we intend to have it remember as a header too. Note that `setHeader` doesn't send the header, it just sets it in the response message. It is `res.send` that does all the sending, including the header we set. 
 
-...
+#### So why not just use cookies instead of a file / database?
 
-app.get('/create', (req, res) => {
-  let name = req.query.name;
-  let type = req.query.type;
-  let filename = name + '.' + type;
-  fs.appendFile(filename, ' ', (err) => {
-    if (err) res.send(err);
-    res.send({
-      "message": "File created!",
-      "name": name,
-      "type": type
-    })
-  })
-})
+Well, there are several fundamental differences you may have caught:
+ 1. These views are no longer global. If you visit the site from another browser, you'll see a different number of views. Each browser stores it's own cookies!
+ 2. Unless the client makes a request, the server (you) can't figure out how many views people have! The data is in people's browsers, not a file / database you control!
+ 3. This also means they are not secure. People can just change the number of views and send you whatever they want! This is acceptable in some scenarios, but not in others.
+
+In this case, cookies are not a reasonable solution. We will encounter good uses of cookies later in the course, such as logging in.
+
+### Templating engines
+
+This subpart of the course (templating engines) is strictly optional, but will be very helpful with your projects.
+
+You may have noticed that templating is a bit annoying. We have to read the file, replace the placeholder, and send it. Very simple, but it's a lot of code. And what if we want to replace multiple placeholders? We'd have to do it multiple times.
+
+Luckily, there are templating engines that do all this for us. They're a bit more complicated, but they're worth it.
+
+We'll be using the templating engine called `ejs`. You can install it with `npm install ejs` in your terminal (you must be in the folder with your project in it!).
+
+Now, instead of sending the HTML file, we'll send the HTML file through the templating engine.
+
+```js
+const axios = require('axios');
+const express = require('express');
+const fs = require('fs');
+const ejs = require('ejs');
+const port = 3000;
+
+const app = express();
+
+let totalViews = 0;
+
+app.get('/', (req, res) => {
+  totalViews++;
+
+  let html = fs.readFileSync(__dirname + '/index.html', 'utf8');
+  html = ejs.render(html, {views: totalViews});
+
+  res.send(html);
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
 ```
 
-The `fs.appendFile()` method creates a file with the given name in the current
-folder that the server is in. Now try to visit
-[`http://localhost:3000/create/?name=resume&type=txt`](http://localhost:3000/create/?name=resume&type=txt)
-and see whether a file named resume.txt is created.
+With new HTML:
+```html
+<h1>Welcome to my website!</h1> Total views: <%= views %>
+```
+
+Now, instead of replacing `{{views}}`, we use `<%= views %>`. This is called an `ejs tag`. It tells the templating engine to replace it with the value of `views`.
+
+We also have to tell the templating engine what to replace it with. We do this by passing in an object as the second argument to `ejs.render`. The keys of the object are the names of the variables we want to replace, and the values are the values we want to replace them with.
+
+Now, if we want to replace multiple things, we can just add more tags and more keys to the object.
+
+```html
+<h1>Welcome to my website!</h1> Total views: <%= views %>
+<h2>My name is <%= name %></h2>
+```
+
+```js
+html = ejs.render(html, {views: totalViews, name: 'Sebastiaan'});
+```
+
+## Javascript - An important disambeguation
+
+This lesson, we've taught you how to create a web server using Javascript with Express. However, we've been using Javascript in a very different way than we have before. We've been using it as a server-side language, not a client-side language.
+
+This JavaScript is not running in the browser / client! It's running on your computer (server-side), and it's not sending the code to the browser. It's sending the result of the code to the browser.
+
+We could, as part of that result, send JavaScript to the browser in a `<script>` tag, which would then execute in the browser. You will be expected to understand this difference intimately while creating your projects.
+
+Server-side JavaScript has access to things like your filesystem, and can create the HTML response as it pleases, including the client-side JavaScript itself! Client-side JavaScript run afterwards in the browser, and has access to manipulating the HTML only after it has loaded.
 
 ## Resources
 
@@ -605,4 +592,5 @@ and see whether a file named resume.txt is created.
 
 **Contributors**
 
+- [Sebastiaan Szafir](https://sebiszafir.com)
 - [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)
