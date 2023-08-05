@@ -1,8 +1,8 @@
 ---
-sidebar_position: 13
+sidebar_position: 16
 ---
 
-# Lesson 10 - HTTP, REST, Postman
+# Client-side rendering
 
 import {
   Accordion,
@@ -17,54 +17,134 @@ import Admonition from '@theme/Admonition';
 
 ## Introduction
 
-In today's internet, HTTP is the most widely used protocol. It's simple, efficient, and easy to use. However, it wasn't designed with modern web applications in mind. This is where REST comes in.
+So far, when presented with the question "How can we allow a server to have a say on what is rendered on a website?",
+you answer should be server-side rendering! We spin up a server that changes the HTML we send. This way, we can add
+global view counts, or even personalize the experience with cookies and a database!
 
-REST is a newer architectural style for building web services. It's more flexible and scalable than HTTP, and is better suited for modern web applications.
+However, an increasingly more common way to do this is actually to send the same HTML file to the browser every time,
+but then to have some JavaScript (in that HTML) which makes requests back to the server for more information (like global
+view count) to then add to the HTML.
 
-One of the best ways to learn REST is to use a tool like Postman. Postman is a free, cross-platform app that makes it easy to send and receive REST requests.
+This is called client-side rendering, and it is the basis for many modern web applications. While it means that the user
+will have to wait for the JavaScript to finish making all its requests and then update the HTML, it also means that
+the server doesn't have to do any work to render the HTML. All that works occurs on the client's computer!
 
-## HTTP
+It also plays really nicely with React. You may have been wondering this whole time how React can be server-side rendered,
+and the answer is it's hard! Instead, we send the same React HTML to the client every time, and then React
+takes over and renders the page on the client's computer by making even more requests!
 
-When we think of the Internet, we often think only of the websites which we are
-visiting. What we often fail to see is the vast network of resources that are
-utilized when we use that website.
-
-Modern web applications consist of two major parts: a frontend and a backend. I
-like to use the restaurant analogy to visualize the difference. A traditional
+Samarth likes to use the restaurant analogy to visualize the difference. SSR is like a traditional
 restaurant consists of two main parts: a dining room and a kitchen. When we
 order, we only ever see the nicely-furnished, well-decorated dining room. But
 when we give our order to the waiter, they must relay that order to the kitchen.
 A complicated set of instructions is then executed to produce our order and our
 waiter, like magic, returns with our food.
 
-Similarly, when we use a website, we interact only with the frontend. The
-frontend is simply a rendering of content that the user can interact with
-directly. However, when we interact with that frontend, the frontend itslef is
-normally interacting with a backend that produces the content that we want.
+CSR is like a buffet. The waiters come only once to show us to the table, but then it's up to us to get our own food
+and bring it to our table. We can pick whatever we want from the small pre-prepared food items the kitchen has laid out.
+More work for us, but less work for the servers!
 
-The natural question, then, is how do the frontend and backend communicate? The
-answer is HTTP. HTTP is the backbone of the Internet. Put simply, it is how
-computers in a network talk to one another. The Internet is, largely, just a
-continuous stream of millions of HTTP requests sent back and forth across a vast
-network. If your computer is a node in the graph of the Internet, then HTTP is
-the edge connecting it to all others.
+## HTTP
 
-### HTTP Requests
+So how can JavaScript in the client's browser communicate back with our server? The answer is HTTP!
 
-To communicate across many different machines and across vast networks, we
-require some standardized form of communication to be able to both send and
-receive information reliably.
+In today's internet, HTTP is the most widely used protocol. It's simple, efficient, and easy to use.
+There is an extension of HTTP called REST, which is at this point synonymous with HTTP. REST is a set of
+guidelines for how to use HTTP, and it is the basis for most modern web applications.
 
-To do this, we turn to HTTP requests. HTTP requests are essentially objects
-containing information about the type, time, and relevant information as it
-pertains to a request. We fill out this request and then send it to the server
-of interest. If that server is meant to respond, it will send back an HTTP
-response and the relevant data to answer your request.
+We've actually already used HTTP / REST. When you set up a server to do SSR, you were actually listening for HTTP requests.
+This is because when you type in a URL into your browser, Chrome (or whatever browser you use) makes an HTTP request!
+We then responded with an HTML document.
 
-HTTP requests consist of two parts: the header and the body.
+But this time, the JavaScript that then concequently runs on your browser will start making MORE requests back to the server
+to get more info! This time we will send back other kinds of information (not HTML), like a number (say for total view count).
 
-Below is an example of an HTTP header.
+Note that the requests the JavaScript makes need not be to the same server. In fact, usually they are to many different servers.
+A common set-up in CSR is to have one server that serves the initial HTML file (we call this the "static server") since it
+literally just responds to every request with the same HTML file. Then, we have another server that serves the data that the
+JavaScript needs (we call this the "API server").
 
+### REST
+
+So what is REST? REST breaks down HTTP requests into several kinds:
+  1. GET: get some data from the server
+  2. POST: send some data to the server
+  3. PUT: update some data on the server
+  4. DELETE: delete some data on the server
+
+That's some more we will instroduce later. So when we say that an API Server is "RESTful", we mean that it respects the difference between these four kinds
+of requests. So now, not only do we get to pick the path we make a request to (like `/views`), but we also get to pick the
+kind of request we make (like `GET` or `POST`).
+
+However, it us up to you, the designer of the "API" (the server that serves the data), to also mantain the difference between
+these four kinds of requests. For example, if you make a `GET` request to `/views`, you should expect to get back the number
+of views. If you make a `POST` request to `/views`, you should expect to increment the number of views. If you make a `PUT`
+request to `/views`, you should expect to set the number of views to a certain number. If you make a `DELETE` request to
+`/views`, you should expect to delete the number of views (this one is a little weird, but it's just an example).
+
+### Example
+
+Let's make the same "total views" app we made in SSR, but with CSR. First we set up a 
+static server that will host this HTML:
+```html
+<!-- Import Axios (lets us make HTTP / REST requests easily) -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<h1>Welcome to my website!</h1> Total views: <span id="views">Loading...</span>
+
+<script>
+let myViewsSpan = document.getElementById("views");
+
+// Tell server to increment the views by making a POST request to /increment
+axios.post("https://myapi.com/views/increment").then((response) => {
+  console.log("Incremented views!");
+
+  // Get the views from server (after incrementing) by making a GET request to /views
+  axios.get("https://myapi.com/views").then((response) => {
+    myViewsSpan.innerText = response.data.views;
+  });
+});
+</script>
+```
+
+Then, we spin up a server with the domain `myapi.com` that will serve the data. This server will have the following "endpoints":
+  1. `GET /views`: get the number of views
+  2. `POST /views/increment`: increment the number of views
+
+```js
+// GET /views
+const express = require('express');
+const port = 3000;
+
+const app = express();
+
+let views = 0;
+
+app.get('/views', (req, res) => {
+  res.send({ totalViews: views });
+});
+
+app.post('/views/increment', (req, res) => {
+  views++;
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
+```
+Note that this server should have a way to persist the number of views (this will reset every time we restart the server).
+
+Also, do you see how we pick the REST method type? We used `app.post` instead of `app.get`.
+
+### Inside a HTTP Requests
+
+For the curious ones, here is a more in-depth look at what is inside a HTTP request. This will help you understand
+what is going on when you make a request to a server.
+
+All requests are in the end just long strings of text. The server and the client (browser) agree on a format for
+these strings of text, and then they can communicate with each other. This format is called HTTP.
+
+HTTP requests consist of two parts: the header and the body. The header has a strict format:
 ```plaintext
 GET /home.html HTTP/1.1
 Host: developer.mozilla.org
@@ -80,23 +160,24 @@ If-None-Match: "c561c68d0ba92bbeb8b0fff2a9199f722e3a621a"
 Cache-Control: max-age=0
 ```
 
-The first line defines the type of request, also known as the method (more on
-this below), the location on the server to which the request is made, and the
-protocol. This first line is also called the start line. The second line
-contains the name of the server to which the request is made. This is the
-information that is used to send your request to the appropriate machine to
-handle it.
+You start with the HTTP method (like `GET` or `POST`), then the path (like `/home.html`), then the HTTP version (like `HTTP/1.1`).
+Then, you have a bunch of key-value pairs that are called "headers". These are just extra information that the client sends
+to the server. You may remember we used headers to send cookies to the server. The server can also send headers back to the
+client, since the response to an HTTP request is also just another HTTP request (technically a HTTP response, but it follows
+the same format).
 
-The remaining lines are used to specify information about the request. This
+The remaining headers are used to specify information about the request. This
 includes potential authorization, cacheing, handling, etc. At this level, we
 won't be using these too much, but as your applications become more complicated,
 taking advantage of these headers may allow for significantly more
 functionality.
 
+After the header comes the body (separated by a blank line). Only certain kinds of HTTP requests can have bodies (like `POST` and `PUT`). The body
+is just a string of text that you can pick! It can be in any format you want, but is up to you to interpret.
+
 ### Methods
 
-HTTP defines a set of request methods to indicate the desired action to be
-performed for a given resource.
+Here's a full list of methods available to you:
 
 1. **[`GET`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET):**
    The `GET` method requests a representation of the specified resource.
@@ -134,8 +215,7 @@ Just as we make requests to a server for information, we also expect a response.
 Even if we do not expect data in return, the server always sends a response
 indiciating that it received the request.
 
-Below is an example of a response header. At the very top, you'll see a status
-code which indicates the type of response. Based on the digit in the hundreths
+Based on the digit in the hundreths
 place, we can determine if the request was successful or not.
 
 - `1XX`: Informational
@@ -157,9 +237,21 @@ Here are some of the most common response codes.
   coffee with a teapot.
 - `500`: Server error.
 
-# Making a request
+## Making a request
 
-## curl vs. browser
+### Browser
+
+The easiest way to make a request is to simply type in a URL into your browser.
+
+You can also create an HTML file with JavaScript to send a request, but this is
+not an easy way of doing it.
+
+### Postman
+
+If you want to making a REST HTTP request to a server without having to execute some code, Postman is a desktop app
+with a great UI that will allow you to do this. You can download it [here](https://www.postman.com/downloads/).  
+
+### curl
 
 curl is your machine's built in way of making requests to external websites.
 Here, we will use curl to show that an HTTP request is nothing but two computers
@@ -179,55 +271,6 @@ exactly the same thing as making a GET request to that URL. Now you understand
 how we navigate the Internet! `curl` and your browser are just two of many, many
 different ways to make a request, and the data returned is just one of many
 types we _can_ return.
-
-# Anatomy of a Request
-
-When we make HTTP requests, we use a particular organization to ensure that the
-receiving server can process our request. Note: This example focuses on requests
-without a body.
-
-Let's look at the following request
-
-```bash
-GET 'https://pokeapi.co/api/v2/pokemon/ditto'
-```
-
-Now let's look at the components of our request.
-
-`https://` defines the protocol we are using. In this case, we are using the
-HTTP secure protocol
-
-`[pokeapi.co/](http://pokeapi.com/)` defines the server (computer) to which we
-are making our request. When we make a request, we are essentially making it to
-a particular IP address. In the case of domain names, your Internet service
-provider does some cool stuff (which I won't go into here) which essentially
-aliases this domain name to an IP address to complete your request.
-
-`/api/v2/` We will learn later about the importance of this. For now, think of
-it like this: In order to make our request, we have to request a certain part of
-the website where the content we want is kept. For example, navigate to the WDB
-website [webatberkeley.org](http://webatberkeley.org). As you click on the
-different options in the menu, notice that the URL in the search bar is
-changing. To get the information you want, you need to go to the location where
-it is stored. Our requests follow a similar (In fact, directly related) pattern.
-We must make our request in the right place to get what we want. In this case,
-we are making a request to the API, specifically v2 of the API. You can also
-think of it as a large file system, where to access the files we want, we
-navigate to their location at the server (again directly related to how websites
-function).
-
-`/pokemon/ditto` It may not be immediately clear why these are the search terms,
-or why they differ from `/api/v2` in terms of functionality, but bear with me.
-Ultimately, all of these `/` 's represent how the designers of the website have
-chosen to organize the website. When we make a request to an API, we must make
-the request directly to the API, or else the website will likely return HTML
-files to be rendered. That is why this particular website used `/api/v2`.
-**_Every website will be different._** It is up to the designer how they
-organize their website, and as the client, it is your responsibility to check
-the docs for how you can get what you need. After we access the API, we are
-telling the website: "Please look at Pokemon, and of those, please look at
-Ditto." The last term is usually a unique key which maps to a single entry of
-data which is what _you_ want.
 
 ## Fancier requests
 
@@ -296,7 +339,7 @@ applications like search and efficient design (querying instead of constantly
 subdividing resources). For example, type something into Google and look at the
 URL! What might this tell you? Think on it.
 
-# JSON
+## JSON
 
 Look at our last example. You may be wondering, why does the response look like
 that? When we make requests to an API, if we get a status `200` code we can
@@ -348,7 +391,7 @@ that necessary information is organized and easily accessible. Status Code:
 information, and JSON makes them significantly easier to access in a
 standardized way.
 
-# REST API
+## REST API principles
 
 REST API is an acronym for **RE**presentational **S**tate **T**ransfer. It is
 simply a style for how API should be constructed and how data is transmitted.
@@ -387,29 +430,7 @@ Here are the six guiding principles of REST from
 
 A server application that offers a REST API is also called a **RESTful** server.
 
-## Postman
-
-Postman is an incredibly helpful tool for testing and validating our APIs. In
-this case, REST APIs. Postman is essentially a systematic and user-friendly way
-to send predefined requests.
-
-Let's open Postman together.
-
-Once you create an account and login, you will be met with a picture of your
-workspace. Click on Workspaces > My Workspace. There should be nothing there
-except maybe an example request that we could make. We will now be returning to
-our previous examples to show how we can make systematic GET requests to the
-same APIs.
-
-[Example API](https://www.notion.so/6550d800e50149b1ab4d789485dc1969)
-
-Additionally, `/db/all` supports a query param specifying the maximum number of
-items to return.
-
-I will teach you how to run this program fully, but for the purpose of this
-exercise,
-
-# EXTRA: RESTful Server in Action and Postman
+## Advanced example
 
 To understand REST API and HTTP methods a step further, let us take a look at a
 RESTful server in action.
@@ -487,10 +508,7 @@ Introduce a new tool in our workflow —— postman.
 Let's start the server with `npm run start` and see how can we interact with the
 server.
 
-## Postman
-
-Postman is a platform for API development. It can easily build and send out API
-requests.
+### Testing with Postman
 
 Once you download and install postman, click `new collection` on the left side
 bar to create a new collection of API requests. Let's call it
@@ -517,7 +535,7 @@ content of "Welcome to the TODO app."
 
 ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1aa74a60-3351-49d6-b23a-0a3aa071b8dc/Untitled.png](../assets/Lesson10-2/image6.png)
 
-## Create API requests using POSTMAN
+### Create API requests using POSTMAN
 
 Postman is a very powerful tool as it can save your API request and resend it
 again and again at your will. Let's save this and create mroe API requests to
@@ -574,7 +592,7 @@ create a JSON like this:
 You should be receiving the message with the content you just created in the
 body.
 
-# Resources
+## Resources
 
 [Build a RESTful API Using Node and Express 4](https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4)
 
@@ -584,4 +602,5 @@ body.
 
 **Contributors**
 
+- [Sebastiaan Szafir](https://sebiszafir.com)
 - [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)

@@ -2,7 +2,7 @@
 sidebar_position: 9
 ---
 
-# Lesson 7 - Server-side rendering
+# Server-side rendering
 
 ## Introduction
 
@@ -122,7 +122,6 @@ organized into modules, and we use `require` to import them. For example, the
 following code imports Axios, a package commonly used to make HTTP requests.
 
 ```jsx
-const axios = require('axios');
 ```
 
 Another difference is that since there is no web page to be manipulated, there
@@ -218,7 +217,6 @@ the `package.json` file.
 ### Basic Web Server
 
 ```js
-const axios = require('axios');
 const express = require('express');
 const port = 3000;
 
@@ -278,7 +276,7 @@ app.listen(port, () => {
 The `listen` method will set up and start the server that listens for any
 requests at a specific port.
 
-Let's start our application by typing `node index.js` then visiting
+Let's start our application by typing `node main.js` then visiting
 [`http://localhost:3000`](http://localhost:3000/)
 
 You would see a Hello World displayed on the screen, which means that our server
@@ -304,7 +302,7 @@ app.get('/', (req, res) => {
 });
 ```
 
-`__dirname` is a special variable that refers to the directory of the current file. So this will send the file `index.html` in the same directory as `index.js`.
+`__dirname` is a special variable that refers to the directory of the current file. So this will send the file `index.html` in the same directory as `main.js`.
 
 What if your HTML file makes reference to other files, like CSS or JS files? You have to send those too!
 
@@ -338,7 +336,6 @@ In principle, this is simple:
 3. Send the variable to the user
 
 ```js
-const axios = require('axios');
 const express = require('express');
 const port = 3000;
 
@@ -377,7 +374,6 @@ index.html
 
 main.js
 ```js
-const axios = require('axios');
 const express = require('express');
 const fs = require('fs');
 const port = 3000;
@@ -409,7 +405,6 @@ However, you may have noticed that when we restart the server, the number of vie
 For now, we'll store it in a file. Later, we'll learn how to store it in a database (databases have higher reliability, speed and are better organized than raw files).
 
 ```js
-const axios = require('axios');
 const express = require('express');
 const fs = require('fs');
 const port = 3000;
@@ -449,7 +444,7 @@ Tools like Google and ChatGPT will spit them out, and as long as you understand 
 During [Lesson 5 - Javascript 2](/docs/Lessons/Lesson6#cookies), we promised to come back to the topic of cookies
 when we understand servers. Well, here we are.
 
-As a refresher, cookies are a way of storing information that survives page refreshes.
+As a refresher, cookies are a way of storing information in the browser that survives page refreshes (different than above, where the data that survived refreshes was stored in theserver).
 
 Even though we introduced cookies as being set and read by Javascript that you write and send to the client (the `client` is the browser that receives the files sent by the `server`),
 cookies were initially envisioned to be set and read by the server!
@@ -463,7 +458,6 @@ The server can then read the cookies, and send back a response with new and upda
 So why not just store the number of views in a cookie instead? That way we won't even need to persist the number to a file!
 
 ```js
-const axios = require('axios');
 const express = require('express');
 const fs = require('fs');
 const port = 3000;
@@ -508,7 +502,7 @@ Just like the client sends us the cookies as a header, we send the client the ne
 
 Well, there are several fundamental differences you may have caught:
  1. These views are no longer global. If you visit the site from another browser, you'll see a different number of views. Each browser stores it's own cookies!
- 2. Unless the client makes a request, the server (you) can't figure out how many views people have! The data is in people's browsers, not a file / database you control!
+ 2. Apart from at the exact times the client makes a request, the server (you) can't figure out how many views people have! The data is in people's browsers, not a file / database you control!
  3. This also means they are not secure. People can just change the number of views and send you whatever they want! This is acceptable in some scenarios, but not in others.
 
 In this case, cookies are not a reasonable solution. We will encounter good uses of cookies later in the course, such as logging in.
@@ -526,7 +520,6 @@ We'll be using the templating engine called `ejs`. You can install it with `npm 
 Now, instead of sending the HTML file, we'll send the HTML file through the templating engine.
 
 ```js
-const axios = require('axios');
 const express = require('express');
 const fs = require('fs');
 const ejs = require('ejs');
@@ -570,7 +563,7 @@ Now, if we want to replace multiple things, we can just add more tags and more k
 html = ejs.render(html, {views: totalViews, name: 'Sebastiaan'});
 ```
 
-## Javascript - An important disambeguation
+## Javascript - An important disambiguation
 
 This lesson, we've taught you how to create a web server using Javascript with Express. However, we've been using Javascript in a very different way than we have before. We've been using it as a server-side language, not a client-side language.
 
