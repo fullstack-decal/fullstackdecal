@@ -54,23 +54,27 @@ console.log(yearlyRent);
 
 The first thing that happens above is that we declare a variable, `monthlyRent`.
 The `const` keyword is how we let JavaScript know we're declaring a variable.
-Variable names always have to know no spaces in them, which is why we squish the
+Variable names cannot have spaces in them, which is why we squish the
 words "monthly rent" together. In order to make this more readable, we use
-what's called _camel casing_, so-called because the capital letters in the
-middle make it look like humps on a camel. You can also use other styles of
-captialization, there's no rule it must be camel case in JavaScript; everyone
-just happens to do camel casing in JavaScript.
+what's called _camel casing_ (because the capital letters in the
+middle make it look like humps on a camel). Some people like to use underscores e.g.
+`monthly_rent` which is cool too, but in JavaScript the convention is camel-case.
 
-Notice the `;` at the end of every line. This semi colon lets JavaScript know
-you've completed your thought. Think of this as the period/full-stop of the the
-programming world.
+Notice the `;` at the end of every line. This semicolon lets JavaScript know
+you've finished the statement. Semicolons are optional in JavaScript (some languages like
+C require them). Since they are optional, there is a passioante debate about whether or not
+you should use them. For this course, we don't mind but the writer personally likes
+to use them.
 
-Variable can be called _almost_ anything. You **can't** use keywords. An example
-would be `const const = 15`. `const` is a keyword so it can't be used as a
-variable name. You do want to give your variables good names. Imagine we have a
+Variable can be called _almost_ anything. They can consist of any letter, number, underscore, or `$`,
+however they cannot _start_ with a number. You **can't** use keywords. An
+example would be `const const = 15`. `const` is a keyword so it can't be used as a
+variable name.
+
+You do want to give your variables good names. Imagine we have a
 huge file and 200 lines below we see the variable named `monthlyRent`: we'll
 know instantly what this variable does and we won't have to go try to read the
-code to figure it out. Always, always, always use good variable names.
+code to figure it out. _Always, always, always use good variable names_.
 Seriously. Put time into it. Naming things is hard and it's a big part of your
 job.
 
@@ -158,96 +162,65 @@ z = x + y
 In Javascript, the following code would look like this:
 
 ```jsx
-var x, y, z;
+let x, y, z;
 x = 5;
 y = 6;
 z = x + y;
 ```
 
-Notice how we have to _declare_ our variables first in Javascript.
-The `var` statement let's us do just that. We can also declare and assign a
+Notice how we have to _declare_ our variables first in JavaScript.
+The `let` statement let's us do just that. We can also declare and assign a
 variable at the same time like so:
 
 ```jsx
-var x = 5;
-var y = 6;
-var z = x + y;
+let x = 5;
+let y = 6;
+let z = x + y;
 ```
-
-One final thing to note is the use of _whitespacing_. In python, adding a new
-line ends the statement. `x = 5` and `y = 6` aren't confusing to python's
-interpreter because the new line is how python determines that `x = 5` is it's
-own statement. Javascript doesn't do that, instead it relies on the semicolon
-(`;`) in order to split statements. Though we usually put statements on its own
-line, the following code is completely valid javascript:
-
-```jsx
-var x = 5;
-var y = 6;
-var z = x + y;
-```
-
-We will admit however that this is NOT good code practice and unless you're
-trying to minify and compact code for productionized use, you
-should _always_ value readability over trying to get the least amount of lines
-as possible.
 
 ## Syntax and Convention
 
-Declaring integers and floating-point numbers are the same between python and
-javascript. Declaring strings is the same between python and javascript as well.
-And just like python, casing matters in
-javascript. `variable` and `variable` are two completely different things. All
-of these are outlined below:
+In JavaScript you declare variables using the `let` or `const` keyword. A variable declared
+`const` cannot be modified. You only use `let` or `const` when first declaring the variable,
+after the variable is declared, you do not include a keyword to set it:
 
 ```jsx
-int_val = 420;
-float_val = 4.2;
-string_val = "420";
-String_Val = "420";
+let myNumber = 1;
+myNumber = 2; // OK
+
+const myNumber = 1;
+myNumber = 2; // ERROR
 ```
+
+:::tip
+
+You may see the `var` keyword in old code. The `var` keyword is similar to `let` but
+has weaker semantics. Specifically, the `let` keyword defines variables only in the
+block that they are defined. This prevents your variables from leaking/modifying things
+they shouldn't.
+
+tldr, use `let` over `var`, but they mean similar things.
+
+:::
 
 ```jsx
-var int_val = 420;
-var float_val = 4.2;
-var string_val = "420";
-var String_Val = "420";
+let myNumber = 420;
+let myFloat = 4.2;
+let myString = "Hello, World!";
+let Mystring = "Hello, World again!"; // Different than the above.
 ```
 
-When trying to comment out javascript, use `//` instead of `#`:
+To have a line that is a "comment", that is code that is ignored by JavaScript, you use `//`
 
 ```jsx
-int_val = 420 # This code is executed
-float_val = 4.2 # This code is executed
-# string_val = "420" # This code is NOT
-# String_Val = '420' # This code is NOT
+let myInt = 420; // This code is executed
+let myFloat = 4.2; // This code is executed
+// let myString = "420"; // This code is NOT
+// let myString = '420'; // This code is NOT
 ```
 
-```jsx
-var int_val = 420; // This code is executed
-var float_val = 4.2; // This code is executed
-// var string_val = "420"; // This code is NOT
-// var String_Val = '420'; // This code is NOT
-```
-
-Another interesting thing about javascript is that you can use dollar signs
-(`$`) in your function declarations. The following python code is NOT allowed
-whereas, if we convert this to javascript, it would be allowed:
-
-```python
-$variable = 5
-```
-
-```jsx
-var $variable = 5;
-```
-
-Finally, a note about convention is that python usually uses underscores to
-declare variables. Javascript instead uses camel case as convention. Python
-variables like `new_variable`, `another_variable`, `really_long_variable` are
-instead stylized like `newVariable`, `anotherVariable`,
-and `reallyLongVariable` in javascript. Code-wise, there is no difference but in
-industry you will be expected to follow best practices.
+We recommending adding as many comments as possible to explain how your code works
+and why you chose to structure it a certain way.
 
 ## Types
 
@@ -888,8 +861,8 @@ a database.
 We use `JSON.stringify()` to convert an Object into a JSON datatype.
 
 ```jsx
-var myObj = { name: "John", age: 31, city: "New York" };
-var myJSON = JSON.stringify(myObj);
+let myObj = { name: "John", age: 31, city: "New York" };
+let myJSON = JSON.stringify(myObj);
 console.log(myJSON);
 ```
 
@@ -903,8 +876,8 @@ If you receive data in JSON format, you can convert it into a JavaScript object.
 We use `JSON.parse()` to convert JSON into an Object datatype.
 
 ```jsx
-var myJSON = '{"name":"John", "age":31, "city":"New York"}';
-var myObj = JSON.parse(myJSON);
+let myJSON = '{"name":"John", "age":31, "city":"New York"}';
+let myObj = JSON.parse(myJSON);
 console.log(myObj);
 ```
 
