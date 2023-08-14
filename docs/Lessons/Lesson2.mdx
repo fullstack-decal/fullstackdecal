@@ -27,19 +27,19 @@ static (which is another word for unchanging) content.
 ### Elements and tags
 
 Here's an example `.html` file:
+
 ```html
 Welcome to my website!
 ```
 
 That's right, plain text is valid HTML! But that's not very useful. If you viewed this file on a browser, you'd just see
-the words "Welcome to my website!" in tiny font on the top left. HTML stands for **H**yper**t**ext **M**arkup **L**anguage. Essentially it lets you 
+the words "Welcome to my website!" in tiny font on the top left. HTML stands for **H**yper**t**ext **M**arkup **L**anguage. Essentially it lets you
 do cooler things than just plain text.
 
-For example, you can make text **bold** or *italicized*.
+For example, you can make text **bold** or _italicized_.
 
 ```html
-<b>This text is bold!</b>
-<i>This text is italicized!</i>
+<b>This text is bold!</b> <i>This text is italicized!</i>
 ```
 
 HTML's base building block is the **element**. Above you can see the `<b>` and `<i>` elements. An element is a building block, acting
@@ -47,34 +47,36 @@ on what's inside it. Every element has an opening and a closing **tag**. For exa
 Everything in between the opening and closing tag is affected by the element. In this case, the text is bolded.
 
 If you opened this `.html` file, you would see this:
-> **This text is bold!**
-> *This text is italicized!*
+
+> **This text is bold!** > _This text is italicized!_
 
 ### Self-closing tags
 
 See how both the bold and italicized text are on the same line? If you want to put them on separate lines, you can use the `<br>` element, which stands for **b**reak **r**ule.
 
 ```html
-<b>This text is bold!</b><br/>
+<b>This text is bold!</b><br />
 <i>This text is italicized!</i>
 ```
 
 Note that the choice to put multiple elements on the same line or to seperate them out is entirely irrelevant. You could write your HTML file all in one line if you wanted to.
 
 Now, if you opened this `.html` file, you would see this:
+
 > **This text is bold!**
 >
-> *This text is italicized!*
+> _This text is italicized!_
 
 Note that the break rule element is a "self-closing tag" or "void
 tag" that open and close themselves. This is because it doesn't have allow any content.
 
-Since it's obvious all `<br>` tags are self-closing, you can omit the closing tag and just write `<br>` instead of `<br/>`. 
+Since it's obvious all `<br>` tags are self-closing, you can omit the closing tag and just write `<br>` instead of `<br/>`.
 You don't need to close this tag with `</br>` since it's self-closing'.
 
 ### Attributes
 
 Some elements have extra things you can configure about them. For example:
+
 ```html
 <a href="https://webatberkeley.org">This is a link!</a>
 ```
@@ -83,6 +85,7 @@ The `<a>` makes whatever is inside of it into a link! But to where? It needs ext
 Here, we give the `<a>` element the `href` attribute, and set the value of the attribute to the URL of the desired destination.
 
 Now, if you opened this `.html` file, you would see this:
+
 > [This is a link!](https://webatberkeley.org)
 
 So, putting it all together, HTML is composed of elements, which have opening and closing tags (or self-closing tags), and optionally can take attributes:
@@ -92,12 +95,14 @@ So, putting it all together, HTML is composed of elements, which have opening an
 ### Nesting
 
 You can also put elements inside of other elements. For example:
+
 ```html
 <b>This text is bold and <i>italicized!</i></b>
 ```
 
 Now, if you opened this `.html` file, you would see this:
-> **This text is bold and *italicized*!**
+
+> **This text is bold and _italicized_!**
 
 ### File Layout
 
@@ -188,7 +193,7 @@ A lot of HTML comes down to good and bad practice. You can do a lot of things in
 
 `<h1>` makes the text super big. `<h2>` makes it a little smaller. `<h3>` makes it a little smaller than that. `<h4>` makes it a little smaller than that. `<h5>` makes it a little smaller than that. `<h6>` makes it a little smaller than that.
 
-Furthermore, header types are used for SEO (Search Engine Optimization). Google uses header tags to divide up a website. 
+Furthermore, header types are used for SEO (Search Engine Optimization). Google uses header tags to divide up a website.
 `<h1>` tags are seen as main subjects for a website, while `<h3>` tags are seen as subsections.
 
 `<h1>`-`<h6>` tags also add a line-break before and after the text. How do you know which elements add a line break (e.g. `<p>`) and which don't (e.g. `<i>`)?
@@ -204,8 +209,8 @@ We covered these above, but basically they are just links. They've got a couple 
 
 ### `<button>` tag → **Buttons**
 
-  - Creates a clickable button
-  - Put elements inside and around the button to make it functional and pretty
+- Creates a clickable button
+- Put elements inside and around the button to make it functional and pretty
 
 ```html live
 <a href="https://webatberkeley.org/">
@@ -216,27 +221,31 @@ We covered these above, but basically they are just links. They've got a couple 
 ```
 
 This would look like
-<a href="https://webatberkeley.org/" style={{all: "revert"}}>
-  <button style={{all: "revert"}}>
-    <p style={{all: "revert"}}>Go to Web Dev at Berkeley's site</p>
+
+<a href="https://webatberkeley.org/" style={{ all: "revert" }}>
+  <button style={{ all: "revert" }}>
+    <p style={{ all: "revert" }}>Go to Web Dev at Berkeley's site</p>
   </button>
 </a>
 
 Awesome? Yes.
 
 ### `<span>` tag (optional) → **Spans**
-  - A container for small pieces of text
-  - Will be more useful when we learn about CSS
+
+- A container for small pieces of text
+- Will be more useful when we learn about CSS
 
 ### `<img>` tag → **Image**
- Displays images
-  - `src` attribute points to the image
-  - `alt` attribute is displayed as text if the photo is unavailable or cannot
-    be used
-  - `<img />` is a **self closing tag**
-    - This makes sense because an image tag doesn't contain anything - it simply
-      displays an image
-  - `width` and `height` set the dimensions of the image
+
+Displays images
+
+- `src` attribute points to the image
+- `alt` attribute is displayed as text if the photo is unavailable or cannot
+  be used
+- `<img />` is a **self closing tag**
+  - This makes sense because an image tag doesn't contain anything - it simply
+    displays an image
+- `width` and `height` set the dimensions of the image
 
 ```html
 <img
@@ -249,8 +258,9 @@ Awesome? Yes.
 ```
 
 ### Inputs → `<input>` tag
-  - Inputs can have different types, such as text (default), password, email, file, and
-    many more that all come with their own unique validation and behavior
+
+- Inputs can have different types, such as text (default), password, email, file, and
+  many more that all come with their own unique validation and behavior
 
 ```html live
 <div>
@@ -284,13 +294,15 @@ Awesome? Yes.
 
 Allows the user to pick one of the options.
 
-### `<div>` tag → **Divs** 
-  - Short for division
-  - Generic container tag
-  - They don't do anything on their own, but they are used to group elements
-    together
+### `<div>` tag → **Divs**
+
+- Short for division
+- Generic container tag
+- They don't do anything on their own, but they are used to group elements
+  together
 
 For example, somewhere on your page you may have some sign-up page:
+
 ```html live
 <div id="signupPage">
   <h1>Sign up for our newsletter!</h1>
@@ -317,19 +329,22 @@ Note that you can give **any** element an `id` attribute, not just `<div>`s. You
 have achieved the same effect by ommiting the div entirely:
 
 ```html live
-<h1 id="signupPage">Sign up for our newsletter!</h1>
-<p>Enter your email below to receive updates on our latest products.</p>
-<input type="email" placeholder="Email" />
-<button>Sign up</button>
+<div>
+  <h1 id="signupPage">Sign up for our newsletter!</h1>
+  <p>Enter your email below to receive updates on our latest products.</p>
+  <input type="email" placeholder="Email" />
+  <button>Sign up</button>
+</div>
 ```
 
 But this is formatted worse, because the `<h1>` tag is just the beginning of the sign-up page. If you ever remove it or change it for something else, you could
 accidentally break the link. You can think of `<div>`s as a way to organize your website.
 
-### `<form>` tag → **Form** 
-  - A group of html tags related to gathering data from a user
-  - This will be some combination of `input`, `textarea`, and `select` tags
-  - A form is just a container for the other tags
+### `<form>` tag → **Form**
+
+- A group of html tags related to gathering data from a user
+- This will be some combination of `input`, `textarea`, and `select` tags
+- A form is just a container for the other tags
 
 ```html live
 <form>
@@ -342,13 +357,15 @@ Sounds like just another `<div>` tag, right? Well, there's a key difference. For
 We'll learn this later in the course.
 
 ## More tags
+
 These are tags you can just search up if you need them. They aren't required to build your intuition.
 
 ### `<ul>`, `<ol>`, `<li>` tags → **Lists**
-  - `<ul>` stands for _unordered list_ (bullet points ⇒ Where order doesn't
-    matter)
-  - `<ol>` stands for _ordered list_ (1. 2. 3. ⇒ Where order matters)
-  - `<li>` stands for _list item_
+
+- `<ul>` stands for _unordered list_ (bullet points ⇒ Where order doesn't
+  matter)
+- `<ol>` stands for _ordered list_ (1. 2. 3. ⇒ Where order matters)
+- `<li>` stands for _list item_
 
 ```html live
 <ul>
@@ -359,19 +376,21 @@ These are tags you can just search up if you need them. They aren't required to 
 ```
 
 This would look like
+
 > - This is an
 > - unordered list
 > - with 3 items
 
 ### `<textarea>` tag → **Textarea**
-  - A larger input for text
-  - The `placeholder` attribute specifies what shows up in the textarea when the
-    user hasn't entered any input (Optional)
-  - The `rows` attribute specifies how many rows of text the textarea offers
-    initially - this can be increased if the user inputs more text than the
-    number of rows given to the textarea (Optional)
-  - Despite nothing going inside the textarea tags, it is not a self-closing tag
-    (HTML is a really old language and so we have to live with some old quirks)
+
+- A larger input for text
+- The `placeholder` attribute specifies what shows up in the textarea when the
+  user hasn't entered any input (Optional)
+- The `rows` attribute specifies how many rows of text the textarea offers
+  initially - this can be increased if the user inputs more text than the
+  number of rows given to the textarea (Optional)
+- Despite nothing going inside the textarea tags, it is not a self-closing tag
+  (HTML is a really old language and so we have to live with some old quirks)
 
 ```html live
 <textarea
@@ -383,11 +402,12 @@ This would look like
 
 You can think of this as a very large `<input/>` tag (with no type attribute set).
 
-### `<table>`,`<tr>`, `<td>` tags → **Table** 
-  - `table` creates a table
-  - `tr` stands for table row
-  - `td` stands for table data, basically represents a cell in
-    your table
+### `<table>`,`<tr>`, `<td>` tags → **Table**
+
+- `table` creates a table
+- `tr` stands for table row
+- `td` stands for table data, basically represents a cell in
+  your table
 
 ```html live
 <table id="coordinates">

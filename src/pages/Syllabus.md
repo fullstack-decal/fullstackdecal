@@ -8,21 +8,16 @@
 
 **Units:** 3
 
-**Course Term:** Spring 2023
-
 **Faculty Sponsor:** Josh Hug
 
 **Class Number:** 33617
 
-**Course Catalog Link:**
-[https://classes.berkeley.edu/content/2023-spring-compsci-198-099-grp-099](https://classes.berkeley.edu/content/2023-spring-compsci-198-099-grp-099)
-
 **Time:** There are 2 lectures every week. Students are expected to attend both lectures every week.
 
-- Lecture 1: Monday @ 8:00pm - 9:30pm PT
-- Lecture 2: Wednesday @ 8:00pm - 9:30pm PT
+- Lecture 1: Wednesday @ 5:00pm - 6:30pm PT
+- Lecture 2: Friday @ 5:00pm - 6:30pm PT
 
-**Location:** Valley Life Sciences Building 2040
+**Location:** Hearst Memorial Mining Building 390
 
 ## Course Overview
 
@@ -43,9 +38,7 @@ In the spirit of full-stack development, we cover the three main pillars of mode
 
 ### Teaching Plan
 
-Every week you will watch 2 lectures, each 1.5 hours. Each week we will have either a homework
-assignment or a project due. Course staff will be holding office hours regularly
-throughout the week to provide guidance and feedback on the assignments. Towards the end of the semester your work in this class will culminate in a final project with a project group whom we will assign.
+Every week you will attend 2 lectures, each 1.5 hours. Most lectures will have a short vitamin assignment accompanying them and you will typically have a project due. Course staff will be holding office hours regularly throughout the week to provide guidance and feedback on the assignments. Towards the end of the semester your work in this class will culminate in a final project with a project group.
 
 ### Learning goals
 
@@ -108,10 +101,25 @@ All communication this semester will be centralized on Ed. Please ask all questi
 
 ## Grading
 
+This DeCal is graded on a P/NP bases. Your final grade
+will be based primarily upon completion of work in the class.
+A "pass" is a 70% (700 points) in the class. Gradescope will be
+used to host the grades.
+
+| Item               | Points       |
+| ------------------ | ------------ |
+| Lecture Attendance | 100 (5 per)  |
+| Vitamins           | 300 (20 per) |
+| Project 1          | 80           |
+| Project 2          | 120          |
+| Final Project      | 400          |
+
+Lecture is intended to pad your grade **more than 3 unexecused lectures will result in an NP**.
+
 ### Attendance
 
 Attendance at lectures is mandatory. If you cannot make it to the lecture for
-any reason, please fill out the excused absence form for each lecture. If you
+any reason, please fill out the excused absence form for each lecture (on Ed). If you
 neglect to fill out this form within 24 hours of the missed lecture, it will be
 marked as an unexcused absence. You are allowed up to 3 unexcused absences before receiving a NP in the
 class. If you miss a lecture, watch the recorded lecture as soon as possible so
@@ -119,29 +127,14 @@ that you don't fall behind. Our curriculum moves fairly quickly in order to
 cover everything you need in order to become a full-fledged developer, so it's
 imperative that you stay up-to-date with each lesson.
 
-### Grading Overview
+### Vitamins
 
-This DeCal is exclusively available on a P/NP bases. Your final grade
-will be based primarily upon completion of work in the class.
-A "pass" is a 70% (700 points) in the class. Gradescope will be used to host a majority of the grading scheme.
-The grading breakdown is as is below.
+Vitamins are short bite-sized problems designed let you practice the lectures material.
+We encourage you to work on the homework problems in small groups, but each student is
+required to turn in a solution that they have written themselves.
 
-### Grading Breakdown
-
-| Item                       | Points |
-| -------------------------- | ------ |
-| Homework                   | 400    |
-| Project 1                  | 150    |
-| Attendance                 | 150    |
-| Final Project Presentation | 300    |
-
-### Homework
-
-Homework is designed to let you practice the week's material. We encourage you
-to work on the homework problems in small groups, but each student is required
-to turn in a solution that they have written themselves.
-
-Every day homework is late, your grade will decrease by 10%.
+Vitamins are due the following lecture they are assigned, with a late due date of one
+week.
 
 ### Projects
 
@@ -168,9 +161,8 @@ California, Berkeley's Center for Student Conduct and Community Standards.”
 
 ### Accommodations and Extensions
 
-
 - Extension Requests: This is to request extensions on deadlines for any
-  assignments. Requests will be reviewed approximately every 2-3 business days. 
+  assignments. Requests will be reviewed approximately every 2-3 business days.
   Extensions will not be visible on Gradescope and but they will show up on grading reports.
 - Extenuating Circumstances: Private message on Ed or email our facilitators for any circumstances that can't be
   resolved with extensions or lab section changes. Don't be afraid to reach out!

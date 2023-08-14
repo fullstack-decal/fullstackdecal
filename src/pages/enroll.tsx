@@ -1,10 +1,10 @@
-import React from 'react';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import { Box, Text, Container } from '@chakra-ui/react';
-import RecruitingResources from '../data/recruiting-resources.mdx';
-import DevResources from '../data/dev-resources.mdx';
-import PastIterations from '../data/past-iterations.mdx';
+import React from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import { Box, Text, Container } from "@chakra-ui/react";
+import RecruitingResources from "../data/recruiting-resources.mdx";
+import DevResources from "../data/dev-resources.mdx";
+import PastIterations from "../data/past-iterations.mdx";
 
 const Resources = () => {
   const { siteConfig } = useDocusaurusContext();
@@ -19,11 +19,18 @@ const Resources = () => {
           <Text textStyle="title2" color="blue" mb={[6]}>
             ENROLL
           </Text>
-          <Text style={{fontSize: 33}} mb={[50]}>
+          <Text style={{ fontSize: 33 }} mb={[50]}>
             We're excited to have you join our Fall 2023 class!
           </Text>
-          <Text style={{fontSize: 25}} mb={[100]}>
-            Enrollment not open yet. Check back later.
+          <Text style={{ fontSize: 25 }} mb={[100]}>
+            To apply please fill out the{" "}
+            <a
+              href="https://airtable.com/app4DQfVs1iDSqn4b/shrFGkWU1iF8nLpgS"
+              target="_blank"
+              rel="noreferrer"
+            >
+              application form.
+            </a>
           </Text>
 
           <Text textStyle="subtitle1" mt={2} mb={4}>

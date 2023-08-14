@@ -22,7 +22,7 @@ A virtual environment is a separate working medium from your local machine. You 
 
 Let's say you're working on two apps without a virtual environment: an open-source project that uses an older version of Django, and your own personal project that utilizes the most recent iteration of Django. You'll notice that you can't contribute to that open-source project because the newest version of Django is not compatible with it.
 
-This is why virtual environments are necessary: if both projects were under their own virtual environments—and therefore had their own versions of Django, separate from your own machine's version—then you are able to work on both without fear of incompatibility. 
+This is why virtual environments are necessary: if both projects were under their own virtual environments—and therefore had their own versions of Django, separate from your own machine's version—then you are able to work on both without fear of incompatibility.
 
 It's good practice to set up virtual environments so your projects don't affect each other.
 
@@ -52,27 +52,27 @@ The first two commands should be familiar to you. If they're not, review basic c
 
 The last line, however, actually creates our new environment. It's standard to call your virtual environment "newenv." If you have multiple working environments, you can denote them however you please, so long as it's recognizable to you and anyone you may be working with.
 
-Within the virtual environment, there will be several new files and folders. 
+Within the virtual environment, there will be several new files and folders.
 
-![New Environment](../assets/guides/Django/newenv.png)
+![New Environment](../../assets/guides/Django/newenv.png)
 
 For the purposes of the setup, we won't be going over what each folder and file is or does.
 
-To activate your virtual environment, simply enter this command: 
+To activate your virtual environment, simply enter this command:
 
 ```powershell
 source bin/activate
 ```
 
-Once activated, the virtual environment name you created (in this case, newenv) should appear to the left of your computer's name.  
+Once activated, the virtual environment name you created (in this case, newenv) should appear to the left of your computer's name.
 
-![New Environment in Console](../assets/guides/Django/newenv-console.png)
+![New Environment in Console](../../assets/guides/Django/newenv-console.png)
 
-To deactivate your virtual environment, simply enter "deactivate" in your command line. 
+To deactivate your virtual environment, simply enter "deactivate" in your command line.
 
 ### Creating your Django project
 
-Once you've activated your virtual environment, you can create your Django project! First, you should install Django within this virtual environment if you haven't already ("pip install django" is what you should enter to install it). 
+Once you've activated your virtual environment, you can create your Django project! First, you should install Django within this virtual environment if you haven't already ("pip install django" is what you should enter to install it).
 
 Afterwards, enter this in your virtual environment:
 
@@ -80,13 +80,13 @@ Afterwards, enter this in your virtual environment:
 django-admin startproject [enter your project name here]
 ```
 
-This will create a new folder with the title of your project name. Inside that folder, you'll see two new items: manage.py, and a folder with the same title name you gave. This is not where you will be building your app! 
+This will create a new folder with the title of your project name. Inside that folder, you'll see two new items: manage.py, and a folder with the same title name you gave. This is not where you will be building your app!
 
-Change your directory into the folder that has the same title you gave your project. Think of this folder as an admin folder, where you will be connecting to a database or linking up your website to various URLs. In other words, this is where all the connectivity of your back-end happens. 
+Change your directory into the folder that has the same title you gave your project. Think of this folder as an admin folder, where you will be connecting to a database or linking up your website to various URLs. In other words, this is where all the connectivity of your back-end happens.
 
 Inside the folder itself should be as follows:
 
-![Django File Structure](../assets/guides/Django/structure.png)
+![Django File Structure](../../assets/guides/Django/structure.png)
 
 For the purposes of this demonstration, you don't need to worry about any other files except for settings[.](http://settings.py)py and urls.py.
 
@@ -96,9 +96,9 @@ settings.py contains all the vital information that allows your app to run, from
 
 By default, Django makes it so your database engine is SQLite. You can change it as you please, but changing it requires some alterations to the settings. For example, if you wanted to link to Postgres, you would need to input a password, username, and other various items. (We will touch upon this in more depth in lecture.)
 
-You will also find middleware settings and installed_apps. In short, middleware is essentially a plugin system that changes the input and output of Django apps. 
+You will also find middleware settings and installed_apps. In short, middleware is essentially a plugin system that changes the input and output of Django apps.
 
-The installed apps component is perhaps the most important part of settings, next to databases. Installed apps, as the name implies, are a list of all the applications that are active in this Django project. By default, Django sets up several apps for you, like the admin site you can use to manage content on your site. These apps are not mandatory to keep, but the power of Django lies in the fact that these apps are already set up *for you*. 
+The installed apps component is perhaps the most important part of settings, next to databases. Installed apps, as the name implies, are a list of all the applications that are active in this Django project. By default, Django sets up several apps for you, like the admin site you can use to manage content on your site. These apps are not mandatory to keep, but the power of Django lies in the fact that these apps are already set up _for you_.
 
 You may also add to the installed apps. For example, you might install rest_framework in your Django project. This is where it would go. Your configurations for other apps you create would also be added to this list.
 
@@ -108,25 +108,25 @@ You may also add to the installed apps. For example, you might install rest_fram
 
 Recall that urls.py and settings.py are in, what we called, the admin folder. This folder is the heart of our entire application because it allows us to manipulate the settings and integrate our back-end entirely. The integration of the back-end happens in urls.py. This is best explained with an example.
 
-Let's say we have a button that redirects you to a payment page. Let's also assume that once you press this button, a payment will be automatically processed from your credit card. 
+Let's say we have a button that redirects you to a payment page. Let's also assume that once you press this button, a payment will be automatically processed from your credit card.
 
 The page that you are redirected to has a new URL than the previous one you were on. Associated with this new URL are a set of functions in the back-end that processes the payment.
 
 But how would Django know that this URL page should call on the functions to process the payment? This is where urls.py comes in. This is the file where we can input a URL we specify and what functions it should invoke when the URL is entered.
 
-Note: This is a very simplified version of what urls.py is in this particular folder. There are other urls.py that we will discuss in more detail later. 
+Note: This is a very simplified version of what urls.py is in this particular folder. There are other urls.py that we will discuss in more detail later.
 
 In essence, then, settings.py and urls.py are the core of this admin folder.
 
 Here's an image of what this [urls.py](http://urls.py) in the main directory might look like:
 
-![Basic Django App](../assets/guides/Django/basic-app.png)
+![Basic Django App](../../assets/guides/Django/basic-app.png)
 
-Dissecting this a bit further, the admin import is where all the admin functionality is whenever you go to the path of 'admin/'. For instance, if you were to start the server and went to "127.0.0.1:8000/admin/", you would redirected to the admin site. 
+Dissecting this a bit further, the admin import is where all the admin functionality is whenever you go to the path of 'admin/'. For instance, if you were to start the server and went to "127.0.0.1:8000/admin/", you would redirected to the admin site.
 
 The second import is what matters the most. Django.urls houses the functions that allow your server to route to various paths (hence the function "path"). However, when you create your own project, you won't see "include" as part of the import. You can think of "include" as a way to just bring in the routes of the apps you create in your app. In this particular example, I am "including" the urls of my weather app. In other words, I have another app in my Django project called "weather," and in that app it houses a [urls.py](http://urls.py) (different from the one you're looking at right now) where it also includes paths. This will be more clear in the next section.
 
-Lastly, you'll notice the variable called "urlpatterns". This variable *must* be named "urlpatterns" exactly—it does not follow the typical Python syntax with underscores (i.e., url_patterns). Furthermore, "urlpatterns" must be a list that contains your paths to the various routes in your project. 
+Lastly, you'll notice the variable called "urlpatterns". This variable _must_ be named "urlpatterns" exactly—it does not follow the typical Python syntax with underscores (i.e., url_patterns). Furthermore, "urlpatterns" must be a list that contains your paths to the various routes in your project.
 
 Understanding "path" is also very important. The first parameter that "path" takes is always going to be your url route. Taking from the payment example earlier, let's say that you have a website called http://cheese.com. Let's say that when you go to cheese.com/payment, it redirects you to a payment page. Payment can be considered its own app within your project (this will make more sense after you read the next section). In other words, the link "cheese.com/payment" will house its own functions in the backend. The path you would then set in [urls.py](http://urls.py), then, would be:
 
@@ -144,7 +144,7 @@ Furthermore, the second argument of "path" is the app you are routing to and its
 
 ### Various Apps
 
-Recall that so far, we have a root directory that contains a manage.py file and an admin folder that is the same name as our project. If you wanted to start building  your back-end, where would you start if you have no directories to do so? Django has a command that allows you to start:
+Recall that so far, we have a root directory that contains a manage.py file and an admin folder that is the same name as our project. If you wanted to start building your back-end, where would you start if you have no directories to do so? Django has a command that allows you to start:
 
 ```powershell
 django-admin startapp [enter the app]
@@ -166,8 +166,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-		
-		# add your app name. For example, if your app is called "recommendation", 
+
+		# add your app name. For example, if your app is called "recommendation",
 		# enter that!
     'recommendation'
 ]
@@ -175,7 +175,7 @@ INSTALLED_APPS = [
 
 #### [views.py](http://views.py) in your Apps
 
-This is where the functionality of your app is. You can think of this file as where you would house all your functions that allow your back-end to function. For instance, if you need to connect to a REST API, you can do so here. 
+This is where the functionality of your app is. You can think of this file as where you would house all your functions that allow your back-end to function. For instance, if you need to connect to a REST API, you can do so here.
 
 Here's an example of what a typical [views.py](http://views.py) file looks like:
 
@@ -188,11 +188,11 @@ def index(request):
 	print("hello, world! this will log a print statement in your terminal")
 ```
 
-Note that the function "index" *will not be in your [views.py](http://views.py)* file. I just did that for an example. Imagine multiple other functions within this file.
+Note that the function "index" _will not be in your [views.py](http://views.py)_ file. I just did that for an example. Imagine multiple other functions within this file.
 
 #### [urls.py](http://urls.py) in your Apps
 
-Earlier, I noted that [urls.py](http://urls.py) is in the main directory (in what this guide refers to as the admin folder). There are also other urls.py's! When you create a new app via "startapp" in your terminal, it creates the new folder, but you won't see any urls.py. That's because you're going to have to make it yourself. 
+Earlier, I noted that [urls.py](http://urls.py) is in the main directory (in what this guide refers to as the admin folder). There are also other urls.py's! When you create a new app via "startapp" in your terminal, it creates the new folder, but you won't see any urls.py. That's because you're going to have to make it yourself.
 
 Unlike the [urls.py](http://urls.py) in the main directory, this urls.py will be slightly different. You will still be using "path", and you will still be having a variable called "urlpatterns". You will also be putting a route as the first argument of path. However, the second argument will refer to the set of functions that will be invoked if a person were to go to this particular url path you've set.
 
@@ -306,7 +306,7 @@ python3 manage.py runserver
 
 Recall that earlier in the [urls.py](http://urls.py) of SpotifyProject, the path was towards "api/". You'll notice that this urls.py path is "recommendation". So how exactly does the urls.py from SpotifyProject connect to this urls.py of recommendations?
 
-Put simply, the path of the [urls.py](http://urls.py) in SpotifyProject is the starter route, and the second route trailing the first is urls.py of recommendations. 
+Put simply, the path of the [urls.py](http://urls.py) in SpotifyProject is the starter route, and the second route trailing the first is urls.py of recommendations.
 
 So if we wanted to use our functionality of recommendations, we would enter the following url:
 
@@ -318,7 +318,7 @@ So if we wanted to use our functionality of recommendations, we would enter the 
 # it will not work if you did not include one without the other
 
 # essentially, you'll be redirected to this page and the index function
-# of views will be invoked. 
+# of views will be invoked.
 ```
 
 ---
