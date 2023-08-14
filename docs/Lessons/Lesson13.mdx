@@ -4,13 +4,13 @@ sidebar_position: 15
 
 # React 3: Styling and Libraries/Global State/Deployment
 
-import VividDemo from "../../static/img/vivid-demo.gif"
+import VividDemo from "../../static/img/vivid-demo.gif";
 
 ## Introduction
 
 Welcome to the course's 3rd and final react lesson. In the previous lesson, you were introduced to key parts of the React ecosystem in the form of package managers, routing, and axios. In this lesson, we'll continue delving into the react ecosystem, the frontend ecosystem as a whole, and talk about some general software development principles as well.
 
-We'll start by introducing  how styling works in React, covering a couple ways that you can use to ensure that your React apps look as beautiful as your websites did in the first part of the course.
+We'll start by introducing how styling works in React, covering a couple ways that you can use to ensure that your React apps look as beautiful as your websites did in the first part of the course.
 
 Next, we'll dive into the notion of libraries in React and the powerful ecosystem that surrounds it. From there, we'll cover component libraries, a powerful way to write less code and create stunning UI's in minutes as compared to hours.
 
@@ -23,12 +23,14 @@ Lastly, we'll touch upon a number of more advanced frontend technologies such as
 There are many, many ways to style your components and JSX code in React. In
 this reading we'll talk about Tailwind CSS with Vivid, CSS-in-JS, CSS Modules, and Styled Components.
 
-### Tailwind CSS 
+### Tailwind CSS
+
 Tailwind CSS is a utility-first CSS framework. This means that instead of writing traditional global CSS like `background-color: #f63344`, you apply styles in-line via small “utility classes” like `p-4` for padding or `bg-red-500` for a red background.
 
 Each of these utility classes is atomic, so they only apply one style rule at a time. While you can use them to write arbitrary CSS using their arbitrary notation (e.g., `bg-[#f63344]`), most of the time you’ll be using the color and sizing scales that Tailwind provides for you. All of these features can also be easily configured be changing your `tailwind.config.js`.
 
 #### Why Use Tailwind
+
 Tailwind offers benefits for beginners and experts alike!
 
 For beginners or simple applications, **Tailwind is a fast way to write all your styling inline.** By not having to deal with the abstraction of component-based classnames or fine-tuning colors and pixel values, you can move faster with Tailwind than with alternative CSS frameworks.
@@ -38,6 +40,7 @@ For more advanced use-cases, **Tailwind forms a useful part of a design system b
 To prevent long class strings at all levels of your code, you generally have to be more thoughtful about your component modularity when using Tailwind CSS.
 
 #### Installation
+
 The official [Tailwind installation guide](https://tailwindcss.com/docs/installation) does a great job of walking you through the easy 4 step setup. You can follow the “PostCSS” or “Framework Guides” sections there to get started.
 
 #### Usage
@@ -45,9 +48,7 @@ The official [Tailwind installation guide](https://tailwindcss.com/docs/installa
 Once Tailwind is set up, you can use any of the classes in their [docs](https://tailwindcss.com/docs/installation) right in your code:
 
 ```html
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+<h1 class="text-3xl font-bold underline">Hello world!</h1>
 ```
 
 This snippet makes your heading large, bolded, and underlined — pretty self-explanatory!
@@ -59,16 +60,14 @@ Vivid is an in-browser visual editor that lets you test out Tailwind styles and 
 With Vivid, you can click on any component in your page and have its code pop up right in your browser. From there, you can edit its code in the code pane, or preview and apply styles with shortcuts through the command palette.
 
 #### Installation
+
 To summarize the [Vivid docs](https://docs.vivid.lol):
 
 1. Install Vivid with `npm i -D vivid-studio`
 2. Initialize it by pasting the following code at the top of your root file outside of any functions:
 
 ```jsx
-if (
-  typeof window !== "undefined" &&
-  process.env.NODE_ENV === "development"
-) {
+if (typeof window !== "undefined" && process.env.NODE_ENV === "development") {
   import("vivid-studio").then((v) => v.run());
   import("vivid-studio/style.css");
 }
@@ -80,9 +79,9 @@ Once Vivid is set up, you just have to start your app in development mode (usual
 
 Instead of the usual loop of opening your IDE, looking for a component’s code, and testing out styles in the browser, you can just <kbd>Cmd</kbd>-Click (Windows/Linux: <kbd>Ctrl</kbd>-Click) any part of your page and start editing its code from your browser.
 
-Once you get comfortable with editing code in the code pane, you can iterate through styles even faster with the command palette shortcuts Vivid provides (<kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + K). 
+Once you get comfortable with editing code in the code pane, you can iterate through styles even faster with the command palette shortcuts Vivid provides (<kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + K).
 
-<img src={VividDemo} alt = "Vivid Demo"/>
+<img src={VividDemo} alt="Vivid Demo" />
 
 ---
 
@@ -115,7 +114,7 @@ CSS modules in your app, make the following changes.
 
 ```jsx
 //Importing Regular CSS
-import './styles.css';
+import "./styles.css";
 
 //Using Regular CSS
 <div className="container">
@@ -125,10 +124,10 @@ import './styles.css';
 
 ```jsx
 //Importing CSS Modules
-import styles from './styles.module.css';
+import styles from "./styles.module.css";
 
 //Using CSS Modules
-<div className={styles['container']}>
+<div className={styles["container"]}>
   <h3>Hi There!</h3>
 </div>;
 ```
@@ -202,8 +201,8 @@ definition of `Title` or `Wrapper`.
 ```jsx
 const Button = styled.button`
   background: ${(props) =>
-    props.primary === true ? 'palevioletred' : 'white'};
-  color: ${(props) => (props.primary ? 'white' : 'palevioletred')};
+    props.primary === true ? "palevioletred" : "white"};
+  color: ${(props) => (props.primary ? "white" : "palevioletred")};
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;
@@ -312,10 +311,10 @@ yarn add @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^
 #### Setup Provider
 
 ```jsx
-import * as React from 'react';
+import * as React from "react";
 
 // 1. import `ChakraProvider` component
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App({ Component }) {
   // 2. Use at the root of your app
@@ -334,12 +333,12 @@ function App({ Component }) {
 
 function AirbnbExample() {
   const property = {
-    imageUrl: 'https://bit.ly/2Z4KKcF',
-    imageAlt: 'Rear view of modern home with pool',
+    imageUrl: "https://bit.ly/2Z4KKcF",
+    imageAlt: "Rear view of modern home with pool",
     beds: 3,
     baths: 2,
-    title: 'Modern home in city center in the heart of historic Los Angeles',
-    formattedPrice: '$1,900.00',
+    title: "Modern home in city center in the heart of historic Los Angeles",
+    formattedPrice: "$1,900.00",
     reviewCount: 34,
     rating: 4,
   };
@@ -389,11 +388,11 @@ function AirbnbExample() {
 
         <Box display="flex" mt="2" alignItems="center">
           {Array(5)
-            .fill('')
+            .fill("")
             .map((_, i) => (
               <StarIcon
                 key={i}
-                color={i < property.rating ? 'teal.500' : 'gray.300'}
+                color={i < property.rating ? "teal.500" : "gray.300"}
               />
             ))}
           <Box as="span" ml="2" color="gray.600" fontSize="sm">
@@ -426,8 +425,8 @@ yarn add react-bootstrap bootstrap
 #### Incorporating Bootstrap
 
 ```jsx
-import React, { Component } from 'react';
-import Alert from 'react-bootstrap/Alert';
+import React, { Component } from "react";
+import Alert from "react-bootstrap/Alert";
 
 const Example = () => {
   return (
@@ -633,7 +632,7 @@ As a result, Typescript is rapidly gaining in popularity nowadays.
 :::note
 
 We used to teach a lesson on TypeScript. You can find the
-[old reading for it here.](/docs/Guides/Typescript)
+[old reading for it here.](/docs/Resources/Guides/Typescript)
 
 :::
 

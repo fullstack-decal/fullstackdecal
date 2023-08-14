@@ -26,7 +26,7 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
-html[data-theme="dark"] {
+/* html[data-theme="dark"] {
   background-color: black;
 }
 
@@ -55,7 +55,6 @@ html[data-theme="dark"] .navbar__toggle svg path {
 
 html[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
-  font-family: "Poppins";
 }
 
 html[data-theme="dark"] .darkMode {
@@ -68,7 +67,7 @@ html[data-theme="dark"] .darkModeContainer {
 
 .content a {
   color: white;
-}
+} */
 
 /** GitHub Header Icon */
 .header-github-link {
