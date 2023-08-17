@@ -1,11 +1,11 @@
-import React from 'react';
-import staff from '../data/staff';
-import pastStaff from '../data/pastStaff';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import { Box, Text, Container, SimpleGrid } from '@chakra-ui/react';
-import StaffMember from '../components/StaffMember';
-import PastStaffMember from '../components/PastStaffMember';
+import React from "react";
+import staff from "../data/staff";
+import pastStaff from "../data/pastStaff";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import { Box, Text, Container, SimpleGrid } from "@chakra-ui/react";
+import StaffMember from "../components/StaffMember";
+import PastStaffMember from "../components/PastStaffMember";
 
 const Staff = () => {
   const { siteConfig } = useDocusaurusContext();
@@ -16,14 +16,21 @@ const Staff = () => {
       description="Description will go into a meta tag in <head />"
     >
       <Box w="100vw" className="darkModeContainer">
-        <Container maxW="container.lg" pt={16} pb={20} px={[7, 10]}>
-          <Text textStyle="title2" color="blue" mb={[8, 12]}>
-            SPRING 2023 COURSE STAFF
-          </Text>
+        <Container maxW="container.lg">
+          <Text textStyle="title2">Spring 2023 Course Staff</Text>
 
           <SimpleGrid columns={[1, null, 2]} spacing={[12, 16]}>
             {staff.map(
-              ({ name, image, role, linkedin, personal, bio, email, github }) => (
+              ({
+                name,
+                image,
+                role,
+                linkedin,
+                personal,
+                bio,
+                email,
+                github,
+              }) => (
                 <StaffMember
                   name={name}
                   image={image}
@@ -39,7 +46,7 @@ const Staff = () => {
             )}
           </SimpleGrid>
           <Text textStyle="title2" color="blue" mt={24} mb={6}>
-            PAST COURSE STAFF{' '}
+            PAST COURSE STAFF{" "}
             <Text as="span" fontSize="2xl">
               & OTHER NOTABLE CONTRIBUTORS
             </Text>

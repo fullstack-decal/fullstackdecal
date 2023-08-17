@@ -1,165 +1,95 @@
-import React from 'react';
-import { Lesson } from '../types';
-import { Box, Flex, Text, Tag, Divider } from '@chakra-ui/react';
-import Link from '@docusaurus/Link';
-
-type ContentProps = {
-  label: string;
-  title: string;
-  dueDate?: string;
-  link?: string;
-  color?: string;
-};
+import React from "react";
+import { Week, Lesson } from "../types";
+import { HiOutlineBookOpen } from "react-icons/hi";
+import { BsRecordFill } from "react-icons/bs";
+import {
+  HStack,
+  Stack,
+  VStack,
+  Container,
+  Box,
+  Flex,
+  Text,
+  Tag,
+  Divider,
+  Link as ChakraLink,
+  LightMode,
+} from "@chakra-ui/react";
+import Link from "@docusaurus/Link";
+import { useColorMode } from "@docusaurus/theme-common";
 
 type WeekCardProps = {
   weekNumber: number;
-  lessons: Lesson[];
+  week: Week;
 };
 
-const Content: React.FC<ContentProps> = ({
-  label,
-  title,
-  dueDate,
-  link,
-  color,
-}) => {
-  let category;
-  if (label.includes('Lecture')) {
-    category = 'lecture';
-  }
+const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, week }) => {
+  const { colorMode } = useColorMode();
 
   return (
-    <Flex align='center' className='content'>
-      <Tag
-        mr={[5, 4, 3]}
-        borderRadius='full'
-        px={4}
-        py={1.5}
-        minW={[36]}
-        justifyContent='center'
-        border={category === 'lecture' ? 'none' : '2px solid white'}
-        bg={category === 'lecture' ? 'white' : 'transparent'}
-      >
-        <Text
-          textStyle='body1'
-          whiteSpace='nowrap'
-          color={category === 'lecture' ? color : 'white'}
-        >
-          {label}
-        </Text>
-      </Tag>
-      <Text textStyle='body1' color='white'>
-        {link
-          ? (
-            <Link to={link} style={{ textDecoration: 'underline' }}>
-              {title}
-            </Link>
-            )
-          : (
-              title
-            )}
-        <Text as='span' textStyle='body' fontWeight='bold'>
-          {dueDate && ` (due ${dueDate})`}
-        </Text>
-      </Text>
-    </Flex>
-  );
-};
-
-const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, lessons }) => {
-  const colors = [
-    'purple',
-    'orange',
-    'orange',
-    'orange',
-    'blue',
-    'blue',
-    'pink',
-    'purple',
-    'blue',
-    'pink',
-    'pink',
-    'pink',
-    'purple'
-  ];
-
-  return (
-    <Flex
-      align='center'
-      bg={`${colors[weekNumber]}Gradient`}
-      px={[4, 8, 10, 12]}
-      py={[6, 8]}
-      borderRadius='3xl'
-      direction={['column', null, 'row']}
+    <Container
+      mb={8}
+      background={colorMode == "light" ? "white" : "gray.900"}
+      shadow="md"
+      p={6}
     >
-      <Text
-        textStyle='subtitle2'
-        fontSize='3xl'
-        color='white'
-        whiteSpace='nowrap'
-      >
-        Week {weekNumber}
-      </Text>
-      <Box display={['none', null, 'block']}>
-        <Divider
-          orientation='vertical'
-          h={60}
-          w={1}
-          borderRadius='full'
-          opacity={1}
-          bg='white'
-          mx={10}
-        />
-      </Box>
-      <Box display={['block', null, 'none']}>
-        <Divider
-          h={1}
-          w={60}
-          borderRadius='full'
-          opacity={1}
-          bg='white'
-          mt={2}
-          mb={5}
-        />
-      </Box>
-      <Flex direction={['column', null, 'row']} gap={[8, null, 10]}>
-        {lessons.map((lesson) => (
-          <Flex direction='column' gap={5} key={lesson.date} flex={1}>
-            <Text textStyle='label1' textAlign={['center', null, 'left']}>
-              {lesson.date}
-            </Text>
-            <Content
-              label={lesson.format}
-              title={lesson.topic}
-              link={lesson.lectureLink}
-              color={colors[weekNumber]}
-            />
-            {lesson.slides && (
-              <Content
-                label={'Slides'}
-                title={`${lesson.date} Lecture Slides`}
-                link={lesson.slides}
-              />
-            )}
-            {lesson.readingTitle && (
-              <Content
-                label='Reading'
-                title={lesson.readingTitle}
-                link={lesson.readingLink}
-              />
-            )}
-            {lesson.assigmentFormat && (
-              <Content
-                label={lesson.assigmentFormat}
-                title={lesson.assigmentTitle}
-                dueDate={lesson.assigmentDueDate}
-                link={lesson.assigmentLink}
-              />
-            )}
-          </Flex>
-        ))}
-      </Flex>
-    </Flex>
+      <VStack spacing={4} align="start">
+        <Stack direction={["row"]} spacing={8} align="center">
+          <Box width="10rem">Week {weekNumber}</Box>
+          <Box>
+            <Text textStyle="subtitle3">{week.topic}</Text>
+          </Box>
+        </Stack>
+        {week.lessons.map((lesson, lessonIdx) => {
+          const weekAttachnments = [];
+
+          if (lesson.recordingLink) {
+            weekAttachnments.push(
+              <ChakraLink
+                color="red"
+                mr={3}
+                href={lesson.readingLink}
+                isExternal
+              >
+                <BsRecordFill style={{ marginBottom: "-2px" }} /> Recording
+              </ChakraLink>
+            );
+          }
+
+          if (lesson.readingTitle) {
+            weekAttachnments.push(
+              <ChakraLink color="blue" mr={3} as={Link} to={lesson.readingLink}>
+                <HiOutlineBookOpen style={{ marginBottom: "-2px" }} />{" "}
+                {lesson.readingTitle} Reading
+              </ChakraLink>
+            );
+          }
+
+          return (
+            <>
+              {lessonIdx !== 0 && <Divider />}
+              <Stack direction={["row"]} spacing={8} align="center">
+                <Box width="10rem">
+                  <Text textStyle="label1">{lesson.date}</Text>
+                  <Text textStyle="label2">Instructor TBA</Text>
+                </Box>
+                <Box>
+                  <Text textStyle="label1">
+                    <Text as="span" fontWeight="400">
+                      Lecture {weekNumber * 2 + lessonIdx + 1}
+                    </Text>{" "}
+                    / {lesson.topic}
+                  </Text>
+                  <Text textStyle="label2">
+                    {weekAttachnments.length ? weekAttachnments : "\u2E3A"}
+                  </Text>
+                </Box>
+              </Stack>
+            </>
+          );
+        })}
+      </VStack>
+    </Container>
   );
 };
 

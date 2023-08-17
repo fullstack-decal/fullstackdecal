@@ -18,8 +18,6 @@ const config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
 
-  themes: ["live-codeblock"],
-
   presets: [
     [
       "classic",
@@ -125,6 +123,10 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      announcementBar: {
+        id: "announcementBar-2",
+        content: `Enrollment for Fall 2023 is now open. Sign up <a target="_blank" rel="noopener noreferrer" href="https://fullstackdecal.com/enroll">here</a>!`,
       },
     }),
 };

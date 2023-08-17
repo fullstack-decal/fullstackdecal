@@ -1,121 +1,82 @@
-import React from 'react';
-import Layout from '@theme/Layout';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import WeekCard from '../components/WeekCard';
-import schedule from '../data/schedule';
-import { Container, Box, Flex, Text, Link } from '@chakra-ui/react';
+import React from "react";
+import Layout from "@theme/Layout";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import WeekCard from "../components/WeekCard";
+import schedule from "../data/schedule";
+import {
+  VStack,
+  Image,
+  Container,
+  Box,
+  Flex,
+  Text,
+  Link,
+} from "@chakra-ui/react";
+import fullStackLogoPath from "@site/static/img/logo.png";
+import { useColorMode } from "@docusaurus/theme-common";
 
-const Home: React.FC = () => {
-  const { siteConfig } = useDocusaurusContext();
+const HomeContent: React.FC = () => {
+  const { colorMode } = useColorMode();
   return (
-    <Layout
-      title={siteConfig.title}
-      description="Description will go into a meta tag in <head />"
-    >
+    <>
       <Box
-        // h={['100vh', '110vh', '105vh', '120vh']}
-        backgroundImage={[
-          '/img/background-mobile.png',
-          null,
-          '/img/background.png'
-        ]}
-        backgroundSize="100% 100%"
-        className="darkModeContainer"
+        background={(colorMode == "light"
+          ? [
+              "radial-gradient(circle 40vw at 0px 700px, #dbc1ffa1, transparent)",
+              "radial-gradient(circle 40vw at 50% 600px, #ffe2fbcf, transparent)",
+              "radial-gradient(circle 40vw at 70% 800px, #7ad4d333, transparent)",
+            ]
+          : [
+              "radial-gradient(circle 40vw at 0px 700px, #4e169c78, transparent)",
+              "radial-gradient(circle 40vw at 50% 600px, #46063d85, transparent)",
+              "radial-gradient(circle 40vw at 70% 800px, #0020209c, transparent)",
+            ]
+        ).join(", ")}
       >
-        <Container maxW="container.lg">
-          <Text
-            textStyle="label1"
-            textShadow="0px 0px 25px rgba(109, 23, 139, 0.25)"
-            pt={[10, 16]}
-            mb={3}
-          >
-            CS 198-99 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;SPRING 23
+        <Container maxW="container.md" my="6rem">
+          <Text textStyle="subtitle2" color="blackAlpha.500">
+            CS 198-99 | Spring 23
           </Text>
-          <Text
-            textStyle="title2"
-            color="transparent"
-            textShadow="0px 0px 25px rgba(109, 23, 139, 0.25)"
-            mb={[2, 0]}
-            sx={{ WebkitTextStroke: '2px white' }}
-          >
-            INTRODUCTION TO
-          </Text>
-          <Text textStyle="title1" color="white">
-            FULL STACK
+          <Text textStyle="title1">
+            Introduction
             <br />
-            DEVELOPMENT
-          </Text>
-          <Text
-            textStyle="label1"
-            textShadow="0px 0px 25px rgba(109, 23, 139, 0.25)"
-            mt={2}
-            mb={[8, 12]}
-          >
-            Wednesday & Friday, 5:00pm -
-            6:30pm&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; 390 HMMB
-          </Text>
-          <Text textStyle="body2" color="white" mb={[6, 8]}>
-            Welcome to{' '}
-            <Link
-              href="https://webatberkeley.org/"
-              textDecoration="underline"
-              isExternal
-            >
-              Web Development at Berkeley&apos;s
-            </Link>{' '}
-            <Text as="span" fontWeight="bold">
-              Introduction to Full Stack Development
-            </Text>{' '}
-            In this course, we cover the basics of web development, how the
-            internet works, and the frameworks, technologies, and best practices
-            that are used in the industry today. No prior CS experience is
-            required to participate and succeed in this course, but we do
-            acknowledge that we cover a fairly large amount of material and that
-            this course can feel like a lot, even for those with past CS
-            experience.
-          </Text>
-          <Text textStyle="body2" color="white" pb={56}>
-            The materials in this course have been made available to the public
-            in pursuit of reaching, educating, and supporting as many people as
-            we can.
+            to <Image src={fullStackLogoPath} height="1em" mr={4} mb={-4} />
+            <span style={{ color: "#0FD3FF" }}>full-stack</span>
+            <br />
+            development
           </Text>
         </Container>
+
+        {schedule.map((week, index) => {
+          return <WeekCard weekNumber={index} week={week} key={index} />;
+        })}
       </Box>
       <Container maxW="container.lg" pb={16} className="darkModeContainer">
         <iframe
           src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&mode=WEEK&src=Y18xanJ0a21hbzN2ajhmN3NjYXJydDUxZWdpY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23E4C441"
           style={{
             // border: "solid 1px #777",
-            width: '80%',
-            height: '600px',
+            width: "80%",
+            height: "600px",
             // frameborder: "0",
             // scrolling: "no"
           }}
         />
-
-        <Text textStyle="title2" color="purple" mb={8}>
-          Course Overview
-        </Text>
-        <Flex direction="column" gap={7}>
-          <>
-            {Array(13)
-              .fill(0)
-              .map((_, index) => {
-                const weekLessons = schedule.filter(
-                  (lesson) => lesson.week === index
-                );
-
-                return (
-                  <WeekCard
-                    weekNumber={index}
-                    lessons={weekLessons}
-                    key={index}
-                  />
-                );
-              })}
-          </>
-        </Flex>
       </Container>
+    </>
+  );
+};
+
+const Home: React.FC = () => {
+  const { siteConfig } = useDocusaurusContext();
+
+  return (
+    <Layout
+      title={siteConfig.title}
+      description="Description will go into a meta tag in <head />"
+      wrapperClassName="fullStackHero"
+    >
+      <HomeContent />
     </Layout>
   );
 };

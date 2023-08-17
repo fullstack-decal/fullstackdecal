@@ -5,7 +5,7 @@
  */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 /* You can override the default Infima variables here. */
 
 :root {
@@ -17,6 +17,10 @@
   --ifm-color-primary-lighter: #2463c9;
   --ifm-color-primary-lightest: #2463c9;
   --ifm-code-font-size: 95%;
+
+  --ifm-navbar-padding-vertical: 1rem;
+  --ifm-navbar-padding-horizontal: 2rem;
+  --ifm-navbar-height: 4rem;
 }
 
 .docusaurus-highlight-code-line {
@@ -26,7 +30,8 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
-/* html[data-theme="dark"] {
+/** Dark theme */
+html[data-theme="dark"] {
   background-color: black;
 }
 
@@ -65,9 +70,23 @@ html[data-theme="dark"] .darkModeContainer {
   background-color: black;
 }
 
-.content a {
-  color: white;
-} */
+.navbar__icon:before {
+  content: "";
+  display: flex;
+  height: 24px;
+  width: 24px;
+  background-color: var(--ifm-navbar-link-color);
+}
+
+.navbar__icon:hover:before {
+  background-color: var(--ifm-navbar-link-hover-color);
+}
+
+/** Announcement Banner */
+div[class^="announcementBar_"] {
+  background: lightblue;
+  font-weight: bold;
+}
 
 /** GitHub Header Icon */
 .header-github-link {
