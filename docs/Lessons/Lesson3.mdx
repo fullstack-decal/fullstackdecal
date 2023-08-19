@@ -12,13 +12,14 @@ house.
 
 However, a pile of lumber ≠ a house.
 
-We're going to start reasoning about how to put together these things, how to
-create our blueprints, our plans and more with **Cascading Style Sheets (CSS)**
+We're going to start styling our pile of lumber so it looks like a house with the
+next programming language known as **Cascading Style Sheets (CSS)**.
 
-CSS is a **list of rules** that you give the browser: "all `h1`s will be colored
-red" or "all images will be 100 pixels wide".
+CSS is a programming language where you specify a **list of "styling rules"** that tell
+the browser how things should look. Conceptually like: "all `h1`s will be colored red" or "all
+images will be 100 pixels wide".
 
-CSS is a way to take the HTML elements that you have on the page and style them
+Simply, CSS is a way to take the HTML elements that you have on the page and style them
 to look nice.
 
 Take for example, a site with no CSS styling. Doesn’t look great!
@@ -29,52 +30,207 @@ The above is a site with no CSS styling.
 
 ![CSS Image](../assets/Lesson3/Lesson3-2.png)
 
-The above is a site with CSS styling.
+The above is a site (the same HTML!) with CSS styling.
 
----
+## Crash Course
 
-## Implementing CSS
+A CSS document consists of groups of styles which have three parts:
+
+- **selector**: an expression which states which elements you're changing the styles of.
+  We'll dive in later into what these actually look like!
+
+- **rule name**: the name of a pre-defined styling property which controls a
+  part of how an element looks. For example, this can be `color` for
+  changing the text color, or `font-size` to make text bigger. We will
+  teach you the most common ones, but there hundereds of CSS properties out there!
+
+- **value**: this is the value of the property, it can sometimes be a keyword
+  like `bold`, a color like `red`, a size like `12px`, or even more complex things!
+  We will also dive into all the different kinds of values things can have later on.
+
+:::tip How to learn CSS properties?
+The best place is [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference). MDN is a
+very reputable and accurate place to get very accurate and detailed descriptions of what CSS
+properties there are. However, just Googling and using sites like Stack Overflow is the best way
+to get examples of how to style things as a beginner!
+:::
+
+When put together, your CSS document looks like
+
+```css
+<selector> {
+  <rule name>: <value>;
+}
+```
+
+Let's put look at this in a real example so it makes more sense.
+
+### Example: Changing text color
+
+```html
+<p>This text is now red and bold</p>
+```
+
+```css
+p {
+  color: red;
+  font-weight: bold;
+}
+```
+
+Here, we use the `p` selector to match all `p` tags. Then we set the [color](https://developer.mozilla.org/en-US/docs/Web/CSS/color)
+property (which controls text color) to `red` which is a built-in color into CSS. This also uses the `font-weight` color to make the text bold.
+
+## Where to put the CSS
+
+So where does this CSS code go? Let's explore the two approaches:
+
+### link tag (recommended)
+
+The most common and recommended way is to put your CSS in a seperate `.css` file.
+To tell HTML where your CSS file is located, you are going to put a `<link rel="stylesheet">`
+tag inside the `<head>` of your document. You can have multiple stylesheets.
+
+```html
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../style/about.css" />
+  </head>
+</html>
+
+<!-- This tag usually goes in the head of the HTML document -->
+```
+
+- It's good coding practice to "separate your concerns", meaning you keep
+  styling to its own file (CSS file), and content to its own file (HTML).
+
+:::tip
+External stylesheets have a `.css` ending
+:::
+
+:::note Using multiple stylesheets
+If you use multiple stylesheets, they may conflict with each other, for example
+by using the same selector. In general, the stylesheet inserted last will take
+precedence. You will learn more about the specific conflict-resolution algorithm
+used in CSS in the next lesson, also known as "specificity".
+:::
+
+### style attribute
+
+If you have some CSS properties you want to apply just to a specific element, you
+can also use the `style` HTML attribute:
+
+```html
+<h1 style="color: blue; text-align: center;">Header</h1>
+
+<!-- In this example, the h1 has color blue and center aligns itself -->
+```
+
+- The `style` attribute will **override** any style set globally, like styles
+  specified in the style tag or in an external stylesheet.
+- This will only style the element that it’s applied to.
+- This is good for elements that do not follow a specific pattern
+
+This is strongly not recommended because it makes your HTML code look very messy (although
+the authors do admit they do it themselves now and then).
+
+### style tag
+
+Another way to use CSS is by inserting CSS classes directly into the HTML
+document at the very top.
+
+```html
+<html lang="en">
+  <head>
+    <style>
+      h1 {
+        color: red;
+      }
+      p {
+        color: blue;
+      }
+    </style>
+  </head>
+</html>
+
+<!-- This stylesheet lies within the HTML document and will affect the entire HTMl page -->
+```
+
+- This is usually not preferable for long CSS documents.
+- Overrides external stylesheets
+
+## CSS Selectors
 
 CSS searches for elements in your HTML to style. So we need a way to
 **tag/identify** certain elements so your CSS knows where to look and what to
 style.
 
-**Here are the two ways to do this:**
+### Tag selectors
 
-### Classes
+This is the simplest selector, just use the name of the HTML tag you wish
+to select!
 
-- `Classes` are used to distinguish specific tags and are used with CSS.
-- Can be applied to **multiple elements** in an HTML Document
+- Tag selectors select elements by tags
+- For example, you can select all elements with the `<h1>` tag, or `<p>`, `<a>`,
+  `<img>`, etc…
 
-```html
-<div class="container-yay">
-  <p class="text">This paragraph tag is inside a div</p>
-  <p class="text">This paragraph tag is also inside a div</p>
-</div>
+```css
+h2 {
+  color: red;
+  width: 20px;
+  height: 40px;
+}
+
+/* All elements of type h2 in your HTML will be affected. */
 ```
 
-### IDs
+### Class selectors
 
-- The `id` attribute is similar to the `class` attribute, but is more specific
-- The `class` attribute can be used for multiple tags **VS** the `id` attribute
-  should only be used once in an HTML document
+A class name is an attribute you put on an element in your HTML, and then you
+can apply styles to all elements with that attribute. In CSS to specify a class,
+prefix the class name with a `.`
 
 ```html
-<div id="container">
-  <p id="top-text">This paragraph tag is inside a div</p>
-  <p id="bottom-text">This paragraph tag is also inside a div</p>
-</div>
+<img class="team-photo" src="maverick.png" />
+<img class="team-photo" src="goose.png" />
 ```
 
-:::tip
+```css
+.team-photo {
+  color: red;
+  width: 20px;
+  height: 40px;
+}
 
-Notice above that the id's must have different values!
+/* All elements of class "team-photo" in your HTML will be affected. */
+```
 
+:::tip Multiple classes
+A tag can have multiple classes. Say I wrote two CSS classes, "team-photo" and
+"big-picture", I can apply both those classes using `<img class="team-photo big-picture" />`
 :::
 
----
+### ID selectors
 
-## Naming and Tags to Use
+An ID is just like a class except that **only one element can have an given ID**.
+To specify an ID in CSS, prefix it with a `#`
+
+```html
+<h1 id="header-block">This is red</h1>
+<h1>This is unstyled!</h1>
+```
+
+```css
+#header-block {
+  color: red;
+  width: 20px;
+  height: 40px;
+}
+
+/* The element of ID "header-block" in your HTML will be affected. */
+```
+
+### Naming CSS IDs and Classes
 
 You generally want to give things useful names.
 
@@ -102,7 +258,7 @@ mechanically, why should it matter to me?
 
 **For the reasons we layed out earlier:**
 
-1. It makes the site accessible to everyone if you choose good tags. It's your
+1. It makes the site accessible to everyone if you choose good IDs and class names. It's your
    responsibility to make sure the web remains accessible to everyone, including
    but not limited to: people with limited sight, limited motion of hands, arms
    or other limbs, limited hearing, and other permanent or temporary
@@ -147,182 +303,32 @@ In this case, we could call it something like `blog-post-title` or `post-head`
 or something of that nature. That class then always be descriptive of what the
 thing is and not what it looks like.
 
----
+## Selectors (Advanced)
 
-## Ways to Implement CSS
+### The universal selector
 
-### style attribute
+The `*` (universal) selector affects ALL the elements in your document. This is
+super overkill for 99% of cases, so we don't recommend using very often.
 
-A way to write style directly into your HTML document is by using the `style`
-attribute.
+:::tip Alternative to the universal selector
+Most properties you want to globally apply (e.g. changing the font with `font-family`)
+you can do on your `html` element and it'll be "inherited" by all its children (we'll
+dive-deeper into what properties are inherited in the next lesson). For example:
 
-```html
-<h1 style="color: blue; text-align: center;">Header</h1>
-
-<!-- In this example, the h1 has color blue and center aligns itself -->
+```css
+html {
+  font-family: "Comic Sans";
+}
 ```
 
-- The `style` attribute will **override** any style set globally, like styles
-  specified in the style tag or in an external stylesheet.
-- This will only style the element that it’s applied to.
-- This is good for elements that do not follow a specific pattern
-
-### style tag
-
-Another way to use CSS is by inserting CSS classes directly into the HTML
-document at the very top.
-
-```html
-<html lang="en">
-  <head>
-    <style>
-      h1 {
-        color: red;
-      }
-      p {
-        color: blue;
-      }
-    </style>
-  </head>
-</html>
-
-<!-- This stylesheet lies within the HTML document and will affect the entire HTMl page -->
-```
-
-- This is usually not preferable for long CSS documents.
-- Overrides external stylesheets
-
-### link tag (external stylesheet)
-
-The most common way to implement CSS is by using the `<link>` tag to link an
-external stylesheet.
-
-```html
-<html lang="en">
-  <head>
-    <link rel="stylesheet" href="../style/about.css" />
-  </head>
-</html>
-
-<!-- This tag usually goes in the head of the HTML document -->
-```
-
-- This is an organized way to keep track of code.
-- Typically you will put these CSS files into a directory called "style"
-
-:::tip
-
-External stylesheets have a `.css` ending
-
+is a better way to make all text the same font instead of `*`.
 :::
 
----
+### OR Grouping Selector (,)
 
-## How to Style Specific Elements
+If you want to apply a group of styles an element that matches any selector in a set,
+separate them using a `,`
 
-There are different methods to select an HTML element. Here they are listed in
-order from least to most **specific**.
-
-We will discuss the concept of **specificity** of selected elements more in
-depth later, so here is a brief overview.
-
-- Since there are so many ways to potentially style an element? What if two ways
-  clash with each other?
-- There is a specific hierarchy in which styling overrides one another. We will
-  go in depth into this order later with examples.
-
-### Universal selectors
-
-- The `*` (universal) selector affects ALL the CSS classes in your document.
-- One class that you should include on top of every CSS document that uses the
-  universal selector is this:
-
-```css
-* {
-  box-sizing: border-box;
-}
-
-/* We will get into why this is later. For now, consider this to be the 
-informal “boilerplate” of your CSS file. It will make your life a lot easier! */
-```
-
-### Tag selectors
-
-- Tag selectors select elements by tags
-- For example, you can select all elements with the `<h1>` tag, or `<p>`, `<a>`,
-  `<img>`, etc…
-
-```css
-h2 {
-  color: red;
-  width: 20px;
-  height: 40px;
-}
-
-/* All elements of type h2 in your HTML will be affected. */
-```
-
-### Class selectors
-
-- Class selectors select elements by classes
-- Offers you the flexibility of giving as many classes as needed within your
-  document, but also classes can be shared by many elements.
-- In your CSS, begin the class name with a `.` (period)
-
-```css
-.team-photo {
-  color: red;
-  width: 20px;
-  height: 40px;
-}
-
-/* All elements of class "team-photo" in your HTML will be affected. */
-```
-
-### ID selectors
-
-- These selectors select by the specified ID of an element.
-- Try to avoid these as much as possible, usually not needed
-- Typically used for elements that only appear once on a page.
-- In your CSS, begin the ID name with a `#` (hashtag)
-
-```css
-#header-block {
-  color: red;
-  width: 20px;
-  height: 40px;
-}
-
-/* The element of ID "header-block" in your HTML will be affected. */
-```
-
-### Style tag
-
-- As mentioned earlier, this is a way to style specific elements inside of your
-  HTML document
-- No need to link external stylesheets!
-
-```html
-<html lang="en">
-  <head>
-    <style>
-      h1 {
-        color: red;
-      }
-      p {
-        color: blue;
-      }
-    </style>
-  </head>
-</html>
-
-<!-- This stylesheet lies within the HTML document and will affect the entire HTMl page -->
-```
-
-### Grouping Selectors
-
-- If you want to apply some styling onto a few classes, IDs, or tags at a time,
-  you can do so!
 - This reduces code clutter and makes it less repetitive.
 
 ```css
@@ -334,7 +340,29 @@ p {
 }
 
 /* All h1, h2, p elements will be affected. */
+```
 
+### AND Grouping Selector
+
+If you want to apply a group of styles to an element that matches ALL the selectors in
+a set, squish them together like:
+
+```css
+h1.my-title.red-text {
+  color: red;
+  font-size: 50px;
+}
+```
+
+This applies the styles to ONLY `h1` classes that have _both_ the `my-title` and `red-text`
+classes.
+
+### Hierarchical Selectors
+
+If you want to select a tag that appears as a child (at any depth) of a tag, seperate them by
+a space:
+
+```css
 .text h1 {
   color: blue;
 }
@@ -355,12 +383,14 @@ p {
 
 /* 
 ".text" classes as a default are of width 2rem and color black.
-".text.pretty" classes have width 2rem and color green.
-".text.ugly" has width 4rem and color black.
+".text .pretty" classes have width 2rem and color green.
+".text .ugly" has width 4rem and color black.
 */
 ```
 
 ## Common CSS Properties
+
+So you've seen a few CSS properties, but lets dive into the most common ones:
 
 ### Text
 
@@ -385,6 +415,13 @@ p {
 ![Font Size Image](../assets/Lesson3/Lesson3-6.png)
 
 - `font-weight`: changes heaviness of font. **lower = lighter, higher = bolder**
+  - 200: Ultra Light
+  - 300: Light
+  - 400: Regular
+  - 500: Medium
+  - 600: Semibold
+  - 700: Bold
+  - 800: Heavy
 
 ```css
 .heading {
