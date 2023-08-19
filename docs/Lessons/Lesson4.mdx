@@ -178,6 +178,60 @@ span {
 
 ![Block Image](../assets/Lesson4/Lesson4-6.png)
 
+### Flexbox (crowd-favorite)
+
+This is the most popular layout option.
+
+Makes it easier to design **flexible responsive layout** structure without
+positioning. The main purpose of a flexbox is to fit all elements within the
+container by changing the flex dimensions. The flex container can shrink and
+stretch as needed, making it very useful in responsive websites where element
+sizes change.
+
+A huge benefit of the flexbox is that it is content aware. Different rows
+uniquely respond to elements within based on available space. It is
+one-dimensional along rows, so it can change item widths without notice of
+columns. Take advantage of this by avoiding specifying a width when creating the
+CSS for a flexbox. This removes the main flexible purpose of using the flexbox
+since items will no longer be dynamic.
+
+The flex-grow propery specifies how items in the flexbox should take up
+available space. The value defaults at 0, and it must be specified within a CSS
+class specific to the element. This is similar to the flex-wrap property, which
+will wrap items To the next line if there are too many elements present in the
+container.
+
+You can use the justify-content property to align the elements contained within.
+When items are inflexible, it helps with using available space in the flexbox
+to align them across the container.
+
+By default, a flexbox attempts to place all elements on the same line. However,
+by specifying flex-wrap, you can spread elements across multiple lines.
+
+flexbox alignment can be very confusing. It's important to keep track of your
+items since they can stretch and shrink differently based on how you define the
+many properties.
+
+Can **specify** direction of flex, spacing, justifying, alignment, etc...
+
+```css
+.class {
+  display: flex
+  flex-direction: row | column | row-reverse | column-reverse
+  align-items: flex-start | center | flex-end
+  justify-content: flex-start | center | flex-end | space-between | space-around
+}
+```
+
+[Flexbox Froggy](https://flexboxfroggy.com/)
+
+Here are some resources to learn more about the usage of the flexbox display
+option:
+
+- [CSS Flexbox Documentation](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
+- [W3 Flex Cheatsheet](https://yoksel.github.io/flex-cheatsheet/)
+- [CSS-Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+
 ### Grid
 
 This is an easy way to lay out your elements in a **grid**. A Grid places the
@@ -187,6 +241,10 @@ the columns and rows, making it a strong choice for placing elements. However,
 realize that the Grid doesn't have to be a perfect matrix. You can merge columns
 at specific rows, wrap content, and give individual items different widths to
 customize the layout.
+
+The `display: grid` is one of the newer layout methods in CSS and is very powerful,
+however it is also complicated so we recommend only using it when you truly have a
+grid of items, and `display: flex` is not good enough.
 
 #### Grid container
 
@@ -212,8 +270,6 @@ unit of space on the Grid
 
 Grid areas are formed by combining one or more adjacent Grid cells to form a
 larger space. Therefore, Grid cells are also Grid areas.
-
-Not supported by all browsers yet so **not usable** in most production sites.
 
 ```css
 .grid-container {
@@ -244,92 +300,29 @@ Not supported by all browsers yet so **not usable** in most production sites.
 
 ![Grid Image](../assets/Lesson4/Lesson4-7.png)
 
-Here are some resources to learn more about the usage of the Grid layout:
+A `display: grid` element has quite a few properties which can be confusing. Here are some
+resources to better understand how to use the Grid layout:
 
 - [CSS Grid Documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
 - [Grid by Example](https://gridbyexample.com/examples/)
 - [CSS-Tricks](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
-### Flex-box
+### When to use Grid vs flexbox
 
-This is our collective **favorite** display option.
+When your items are positioned in a single dimension (i.e. all in a straight
+vertical/horizontal line), then they can generally operate very similarly. In
+this case we recommend using Grid.
 
-Makes it easier to design **flexible responsive layout** structure without
-positioning. The main purpose of a flex-box is to fit all elements within the
-container by changing the flex dimensions. The flex container can shrink and
-stretch as needed, making it very useful in responsive websites where element
-sizes change.
-
-A huge benefit of the Flex-box is that it is content aware. Different rows
-uniquely respond to elements within based on available space. It is
-one-dimensional along rows, so it can change item widths without notice of
-columns. Take advantage of this by avoiding specifying a width when creating the
-CSS for a Flex-box. This removes the main flexible purpose of using the Flex-box
-since items will no longer be dynamic.
-
-The flex-grow propery specifies how items in the flex-box should take up
-available space. The value defaults at 0, and it must be specified within a CSS
-class specific to the element. This is similar to the flex-wrap property, which
-will wrap items To the next line if there are too many elements present in the
-container.
-
-You can use the justify-content property to align the elements contained within.
-When items are inflexible, it helps with using available space in the flex-box
-to align them across the container.
-
-By default, a flex-box attempts to place all elements on the same line. However,
-by specifying flex-wrap, you can spread elements across multiple lines.
-
-Flex-box alignment can be very confusing. It's important to keep track of your
-items since they can stretch and shrink differently based on how you define the
-many properties.
-
-Can **specify** direction of flex, spacing, justifying, alignment, etc...
-
-```css
-.class {
-  display: flex
-  flex-direction: row | column | row-reverse | column-reverse
-  align-items: flex-start | center | flex-end
-  justify-content: flex-start | center | flex-end | space-between | space-around
-}
-```
-
-[Flexbox Froggy](https://flexboxfroggy.com/)
-
-Here are some resources to learn more about the usage of the Flex-box display
-option:
-
-- [CSS Flexbox Documentation](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)
-- [W3 Flex Cheatsheet](https://yoksel.github.io/flex-cheatsheet/)
-- [CSS-Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-
-### When to use Grid vs Flex-box
-
-#### Do you want to prioritize layout or the alignment of elements?
-
-- layout? Go with Grid
-
-- alignment? Check out Flex-box
-
-#### Is your design complex?
-
-Use a Grid. Grids are far more powerful because of the row and column
-specification that makes designs look cleaner and well aligned. You can lay out
-items easily by placing them into Grids that encapsulate a large number of
-components on your page.
-
-#### Which is better if I'm concerned about the flow of my content?
-
-Try Flex-box. Flex-box is useful because the container changes the height and
-width of elements within, which makes it more responsive to the page. However,
-if you're looking for something more rigid and focuses more on the placement of
-elements, Grid would be better.
+The key difference arises in two-dimensional layouts, if you want items to
+_fluidly wrap_, then use flexbox with `flex-wrap: wrap`, otherwise, use Grid.
 
 ## Float
 
-We won't go into float too much in this reading, but know that setting float to
-either "left" or "right" shifts the element to the left or right, respectively,
+The `float` property used to be popular back when layout methods like flexbox
+and grid didn't exist. Now that they do, `float` isn't used very much because
+it's behavior can be confusing.
+
+Float can be either "left" or "right", shifting the element to the left or right
 of the container that it is encapsulated in. The rest of the content will be
 wrapped around it.
 
@@ -337,26 +330,18 @@ Suppose we had an inline `<img>` nested within a `<p>`. Setting the image's
 float property to "right" would place the image to the right of the container
 and wrap the text above, to the left of, and below it.
 
----
-
 # Cascade and Specificity
 
-## Parents and the Cascade
+CSS stands for "cascading" style sheets. What does "cascading" mean? It's the idea
+that an element's style is "cascaded" from various places (its parent element, a
+class, the browser's default styling, etc.)
 
-- Classes inherit parent class properties!
-- Cascade allows you to differentiate child properties from that of their
-  parent.
-- It creates a hierarchy of styling.
-
-At a simple level, cascading puts importance to the ordering of CSS rules. We'll
-look into specificity in the next section, but when two CSS rules have the same
-specificity, the rule that comes last will be selected.
-
-Why is this important? Well suppose you are working on your styles for a
-component. If your applied CSS styles don't seem to show up, take a dive into
-understanding whether there are other conflicting rules with the same
-specificity. You might not be expecting another rule to be overwriting what you
-wanted.
+CSS needs to have some rules to figure out which source to use for a given element's
+style. In the example below, you can see how the text "span" has two potential sources
+for its color: it could inherit its parent `p`'s color, or use the `span` style. In this
+example it's pretty obvious how to best resolve this conflict: use the style of the
+closest parent, but you can get into more complex cases where it's not as obvious. This
+brings us to the next concept of "specificity".
 
 ```css
 p {
@@ -384,7 +369,7 @@ span {
 :::tip
 
 Order in CSS classes does matter! Whatever comes last in your CSS document is
-what stands. This is the concept of the cascade.
+what stands.
 
 :::
 
@@ -464,7 +449,7 @@ Media queries allow you to change the CSS of the page based on **screen size**.
 
 Change element sizes, change flex direction from row to column, etc...
 
-Can add as many as needed at the **end** of your CSS file
+Can add as many as needed in your CSS file
 
 Can check **width**, **height**, **resolution**, and **orientation** of device.
 
