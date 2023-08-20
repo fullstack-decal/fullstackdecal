@@ -1,0 +1,73 @@
+---
+sidebar_position: 3
+---
+
+# Vitamin 2: CSS Layout
+
+## Introduction
+
+In this vitamin, we'll be assessing how well you understand how to create
+different CSS layouts and make sure they work at different widths.
+
+## Learning Objectives
+
+- Understand the difference between `block`, `inline`, and `inline-block`
+- Understand when to use `margin` and when to use `padding`
+- Understand how to use `flex`
+
+## Starter Code
+
+TODO: upload to github
+The starter code contains sections for code for the container and the children.
+A question does not always require both style groups to have rules to be correct.
+
+## Question 1: Side-by-Side
+
+Align the divs horizontally and center them in their container:
+
+![](./Vit3Assets/Q1.png)
+
+## Question 2: Not-so-Side-by-Side
+
+Align the divs horizontally and center them in their container. The first div should
+stay fixed to `150px`. The other divs should evenly split the remaining space.
+
+As you resize the container, only the last two divs should be changing in width.
+
+**Do not hardcode** the widths of the second or third div as the autograder will mark
+you wrong.
+
+![](./Vit3Assets/Q2.png)
+
+## Question 3: Width? Max-Width?
+
+A common layout is having your actual content in a 60-character or so wide box that
+is centered on the screen. Having your content in a narrow column has been shown to
+aid readability.
+
+However, when we shrink the screen, we want to make sure that our column shrinks
+as needed too.
+
+Make the child stay centered in its parent at a width of `250px` and have it shrink
+to be the same width as its parent when the container gets too small.
+
+You do not need flexbox for this.
+
+![](./Vit3Assets/Q3Small.png) ![](./Vit3Assets/Q3Big.png)
+
+## Question 4: Not-so-side-by-side but Vertically
+
+Now we'll explore using flexbox vertically.
+
+Create the following layout where the top div is a fixed `60px` in height and
+the bottom div fills the remaining space.
+
+You **must** use flexbox and the `flex` property. The autograder will not
+give credit for answers using `calc()` or other methods.
+
+![](./Vit3Assets/Q4.png)
+
+:::tip
+Recall the syntax for `flex` is `flex: <grow> <shrink>;` think about
+what div you want to have grow and shrink.
+:::
