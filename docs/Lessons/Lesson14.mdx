@@ -1,544 +1,192 @@
 ---
-sidebar_position: 10
+sidebar_position: 15
 ---
 
-# Express and MongoDB
+# Databases & Authentication
 
-## Preparation
+## Context
 
-### Setup
+Remember when we implemented a global view-count counter with SSR? We had a server that kept some state in a random `views.txt` file so that even if the server / computer
+restarted, the total view count would not be reset.
 
-```jsx
-const express = require("express");
-const port = process.env.PORT || 3000;
-const app = express();
+When what you're storing goes from a simple number to far more data (e.g. thousands of users and millions of posts) a simple `.txt` file is not enough for various reasons:
+ 1. Speed: Reading and finding specific data in one huge `.txt` file is slow (imagine finding a user's "score" if there's a list of a million users)
+ 2. Reliability: If someone deletes the text file, or if even one byte is corrupted, all your data may be gone!
+ 3. ACID: Atomicity, Consistency, Isolation & Durability. If you've taken a databases course you will appreciate this more, but essentially it allows the database to behave well when there are many servers all making requests to it. 
 
-var router = express.Router()
+So what do we use instead of a `.txt` file? There are many options, but we will cover MySQL.
 
-app.use(express.json()); // Utilities for request bodies
-app.use(express.urlencoded({ extended: true })); // Utilities for query params
+## MySQL
 
-// GET Requests
+MySQL is a database service. If you were to download it and run it, it would start listening on port `3306`. You can then send it requests to store or retrieve data. The
+requests you send it are written in a special language called SQL (Structured query language.) The pronounciation of SQL is subject to much debate, with most people opting
+for "S.Q.L" or "Sequel". Some specially special people have opted for "Skewl".
 
-router.get("/", (req, res) => {
-  // homepage
-  res.send("stupidDB API");
-});
+In SQL, data is stored in tables that you create. Each table has a set of predefined (and unchanging) columns (e.g. name, age) and a bunch of rows that you can add. If you have taken cs61a
+you are likely familiar with these concepts.
 
-router.get("/info/index", (req, res) => {
-  // get the current index
-  res.send({ counter: counter });
-});
+Here's how you make a table:
+```sql
+CREATE TABLE Users (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(50),
+    Age INT,
+    Email VARCHAR(100)
+);
+```
+You just have to send this SQL command to the MySQL server and it will make the table for you.
 
-router.get("/info/capacity", (req, res) => {
-  // get the capacity
-  res.send({ capacity: Object.keys(stupidDB).length });
-});
-
-router.get("/db/all", (req, res) => {
-  // get all items from the db
-  res.send(stupidDB);
-});
-
-// Combining endpoints into a single "route"
-
-router.route("/db/:id")
-	.get((req, res) => {
-	  // get a certain item from the db
-	  const id = req.params.id;
-	  if (id in stupidDB) {
-	    res.send(stupidDB[id]);
-	  } else {
-	    res.send({ error: "no object found with this id" });
-	  }
-	}).
-	.put("/db/:id", (req, res) => {
-	  const id = req.params.id;   // get the index of the data to update
-	  const item = req.body.item; // access the body of the request which holds new data
-	  if (id in stupidDB) {
-	    stupidDB[id] = item;      // insert destructively
-	    res.send({ newItem: item });
-	  } else {
-	    res.send({ error: "no object found with this id" });
-	  }
-	});
-	.delete("/db/:id", (req, res) => {})
-
-// POST Requests
-
-router.post("/db", (req, res) => {
-  console.log(req);
-  const item = req.body.item; // access our request body
-  stupidDB[counter] = item;   // add body item at index
-  counter += 1;               // increment counter
-  res.send(`POST Request Successful. Item placed: ${item}`); // Send HTTP response
-});
-
-// Server Setup
-
-app.use('/', router)
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+Then you can add some users:
+```sql
+INSERT INTO Users (Name, Age, Email) VALUES 
+    ('John', 28, 'john@example.com'),
+    ('Jane', 25, 'jane@example.com'),
+    ('Doe', 30, 'doe@example.com');
 ```
 
-Let us first setup the MongoDB. Use homebrew to install mongoDB. Here are the macOS instructions. Here is the link to the instructions in general for other systems (Linux and Windows) [https://docs.mongodb.com/manual/administration/install-community/](https://docs.mongodb.com/manual/administration/install-community/) .
-
-`brew install mongodb-community`
-
-```bash
-$ brew tap mongodb/brew
-$ brew install mongodb-community
-$ brew services start mongodb-community
+Retrieve some data:
+```sql
+SELECT Age FROM Users WHERE Name = 'John';
+```
+And finally, **delete John**:
+```sql
+DELETE FROM Users WHERE Name = 'John';
 ```
 
-Now type `mongo` to start the mongo shell to interact with the database.
+John will never know what hit him.
 
-Let's create a database called `database-tutorial`. Use the `use` keyword in the mongo shell.
+If you want to understand how these commands work at a deeper level, and why they are how they are, we recommend taking `cs186` (although this class goes *really* deep).
+For now we just want to drill the concept of a database more broadly, so you can just ask ChatGPT to generate these SQL statements for you :) although they are pretty
+self-explanatory.
 
-```bash
-$ use database-tutorial
-```
+## SQLite
 
-Now, we have the database ready in our computer. To connect with mongoDB, let's install mongoose, a library that helps mongoDB easier to use in express.
+SQLite is a begginner-friendly SQL database implementation. It allows us to prevent spinning up a whole new server just to act as a SQL server. Instead we augment our existing Node.js express
+server with the ability to also be a SQL database.
 
-```bash
-$ npm install mongoose --save
-```
+### Simple server
 
-Now add the following lines to the server.js file, it serves to connect with the mongoDB database that we just set up.
+After installing `sqlite3` with `npm install sqlite3` in a Node project:
+```js
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('myDatabaseFile.db');
 
-```jsx
-const mongoose = require('mongoose')
-const url = 'mongodb://127.0.0.1:27017/database-tutorial'
+db.serialize(() => {
+  db.run(`CREATE TABLE Users (
+    Id INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    Email VARCHAR(100)
+  )`);
 
-mongoose.connect(url, { useNewUrlParser: true })
+  db.run(`INSERT INTO Users (Id, Name, Age, Email) VALUES (1, 'Charlie', 55, 'charlie@yahoo.com')`);
 
-const db = mongoose.connection
-
-db.once('open', _ => {
-  console.log('Database connected:', url)
-})
-
-db.on('error', err => {
-  console.error('connection error:', err)
-})
-```
-
-When you rerun the server.js script, you can see the following message: `Database connected: mongodb://127.0.0.1:27017/database-tutorial`, which means you have successfully connected to the database.
-
-# Create MongoDB Model
-
-Let's first create a model for our mongoDB database. We first need to create a schema. MongoDB will automatically add a `_id` field to schema. Thus, we only need to create a content field. 
-
-After creating the schema, use `mongoose.model` to create a TODO model.
-
-```jsx
-const Schema = mongoose.Schema
-
-const item = new Schema({
-  title: String
-	task: String,
-	date: String,
-	urgency: Number,
-})
-
-const TODO = mongoose.model("TODO", item)
-```
-
-# CURD Operations for MongoDB & Express
-
-## Create
-
-Let's first implement the endpoint for creating a new TODO.
-
-To create a new TODO, we call `new TODO()`, and by passing in an object that corresponds to the schema, we can successfully create a todo object. To save this todo object into the database, use `todo.save()`.
-
-After we create and save the todo, we can access the `todo._id` field that mongoDB automatically provides.
-
-```jsx
-router.post("/db", (req, res) => {
-    const todo = new TODO({        // Create TODO item with the appropriate fields
-        title: req.body.title,
-        task: req.body.task,
-        date: req.body.date,
-        urgency: req.body.urgency,
-    });
-    todo.save((error, document) => {
-        if (error) {
-            res.json({ status: "failure" });
-        } else {
-            res.json({               // Save TODO item to the database
-                status: "success",
-                id: todo._id,
-                content: req.body
-            });
-        }
-    })
-});
-```
-
-Try it out in the postman, you can see that the new todo is created successfully.
-
-![image5](../assets/Lesson14/image5.png)
-
-## Retrieve
-
-Let's continue to build upon the existing APIs!
-
-We can use `.find()` to retrieve all todos.
-
-```jsx
-router.get("/db/all", (req, res) => {
-		TODO.find().then((todos) => {
-      res.json({ message: 'Return all todos.', todos: todos});
-    })
-});
-```
-
-Test it out in the postman api request, you would get something like this.
-
-![image1](../assets/Lesson14/image1.png)
-
-Let's see whether we can retrieve the content of only one todo. `.findById()` method allows you to find the object in the database given an ID. 
-
-```jsx
-router.route("/db/:id")
-	.get((req, res) => {
-	  // get a certain item from the db
-		TODO.findById(req.params.id, (error, todo) => {
-			if (error) {
-					res.json({ status: "failure" })
-			} else {
-					res.json(todo)
-	  }
-	}).
-	.put("/db/:id", (req, res) => {
-	  const id = req.params.id;   // get the index of the data to update
-	  const item = req.body.item; // access the body of the request which holds new data
-	  if (id in stupidDB) {
-	    stupidDB[id] = item;      // insert destructively
-	    res.send({ newItem: item });
-	  } else {
-	    res.send({ error: "no object found with this id" });
-	  }
-	});
-	.delete("/db/:id", (req, res) => {})
-```
-
-Test it out using Postman by adding one of your todo id. You should receive this from the API.
-
-![img2](../assets/Lesson14/image2.png)
-
-## Update
-
-To update a TODO, we use the method called `findByIdAndUpdate()`.
-
-```jsx
-router.route("/db/:id")
-	.get((req, res) => {
-	  // get a certain item from the db
-	  const id = req.params.id;
-		TODO.findById(req.params.id, (error, todo) => {
-			if (error) {
-					res.json({ status: "failure" })
-			} else {
-					res.json(todo)
-	  }
-	}).
-	.put("/db/:id", (req, res) => {
-	  TODO.findByIdAndUpdate(req.params.id, req.body, (error, todo) => {
-			if (error) {
-				res.json({ status: "failure" })
-			else {
-				res.json(todo)
-			}
-	});
-	.delete("/db/:id", (req, res) => {})
-
-```
-
-![img3](../assets/Lesson14/image3.png)
-
-## Delete
-
-To delete a TODO, we use the method called `findByIdAndDelete()`.
-
-```jsx
-router.route("/db/:id")
-	.get((req, res) => {
-		TODO.findById(req.params.id, (error, todo) => {
-			if (error) {
-					res.json({ status: "failure" })
-			} else {
-					res.json(todo)
-	  }
-	}).
-	.put("/db/:id", (req, res) => {
-	  TODO.findByIdAndUpdate(req.params.id, req.body, (error, todo) => {
-			if (error) {
-				res.json({ status: "failure" })
-			else {
-				res.json(todo)
-			}
-	});
-	.delete("/db/:id", (req, res) => {
-		TODO.findByIdAndDelete(req.params.id, (error, todo) => {
-			if (error) {
-				res.json({ status: "failure"})
-			} else {
-				res.json(todo)
-			}
-	})
-```
-
-![img4](../assets/Lesson14/image4.png)
-
-# Final Product
-
-```jsx
-const express = require("express");
-const port = process.env.PORT || 3000;
-const app = express();
-
-var router = express.Router()
-
-app.use(express.json());                         // Utilities for request bodies
-app.use(express.urlencoded({ extended: true })); // Utilities for query params
-
-// begin mongoose setup
-const mongoose = require('mongoose')
-const url = 'mongodb://127.0.0.1:27017/database-tutorial'
-
-mongoose.connect(url, { useNewUrlParser: true })
-
-const db = mongoose.connection
-db.once('open', _ => {
-  console.log('Database connected:', url)
-})
-
-db.on('error', err => {
-  console.error('connection error:', err)
-})
-// end setup
-
-// define mongoose schema
-const Schema = mongoose.Schema
-
-const item = new Schema({
-  title: String
-	task: String,
-	date: String,
-	urgency: Integer,
-})
-
-const TODO = mongoose.model("TODO", item)
-
-// begin router
-router.get("/", (req, res) => {
-  // homepage
-  res.send("smartDB API");
+  db.each("SELECT * FROM Users", (err, row) => {
+      console.log(row);
+  });
 });
 
-router.get("/db/all", (req, res) => {
-		TODO.find().then((todos) => {
-      res.json({ message: 'Return all todos.', todos: todos});
-    })
-});
-
-// Combining endpoints into a single "route"
-
-router.route("/db/:id")
-	.get((req, res) => {
-		TODO.findById(req.params.id, (error, todo) => {
-			if (error) {
-					res.status(500).json({ status: "failure" })
-			} else {
-					res.json(todo)
-	  }
-	}).
-	.put("/db/:id", (req, res) => {
-	  TODO.findByIdAndUpdate(req.params.id, req.body, (error, todo) => {
-			if (error) {
-				res.status(500).json({ status: "failure" })
-			else {
-				res.status(200).json(todo)
-			}
-	});
-	.delete("/db/:id", (req, res) => {
-		TODO.findByIdAndDelete(req.params.id, (error, todo) => {
-			if (error) {
-				res.status(500).json({ status: "failure"})
-			} else {
-				res.json(todo)
-			}
-	})
-
-// POST Requests
-
-router.post("/db", (req, res) => {
-  const todo = TODO({        // Create TODO item with the appropriate fields
-		title: req.body.title,
-		task: req.body.task,
-		date: req.body.date,
-		urgency: req.body.urgency,
-	})
-	todo.save((error, document) => {
-		res.json({               // Save TODO item to the database
-			status: "success",
-			id: todo._id,
-			content: req.body
-		)
-	)
-});
-
-// Server Setup
-
-app.use('/', router)
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+db.close();
 ```
 
-## Errors
+This will create a new file called `myDatabaseFile.db` in the same folder as the code, and will store all the tables in there in a compressed format. Then, you can run
+commands which will make modifications to the file. Basically, this is like a glorified `.txt` file that's way more efficient and programmatic.
 
-Part of proper programming practice is enforcing our REST API design principles. Part of that API design is ensuring that we are following the HTTPS best practices, and that includes sending error codes whenever 
+In a real setup with MySQL instead of SQLite, you would have a seperate server listening on port `3306` that your server would send the SQL statements to. This server's whole
+responsibility is to ensure the data can be read fast, is secure and consistent. With SQLite, there is only one server. Keep this distinction in mind.
 
-# Resources
+## SQL injection
 
-[Build a RESTful API Using Node and Express 4](https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4)
+What if you want to insert something into the database that comes from the user? Say for example a username? This is wrong:
+```js
+let username = "John123"; // imagine this comes from the user
+db.run(`INSERT INTO Users (Id, Name, Age, Email) VALUES (1, '${username}', 55, 'charlie@yahoo.com')`);
+```
+Not only does this give John Charlie's email address and age, but this also lets John hack our entire database! 
+If John sets his username to `John123'; DROP TABLE Users; --` then the query becomes 
+```sql
+INSERT INTO Users (Id, Name, Age, Email) VALUES (1, 'John123'; DROP TABLE Users; --', 55, 'charlie@yahoo.com')
+```
+The `;` ends the previous statement and the `--` starts a comment (ignoring the rest). This deletes the `Users` table! (`DROP` is the instruction to delete a table).
 
-[What is REST](https://restfulapi.net/)
+Instead, we do this:
+```js
+let username = "John123"; // imagine this comes from the user
+const stmt = db.prepare(`INSERT INTO Users (Id, Name, Age, Email) VALUES (?, ?, ?, ?)`);
+stmt.run(1, username, 28, "john@example.com");
+stmt.finalize();
+```
+Each argument to `stmt.run` goes into each `?` in the original `db.prepare` call. Since SQLite now knows the actual values you want to insert separated from the query
+itself, it can ensure that John's username becomes `John123'; DROP TABLE Users; --` exactly as he wishes :)
+
+The name of this attack is called "SQL Injection" and it is a very popular kind of attack. If you want to learn more about computer security, we recommend taking `cs161`.
+
+## Relational database models
+
+### The "id" column
+
+Consider the following table `posts` with 4 columns `title`, `body`, `status` and `created_at`.
+
+![Schema for a table of a post with four columns](../assets/Lesson14/image6.png)
+
+If we want to allow users to share specific posts to others via URL, we need to be able to generate a unique URL for each post. However, here we run into a problem: posts
+are not unique. That is, if two people both post the same thing at the same time, the rows will be identical! We fix this by adding an `id` column:
+
+![Schema for a table of a post with four columns 2](../assets/Lesson14/image7.png)
+
+The SQL statement to create this table would look like:
+```sql
+CREATE TABLE posts (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(50),
+    body TEXT,
+    status VARCHAR(100)
+    created_at TIMESTAMP
+);
+```
+
+We tell MySQL that the `id` column is the `PRIMARY KEY`, which enforces that it is unique (MySQL will refuse to allow us to add two posts with the same id). Furthermore,
+if we don't specify the `id` column when inserting a post, the `AUTO_INCREMENT` option will automatically give each post the next id.
+
+### Many-to-one
+
+Next, we create a `users` table, also each with their own `id`. And we also add a `user_id` column to the `posts` table so we can track each post back to the author. Since
+there are **many** posts that all come back to **one** user we call this a **many-to-one** relationship.
+
+![Relational schema](../assets/Lesson14/image8.png)
+
+### Many-to-many
+
+Next, we want users to be able to follow each other. However, since each user can follow many users and also be followed by many users, this is a **many-to-many** relationship.
+To structure this nicely using tables, we have to create an entirely new table:
+
+![Many-to-many schema](../assets/Lesson14/image9.png)
+
+For every "follow", we create a row in the `follows` table with the following user and the followed user. This is how we achieve **many-to-many** relationships in general.
+
+## Authentication
+
+We often want to store data about our users, like their posts or anything else. To do this, we allow users to create accounts, and then log in to prove us that it
+is them. When they register, we store their username and password in a database, and then when they log in we can just check the password.
+
+![Many-to-many schema](../assets/Lesson14/image10.png)
+
+However, once they log in, we want them to stay logged in. That is, even if they refresh the page, they should still be logged in. Naively, we could just have a cookie
+that contains the username and password the user logged in with, which will be sent to the server every time. As such, the server can always verify on every request
+that the user is indeed logged in.
+
+However, this is very insecure. Cookies are stored in the browser's memory in a completely unencrypted manner. Furthermore, we want the ability to automatically log out
+users after a period of time for their security, which is not possible to achieve this way.
+
+Instead, we create "session cookies". Every time the user logs in, we create a new random string of characters to identify this new session. That string of characters
+is called a session token. We store that as a cookie, and also in our database associated to that user.
+
+![Many-to-many schema](../assets/Lesson14/image11.png)
+
+That way, the user can still prove he is logged in on every request, and if we want to log the user out we can just remove the session token from our database!
 
 ---
 
 **Contributors**
 
-- [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)
-- Dhruv Vaish
-
-## EXTRA:
-
-```jsx
-const express = require('express');
-const bodyParser = require('body-parser');
-
-const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-var port = process.env.PORT || 8080;
-
-var router = express.Router();
-
-// The method of the root url. Be friendly and welcome our user :)
-router.get('/', function(req, res) {
-    res.json({ message: 'Welcome to the TODO app.' });   
-});
-
-// /api/todos
-// All HTTP methods under the /todos URL.
-router.route('/todos')
-  // This GET method is in charge of returnning all the todos.
-  .get((req, res) => {
-    res.json({ message: 'Return all todos.'});   
-  })
-  // This POST methods is used to create a new todo. 
-  // Its request will have a body, containing the content of the new todo.
-  .post((req, res) => {
-    res.json({ 
-      message: ('Create a new todo: ' + "1" + " - " + req.body.content),
-      todo_id:  "1",
-      content: req.body.content,
-    }); 
-  })
-
-// All HTTP methods under the /todos/:todo_id URL.
-// The /:todo_id is a parameter within the URL that specifies a particular todo.
-router.route('/todos/:todo_id')
-  // This GET method is used to get the content from a specific todo.
-  .get((req, res) => {
-    res.json({ message: 'Get the content from a todo.'});   
-  })
-  // We use PUT method to update a todo's content.
-  .put((req, res) => {
-    res.json({ 
-              message: ('Update the todo: ' + req.params.todo_id + " - " + req.body.content),
-              todo_id: req.params.todo_id,
-              content: req.body.content,
-            });   
-  })
-  // DELETE method is used to delete a todo.
-  .delete((req, res) => {
-    res.json({ message: 'Delete a todo.' }); 
-  })
-
-app.use('/api', router); // API Root url at: http://localhost:8080/api
-
-app.listen(port);
-console.log('Server listenning on port ' + port);
-```
-
-```bash
-// All HTTP methods under the /todos URL.
-router.route('/todos')
-  // ...
-  // This POST methods is used to create a new todo. 
-  // Its request will have a body, containing the content of the new todo.
-	.post((req, res) => {
-    const todo = new TODO({
-      content: req.body.content
-    })
-    todo.save((error, document) => {
-      res.json({ 
-        message: ('Create a new todo: ' + todo._id + " - " + req.body.content),
-        todo_id:  todo._id,
-        content: req.body.content,
-      }); 
-    })
-  })
-
-// All HTTP methods under the /todos/:todo_id URL.
-// The /:todo_id is a parameter within the URL that specifies a particular todo.
-router.route('/todos/:todo_id')
-  // This GET method is used to get the content from a specific todo.
- .get((req, res) => {
-    TODO.findById(req.params.todo_id, (err, todo) => {
-	      if (err) {
-        res.json({ message: 'Error when getting the content of the todo.'});
-      }
-      res.json({ message: 'Get the content from a todo.', todo});
-    })
-  })
-
-// All HTTP methods under the /todos/:todo_id URL.
-// The /:todo_id is a parameter within the URL that specifies a particular todo.
-router.route('/todos/:todo_id')
-  // ...
-  // We use PUT method to update a todo's content.
-  .put((req, res) => {
-    TODO.findByIdAndUpdate(req.params.todo_id, {content: req.body.content}, (err, todo) => {
-      if (err) {
-        res.json({ message: 'Error when updating todo.'});
-      }
-      res.json({ message: 'Update the todo: ' + req.params.todo_id, old: todo, new: {_id: req.params.todo_id, content: req.body.content}});
-    });
-  })
-
-// All HTTP methods under the /todos/:todo_id URL.
-// The /:todo_id is a parameter within the URL that specifies a particular todo.
-router.route('/todos/:todo_id')
-	// ...
-  // DELETE method is used to delete a todo.
-  .delete((req, res) => {
-    TODO.findByIdAndDelete(req.params.todo_id, (err, todo) => {
-      if (err) {
-        res.json({ message: 'Error when deleting todo.'});
-      }
-      res.json({ message: 'Delete the todo: ' + todo._id, todo: {_id: todo._id, content: todo.content}});
-    });
-  })
-```
-
+- [Sebastiaan Szafir](https://sebiszafir.com/)
