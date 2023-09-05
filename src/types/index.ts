@@ -1,14 +1,14 @@
 export type Assignment = {
-  type: "vitamin" | "project";
   link: string;
   name: string;
-  assign: string;
-  due: string;
+  assigned: string;
+  due: number;
 };
 
 export type Schedule = {
   weeks: Week[];
   assignments: Assignment[];
+  year: number;
 };
 
 export type Week = {

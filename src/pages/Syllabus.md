@@ -2,15 +2,13 @@
 
 ## Course Details
 
-**Course Name:** Introduction to Full-Stack Development
+- **Course Name:** Introduction to Full-Stack Development
+- **Course Number:** CS 198-099
+- **Units:** 3
+- **Faculty Sponsor:** Josh Hug
+- **Class Number:** 33300
 
-**Course Number:** CS 198-099
-
-**Units:** 3
-
-**Faculty Sponsor:** Josh Hug
-
-**Class Number:** 33617
+**Course Contact:** webdev-decal@lists.berkeley.edu
 
 **Time:** There are 2 lectures every week. Students are expected to attend both lectures every week.
 

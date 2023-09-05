@@ -66,11 +66,11 @@ const config = {
             position: "left",
             label: "Resources",
           },
-          {
-            href: "https://airtable.com/app4DQfVs1iDSqn4b/shrFGkWU1iF8nLpgS",
-            position: "left",
-            label: "Enroll",
-          },
+          // {
+          //   href: "https://airtable.com/app4DQfVs1iDSqn4b/shrFGkWU1iF8nLpgS",
+          //   position: "left",
+          //   label: "Enroll",
+          // },
           {
             href: "https://github.com/fullstack-decal",
             position: "right",
@@ -124,10 +124,11 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      announcementBar: {
-        id: "announcementBar-2",
-        content: `Enrollment for Fall 2023 is now open. Sign up <a target="_blank" rel="noopener noreferrer" href="https://fullstackdecal.com/enroll">here</a>!`,
-      },
+      // Use this to announce enrollment
+      // announcementBar: {
+      //   id: "announcementBar-2",
+      //   content: `Enrollment for Fall 2023 is now open. Sign up <a target="_blank" rel="noopener noreferrer" href="https://fullstackdecal.com/enroll">here</a>!`,
+      // },
     }),
 };
 

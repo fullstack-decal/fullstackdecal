@@ -1,8 +1,8 @@
-import { Week, Lesson } from "../types";
+import { Week, Assignment, Schedule } from "../types";
 
-const schedule: Week[] = [
+const weeks: Week[] = [
   {
-    topic: "Welcome to the course!",
+    topic: "👋 Welcome to the course!",
     lessons: [
       {
         date: "Wed, Sep 6",
@@ -184,5 +184,41 @@ const schedule: Week[] = [
     ],
   },
 ];
+
+const assignments: Assignment[] = [
+  {
+    name: "Vitamin 1: HTML",
+    assigned: "HTML",
+    link: "/docs/Assignments/Vitamins/Vitamin1",
+    due: 1,
+  },
+
+  {
+    name: "Vitamin 2: Introduction to CSS",
+    assigned: "CSS 1",
+    link: "/docs/Assignments/Vitamins/Vitamin1",
+    due: 1,
+  },
+
+  {
+    name: "Vitamin 3: CSS Layout",
+    assigned: "CSS 2",
+    link: "/docs/Assignments/Vitamins/Vitamin1",
+    due: 1,
+  },
+
+  {
+    name: "Project 1: Personal Website",
+    assigned: "CSS 1",
+    link: "/docs/Assignments/Projects/PersonalWebsite",
+    due: 4,
+  },
+];
+
+const schedule: Schedule = {
+  weeks,
+  assignments,
+  year: 2023,
+};
 
 export default schedule;
