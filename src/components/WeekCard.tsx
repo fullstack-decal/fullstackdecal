@@ -147,8 +147,8 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
                 .filter((assignment) =>
                   isDueDateForAssignment(lesson.topic, assignment, schedule)
                 )
-                .map((assignment) => (
-                  <Stack direction={["row"]} spacing={8} align="start">
+                .map((assignment, i) => (
+                  <Stack direction={["row"]} spacing={8} align="start" key={i}>
                     <FirstWeekCol>
                       <Text textStyle="label2">Due</Text>
                     </FirstWeekCol>
@@ -159,8 +159,8 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
                 ))}
               {assignments
                 .filter((assignment) => assignment.assigned == lesson.topic)
-                .map((assignment) => (
-                  <Stack direction={["row"]} spacing={8} align="start">
+                .map((assignment, i) => (
+                  <Stack direction={["row"]} spacing={8} align="start" key={i}>
                     <FirstWeekCol>
                       <Text textStyle="label2">Assigned</Text>
                     </FirstWeekCol>
