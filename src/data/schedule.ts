@@ -211,7 +211,7 @@ const assignments: Assignment[] = [
     name: "Project 1: Personal Website",
     assigned: "CSS 1",
     link: "/docs/Assignments/Projects/PersonalWebsite",
-    due: 4,
+    due: 5,
   },
 ];
 

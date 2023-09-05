@@ -47,6 +47,17 @@ const HomeContent: React.FC = () => {
             <br />
             development
           </Text>
+          <Text textStyle="subtitle2" color="blackAlpha.500">
+            Wed and Fri, 5:00-6:30PM, HMMB 390
+          </Text>
+          <Link
+            href="mailto:webdev-decal@lists.berkeley.edu"
+            isExternal
+            textStyle="subtitle2"
+            color="blackAlpha.500"
+          >
+            webdev-decal@lists.berkeley.edu
+          </Link>
         </Container>
 
         {schedule.weeks.map((week, index) => {
