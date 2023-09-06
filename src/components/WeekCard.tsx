@@ -120,7 +120,7 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
           }
 
           return (
-            <>
+            <VStack spacing={2} align="start" key={lessonIdx}>
               {lessonIdx !== 0 && (
                 <Center position="relative" width="100%">
                   <Divider my={3} />
@@ -177,7 +177,7 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
                     </VStack>
                   </Stack>
                 ))}
-            </>
+            </VStack>
           );
         })}
       </VStack>
