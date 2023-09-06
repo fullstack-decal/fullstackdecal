@@ -166,7 +166,13 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
                     </FirstWeekCol>
                     <VStack spacing="2px" align="start">
                       <AssignmentLink assignment={assignment} />
-                      <Text textStyle="label2" fontWeight="400">
+                      <Text
+                        textStyle="label2"
+                        fontSize="sm"
+                        my={0}
+                        color="gray.400"
+                        fontWeight="400"
+                      >
                         Due{" "}
                         {assignment.due == 1
                           ? "next class"
