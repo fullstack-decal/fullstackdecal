@@ -62,7 +62,7 @@ const staff = [
   {
     name: "Ayaka Chou",
     role: "Full-Stack TA",
-    bio: "i like html",
+    bio: "Hi! I'am a junior studying CS. I like sleeping, eating, gaming, and anime. Happy web deving!!!",
     image: "/img/staff/ayaka.jpg",
     linkedin: "www.linkedin.com/in/ayaka-chou",
     personal: "",
