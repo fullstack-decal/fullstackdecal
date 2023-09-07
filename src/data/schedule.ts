@@ -9,7 +9,7 @@ const weeks: Week[] = [
         topic: "Course Introduction",
         readingTitle: "Introduction",
         readingLink: "/docs/Lessons/Lesson1",
-        recordingLink: "test",
+        recordingLink: "https://www.youtube.com/watch?v=fAeXuglTsrU",
       },
       {
         date: "Fri, Sep 8",
