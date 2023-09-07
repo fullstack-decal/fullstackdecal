@@ -102,7 +102,7 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
               <ChakraLink
                 color="red"
                 mr={3}
-                href={lesson.readingLink}
+                href={lesson.recordingLink}
                 isExternal
               >
                 <BsRecordFill style={{ marginBottom: "-2px" }} /> Recording
