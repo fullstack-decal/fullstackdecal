@@ -72,10 +72,10 @@ const staff = [
   {
     name: "Danielle Wong",
     role: "Design TA",
-    bio: "i like html",
+    bio: "Hi! I’m a junior studying cognitive science. I love trying new restaurants, nurturing my plants, and going to concerts. So excited for this semester!",
     image: "/img/staff/danielle.png",
     linkedin: "https://www.linkedin.com/in/danielle-n-wong/",
-    personal: "Hi! I’m a junior studying cognitive science. I love trying new restaurants, nurturing my plants, and going to concerts. So excited for this semester!",
+    personal: "",
     email: "mailto:daniellenwong@berkeley.edu",
   },
   {
