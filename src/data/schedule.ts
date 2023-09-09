@@ -16,6 +16,7 @@ const weeks: Week[] = [
         topic: "HTML",
         readingTitle: "HTML",
         readingLink: "/docs/Lessons/Lesson1",
+        recordingLink: "https://www.youtube.com/watch?v=Q7T5vAdUcI0&feature=youtu.be",
       },
     ],
   },
