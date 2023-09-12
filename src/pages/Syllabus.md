@@ -106,24 +106,21 @@ used to host the grades.
 
 | Item               | Points       |
 | ------------------ | ------------ |
-| Lecture Attendance | 100 (5 per)  |
+| Lecture Attendance | 100          |
 | Vitamins           | 300 (20 per) |
 | Project 1          | 80           |
 | Project 2          | 120          |
 | Final Project      | 400          |
 
-Lecture is intended to pad your grade **more than 3 unexecused lectures will result in an NP**.
+Lecture pads your grade since it is mandatory. 
 
 ### Attendance
 
-Attendance at lectures is mandatory. If you cannot make it to the lecture for
-any reason, please fill out the excused absence form for each lecture (on Ed). If you
-neglect to fill out this form within 24 hours of the missed lecture, it will be
-marked as an unexcused absence. You are allowed up to 3 unexcused absences before receiving a NP in the
-class. If you miss a lecture, watch the recorded lecture as soon as possible so
-that you don't fall behind. Our curriculum moves fairly quickly in order to
-cover everything you need in order to become a full-fledged developer, so it's
-imperative that you stay up-to-date with each lesson.
+Attendance at lectures is mandatory. You are permitted 4 absences for the semester which are
+automatically applied and can be used for any reason. If you exceed this limit, it may result in
+an NP or in exceptional circumstances, an incomplete. Our curriculum moves fairly quickly in order
+to cover everything you need in order to become a full-fledged developer, so it's imperative that
+you stay up-to-date with each lesson.
 
 ### Vitamins
 
