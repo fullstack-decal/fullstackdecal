@@ -122,7 +122,7 @@ const AssignmentList: React.FC<{
     <FirstWeekCol>
       <Text textStyle="label2">{type}</Text>
     </FirstWeekCol>
-    <VStack spacing="2px" align="start">
+    <div style={{ alignItems: "start" }}>
       <AssignmentLink assignment={assignment} />
       {subtext && (
         <p
@@ -130,13 +130,14 @@ const AssignmentList: React.FC<{
             fontSize: "14px",
             color: "#A0AEC0",
             margin: "0",
+            marginTop: "2px"
           }}
         >
           {subtext}
         </p>
       )}
-    </VStack>
-  </Stack>
+    </div>
+  </div>
 );
 
 function dueDayForAssignment(assignment: Assignment, schedule: Schedule): Date {
