@@ -130,14 +130,14 @@ const AssignmentList: React.FC<{
             fontSize: "14px",
             color: "#A0AEC0",
             margin: "0",
-            marginTop: "2px"
+            marginTop: "2px",
           }}
         >
           {subtext}
         </p>
       )}
     </div>
-  </div>
+  </Stack>
 );
 
 function dueDayForAssignment(assignment: Assignment, schedule: Schedule): Date {
@@ -195,7 +195,7 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
       shadow="md"
       p={6}
     >
-      <VStack align="start" spacing={2}>
+      <VStack align="stretch" spacing={2}>
         <Stack direction={["row"]} spacing={8} align="center" mb={4}>
           <FirstWeekCol>Week {weekNumber}</FirstWeekCol>
           <Box>
@@ -231,7 +231,7 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
             <VStack spacing={2} align="start" key={lessonIdx}>
               {lessonIdx !== 0 && (
                 <Center position="relative" width="100%">
-                  <Divider my={3} />
+                  <Divider my={3} width="100%" />
                 </Center>
               )}
               <Stack direction={["row"]} spacing={8} align="start">
