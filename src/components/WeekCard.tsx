@@ -122,10 +122,10 @@ const AssignmentList: React.FC<{
     <FirstWeekCol>
       <Text textStyle="label2">{type}</Text>
     </FirstWeekCol>
-    <div style={{ alignItems: "start" }}>
+    <div>
       <AssignmentLink assignment={assignment} />
       {subtext && (
-        <p
+        <span
           style={{
             fontSize: "14px",
             color: "#A0AEC0",
@@ -134,7 +134,7 @@ const AssignmentList: React.FC<{
           }}
         >
           {subtext}
-        </p>
+        </span>
       )}
     </div>
   </Stack>
