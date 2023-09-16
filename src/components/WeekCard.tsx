@@ -1,5 +1,5 @@
 import React from "react";
-import { Schedule, Assignment } from "../types";
+import { Schedule, Assignment, Lesson } from "../types";
 import { HiOutlineBookOpen } from "react-icons/hi";
 import { CgPill } from "react-icons/cg";
 import { BsRecordFill } from "react-icons/bs";
@@ -26,6 +26,62 @@ type WeekCardProps = {
   schedule: Schedule;
   [x: string]: any;
 };
+
+function stringToDate(dateStr: string): Date {
+  const dateObj = new Date(dateStr);
+  dateObj.setFullYear(new Date().getFullYear());
+  return dateObj;
+}
+
+function dateToString(date: Date): string {
+  const day = date.getDay();
+  const dayStr = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][day];
+  const month = date.getMonth();
+  const monthStr = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Nov",
+    "Dec",
+  ][month];
+
+  return `${dayStr}, ${monthStr} ${date.getDate()}`;
+}
+
+function relDateToString(date: Date, referenceDate: Date): string {
+  const daysBetweenDates: number = Math.round(
+    (date.getTime() - referenceDate.getTime()) / (1000 * 60 * 60 * 24)
+  );
+  if (daysBetweenDates == 1) {
+    return "tomorrow";
+  } else if (daysBetweenDates == 7) {
+    return "next week";
+  } else if (daysBetweenDates < 7) {
+    return [
+      "sunday",
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday",
+    ][date.getDay()];
+  } else {
+    return dateToString(date);
+  }
+}
+
+function addDays(startDay: Date, daysToAdd: number): Date {
+  const newDate = new Date(startDay);
+  newDate.setDate(newDate.getDate() + daysToAdd);
+  return newDate;
+}
 
 const FirstWeekCol: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -57,22 +113,73 @@ const AssignmentLink: React.FC<{ assignment: Assignment }> = ({
 
 const firstColWidth = ["5rem", "7rem"];
 
-function dueDayForAssignment(assignment: Assignment, schedule: Schedule) {
+const AssignmentList: React.FC<{
+  type: string;
+  assignment: Assignment;
+  subtext?: string;
+}> = ({ assignment, subtext, type }) => (
+  <Stack direction={["row"]} spacing={8} align="start">
+    <FirstWeekCol>
+      <Text textStyle="label2">{type}</Text>
+    </FirstWeekCol>
+    <VStack spacing="2px" align="start">
+      <AssignmentLink assignment={assignment} />
+      {subtext && (
+        <p
+          style={{
+            fontSize: "14px",
+            color: "#A0AEC0",
+            margin: "0",
+          }}
+        >
+          {subtext}
+        </p>
+      )}
+    </VStack>
+  </Stack>
+);
+
+function dueDayForAssignment(assignment: Assignment, schedule: Schedule): Date {
   const lessonList = schedule.weeks.flatMap((week) => week.lessons);
   const lessonNameList = schedule.weeks.flatMap((week) =>
     week.lessons.map((lesson) => lesson.topic)
   );
   const assignedLessonNo = lessonNameList.indexOf(assignment.assigned);
-  const dueLessonNo = assignedLessonNo + assignment.due;
-  return lessonList[dueLessonNo];
+  const assignedLesson = lessonList[assignedLessonNo];
+
+  const assignedDate = stringToDate(assignedLesson.date);
+  return addDays(assignedDate, assignment.due);
+}
+
+function lateDueDayForAssignment(
+  assignment: Assignment,
+  schedule: Schedule
+): Date {
+  const lessonList = schedule.weeks.flatMap((week) => week.lessons);
+  const lessonNameList = schedule.weeks.flatMap((week) =>
+    week.lessons.map((lesson) => lesson.topic)
+  );
+  const assignedLessonNo = lessonNameList.indexOf(assignment.assigned);
+  const assignedLesson = lessonList[assignedLessonNo];
+
+  const assignedDate = stringToDate(assignedLesson.date);
+  return addDays(assignedDate, assignment.late);
 }
 
 function isDueDateForAssignment(
-  name: string,
+  date: string,
   assignment: Assignment,
   schedule: Schedule
 ) {
-  return dueDayForAssignment(assignment, schedule).topic == name;
+  return dateToString(dueDayForAssignment(assignment, schedule)) == date;
+}
+
+function isLateDueDateForAssignment(
+  date: string,
+  assignment: Assignment,
+  schedule: Schedule
+) {
+  return dateToString(lateDueDayForAssignment(assignment, schedule)) == date;
 }
 
 const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
@@ -97,18 +204,18 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
         {week.lessons.map((lesson, lessonIdx) => {
           const weekAttachnments = [];
 
-          if (lesson.recordingLink) {
-            weekAttachnments.push(
-              <ChakraLink
-                color="red"
-                mr={3}
-                href={lesson.readingLink}
-                isExternal
-              >
-                <BsRecordFill style={{ marginBottom: "-2px" }} /> Recording
-              </ChakraLink>
-            );
-          }
+          // if (lesson.recordingLink) {
+          //   weekAttachnments.push(
+          //     <ChakraLink
+          //       color="red"
+          //       mr={3}
+          //       href={lesson.readingLink}
+          //       isExternal
+          //     >
+          //       <BsRecordFill style={{ marginBottom: "-2px" }} /> Recording
+          //     </ChakraLink>
+          //   );
+          // }
 
           if (lesson.readingTitle) {
             weekAttachnments.push(
@@ -145,43 +252,32 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
               </Stack>
               {assignments
                 .filter((assignment) =>
-                  isDueDateForAssignment(lesson.topic, assignment, schedule)
+                  isDueDateForAssignment(lesson.date, assignment, schedule)
                 )
                 .map((assignment, i) => (
-                  <Stack direction={["row"]} spacing={8} align="start" key={i}>
-                    <FirstWeekCol>
-                      <Text textStyle="label2">Due</Text>
-                    </FirstWeekCol>
-                    <Box>
-                      <AssignmentLink assignment={assignment} />
-                    </Box>
-                  </Stack>
+                  <AssignmentList assignment={assignment} type="Due" />
+                ))}
+              {assignments
+                .filter((assignment) =>
+                  isLateDueDateForAssignment(lesson.date, assignment, schedule)
+                )
+                .map((assignment, i) => (
+                  <AssignmentList assignment={assignment} type="Late" />
                 ))}
               {assignments
                 .filter((assignment) => assignment.assigned == lesson.topic)
                 .map((assignment, i) => (
-                  <Stack direction={["row"]} spacing={8} align="start" key={i}>
-                    <FirstWeekCol>
-                      <Text textStyle="label2">Assigned</Text>
-                    </FirstWeekCol>
-                    <VStack spacing="2px" align="start">
-                      <AssignmentLink assignment={assignment} />
-                      <Text
-                        textStyle="label2"
-                        fontSize="sm"
-                        my={0}
-                        color="gray.400"
-                        fontWeight="400"
-                      >
-                        Due{" "}
-                        {assignment.due == 1
-                          ? "next class"
-                          : assignment.due == 2
-                          ? "next week"
-                          : dueDayForAssignment(assignment, schedule).date}
-                      </Text>
-                    </VStack>
-                  </Stack>
+                  <AssignmentList
+                    assignment={assignment}
+                    type="Assigned"
+                    subtext={
+                      "Due " +
+                      relDateToString(
+                        dueDayForAssignment(assignment, schedule),
+                        stringToDate(lesson.date)
+                      )
+                    }
+                  />
                 ))}
             </VStack>
           );

@@ -190,28 +190,38 @@ const assignments: Assignment[] = [
     name: "Vitamin 1: HTML",
     assigned: "HTML",
     link: "/docs/Assignments/Vitamins/Vitamin1",
-    due: 1,
+    due: 5,
+    late: 7,
   },
 
   {
     name: "Vitamin 2: Introduction to CSS",
     assigned: "CSS 1",
-    link: "/docs/Assignments/Vitamins/Vitamin1",
-    due: 1,
+    link: "/docs/Assignments/Vitamins/Vitamin2",
+    due: 7,
+    late: 9,
   },
 
   {
     name: "Vitamin 3: CSS Layout",
     assigned: "CSS 2",
-    link: "/docs/Assignments/Vitamins/Vitamin1",
-    due: 1,
+    link: "/docs/Assignments/Vitamins/Vitamin3",
+    due: 5,
+    late: 7,
   },
 
   {
-    name: "Project 1: Personal Website",
+    name: "Project 1: First Checkpoint",
     assigned: "CSS 1",
     link: "/docs/Assignments/Projects/PersonalWebsite",
-    due: 5,
+    due: 9,
+  },
+
+  {
+    name: "Project 1: Second Checkpoint",
+    assigned: "JavaScript 1: Essentials",
+    link: "/docs/Assignments/Projects/PersonalWebsite",
+    due: 9,
   },
 ];
 
