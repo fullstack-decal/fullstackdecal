@@ -22,6 +22,14 @@ A question does not always require both style groups to have rules to be correct
 
 Download the starter code from [here](./starter/vitamin3.zip)
 
+Please **edit vitamin.css** and add your code to where it says **YOUR CODE HERE**.
+The staff solutions solves all questions with around 1-3 lines of CSS per selector.
+You may not need to use all the selectors.
+
+A big part of the web is making sure your website looks right on devices of all sizes
+like phones, laptops, and TVs. Make sure your layouts work correctly at different sizes.
+You can test this by resizing the boxes for each problem.
+
 ## Question 1: Side-by-Side
 
 Align the divs horizontally and center them in their container:
@@ -73,6 +81,33 @@ Make sure as you resize the container, the first div does not change in height!
 :::tip
 Recall the syntax for `flex` is `flex: <grow> <shrink>;` think about
 what div you want to have grow and shrink.
+:::
+
+## Question 5: The holy grail layout
+
+In this question, you will create the infamous "holy grail" layout. It's called
+that because this layout extremely common in most websites, but it can be a little
+tricky to do! We recommend using flexbox for this. The staff solution uses 5 CSS
+rules to achieve this layout.
+
+![Holy Grail layout](./Vit3Assets/holygrail.png)
+
+In this layout, the sidebar (Child 2) is fixed to 100px. Child 3 is horizontally
+next to Child 3 and takes up the remaining width. The sidebar and the content
+should always have the same height.
+
+The header should be sticky, meaning when you scroll (if you can't scroll, shrink
+the problem's container).
+
+The footer (Child 4) is not sticky, it should be at the very bottom when you scroll
+all the way down.
+
+![Holy Grail scroll](./Vit3Assets/holygrail-top.png) ![Holy Grail scroll](./Vit3Assets/holygrail-scroll.png)
+
+:::tip
+Look at the HTML for question 5, that may glean some insight in how you can achieve
+this (notice how Child 2 and Child 3 have a parent element? Can you use that parent
+element to horizontally align these like a previous problem).
 :::
 
 ## Submission
