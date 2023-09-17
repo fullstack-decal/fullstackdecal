@@ -71,12 +71,23 @@ Now we'll explore using flexbox vertically.
 Create the following layout where the top div is a fixed `60px` in height and
 the bottom div fills the remaining space.
 
-You **must** use flexbox and the `flex` property. The autograder will not
+Note that you **must** use flexbox and the `flex` property. The autograder will not
 give credit for answers using `calc()` or other methods.
 
-Make sure as you resize the container, the first div does not change in height!
+![](./Vit3Assets/Q4-dashed.png)
 
-![](./Vit3Assets/Q4.png)
+:::tip
+See how you can see all four sides of the dashed border? If you don't see the
+bottom part of the dashed border, that means your Child 2 is too big!
+
+There are many things that could cause this problem, one possibility is that
+`height: 100%` is being used. This isn't right because we don't want the element
+to be 100% of the parent's height, we want it to be 100% _minus_ Child 1's height.
+:::
+
+:::tip
+Make sure as you resize the container, the first div does not change in height!
+:::
 
 :::tip
 Recall the syntax for `flex` is `flex: <grow> <shrink>;` think about
@@ -93,7 +104,7 @@ rules to achieve this layout.
 ![Holy Grail layout](./Vit3Assets/holygrail.png)
 
 In this layout, the sidebar (Child 2) is fixed to 100px. Child 3 is horizontally
-next to Child 3 and takes up the remaining width. The sidebar and the content
+next to Child 2 and takes up the remaining width. The sidebar and the content
 should always have the same height.
 
 The header should be sticky, meaning when you scroll (if you can't scroll, shrink
