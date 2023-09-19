@@ -30,6 +30,11 @@ A big part of the web is making sure your website looks right on devices of all 
 like phones, laptops, and TVs. Make sure your layouts work correctly at different sizes.
 You can test this by resizing the boxes for each problem.
 
+:::caution Safari Bugs
+Safari has a bug where the little icon you use to resize the box for each problem may
+disappear. You may still use Safari, but if you encounter this issue, try using Chrome.
+:::
+
 ## Question 1: Side-by-Side
 
 Align the divs horizontally and center them in their container:
@@ -47,6 +52,12 @@ As you resize the container, only the last two divs should be changing in width.
 you wrong.
 
 ![](./Vit3Assets/Q2.png)
+
+:::caution Is it really 150px?
+Just using `width` may not be enough to guarantee that the sidebar does not shrink below 150px.
+Make sure that the sidebar is actually 150px. Is there a flex property you can use to prevent
+it from shrinking?
+:::
 
 ## Question 3: Width? Max-Width?
 
@@ -119,6 +130,12 @@ all the way down.
 Look at the HTML for question 5, that may glean some insight in how you can achieve
 this (notice how Child 2 and Child 3 have a parent element? Can you use that parent
 element to horizontally align these like a previous problem).
+:::
+
+:::caution Is it really a 100px?
+Just using `width` may not be enough to guarantee that the sidebar does not shrink below 150px.
+Make sure that the sidebar is actually 150px. Is there a flex property you can use to prevent
+it from shrinking?
 :::
 
 ## Submission
