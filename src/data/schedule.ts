@@ -16,7 +16,8 @@ const weeks: Week[] = [
         topic: "HTML",
         readingTitle: "HTML",
         readingLink: "/docs/Lessons/Lesson1",
-        recordingLink: "https://www.youtube.com/watch?v=Q7T5vAdUcI0&feature=youtu.be",
+        recordingLink:
+          "https://www.youtube.com/watch?v=Q7T5vAdUcI0&feature=youtu.be",
       },
     ],
   },
@@ -207,6 +208,14 @@ const assignments: Assignment[] = [
     name: "Vitamin 3: CSS Layout",
     assigned: "CSS 2",
     link: "/docs/Assignments/Vitamins/Vitamin3",
+    due: 5,
+    late: 7,
+  },
+
+  {
+    name: "Vitamin 4: JavaScript and DOM",
+    assigned: "JavaScript 2: DOM",
+    link: "/docs/Assignments/Vitamins/Vitamin4",
     due: 5,
     late: 7,
   },
