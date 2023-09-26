@@ -221,6 +221,14 @@ const assignments: Assignment[] = [
   },
 
   {
+    name: "Vitamin 5: Internet Quiz",
+    assigned: "Internet and Node.js/NPM",
+    link: "/docs/Assignments/Vitamins/Vitamin5",
+    due: 5,
+    late: 7,
+  },
+
+  {
     name: "Project 1: First Checkpoint",
     assigned: "CSS 1",
     link: "/docs/Assignments/Projects/PersonalWebsite",
