@@ -239,7 +239,7 @@ const assignments: Assignment[] = [
     name: "Project 1: Second Checkpoint",
     assigned: "JavaScript 1: Essentials",
     link: "/docs/Assignments/Projects/PersonalWebsite",
-    due: 9,
+    due: 14,
   },
 ];
 
