@@ -47,6 +47,7 @@ function dateToString(date: Date): string {
     "Jul",
     "Aug",
     "Sep",
+    "Oct",
     "Nov",
     "Dec",
   ][month];
