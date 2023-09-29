@@ -229,6 +229,13 @@ const assignments: Assignment[] = [
   },
 
   {
+    name: "Mid-Semester Feedback Form",
+    assigned: "React 1: Components",
+    link: "https://forms.gle/9KHJ3SpseEB9RGUJ7",
+    due: 5,
+  },
+
+  {
     name: "Project 1: First Checkpoint",
     assigned: "CSS 1",
     link: "/docs/Assignments/Projects/PersonalWebsite",
