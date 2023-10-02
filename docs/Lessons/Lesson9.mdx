@@ -205,112 +205,10 @@ the relevant section of the last reading by
 [clicking here](/docs/Lessons/Lesson8#installing-node). If you have Node and npm
 installed, there are no extra downloads required to use React.
 
-## Useful Tools
-
-### Prettier
-
-It's important to keep quality high when writing code. Or at least that's how I
-sell ESLint and Prettier. In reality I'm super lazy and want the machine to do
-as much work as possible so I can focus more on architecture and problem-solving
-and less on syntax and style. While there are many tools that can help you keep
-code quality high, these two I consider core to my workflow.
-
-[Prettier](https://github.com/prettier/prettier) is an amazing tool from the
-brain of [James Long](https://twitter.com/jlongster). James, like many of us,
-was sick of having to constantly worry about the style of his code: where to
-stick indents, how many, when to break lines, etc etc. Coming from languages
-like Go, Reason, or Elm where all that is just taken care of by the tooling for
-the language, this quickly wears. James did something about it and made a tool
-to take care of it: Prettier.
-
-Prettier is a really fancy pretty printer. It takes the code you write, breaks
-it down, throws away all of your code style you made and prints it back out
-using a predefined style. While this sounds a little scary, it's actually really
-cool. Since you no longer have control of the style of your code, you no longer
-have to think about it at all. Your code is always consistent, as is the code
-from the rest of your team. No more bikeshedding!! As I like to put it: if your
-brain is a processor, you get to free up the thread of your brain that worries
-about code styles and readability: it just happens for you. Don't like
-semicolons? Don't write them! It puts them in for you. I _love_ Prettier.
-
-**Trust me.** Use Prettier. Don't write messy code. This is **MANDATORY**.
-
-Let's go integrate this into our project.
-
-Either install Prettier globally `npm install --global prettier`, or use the
-[VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode&WT.mc_id=reactintro-github-brholt).
-I would recommend using the VSCode extension if you are using Visual Studio Code
-as your primary IDE (which I also highly, _highly_, recommend).
-
-If you're using the VSCode extension, set it to only run Prettier when it
-detects a Prettier config file. Makes it so you never have to turn it off. In
-order to do that, set `prettier.requireConfig` to `true` and
-`editor.formatOnSave` to `true`. This can be done in the VSCode settings.
-
-#### **How to access VSCode Settings**
-
-- Windows Users `File > Preferences > **Settings**`
-- Mac Users `Code > Preferences > **Settings**`
-
-So that our IDE can know to use prettier, we're going to create a file called
-`.prettierrc` in the root of our project and put `{}` in it. Your `.prettierrc`
-file should be on the same level as package.json and your README file. This lets
-everyone know this is a Prettier project that uses the default configuration.
-You can put other configs here if you hold strong formatting opinions.
-
-### ESLint
-
-On top of Prettier which takes of all the formatting, you may want to enforce
-some code styles which pertain more to usage: for example you may want to force
-people to never use `with` which is valid JS but ill advised to use.
-[ESLint](https://eslint.org/) comes into play here. It will lint for these
-problems. Essentially, it will yell at you when you make mistakes like these by
-underlining your code in red or yellow, depending on the severity of the
-mistake.
-
-First of all, run `npm install -D eslint eslint-config-prettier` in your console
-while in your project directory to install eslint in your project development
-dependencies. Then you may configure its functionalities.
-
-There are dozens of preset configs for ESLint and you're welcome to use any one
-of them. The [Airbnb config](https://github.com/airbnb/javascript) is very
-popular, as is the standard config. I'm going to use a looser one for this
-class: `eslint:recommended`. Let's create an `.eslintrc.json` file in the root
-directory of our project to start linting our project.
-
-```jsx
-{
-  "extends": ["eslint:recommended", "prettier"],
-  "plugins": [],
-  "parserOptions": {
-    "ecmaVersion": 2021,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-  "env": {
-    "es6": true,
-    "browser": true,
-    "node": true
-  }
-}
-```
-
-ESLint is a cinch to get working with Visual Studio Code. Just down
-[the extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
-
 ## Getting started
 
-That was a lot of setup work, but trust me when I say that downloading prettier
-and ESLint will probably the best decision you'll make in your development
-career. Second to taking this course of course! And of course, without Node and
-npm installed you won't be able to get anything to work in the first place, so
-make sure that those are good to go.
-
-Now, we can finally create our very first React project. In today's world, the
-best way to get started with writing React is actually a little tricky to
-answer - even the
+Let's now create our very first React project. In today's world, the best way to
+get started with writing React is actually a little tricky to answer - even the
 [official React docs](https://react.dev/learn/start-a-new-react-project) have a
 multitude of options to choose from!
 
@@ -1260,8 +1158,7 @@ by 1. You've made a full-fledged counter!
 
 ### Calling onClick with Parameters
 
-Before concluding this lesson, I'd like to show you one last way to accomplish
-what we did above.
+Let's also look at one last way to accomplish what we did above.
 
 Instead of creating a new `updateCount` function to call our `setCount` function
 every time our button is clicked, we can call our `setCount` function directly
@@ -1277,15 +1174,132 @@ is usually preferable to defining an extra function like `updateCount`, since
 the logic to update our state is pretty simple, and directly passing an arrow
 function is more concise.
 
+## Some Useful Tools
+
+Whew, that was definitely a lot to take in! While this may seem like a somewhat
+straightforward application, you've learnt a LOT in this lesson. To recap,
+you've learned the basics of components, JSX, props, and state in React. Using
+these fundamentals, you can build almost anything you want!
+
+As you start using powerful tools like React and your apps get more complex,
+it's more important than ever to keep quality high when writing code. Or at
+least that's how I sell ESLint and Prettier. In reality I'm super lazy and want
+the machine to do as much work as possible so I can focus more on architecture
+and problem-solving and less on syntax and style. While there are many tools
+that can help you keep code quality high, these two I consider core to my
+workflow.
+
+### Prettier
+
+[Prettier](https://github.com/prettier/prettier) is an amazing tool from the
+brain of [James Long](https://twitter.com/jlongster). James, like many of us,
+was sick of having to constantly worry about the style of his code: where to
+stick indents, how many, when to break lines, etc etc. Coming from languages
+like Go, Reason, or Elm where all that is just taken care of by the tooling for
+the language, this quickly wears. James did something about it and made a tool
+to take care of it: Prettier.
+
+Prettier is a really fancy pretty printer. It takes the code you write, breaks
+it down, throws away all of your code style you made and prints it back out
+using a predefined style. While this sounds a little scary, it's actually really
+cool. Since you no longer have control of the style of your code, you no longer
+have to think about it at all. Your code is always consistent, as is the code
+from the rest of your team. No more bikeshedding!! As I like to put it: if your
+brain is a processor, you get to free up the thread of your brain that worries
+about code styles and readability: it just happens for you. Don't like
+semicolons? Don't write them! It puts them in for you. I _love_ Prettier.
+
+**Trust me.** Use Prettier. Don't write messy code. This is **MANDATORY**.
+
+Let's go integrate this into our project.
+
+Either install Prettier globally `npm install --global prettier`, or use the
+[VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode&WT.mc_id=reactintro-github-brholt).
+I would recommend using the VSCode extension if you are using Visual Studio Code
+as your primary IDE (which I also highly, _highly_, recommend).
+
+If you're using the VSCode extension, set it to only run Prettier when it
+detects a Prettier config file. Makes it so you never have to turn it off. In
+order to do that, set `prettier.requireConfig` to `true` and
+`editor.formatOnSave` to `true`. This can be done in the VSCode settings.
+
+#### **How to access VSCode Settings**
+
+- Windows Users `File > Preferences > **Settings**`
+- Mac Users `Code > Preferences > **Settings**`
+
+So that our IDE can know to use prettier, we're going to create a file called
+`.prettierrc` in the root of our project and put `{}` in it. Your `.prettierrc`
+file should be on the same level as package.json and your README file. This lets
+everyone know this is a Prettier project that uses the default configuration.
+You can put other configs here if you hold strong formatting opinions.
+
+### ESLint
+
+On top of Prettier, which handles code formatting for us, you may want to
+enforce some code styles which pertain more to usage: for example you may want
+to force people to never use `with` which is valid JS but ill advised to use.
+[ESLint](https://eslint.org/) comes into play here. It will "lint" for these
+problems. Essentially, it will yell at you when you make mistakes like these by
+underlining your code in red or yellow, depending on the severity of the
+mistake.
+
+If you've combed through the Vite starter template, you may have noticed that we
+have a `.eslintrc.cjs` file predefined - this is where we can configure ESLint's
+functionality. Let's run `npm install -D eslint eslint-config-prettier` in your
+console while in your project directory to install ESLint in your project
+development dependencies, and update the ESLint config to look like this:
+
+```jsx {9,20}
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
+    "prettier",
+  ],
+  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  parserOptions: { ecmaVersion: "latest", sourceType: "module" },
+  settings: { react: { version: "18.2" } },
+  plugins: ["react-refresh"],
+  rules: {
+    "react-refresh/only-export-components": [
+      "warn",
+      { allowConstantExport: true },
+    ],
+    "react/prop-types": "off",
+  },
+};
+```
+
+There are dozens of preset configs for ESLint available online, and you're
+welcome to use any one of them. In this case, we're just modifying the existing
+one since it's a pretty solid starting place. The only modifications I've made
+are the addition of the `prettier` rules to enforce that our code is
+well-formatted, and disabling `react/prop-types` since there are better ways to
+enforce prop types nowadays (don't worry about this last one if it doesn't make
+sense).
+
+ESLint is a cinch to get working with Visual Studio Code. Just download
+[the extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+and you should be good to go.
+
+### It's Worth It!
+
+That might seem like a lot of setup work, but trust me when I say that
+downloading Prettier and ESLint will probably the best decision you'll make in
+your development career. Second to taking this course, of course! These tools,
+and others like them, will save you countless hours in the long run, and let you
+focus on what we really care about: building awesome websites.
+
 ## Conclusion
 
-While this may seem like a somewhat straightforward application, you've learnt a
-LOT in this lesson. To recap, you've learned the basics of components, JSX,
-props, and state in React. Using these fundamentals, you can build almost
-anything you want!
-
-Make sure to go through the example for this lesson after going through the
-reading:
+You've learned a ton in this lesson - give yourself a pat on the back for making
+it through the core concepts of React, and modern web development! Next up, make
+sure to go through the example for this lesson after going through the reading:
 
 [React 1 example lab - building a game of tic-tac-toe](/docs/Lessons/Lesson9-2)
 
