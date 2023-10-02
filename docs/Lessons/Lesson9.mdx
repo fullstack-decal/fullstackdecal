@@ -919,6 +919,8 @@ const Button = (props) => {
     </div>
   );
 };
+
+export default Button;
 ```
 
 We can now access all the props that we pass into our `Button` component when we
@@ -933,9 +935,11 @@ const Button = (props) => {
     </div>
   );
 };
+
+export default Button;
 ```
 
-Now lets say that we pass in a `title` prop into our `Button` component.
+Now let's say that we pass in a `title` prop into our `Button` component.
 
 ```jsx
 <Button text="example text" title="Cool Button">
@@ -952,20 +956,23 @@ const Button = (props) => {
     </div>
   );
 };
-```
 
-TODO: resume editing here
+export default Button;
+```
 
 Hopefully this example makes sense! To solidify that this works, let's try
 creating 3 different buttons in our `App.js` that all say different things, but
-all use our improved `Button` component. While we're doing so, let's clean up
+all using our improved `Button` component. While we're doing so, let's clean up
 our `App` component a bit.
 
 ```jsx title="src/App.jsx"
-function App() {
+import "./App.css";
+import Button from "./Button";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <header>
         <Button text="wow," title="First Button" />
         <Button text="props are" title="Middle Button" />
         <Button text="so useful!" title="Last Button" />
@@ -979,7 +986,7 @@ Save your file and go back to the browser. You should see the following.
 
 ![Buttons Using Props](../assets/Lesson9/button-props.png)
 
-Congrats! You've successfully learnt the basic of props in React.
+Congrats! You've successfully learned the basics of props in React.
 
 :::info
 
@@ -993,7 +1000,7 @@ component that those props are being passed to will cause an error.
 ## State
 
 There are 2 main ways of passing around data in your new React app. The first
-one is props, which we introduced above, and the second one is state.
+one is props, which we introduced above, and the second one is _state_.
 
 ### State vs. Props
 
@@ -1005,21 +1012,20 @@ we're trying to build a neighborhood. We might want to make `doorColor` a
 property that we pass into our `House` component. State, however, is meant for
 more dynamic changes. In this example, you could think of whether the door is
 opened or closed as the **state** of the door. This is something that is easily
-changeable, and says more about teh state of the door than the door itself. It
+changeable, and says more about the state of the door than the door itself. It
 doesn't matter what the properties of the door are - all doors open and close.
 
 ### Introduction to Hooks
 
-When we want to engage in state management within React (which you'll learn
-about extensively in the coming React lessons, examples, and labs), we use
-**hooks**. As contained within the term, state management has to do with
-controlling the state.
+When we want to manage state within React (which you'll learn about extensively
+in the coming React lessons, examples, and labs), we use **hooks**. As contained
+within the term, state management has to do with controlling the state.
 
 Going back to our door example, If we want to create a button to open or close
 the door, or just in general record when the door has opened or closed, we would
 use a hook to keep track and even change the state of the door. Using a more
 concrete web development example, let's say that we want to keep track of a
-user's account balance in some sort of banking website or web app. using React
+user's account balance in some sort of banking website or web app. Using React
 speak, the user's balance wouldn't be a property of their account, since it's
 dynamic and can change often. The balance would instead be part of the **state**
 of the account. An example of a prop that the account might instead have is it's
@@ -1035,23 +1041,21 @@ number of times that our user has clicked a button.
 #### Setup
 
 Before getting started, let's clean up what we currently have a bit. Please make
-sure your `App.js` looks like the following.
+sure your `App.jsx` looks like the following.
 
 ```jsx title="/src/App.js"
 import "./App.css";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <header>
         <h1>Let's Count!</h1>
         <button>click me!</button>
       </header>
     </div>
   );
 }
-
-export default App;
 ```
 
 You should see the following.
@@ -1060,12 +1064,13 @@ You should see the following.
 
 #### Importing Hooks
 
-Now lets import our `useState` hook. In order to use state, we have to import
-and use the `useState` hook in our app. We can import `useState` by doing the
-following at the top of our `App.js` file.
+You can think of a React "hook" as function given to us from the React library
+which allows us to "hook into" one of React's core features. Now, in order to
+use state, we have to import and use the `useState` hook in our app. We can
+import `useState` by adding the following at the top of our `App.jsx` file.
 
 ```jsx
-import React, { useState } from 'react'.
+import { useState } from "react";
 ```
 
 In general, this is how we import hooks in React. If we wanted to import the
@@ -1073,30 +1078,34 @@ useEffect and useMemo hooks as well (which you don't need to worry about), you
 would do the following.
 
 ```jsx
-import React, { useState, useEffect, useMemo } from 'react'.
+import { useState, useEffect, useMemo } from "react";
 ```
 
 #### Using Hooks
 
-Let's take a step back and figure out how we want to go about accomplishing our
-task of creating a counter. We would need to have a `count` variable to figure
+Let's figure out how to turn our currently nonfunctional button into a counter.
+If you played around with the default Vite template, you might've noticed that a
+counter button was already created for us, but we'll learn how to build this
+functionality from scratch! We would need to have a `count` variable to figure
 out how many times that our button has been clicked, and we'd also need a
-function to increase the number of times that our button has been clocked. This
-function would need to occur whenever the button is clicked.
+function to increase the number of times that our button has been clicked. We
+want this function to be called whenever the button is clicked.
 
 Let's add these into our code like so.
 
-```jsx {2,4,5,6,13}
-function App() {
+```jsx {4,6,7,8,15}
+import "./App.css";
+
+export default function App() {
   let count = 0;
 
-  const updateCount = () => {
-    count = count + 1;
-  };
+  function updateCount() {
+    count += count + 1;
+  }
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <header>
         <h1>Let's Count!</h1>
         <button>click me!</button>
         <p>Count: {count}</p>
@@ -1114,45 +1123,57 @@ clicked. To accomplish this, simply pass our `updateCount` function into the
 <button onClick={updateCount}>click me!</button>
 ```
 
-You should see the following.
+Notice that in JSX, just as we can pass variables into the content of HTML
+elements using `{curly braces}`, we can use them to pass in variables as props
+or HTML attributes as well. You should now see the following.
 
 ![No ReRender](../assets/Lesson9/no-rerender.png)
 
 Try clicking your new button. If you're confused about why your counter isn't
 going up, you've just run into the problem of **rendering**, an incredibly
-important React, and frontend issue. Rendering is an incredibly complicated
-topic within the frontend space, so we'll keep it simple in this lesson.
-Essentially, all you need to know about rendering is that React only re-renders
-your screen when state is updated. What does this mean? It means that every time
-state is updated, React runs through your JSX again and displays the new code in
-our browser. In our case, that would mean that it would show the exact same
-things, except our count variable would be different. Since in our above code
-snippet we didn't change state in any way, React didn't re-render what ou saw on
-screen, so the initial value of the count variable is all you could see on
-screen.
+important React, and frontend concept. Rendering is an incredibly complicated
+topic within the frontend space, so we'll try to keep it simple in this lesson.
 
-So how do you use state? This is where it gets confusing. Going back to our
-`App.js`, let's make sure it looks like the following.
+Recall from earlier that "rendering" in React refers to the process of turning
+our JSX code into the HTML and CSS pages that we can view in the browser. But
+when pages need to be interactive or things on screen need to change, it turns
+out that constantly creating and updating HTML elements using the DOM would slow
+down our app a lot, so React does everything it can to minimize re-rendering.
 
-```jsx {1,6}
-import React, { useState } from "react";
+When a component re-renders, you can think of it as our function component being
+"called again", which should return the new JSX for the changed element. Given
+this definition, we can see there are two issues with the way we're currently
+keeping track of our counter's state:
 
+1. In JavaScript, variables declared inside functions ("local variables") don't
+   persist when the function is called again. In this case, each time our `App`
+   component is re-rendered, `count` is redefined as a completely new variable,
+   and its updated value is lost!
+2. As stated earlier, React does everything in its power to avoid re-rendering
+   components when it thinks nothing on screen has changed. In this case, React
+   doesn't know that the `count` variable has updated, so a render isn't
+   triggered - we need an explicit way to tell React that the count has changed.
+
+The solution to these problems is React's concept of state. Going back to our
+`App.js`, let's change it up to use state:
+
+```jsx {1,5}
+import { useState } from "react";
 import "./App.css";
 
-function App() {
+export default function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <header>
         <h1>Let's Count!</h1>
         <button>click me!</button>
+        <p>Count: {count}</p>
       </header>
     </div>
   );
 }
-
-export default App;
 ```
 
 Let's take a closer look at the following line.
@@ -1162,107 +1183,69 @@ const [count, setCount] = useState(0);
 ```
 
 Let's break down what we see above. Using the `useState` hook, we've created 2
-variables, `count` and `setCount`. `count` is a variable that is equal to a
-number. With the `useState` hook, whatever value we pass into the `useState`
-hook is the initial value of the first variable we're defining. Here we passed
-in `0` into `useState`, so `count` starts off being equal to 0. To solidify
-this, lets look at one more example.
+variables, `count` and `setCount`. This slightly funky syntax is called
+[array destructuring](https://www.w3schools.com/react/react_es6_destructuring.asp),
+and it's just a special way to set the value of multiple values from an array.
+In this case, when we call the `useState` hook it returns an array with 2
+values: the current value of our state, and a function to set the state to a new
+value. We use array destructuring to define `count` as the state value, and
+`setCount` as our "state setter" function.
+
+With the `useState` hook, whatever value we pass into the `useState` hook is the
+initial value of the state variable we're defining. Here we passed in `0` into
+`useState`, so `count` starts off being equal to 0. To solidify this, let's look
+at one more example.
 
 ```jsx
 const [name, setName] = useState("Joshua");
 ```
 
-Here, I'm creating a variable called `name` that is initialized to the value
-"Joshua". Thus, if I used the `name` variable in my JSX code, it would show up
-as "Joshua". Same with our counter code. Add the following line to your code.
+Here, I'm creating a state variable called `name` that is initialized to the
+value "Joshua". Thus, if I used the `name` variable in my JSX code, it would
+show up as "Joshua". Notice how our state variable and state setter can be
+called whatever we want, just like regular variables - but the convention is to
+use a descriptive name for your state variable, and add `set` in front of it for
+our setter function.
 
-```jsx {13}
-import React, { useState } from "react";
+Why do we even need a setter function, anyway? Well, if we tried using
+`count = count + 1` to update the state value, we'd run into the same problems
+as before: React doesn't know about any local variables which we changed, and
+the value of the `count` local variable would still be lost on a re-render.
+Instead, we have to use a **setter function** tied to that variable. This
+function will both update React's internal memory of the state value, and also
+signal to React that the component needs to be re-rendered in order for our
+updated value to show up.
 
-import "./App.css";
-
-function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Let's Count!</h1>
-        <button>click me!</button>
-        <p>Count: {count}</p>
-      </header>
-    </div>
-  );
-}
-```
-
-Now you should see the same thing that we saw earlier when we weren't using
-state. If you try to click the button, the counter still won't increment, but
-that sort of behavior should now make sense since we haven't told the button to
-call any function or do anything when it's clicked yet.
-
-Next let's talk about `setCount`. We've learnt that the first variable created
-by the `useState` hook is a variable that starts off with whatever value was
-passed into the `useState` hook, but how do we update this variable? We can't do
-`count = count + 1` or anything similar for variables declared through the
-`useState` hook. Instead, we have to use the **updater function** tied to that
-variable. The updater function is the second variable declared by the `useState`
-hook, In this case, `setCount` is our updater function for `count`.
-
-To use an updater function, simply pass in a value. This passed in value becomes
-the new value of the associated variable. For example, calling `setCount(5)`
-would se our `count` variable equal to 5. Calling setCount(-999) would make
-`count` equal to -999. Basically, our updater function sets whatever our
-variable is.
+To use a setter function, simply pass in the new value for our state. For
+example, calling `setCount(5)` would se our `count` variable equal to 5. Calling
+`setCount(-999)` would make `count` equal to -999.
 
 Going back to our name example for some more clarity, let's say we have
-`const [name, setName] = useState('Joshua')` as before. If the `name` variable
+`const [name, setName] = useState("Joshua")` as before. If the `name` variable
 represents our username in a game, we might want to change it later. Let's say
 we want to change it to "reactgod007". We simply call `setName("reactgod007)`
 and now our `name` variable is equal to "reactgod007".
 
 We want to increase our `count` variable by 1 every time our button is clicked,
-however, and not just set `count` to whatever we want! To set this up in our
-code, let's bring back our old friend, the `updateCount` function, and pass it
-into our button.
-
-```jsx {4,11}
-function App() {
-  const [count, setCount] = useState(0);
-
-  const updateCount = () => {};
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Let's Count!</h1>
-        <button onClick={updateCount}>click me!</button>
-        <p>Count: {count}</p>
-      </header>
-    </div>
-  );
-}
-```
-
-Right now, our `updateCount` function is called every time our button is
-clicked, but nothing happens because the body of the function is empty. Going
-backwards, what we want `updateCount` to do is increment our `count` variable
-by 1. We can change our `count` variable by calling `setCount`. Thus, all we
-need to do is call `setCount(count + 1)`. This would set the value of our
-`count` variable equal to the old value of the `count` variable plus 1. Adding
-this to the body of our `updateCount` function, we get the following.
+however, and not just set `count` tosome static value! Thus, all we need to do
+is call `setCount(count + 1)`. This would set the value of our `count` variable
+equal to the old value of the `count` variable plus 1. Adding this logic into
+our `updateCount` function, we get the following.
 
 ```jsx {4,5,6}
-function App() {
+import { useState } from "react";
+import "./App.css";
+
+export default function App() {
   const [count, setCount] = useState(0);
 
-  const updateCount = () => {
+  function updateCount() {
     setCount(count + 1);
-  };
+  }
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <header>
         <h1>Let's Count!</h1>
         <button onClick={updateCount}>click me!</button>
         <p>Count: {count}</p>
@@ -1275,7 +1258,7 @@ function App() {
 Congrats! Every time you click your button, you should see the counter increment
 by 1. You've made a full-fledged counter!
 
-### Calling onClick with Parameters (Optional)
+### Calling onClick with Parameters
 
 Before concluding this lesson, I'd like to show you one last way to accomplish
 what we did above.
@@ -1289,30 +1272,15 @@ from our button like so.
 ```
 
 What we've done is create an arrow function that, when called, calls
-`setCount(count + 1)`, which is what we want to call in order to increment our
-`count` variable by 1. In general when you want to call a function with
-parameters when you click a button, you have to use this arrow function method.
-
-What if our `updateCount` function took in a parameter called `value` which
-dictated how much to increment our `count` variable by? It would look like this.
-
-```jsx
-const updateCount = (value) => {
-  setCount(count + value);
-};
-```
-
-We can no longer pass in `updateCount` into our button's `onClick` directly
-since it now has a parameter. Instead, we have to do what we did above.
-
-```jsx
-<button onClick={() => updateCount(1)}>click me!</button>
-```
+`setCount(count + 1)`, which increments the counter by 1 just like before. This
+is usually preferable to defining an extra function like `updateCount`, since
+the logic to update our state is pretty simple, and directly passing an arrow
+function is more concise.
 
 ## Conclusion
 
 While this may seem like a somewhat straightforward application, you've learnt a
-LOT in this lesson. To recap, you've learnt the basics of components, JSX,
+LOT in this lesson. To recap, you've learned the basics of components, JSX,
 props, and state in React. Using these fundamentals, you can build almost
 anything you want!
 
