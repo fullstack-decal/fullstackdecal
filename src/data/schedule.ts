@@ -248,6 +248,13 @@ const assignments: Assignment[] = [
     link: "/docs/Assignments/Projects/PersonalWebsite",
     due: 14,
   },
+
+  {
+    name: "Project 2: Blog",
+    assigned: "React 2.5: Advanced React",
+    link: "/docs/Assignments/Projects/Blog",
+    due: 18,
+  },
 ];
 
 const schedule: Schedule = {
