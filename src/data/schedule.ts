@@ -94,15 +94,15 @@ const weeks: Week[] = [
     lessons: [
       {
         date: "Wed, Oct 11",
-        topic: "APIs and React 3: fetch/Routing",
-        readingTitle: "Async JavaScript",
-        readingLink: "/docs/Lessons/Lesson7",
+        topic: "APIs and Postman",
+        readingTitle: "APIs",
+        readingLink: "/docs/Lessons/Lesson11",
       },
       {
         date: "Fri, Oct 13",
         topic: "Express.js and JSON APIs",
-        readingTitle: "Express",
-        readingLink: "/docs/Lessons/Lesson14",
+        readingTitle: "Advanced React",
+        readingLink: "/docs/Lessons/Lesson10",
       },
     ],
   },
@@ -232,6 +232,13 @@ const assignments: Assignment[] = [
     name: "Mid-Semester Feedback Form",
     assigned: "React 1: Components",
     link: "https://forms.gle/9KHJ3SpseEB9RGUJ7",
+    due: 5,
+  },
+
+  {
+    name: "Vitamin 6: APIs and Postman",
+    assigned: "APIs and Postman",
+    link: "/docs/Assignments/Vitamins/Vitamin6",
     due: 5,
   },
 
