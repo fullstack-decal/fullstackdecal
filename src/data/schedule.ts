@@ -109,27 +109,17 @@ const weeks: Week[] = [
   {
     topic: "More approaches to web dev",
     lessons: [
-      { date: "Wed, Oct 18", topic: "Express.js and SSR", readingTitle: "" },
+      {
+        date: "Wed, Oct 18",
+        topic: "Express.js and AIs",
+        readingTitle: "Node.js",
+        readingLink: "/docs/Lessons/Lesson8",
+      },
       {
         date: "Fri, Oct 20",
-        topic: "Web Frameworks overview",
-      },
-    ],
-  },
-  {
-    topic: "Backend concepts",
-    lessons: [
-      {
-        date: "Wed, Oct 25",
-        topic: "Databases",
-        readingTitle: "Databases & Auth",
-        readingLink: "/docs/Lessons/Lesson16",
-      },
-      {
-        date: "Fri, Oct 27",
-        topic: "Authentication",
-        readingTitle: "Databases & Auth",
-        readingLink: "/docs/Lessons/Lesson16",
+        topic: "Databases and Authentication",
+        readingTitle: "MySQL and Authentication",
+        readingLink: "/docs/Lessons/Lesson14",
       },
     ],
   },
@@ -137,23 +127,38 @@ const weeks: Week[] = [
     topic: "🎨 Design and UI/UX",
     lessons: [
       {
-        date: "Wed, Nov 1",
-        topic: "Design",
+        date: "Wed, Oct 25",
+        topic: "Design: 1",
         readingTitle: "UI/UX",
         readingLink: "/docs/Lessons/Lesson12",
       },
       {
-        date: "Fri, Nov 3",
-        topic: "TBA",
+        date: "Fri, Oct 27",
+        topic: "Design: 2",
+        readingTitle: "UI/UX",
+        readingLink: "/docs/Lessons/Lesson12",
       },
     ],
   },
   {
-    topic: "",
+    topic: "🕴️ Special Topics",
+    lessons: [
+      {
+        date: "Wed, Nov 1",
+        topic: "Special Topics: Web Accessibility",
+      },
+      {
+        date: "Fri, Nov 3",
+        topic: "Special Topics: GitHub",
+      },
+    ],
+  },
+  {
+    topic: "💡 Special Topics",
     lessons: [
       {
         date: "Wed, Nov 8",
-        topic: "TBA",
+        topic: "Special Topics: Web Frameworks",
       },
       { date: "Fri, Nov 10", topic: "Veteran's Day" },
     ],
@@ -233,6 +238,7 @@ const assignments: Assignment[] = [
     assigned: "React 1: Components",
     link: "https://forms.gle/9KHJ3SpseEB9RGUJ7",
     due: 5,
+    late: 7,
   },
 
   {
@@ -240,6 +246,7 @@ const assignments: Assignment[] = [
     assigned: "APIs and Postman",
     link: "/docs/Assignments/Vitamins/Vitamin6",
     due: 5,
+    late: 7,
   },
 
   {
@@ -260,7 +267,28 @@ const assignments: Assignment[] = [
     name: "Project 2: Blog",
     assigned: "React 2.5: Advanced React",
     link: "/docs/Assignments/Projects/Blog",
-    due: 18,
+    due: 19,
+  },
+
+  {
+    name: "Final Project: Groups",
+    assigned: "Special Topics: Web Accessibility",
+    link: "https://forms.gle/p8HSMFvkxNfkhRUU9",
+    due: 2,
+  },
+
+  {
+    name: "Final Project: Idea",
+    assigned: "Special Topics: GitHub",
+    link: "/docs/Assignments/Projects/FinalProject",
+    due: 5,
+  },
+
+  {
+    name: "Final Project: GitHub & Figma",
+    assigned: "Special Topics: Web Frameworks",
+    link: "/docs/Assignments/Projects/FinalProject",
+    due: 7,
   },
 ];
 

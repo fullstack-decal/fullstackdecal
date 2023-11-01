@@ -108,11 +108,11 @@ used to host the grades.
 | ------------------ | ------------ |
 | Lecture Attendance | 100          |
 | Vitamins           | 300 (20 per) |
-| Project 1          | 80           |
-| Project 2          | 120          |
-| Final Project      | 400          |
+| Project 1          | 150          |
+| Project 2          | 150          |
+| Final Project      | 300          |
 
-Lecture pads your grade since it is mandatory. 
+Lecture pads your grade since it is mandatory.
 
 ### Attendance
 
