@@ -273,7 +273,7 @@ const assignments: Assignment[] = [
   {
     name: "Final Project: Groups",
     assigned: "Special Topics: Web Accessibility",
-    link: "https://forms.gle/p8HSMFvkxNfkhRUU9",
+    link: "/docs/Assignments/Projects/FinalProject",
     due: 2,
   },
 
