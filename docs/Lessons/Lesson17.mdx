@@ -10,48 +10,48 @@ Congratulations on making it this far in the course. So far, we've learned a ton
 about different web technologies and how to build awesome, functional websites
 using modern web technologies.
 
-Now you're probably wondering - how do I actually get my website to a live URL?
+Now you're probably wondering - how do I get my website to a live URL?
 So far in this course, we've been mostly working locally and using a few tools
-to deploy our sites, but how do we do this at scale.
+to deploy our sites, but how do we do this at scale?
 
-Obviously this is a very complex problems, companies like AWS or Google have
+Obviously, this is a very complex problem, companies like AWS or Google have
 spent billions on infrastructure to run platforms and services to support their
 applications.
 
-In this lesson, we'll be talking about the fields of Devops (Developer
+In this lesson, we'll be talking about the fields of DevOps (Developer
 Operations) and Cloud.
 
-## What is Devops?
+## What is DevOps?
 
-Devops is an acronym vgiven to the combination of Development Operations. It's
+DevOps is an acronym given to the combination of Development Operations. It's
 the philosophy that surrounds ensuring software teams run smoothly, and get
 their code built, shipped, and deployed with ease.
 
-When you're building large scale applications, you start to run into a few
+When you're building large-scale applications, you start to run into a few
 questions:
 
 - How do you deploy your code?
 - How do you configure your servers so they all work together?
 - How do you monitor your deployed services for bugs or errors?
-- How do you check performance of your systems?
+- How do you check the performance of your systems?
 - How do you plan for and fix problems that come up
 - How do you decrease the time spent on development cycles to ensure code is
-  deployed products at speed and scale reliably
+  deployed to products at speed and scale reliably
 
 ![Devops Image](../assets/Lesson17/Lesson17-1.png)
 
-## Parts of Devops
+## Parts of DevOps
 
-We'll be talking a bit about some Devops best practices.
+We'll be talking a bit about some DevOps best practices.
 
 Imagine you're a software development team at Facebook releasing software
 
 ### Continuous Integration
 
-As a team, you want to ensure that each programmers code is integrated into the
-codebase, tested, and validated. This should be done at a regular basis to
-ensure there are always new features being pushed. This pracitce is Continuous
-IntegratioN (CI).
+As a team, you want to ensure that each programmer's code is integrated into the
+codebase, tested, and validated. This should be done on a regular basis to
+ensure there are always new features being pushed. This practice is Continuous
+Integration (CI).
 
 In industry, software teams build CI pipelines that run tests and check for bugs
 to ensure that every contribution to the code base will work properly. This is
@@ -59,8 +59,8 @@ done using cloud services, something we'll talk more about.
 
 ### Continuous Delivery
 
-Now that your programmers code is tested, you want to deliver your software to
-the customer. Continuous Delivery (CD) is the practice of deploying your tested
+Now that your programmer's code is tested, you want to deliver your software to
+the customer. Continuous Delivery (CD) is deploying your tested
 changes into a testing or production environment after being built.
 
 This means that developers will always have a working build and customers will
@@ -69,12 +69,12 @@ always have a working build as fast as possible.
 ### Microservices
 
 Facebook is a massive company. Having all their services under a single server
-would be ridiculous, both in size of code and in complexity. It also would mean
+would be ridiculous, both in code size and complexity. It also would mean
 that if this monolith server were to crash, all of Facebook would be down.
 
 Instead, companies use a microservice architecture, a design approach that
 breaks up a large application into multiple distributed services. Each service
-is ran separately and communicates with other services through a well-defined
+is running separately and communicates with other services through a well-defined
 API.
 
 For example, a company like Facebook likely has a microservice for
@@ -84,29 +84,29 @@ flexibility to be designed and built independently of each other.
 ### Infrastructure as Code
 
 Code infrastructure, or servers, is managed using code and software techniques
-instead of people. We'll talk more about this when we talk about cloud, but this
+instead of people. We'll talk more about this when we talk about the cloud, but this
 is crucial to ensuring services remain scalable.
 
 ### Conclusion
 
-Devops is crucial for modern software companies to working code efficiently and
+DevOps is crucial for modern software companies to work code efficiently and
 consistently.
 
-In this course, we'll go over a few Devops tools
+In this course, we'll go over a few DevOps tools
 
-## Beginner Devops Tools
+## Beginner DevOps Tools
 
-Since we can't cover all the devops tools out there, we'll cover some of the
+Since we can't cover all the DevOps tools out there, we'll cover some of the
 beginner services that should be immediately helpful for you to deploy your
-fullstack applications.
+full-stack applications.
 
-### CI - Github Actions
+### CI - GitHub Actions
 
 The most accessible CI tool is
 [Github Actions](https://github.com/features/actions). This is an automation
 tool that can run scripts or code on each git commit, branch, or pull request.
 
-For example, this is the configuration for a github action that runs a linter on
+For example, this is the configuration for a GitHub action that runs a linter on
 each commit.
 
 ```yaml
@@ -153,24 +153,24 @@ can run it on your machine, but it's only accessible to you.
 
 Now there's a whole suite of tools to expose your app to the internet or deploy
 it to a server (a server is simply a computer) to have it served to the
-internet, we talked about this a bit in CD.
+internet, we talked about this a bit on CD.
 
 However, configuring your own server is costly, challenging, and risky. This is
-where cloud comes in.
+where the cloud comes in.
 
 ## The Cloud
 
-To talk about cloud, we'll use an analogy.
+To talk about the cloud, we'll use an analogy.
 
-Imagine you're traveling to the sahara desert and want to drive on the sand
+Imagine you're traveling to the Sahara desert and want to drive on the 
 dunes, but you don't have a car! You can either:
 
-- Buy your own jeep
+- Buy your own Jeep
 - Borrow or rent a jeep
 
 Option 1 is similar to buying or maintaining a server yourself. There's a large
 upfront cost, you probably won't use it most of the time, and you have to do
-maintence yourself if it breaks. This is called _On Premise Computing_.
+maintenance yourself if it breaks. This is called _On-Premise Computing_.
 
 Option 2 is similar to running your code on the cloud. You can use it for just
 the time you want, if something breaks the rental company will fix it, and it's
@@ -192,11 +192,11 @@ tools, you don't ever have to touch code!
 
 ### Paas - Platform as a Service
 
-At the next level, there's Platform as a Service, like Digital Ocean, Netlify,
-or Vercel. You control the implementation (code), but don't care about how the
-implementation is ran as long as it works.
+At the next level, there's a Platform as a Service, like Digital Ocean, Netlify,
+or Vercel. You control the implementation (code) but don't care about how the
+implementation is run as long as it works.
 
-### IaaS - Infastructure as a Service
+### IaaS - Infrastructure as a Service
 
 This is the lowest level of cloud, like AWS, GCP, or Azure. Here, you can use
 hardware that the company manages, meaning you have to deal with the OS, running
@@ -205,7 +205,7 @@ the code, etc.
 ### The Ground
 
 This is buying your own infrastructure (servers) and dealing with all the BS
-that comes with hardware. For us webdevs, this is the ickiestt layer.
+that comes with hardware. For us web devs, this is the ickiest layer.
 
 ## Why Cloud (as a business major)?
 
@@ -223,7 +223,7 @@ that comes with hardware. For us webdevs, this is the ickiestt layer.
 
 - You’re not the only one using cloud
   - Servers are shared with thousands to millions of customers
-- Thus, cost of servers is also shared
+- Thus, the cost of servers is also shared
   - Unbeatable savings
 
 ### Spend Money on Software, not Hardware
@@ -232,7 +232,7 @@ that comes with hardware. For us webdevs, this is the ickiestt layer.
   - Servers are expensive to run and maintain
   - Server engineers are more expensive
 - Spend this money on software instead
-  - More bang for you back
+  - More bang for your buck
   - Greater focus on product
 
 ## Why Cloud (as an EECS major)?
@@ -249,7 +249,7 @@ that comes with hardware. For us webdevs, this is the ickiestt layer.
 ### Build Faster
 
 - Server time is now just development time
-  - On-premise requires set up of OS, virtualization, networking, etc.
+  - On-premise requires the set up of OS, virtualization, networking, etc.
   - Also includes setting up and changing hardware
 - This can now all be done on the fly
   - Deploy in minutes, not hours
@@ -265,8 +265,8 @@ that comes with hardware. For us webdevs, this is the ickiestt layer.
 
 ## IaaS -> AWS
 
-The most pouplar IaaS in the world is AWS. AWS provides hundreds of various
-services for cloud, from renting full OS's (EC2)
+The most popular IaaS in the world is AWS. AWS provides hundreds of various
+services for the cloud, from renting full OS's (EC2)
 
 ### Why AWS
 
