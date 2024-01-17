@@ -50,7 +50,7 @@ const HomeContent: React.FC = () => {
           <Text textStyle="subtitle2" color="blackAlpha.500">
             Mon and Wed, 6:30-8:00 PM, Physics 4
           </Text>
-          <Box>
+
           <Link
             href="mailto:webdev-decal@lists.berkeley.edu"
             isExternal
@@ -59,16 +59,6 @@ const HomeContent: React.FC = () => {
           >
             webdev-decal@lists.berkeley.edu
           </Link>
-          <Link
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfktrNEIJovVzKOTV2gJEpg30kK0SVKoXXur0boEhNwlJ-jpg/viewform?fbclid=IwAR1QhjjZnxm6PMAenTmn06QcNOFfo9d_hVS0lW0ONEADSGZ8A7OZMgLADPY"
-            isExternal
-            textStyle="subtitle2"
-            color="blackAlpha.500"
-            paddingLeft = 50 px
-          >
-            Apply Here!!
-          </Link>
-          </Box>
         </Container>
 
         {schedule.weeks.map((week, index) => {
