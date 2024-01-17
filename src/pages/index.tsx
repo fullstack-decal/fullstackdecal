@@ -65,7 +65,7 @@ const HomeContent: React.FC = () => {
             textStyle="subtitle2"
             color="blackAlpha.500"
           >
-            Apply Here!
+            Apply Here!!
           </Link>
           </Box>
         </Container>
