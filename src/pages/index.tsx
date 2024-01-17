@@ -37,7 +37,7 @@ const HomeContent: React.FC = () => {
       >
         <Container maxW="container.md" my="6rem">
           <Text textStyle="subtitle2" color="blackAlpha.500">
-            CS 198-99 | Spring 23
+            CS 198-99 | Spring 24
           </Text>
           <Text textStyle="title1">
             Introduction
@@ -48,7 +48,7 @@ const HomeContent: React.FC = () => {
             development
           </Text>
           <Text textStyle="subtitle2" color="blackAlpha.500">
-            Wed and Fri, 5:00-6:30PM, HMMB 390
+            Mon and Wed, 6:30-8:00PM, Physics 4
           </Text>
           <Link
             href="mailto:webdev-decal@lists.berkeley.edu"
