@@ -12,10 +12,10 @@
 
 **Time:** There are 2 lectures every week. Students are expected to attend both lectures every week.
 
-- Lecture 1: Wednesday @ 5:00pm - 6:30pm PT
-- Lecture 2: Friday @ 5:00pm - 6:30pm PT
+- Lecture 1: Monday @ 6:30pm - 8:00pm PT
+- Lecture 2: Wednesday @ 6:30pm - 8:00pm PT
 
-**Location:** Hearst Memorial Mining Building 390
+**Location:** Physics 4
 
 ## Course Overview
 
