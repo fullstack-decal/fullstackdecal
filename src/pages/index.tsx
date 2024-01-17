@@ -48,7 +48,7 @@ const HomeContent: React.FC = () => {
             development
           </Text>
           <Text textStyle="subtitle2" color="blackAlpha.500">
-            Mon and Wed, 6:30-8:00PM, Physics 4
+            Mon and Wed, 6:30-8:00 PM, Physics 4
           </Text>
           <Link
             href="mailto:webdev-decal@lists.berkeley.edu"
@@ -57,6 +57,14 @@ const HomeContent: React.FC = () => {
             color="blackAlpha.500"
           >
             webdev-decal@lists.berkeley.edu
+          </Link>
+          <Link
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfktrNEIJovVzKOTV2gJEpg30kK0SVKoXXur0boEhNwlJ-jpg/viewform?fbclid=IwAR1QhjjZnxm6PMAenTmn06QcNOFfo9d_hVS0lW0ONEADSGZ8A7OZMgLADPY"
+            isExternal
+            textStyle="subtitle2"
+            color="blackAlpha.500"
+          >
+            Apply Here!
           </Link>
         </Container>
 
