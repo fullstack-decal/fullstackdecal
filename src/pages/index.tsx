@@ -64,6 +64,7 @@ const HomeContent: React.FC = () => {
             isExternal
             textStyle="subtitle2"
             color="blackAlpha.500"
+            paddingLeft = 50 px
           >
             Apply Here!!
           </Link>
