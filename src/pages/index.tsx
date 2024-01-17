@@ -50,6 +50,7 @@ const HomeContent: React.FC = () => {
           <Text textStyle="subtitle2" color="blackAlpha.500">
             Mon and Wed, 6:30-8:00 PM, Physics 4
           </Text>
+          <Box>
           <Link
             href="mailto:webdev-decal@lists.berkeley.edu"
             isExternal
@@ -66,6 +67,7 @@ const HomeContent: React.FC = () => {
           >
             Apply Here!
           </Link>
+          </Box>
         </Container>
 
         {schedule.weeks.map((week, index) => {
