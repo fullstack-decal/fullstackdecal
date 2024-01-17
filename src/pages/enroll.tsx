@@ -4,7 +4,7 @@ import { Center, Text } from "@chakra-ui/react";
 const Enroll = () => {
   useEffect(() => {
     window.location.href =
-      "https://airtable.com/app4DQfVs1iDSqn4b/shrFGkWU1iF8nLpgS";
+      "https://docs.google.com/forms/d/e/1FAIpQLSfktrNEIJovVzKOTV2gJEpg30kK0SVKoXXur0boEhNwlJ-jpg/viewform";
   }, []);
 
   return (
