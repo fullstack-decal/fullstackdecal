@@ -1,8 +1,18 @@
 const staff = [
   {
+    name: "Zayna Lateef",
+    image: "/img/staff/zayna.jpeg",
+    role: "Facilitator",
+    linkedin: "https://www.linkedin.com/in/zayna-lateef-942756216/ ",
+    personal: "",
+    bio: "Hi! I am a sophmore studying eecs. I love all things outdoor especially the beach, music, and surfing. I am in desperate need of new tv shows so please let me know your recs. I am super exicted for a great semester :)",
+    github: "https://github.com/ZaynaLateef",
+    email: "mailto:zayna.lateef@berkeley.edu",
+  },
+  {
     name: "Sebastiaan Szafir",
     image: "/img/staff/sebi.png",
-    role: "Facilitator",
+    role: "Full-Stack TA",
     linkedin: "https://www.linkedin.com/in/sebastiaan-szafir-fridman/",
     personal: "https://sebiszafir.com/",
     bio: "I love the number 42, and I think you should too. I'm from Spain, love programming, board games, anime and have growing suspicions towards Berkeley's parking meters.",
@@ -12,7 +22,7 @@ const staff = [
   {
     name: "Vihan Bhargava",
     image: "/img/staff/vihan.png",
-    role: "Facilitator",
+    role: "Full-Stack TA",
     bio: "Hi! I’m Vihan a junior studying CS. I love building cool products, playing guitar, and meeting dogs. Come talk to me if you love blues rock and John Mayer or want to chat about tech! I’m excited for an awesome semester with all of you!",
     linkedin: "https://www.linkedin.com/in/vihanb/",
     personal: "https://vihan.org",
