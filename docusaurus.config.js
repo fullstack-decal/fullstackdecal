@@ -67,7 +67,7 @@ const config = {
             label: "Resources",
           },
           {
-             href: "https://calendar.google.com/calendar/u/0?cid=Y181YjRkNDJjOTJjZTZmZjUxNzU3MjI0OTNlMjhiZmY5OWY0NDYwYjk1YzAyOWJkZTJlNDFjY2M1NDM2MGYyYjc4QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20",
+             href: "https://docs.google.com/forms/d/1MAMMNk_iaQ9uLWjH4e_SXDAsX-xB06VlcjxPp3alfso/prefill",
              position: "left",
              label: "Enroll",
            },
