@@ -67,7 +67,7 @@ const config = {
             label: "Resources",
           },
           {
-             href: "https://docs.google.com/forms/d/1MAMMNk_iaQ9uLWjH4e_SXDAsX-xB06VlcjxPp3alfso/prefill",
+             href: "https://docs.google.com/forms/d/e/1FAIpQLSfktrNEIJovVzKOTV2gJEpg30kK0SVKoXXur0boEhNwlJ-jpg/viewform",
              position: "left",
              label: "Enroll",
            },
