@@ -66,11 +66,11 @@ const config = {
             position: "left",
             label: "Resources",
           },
-          // {
-          //   href: "https://airtable.com/app4DQfVs1iDSqn4b/shrFGkWU1iF8nLpgS",
-          //   position: "left",
-          //   label: "Enroll",
-          // },
+          {
+             href: "https://calendar.google.com/calendar/u/0?cid=Y181YjRkNDJjOTJjZTZmZjUxNzU3MjI0OTNlMjhiZmY5OWY0NDYwYjk1YzAyOWJkZTJlNDFjY2M1NDM2MGYyYjc4QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20",
+             position: "left",
+             label: "Enroll",
+           },
           {
             href: "https://github.com/fullstack-decal",
             position: "right",
