@@ -4,15 +4,15 @@ const weeks: Week[] = [
   {
     topic: "👋 Welcome to the course!",
     lessons: [
-      { 
-        date: "Wed, Jan 31",
+      {
+        date: "Mon, Feb 5",
         topic: "Course Introduction",
         readingTitle: "Introduction",
         readingLink: "/docs/Lessons/Lesson1",
         recordingLink: "https://www.youtube.com/watch?v=fAeXuglTsrU",
       },
       {
-        date: "Mon, Feb 5",
+        date: "Wed, Feb 7",
         topic: "HTML",
         readingTitle: "HTML",
         readingLink: "/docs/Lessons/Lesson1",
@@ -25,13 +25,13 @@ const weeks: Week[] = [
     topic: "💅 Stylin' your sites",
     lessons: [
       {
-        date: "Wed, Feb 7",
+        date: "Mon, Feb 12",
         topic: "CSS 1",
         readingTitle: "Introduction to CSS",
         readingLink: "/docs/Lessons/Lesson2",
       },
       {
-        date: "Mon, Feb 12",
+        date: "Wed, Feb 14",
         topic: "CSS 2",
         readingTitle: "Advanced CSS",
         readingLink: "/docs/Lessons/Lesson3",
@@ -42,13 +42,13 @@ const weeks: Week[] = [
     topic: "🕺 Get moving with JavaScript",
     lessons: [
       {
-        date: "Wed, Feb 14",
+        date: "Wed, Feb 21",
         topic: "JavaScript 1: Essentials",
         readingTitle: "Basic JavaScript",
         readingLink: "/docs/Lessons/Lesson4",
       },
       {
-        date: "Wed, Feb 21",
+        date: "Mon, Feb 26",
         topic: "JavaScript 2: DOM",
         readingTitle: "DOM",
         readingLink: "/docs/Lessons/Lesson5",
@@ -59,13 +59,13 @@ const weeks: Week[] = [
     topic: "Introducing React",
     lessons: [
       {
-        date: "Mon, Feb 26",
+        date: "Wed, Feb 28",
         topic: "Internet and Node.js/NPM",
         readingTitle: "SSR",
         readingLink: "/docs/Lessons/Lesson8",
       },
       {
-        date: "Wed, Feb 28",
+        date: "Mon, Mar 4",
         topic: "React 1: Components",
         readingTitle: "Intro to React",
         readingLink: "/docs/Lessons/Lesson9",
@@ -76,13 +76,13 @@ const weeks: Week[] = [
     topic: "Continuing React",
     lessons: [
       {
-        date: "Mon, Mar 4",
+        date: "Wed, Mar 6",
         topic: "React 2: State",
         readingTitle: "Intro to React",
         readingLink: "/docs/Lessons/Lesson9",
       },
       {
-        date: "Wed, Mar 6",
+        date: "Mon, Mar 11",
         topic: "React 2.5: Advanced React",
         readingTitle: "Advanced React",
         readingLink: "/docs/Lessons/Lesson10",
@@ -93,13 +93,13 @@ const weeks: Week[] = [
     topic: "Introduction to APIs",
     lessons: [
       {
-        date: "Mon, Mar 11",
+        date: "Wed, Mar 13",
         topic: "APIs and Postman",
         readingTitle: "APIs",
         readingLink: "/docs/Lessons/Lesson11",
       },
       {
-        date: "Wed, Mar 13",
+        date: "Mon, Mar 18",
         topic: "Express.js and JSON APIs",
         readingTitle: "Advanced React",
         readingLink: "/docs/Lessons/Lesson10",
@@ -110,13 +110,13 @@ const weeks: Week[] = [
     topic: "More approaches to web dev",
     lessons: [
       {
-        date: "Mon, Mar 18",
+        date: "Wed, Mar 20",
         topic: "Express.js and AIs",
         readingTitle: "Node.js",
         readingLink: "/docs/Lessons/Lesson8",
       },
       {
-        date: "Wed, Mar 20",
+        date: "Mon, Apr 1",
         topic: "Databases and Authentication",
         readingTitle: "MySQL and Authentication",
         readingLink: "/docs/Lessons/Lesson14",
@@ -127,13 +127,13 @@ const weeks: Week[] = [
     topic: "🎨 Design and UI/UX",
     lessons: [
       {
-        date: "Mon, Apr 1",
+        date: "Wed, Apr 3",
         topic: "Design: 1",
         readingTitle: "UI/UX",
         readingLink: "/docs/Lessons/Lesson12",
       },
       {
-        date: "Wed, Apr 3",
+        date: "Mon, Apr 8",
         topic: "Design: 2",
         readingTitle: "UI/UX",
         readingLink: "/docs/Lessons/Lesson12",
@@ -144,11 +144,11 @@ const weeks: Week[] = [
     topic: "🕴️ Special Topics",
     lessons: [
       {
-        date: "Wed, Apr 8",
+        date: "Wed, Apr 10",
         topic: "Special Topics: Web Accessibility",
       },
       {
-        date: "Wed, Apr 10",
+        date: "Mon, Apr 15",
         topic: "Special Topics: GitHub",
       },
     ],
@@ -157,23 +157,35 @@ const weeks: Week[] = [
     topic: "💡 Special Topics",
     lessons: [
       {
-        date: "Mon, Apr 15",
+        date: "Wed, Nov 8",
         topic: "Special Topics: Web Frameworks",
       },
-      { date: "Wed, Apr 17", 
-       topic: "Special Topics: TDB" 
-    },
+      { date: "Fri, Nov 10", topic: "Veteran's Day" },
+    ],
+  },
+  {
+    topic: "",
+    lessons: [
+      { date: "Wed, Nov 15", topic: "TBA" },
+      { date: "Fri, Nov 17", topic: "TBA" },
+    ],
+  },
+  {
+    topic: "🐔😋",
+    lessons: [
+      { date: "Wed, Nov 22", topic: "Non-Instructional Day" },
+      { date: "Fri, Nov 24", topic: "Thanksgiving" },
     ],
   },
   {
     topic: "The final stretch!",
     lessons: [
       {
-        date: "Mon, Apr 22",
+        date: "Wed, Nov 29",
         topic: "Final Project Presentations",
       },
       {
-        date: "Wed, Apr 24",
+        date: "Fri, Dec 1",
         topic: "Final Project Presentations",
       },
     ],
