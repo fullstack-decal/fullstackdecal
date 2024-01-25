@@ -5,7 +5,7 @@ const staff = [
     role: "Facilitator",
     linkedin: "https://www.linkedin.com/in/zayna-lateef-942756216/ ",
     personal: "",
-    bio: "Hi! I am a sophmore studying eecs. I love all things outdoor especially the beach, music, and surfing. I am in desperate need of new tv shows so please let me know your recs. I am super exicted for a great semester :)",
+    bio: "Hi! I am a sophmore studying eecs. I love all things outdoor especially the beach, music, and surfing. I am in desperate need of new tv shows so please let me know your recs. I am super excited for a great semester :)",
     github: "https://github.com/ZaynaLateef",
     email: "mailto:zayna.lateef@berkeley.edu",
   },
