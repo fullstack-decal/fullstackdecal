@@ -129,7 +129,7 @@ We encourage you to work on the homework problems in small groups, but each stud
 required to turn in a solution that they have written themselves.
 
 Vitamins are due the following lecture they are assigned, with a late due date of one
-week.
+week. There are NO EXTENSIONS for vitamins.
 
 ### Projects
 
@@ -157,8 +157,8 @@ California, Berkeley's Center for Student Conduct and Community Standards.”
 ### Accommodations and Extensions
 
 - Extension Requests: This is to request extensions on deadlines for any
-  assignments. Requests will be reviewed approximately every 2-3 business days.
-  Extensions will not be visible on Gradescope and but they will show up on grading reports.
+  projects. Requests will be reviewed approximately every 2-3 business days.
+  Extensions will not be visible on Gradescope and but they will show up on grading reports. 
 - Extenuating Circumstances: Private message on Ed or email our facilitators for any circumstances that can't be
   resolved with extensions or lab section changes. Don't be afraid to reach out!
   We're here to help you succeed in our course. The sooner we are made aware, the more options we have available to us to help.

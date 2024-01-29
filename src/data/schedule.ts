@@ -42,8 +42,8 @@ const weeks: Week[] = [
     topic: "🕺 Get moving with JavaScript",
     lessons: [
       {
-        date: "Monday, Feb 19",
-        topic: "Happy Presidents Day!🇺🇸🤴",
+        date: "Mon, Feb 19",
+        topic: "Presidents Day🇺🇸🤴 No Class!!",
       },
       {
         date: "Wed, Feb 21",
@@ -64,7 +64,7 @@ const weeks: Week[] = [
       },
       {
         date: "Wed, Feb 28",
-        topic: "Special Topic TBD",
+        topic: "Special Topics: TBD ",
         readingTitle: "",
         readingLink: "",
       },
@@ -142,7 +142,7 @@ const weeks: Week[] = [
     topic: "🎨 Design and UI/UX",
     lessons: [
       {
-        date: "Wed, Apr 8",
+        date: "Mon, Apr 8",
         topic: "Design: 1",
         readingTitle: "UI/UX",
         readingLink: "/docs/Lessons/Lesson12",
@@ -156,11 +156,24 @@ const weeks: Week[] = [
     ],
   },
   {
+    topic: "🕴️ Special Topics",
+    lessons: [
+      {
+        date: "Wed, Apr 15",
+        topic: "Special Topics: Web Accessibility",
+      },
+      {
+        date: "Wed, Apr 17",
+        topic: "Special Topics: GitHub",
+      },
+    ],
+  },
+  {
     topic: "💡 Special Topics",
     lessons: [
       {
         date: "Mon, Apr 15",
-        topic: "Special Topics: TBD",
+        topic: "Special Topics: Web Frameworks",
       },
       { date: "Wed, Apr 17", 
        topic: "Special Topics: TDB" 
@@ -195,16 +208,16 @@ const assignments: Assignment[] = [
     name: "Vitamin 2: Introduction to CSS",
     assigned: "CSS 1",
     link: "/docs/Assignments/Vitamins/Vitamin2",
-    due: 7,
-    late: 9,
+    due: 5,
+    late: 7,
   },
 
   {
     name: "Vitamin 3: CSS Layout",
     assigned: "CSS 2",
     link: "/docs/Assignments/Vitamins/Vitamin3",
-    due: 5,
-    late: 7,
+    due: 7,
+    late: 9,
   },
 
   {
@@ -285,7 +298,7 @@ const assignments: Assignment[] = [
 const schedule: Schedule = {
   weeks,
   assignments,
-  year: 2023,
+  year: 2024,
 };
 
 export default schedule;
