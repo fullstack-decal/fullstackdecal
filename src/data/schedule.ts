@@ -238,7 +238,7 @@ const assignments: Assignment[] = [
 
   {
     name: "Mid-Semester Feedback Form",
-    assigned: "React 1: Components",
+    assigned: "React 2.5: Advanced React",
     link: "https://forms.gle/WhiLAipZKQJ8x9kG7" ,
     due: 5,
     late: 7,
@@ -267,7 +267,7 @@ const assignments: Assignment[] = [
   },
 
   {
-    name: "Project 2: Blog",
+    name: "Project 2",
     assigned: "React 2.5: Advanced React",
     link: "/docs/Assignments/Projects/Blog",
     due: 19,
