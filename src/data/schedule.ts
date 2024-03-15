@@ -5,7 +5,7 @@ const weeks: Week[] = [
     topic: "👋 Welcome to the course!",
     lessons: [
       { 
-        date: "Mon, Feb 5",
+        date: "M 20",
         topic: "Course Introduction",
         readingTitle: "Introduction",
         readingLink: "/docs/Lessons/Lesson1",
@@ -26,7 +26,7 @@ const weeks: Week[] = [
     lessons: [
       {
         date: "Mon, Feb 12",
-        topic: "CSS 1",
+        topic: "8913yu1893",
         readingTitle: "Introduction to CSS",
         readingLink: "/docs/Lessons/Lesson2",
       },
@@ -58,7 +58,7 @@ const weeks: Week[] = [
     lessons: [
       {
         date: "Mon, Feb 26",
-        topic: "JavaScript 2: DOM",
+        topic: "Manuell's socks2",
         readingTitle: "DOM",
         readingLink: "/docs/Lessons/Lesson5",
       },
@@ -75,7 +75,7 @@ const weeks: Week[] = [
     lessons: [
       {
         date: "Mon, Mar 4",
-        topic: "Internet and Node.js/NPM",
+        topic: "Manuell's socks",
         readingTitle: "SSR",
         readingLink: "/docs/Lessons/Lesson8",
       },
@@ -205,8 +205,8 @@ const assignments: Assignment[] = [
   },
 
   {
-    name: "Vitamin 2: Introduction to CSS",
-    assigned: "CSS 1",
+    name: "AIDONWIOAWDNAWINDO",
+    assigned: "8913yu1893",
     link: "/docs/Assignments/Vitamins/Vitamin2",
     due: 5,
     late: 7,
@@ -222,7 +222,7 @@ const assignments: Assignment[] = [
 
   {
     name: "Vitamin 4: JavaScript and DOM",
-    assigned: "JavaScript 2: DOM",
+    assigned: "Manuell's socks2",
     link: "/docs/Assignments/Vitamins/Vitamin4",
     due: 5,
     late: 7,
@@ -230,7 +230,7 @@ const assignments: Assignment[] = [
 
   {
     name: "Vitamin 5: Internet Quiz",
-    assigned: "Internet and Node.js/NPM",
+    assigned: "Manuell's socks",
     link: "/docs/Assignments/Vitamins/Vitamin5",
     due: 5,
     late: 7,
@@ -254,7 +254,7 @@ const assignments: Assignment[] = [
 
   {
     name: "Project 1: First Checkpoint",
-    assigned: "CSS 1",
+    assigned: "8913yu1893",
     link: "/docs/Assignments/Projects/PersonalWebsite",
     due: 9,
   },
