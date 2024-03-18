@@ -109,15 +109,15 @@ const weeks: Week[] = [
     lessons: [
       {
         date: "Mon, Mar 18",
-        topic: "APIs and Postman",
-        readingTitle: "APIs",
-        readingLink: "/docs/Lessons/Lesson11",
+        topic: "Project 2 Worksession",
+        readingTitle: "",
+        readingLink: "",
       },
       {
         date: "Wed, Mar 20",
-        topic: "Express.js and JSON APIs",
-        readingTitle: "Advanced React",
-        readingLink: "/docs/Lessons/Lesson10",
+        topic: "APIs and Postman",
+        readingTitle: "APIs",
+        readingLink: "/docs/Lessons/Lesson11",
       },
     ],
   },
@@ -126,7 +126,7 @@ const weeks: Week[] = [
     lessons: [
       {
         date: "Mon, Apr 1",
-        topic: "Express.js and AIs",
+        topic: "Express.js and JSON APIs",
         readingTitle: "Node.js",
         readingLink: "/docs/Lessons/Lesson8",
       },
@@ -267,7 +267,7 @@ const assignments: Assignment[] = [
   },
 
   {
-    name: "Project 2: Blog",
+    name: "Project 2",
     assigned: "React 2.5: Advanced React",
     link: "/docs/Assignments/Projects/Blog",
     due: 19,
