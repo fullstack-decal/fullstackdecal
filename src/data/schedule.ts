@@ -143,13 +143,13 @@ const weeks: Week[] = [
     lessons: [
       {
         date: "Mon, Apr 8",
-        topic: "Design: 1",
+        topic: "Design: 1 & 2",
         readingTitle: "UI/UX",
         readingLink: "/docs/Lessons/Lesson12",
       },
       {
         date: "Wed, Apr 10",
-        topic: "Design: 2",
+        topic: "Special Topics: 🤫🤫🤫🤫🤫",
         readingTitle: "UI/UX",
         readingLink: "/docs/Lessons/Lesson12",
       },
@@ -160,24 +160,12 @@ const weeks: Week[] = [
     lessons: [
       {
         date: "Wed, Apr 15",
-        topic: "Special Topics: Web Accessibility",
+        topic: "Special Topics: 🤫🤫🤫🤫🤫",
       },
       {
         date: "Wed, Apr 17",
-        topic: "Special Topics: GitHub",
+        topic: "Special Topics: Career Pannel",
       },
-    ],
-  },
-  {
-    topic: "💡 Special Topics",
-    lessons: [
-      {
-        date: "Mon, Apr 15",
-        topic: "Special Topics: Web Frameworks",
-      },
-      { date: "Wed, Apr 17", 
-       topic: "Special Topics: TDB" 
-    },
     ],
   },
   {
@@ -273,26 +261,26 @@ const assignments: Assignment[] = [
     due: 19,
   },
 
-  {
-    name: "Final Project: Groups",
-    assigned: "Special Topics: Web Accessibility",
-    link: "/docs/Assignments/Projects/FinalProject",
-    due: 2,
-  },
+  // {
+  //   name: "Final Project: Groups",
+  //   assigned: "Special Topics: Web Accessibility",
+  //   link: "/docs/Assignments/Projects/FinalProject",
+  //   due: 2,
+  // },
 
-  {
-    name: "Final Project: Idea",
-    assigned: "Special Topics: GitHub",
-    link: "/docs/Assignments/Projects/FinalProject",
-    due: 5,
-  },
+  // {
+  //   name: "Final Project: Idea",
+  //   assigned: "Special Topics: GitHub",
+  //   link: "/docs/Assignments/Projects/FinalProject",
+  //   due: 5,
+  // },
 
-  {
-    name: "Final Project: GitHub & Figma",
-    assigned: "Special Topics: Web Frameworks",
-    link: "/docs/Assignments/Projects/FinalProject",
-    due: 7,
-  },
+  // {
+  //   name: "Final Project: GitHub & Figma",
+  //   assigned: "Special Topics: Web Frameworks",
+  //   link: "/docs/Assignments/Projects/FinalProject",
+  //   due: 7,
+  // },
 ];
 
 const schedule: Schedule = {
