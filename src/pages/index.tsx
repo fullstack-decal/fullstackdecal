@@ -1,3 +1,20 @@
+/**
+ * Introduction
+ *
+ * This is the main entry point of the project, responsible for rendering the home page.
+ * It uses the Schedule component to display the course schedule and the WeekCard component to display each week's information.
+ *
+ * The Schedule component is located in the `data/schedule.ts` file and contains the course schedule data.
+ * The WeekCard component is located in the `components/WeekCard.tsx` file and is responsible for rendering a single week's information.
+ *
+ * To maintain and update the code, you can modify the schedule data in the `data/schedule.ts` file.
+ * You can also update the WeekCard component to change the way each week's information is displayed.
+ *
+ * @example
+ * To add a new week to the schedule, simply add a new object to the `weeks` array in the `data/schedule.ts` file.
+ * To update the WeekCard component, modify the `WeekCard.tsx` file.
+ */
+
 import React from "react";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -15,6 +32,13 @@ import {
 import fullStackLogoPath from "@site/static/img/logo.png";
 import { useColorMode } from "@docusaurus/theme-common";
 
+/**
+ * HomeContent component
+ *
+ * This component renders the home page content, including the course title, schedule, and WeekCard components.
+ *
+ * @returns {JSX.Element} The home page content.
+ */
 const HomeContent: React.FC = () => {
   const { colorMode } = useColorMode();
   return (

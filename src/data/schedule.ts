@@ -1,23 +1,57 @@
+/**
+ * Schedule data type
+ *
+ * The Schedule data type represents a course schedule, consisting of an array of weeks and an array of assignments.
+ *
+ * @example
+ * const schedule: Schedule = {
+ *   weeks: [
+ *     {
+ *       topic: "Welcome to the course!",
+ *       lessons: [
+ *         {
+ *           date: "M 20",
+ *           topic: "Course Introduction",
+ *           readingTitle: "Introduction",
+ *           readingLink: "/docs/Lessons/Lesson1",
+ *         },
+ *       ],
+ *     },
+ *   ],
+ *   assignments: [
+ *     {
+ *       name: "Vitamin 1: HTML",
+ *       assigned: "HTML",
+ *       link: "/docs/Assignments/Vitamins/Vitamin1",
+ *       due: 5,
+ *       late: 7,
+ *     },
+ *   ],
+ *   year: 2024,
+ * };
+ */
+
 import { Week, Assignment, Schedule } from "../types";
 
 const weeks: Week[] = [
   {
     topic: "👋 Welcome to the course!",
     lessons: [
-      { 
+      {
         date: "M 20",
         topic: "Course Introduction",
         readingTitle: "Introduction",
         readingLink: "/docs/Lessons/Lesson1",
         recordingLink: "https://www.youtube.com/watch?v=fAeXuglTsrU",
+        format: ""
       },
       {
         date: "Wed, Feb 7",
         topic: "HTML",
         readingTitle: "HTML",
         readingLink: "/docs/Lessons/Lesson1",
-        recordingLink:
-          "https://www.youtube.com/watch?v=Q7T5vAdUcI0&feature=youtu.be",
+        recordingLink: "https://www.youtube.com/watch?v=Q7T5vAdUcI0&feature=youtu.be",
+        format: ""
       },
     ],
   },
@@ -29,12 +63,14 @@ const weeks: Week[] = [
         topic: "8913yu1893",
         readingTitle: "Introduction to CSS",
         readingLink: "/docs/Lessons/Lesson2",
+        format: ""
       },
       {
         date: "Wed, Feb 14",
         topic: "CSS 2",
         readingTitle: "Advanced CSS",
         readingLink: "/docs/Lessons/Lesson3",
+        format: ""
       },
     ],
   },
@@ -44,12 +80,14 @@ const weeks: Week[] = [
       {
         date: "Mon, Feb 19",
         topic: "Presidents Day🇺🇸🤴 No Class!!",
+        format: ""
       },
       {
         date: "Wed, Feb 21",
         topic: "JavaScript 1: Essentials",
         readingTitle: "Basic JavaScript",
         readingLink: "/docs/Lessons/Lesson4",
+        format: ""
       },
     ],
   },
@@ -61,12 +99,14 @@ const weeks: Week[] = [
         topic: "Manuell's socks2",
         readingTitle: "DOM",
         readingLink: "/docs/Lessons/Lesson5",
+        format: ""
       },
       {
         date: "Wed, Feb 28",
         topic: "Special Topics: TBD ",
         readingTitle: "",
         readingLink: "",
+        format: ""
       },
     ],
   },
@@ -78,12 +118,14 @@ const weeks: Week[] = [
         topic: "Manuell's socks",
         readingTitle: "SSR",
         readingLink: "/docs/Lessons/Lesson8",
+        format: ""
       },
       {
         date: "Wed, Mar 6",
         topic: "React 1: Components",
         readingTitle: "Intro to React",
         readingLink: "/docs/Lessons/Lesson9",
+        format: ""
       },
     ],
   },
@@ -95,12 +137,14 @@ const weeks: Week[] = [
         topic: "React 2: State",
         readingTitle: "Intro to React",
         readingLink: "/docs/Lessons/Lesson9",
+        format: ""
       },
       {
         date: "Wed, Mar 13",
         topic: "React 2.5: Advanced React",
         readingTitle: "Advanced React",
         readingLink: "/docs/Lessons/Lesson10",
+        format: ""
       },
     ],
   },
@@ -112,12 +156,14 @@ const weeks: Week[] = [
         topic: "Project 2 Worksession",
         readingTitle: "",
         readingLink: "",
+        format: ""
       },
       {
         date: "Wed, Mar 20",
         topic: "APIs and Postman",
         readingTitle: "APIs",
         readingLink: "/docs/Lessons/Lesson11",
+        format: ""
       },
     ],
   },
@@ -129,12 +175,14 @@ const weeks: Week[] = [
         topic: "Express.js and JSON APIs",
         readingTitle: "Node.js",
         readingLink: "/docs/Lessons/Lesson8",
+        format: ""
       },
       {
         date: "Wed, Apr 3",
         topic: "Databases and Authentication",
         readingTitle: "MySQL and Authentication",
         readingLink: "/docs/Lessons/Lesson14",
+        format: ""
       },
     ],
   },
@@ -146,12 +194,14 @@ const weeks: Week[] = [
         topic: "Design: 1 & 2",
         readingTitle: "UI/UX",
         readingLink: "/docs/Lessons/Lesson12",
+        format: ""
       },
       {
         date: "Wed, Apr 10",
         topic: "Special Topics: 🤫🤫🤫🤫🤫",
         readingTitle: "UI/UX",
         readingLink: "/docs/Lessons/Lesson12",
+        format: ""
       },
     ],
   },
@@ -161,10 +211,12 @@ const weeks: Week[] = [
       {
         date: "Wed, Apr 15",
         topic: "Special Topics: 🤫🤫🤫🤫🤫",
+        format: ""
       },
       {
         date: "Wed, Apr 17",
         topic: "Special Topics: Career Pannel",
+        format: ""
       },
     ],
   },
@@ -174,10 +226,12 @@ const weeks: Week[] = [
       {
         date: "Mon, Apr 22",
         topic: "Final Project Presentations",
+        format: ""
       },
       {
         date: "Wed, Apr 24",
         topic: "Final Project Presentations",
+        format: ""
       },
     ],
   },
