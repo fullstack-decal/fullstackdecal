@@ -1,4 +1,3 @@
-#!/bin/sh
-# . "$(dirname "$0")/_/husky.sh"
-
-# yarn lint
+node src/lib/removeUnusedDependencies.mjs
+npm install
+git add .

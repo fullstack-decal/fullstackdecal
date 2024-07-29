@@ -1,14 +1,13 @@
 import React from 'react';
 
 import { Flex, Text, Icon, Link } from '@chakra-ui/react';
-
 import { BsLinkedin } from 'react-icons/bs';
 
-type PastStaffMemberProps = {
+interface PastStaffMemberProps {
   name: string;
   image: string;
   linkedin: string;
-};
+}
 
 const PastStaffMember: React.FC<PastStaffMemberProps> = ({
   name,

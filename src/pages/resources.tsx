@@ -2,9 +2,9 @@ import React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import { Box, Text, Container } from "@chakra-ui/react";
-import RecruitingResources from "../data/recruiting-resources.mdx";
-import DevResources from "../data/dev-resources.mdx";
-import PastIterations from "../data/past-iterations.mdx";
+import RecruitingResources from "../data/markdown/recruiting-resources.mdx";
+import DevResources from "../data/markdown/dev-resources.mdx";
+import PastIterations from "../data/markdown/past-iterations.mdx";
 
 const Resources = () => {
   const { siteConfig } = useDocusaurusContext();

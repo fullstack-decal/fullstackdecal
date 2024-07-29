@@ -1,22 +1,22 @@
-export type Assignment = {
+export interface Assignment {
   link: string;
   name: string;
   assigned: string;
   due: number;
-};
+}
 
-export type Schedule = {
+export interface Schedule {
   weeks: Week[];
   assignments: Assignment[];
   year: number;
-};
+}
 
-export type Week = {
+export interface Week {
   lessons: Lesson[];
   topic: string;
-};
+}
 
-export type Lesson = {
+export interface Lesson {
   date: string;
   format: string;
   topic: string;
@@ -29,4 +29,4 @@ export type Lesson = {
   assigmentDueDate?: string;
   assigmentLink?: string;
   starterCode?: string;
-};
+}
