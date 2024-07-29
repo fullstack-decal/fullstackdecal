@@ -1,0 +1,359 @@
+---
+sidebar_position: 7
+---
+
+# HW 7 - MongoDB & Authentication
+
+## **Introduction**
+
+In this homework, we wish to provide students with a hands-on experience in creating their own API endpoints that are protected with authentication. Students will learn how to set up API endpoints and have them interact with a MongoDB database while also implementing an authentication system to verify if incoming requests are from verified users.
+
+## Learning Objectives
+
+- Setting up a MongoDB database
+- Setting up a backend server with functional API endpoints
+- Using authentication to provide allow/deny access to the backend endpoints
+  - Implement a simple sign-up/log-in system for verifying users
+
+## Set-Up
+
+First, navigate to your root directory. Initialize npm and install the necessary packages with the following commands.
+
+```jsx
+npm init
+npm install --save express cors mongoose express bcryptjs jsonwebtoken express-validator
+```
+
+Create a file called `index.js`. This will be where we set up your Express server. Take note that there are several commented lines of code. Make sure to uncomment these lines once you have finished the parts with their implementation.
+
+```jsx
+const express = require("express");
+// const user = require("./routes/user");
+// const InitiateMongoServer = require("./config/db");
+
+// Initiate Mongo Server
+// InitiateMongoServer();
+
+const app = express();
+
+// PORT
+const PORT = process.env.PORT || 4000;
+
+// Middleware
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.json({ message: "API Working" });
+});
+
+// /**
+//  * Router Middleware
+//  * Router - /user/*
+//  * Method - *
+//  */
+//  app.use("/user", user);
+
+app.listen(PORT, (req, res) => {
+  console.log(`Server Started at PORT ${PORT}`);
+});
+```
+
+Next, we need to set up the database. Open your terminal and type in the command `mongo`. This should start up MongoDB. You should see a message similar to the one below:
+
+```jsx
+MongoDB shell version v5.0.6
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+```
+
+We will use the first half of the URI after the “connecting to”, aka, `mongodb://127.0.0.1:27017/` as our URI to the database.
+
+Come up with a creative name for your database and add that to the end of the URI. An example would be `example-auth-db`. Back in your code editor, create a new folder called `config` and add a new file called `db.js`. Paste the following code there. Make sure to have the correct URI.
+
+```jsx
+const mongoose = require("mongoose");
+
+// Replace this with your MONGOURI.
+const MONGOURI = "mongodb://127.0.0.1:27017/___(Your db name here)___";
+const InitiateMongoServer = async () => {
+  try {
+    await mongoose.connect(MONGOURI, {
+      useNewUrlParser: true,
+    });
+    console.log("Connected to DB !!");
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
+};
+
+module.exports = InitiateMongoServer;
+```
+
+## Q1 - Create a User Model
+
+Go ahead and create a new folder named **models**. Inside this folder, create a file named **User.js.** This is where we will be defining our user schema. It should have several essential fields such as “username,” “password,” “email,” “createdAt,” etc. Feel free to add your own fields.
+
+```jsx
+const mongoose = require("mongoose");
+
+const UserSchema = mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+  },
+  // Add more fields for information on the user.
+});
+
+// export model user with UserSchema
+module.exports = mongoose.model("user", UserSchema);
+```
+
+## Q2 - Create a SignUp Path
+
+Now that the database has been set up, we want to create an endpoint that can populate the database with new users and their information. Add a new `routes` folder to the root directory and create a new file called `user.js`. This will hold all the new endpoints we want to create.
+
+```jsx
+const express = require("express");
+const { check, validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const router = express.Router();
+
+const User = require("../models/User");
+
+/**
+ * @method - POST
+ * @param - /signup
+ * @description - User SignUp
+ */
+
+router.post(
+  "/signup",
+  [
+    check("username", "Please Enter a Valid Username").not().isEmpty(),
+    check("email", "Please enter a valid email").isEmail(),
+    check("password", "Please enter a valid password").isLength({
+      min: 6,
+    }),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array(),
+      });
+    }
+
+    const { ______, ______, ______ } = req.body;
+    try {
+      let user = await User.findOne({
+        ______,
+      });
+      if (user) {
+        return res.status(400).json({
+          msg: "User Already Exists",
+        });
+      }
+
+      user = new User({
+        ______,
+        ______,
+        ______,
+      });
+
+      const salt = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(password, salt);
+
+      await user.save();
+
+      const payload = {
+        user: {
+          id: user.id,
+          // Add more fields to the payload
+        },
+      };
+
+      jwt.sign(
+        payload,
+        ______,
+        // Make a new hash String
+        {
+          expiresIn: 10000,
+        },
+        (err, token) => {
+          if (err) throw err;
+          res.status(200).json({
+            token,
+          });
+        }
+      );
+    } catch (err) {
+      console.log(err.message);
+      res.status(500).send("Error in Saving");
+    }
+  }
+);
+
+module.exports = router;
+```
+
+## Q3 - Create a Login Path
+
+Ask students to create an endpoint that users can use to log in. This will return a JWT for authentication purposes.
+
+```jsx
+router.post(
+  "/login",
+  [
+    check("email", "Please enter a valid email").isEmail(),
+    check("password", "Please enter a valid password").isLength({
+      min: 6,
+    }),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array(),
+      });
+    }
+
+    const { ______, ______ } = req.body;
+    try {
+      let user = await User.findOne({
+        email: ______,
+      });
+      if (!user)
+        return res.status(400).json({
+          message: "User Not Exist",
+        });
+
+      const isMatch = await bcrypt.compare(______, ______);
+      if (!isMatch)
+        return res.status(400).json({
+          message: "Incorrect Password !",
+        });
+
+      const payload = {
+        user: {
+          id: user.id,
+          // Add more fields to the payload
+        },
+      };
+
+      jwt.sign(
+        payload,
+        ______,
+        // Use the same secret string for signing
+        {
+          expiresIn: 10000,
+        },
+        (err, token) => {
+          if (err) throw err;
+          res.status(200).json({
+            token,
+          });
+        }
+      );
+    } catch (e) {
+      console.error(e);
+      res.status(500).json({
+        message: "Server Error",
+      });
+    }
+  }
+);
+```
+
+## Q4 - Create a GET Path
+
+Ask students to create an endpoint that gets some information from the database. Ex. Getting name/email from the database.
+
+So, our next task will be to retrieve the logged-in user using the **token**. Let's go and add this functionality.
+
+The `/user/me` route will return your user if you pass the token in the header. In the file **route.js**, add the below code snippet.
+
+```jsx
+/**
+ * @method - GET
+ * @description - Get LoggedIn User
+ * @param - /user/me
+ */
+
+router.get("/me", auth, async (req, res) => {
+  try {
+    // request.user is getting fetched from Middleware after token authentication
+    const user = await User.findById(______);
+    res.json(user);
+  } catch (e) {
+    res.send({ message: "Error in Fetching user" });
+  }
+});
+```
+
+As you can see, we added the auth middleware as a parameter in the **/user/me** GET route, so let's define **auth** function.
+
+Go ahead and create a new folder named **middleware**. Inside this folder, create a file named **auth.js**
+
+> This auth middleware will be used to verify the token, and retrieve the user based on the token payload.
+
+```jsx
+const jwt = require("jsonwebtoken");
+
+module.exports = function (req, res, next) {
+  const token = req.header("token");
+  if (!token) return res.status(401).json({ message: "Auth Error" });
+
+  try {
+    const decoded = jwt.verify(token, ______ // Your secret string);
+    req.user = decoded.user;
+    next();
+  } catch (e) {
+    console.error(e);
+    res.status(500).send({ message: "Invalid Token" });
+  }
+};
+```
+
+- Remember to import the auth middleware inside user.js!
+  - `const auth = require("./../middleware/auth");`
+
+## Q5 - Create a DELETE Path
+
+Next, add an endpoint that will delete your account from the database.
+
+** Hint: ** Take a look [here](https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteOne/) to find the documentation for deleting from a MongoDB database.
+
+```jsx
+router.delete("/remove-user", auth, async (req, res) => {
+  try {
+    const user = await User.findById(______);
+    const response = await User.deleteOne(______);
+    res.json(response);
+  } catch (e) {
+    res.send({ message: "There was an error with deleting your account." });
+  }
+});
+```
+
+## Q6 - Create a PUT Path
+
+Finally, create an endpoint that will allow users to update their information in the database.
+
+**Hint 1:** The new information should be sent in `req.body`.
+
+**Hint 2:** Look [here](https://www.mongodb.com/docs/manual/reference/method/db.collection.updateOne/) under "Examples" for documentation on updating documents.
+
+```jsx
+router.put("/update-user", auth, async (req, res) => {
+  try {
+    const response = await User.updateOne(______, ______);
+    res.json(response);
+  } catch (e) {
+    res.send({ message: "There was an error with updating your information." });
+  }
+});
+```
+
+Don’t forget to make use of Postman to test out your API endpoints! An example can be found in the lecture notes.

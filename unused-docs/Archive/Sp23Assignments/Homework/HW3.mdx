@@ -1,0 +1,121 @@
+---
+sidebar_position: 3
+---
+
+# HW 3 - JavaScript
+
+In this homework, we will be covering the essentials of JavaScript for web
+development. Although JavaScript will be presented in this homework as a language
+that runs *after* your HTML, adding functionality here and there, it will soon
+become the driving force of your website with the introduction of React. For
+this reason, you must learn JavaScript well. This homework is designed to give
+you a good overview of the most important parts of JavaScript.
+
+## Q0: Read the Notes
+
+JavaScript was designed in a rush, and it shows. It is not a beautiful language.
+It is confusing. For this reason, make sure you read all the JavaScript notes
+while doing this homework. The JavaScript notes contain a
+lesson, [Fundamental JavaScript Concepts](/docs/Lessons/Lesson5), and a
+[Review of the Document Object Model (DOM)](/docs/Lessons/Lesson6).
+
+### Starter
+[Starter Code](https://classroom.github.com/a/-Ezwg9k6)
+
+## Q1: Function This
+
+Implement the following function to take a list 
+and return the item in the list corresponding to the maximum value in
+list after applying `func` to each item.
+
+```js
+function max(list, func) {
+  var maximum = _____;
+  for (var _____ of ______) {
+    var _____ = func(_____);
+    if (______ >= _____) {
+      ______ = ______;
+    }
+  }
+  return maximum;
+}
+```
+
+## Q2: Flip It and Reverse It
+
+Based on the previous question, in one line, write an anonymous function which,
+when passed as `func` to `max` would cause `max` to return the smallest value in
+the list.
+
+```js
+const reverser = _____;
+```
+
+## Q3: What is This?
+
+When objects are created, we use getters to set their initial values. Getters allow us to access value of the object
+during initialization. In the following function, complete the getter to compute the Euclidean distance between **(a, b)** and **(x, y)**
+
+```js
+class Point {
+    constructor(x, y) {
+        // Initialize the point with the given x and y coordinates
+    }
+    distance(p) {
+        return Math.sqrt(
+            // return the Euclidean distance between this point and point p
+            // hint: Euclidean distance is given by sqrt((a - x)^2 + (b - y)^2)
+        )
+    }
+}
+```
+
+## Q4: Objects Gworl
+
+**Warning: Read the following spec very carefully**
+
+We want to create a general purpose function to keep records. We pass a JavaScript
+object, key, and value to our function, and in return, our function should do
+the following:
+
+- If the current value of the item at `key` is a singular item, update the `key`
+  to correspond to `value`
+- If the current value of the item at `key` is a list, append `value` to the
+  list
+- If the current value of the item at `key` is another JSON object, create a new
+  entry using `key` as the key and `value` as the value
+
+```js
+function changer(object, key, value) {
+  var ______ = ______;
+  if (Array.isArray(prev)) {
+    ______;
+  } else if (typeof prev == 'object' && prev != null) {
+    ______ = ______;
+  } else {
+    ______ = ______;
+  }
+  return null;
+}
+```
+
+## Q5: Promises Promises
+
+In this function, we want to print the numbers `1, 2, 3, 4, 5` in numerical
+order. Using Promises, fill in the function to print numbers in the correct
+order
+
+```js
+async function promise_me(truthy) {
+    const a = new Promise((resolve, reject) => {
+        console.log(_____)
+        ______(______)
+    })
+    console.log(2)
+    console.log(3)
+    console.log(4)
+    const five = ______ ______
+    console.log(five)
+    return five
+}
+```

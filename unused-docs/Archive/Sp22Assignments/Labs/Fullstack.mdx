@@ -1,0 +1,89 @@
+# Fullstack Lab
+
+For this lab, we will be reviewing an example of a fullstack website with frontend, backend, and all of the necessary components for 
+a production grade website. This website, called _Up and Coming_ was a final project
+created in the very first iteration of this course. Here, we have provided is as an
+example of what a complete website, and a complete final project, should look like.
+
+## Prerequisites
+
+- NodeJS
+- React
+- MongoDB
+
+To install any of these, please visit the documentation.
+
+## Cloning the Repository
+
+This project consists of two different repositories.
+One repository contains the frontend code and the other contains the backend code.
+For your own project, you may choose to separate frontend and backend into two repositories,
+or you may use one repository and organize two separate directories in that single repository.
+
+In order to give you access to play around with the code, please **fork** each repository. 
+To fork, visit the following links:
+
+- Frontend: https://github.com/WDB-Project/frontend
+- Backend: https://github.com/WDB-Project/backend 
+
+**_Fork_** the repository to your own account. Once it has been forked to your account, clone it to your local machine.
+The rest of this lab will be completed locally.
+
+## Database Setup
+
+This project uses a database to store users. Because it runs the database locally,
+you must setup the database beforehand in for it to work.
+
+First ensure that you have MongoDB (Community Edition) is installed.
+Into your terminal, enter the following:
+
+```
+mongo
+use upandcoming
+```
+
+`mongo` should start up the mongo shell and `use upandcoming` will create the
+necessary database. If successful, you should see `switched to db upandcoming`
+
+## Starting up
+
+To actually start the website, we will be running the frontend and backend in parallel.
+Because they are built with different softwares, this example runs them as separate entities,
+accessible via separate ports. Our frontend will literally make HTTP requests to 
+our backend. As such, they must run on separate ports.
+
+For this project, the frontend runs on localhost:3000 and the backend on localhost:3030
+
+To actually spin up, first open a terminal. `cd` into the `frontend` repository, 
+and into the terminal type 
+
+```
+yarn start
+```
+
+Now, open a new terminal. **DO NOT interrupt the previous terminal**. Both terminals
+must run at the _same_ time. `cd` into the `backend` respository, and type:
+
+```
+node server.js
+```
+
+Now, both components should be working correctly. 
+
+## Explore
+
+The premise of this website was to serve as a volunteer social media.
+Individuals could sign up to volunteer, create and browse events, and keep track
+of what events they have attended this year. Feel free to play with the website, 
+and ensure that you are continuously looking back at the code to understand what is 
+going on.
+
+---
+
+**Contributors**
+
+- Dhruv Vaish
+- Kimberley Fan
+- Isabel Zheng
+- Anjan Bharadwaj
+- Gautam Venkatesh

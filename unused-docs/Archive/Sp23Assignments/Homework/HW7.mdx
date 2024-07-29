@@ -1,0 +1,167 @@
+---
+sidebar_position: 7
+---
+
+# HW 7 - Advanced Backend
+
+## Goal
+
+Create a shopping list app using MongoDB + Express.js, where a user can signup
+and login to create a shopping list. The user should be able to add and delete
+items within the shopping list given the index. If the user is not logged in,
+all operations should not be allowed.
+
+## Routes
+
+Here is a list of routes required to build for this homework. Note that I am
+using 4000 as my port, but feel free to use any other port if you want.
+
+1. User Signup Route: POST http://localhost:4000/user/signup
+
+   1. Request Body (feel free to use your own test data):
+
+      ```jsx
+      {
+          "username": "alexwu",
+          "password": "123456"
+      }
+      ```
+
+   2. the response should be a token of the user
+
+2. User Login Route: POST http://localhost:4000/user/login
+
+   1. Request Body
+
+      ```jsx
+      {
+          "username": "alexwu",
+          "password": "123456"
+      }
+      ```
+
+   2. the response should be a token of the user
+
+3. Retrieve the current shopping list: GET http://localhost:4000/shop/list
+   1. The request should come with a header of `token: the_user_token_here`
+      1. the user token should be the one that you have received through the
+         login / signup routes
+      2. if the token is incorrect, return auth error
+   2. the response should be a list of items or an empty list
+4. Add a new item: POST http://localhost:4000/shop/add
+
+   1. The request should come with a header of `token: the_user_token_here`
+      1. if the token is incorrect, return auth error
+   2. Body
+
+      ```jsx
+      {
+          "item": "apple"
+      }
+      ```
+
+   3. the response should be the new list: (if you have already added an
+      "orange")
+
+      ```jsx
+      ['orange', 'apple'];
+      ```
+
+5. Delete an item: DELETE http://localhost:4000/shop/delete
+
+   1. The request should come with a header of `token: the_user_token_here`
+      1. if the token is incorrect, return auth error
+   2. Body
+
+      ```jsx
+      {
+          "item": "apple"
+      }
+      ```
+
+   3. the response should be a new list
+
+## Steps
+
+### Step One: Setup User Auth
+
+For all user authentication implementation, please refer to our course plan
+first:
+
+This resource is also particularly helpful in building user authentication:
+
+[Authentication in NodeJS With Express and Mongo - CodeLab #1](https://dev.to/dipakkr/implementing-authentication-in-nodejs-with-express-and-jwt-codelab-1-j5i)
+
+First of all, you need to `npm init` and then download all the relevant
+packages. Then, use `mongo` and `use auth-hw` to create a database named
+`auth-hw`.
+
+- Note that in the resource we provided, they use a cloud-based database, and we
+  are instead using a local database.
+
+With the user schema, since every user should be able to:
+
+1. signup & login
+2. create / modify shopping list
+
+```jsx
+const UserSchema = mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  shoppinglist: {
+    type: Array,
+    required: false,
+  },
+});
+```
+
+You should be able to follow the resource above to create a successful
+authenticated app. After you have done so, now it's time to add in routes to
+support the shopping list app.
+
+- Note that the resource has forgot to include how to import the `auth`
+  middleware, here's how to do it:
+  ```jsx
+  const auth = require('../middleware/auth');
+  ```
+
+### Step Two: Shopping list app
+
+To create the shopping list app, you need to support three routes. The GET,
+POST, and DELETE. All of them can be achieved by simple list operations and the
+help of `auth` middleware as seen in the resource.
+
+You would want to start by creating a new `shop.js` file inside routes folder
+that contains all the routes for shopping list related operations. Then import
+the shop.js file inside index.js similar to how you have imported the `user.js`
+file. Then, you can implement the three routes there.
+
+Here's an example of how you might implement the `shop/list` route:
+
+```jsx
+router.get('/list', auth, async (req, res) => {
+  try {
+    // TODO
+  } catch (e) {
+    res.send({ message: 'Error in Fetching user' });
+  }
+});
+```
+
+## Submission
+
+Since all the database are local, this will be another checkoff homework!
+
+1. Before getting checked off, make sure to submit the link to the Github repo on Gradescope.
+
+---
+
+**Contributors**
+
+- [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)

@@ -1,0 +1,131 @@
+---
+sidebar_position: 1
+---
+
+# HW 1 - HTML
+
+## Introduction
+
+In this homework we want students to learn how to create an HTML webpage using all the widely used common HTML tags. 
+Images of the expected look of the page will be provided for their reference. 
+The aim will be to create an information page for a popular celebrity of the student’s choice. 
+We have divided the webpage into multiple segments and will walk through the different segments as the webpage builds.
+
+## **Learning Objectives**
+
+- Using essential HTML (text) tags
+    - h1, h2, p, b, i, sub, sup, br, etc.
+    - Creating bulleted lists using `<ul>`, `<ol>`, and `<li>` tags
+- Embedding an image in the webpage using `<img>`. Alternate text prop
+- Linking to different pages -  1 live page and 1 local page (`<a>` tag).
+- A button to perform a basic task like an alert.
+- Creating a basic form on the local page.
+- Basic info about meta tags
+
+## Setup
+
+Accept the following GitHub classroom assignment to get the starter code. 
+
+[Homework 1](https://classroom.github.com/a/0PVGDd-v)
+
+![Absolute Image](../assets/Assignment1/Webpage_ss.png)
+
+Although this is your first homework, if you bear with us, we’ll try our best to guide you through it.
+Today, you’ll be creating a webpage about famous Stranger Things actor Steve Harrington. 
+This website includes an image, a table of contents, headings, paragraphs, and so much more!
+
+Please follow the exact content given in the following instructions above and try to copy the above image exactly 
+so that the autograder can give you full points.
+
+## Q1 - Title, Heading
+
+First, we will need a title to tell our readers what they will be reading about
+
+- Set the title of the webpage as “Steve Harrington Tribute”.
+- After the title, set the heading as “Steve Harrington”. This should be a size 1 heading (**hint:** h1).
+- Notice how the heading and title are different
+
+## Q2 - Links
+
+Now, let's add a link that navigates the user to elsewhere on the web! Use the `<a>` tag to add a link to the actual Wikipedia page from your wiki page. 
+Here's the link to the actual wiki page. Look up the **`<a>`** tag to see how you can make the new page open up in a new tab.
+
+> https://en.wikipedia.org/wiki/Steve_Harrington
+
+## Q3 - Content
+
+Copy the following paragraph into your HTML page:
+
+> Steve Harrington is a fictional character from the Netflix television show Stranger Things, portrayed by Joe Keery. 
+> While starting out as a typical unlikable jock, Steve has grown into a more protecting and caring character 
+> as the show has progressed, a development that has received widespread acclaim from critics and fans alike 
+> and has led to him becoming one of the show’s most beloved and enduring characters.[1] 
+> Initially a part of the recurring cast, Keery was promoted to the main cast in the second season. 
+> Steve is a side antagonist turned protagonist at the end of season 1,
+> and one of the main protagonists of season 2, season 3, and season 4.
+
+## Q4 - Celebrity Image
+
+![Absolute Image](../Homework/Assignment1_assets/Steve_Harrington.png)
+
+Now insert Steve Harrington’s image. (Height - 250px)
+
+(Right click to download the image)
+
+## Q4 - Table of Contents and Info
+
+Let's make a table of contents, like the Wikipedia page, except that we will not include links just yet. Instead, our table of contents will be simply text for now. Use `ul` and `li` tags to create a table of contents.
+
+Set the size of ‘Content’ as h3.
+
+Now we are going to write some real stuff and go deeper in the content.
+
+Set the main heading to `<h2>` and write the rest of the information on seasons using a combination of the `<h3>` and `<p>` tags.
+
+## Q5 - Alert Button
+
+Let's add a button to this page! When clicked, the button should pop up an alert message that thanks the user for being a big Steve Harrington fan! Here’s a quick breakdown of the alert function.
+
+[Window alert()](https://www.w3schools.com/jsref/met_win_alert.asp)
+
+The alert message should say - “Thank you for being a big Steve Harrington fan!”.
+
+## Q6 - Local Page and Form
+
+In your folder, let's create another HTML page! We'll call this page secret.html. Use the skeleton code given above for this page too. Now, we want to create a link in our main index.html that navigates to the secret.html page. 
+
+We’ll add a form to this local page. Before that add a link with the name ‘Click here for a secret!’ that leads to this secret page in a new tab. 
+
+Now that we have a secret page, we can do ~ secret stuff ~. That is to say, we're going to ask for the user's name and email on the secret page. Using the `form` and `input` tags, create a form that accepts a name and email, with a submit button.
+
+Your form should look something like this:
+
+![Absolute Image](../Homework/Assignment1_assets/Form_ss.png)
+
+You might need to use some **`<br>`** tags to make the form look like this.
+
+## Metadata
+
+The `<meta>` tag defines metadata about an HTML document. Metadata is data (information) about data.
+
+Tags like `title` and `meta` go into the `<head></head>` of your HTML document. These tags are responsible for telling search engines and the browser top-level information about your site.
+
+A common structure is `<meta name="____", description="____"/>`
+
+[HTML meta tag](https://www.w3schools.com/tags/tag_meta.asp)
+
+## Conclusion
+
+This concludes your fanpage. You are now a Steve Harrington superfan! Even if not a Stranger Things fan, 
+we hope you are now an HTML fan. Remember, HTML is the outline of the Internet. 
+In this homework, we learned how to layout and template content. 
+While it looks ugly right now, we will see in the next homework how to add some snazzy style and even more functionality!
+
+To submit, proceed to `Gradescope > Homework 1`. You should be able to submit from GitHub assuming that you were able 
+to submit for Homework 0. If you have any issues feel free to post on Ed.
+
+## Other Resources
+
+[HTML Introduction](https://www.w3schools.com/html/html_intro.asp)
+
+[HTML basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)
