@@ -46,24 +46,29 @@
  */
 
 import React from "react";
-import { Schedule, Assignment } from "../types";
+import { Schedule, Assignment, Lesson } from "../types";
 import { HiOutlineBookOpen } from "react-icons/hi";
 import { CgPill } from "react-icons/cg";
+import { BsRecordFill } from "react-icons/bs";
 import { RiFilePaper2Fill } from "react-icons/ri";
 import {
+  HStack,
   Stack,
   VStack,
   Container,
   Box,
+  Flex,
   Text,
+  Tag,
   Divider,
   Center,
   Link as ChakraLink,
+  LightMode,
 } from "@chakra-ui/react";
 import Link from "@docusaurus/Link";
 import { useColorMode } from "@docusaurus/theme-common";
 
-interface WeekCardProps {
+type WeekCardProps = {
   /**
    * The week number to display.
    */
@@ -73,7 +78,7 @@ interface WeekCardProps {
    */
   schedule: Schedule;
   [x: string]: any;
-}
+};
 
 /**
  * Converts a string date to a Date object.
@@ -199,6 +204,8 @@ const AssignmentLink: React.FC<{ assignment: Assignment }> = ({
     </Text>
   );
 };
+
+const firstColWidth = ["5rem", "7rem"];
 
 /**
  * A component that displays an assignment list item.
@@ -386,19 +393,19 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
                 .filter((assignment) =>
                   isDueDateForAssignment(lesson.date, assignment, schedule)
                 )
-                .map((assignment) => (
+                .map((assignment, i) => (
                   <AssignmentList assignment={assignment} type="Due" />
                 ))}
               {assignments
                 .filter((assignment) =>
                   isLateDueDateForAssignment(lesson.date, assignment, schedule)
                 )
-                .map((assignment) => (
+                .map((assignment, i) => (
                   <AssignmentList assignment={assignment} type="Late" />
                 ))}
               {assignments
                 .filter((assignment) => assignment.assigned == lesson.topic)
-                .map((assignment) => (
+                .map((assignment, i) => (
                   <AssignmentList
                     assignment={assignment}
                     type="Assigned"
