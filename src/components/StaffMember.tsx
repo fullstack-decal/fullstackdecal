@@ -1,10 +1,10 @@
-import React, { Component, ComponentType } from "react";
+import React, { ComponentType } from "react";
 
-import { Image, Flex, HStack, Box, Text, Icon, Link } from "@chakra-ui/react";
-import { BsLinkedin, BsGlobe, BsGithub } from "react-icons/bs";
+import { Image, HStack, Box, Text, Icon, Link } from "@chakra-ui/react";
+import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { IoGlobeSharp, IoMail } from "react-icons/io5";
 
-type StaffMemberProps = {
+interface StaffMemberProps {
   name: string;
   image: string;
   role: string;
@@ -13,12 +13,12 @@ type StaffMemberProps = {
   bio: string;
   email: string | undefined;
   github: string | undefined;
-};
+}
 
-type LinkIconProps = {
+interface LinkIconProps {
   href: string;
   icon: ComponentType;
-};
+}
 
 const LinkIcon = (props: LinkIconProps) => (
   <Link href={props.href} target="_blank" rel="noreferrer" ml={2} isExternal>

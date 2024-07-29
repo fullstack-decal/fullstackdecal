@@ -3,27 +3,26 @@
 
 Welcome to the course website for the Introduction to Fullstack Development Decal! This is deployed to [fullstackdecal.com](https://fullstackdecal.com) on push, but you can make edits to content here!
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This website is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator.
 
 ### Installation
 
 ```
-$ yarn
+$ npm
 ```
 
 ### Local Development
 
 ```
-$ yarn start
+$ npm start
 ```
 
-This command starts a local development server and opens up a browser window (most changes are reflected live without having to restart the server).
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
 ### Build
 
 ```
-$ yarn build
+$ npm build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
-

@@ -27,7 +27,6 @@ const textStyles = {
     ...defaultTextStyle,
     fontWeight: "500",
     fontSize: "lg",
-    color: "gray.500",
     lineHeight: 1.3,
     mb: 1,
   },
