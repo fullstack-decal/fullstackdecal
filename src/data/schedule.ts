@@ -7,16 +7,20 @@
  * const schedule: Schedule = {
  *   weeks: [
  *     {
- *       topic: "Welcome to the course!",
+ *       title: "Welcome to the course!",
  *       lessons: [
  *         {
- *           date: "M 20",
- *           topic: "Course Introduction",
- *           readingTitle: "Introduction",
- *           readingLink: "/docs/Lessons/Lesson1",
+ *           date: "Mon, Sept 16",
+ *           topic: "Course Introduction + Github",
+ *           reading: [{ link: "/docs/Lessons/Lesson1", name: "Introduction" }],
  *         },
- *       ],
- *     },
+ *         {
+ *           date: "Wed, Sept 18",
+ *           topic: "HTML",
+ *           reading: [{ link: "/docs/Lessons/Lesson2", name: "HTML" }],
+ *         },
+ *      ],
+ *    },
  *   ],
  *   assignments: [
  *     {
@@ -35,203 +39,168 @@ import { Week, Assignment, Schedule } from "../types";
 
 const weeks: Week[] = [
   {
-    topic: "👋 Welcome to the course!",
+    title: "👋 Welcome to the course!",
     lessons: [
       {
-        date: "M 20",
-        topic: "Course Introduction",
-        readingTitle: "Introduction",
-        readingLink: "/docs/Lessons/Lesson1",
-        recordingLink: "https://www.youtube.com/watch?v=fAeXuglTsrU",
-        format: ""
+        date: "Mon, Sept 16",
+        topic: "Course Introduction + Github",
+        reading: [{ link: "/docs/Lessons/Lesson1", name: "Introduction" }],
       },
       {
-        date: "Wed, Feb 7",
+        date: "Wed, Sept 18",
         topic: "HTML",
-        readingTitle: "HTML",
-        readingLink: "/docs/Lessons/Lesson1",
-        recordingLink: "https://www.youtube.com/watch?v=Q7T5vAdUcI0&feature=youtu.be",
-        format: ""
+        reading: [{ link: "/docs/Lessons/Lesson2", name: "HTML" }],
       },
     ],
   },
   {
-    topic: "💅 Stylin' your sites",
+    title: "💅 Stylin' your sites",
     lessons: [
       {
-        date: "Mon, Feb 12",
-        topic: "8913yu1893",
-        readingTitle: "Introduction to CSS",
-        readingLink: "/docs/Lessons/Lesson2",
-        format: ""
+        date: "Mon, Sept 23",
+        topic: "CSS 1: Introduction to CSS",
+        reading: [{ link: "/docs/Lessons/Lesson3", name: "Introduction to CSS" }],
       },
       {
-        date: "Wed, Feb 14",
-        topic: "CSS 2",
-        readingTitle: "Advanced CSS",
-        readingLink: "/docs/Lessons/Lesson3",
-        format: ""
+        date: "Wed, Sept 25",
+        topic: "CSS 2: Advanced CSS",
+        reading: [{ link: "/docs/Lessons/Lesson4", name: "Advanced CSS" }],
       },
     ],
   },
   {
-    topic: "🕺 Get moving with JavaScript",
+    title: "🕺 Get moving with JavaScript",
     lessons: [
       {
-        date: "Mon, Feb 19",
-        topic: "Presidents Day🇺🇸🤴 No Class!!",
-        format: ""
+        date: "Mon, Sept 30",
+        topic: "JavaScript 1: Introduction to JavaScript + Asynchronous JS",
+        reading: [{ link: "/docs/Lessons/Lesson5", name: "Introduction to JavaScript" }, { link: "/docs/Lessons/Lesson6", name: "Scope + Asynchronous JS" },],
       },
       {
-        date: "Wed, Feb 21",
-        topic: "JavaScript 1: Essentials",
-        readingTitle: "Basic JavaScript",
-        readingLink: "/docs/Lessons/Lesson4",
-        format: ""
+        date: "Wed, Oct 2",
+        topic: "JavaScript 2: DOM + TypeScript",
+        reading: [{ link: "/docs/Lessons/Lesson7", name: "DOM" } ,{ link: "/docs/Lessons/Lesson8", name: "TypeScript" }],
       },
     ],
   },
   {
-    topic: "🕺 Get moving with JavaScript Cont.",
+    title: "React!",
     lessons: [
       {
-        date: "Mon, Feb 26",
-        topic: "Manuell's socks2",
-        readingTitle: "DOM",
-        readingLink: "/docs/Lessons/Lesson5",
-        format: ""
+        date: "Mon, Oct 7",
+        topic: "React 1: Introduction to React",
+        reading: [{ link: "/docs/Lessons/Lesson9", name: "Introduction to React" }],
       },
       {
-        date: "Wed, Feb 28",
-        topic: "Special Topics: TBD ",
-        readingTitle: "",
-        readingLink: "",
-        format: ""
+        date: "Wed, Oct 9",
+        topic: "React 2: More React Hooks, Routing, Fetching Data",
+        reading: [{ link: "/docs/Lessons/Lesson10", name: "More React Hooks" }, { link: "/docs/Lessons/Lesson11", name: "Routing + Axios" }],
       },
     ],
   },
   {
-    topic: "Introducing React",
+    title: "Servin' servers",
     lessons: [
       {
-        date: "Mon, Mar 4",
-        topic: "Manuell's socks",
-        readingTitle: "SSR",
-        readingLink: "/docs/Lessons/Lesson8",
-        format: ""
+        date: "Mon, Oct 14",
+        topic: "Node.js, Express.js, Server Side Rendering",
+        reading: [{ link: "/docs/Lessons/Lesson12", name: "Node.js + Package Managers" }, { link: "/docs/Lessons/Lesson13", name: "Server-Side Rendering with Express.js, Cookies" }],
       },
       {
-        date: "Wed, Mar 6",
-        topic: "React 1: Components",
-        readingTitle: "Intro to React",
-        readingLink: "/docs/Lessons/Lesson9",
-        format: ""
+        date: "Wed, Oct 16",
+        topic: "Express.js Part 2, APIs, Client Side Rendering",
+        reading: [{ link: "/docs/Lessons/Lesson14", name: "Web Servers with Express.js" }, { link: "/docs/Lessons/Lesson15", name: "APIs + Client Side Rendering" }],
       },
     ],
   },
   {
-    topic: "Continuing React",
+    title: "Databases, last piece of the puzzle",
     lessons: [
       {
-        date: "Mon, Mar 11",
-        topic: "React 2: State",
-        readingTitle: "Intro to React",
-        readingLink: "/docs/Lessons/Lesson9",
-        format: ""
+        date: "Mon, Oct 21",
+        topic: "Database Intro, NoSQL vs SQL, MongoDB",
+        reading: [{ link: "/docs/Lessons/Lesson16", name: "Introduction to Databases" }, { link: "/docs/Lessons/Lesson17", name: "MongoDB" }],
       },
       {
-        date: "Wed, Mar 13",
-        topic: "React 2.5: Advanced React",
-        readingTitle: "Advanced React",
-        readingLink: "/docs/Lessons/Lesson10",
-        format: ""
+        date: "Wed, Oct 23",
+        topic: "Relational Databases, SQL, ORMs",
+        reading: [{ link: "/docs/Lessons/Lesson18", name: "SQL Databases" }, { link: "/docs/Lessons/Lesson19", name: "Object Relational Models" }]
       },
     ],
   },
   {
-    topic: "Introduction to APIs",
+    title: "Can't forget about design",
     lessons: [
       {
-        date: "Mon, Mar 18",
-        topic: "Project 2 Worksession",
-        readingTitle: "",
-        readingLink: "",
-        format: ""
+        date: "Mon, Oct 28",
+        topic: "UI/UX 1: Introduction to Design",
+        reading: [{ link: "/docs/Lessons/Lesson20", name: "Introduction to UI/UX" }]
       },
       {
-        date: "Wed, Mar 20",
-        topic: "APIs and Postman",
-        readingTitle: "APIs",
-        readingLink: "/docs/Lessons/Lesson11",
-        format: ""
+        date: "Wed, Oct 30",
+        topic: "UI/UX 2: Human Centered Design Principles",
+        reading: [{ link: "/docs/Lessons/Lesson21", name: "Human Centered Design Principles" }]
       },
     ],
   },
   {
-    topic: "More approaches to web dev",
+    title: "More approaches to web dev",
     lessons: [
       {
-        date: "Mon, Apr 1",
-        topic: "Express.js and JSON APIs",
-        readingTitle: "Node.js",
-        readingLink: "/docs/Lessons/Lesson8",
-        format: ""
+        date: "Mon, Nov 4",
+        topic: "Next.js",
+        reading: [{ link: "/docs/Lessons/Lesson22", name: "Next.js" }]
       },
       {
-        date: "Wed, Apr 3",
-        topic: "Databases and Authentication",
-        readingTitle: "MySQL and Authentication",
-        readingLink: "/docs/Lessons/Lesson14",
-        format: ""
+        date: "Wed, Nov 6",
+        topic: "Authentication + Firebase",
+        reading: [{ link: "/docs/Lessons/Lesson23", name: "Authentication/Authorization" }, { link: "/docs/Lessons/Lesson24", name: "Firebase" }]
       },
     ],
   },
   {
-    topic: "🎨 Design and UI/UX",
+    title: "Some useful frameworks for you",
     lessons: [
       {
-        date: "Mon, Apr 8",
-        topic: "Design: 1 & 2",
-        readingTitle: "UI/UX",
-        readingLink: "/docs/Lessons/Lesson12",
-        format: ""
+        date: "Mon, Nov 11",
+        topic: "VETERAN'S DAY NO LECTURE",
       },
       {
-        date: "Wed, Apr 10",
-        topic: "Special Topics: 🤫🤫🤫🤫🤫",
-        readingTitle: "UI/UX",
-        readingLink: "/docs/Lessons/Lesson12",
-        format: ""
+        date: "Wed, Nov 13",
+        topic: "CSS Frameworks + Redux.js",
+        reading: [{ link: "/docs/Lessons/Lesson24", name: "CSS Frameworks" }, { link: "/docs/Lessons/Lesson25", name: "Redux.js" }]
       },
     ],
   },
   {
-    topic: "🕴️ Special Topics",
+    title: "Ending strong",
     lessons: [
       {
-        date: "Wed, Apr 15",
-        topic: "Special Topics: 🤫🤫🤫🤫🤫",
-        format: ""
+        date: "Mon, Nov 18",
+        topic: "Django + Flask",
+        reading: [{ link: "/docs/Lessons/Lesson25", name: "Django" }, { link: "/docs/Lessons/Lesson26", name: "Flask" }]
       },
       {
-        date: "Wed, Apr 17",
-        topic: "Special Topics: Career Pannel",
-        format: ""
+        date: "Wed, Nov 20",
+        topic: "Deploying with AWS/Vercel + Three.js",
+        reading: [{ link: "/docs/Lessons/Lesson27", name: "Deploying Your Website" }, { link: "/docs/Lessons/Lesson28", name: "Creative Web Development + Three.js" }]
       },
     ],
   },
   {
-    topic: "The final stretch!",
+    title: "THANKSGIVING BREAK NO LECTURE",
+    lessons: [],
+  },
+  {
+    title: "The final stretch!",
     lessons: [
       {
-        date: "Mon, Apr 22",
+        date: "Mon, Dec 2",
         topic: "Final Project Presentations",
-        format: ""
       },
       {
-        date: "Wed, Apr 24",
+        date: "Wed, Dec 4",
         topic: "Final Project Presentations",
-        format: ""
       },
     ],
   },
@@ -239,108 +208,92 @@ const weeks: Week[] = [
 
 const assignments: Assignment[] = [
   {
-    name: "Vitamin 1: HTML",
-    assigned: "HTML",
-    link: "/docs/Assignments/Vitamins/Vitamin1",
-    due: 5,
-    late: 7,
+    link: { link: "/docs/Assignments/Vitamins/Vitamin1", name: "Vitamin 1: HTML & CSS" },
+    assignedWeek: 2,
+    dueWeek: 3,
+    dueDate: "Mon, Oct 7"
   },
-
   {
-    name: "AIDONWIOAWDNAWINDO",
-    assigned: "8913yu1893",
-    link: "/docs/Assignments/Vitamins/Vitamin2",
-    due: 5,
-    late: 7,
+    link: { link: "/docs/Assignments/Vitamins/Vitamin2", name: "Vitamin 2: JavaScript" },
+    assignedWeek: 3,
+    dueWeek: 4,
+    dueDate: "Mon, Oct 14"
   },
-
   {
-    name: "Vitamin 3: CSS Layout",
-    assigned: "CSS 2",
-    link: "/docs/Assignments/Vitamins/Vitamin3",
-    due: 7,
-    late: 9,
+    link: { link: "/docs/Assignments/Vitamins/Vitamin3", name: "Vitamin 3: React" },
+    assignedWeek: 4,
+    dueWeek: 5,
+    dueDate: "Mon, Oct 21"
   },
-
   {
-    name: "Vitamin 4: JavaScript and DOM",
-    assigned: "Manuell's socks2",
-    link: "/docs/Assignments/Vitamins/Vitamin4",
-    due: 5,
-    late: 7,
+    link: { link: "/docs/Assignments/Vitamins/Vitamin4", name: "Vitamin 4: APIs & Servers" },
+    assignedWeek: 5,
+    dueWeek: 6,
+    dueDate: "Mon, Oct 28"
   },
-
   {
-    name: "Vitamin 5: Internet Quiz",
-    assigned: "Manuell's socks",
-    link: "/docs/Assignments/Vitamins/Vitamin5",
-    due: 5,
-    late: 7,
+    link: { link: "/docs/Assignments/Vitamins/Vitamin5", name: "Vitamin 5: Databases" },
+    assignedWeek: 6,
+    dueWeek: 7,
+    dueDate: "Mon, Nov 4"
   },
-
   {
-    name: "Mid-Semester Feedback Form",
-    assigned: "React 2.5: Advanced React",
-    link: "https://forms.gle/WhiLAipZKQJ8x9kG7" ,
-    due: 5,
-    late: 7,
+    link: { link: "/docs/Assignments/Vitamins/Vitamin6", name: "Vitamin 6: Design" },
+    assignedWeek: 7,
+    dueWeek: 8,
+    dueDate: "Mon, Nov 11"
   },
-
   {
-    name: "Vitamin 6: APIs and Postman",
-    assigned: "APIs and Postman",
-    link: "/docs/Assignments/Vitamins/Vitamin6",
-    due: 12,
-    late: 14,
+    link: { link: "/docs/Assignments/Vitamins/Vitamin7", name: "Vitamin 7: Next.js + Auth" },
+    assignedWeek: 8,
+    dueWeek: 9,
+    dueDate: "Mon, Nov 18"
   },
-
   {
-    name: "Project 1: First Checkpoint",
-    assigned: "8913yu1893",
-    link: "/docs/Assignments/Projects/PersonalWebsite",
-    due: 9,
+    link: { link: "/docs/Assignments/Vitamins/Vitamin8", name: "Vitamin 8: CSS Frameworks + Redux" },
+    assignedWeek: 9,
+    dueWeek: 10,
+    dueDate: "Mon, Nov 25"
   },
-
   {
-    name: "Project 1: Second Checkpoint",
-    assigned: "JavaScript 1: Essentials",
-    link: "/docs/Assignments/Projects/PersonalWebsite",
-    due: 14,
+    link: { link: "/docs/Assignments/Vitamins/Vitamin9", name: "Vitamin 9: Deploying + Three.js (Optional)" },
+    assignedWeek: 10,
+    dueWeek: 11,
+    dueDate: "Mon, Dec 2"
   },
-
   {
-    name: "Project 2",
-    assigned: "React 2.5: Advanced React",
-    link: "/docs/Assignments/Projects/Blog",
-    due: 19,
+    link: { link: "/docs/Assignments/Projects/Project1", name: "Project 1" },
+    assignedWeek: 2,
+    dueWeek: 4,
+    dueDate: "Mon, Oct 14"
   },
-
-  // {
-  //   name: "Final Project: Groups",
-  //   assigned: "Special Topics: Web Accessibility",
-  //   link: "/docs/Assignments/Projects/FinalProject",
-  //   due: 2,
-  // },
-
-  // {
-  //   name: "Final Project: Idea",
-  //   assigned: "Special Topics: GitHub",
-  //   link: "/docs/Assignments/Projects/FinalProject",
-  //   due: 5,
-  // },
-
-  // {
-  //   name: "Final Project: GitHub & Figma",
-  //   assigned: "Special Topics: Web Frameworks",
-  //   link: "/docs/Assignments/Projects/FinalProject",
-  //   due: 7,
-  // },
+  {
+    link: { link: "/docs/Assignments/Projects/Project2", name: "Project 2" },
+    assignedWeek: 4,
+    dueWeek: 7,
+    dueDate: "Mon, Nov 4"
+  },
+  {
+    link: { link: "/docs/Assignments/Projects/Project3", name: "Final Project Checkpoint 1" },
+    dueWeek: 8,
+    dueDate: "Wed, Nov 13"
+  },
+  {
+    link: { link: "/docs/Assignments/Projects/Project3", name: "Final Project Checkpoint 2" },
+    dueWeek: 9,
+    dueDate: "Fri, Nov 22"
+  },
+  {
+    link: { link: "/docs/Assignments/Projects/Project3", name: "Final Project" },
+    assignedWeek: 7,
+    dueWeek: 11,
+    dueDate: "Fri, Dec 6"
+  },
 ];
 
 const schedule: Schedule = {
   weeks,
   assignments,
-  year: 2024,
 };
 
 export default schedule;

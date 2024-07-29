@@ -1,32 +1,27 @@
-export interface Assignment {
+export interface Link {
   link: string;
   name: string;
-  assigned: string;
-  due: number;
+}
+
+export interface Assignment {
+  link: Link;
+  assignedWeek?: number;
+  dueWeek: number;
+  dueDate: string;
 }
 
 export interface Schedule {
   weeks: Week[];
   assignments: Assignment[];
-  year: number;
 }
 
 export interface Week {
   lessons: Lesson[];
-  topic: string;
+  title: string;
 }
 
 export interface Lesson {
   date: string;
-  format: string;
   topic: string;
-  recordingLink?: string;
-  readingTitle?: string;
-  readingLink?: string;
-  slides?: string;
-  assigmentFormat?: string;
-  assigmentTitle?: string;
-  assigmentDueDate?: string;
-  assigmentLink?: string;
-  starterCode?: string;
+  reading?: Link[];
 }

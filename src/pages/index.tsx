@@ -47,7 +47,7 @@ const HomeContent: React.FC = () => {
       >
         <Container maxW="container.md" my="6rem">
           <Text textStyle="subtitle2">
-            CS 198-99 | Spring 24
+            CS 198-99 | Fall 2024
           </Text>
           <Text textStyle="title1">
             Introduction
@@ -58,7 +58,7 @@ const HomeContent: React.FC = () => {
             development
           </Text>
           <Text textStyle="subtitle2">
-            Mon and Wed, 6:30-8:00 PM, Physics 4
+            Lecture Time and Location TBD
           </Text>
 
           <Link
