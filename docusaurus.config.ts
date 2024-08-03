@@ -70,6 +70,16 @@ const config: Config = {
           label: "Resources",
         },
         {
+          href: "https://forms.gle/qmorW2vXzC5RjEjh8",
+          position: "left",
+          label: "Attendance Form",
+        },
+        {
+          href: "https://forms.gle/FYDUNhc5vMknwKoi9",
+          position: "left",
+          label: "Extension Form",
+        },
+        {
           href: "https://github.com/fullstack-decal",
           position: "right",
           className: "header-github-link",

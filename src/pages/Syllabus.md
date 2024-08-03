@@ -10,12 +10,12 @@
 
 **Course Contact:** webdev-decal@lists.berkeley.edu
 
-**Time:** There are 2 lectures every week. Students are expected to attend both lectures every week.
+**Time:** There are 2 lectures every week. Students are expected to attend both lectures every week. Attendance is mandatory.
 
-- Lecture 1: Monday @ 6:30pm - 8:00pm PT
-- Lecture 2: Wednesday @ 6:30pm - 8:00pm PT
+- Lecture 1: Monday @ TBD PT
+- Lecture 2: Wednesday @ TBD PT
 
-**Location:** Physics 4
+**Location:** TBD
 
 ## Course Overview
 
@@ -36,7 +36,7 @@ In the spirit of full-stack development, we cover the three main pillars of mode
 
 ### Teaching Plan
 
-Every week you will attend 2 lectures, each 1.5 hours. Most lectures will have a short vitamin assignment accompanying them and you will typically have a project due. Course staff will be holding office hours regularly throughout the week to provide guidance and feedback on the assignments. Towards the end of the semester your work in this class will culminate in a final project with a project group.
+Every week you will attend 2 lectures, each 1.5 hours. Most lectures will have a short vitamin assignment accompanying them and you will typically have a project due every 3 weeks to a month. Course staff will be holding office hours regularly throughout the week to provide guidance and feedback on the assignments. Towards the end of the semester your work in this class will culminate in a final project with a project group.
 
 ### Learning goals
 
@@ -101,13 +101,13 @@ All communication this semester will be centralized on Ed. Please ask all questi
 
 This DeCal is graded on a P/NP bases. Your final grade
 will be based primarily upon completion of work in the class.
-A "pass" is a 70% (700 points) in the class. Gradescope will be
-used to host the grades.
+A "pass" is a 70% (700 points) in the class, attendence of 15/20 lectures this semester, and completion of the final project.
+If one or more of these is not met, you are at risk for an NP in this class. Gradescope will be used to host the grades.
 
 | Item               | Points       |
 | ------------------ | ------------ |
-| Lecture Attendance | 100          |
-| Vitamins           | 300 (20 per) |
+| Lecture Attendance | 120 (6 per)  |
+| Vitamins           | 280 (35 per) |
 | Project 1          | 150          |
 | Project 2          | 150          |
 | Final Project      | 300          |
@@ -116,26 +116,41 @@ Lecture pads your grade since it is mandatory.
 
 ### Attendance
 
-Attendance at lectures is mandatory. You are permitted 4 absences for the semester which are
-automatically applied and can be used for any reason. If you exceed this limit, it may result in
-an NP or in exceptional circumstances, an incomplete. Our curriculum moves fairly quickly in order
+Attendance at lectures is mandatory. You are required to go to at least 15/20 lectures this semester to recieve a P in this course.
+This allows 5 absences to be taken for any reason. Please don't email us about excusing these absences.
+If you exceed this limit, it may result in an NP or in exceptional circumstances, an incomplete. Our curriculum moves fairly quickly in order
 to cover everything you need in order to become a full-fledged developer, so it's imperative that
-you stay up-to-date with each lesson.
+you stay up-to-date with each lesson. If you do need an excused absence after exhausting your 5, please either private message us on Ed or
+email us at the email at the top of this syllabus to do so.
 
 ### Vitamins
 
-Vitamins are short bite-sized problems designed let you practice the lectures material.
+Vitamins are short bite-sized assignments designed let you practice the lecture material.
 We encourage you to work on the homework problems in small groups, but each student is
 required to turn in a solution that they have written themselves.
 
-Vitamins are due the following lecture they are assigned, with a late due date of one
-week. There are NO EXTENSIONS for vitamins.
+Vitamins for a particular lecture are usually assigned the Monday after that lecture week, and
+are then due the next Monday. This gives you a week to do that vitamin, and you should know everything
+needed to complete that vitamin since it covers content taught in the previous week.
 
 ### Projects
 
 Projects are designed to give you heavy-duty experience with the application of
-course content. Projects are graded on correctness. You must work on your own
-for each project with the exception of the final project.
+course content. These projects are designed to be super open-ended, so that they are
+useful projects to include on a resume after this class.
+
+In our opinion the projects are by far the most useful part of this class. Since they are so open-ended,
+it really gives you a place to channel your creativity and 'force' you to start on cool side projects that we hope
+can help with recruiting after this class. But please note that since they are so open-ended, the benefit that you get
+out of it will be as much as the effort you put into it.
+
+The final project is the best example of this in our course. We are very proud that it is basically a blank canvas for you to build anything
+using all the concepts we have taught you during this course, and during our final week presentations, we have seen some remarkable ideas and executions
+that could easily be fully fledged websites in their own right. Additionally, you are mandated to work in groups of 4-6, which we hope gives everyone real-world
+experience in software development teams, developing skills that can be easily transferred to industry opportunities after this course. This is mainly why we make the participation and successful completion of this final project a requirement for passing this course. We are very excited to see what everyone builds this semester!
+
+Grading for these projects will be very holistic with a very light requirement outline, mainly through a checkoff demo through office hours.
+Please refer to each individual project spec for more information.
 
 ### Collaboration
 
@@ -154,14 +169,28 @@ willingly conceals these activities will be considered accomplices and equally
 culpable. Violations of the code of ethics will be referred to the University of
 California, Berkeley's Center for Student Conduct and Community Standards.”
 
-### Accommodations and Extensions
+### Extensions
 
-- Extension Requests: This is to request extensions on deadlines for any
-  projects. Requests will be reviewed approximately every 2-3 business days.
-  Extensions will not be visible on Gradescope and but they will show up on grading reports.
-- Extenuating Circumstances: Private message on Ed or email our facilitators for any circumstances that can't be
-  resolved with extensions or lab section changes. Don't be afraid to reach out!
-  We're here to help you succeed in our course. The sooner we are made aware, the more options we have available to us to help.
+This semester we are trying out a new, more lax, extension policy. Use the extension form at the top of the screen to submit an extension for any assignment.
+Any extension up to 5 days will be approved, no questions asked. For longer extensions, please use the form to explain why your extenuating circumstances, and we'll
+send you back an email within 2-3 days to let you know if your extension request has been approved.
+Please only use that form to submit extensions, no extension requested over any other medium (i.e Ed or email) will be considered.
+These extensions will not be reflected on Gradescope on your end unfortunately, but we will keep track and consider them when calculating grades.
+
+Additionally, we are offering an amnesty policy,
+which allows every student to submit up to 200 points of assignments by the very last day in the class (12/4/2024), again no questions asked.
+More information on this policy will be sent out nearing that date, with a form for you to put in the requested assignments that you would like to
+apply amnesty towards. Note that this allows you to submit an entire non-final project + 1 vitamin or 5 vitamins by this deadline.
+
+Due to the group nature of the final project, we will not be allowing extensions on the final project or for any checkpoints of the final project.
+
+If you have any questions about this, please don't hesitate to reach out to us either on Ed or through email. We're here to support you!
+
+### Accommodations
+
+Private message on Ed or email our facilitators for any extenuating circumstances that can't be
+resolved with extensions. Don't be afraid to reach out!
+We're here to help you succeed in our course. The sooner we are made aware, the more options we have available to us to help.
 
 ## Inclusion
 

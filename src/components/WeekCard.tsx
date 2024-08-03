@@ -209,7 +209,7 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
     >
       <VStack align="stretch" spacing={2}>
         <Stack direction={["row"]} spacing={8} align="center" mb={4}>
-          <FirstWeekCol>Week {weekNumber}</FirstWeekCol>
+          <FirstWeekCol>Week {weekNumber + 1}</FirstWeekCol>
           <Box>
             <Text textStyle="subtitle3">{week.title}</Text>
           </Box>
