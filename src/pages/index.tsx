@@ -15,21 +15,15 @@
  * To update the WeekCard component, modify the `WeekCard.tsx` file.
  */
 
-import React from "react";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import WeekCard from "../components/WeekCard";
 import schedule from "../data/schedule";
-import {
-  Image,
-  Container,
-  Box,
-  Text,
-  Link,
-} from "@chakra-ui/react";
+import { Image, Container, Box, Text, Link } from "@chakra-ui/react";
 import fullStackLogoPath from "@site/static/img/logo.png";
 import { useColorMode } from "@docusaurus/theme-common";
 import { backgroundGradient } from "../data/styles";
+import React from "react";
 
 /**
  * HomeContent component
@@ -42,13 +36,9 @@ const HomeContent: React.FC = () => {
   const { colorMode } = useColorMode();
   return (
     <>
-      <Box
-        background={backgroundGradient(colorMode)}
-      >
+      <Box background={backgroundGradient(colorMode)}>
         <Container maxW="container.md" my="6rem">
-          <Text textStyle="subtitle2">
-            CS 198-99 | Fall 2024
-          </Text>
+          <Text textStyle="subtitle2">CS 198-99 | Fall 2024</Text>
           <Text textStyle="title1">
             Introduction
             <br />
@@ -57,9 +47,7 @@ const HomeContent: React.FC = () => {
             <br />
             development
           </Text>
-          <Text textStyle="subtitle2">
-            Lecture Time and Location TBD
-          </Text>
+          <Text textStyle="subtitle2">Lecture Time and Location TBD</Text>
 
           <Link
             href="mailto:webdev-decal@lists.berkeley.edu"

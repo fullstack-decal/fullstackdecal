@@ -1,4 +1,5 @@
-export const backgroundGradient = (colorMode: string) => (colorMode == "light"
+export const backgroundGradient = (colorMode: string) =>
+  (colorMode == "light"
     ? [
         "radial-gradient(circle 40vw at 0px 700px, #dbc1ffa1, transparent)",
         "radial-gradient(circle 40vw at 50% 600px, #ffe2fbcf, transparent)",

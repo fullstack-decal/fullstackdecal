@@ -26,7 +26,7 @@ const Staff = () => {
                 image,
                 role,
                 linkedin,
-                personal,
+                website,
                 bio,
                 email,
                 github,
@@ -36,13 +36,13 @@ const Staff = () => {
                   image={image}
                   role={role}
                   linkedin={linkedin}
-                  personal={personal}
+                  website={website}
                   bio={bio}
                   email={email}
                   key={name}
                   github={github}
                 />
-              )
+              ),
             )}
           </SimpleGrid>
           <Text textStyle="title2" color="blue" mt={24} mb={6}>

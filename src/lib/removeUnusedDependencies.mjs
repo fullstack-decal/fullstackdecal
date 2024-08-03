@@ -9,7 +9,15 @@ const options = {
     "dist",
     "build",
   ],
-  ignoreMatches: ["core-js", "prettier", "autoprefixer", "husky", "@docusaurus/module-type-aliases", "@mdx-js/react", "clsx"],
+  ignoreMatches: [
+    "core-js",
+    "prettier",
+    "autoprefixer",
+    "husky",
+    "@docusaurus/module-type-aliases",
+    "@mdx-js/react",
+    "clsx",
+  ],
 };
 
 depcheck(process.cwd(), options, (unused) => {

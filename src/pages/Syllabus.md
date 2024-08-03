@@ -158,7 +158,7 @@ California, Berkeley's Center for Student Conduct and Community Standards.”
 
 - Extension Requests: This is to request extensions on deadlines for any
   projects. Requests will be reviewed approximately every 2-3 business days.
-  Extensions will not be visible on Gradescope and but they will show up on grading reports. 
+  Extensions will not be visible on Gradescope and but they will show up on grading reports.
 - Extenuating Circumstances: Private message on Ed or email our facilitators for any circumstances that can't be
   resolved with extensions or lab section changes. Don't be afraid to reach out!
   We're here to help you succeed in our course. The sooner we are made aware, the more options we have available to us to help.

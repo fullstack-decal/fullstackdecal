@@ -1,4 +1,5 @@
 # Fullstack Decal Website
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/886680d8-ff65-4bb4-bb72-bdbba6aaa3b4/deploy-status)](https://app.netlify.com/sites/fullstack-decal/deploys)
 
 Welcome to the course website for the Introduction to Fullstack Development Decal! This is deployed to [fullstackdecal.com](https://fullstackdecal.com) on push, but you can make edits to content here!

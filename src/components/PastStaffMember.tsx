@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import { Flex, Text, Icon, Link } from '@chakra-ui/react';
-import { BsLinkedin } from 'react-icons/bs';
+import { Flex, Text, Icon, Link } from "@chakra-ui/react";
+import { BsLinkedin } from "react-icons/bs";
 
 interface PastStaffMemberProps {
   name: string;
@@ -18,7 +18,7 @@ const PastStaffMember: React.FC<PastStaffMemberProps> = ({
     <img
       src={image}
       alt={name}
-      style={{ borderRadius: '100rem', width: '10rem' }}
+      style={{ borderRadius: "100rem", width: "10rem" }}
     />
     <Flex mt={3} align="center" justify="center">
       <Text textStyle="subtitle2" color="blue" mb={1}>

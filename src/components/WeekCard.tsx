@@ -1,50 +1,3 @@
-/**
- * WeekCard component
- *
- * The WeekCard component displays a single week of a course schedule.
- *
- * @example
- * <WeekCard weekNumber={1} schedule={schedule} />
- *
- * @param {WeekCardProps} props - The component props.
- * @returns {JSX.Element} The WeekCard component.
- *
- * How the schedule data is used in the WeekCard component:
- *
- * The WeekCard component uses the schedule data to display the week topic, lessons, and assignments. The schedule data is an object with three properties: weeks, assignments, and year. The weeks property is an array of week objects, each containing a topic and an array of lesson objects. The assignments property is an array of assignment objects, each containing a name, assigned topic, link, due date, and late date.
- *
- * The WeekCard component uses the weekNumber prop to index into the weeks array and retrieve the corresponding week object. It then uses the lessons array of the week object to display the lesson topics, dates, and reading links. The component also uses the assignments array to display the assignments that are due or assigned during the week.
- *
- * @example
- * const schedule: Schedule = {
- *   weeks: [
- *     {
- *       topic: "Welcome to the course!",
- *       lessons: [
- *         {
- *           date: "M 20",
- *           topic: "Course Introduction",
- *           readingTitle: "Introduction",
- *           readingLink: "/docs/Lessons/Lesson1",
- *         },
- *       ],
- *     },
- *   ],
- *   assignments: [
- *     {
- *       name: "Vitamin 1: HTML",
- *       assigned: "HTML",
- *       link: "/docs/Assignments/Vitamins/Vitamin1",
- *       due: 5,
- *       late: 7,
- *     },
- *   ],
- *   year: 2024,
- * };
- *
- * <WeekCard weekNumber={1} schedule={schedule} />
- */
-
 import React from "react";
 import { Schedule, Assignment } from "../types";
 import { HiOutlineBookOpen } from "react-icons/hi";
@@ -72,7 +25,6 @@ interface WeekCardProps {
    * The course schedule.
    */
   schedule: Schedule;
-  [x: string]: any;
 }
 
 /**
@@ -99,7 +51,8 @@ const FirstWeekCol: React.FC<{ children: React.ReactNode }> = ({
 const AssignmentLink: React.FC<{ assignment: Assignment }> = ({
   assignment,
 }) => {
-  const isVitamin = assignment.link.name.indexOf("Vitamin") >= 0;
+  const isVitamin = assignment.type == "Vitamin";
+
   const icon = isVitamin ? (
     <CgPill style={{ marginBottom: "-2px" }} />
   ) : (
@@ -119,22 +72,27 @@ const AssignmentLink: React.FC<{ assignment: Assignment }> = ({
  * A component that displays an assignment list item.
  *
  * @param {Assignment} assignment - The assignment to display.
- * @param {string} type - The type of assignment (e.g. "Due", "Late", "Assigned").
- * @param {string} [subtext] - Optional subtext to display.
+ * @param {string} type - The type of assignment (e.g. "Due", "Assigned").
+ * @param {Date} startDate - Start date of the schedule used to calculate dates (assigned/due) for the assignment.
  * @returns {JSX.Element} The assignment list item component.
  */
 const AssignmentList: React.FC<{
-  type: string;
+  type: "Due" | "Assigned";
   assignment: Assignment;
-  subtext?: string;
-}> = ({ assignment, subtext, type }) => (
-  <Stack direction={["row"]} spacing={8} align="start">
-    <FirstWeekCol>
-      <Text textStyle="label2">{type}</Text>
-    </FirstWeekCol>
-    <div>
-      <AssignmentLink assignment={assignment} />
-      {subtext && (
+  startDate: Date;
+}> = ({ assignment, type, startDate }) => {
+  const assignmentDueDate = new Date(startDate);
+  assignmentDueDate.setDate(
+    assignmentDueDate.getDate() + assignment.dueWeek * 7 + assignment.dueDay,
+  );
+
+  return (
+    <Stack direction={["row"]} spacing={8} align="start">
+      <FirstWeekCol>
+        <Text textStyle="label2">{type}</Text>
+      </FirstWeekCol>
+      <div>
+        <AssignmentLink assignment={assignment} />
         <span
           style={{
             fontSize: "14px",
@@ -143,12 +101,80 @@ const AssignmentList: React.FC<{
             marginTop: "2px",
           }}
         >
-          {subtext}
+          {`Due ${formatDate(assignmentDueDate)}`}
         </span>
-      )}
-    </div>
-  </Stack>
-);
+      </div>
+    </Stack>
+  );
+};
+
+// Used to format dates in Day, Month Day format- ex: Mon, Sept 16
+const formatDate = (date: Date) => {
+  const days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  return `${days[date.getDay()]}, ${months[date.getMonth()]} ${date.getDate()}`;
+};
+
+// used to find the specific assignments that are assigned/due for a spceific week index, and resolves the frontend component views. The output to is function is straight up the components themselves that are rendered in each specific week card component.
+const resolveAssignmentsForWeek = (
+  assignments: Assignment[],
+  weekNumber: number,
+  startDate: Date,
+) => {
+  let assignmentComponents = assignments
+    .filter((assignment) => assignment.assignedWeek == weekNumber)
+    .map((assignment) => (
+      <AssignmentList
+        assignment={assignment}
+        type="Assigned"
+        startDate={startDate}
+      />
+    ))
+    .concat(
+      assignments
+        .filter((assignment) => assignment.dueWeek == weekNumber)
+        .map((assignment) => (
+          <AssignmentList
+            assignment={assignment}
+            type="Due"
+            startDate={startDate}
+          />
+        )),
+    );
+
+  for (const assignment of assignments) {
+    const checkpoints = assignment.checkpoints;
+    if (checkpoints) {
+      assignmentComponents = assignmentComponents.concat(
+        checkpoints
+          .filter((checkpoint) => checkpoint.dueWeek == weekNumber)
+          .map((checkpoint) => (
+            <AssignmentList
+              assignment={checkpoint}
+              type="Due"
+              startDate={startDate}
+            />
+          )),
+      );
+    }
+  }
+
+  return assignmentComponents;
+};
 
 /**
  * The WeekCard component displays a single week of a course schedule.
@@ -159,7 +185,20 @@ const AssignmentList: React.FC<{
 const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
   const { colorMode } = useColorMode();
   const week = schedule.weeks[weekNumber];
-  const assignments = schedule.assignments;
+  const sortedLessonDays = [...schedule.lessonDays].sort();
+  const currentWeek = new Date(schedule.startDate);
+  currentWeek.setDate(currentWeek.getDate() + weekNumber * 7);
+  const vitamins = resolveAssignmentsForWeek(
+    schedule.vitamins,
+    weekNumber,
+    schedule.startDate,
+  );
+  const projects = resolveAssignmentsForWeek(
+    schedule.projects,
+    weekNumber,
+    schedule.startDate,
+  );
+  const numberOfAssignments = vitamins.length + projects.length;
 
   return (
     <Container
@@ -177,14 +216,22 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
         </Stack>
         {week.lessons.map((lesson, lessonIdx) => {
           const weekAttachnments = [];
+          const lessonDate = new Date(currentWeek);
+          lessonDate.setDate(
+            lessonDate.getDate() +
+              sortedLessonDays[lessonIdx % sortedLessonDays.length],
+          );
 
           if (lesson.reading) {
             for (const reading of lesson.reading) {
               weekAttachnments.push(
-                <Text textStyle="label2">                <ChakraLink color="blue" mr={3} as={Link} to={reading.link}>
-                <HiOutlineBookOpen style={{ marginBottom: "-2px" }} />{" "}
-                {reading.name} Reading
-              </ChakraLink></Text>
+                <Text textStyle="label2">
+                  {" "}
+                  <ChakraLink color="blue" mr={3} as={Link} to={reading.link}>
+                    <HiOutlineBookOpen style={{ marginBottom: "-2px" }} />{" "}
+                    {reading.name} Reading
+                  </ChakraLink>
+                </Text>,
               );
             }
           }
@@ -198,7 +245,7 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
               )}
               <Stack direction={["row"]} spacing={8} align="start">
                 <FirstWeekCol>
-                  <Text textStyle="label1">{lesson.date}</Text>
+                  <Text textStyle="label1">{formatDate(lessonDate)}</Text>
                   {/* <Text textStyle="label2">Instructor TBA</Text> */}
                 </FirstWeekCol>
                 <VStack spacing={1} align="start">
@@ -208,31 +255,23 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
                     </Text>{" "}
                     / {lesson.topic}
                   </Text>
-                    {weekAttachnments.length ? weekAttachnments : <Text textStyle="label2">{"\u2E3A"}</Text>}
+                  {weekAttachnments.length ? (
+                    weekAttachnments
+                  ) : (
+                    <Text textStyle="label2">{"\u2E3A"}</Text>
+                  )}
                 </VStack>
               </Stack>
             </VStack>
           );
         })}
-        {week.lessons.length > 0 && (
-                <Center position="relative" width="100%">
-                  <Divider my={3} width="100%" />
-                </Center>
-              )}
-        {assignments
-                .filter((assignment) =>
-                  assignment.assignedWeek == weekNumber
-                )
-                .map((assignment) => (
-                  <AssignmentList assignment={assignment} type="Assigned" subtext={`Due ${assignment.dueDate}`} />
-                ))}
-              {assignments
-                .filter((assignment) =>
-                  assignment.dueWeek == weekNumber
-                )
-                .map((assignment) => (
-                  <AssignmentList assignment={assignment} type="Due" subtext={`Due ${assignment.dueDate}`} />
-                ))}
+        {week.lessons.length > 0 && numberOfAssignments > 0 && (
+          <Center position="relative" width="100%">
+            <Divider my={3} width="100%" />
+          </Center>
+        )}
+        {projects}
+        {vitamins}
       </VStack>
     </Container>
   );

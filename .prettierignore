@@ -1,0 +1,6 @@
+# Ignore artifacts:
+build
+coverage
+docs
+unused-docs
+src/data/markdown/

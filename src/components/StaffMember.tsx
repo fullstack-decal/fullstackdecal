@@ -9,7 +9,7 @@ interface StaffMemberProps {
   image: string;
   role: string;
   linkedin: string | undefined;
-  personal: string | undefined;
+  website: string | undefined;
   bio: string;
   email: string | undefined;
   github: string | undefined;
@@ -30,7 +30,7 @@ const StaffMember: React.FC<StaffMemberProps> = ({
   image,
   role,
   linkedin,
-  personal,
+  website,
   bio,
   email,
   github,
@@ -48,7 +48,7 @@ const StaffMember: React.FC<StaffMemberProps> = ({
       <Box p={2}>
         <Text textStyle="subtitle1" className="darkMode">
           {name}
-          {personal && <LinkIcon href={personal} icon={IoGlobeSharp} />}
+          {website && <LinkIcon href={website} icon={IoGlobeSharp} />}
           {github && <LinkIcon href={github} icon={BsGithub} />}
           {linkedin && <LinkIcon href={linkedin} icon={BsLinkedin} />}
           {email && <LinkIcon href={email} icon={IoMail} />}
