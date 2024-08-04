@@ -101,7 +101,7 @@ All communication this semester will be centralized on Ed. Please ask all questi
 
 This DeCal is graded on a P/NP bases. Your final grade
 will be based primarily upon completion of work in the class.
-A "pass" is a 70% (700 points) in the class, attendence of 15/20 lectures this semester, and completion of the final project.
+A "pass" is a 70% (700 points) in the class, attendance of 15/20 lectures this semester, and completion of the final project.
 If one or more of these is not met, you are at risk for an NP in this class. Gradescope will be used to host the grades.
 
 | Item               | Points       |
@@ -116,7 +116,7 @@ Lecture pads your grade since it is mandatory.
 
 ### Attendance
 
-Attendance at lectures is mandatory. You are required to go to at least 15/20 lectures this semester to recieve a P in this course.
+Attendance at lectures is mandatory. You are required to go to at least 15/20 lectures this semester to receive a P in this course.
 This allows 5 absences to be taken for any reason. Please don't email us about excusing these absences.
 If you exceed this limit, it may result in an NP or in exceptional circumstances, an incomplete. Our curriculum moves fairly quickly in order
 to cover everything you need in order to become a full-fledged developer, so it's imperative that
