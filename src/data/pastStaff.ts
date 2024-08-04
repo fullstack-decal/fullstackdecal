@@ -1,6 +1,56 @@
 import { PastStaff } from "../types";
 
 const staff: PastStaff[] = [
+  {
+    name: "Zayna Lateef",
+    image: "/img/staff/zayna.jpeg",
+    linkedin: "https://www.linkedin.com/in/zayna-lateef-942756216/ ",
+  },
+  {
+    name: "Sebastiaan Szafir",
+    image: "/img/staff/sebi.png",
+    linkedin: "https://www.linkedin.com/in/sebastiaan-szafir-fridman/",
+  },
+  {
+    name: "Vihan Bhargava",
+    image: "/img/staff/vihan.png",
+    linkedin: "https://www.linkedin.com/in/vihanb/",
+  },
+  {
+    name: "Adam Goldstein",
+    image: "/img/staff/adam.png",
+    linkedin: "https://www.linkedin.com/in/adam-j-goldstein",
+  },
+  {
+    name: "Angel Mau",
+    image: "/img/staff/angel.jpg",
+    linkedin: "https://linkedin/angelmau",
+  },
+  {
+    name: "Danielle Wong",
+    image: "/img/staff/danielle.png",
+    linkedin: "https://www.linkedin.com/in/danielle-n-wong/",
+  },
+  {
+    name: "Ezra Apple",
+    image: "/img/staff/ezra.jpg",
+    linkedin: "https://www.linkedin.com/in/ezraapple/",
+  },
+  {
+    name: "Henric Zhang",
+    image: "/img/staff/henric.jpeg",
+    linkedin: "https://www.linkedin.com/in/henriczhang/",
+  },
+  {
+    name: "Manuel Muñoz",
+    image: "/img/staff/manny.jpg",
+    linkedin: "https://www.linkedin.com/in/manuel-munoz-968582236/",
+  },
+  {
+    name: "Trisha Sathish",
+    image: "/img/staff/trisha.jpg",
+    linkedin: "https://www.linkedin.com/in/trisha-sathish-36b9021b3/",
+  },
   // Fall 2022
   {
     name: "Kimberley Fan",

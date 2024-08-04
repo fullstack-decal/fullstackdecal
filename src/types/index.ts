@@ -51,7 +51,7 @@ export interface Lesson {
 export interface Staff {
   name: string;
   image: string;
-  role: "Facilitator" | "Full-Stack TA" | "Design TA";
+  role: "Head TA & Facilitator" | "Full-Stack TA" | "Design TA";
   linkedin: string;
   website?: string;
   bio?: string;

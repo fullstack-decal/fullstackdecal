@@ -56,7 +56,7 @@ const StaffMember: React.FC<StaffMemberProps> = ({
         <Text textStyle="subtitle2" mb={1}>
           {role}
         </Text>
-        <Text textStyle="caption">{bio}</Text>
+        {bio && <Text textStyle="caption">{bio}</Text>}
       </Box>
     </HStack>
   </Box>

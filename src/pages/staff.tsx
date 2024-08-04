@@ -15,9 +15,9 @@ const Staff = () => {
       title={siteConfig.title}
       description="Description will go into a meta tag in <head />"
     >
-      <Box w="100vw" className="darkModeContainer">
+      <Box w="100vw" mb={8} className="darkModeContainer">
         <Container maxW="container.lg">
-          <Text textStyle="title2">Spring 2023 Course Staff</Text>
+          <Text textStyle="title2">Fall 2024 Course Staff</Text>
 
           <SimpleGrid columns={[1, null, 2]} spacing={[12, 16]}>
             {staff.map(
