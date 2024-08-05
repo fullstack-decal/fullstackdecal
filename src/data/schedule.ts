@@ -75,7 +75,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "Course Introduction + Github",
-        reading: [{ link: "/docs/Lessons/Introduction", name: "Introduction" }],
+        reading: [
+          { link: "/docs/Lessons/Introduction", name: "Introduction" },
+          { link: "/docs/Lessons/GitHub", name: "GitHub" },
+        ],
       },
       {
         topic: "HTML",
@@ -343,14 +346,17 @@ const projects: IncompleteAssignment[] = [
     dueDay: 1,
   },
   {
-    link: { link: "/docs/Assignments/Projects/WeirdAPIs", name: "Weird APIs" },
+    link: {
+      link: "/docs/Assignments/Projects/APImagination",
+      name: "APImagination",
+    },
     assignedWeek: 4,
     dueWeek: 7,
     dueDay: 1,
   },
   {
     link: {
-      link: "/docs/Assignments/Projects/Project3",
+      link: "/docs/Assignments/Projects/FinalProject",
       name: "Final Project",
     },
     assignedWeek: 7,

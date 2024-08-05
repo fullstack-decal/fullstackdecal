@@ -1,0 +1,139 @@
+---
+sidebar_position: 2
+---
+
+# APImagination
+
+## Ready to make your first React website?
+
+React is the most commonly used web framework. Most open front-end positions require React knowledge, and it will supercharge the speed with which you can build websites. In the end however, it just transpiles (converts to) normal HTML/CSS/JS files.
+
+Developers also often leverage functionalities through APIs (application programming interfaces) within their applications. These APIs can be used for many many different purposes, whether that be interacting with a service application, fetching various data, or even leveraging other computers to perform functions that may be too complex for the application itself to handle.
+
+Let's combine these concepts to create a web application around a certain external API. Like mentioned before, there are countless APIs for pretty much whatever your mind can come up with, so we highly encourage you to spend some time thinking of cool ideas and seeing if there might be an external API online that can support that. If you do need some guidance, [here](TBD)'s an external API reference resource that lists some cool and weird APIs alongside tutorials on how to use them, written by some of our course staff.
+
+In the process you will gather an intuition for how React integrates HTML, CSS and JS, how to build a backend, and how to leverage APIs to make a cool side project. We hope by the end of this project you have at least a good starting point on a fun side project that you can add to your portfolio and (hopefully) work on in the future beyond this class.
+
+As always if you need any help at all, please feel completely free to contact us through Ed, email, or come to an OH. We're here to support you.
+
+## Is this a group project?​
+
+Yes. You can get in groups of a maximum of three people. You could also do this project by yourself. Whatever floats your boat. A form will be sent out for you to put who you want to work with if you do choose to be in a group.
+
+### Collaboration
+
+There are two principal ways to collaborate. The easiest is to get together to make the main page of the website, and then each person can make their individual sites and combine the files at the end.
+You may optionally use Git. One person creates the project and repository, and pushes it to GitHub. Then add everyone else as collaborators, and they can clone the project. Each member then pulls and pushes repeatedly. You can learn more at https://rogerdudler.github.io/git-guide/.
+
+All deliverables should be submitted by **one group member only**.
+
+## Part 1: Design
+
+Prerequisites: Make sure you have watched both design lectures or read both design readings before starting this part. If you need to review, please refer to the [Figma reading](TBD) and the [design principles reading](TBD).
+
+It's back. Like mentioned in the previous project, designing and wireframing your project beforehand is vital to successfully planning out and eventually delivering more complex web projects. Since this website will be a bit more complicated than the static personal website you made (it will be a fully dynamic website with a frontend and backend!), we **highly** recommend you take some time and think about the different parts of your website- how they will be designed/what they will look like, and how they will combine together. This will also make it a LOT easier to split up work if you decide to work in a group for this project.
+Some resources for wireframing can be found in the resources section of this project spec (at the bottom).
+
+### Requirements + Submission & Grading
+
+Since this project is more complex, we are also making we are making a hifi Figma mockup of your website a requirement for submission, alongside a plan of the frontend and backend system design. The term "system design" might be a bit daunting, but it just refers to a plan of what features you want your website to have, how each of those features will look/function on the frontend, and how that functionality will be implemented in the backend through the use of your own API server and database. This will be worth **20% of the overall project grade**. The submission of this will be:
+
+- A submission of a public Figma project link to the "Project 2: APImagination [Design]" Gradescope assignment. Please make sure this project is public so we are able to open it.
+- Getting your Figma mockup/system design plan reviewed at any OH. This checkoff will be chill, and mainly be used to get feedback for your design before you start on implementation. We will only be checking to see if general thought has been put into your design, so don't worry about total correctness here.
+
+All of your points for this part will come from a successful checkoff at an OH. So either you get full points (get checked off), or get no points (don't get checked off).
+
+We **highly** recommend you work on a mockup/system design plan before you start on the actual implementation.
+
+## Part 2: Implementation
+
+Now it's time to actually build your website! Since it's one of your first times making a full stack website from scratch, we'll help you get set up first.
+
+### Setup​
+
+You will need a:
+
+- Browser: We recommend Chrome, but feel free to use any you like. If you're using Safari, make sure [you enable dev tools](https://developer.apple.com/library/content/documentation/NetworkingInternetWeb/Conceptual/Web_Inspector_Tutorial/EnableWebInspector/EnableWebInspector.html).
+- Code editor: If you don't have a code editor, we recommend VSCode. You can download it [here](https://aka.ms/visual-studio-code).
+- NodeJS and NPM: You should have installed these during lecture- if you are not familiar with Node.js/NPM, please refer to [this reading](TBD) to get up to speed. Installing NodeJS should bring NPM with it: https://nodejs.org/en
+
+To create a React app, refer to [Vite](https://vitejs.dev/guide/) to get started with a minimal template. If asked if you want to use TypeScript in this project, we recommend you say yes, because TypeScript rules and pure JavaScript should never be used.
+
+Then, it should be relatively simple to add plugins through NPM modules to add different functionalities to your application through the command `npm <module>`. If you need a particular functionality, make sure to google a NPM module for it to see if it can make your life easier. Each NPM module's source code will be stored in a node_modules folder for use in your own code.
+
+### Frontend
+
+Prerequisites: Make sure you have watched all lecture content or read all readings related to React and APIs. If you need to review, please refer to: [Introduction to React](TBD), [More React Hooks](TBD), [Routing & Axios](TBD), [APIs and Client Side Rendering](TBD).
+
+#### Requirements
+
+As with the last project, we want to leave this project as open ended as possible for you to create something cool and beneficial to your portfolio. Because of that, we are only imposing a basic set of requirements just to make sure that you use the concepts you've learned so far in the course adequately. These requirements are:
+
+- You should use useState and useEffect hooks to add state management to your website (you are highly encouraged to use other React hooks you learned about too!)
+- You should have multiple pages in your website and use React Routing to route between these different pages.
+- You should use Axios to call an HTTPS API (either an external one or one you have built yourself).
+
+This will be worth **40% of your project grade**.
+
+#### CSS Frameworks
+
+Up to this point you should know the core fundamentals of basic CSS. But in all honestly, no one just uses basic CSS in the real world when making websites. Basic CSS is, frankly, absolutely infuriating to fiddle with when implementing bigger projects, so the vast majority of developers use CSS frameworks to abstract away basic CSS to create a better developer experience.
+We won't get to these CSS frameworks until later in the course, so you definitely don't have to use them if they are too difficult to understand, but we definitely do recommend checking out the following to get a head start in learning and hopefully make your implementation experience better. We also have included some component libraries, which are more easy to use than CSS frameworks.
+
+- [Bootstrap CSS](https://getbootstrap.com/)
+- [Tailwind CSS](https://tailwindcss.com/docs/installation)
+- [Chakra UI](https://v2.chakra-ui.com/getting-started)
+- [ShadCN UI](https://ui.shadcn.com/docs)
+- [Theme UI](https://theme-ui.com/getting-started)
+- [Material UI](https://mui.com/material-ui/)
+
+For more information about what these frameworks are, feel free to checkout the [CSS Frameworks reading](TBD). Even though we haven't learned about them yet, you should have knowledge of all the tools necessary to use them, so go use them! Please never be stuck using base CSS, it seriously sucks.
+
+### Backend
+
+Prerequisites: Make sure you have watched all lecture content or read all readings related to: Node.js/NPM, Express.js, and Databases. If you need to review, please refer to: [Node.js + Package Managers](TBD), [SSR with Express.js, Cookies](TBD), [Web Servers with Express.js](TBD), [Introduction to Databases](TBD), [MongoDB](TBD), [SQL Databases](TBD), [Object Relational Modals](TBD).
+
+#### Requirements
+
+As with the last project, we want to leave this project as open ended as possible for you to create something cool and beneficial to your portfolio. Because of that, we are only imposing a basic set of requirements just to make sure that you use the concepts you've learned so far in the course adequately. These requirements are:
+
+- Use an Express.js web server to host a API to send data to your frontend, interact with a database, or perform any action.
+- Use a database to store any data related to your website.
+
+This will be worth **40% of your project grade**.
+
+### Submission & Grading
+
+To submit, upload the work that you have done to a repository on Github. DO NOT UPLOAD YOUR node_modules as this will have too many files in it. Also DO NOT upload any sensitive information like API keys. For more information about Git and GitHub, please refer to the [GitHub reading](TBD) or this [useful reference](https://rogerdudler.github.io/git-guide/).
+
+The submission of this will be:
+
+- Upload your GitHub repository code to the "Project 2: APImagination [Implementation]" Gradescope assignment.
+- Getting your implementation checked off at a Full-Stack OH. We will ask you to present your website alongside your code. We will be checking for the requirements listed above, and if your website has all of the above then you'll be checked off. If not, you have the option to come back to a later OH to try again, or get partial credit based on what is there (note that each section itself does not have partial credit- if you don't have a requirement listed for Frontend you'll get no credit for the entire Frontend section and therefore that percentage of your project grade). This will also be a time for you to get any feedback on your website if we have any.
+
+All of your points for this part will come from a successful checkoff at a Full-Stack OH. So either you get full/partial points (get checked off), or get no points (don't get checked off).
+
+## ChatGPT policy
+
+Yes, ChatGPT can make your website for you, but don't be charmed: ChatGPT cannot build websites.
+It can help you now, but it will fail you when you want to build or contribute to a larger website. And if you
+haven't learned the basics now, you will feel lost very soon.
+
+However, it's important to get used to using AI as a companion when writing code, and companies are quickly adapting these tools for their developers.
+
+So this is the rule: You can use (are encouraged to use) ChatGPT, as long as you understand what it's doing. If you don't, you will be asked to explain your code during checkoff.
+
+This policy extends to Github Copilot.
+
+You may access ChatGPT [here](https://chat.openai.com/). You can use Github Copilot for free as a UC Berkeley student.
+
+## Resources
+
+#### Helpful resources for wireframing
+
+- [How to Wireframe](https://www.figma.com/blog/how-to-wireframe/) (Article)
+- [Wireframing Basics](https://www.youtube.com/watch?v=aqdn7vVKygA) (Video)
+
+#### Helpful resources for architecture diagrams
+
+- [TikTok by Ben Awad](https://www.tiktok.com/@benawad/video/6933584439217769733?lang=en&is_copy_url=1&is_from_webapp=v1)

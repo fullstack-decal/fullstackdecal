@@ -2,11 +2,14 @@
 sidebar_position: 1
 ---
 
-# Project 1: Personal website
+# Personal Website
 
 ## Ready to make your first website?
 
-Let's create your personal website. You are free to include any content you wish in your website, such as:
+Let's create your personal website! Personal websites are commonly used to showcase you, including your industry experience, personal projects, and even a blog if you're writing inclined.
+Personal websites are usually super creative in their designs, so feel free to express yourself freely here!
+
+You are free to include any content you wish in your website, such as:
 
 - Your interests
 - Your hobbies
@@ -14,38 +17,53 @@ Let's create your personal website. You are free to include any content you wish
 - Your projects
 - Your career aspirations
 
-In the process you will gather an intuition for how HTML, CSS and JS works. HTML is the building block for all websites, and it's easy to learn!
+In the process you will gather an intuition for how to design a website, and actually build it using HTML, CSS and JavaScript. We hope that over the couple of weeks completing this project, you'll get a good start on a cool personal website you can add to your portfolio.
 
-For example:
-![Absolute Image](../assets/Assignment1/Webpage_ss.png)
-Note: You are not allowed to make a Steve Harrington page (unless you are actually him). Don't copy the example.
+As always if you need any help at all, please feel completely free to contact us through Ed, email, or come to an OH. We're here to support you.
 
-Other (real) examples from fellow bears:
+### Example websites
 
-- [https://sebiszafir.com/](https://sebiszafir.com/)
+We know it might be a bit tought starting to come up with an idea for the design and content for your personal website, so here's a few examples below to get you started.
+Note that your personal websites definitely don't have to look as good as these in the couple of weeks you have to make them! Feel free to just use them as goals for now, we 
+also highly encourage you to continue to build on this personal website after the class ends.
+
+- [https://www.taniarascia.com/](https://www.taniarascia.com/)
+- [https://sachagreif.com/](https://sachagreif.com/)
+- [https://tylertaewook.com/](https://tylertaewook.com/)
+- [https://www.brianatiyeh.com/](https://www.brianatiyeh.com/)
+- [https://jasonsantamaria.com/](https://jasonsantamaria.com/)
+
+Other examples from fellow bears:
+
 - [https://vihan.org/](https://vihan.org/)
 - [https://www.rtaneja.com/](https://www.rtaneja.com/)
 - [https://www.nicogalin.com/](https://www.nicogalin.com/)
 
-A personal website is your chance to show the world who you are; A great way to showcase your skills, interests and personality.
-
-### ChatGPT policy
-
-Yes, ChatGPT can make your website for you (hell, it made this assignment), but don't be charmed: ChatGPT cannot build websites.
-It can help you now, but it will fail you when you want to build or contribute to a larger website. And if you
-haven't learned the basics now, you will feel lost very soon.
-
-However, it's important to get used to using AI as a companion when writing code, and companies are quickly adapting these tools for their developers.
-
-So this is the rule: You can use (are encouraged to use) ChatGPT, as long as you understand what it's doing. If you don't, you will be asked to explain your code during check-off.
-
-This policy extends to Github Copilot.
-
-You may access ChatGPT [here](https://chat.openai.com/). You can use Github Copilot for free as a UC Berkeley student.
-
-### Is this a group project?
+## Is this a group project?
 
 No. The next project will be in groups, but for now this must be done individually (It's a personal website lmao).
+
+## Part 1: Design
+
+Prerequisites: Make sure you have watched both design lectures or read both design readings before starting this part. If you need to review, please refer to the [Figma reading](TBD) and the [design principles reading](TBD).
+
+Designing a website is a very important process in the development cycle. It helps a lot to put ideas beforehand on a Figma mockup to make implementation easier, especially for a project as design heavily as this one.
+If you need personal website design ideas, a lot are readily available online (for example [here](https://www.figma.com/community/tag/personal%20website/files)), so feel free to utilize those here.
+
+### Requirements + Submission & Grading
+
+Since this project is so design heavy and creativity focused, we are making a hifi Figma mockup of your website a requirement for submission. This will be worth **20% of the overall project grade**. The submission of this will be:
+
+- A submission of a public Figma project link to the "Project 1: Personal Website [Design]" Gradescope assignment. Please make sure this project is public so we are able to open it.
+- Getting your Figma mockup checked off at a Design OH. This checkoff will be chill, and mainly be used to get feedback for your design before you start on implementation. The only thing that we'll look for to determine if you are checked off is effort put forth in your design. This basically means your design looks fine enough and is at least somewhat personal to you (it's not just a copy of a template without any changes).
+
+All of your points for this part will come from a successful checkoff at a Design OH. So either you get full points (get checked off), or get no points (don't get checked off).
+
+We **highly** recommend you work on a design mockup before you start on the actual implementation.
+
+## Part 2: Implementation
+
+Now it's time to actually build your website! Since it's one of your first times building a website from scratch, we'll help you get set up first.
 
 ### Setup
 
@@ -70,261 +88,91 @@ Now, go ahead and change the text to something else. Every time you change the H
 
 If you don't do both of these steps, you won't see your changes. This is a very common mistake.
 
-## Part 1: HTML
+To add CSS to your website, create a file in your project with the .css extension. Add some CSS properties, and link it to your HTML file by including a `<link>` tag with `rel="stylesheet"` in the head of your html.
 
-This is the first of three checkpoints (HTML, CSS, JS). Don't worry about the others right now.
+Similarly, to add JavaScript/TypeScript to your website, create a file in your project with the .js/.ts extension. Add some code, and link it ot your HTML file by including a `<link>` tag with `rel="script"` in the head of your html.
 
-### Learning Objectives
+### HTML
 
-- Using essential HTML (text) tags
-  - h1, h2, p, b, i, sub, sup, br, etc.
-  - Creating bulleted lists using `<ul>`, `<ol>`, and `<li>` tags
-- Embedding an image in the webpage using `<img>`. Alternate text prop
-- Linking to different pages - 1 live page and 1 local page (`<a>` tag).
-- Creating a basic form on the local page.
-- A button that reloads the page.
-- Basic info about meta tags.
+Prerequisites: Make sure you have watched all lecture content or read all readings relating to HTML before starting this part. If you need to review, please refer to: [HTML](TBD).
 
-You should already know what most of these tags are from the lecture. If you don't, review the [HTML reading](/docs/Lessons/Lesson2).
+#### Requirements
 
-### Helpful guide
+We acknowledge that the content of the personal website should be decided entirely by you. Because of that, we are only imposing a basic set of requirements on HTML content just to make sure that you use the concepts you've learned so far in the course adequately. These requirements are:
 
-Since this is your first time making a website, we will guide you through the set-up. However, get used to figuring stuff out on your own, because after this we'll be expecting you to do so.
+- You should include a section on your website for each of the following: a basic introduction, hobbies, projects (don't have to be technical).
+- You should have at least two separate HTML pages with a links to traverse pages.
+- You should include at least 5 images in your website.
+- You should include a basic form on your website.
+- You should include a bulleted list using the `<ul>` or `<li>` tags.
+- You should use basic tags to add titles, paragraphs, etc. to your website.
+- You should use the `<meta>` tag to specify metadata for your website.
 
-### Tip 1 - Skeleton Code
+This will be worth **40% of your project grade**.
 
-To be valid, HTML files must begin with `<!DOCTYPE html>`, and include `<html>`, `<head>` and `<body>` tags.
+### CSS
 
-Make sure you do this correctly. Here's an [example](/docs/Lessons/Lesson2#hello-world) from the reading.
+Prerequisites: Make sure you have watched all lecture content or read all readings relating to CSS before starting this part. If you need to review, please refer to: [Introduction to CSS](TBD), [Advanced CSS](TBD).
 
-### Tip 2 - Title, Heading
+#### Requirements
 
-First, we will need a title to tell our readers what they will be reading about
+For CSS, all we'll check for is that your design looks adequate and somewhat resembles your Figma mockup. We don't expect perfection in a couple of weeks! We just want to get you to a good point for you to (hopefully) work on this in the future and make a meaningful addition to your portfolio.
 
-- Give the webpage a title (e.g. “Steve Harrington Internet Paradise”). This should change the tab name.
-- Give the webpage a heading. This should be a size 1 heading (**hint:** h1).
+This will be worth **30% of your project grade**.
 
-Notice how the heading and title are different
+#### CSS Frameworks (Optional)
 
-### Tip 3 - Content
+Up to this point you should know the core fundamentals of basic CSS. But in all honestly, no one just uses basic CSS in the real world when making websites. Basic CSS is, frankly, absolutely infuriating to fiddle with when implementing bigger projects, so the vast majority of developers use CSS frameworks to abstract away basic CSS to create a better developer experience.
+We won't get to these CSS frameworks until much later in the course, so you definitely don't have to use them if they are too difficult to understand, but we definitely do recommend checking out the following to get a head start in learning and hopefully make your implementation experience better.
 
-Use various tags like `h1`, `h2`, `p`, `b`, `i`, `sub`, `sup`, `br`, etc. to write about why you love your topic. Use `<ul>`, `<ol>`, and `<li>` tags to create bulleted lists.
+- [Bootstrap CSS](https://getbootstrap.com/docs/5.3/getting-started/introduction/#quick-start)
+- [Tailwind CSS](https://tailwindcss.com/docs/installation/play-cdn)
 
-You are required to make the page interesting.
+For more information about what these frameworks are, feel free to checkout the [CSS Frameworks reading](TBD). Please note that these readings revolve around how to use this frameworks within Node.js, which you haven't learned about yet and as such is NOT applicable here. Unless you are previously familiar with Node.js, please use this reading only to get an introduction on specific CSS frameworks.
 
-### Tip 4 - Links
+### JavaScript
 
-Now, let's add a link that navigates the user to elsewhere on the web! For example, you can use the `<a>` tag to add a link to the actual Wikipedia page for your topic. 
-Look up the **`<a>`** tag to see how you can make the new page open up in a new tab.
+Prerequisites: Make sure you have watched all lecture content or read all readings relating to JavaScript before starting this part. If you need to review, please refer to: [Introduction to JavaScript](TBD), [Scope & Async JavaScript](TBD), [DOM](TBD), [TypeScript (Optional)](TBD).
 
-For example:
+#### Requirements
 
-> https://en.wikipedia.org/wiki/Steve_Harrington
+We require you to implement one functionality in JavaScript for this project. This can pretty much be anything, so feel free to use your creativity here to make something that fits in well with your personal website.
 
-FYI: We don't expect our students to have Wikipedia pages, but if you do, you can link to it :)
+You can also use TypeScript here if you want a head start in using it, but it'll be optional for this project since it's not necessary.
 
-### Tip 5 - Another page!
+This will be worth **10% of your project grade**.
 
-Most websites have multiple pages. Create another page by making a new file ending in `.html`. Then, link to it from your main page using the `<a>` tag. There are no requirements for this page, but you should make it interesting too.
+### SSR (Optional)
 
-:::tip
-To do this, you will need a **relative path**. While absolute paths are the full path to a file (e.g. `C:/Users/user/Documents/index.html`), relative paths are the path to a file relative to the current file. For example, if you have a file structure like this:
+You can also optionally create a server to host your website. So far, your browser has been loading your HTML files directly from your computer. However, public websites need a server to serve the HTML files!
 
-```
-index.html
-about.html
-```
+We have not covered servers yet alongside Node.js, so this will be very optional for now. But if you want to learn more feel free to checkout [this reading on SSR](TBD) which would walk you through how to make a server with Express.js to host your HTML website on localhost.
+This reading will assume you know what Node.js/NPM is (that is the environment that Express.js runs in), so make sure to also refer to [this reading](TBD) to learn more about that. Again note that we have not learned this yet in lecture (we'll get to it soon!), so if it's too confusing, feel completely free to skip it for this project.
 
-Then, the relative path from `index.html` to `about.html` is just `./about.html`. The `.` at the beginning means "this directory". So, `./about.html` means `C:/Users/user/Documents/about.html`. If you had a folder called `pages` that contained `about.html`, then the relative path would be `./pages/about.html`.
+### Submission & Grading
 
-A double dot `..` refers to the parent directory. So `../about.html` means `C:/Users/user/about.html` (we've left out the `Documents` folder).
+To submit, upload the work that you have done to a repository on Github. For more information about Git and GitHub, please refer to the [GitHub reading](TBD) or this [useful reference](https://rogerdudler.github.io/git-guide/).
 
-`https://en.wikipedia.org/wiki/Steve_Harrington` is also an absolute path, but the file is not on your computer. It's on the internet! So, you can link to it from your website, as we did in the previous exercise.
+The submission of this will be:
 
-The benefit of relative paths is that, no matter where the `index.html` and `about.html` files are, the relative link will work. Even if you put them on the web, the `.` will simply change meaning to, say, `https://www.yourwebsite.com/`. So, `./about.html` will become `https://www.yourwebsite.com/about.html`.
+- Upload your GitHub repository code to the "Project 1: Personal Website [Implementation]" Gradescope assignment.
+- Getting your implementation checked off at a Full-Stack OH. We will ask you to present your website alongside your code. We will be checking for the requirements listed above, and if your website has all of the above then you'll be checked off. If not, you have the option to come back to a later OH to try again, or get partial credit based on what is there (note that each section itself does not have partial credit- if you don't have a requirement listed for HTML you'll get no credit for the entire HTML section and therefore that percentage of your project grade). This will also be a time for you to get any feedback on your website if we have any.
 
-As a final note, you may omit `./` from the beginning of a relative path. So, `./about.html` is the same as `about.html`.
-:::
+All of your points for this part will come from a successful checkoff at a Full-Stack OH. So either you get full/partial points (get checked off), or get no points (don't get checked off).
 
-:::warning
-If you don't use a relative path, the link will break when you submit the website. Your link should not look like `C:/Users/user/about.html`.
-:::
+## ChatGPT policy
 
-### Tip 6 - Image
+Yes, ChatGPT can make your website for you, but don't be charmed: ChatGPT cannot build websites.
+It can help you now, but it will fail you when you want to build or contribute to a larger website. And if you
+haven't learned the basics now, you will feel lost very soon.
 
-![Absolute Image](../Projects/PersonalWebsiteAssets/Steve_Harrington.png)
+However, it's important to get used to using AI as a companion when writing code, and companies are quickly adapting these tools for their developers.
 
-Now insert an image into your site (or multiple!). Download an image with a common extension (e.g. `.png`) and put it next to your `index.html` file.
+So this is the rule: You can use (are encouraged to use) ChatGPT, as long as you understand what it's doing. If you don't, you will be asked to explain your code during checkoff.
 
-Link to the image from the `img` tag the same way you'd link to a page from the `a` tag (see the previous exercise).
+This policy extends to Github Copilot.
 
-### Tip 7 - Form
-
-Using the `form` and `input` tags, create a form that accepts some data, and create a submit button.
-
-Your form should look something like this:
-
-![Absolute Image](../Projects/PersonalWebsiteAssets/Form_ss.png)
-
-### Tip 8 - Metadata
-
-The `<meta>` tag defines metadata about an HTML document. Metadata is data (information) about data.
-
-Tags like `title` and `meta` go into the `<head></head>` of your HTML document. These tags are responsible for telling search engines and the browser top-level information about your site.
-
-A common structure is `<meta name="____", description="____"/>`
-
-Add a few to your page!
-
-More information: [HTML meta tag](https://www.w3schools.com/tags/tag_meta.asp)
-
-### Tip 9 - Inspect Element
-
-While looking at your (beautiful) website, right click and select "Inspect Element". This will open up the developer tools.
-
-Try changing the text of your website. You can double click on the text in the developer tools to edit it.
-
-Select the `<body>` tag and look at the dimensions of it (chrome shows the dimensions as many colored boxes). How much margin does the body have?
-
-### HTML Check off - Conclusion
-
-You now know the structure of fundamentals of HTML. There really isn't much more to HTML, just some more tags and options you'll learn when you need something (like a checkbox). Remember, HTML is the outline of the Internet.
-
-While it looks ugly right now, we will see in the next Projects how to add some snazzy style and even more functionality!
-
-To submit, you have to ✨ deploy ✨ your website. There needs to be some URL that we can go to and see your site. There are many ways to host static HTML sites you can find online.
-We recommend [https://tiiny.host/](https://tiiny.host/). If you use tiiny.host, you have to:
-
-1.  Create a zip file with your `.html` files and upload it.
-2.  Make an account.
-3.  Find the URL it generates for you (where your site is deployed!).
-4.  Submit the URL to `Gradescope > Projects 1`.
-
-The Projects will be graded on completeness. You must go to office hours and get checked off. We will ask you questions about coding decisions you have made, and we expect you to show a good understanding of HTML.
-
-If you have any questions, please ask on Ed or come to office hours! (Yes, even if ChatGPT just did the whole thing for you, we can help explain it at least.)
-
-## Part 2: CSS
-
-You must now make your personal website pretty.
-
-### Learning Objectives
-
-- Selectors, id vs. class
-- Basic properties of CSS (text, background, boroder, colors)
-- Margin, and Padding
-- Position property
-- Display inline vs. block
-- Flexbox (display flex)
-- Transform and transition
-
-We will look for adequate use and understanding of all the learning objectives during checkoff. Please come prepared to answer relevant questions about your code.
-
-You should already know what most of these concepts are from the lecture. If you don't, review both CSS readings:
-
-- [Introduction to CSS](/docs/Lessons/Lesson3)
-- [Advanced CSS](/docs/Lessons/Lesson4)
-
-If you're unsure where to start, do the project as you read through the readings. The learning objectives are in the order that you will encounter the concepts in the readings.
-
-## Checkpoint 1
-
-Come to Office Hours with your HTML and CSS site ready to show! We will be evaluating
-you on a combination of content and style. To maximize your score, make sure you have
-plenty of content on your personal website and style it so it looks complete and showcases
-your personality!
-
-Additionally, submit your project to the Gradescope assignment so we have a record of
-what you presented at OH.
-
-## Part 3: JavaScript
-
-You must now make your personal website interactive.
-
-The [Javascript 1](/docs/Lessons/Lesson5) reading is a prerequisite to this checkpoint. You should have a basic understanding of Javascript. If you have previous experience with Python (even limited), you will be able to figure Javascript out as you go with some simple google searches or ChatGPT queries (try asking ChatGPT how to do something in Javascript by giving it equivalent Python code!).
-
-### Learning Objectives
-
-- Getting elements from the HTML document
-- Changing innerHTML and css properties
-- Event listeners
-- Arrow functions & callbacks
-- Promises & fetch
-
-You should already know what most of these concepts are from the lecture. If you don't, review the Javascript readings:
-
-- [Javascript 2](/docs/Lessons/Lesson6)
-- [Javascript 3](/docs/Lessons/Lesson7)
-
-We will look for adequate use and understanding of all the learning objectives during checkoff. Please come prepared to answer relevant questions about your code.
-
-Again, if you're unsure where to start, do the project as you read through the readings. The learning objectives are in the order that you will encounter the concepts in the readings.
-
-It is not obvious how some of the Javascript features in the learning objectives can be applied. Be creative, it doesn't need to make too much sense.
-
-### Tip 1 - Inspect element
-
-You can also use the developer tools to run Javascript. Open the developer tools but this time select the console tab.
-
-You can type Javascript into the console and run it. This is a great way to test out Javascript code before you put it into your website.
-
-From the console, you can access all the variables you have defined and try things before running them to move faster :)
-
-### Tip 2 - When does your Javascript run?
-
-Your Javascript will run wherever it is in the HTML document. If it's higher up, it will run before the rest of the HTML document is even processed!
-
-Be careful with referencing elements that haven't been created yet. You can use the `DOMContentLoaded` event to run some Javascript after the HTML document is loaded, no matter where the actual script tag is.
-
-```js
-document.addEventListener("DOMContentLoaded", () => {
-  // Your code here
-});
-```
-
-Note the use of an event listener and an arrow function callback. You should be familiar with these already.
-
-## Part 4: SSR
-
-You must now create a server that will serve your HTML website. So far, your browser has been loading your HTML files directly from your computer. However, public websites need a server to serve the HTMl files!
-
-### Learning Objectives
-
-- Configuring a web server
-- Serving HTML files on multiple paths
-- Serving CSS and JS files
-- Using templating strategies to serve dynamic content
-- Persisting data in files
-- Reading and sending cookies
-
-You should already know what most of these concepts are from the lecture. If you don't, review the SSR reading:
-
-- [Server-side rendering](/docs/Lessons/Lesson8)
-
-We will look for adequate use and understanding of all the learning objectives during checkoff. Please come prepared to answer relevant questions about your code.
-
-Again, if you're unsure where to start, do the project as you read through the reading. The learning objectives are in the order that you will encounter the concepts in the reading.
-
-### Tip 1 - Step by step
-
-JavaScript, servers and networks are finicky. Things will break and it will not be clear why.
-Don't be afraid to ask for help, ask ChatGPT, and most importantly, go step by step.
-Don't make changes too large or too quickly. Make sure you understand what you're doing.
-
-## Checkpoint 2
-
-Congrats on finishing the first project! You have now made your entire own personal website!
-
-Come to office hours to get checked-off for the second part. We will be
-evaluating you on the functionality you've added, along with content
-and design again.
-
-Don't forget to also submit your final code to the Gradescope assignment.
-
-## Grading
-
-Your project will be graded on content, design, and functionality, with
-equal weight given to each part.
+You may access ChatGPT [here](https://chat.openai.com/). You can use Github Copilot for free as a UC Berkeley student.
 
 ## Other Resources
 
