@@ -12,10 +12,10 @@
 
 **Time:** There are 2 lectures every week. Students are expected to attend both lectures every week. Attendance is mandatory.
 
-- Lecture 1: Monday @ TBD PT
-- Lecture 2: Wednesday @ TBD PT
+- Lecture 1: Tuesday @ 6:30-8 PM PT
+- Lecture 2: Thursday @ 6:30-8 PM PT
 
-**Location:** TBD
+**Location:** Physics 4
 
 ## Course Overview
 
@@ -133,6 +133,8 @@ Vitamins for a particular lecture are usually assigned the Monday after that lec
 are then due the next Monday. This gives you a week to do that vitamin, and you should know everything
 needed to complete that vitamin since it covers content taught in the previous week.
 
+Late vitamins not covered by amnesty will get 0 credit. Use extensions!
+
 ### Projects
 
 Projects are designed to give you heavy-duty experience with the application of
@@ -151,6 +153,8 @@ experience in software development teams, developing skills that can be easily t
 
 Grading for these projects will be very holistic with a very light requirement outline, mainly through a checkoff demo through office hours.
 Please refer to each individual project spec for more information.
+
+Late projects not covered by amnesty will get 0 credit. Use extensions!
 
 ### Collaboration
 

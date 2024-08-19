@@ -32,7 +32,7 @@
     link: { link: "/docs/Assignments/Vitamins/HTMLCSS", name: "HTML & CSS" },
     assignedWeek: 2,
     dueWeek: 3,
-    dueDay: 1,
+    dueDay: 2,
   },
 
   For the name, add just the assignment name itself. The code will automatically add a vitamin/project numbering prefix based on the ordering of assignments in the respective lists.
@@ -92,7 +92,10 @@ const weeks: Week[] = [
       {
         topic: "CSS 1: Introduction to CSS",
         reading: [
-          { link: "/docs/Lessons/CSSIntro", name: "Introduction to CSS" },
+          {
+            link: "/docs/Lessons/CSSIntro",
+            name: "Introduction to CSS",
+          },
         ],
       },
       {
@@ -107,8 +110,14 @@ const weeks: Week[] = [
       {
         topic: "JavaScript 1: Introduction to JavaScript + Asynchronous JS",
         reading: [
-          { link: "/docs/Lessons/JSIntro", name: "Introduction to JavaScript" },
-          { link: "/docs/Lessons/Lesson6", name: "Scope + Asynchronous JS" },
+          {
+            link: "/docs/Lessons/JSIntro",
+            name: "Introduction to JavaScript",
+          },
+          {
+            link: "/docs/Lessons/JSMore",
+            name: "Scope and Asynchronous JS",
+          },
         ],
       },
       {
@@ -126,14 +135,17 @@ const weeks: Week[] = [
       {
         topic: "UI/UX 1: Introduction to Design",
         reading: [
-          { link: "/docs/Lessons/UIUXIntro", name: "Introduction to UI/UX" },
+          {
+            link: "/docs/Lessons/UIUX1",
+            name: "Introduction to UI/UX and Figma",
+          },
         ],
       },
       {
         topic: "UI/UX 2: Human Centered Design Principles",
         reading: [
           {
-            link: "/docs/Lessons/HCD",
+            link: "/docs/Lessons/UIUX2",
             name: "Human Centered Design Principles",
           },
         ],
@@ -146,14 +158,20 @@ const weeks: Week[] = [
       {
         topic: "React 1: Introduction to React",
         reading: [
-          { link: "/docs/Lessons/ReactIntro", name: "Introduction to React" },
+          {
+            link: "/docs/Lessons/ReactIntro",
+            name: "Introduction to React",
+          },
         ],
       },
       {
         topic: "React 2: More React Hooks, Routing, Fetching Data",
         reading: [
-          { link: "/docs/Lessons/ReactHooks", name: "More React Hooks" },
-          { link: "/docs/Lessons/Routing", name: "Routing + Axios" },
+          {
+            link: "/docs/Lessons/ReactHooks",
+            name: "More React Hooks",
+          },
+          { link: "/docs/Lessons/Routing", name: "Routing and Axios" },
         ],
       },
     ],
@@ -164,7 +182,7 @@ const weeks: Week[] = [
       {
         topic: "Node.js, Express.js, Server Side Rendering",
         reading: [
-          { link: "/docs/Lessons/Node", name: "Node.js + Package Managers" },
+          { link: "/docs/Lessons/Node", name: "Node.js and Package Managers" },
           {
             link: "/docs/Lessons/SSR",
             name: "Server-Side Rendering with Express.js, Cookies",
@@ -175,7 +193,7 @@ const weeks: Week[] = [
         topic: "Express.js Part 2, APIs, Client Side Rendering",
         reading: [
           { link: "/docs/Lessons/Web", name: "Web Servers with Express.js" },
-          { link: "/docs/Lessons/CSR", name: "APIs + Client Side Rendering" },
+          { link: "/docs/Lessons/CSR", name: "APIs and Client Side Rendering" },
         ],
       },
     ],
@@ -193,7 +211,7 @@ const weeks: Week[] = [
       {
         topic: "Relational Databases, SQL, ORMs",
         reading: [
-          { link: "/docs/Lessons/SQL", name: "SQL Databases" },
+          { link: "/docs/Lessons/SQL", name: "SQL and Relational Databases" },
           { link: "/docs/Lessons/ORM", name: "Object Relational Models" },
         ],
       },
@@ -219,12 +237,15 @@ const weeks: Week[] = [
     title: "Some useful frameworks for you",
     lessons: [
       {
-        topic: "VETERAN'S DAY NO LECTURE",
+        topic: "NO LECTURE",
       },
       {
-        topic: "CSS Frameworks + Redux.js",
+        topic: "CSS Frameworks and Redux.js",
         reading: [
-          { link: "/docs/Lessons/CSSMore", name: "CSS Frameworks" },
+          {
+            link: "/docs/Lessons/CSSFrameworks",
+            name: "CSS Frameworks",
+          },
           { link: "/docs/Lessons/Redux", name: "Redux.js" },
         ],
       },
@@ -243,10 +264,10 @@ const weeks: Week[] = [
       {
         topic: "Deploying with AWS/Vercel + Three.js",
         reading: [
-          { link: "/docs/Lessons/Deploy", name: "Deploying Your Website" },
+          { link: "/docs/Lessons/Deployment", name: "Deploying Your Website" },
           {
             link: "/docs/Lessons/Creative",
-            name: "Creative Web Development + Three.js",
+            name: "Creative Web Development and Three.js",
           },
         ],
       },
@@ -271,67 +292,70 @@ const weeks: Week[] = [
 
 const vitamins: IncompleteAssignment[] = [
   {
-    link: { link: "/docs/Assignments/Vitamins/HTMLCSS", name: "HTML & CSS" },
+    link: { link: "/docs/Assignments/Vitamins/HTMLCSS", name: "HTML and CSS" },
     assignedWeek: 2,
     dueWeek: 3,
-    dueDay: 1,
+    dueDay: 2,
   },
   {
     link: { link: "/docs/Assignments/Vitamins/JS", name: "JavaScript" },
     assignedWeek: 3,
     dueWeek: 4,
-    dueDay: 1,
+    dueDay: 2,
   },
   {
     link: { link: "/docs/Assignments/Vitamins/Design", name: "Design" },
     assignedWeek: 4,
     dueWeek: 5,
-    dueDay: 1,
+    dueDay: 2,
   },
   {
     link: { link: "/docs/Assignments/Vitamins/React", name: "React" },
     assignedWeek: 5,
     dueWeek: 6,
-    dueDay: 1,
+    dueDay: 2,
   },
   {
-    link: { link: "/docs/Assignments/Vitamins/Server", name: "APIs & Servers" },
+    link: {
+      link: "/docs/Assignments/Vitamins/Server",
+      name: "APIs and Servers",
+    },
     assignedWeek: 6,
     dueWeek: 7,
-    dueDay: 1,
+    dueDay: 2,
   },
   {
     link: { link: "/docs/Assignments/Vitamins/Databases", name: "Databases" },
     assignedWeek: 7,
     dueWeek: 8,
-    dueDay: 1,
+    dueDay: 2,
   },
   {
     link: {
       link: "/docs/Assignments/Vitamins/NextAuth",
-      name: "Next.js + Auth",
+      name: "Next.js and Authentication",
     },
     assignedWeek: 8,
     dueWeek: 9,
-    dueDay: 1,
+    dueDay: 2,
   },
   {
     link: {
       link: "/docs/Assignments/Vitamins/CSSRedux",
-      name: "CSS Frameworks + Redux",
+      name: "CSS Frameworks and Redux",
     },
     assignedWeek: 9,
     dueWeek: 10,
-    dueDay: 1,
+    dueDay: 2,
   },
   {
     link: {
       link: "/docs/Assignments/Vitamins/DeployThree",
-      name: "Deploying + Three.js (Optional)",
+      name: "Deploying and Three.js (Optional)",
     },
     assignedWeek: 10,
     dueWeek: 11,
-    dueDay: 1,
+    dueDay: 2,
   },
 ];
 
@@ -343,7 +367,7 @@ const projects: IncompleteAssignment[] = [
     },
     assignedWeek: 2,
     dueWeek: 4,
-    dueDay: 1,
+    dueDay: 2,
   },
   {
     link: {
@@ -352,7 +376,7 @@ const projects: IncompleteAssignment[] = [
     },
     assignedWeek: 4,
     dueWeek: 7,
-    dueDay: 1,
+    dueDay: 2,
   },
   {
     link: {
@@ -382,7 +406,7 @@ const schedule: Schedule = {
   vitamins: resolveAssignments(vitamins, "Vitamin"),
   projects: resolveAssignments(projects, "Project"),
   startDate: new Date("September 15, 2024"),
-  lessonDays: [1, 3],
+  lessonDays: [2, 4],
 };
 
 export default schedule;
