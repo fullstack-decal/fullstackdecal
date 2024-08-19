@@ -41,6 +41,26 @@ const staff: Staff[] = [
     github: "https://github.com/jessieewoo",
     email: "mailto:jess04liu@berkeley.edu",
   },
+  {
+    name: "Jason Duong",
+    role: "Full-Stack TA",
+    bio: "",
+    image: "/img/staff/jasonduong.jpeg",
+    linkedin: "https://www.linkedin.com/in/jasonduongg/",
+    website: "",
+    github: "https://github.com/jasonduongg",
+    email: "mailto:jasonduong@berkeley.edu",
+  },
+  {
+    name: "Darren Ich",
+    role: "Full-Stack TA",
+    bio: "",
+    image: "/img/staff/darrenich.jpeg",
+    linkedin: "https://www.linkedin.com/in/darren-ich09/",
+    website: "",
+    github: "https://github.com/Darwon09",
+    email: "mailto:dich@berkeley.edu",
+  },
 ];
 
 export default staff;
