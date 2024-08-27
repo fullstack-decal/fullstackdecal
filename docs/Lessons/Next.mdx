@@ -1,1 +1,136 @@
 # Next.js
+
+### Introduction to Next.js
+
+### What is Next.js?
+
+Next.js is a popular React framework for building server-side rendered (SSR) and static web applications. It offers a hybrid approach, allowing developers to create fast, SEO-friendly websites with both static and dynamic content.
+
+### Why Use Next.js?
+
+Next.js is favored because it:
+
+- **Server-Side Rendering (SSR):** Enhances SEO and performance by rendering pages on the server.
+- **Static Site Generation (SSG):** Generates static pages at build time for faster load times.
+- **Hybrid Approach:** Allows combining SSR and SSG in a single project.
+- **File-Based Routing:** Simplifies route management with a file-based routing system.
+- **API Routes:** Enables the creation of API endpoints within the same project.
+- **Built-In CSS Support:** Supports CSS and Sass modules out of the box.
+- **Fast Refresh:** Provides an enhanced development experience with instant feedback.
+
+### When to Use Next.js
+
+Next.js is best suited for:
+
+- **SEO-Friendly Websites:** When SEO is a priority, SSR and SSG provide better search engine indexing.
+- **Dynamic Applications:** Applications that require server-side rendering for dynamic content.
+- **Hybrid Applications:** Projects that need a mix of static and dynamic content.
+- **Rapid Development:** Simplifies routing, API integration, and page rendering, speeding up development.
+
+### Comparison to Other Frameworks
+
+- **Next.js vs. Create React App (CRA):**
+    - **Next.js:** Supports SSR, SSG, and hybrid rendering.
+    - **CRA:** Client-side rendering only, no built-in SSR or SSG.
+- **Next.js vs. Gatsby:**
+    - **Next.js:** Combines SSR, SSG, and client-side rendering.
+    - **Gatsby:** Primarily focuses on SSG, excellent for static sites.
+- **Next.js vs. Nuxt.js:**
+    - **Next.js:** React-based framework.
+    - **Nuxt.js:** Vue.js-based framework with similar SSR and SSG capabilities.
+
+### Basic Next.js Commands
+
+| Command | Description |
+| --- | --- |
+| npx create-next-app | Creates a new Next.js application. |
+| npm run dev | Starts the development server. |
+| npm run build | Builds the application for production. |
+| npm start | Starts the production server. |
+| next export | Exports the app as a static site. |
+
+### Getting Started with Next.js
+
+### 1. Set Up Your Environment
+
+- **Install Node.js:** Download and install Node.js from [nodejs.org](https://nodejs.org/).
+
+### 2. Create a New Next.js Application
+
+- **Command:** Use `create-next-app` to set up a new project:
+    
+    ```bash
+    npx create-next-app my-next-app
+    cd my-next-app
+    
+    ```
+    
+
+### 3. Start the Development Server
+
+- **Command:** Run the development server:
+    
+    ```bash
+    npm run dev
+    
+    ```
+    
+    - Open your browser and navigate to `http://localhost:3000` to see your new Next.js app.
+
+### 4. Create a New Page
+
+- **Add a New Page:**
+    - Create a new file in the `pages` directory, for example `about.js`:
+        
+        ```jsx
+        export default function About() {
+          return <h1>About Page</h1>;
+        }
+        
+        ```
+        
+    - Visit `http://localhost:3000/about` to see the new page.
+
+### 5. Create an API Route
+
+- **Add an API Endpoint:**
+    - Create a new file in the `pages/api` directory, for example `hello.js`:
+        
+        ```jsx
+        export default function handler(req, res) {
+          res.status(200).json({ message: 'Hello, Next.js!' });
+        }
+        
+        ```
+        
+    - Visit `http://localhost:3000/api/hello` to see the API response.
+
+### 6. Build and Export for Production
+
+- **Build the Application:**
+    - Command:
+        
+        ```bash
+        npm run build
+        npm run start
+        
+        ```
+        
+- **Export as Static Site (Optional):**
+    - Command:
+        
+        ```bash
+        next export
+        
+        ```
+        
+
+### Conclusion
+
+Next.js is a powerful React framework that combines server-side rendering, static site generation, and client-side rendering to build fast, SEO-friendly web applications. With its easy setup, file-based routing, and built-in CSS support, Next.js streamlines the development process and enhances the performance and scalability of your projects.
+
+---
+
+**Contributors**
+
+- Jessie Liu

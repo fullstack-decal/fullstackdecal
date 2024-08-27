@@ -1,1 +1,378 @@
 # SQL and Relational Databases
+
+# Introduction to SQL Databases
+
+### What is SQL?
+
+SQL (Structured Query Language) is the go-to language for handling databases. It helps you do all the basic stuff like creating, reading, updating, and deleting data—often called CRUD (Create, Read, Update, Delete). SQL is a must-know for web development because it makes managing backend data super efficient.
+
+Don't stress about the coding part; SQL is pretty straightforward and easy to get the hang of!
+
+### Why Use SQL Databases?
+
+SQL databases are popular because they:
+
+- **Organize Data:** Data is stored in tables with rows and columns, making it easy to organize and retrieve.
+- **Ensure Data Integrity:** Constraints and rules can be applied to ensure data accuracy and consistency.
+- **Support Complex Queries:** SQL allows you to perform complex queries to filter, sort, and aggregate data.
+- **Are Widely Supported:** Most web development frameworks and platforms support SQL databases, making them a versatile choice.
+
+### When to Use SQL Databases
+
+SQL databases are best suited for:
+
+- **Structured Data:** When you have data that fits well into tables with predefined columns and data types.
+- **Complex Queries:** When you need to perform complex queries, joins, and aggregations.
+- **Data Integrity:** When you need to ensure data accuracy and consistency through constraints and rules.
+- **Transactions:** When you need support for transactions to ensure data reliability.
+
+### Practical Examples
+
+**When to Use SQL:**
+
+1. **E-commerce Website:**
+    - **Scenario:** You are developing an e-commerce website that requires storing information about products, customers, orders, and payments.
+    - **Why SQL?**
+        - **Structured Data:** Product details, customer information, and orders can be stored in well-defined tables.
+        - **Complex Queries:** You need to retrieve information like order history, customer purchase patterns, and inventory status.
+        - **Data Integrity:** Enforcing constraints to ensure data consistency (e.g., a product cannot be ordered if it's out of stock).
+        - **Transactions:** Ensuring reliable order processing by using transactions (e.g., deducting stock only if the payment is successful).
+
+**When Not to Use SQL:**
+
+1. **Real-time Analytics on Streaming Data:**
+    - **Scenario:** You are building a real-time analytics system to process and analyze streaming data from IoT devices.
+    - **Why Not SQL?**
+        - **Unstructured Data:** IoT data can be highly variable and unstructured.
+        - **Scalability:** Handling large volumes of streaming data in real-time may require horizontal scaling, which NoSQL databases handle better.
+        - **Flexibility:** NoSQL databases like MongoDB or Cassandra offer more flexibility in terms of data models (e.g., document-oriented, key-value).
+    
+    **Alternative: NoSQL Database (e.g., MongoDB)**
+    
+2. **Social Media Application:**
+    - **Scenario:** You are developing a social media application where users can post updates, follow others, and like posts.
+    - **Why Not SQL?**
+        - **Unstructured Data:** User-generated content like posts, comments, and multimedia can be highly variable.
+        - **Many-to-Many Relationships:** Managing complex relationships like followers and likes can be more efficient with graph databases.
+        - **Scalability:** Handling high read and write throughput may require the scalability offered by NoSQL databases.
+    
+    **Alternative: NoSQL Database (e.g., Cassandra, Neo4j)**
+    
+
+### Common SQL Databases
+
+Some common SQL databases include:
+
+- **MySQL:** Open-source and widely used in web applications.
+- **PostgreSQL:** An open-source database known for its advanced features and compliance with SQL standards.
+- **SQLite:** A lightweight, file-based database commonly used for small to medium-sized applications.
+- **Microsoft SQL Server:** A commercial database known for its integration with Microsoft products.
+
+### Getting Started with SQL
+
+### Ways to Use SQL
+
+1. **Terminal/Command Line:**
+    - Most SQL databases can be accessed and managed directly through the terminal. This method is often used by developers who are comfortable with command-line interfaces.
+    - Example command to start MySQL on terminal:
+        
+        ```bash
+        mysql -u usernamehere -p
+        ```
+        
+2. **SQL Workbench:**
+    - SQL Workbench is a graphical interface that allows users to interact with databases visually. It's suitable for beginners who prefer a more intuitive interface.
+    - Popular SQL Workbench tools: MySQL Workbench, pgAdmin for PostgreSQL.
+3. **VS Code Extensions:**
+    - Visual Studio Code offers extensions that allow you to manage SQL databases directly within the editor. This is convenient for developers who use VS Code as their primary code editor.
+    - Example extension: SQLTools.
+
+### Basic SQL Commands
+
+Here are some fundamental SQL commands to get you started:
+
+| Command | Description |
+| --- | --- |
+| CREATE DATABASE | Creates a new database. |
+| USE | Selects the database to use. |
+| CREATE TABLE | Creates a new table within a database. |
+| INSERT INTO | Inserts new data into a table. |
+| SELECT | Retrieves data from a table. |
+| UPDATE | Updates existing data within a table. |
+| DELETE | Deletes data from a table. |
+| DROP TABLE | Deletes a table from the database. |
+| ALTER TABLE | Modifies an existing table (e.g., adding a column). |
+
+# Summary on steps to getting started on SQL
+
+### 1. Set Up Your Environment
+
+- **Install a Database Management System (DBMS):** Choose and install a DBMS like MySQL, PostgreSQL, SQLite, or Microsoft SQL Server.
+    - Example command for MySQL:
+        
+        ```bash
+        sudo apt-get install mysql-server
+        
+        ```
+        
+
+### 2. Create a Database
+
+- **Access the DBMS:** Open your terminal or SQL Workbench and log into your DBMS.
+    - Example command for MySQL: (root is usually your username)
+        
+        ```bash
+        mysql -u root -p
+        
+        ```
+        
+- **Create a New Database:** Define a new database to store your tables.
+    - SQL command:
+        
+        ```sql
+        CREATE DATABASE mydatabase;
+        
+        ```
+        
+
+### 3. Use the Database
+
+- **Select the Database:** Switch to the newly created database to start creating tables.
+    - SQL command:
+        
+        ```sql
+        USE mydatabase;
+        
+        ```
+        
+
+### 4. Create Tables
+
+- **Define Table Structure:** Create tables within the database with specified columns and data types.
+    - SQL command:
+        
+        ```sql
+        CREATE TABLE users (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            username VARCHAR(50) NOT NULL,
+            email VARCHAR(100) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+        
+        ```
+        
+
+### 5. Insert Data
+
+- **Add Records:** Insert data into your tables.
+    - SQL command:
+        
+        ```sql
+        INSERT INTO users (username, email)
+        VALUES ('john_doe', 'john@example.com');
+        
+        ```
+        
+
+### 6. Query Data
+
+- **Retrieve Data:** Use SQL queries to fetch and display data from your tables.
+    - SQL command:
+        
+        ```sql
+        SELECT * FROM users;
+        
+        ```
+        
+
+### 7. Update Data
+
+- **Modify Records:** Update existing data within your tables.
+    - SQL command:
+        
+        ```sql
+        UPDATE users
+        SET email = 'john_new@example.com'
+        WHERE username = 'john_doe';
+        
+        ```
+        
+
+### 8. Delete Data
+
+- **Remove Records:** Delete data from your tables as needed.
+    - SQL command:
+        
+        ```sql
+        DELETE FROM users
+        WHERE username = 'john_doe';
+        
+        ```
+        
+
+If you understand this part, great! Now try creating a SQL database yourself :) Read ahead if you want a more in-depth explanation.
+
+# Long Explanation on Steps of SQL
+
+### Creating a Database
+
+A database is necessary to create a table because it serves as the organized container that holds and manages the tables. The database provides a structured environment to store, retrieve, and manipulate data efficiently. Without a database, there would be no framework to define, organize, and enforce rules on the tables, leading to potential data disorganization and inefficiency.
+
+```sql
+-- Create a new database
+CREATE DATABASE mydatabase;
+
+-- Use the database
+USE mydatabase;
+```
+
+### Creating a Table in the database
+
+After creating a database, now we need to include a table in that database, or else there’s no data to grab from.
+
+When creating a table in SQL, defining a structure ensures data is organized and consistent. Here’s an example:
+
+```sql
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+```
+
+As you can see, you create the name  and then tell sql what type of data this is. Here’s a brief explanation of the key components below:
+
+### Key Components
+
+- **id INT PRIMARY KEY AUTO_INCREMENT:**
+    - **id:** Unique identifier for each row.
+    - **INT:** Integer data type.
+    - **PRIMARY KEY:** Ensures uniqueness and not null.
+    - **AUTO_INCREMENT:** Automatically generates a unique ID for each row.
+- **username VARCHAR(50) NOT NULL:**
+    - **VARCHAR(50):** Text data up to 50 characters.
+    - **NOT NULL:** Ensures every user has a username.
+- **email VARCHAR(100) NOT NULL:**
+    - **VARCHAR(100):** Text data up to 100 characters.
+    - **NOT NULL:** Ensures every user has an email.
+- **created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP:**
+    - **TIMESTAMP:** Stores date and time.
+    - **DEFAULT CURRENT_TIMESTAMP:** Automatically records the creation time.
+
+You can search up for more data types for sql online.
+
+### Expected Output for Table Creation
+
+When the above SQL commands are executed, the `users` table will be created with the following structure:
+
+| id | username | email | created_at |
+| --- | --- | --- | --- |
+| INT | VARCHAR(50) | VARCHAR(100) | TIMESTAMP |
+
+### Inserting Data into a Table
+
+The `INSERT INTO` statement is used to add a new record to a table. Here, we're adding a new user to the `users` table with a `username` of `john_doe` and an `email` of `john@example.com`. When this statement is executed, a new row will be created in the `users` table with these values.
+
+Assuming the table structure includes an `id` column set to auto-increment, the `id` will automatically be assigned a unique integer value, and the `created_at` column will be populated with the current timestamp.
+
+```sql
+-- Insert a new user into the users table
+INSERT INTO users (username, email)
+VALUES ('john_doe', 'john@example.com');
+
+```
+
+### Expected Output for Data Insertion
+
+After inserting data, the `users` table will look like this:
+
+| id | username | email | created_at |
+| --- | --- | --- | --- |
+| 1 | john_doe | john@example.com | 2024-08-03 10:00:00 |
+
+### Querying Data
+
+A **query** is a request for data or information from a database. It allows you to retrieve specific data by specifying conditions and criteria. SQL queries are powerful tools that enable you to filter, sort, and present data in various ways.
+
+```sql
+sqlCopy code
+-- Select all columns from the users table
+SELECT * FROM users;
+
+-- Select specific columns from the users table
+SELECT username, email FROM users;
+
+-- Select users with a specific condition
+SELECT * FROM users WHERE username = 'john_doe';
+
+```
+
+### Expected Output for Querying Data
+
+**Selecting all columns:**
+
+| id | username | email | created_at |
+| --- | --- | --- | --- |
+| 1 | john_doe | john@example.com | 2024-08-03 10:00:00 |
+
+**Selecting specific columns:**
+
+| username | email |
+| --- | --- |
+| john_doe | john@example.com |
+
+**Selecting with a condition:**
+
+| id | username | email | created_at |
+| --- | --- | --- | --- |
+| 1 | john_doe | john@example.com | 2024-08-03 10:00:00 |
+
+### Updating Data
+
+The `UPDATE` statement modifies existing data within a table. In this example, it updates the `email` of the user with the `username` `'john_doe'` to `'john_new@example.com'`. The `WHERE` clause ensures that only the specified row(s) are affected, preventing unintentional changes to other rows.
+
+```sql
+-- Update a user's email
+UPDATE users
+SET email = 'john_new@example.com'
+WHERE username = 'john_doe';
+
+```
+
+### Expected Output for Updating Data
+
+After updating the data, the `users` table will look like this:
+
+| id | username | email | created_at |
+| --- | --- | --- | --- |
+| 1 | john_doe | john_new@example.com | 2024-08-03 10:00:00 |
+
+### Deleting Data
+
+The `DELETE` statement removes existing data from a table. In this example, it deletes the user from the `users` table where the `username` is `'john_doe'`. The `WHERE` clause ensures that only the specified row(s) are removed, preventing accidental deletion of other data.
+
+```sql
+-- Delete a user from the users table
+DELETE FROM users
+WHERE username = 'john_doe';
+
+```
+
+### Expected Output for Deleting Data
+
+After deleting the data, the `users` table will be empty:
+
+| id | username | email | created_at |
+| --- | --- | --- | --- |
+
+### Conclusion
+
+SQL is a powerful language for managing and manipulating relational databases. Whether you're building a simple website or a complex web application, understanding SQL is crucial for handling data efficiently. This lesson provides a foundation to get you started with SQL databases, and as you progress, you'll discover more advanced features and capabilities that SQL has to offer.
+
+---
+
+**Contributors**
+
+- Jessie Liu

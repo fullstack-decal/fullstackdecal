@@ -1,1 +1,160 @@
 # Django
+
+### Introduction to Django
+
+### What is Django?
+
+Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. It follows the "batteries-included" philosophy, providing many built-in features to handle common web development tasks, such as authentication, routing, and database management.
+
+### Why Use Django?
+
+Django is favored because it:
+
+- **Rapid Development:** Provides tools and libraries to build applications quickly.
+- **Scalability:** Efficiently handles high-traffic sites.
+- **Security:** Includes features to help developers build secure websites.
+- **Versatility:** Suitable for various applications, from content management systems to social networks.
+- **Admin Interface:** Automatically generates an admin panel to manage your data.
+- **ORM:** Uses an Object-Relational Mapping system to interact with databases.
+
+### When to Use Django
+
+Django is best suited for:
+
+- **Data-Driven Applications:** Projects that require complex data handling.
+- **Content Management Systems:** Building CMSs with Django's robust admin interface.
+- **E-commerce Sites:** Handling transactions, user authentication, and database interactions.
+- **APIs:** Building RESTful APIs using Django REST Framework.
+- **Rapid Prototyping:** Quickly developing and iterating on ideas.
+
+### When Not to Use Django
+
+Django may not be the best choice for:
+
+- **Small Static Websites:** Overhead of the framework may be unnecessary for simple, static sites.
+- **Real-Time Applications:** Projects requiring real-time updates (e.g., chat applications) might benefit more from frameworks like Node.js with [Socket.IO](http://socket.io/).
+- **Frontend-Heavy Applications:** If the project heavily relies on client-side rendering and interactivity, a frontend framework/library like React or Vue.js with a backend API might be more suitable.
+
+### Comparison to Other Frameworks
+
+- **Django vs. Flask:**
+    - **Django:** Full-featured, "batteries-included" framework.
+    - **Flask:** Lightweight and flexible, allowing for more customization.
+- **Django vs. Ruby on Rails:**
+    - **Django:** Python-based, strong in scalability and versatility.
+    - **Rails:** Ruby-based, convention over configuration philosophy, great for rapid development.
+
+### Basic Django Commands
+
+| Command | Description |
+| --- | --- |
+| `django-admin startproject <project_name>` | Creates a new Django project. |
+| `python manage.py startapp <app_name>` | Creates a new application within the project. |
+| `python manage.py runserver` | Starts the development server. |
+| `python manage.py makemigrations` | Prepares database migrations based on changes to models. |
+| `python manage.py migrate` | Applies the migrations to the database. |
+| `python manage.py createsuperuser` | Creates an admin user for the Django admin interface. |
+
+### Getting Started with Django
+
+### 1. Set Up Your Environment
+
+- **Install Python:** Download and install Python from [python.org](https://www.python.org/).
+- **Install Django:** Use pip to install Django:
+    
+    ```bash
+    pip install django
+    
+    ```
+    
+
+### 2. Create a New Django Project
+
+- **Command:** Start a new project:
+    
+    ```bash
+    django-admin startproject myproject
+    cd myproject
+    
+    ```
+    
+
+### 3. Create a New Application
+
+- **Command:** Create a new app within the project:
+    
+    ```bash
+    python manage.py startapp myapp
+    
+    ```
+    
+
+### 4. Define Models
+
+- **Add Models:** Define data models in `myapp/models.py`:
+    
+    ```python
+    from django.db import models
+    
+    class Article(models.Model):
+        title = models.CharField(max_length=100)
+        content = models.TextField()
+        published_date = models.DateTimeField(auto_now_add=True)
+    
+    ```
+    
+
+### 5. Create and Apply Migrations
+
+- **Command:** Prepare and apply database migrations:
+    
+    ```bash
+    python manage.py makemigrations
+    python manage.py migrate
+    
+    ```
+    
+
+### 6. Create an Admin User
+
+- **Command:** Create a superuser to access the admin interface:
+    
+    ```bash
+    python manage.py createsuperuser
+    
+    ```
+    
+
+### 7. Register Models in Admin
+
+- **Register Models:** Register your models in `myapp/admin.py` to manage them through the admin interface:
+    
+    ```python
+    from django.contrib import admin
+    from .models import Article
+    
+    admin.site.register(Article)
+    
+    ```
+    
+
+### 8. Start the Development Server
+
+- **Command:** Run the development server:
+    
+    ```bash
+    python manage.py runserver
+    
+    ```
+    
+    - Open your browser and navigate to `http://localhost:8000/admin` to access the admin panel.
+
+### Summary
+
+Django is a robust and versatile web framework that supports rapid development and clean design. It's an excellent choice for building data-driven applications, content management systems, and APIs. With built-in features for security, scalability, and an automatically generated admin interface, Django simplifies the development process and helps you build powerful web applications quickly.
+
+---
+
+**Contributors**
+
+- Jessie Liu

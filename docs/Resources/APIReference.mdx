@@ -1,1 +1,410 @@
-# API Reference
+# API References
+
+## **Introduction**
+
+APIs, or Application Programming Interfaces, are like bridges that let different software talk to each other. They help you add cool features to your websites or apps without having to build everything from scratch. Think of them as shortcuts that let you connect to other services, like showing real-time weather on your site or processing payments securely. Using APIs makes your projects more powerful and saves you a lot of time.
+
+### **Wait so why do I need to use APIs?**
+
+Imagine you’re building a weather app that shows users the current weather in their city. Instead of trying to collect and update weather data yourself (which would be super hard and time-consuming), you can use an API like OpenWeatherMap.
+
+### **How exactly do APIs work?**
+
+Using an API typically involves sending a request to the API's server and receiving a response with the data you need. Here’s a simple step-by-step breakdown of how you would use an API:
+
+1. **Get an API Key (if needed):** Some APIs require you to sign up and get a unique key that identifies you when you make requests. This key is like a password that lets the API know you have permission to use it.
+   - Getting an API key is usually a straightforward process. Usually you need to signup or login on the official website, and they will provide an API key you can use.
+   - NOTE: API KEYS ARE PRIVATE AND SHOULD NOT BE SHARED OR UPLOADED ONLINE WHERE OTHERS CAN SEE (make sure you don’t accidentally upload it to github)
+2. **Choose the Right Endpoint:** APIs have different endpoints, which are like different doors you can go through to get specific data. For example, an endpoint might give you weather data for a specific city or the latest tweets from a user.
+3. **Make a Request:** You send a request to the API’s server using a URL. This can be done in your browser, with code, or with tools like Postman. The request might look something like this:
+
+   ```
+   <https://api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY>
+   ```
+
+   This URL asks the OpenWeatherMap API for the current weather in London.
+
+4. **Receive the Response:** The API will respond with the data you asked for, usually in a format like JSON, which is easy to read and use in your code.
+5. **Use the Data:** You can then use this data in your project. For example, if you're building a weather app, you can display the current temperature, weather conditions, and more based on the API response.
+6. **Handle Errors:** Sometimes things go wrong, like if the API server is down or you entered the wrong URL. It’s important to handle these errors in your code so your app can deal with them gracefully.
+
+### **I still don’t understand…**
+
+Using an API is like ordering food through a drive-thru at a restaurant.
+
+Here’s how the analogy works:
+
+1. **Menu (API Documentation):** The menu lists all the different items you can order, just like API documentation shows you all the different data or services the API can provide.
+2. **Place Your Order (API Request):** You pull up to the speaker and tell the staff what you want, just like you send a request to an API to get specific data (like the current weather in your city).
+3. **Prepare Your Order (Processing the Request):** The restaurant staff prepares your food based on what you asked for. Similarly, the API processes your request to gather the data you need.
+4. **Receive Your Food (API Response):** You drive up to the window and receive your food, just like how you receive a response from the API with the data you requested.
+5. **Enjoy Your Meal (Using the Data):** Finally, you enjoy your meal—just like you use the data from the API in your app or website.
+
+In this analogy, the drive-thru (API) simplifies the process of getting what you need (data) without having to go inside the restaurant and cook the food yourself (gather the data manually). It’s quick, efficient, and gets you exactly what you’re looking for with minimal effort.
+
+---
+
+This page covers 20 popular APIs that are super useful and easy to add to your own projects. To use them, simply search it up on Google, there will be further instructions on each official site!
+
+### **1. NASA API**
+
+**What it is:** The NASA API provides access to a treasure trove of space data, including imagery, mission data, and astrophysical data.
+
+**How to use it:**
+
+- **Base URL:** `https://api.nasa.gov/`
+- **Example Request:**
+  ```bash
+  <https://api.nasa.gov/planetary/apod?api_key=YOUR_API_KEY>
+
+  ```
+
+**How/Why to Use:**
+
+- **Project Example:** Create a space-themed educational website that displays the "Astronomy Picture of the Day" (APOD) along with details about space missions. This can engage users with daily updates and fascinating information about our universe.
+
+### **2. OpenWeatherMap API**
+
+**What it is:** This API provides weather data, including current conditions, forecasts, and historical data.
+
+**How to use it:**
+
+- **Base URL:** `https://api.openweathermap.org/data/2.5/`
+- **Example Request:**
+  ```bash
+  <https://api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY>
+
+  ```
+
+**How/Why to Use:**
+
+- **Project Example:** Develop a weather dashboard for travelers that displays the weather forecast for their destination city. You can add features like weather alerts, temperature trends, and suggestions for travel outfits based on the forecast.
+
+### **3. Google Maps API**
+
+**What it is:** Google Maps API allows developers to integrate maps, geolocation, and routing services into their applications.
+
+**How to use it:**
+
+- **Base URL:** `https://maps.googleapis.com/maps/api/`
+- **Example Request:**
+  ```bash
+  <https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway&key=YOUR_API_KEY>
+
+  ```
+
+**How/Why to Use:**
+
+- **Project Example:** Build a property listing website where users can view the location of properties on a map. Include features like nearby amenities, driving directions, and geolocation to enhance user experience.
+
+### **4. Twitter API**
+
+**What it is:** The Twitter API enables access to tweets, user data, and other Twitter functionalities, allowing for social media integration.
+
+**How to use it:**
+
+- **Base URL:** `https://api.twitter.com/2/`
+- **Example Request:**
+  ```bash
+  <https://api.twitter.com/2/tweets?ids=1453489038376136704&tweet.fields=created_at&expansions=author_id&user.fields=created_at&bearer_token=YOUR_ACCESS_TOKEN>
+
+  ```
+
+**How/Why to Use:**
+
+- **Project Example:** Create a social media monitoring tool that tracks specific hashtags or keywords. This can be useful for businesses looking to monitor their brand presence on Twitter or for journalists tracking trending topics.
+
+### **5. GitHub API**
+
+**What it is:** The GitHub API allows access to repository data, user information, and other GitHub functionalities.
+
+**How to use it:**
+
+- **Base URL:** `https://api.github.com/`
+- **Example Request:**
+  ```bash
+  <https://api.github.com/repos/octocat/Hello-World>
+
+  ```
+
+**How/Why to Use:**
+
+- **Project Example:** Build a portfolio website that automatically pulls in and displays your latest GitHub repositories, including project descriptions, languages used, and commit history. This keeps your portfolio up-to-date with minimal effort.
+
+### **6. ChatGPT API**
+
+**What it is:** ChatGPT API enables integration of advanced conversational AI into your applications, allowing for automated text-based interactions.
+
+**How to use it:**
+
+- **Base URL:** `https://api.openai.com/v1/`
+- **Example Request:**
+  ```bash
+  curl <https://api.openai.com/v1/completions> \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "model": "gpt-4",
+    "prompt": "Translate the following English text to French: 'Hello, world!'",
+    "max_tokens": 60
+  }'
+
+  ```
+
+**How/Why to Use:**
+
+- **Project Example:** Implement a chatbot for your e-commerce website that can help users find products, answer common questions, and even assist with checkout processes, improving customer service and user engagement.
+
+### **7. NASDAQ Data API**
+
+**What it is:** This API provides financial data from NASDAQ, including stock prices, historical data, and other market-related information.
+
+**How to use it:**
+
+- **Base URL:** `https://data.nasdaq.com/api/v3/`
+- **Example Request:**
+  ```bash
+  <https://data.nasdaq.com/api/v3/datasets/WIKI/FB/data.json?api_key=YOUR_API_KEY>
+
+  ```
+
+**How/Why to Use:**
+
+- **Project Example:** Develop a financial dashboard that displays real-time stock prices, historical trends, and financial news for investors. You can also add features like portfolio tracking and market analysis tools.
+
+### **8. Spotify API**
+
+**What it is:** The Spotify API allows access to music data, including track information, playlists, and user profiles.
+
+**How to use it:**
+
+- **Base URL:** `https://api.spotify.com/v1/`
+- **Example Request:**
+  ```bash
+  curl -X "GET" "<https://api.spotify.com/v1/me>" -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+
+  ```
+
+**How/Why to Use:**
+
+- **Project Example:** Create a music discovery app where users can search for songs, create playlists, and view their listening history. You could also implement social features where users can share playlists and see what their friends are listening to.
+
+### **9. YouTube Data API**
+
+**What it is:** The YouTube Data API enables access to video content, user information, and other data on YouTube.
+
+**How to use it:**
+
+- **Base URL:** `https://www.googleapis.com/youtube/v3/`
+- **Example Request:**
+  ```bash
+  <https://www.googleapis.com/youtube/v3/videos?part=snippet&id=Ks-_Mh1QhMc&key=YOUR_API_KEY>
+
+  ```
+
+**How/Why to Use:**
+
+- **Project Example:** Build a video aggregator website that curates content from YouTube based on specific interests, categories, or keywords. You could also add features like video recommendations and trending videos in different regions.
+
+### **10. Stripe API**
+
+**What it is:** Stripe API is widely used for handling online payments, providing functionalities like payment processing, refunds, and subscription management.
+
+**How to use it:**
+
+- **Base URL:** `https://api.stripe.com/v1/`
+- **Example Request:**
+  ```bash
+  curl <https://api.stripe.com/v1/charges> \\
+  -u YOUR_API_KEY: \\
+  -d amount=2000 \\
+  -d currency=usd \\
+  -d source=tok_amex \\
+  -d description="Charge for jenny.rosen@example.com"
+
+  ```
+
+**How/Why to Use:**
+
+- **Project Example:** Develop an e-commerce platform with integrated payment processing, where users can purchase products securely. You can also manage subscriptions, process refunds, and handle invoicing directly through your site.
+
+### **11. Firebase API**
+
+**What it is:** Firebase API is used for backend services such as authentication, real-time databases, and cloud storage.
+
+**How to use it:**
+
+- **Base URL:** `https://firebase.googleapis.com/`
+- **Example Request:**
+  ```bash
+  <https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=YOUR_API_KEY>
+  ```
+
+**How/Why to Use:**
+
+- **Project Example:** Create a real-time chat application with Firebase as the backend, where users can sign up, log in, and chat with others. Firebase will handle user authentication, message storage, and real-time updates.
+
+### **12. Instagram Graph API**
+
+**What it is:** The Instagram Graph API allows you to access Instagram Business Account data, including media, comments, and insights.
+
+**How to use it:**
+
+- **Base URL:** `https://graph.instagram.com/`
+- **Example Request:**
+  ```bash
+  <https://graph.instagram.com/me/media?fields=id,caption&access_token=YOUR_ACCESS_TOKEN>
+  ```
+
+**How/Why to Use:**
+
+- **Project Example:** Develop a marketing analytics dashboard that pulls in data from an Instagram Business Account, showing engagement metrics, top posts, and audience demographics. This can help businesses optimize their social media strategies.
+
+### **13. Twilio API**
+
+**What it is:** Twilio API is used for sending and receiving SMS, voice calls, and other communication services.
+
+**How to use it:**
+
+- **Base URL:** `https://api.twilio.com/2010-04-01/`
+- **Example Request:**
+  ```bash
+  curl -X POST https://api.twilio.com/2010-04-01/Accounts/YOUR_ACCOUNT_SID/Messages.json \
+  --data-urlencode "Body=Hello there!" \
+  --data-urlencode "From=+15017122661" \
+  --data-urlencode "To=+15558675310" \
+  -u YOUR_ACCOUNT_SID:YOUR_AUTH_TOKEN
+  ```
+
+**How/Why to Use:**
+
+- **Project Example:** Create a customer notification system for an e-commerce platform that sends SMS alerts for order confirmations, shipping updates, and promotional offers. Twilio can also be used to integrate voice call functionalities for customer support.
+
+### **14. Microsoft Azure Cognitive Services API**
+
+**What it is:** This API offers various AI services such as text analysis, computer vision, and speech recognition.
+
+**How to use it:**
+
+- **Base URL:** `https://[your-location].api.cognitive.microsoft.com/`
+- **Example Request:**
+  ```bash
+  curl -X POST "https://[your-location].api.cognitive.microsoft.com/vision/v3.1/analyze?visualFeatures=Categories,Description,Color&details=Celebrities&language=en" \
+  -H "Ocp-Apim-Subscription-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  --data-ascii "{\"url\":\"https://example.com/image.jpg\"}"
+  ```
+
+**How/Why to Use:**
+
+- **Project Example:** Develop an AI-powered content moderation tool that analyzes images uploaded by users and automatically detects inappropriate content. You could also build a text analysis tool to summarize or extract key points from long articles.
+
+### **15. NewsAPI**
+
+**What it is:** NewsAPI provides access to news articles from various sources worldwide, allowing you to fetch the latest news.
+
+**How to use it:**
+
+- **Base URL:** `https://newsapi.org/v2/`
+- **Example Request:**
+  ```bash
+  <https://newsapi.org/v2/top-headlines?country=us&apiKey=YOUR_API_KEY>
+  ```
+
+**How/Why to Use:**
+
+- **Project Example:** Build a news aggregator site that pulls in the latest headlines from various sources. You can allow users to filter news by category, source, or region, and display trending topics.
+
+### **16. Yelp Fusion API**
+
+**What it is:** The Yelp Fusion API allows access to business data, reviews, and ratings, useful for integrating local business information.
+
+**How to use it:**
+
+- **Base URL:** `https://api.yelp.com/v3/`
+- **Example Request:**
+  ```bash
+  curl -H "Authorization: Bearer YOUR_API_KEY" \
+  "https://api.yelp.com/v3/businesses/search?term=restaurants&location=San+Francisco"
+  ```
+- **How/Why to Use:**
+  - **Project Example:** Create a restaurant review website that pulls in data from Yelp, allowing users to search for local restaurants, read reviews, and see ratings.
+- **Documentation & API Key:** Yelp Fusion API
+
+### **17. Facebook Graph API**
+
+**What it is:** The Facebook Graph API enables access to Facebook data, including user profiles, photos, and friend lists.
+
+**How to use it:**
+
+- **Base URL:** `https://graph.facebook.com/v12.0/`
+- **Example Request:**
+  ```bash
+  curl -i -X GET \
+  "https://graph.facebook.com/v12.0/me?fields=id,name&access_token=YOUR_ACCESS_TOKEN"
+  ```
+- **How/Why to Use:**
+  - **Project Example:** Develop a social networking site or a Facebook integration for your app that allows users to log in with Facebook, share content, and invite friends. You can also create custom apps that interact with Facebook data.
+- **Documentation & API Key:** [Facebook Graph API](https://developers.facebook.com/docs/graph-api)
+
+### **18. CoinGecko API**
+
+**What it is:** The CoinGecko API provides access to cryptocurrency data, including prices, market capitalization, and historical data.
+
+**How to use it:**
+
+- **Base URL:** `https://api.coingecko.com/api/v3/`
+- **Example Request:**
+  ```bash
+  curl -X GET "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
+  ```
+- **How/Why to Use:**
+  - **Project Example:** Build a cryptocurrency tracking website that displays real-time prices, market trends, and portfolio management tools. You could also add features like price alerts and news updates related to specific cryptocurrencies.
+- **Documentation & API Key:** CoinGecko API
+
+These sections now include links to the official documentation, example requests, and practical project examples to help you understand how to integrate these APIs into your projects.
+
+### **19. Unsplash API**
+
+**What it is:** The Unsplash API provides access to high-quality, royalty-free images from the Unsplash photography community.
+
+**How to use it:**
+
+- **Base URL:** `https://api.unsplash.com/`
+- **Example Request:**
+  ```bash
+  curl -H "Authorization: Client-ID YOUR_ACCESS_KEY" \\
+  "<https://api.unsplash.com/photos/random?query=nature&count=1>"
+
+  ```
+- **How/Why to Use:**
+  - **Project Example:** Develop a photo gallery website that pulls in images from Unsplash, allowing users to search for and download images for free. You can also build an image-based inspiration board where users can curate their favorite photos.
+- **Documentation & API Key:** [Unsplash API](https://unsplash.com/developers)
+
+### **20. OpenAI DALL·E API**
+
+**What it is:** The DALL·E API by OpenAI allows developers to generate images from textual descriptions, creating unique visuals for various applications.
+
+**How to use it:**
+
+- **Base URL:** `https://api.openai.com/v1/`
+- **Example Request:**
+  ```bash
+  curl <https://api.openai.com/v1/images/generations> \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "prompt": "A futuristic city with flying cars",
+    "n": 1,
+    "size": "1024x1024"
+  }'
+  ```
+- **How/Why to Use:**
+  - **Project Example:** Create a custom design tool where users can input text descriptions to generate custom images for their projects. This can be useful for generating unique artwork, product mockups, or creative content for marketing campaigns.
+- **Documentation & API Key:** [OpenAI DALL·E API](https://platform.openai.com/docs/guides/images)
+
+---
+
+**Contributors**
+
+- Jessie Liu
