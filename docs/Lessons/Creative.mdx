@@ -1,1 +1,120 @@
 # Creative Web Development and Three.js
+
+
+
+
+What seperates a villain from a SUPER villain? PRESENTATION! 3D environments on the web is hard to find, finding it done well is even more so. A great example is [apple](https://www.apple.com/), it changes all the time but alot of the iphones in the backgrounds  are 3d without controls or in a prebuilt transition. This is more advanced but its no different than any other object oriented program, but instead of objects that function logically, it is 3 dimentional objects, cameras, canvas, and other fun quirky little magical functions that we can utilize to create something cool. 
+
+## Introduction
+
+
+Three.js is a powerful JavaScript library that simplifies the creation of 3D content on the web, leveraging WebGL under the hood. Paired with Drei, a collection of useful helpers for react-three-fiber, you can build complex 3D scenes with React's declarative component model. This vitamin introduces you to Three.js and Drei, walking through the essential concepts and providing a practical example of a slope field visualization.
+
+### Commonly Asked Questions:
+
+1. **What is Three.js?**
+   - Three.js is a JavaScript library that enables developers to create 3D graphics in the browser using WebGL. It abstracts complex WebGL operations, making 3D content creation accessible.
+
+2. **What is Drei?**
+   - Drei is a helper library for react-three-fiber that provides a variety of pre-built components, such as cameras, controls, and 3D primitives, which simplify the development process in Three.js.
+
+3. **Why use Three.js with React (react-three-fiber)?**
+   - Combining Three.js with React through react-three-fiber allows developers to leverage React's component model, making it easier to manage and update complex 3D scenes. React's declarative nature fits well with Three.js, streamlining the development process.
+
+4. **What are the benefits of using Drei?**
+   - Drei enhances react-three-fiber by offering pre-configured components, utilities, and abstractions, allowing developers to focus on the core logic without worrying about lower-level details.
+
+### Example: Slope Field Visualization
+
+The following code demonstrates how to create a 3D slope field visualization using Three.js, react-three-fiber, and Drei.
+
+[live example](https://3dslopefield.vercel.app/) - the default controls are left drag right drag etc play around with it :)
+[drei documentation](https://github.com/pmndrs/drei)
+[three.js documentation](https://threejs.org/docs/)
+```javascript
+import React, { useRef, useEffect } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { OrbitControls, Text } from '@react-three/drei';
+import * as THREE from 'three';
+
+function SlopeField() {
+  const meshRef = useRef(null);
+  const { camera, gl } = useThree();
+
+  useEffect(() => {
+    camera.position.set(0, -30, 10);
+    camera.up.set(0, 5, 3);
+  }, [camera]);
+
+  useFrame(() => {
+    gl.setClearColor(new THREE.Color('#f0f0f0'));
+  });
+
+  const slopeField = [];
+  for (let x = -10; x <= 10; x += 1) {
+    for (let y = -10; y <= 10; y += 1) {
+      for (let z = -10; z <= 10; z += 1) {
+        if (x !== 0 && y !== 0 && z !== 0) {
+          const dx = 0.2;
+          const dy = dx * (x / y);
+          const dz = dx * (x / z);
+          const length = Math.sqrt(dx * dx + dy * dy + dz * dz);
+          const arrow = (
+            <mesh
+              ref={meshRef}
+              key={`${x}-${y}-${z}`}
+              position={[x, y, z]}
+              rotation={[
+                Math.atan2(dz, Math.sqrt(dx * dx + dy * dy)),
+                Math.atan2(dy, dx),
+                0,
+              ]}
+            >
+              <cylinderGeometry args={[0.01, 0.15, length, 12]} />
+              <meshBasicMaterial color={'#000000'} />
+            </mesh>
+          );
+          slopeField.push(arrow);
+        }
+      }
+    }
+  }
+
+  return (
+    <>
+      {slopeField}
+      <Text scale={[1, 1, 1]} color={'#000000'} position={[11, 0, 0]} rotation={[0, Math.PI / 2, 0]}>
+        X
+      </Text>
+      <Text scale={[1, 1, 1]} color={'#000000'} position={[0, 11, 0]} rotation={[0, 0, Math.PI / 2]}>
+        Y
+      </Text>
+      <Text scale={[1, 1, 1]} color={'#000000'} position={[0, 0, 11]} rotation={[Math.PI / 2, 0, 0]}>
+        Z
+      </Text>
+      <OrbitControls ref={meshRef} enableDamping={false} />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Canvas style={{ height: '100vh', width: '100vw' }}>
+      <SlopeField />
+    </Canvas>
+  );
+}
+
+export default App;
+```
+
+In this code, we:
+
+- Set up a 3D scene using react-three-fiber's `Canvas` component.
+- Use Drei's `OrbitControls` and `Text` components for interactivity and labeling.
+- Implement a custom `SlopeField` component to visualize a 3D vector field, where arrows represent directional slopes based on a mathematical function.
+
+
+### Further info
+
+[Blender With Three.JS](https://www.youtube.com/watch?v=_QmhpmZVZIU)
