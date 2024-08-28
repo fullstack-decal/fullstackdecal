@@ -133,10 +133,11 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
     // Use this to announce enrollment
-    // announcementBar: {
-    //   id: "announcementBar-2",
-    //   content: `Enrollment for Fall 2024 is now open! Please apply <a target="_blank" rel="noopener noreferrer" href="https://fullstackdecal.com/enroll">here</a>.`,
-    // },
+    announcementBar: {
+      id: "announcementBar-2",
+      content: `Enrollment for Fall 2024 is now open! Please apply <a target="_blank" rel="noopener noreferrer" href="https://fullstackdecal.com/enroll">here</a>.`,
+      isCloseable: false,
+    },
   } satisfies Preset.ThemeConfig,
 };
 
