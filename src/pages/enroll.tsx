@@ -3,8 +3,7 @@ import { Center, Text } from "@chakra-ui/react";
 
 const Enroll = () => {
   useEffect(() => {
-    window.location.href =
-      "https://docs.google.com/forms/d/e/1FAIpQLSfktrNEIJovVzKOTV2gJEpg30kK0SVKoXXur0boEhNwlJ-jpg/viewform";
+    window.location.href = "https://forms.gle/B3Jp4fYNdfzZfZct9";
   }, []);
 
   return (

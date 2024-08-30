@@ -1,123 +1,438 @@
-# Server Side Rendering with Express Cookies
+# Server Side Rendering with Node, Express & Cookies
 
-### **Introduction**
+## Introduction
 
-Server-Side Rendering (SSR) is a technique used to generate HTML content on the server rather than in the browser. This approach can improve the performance and SEO of web applications by delivering fully rendered pages to the client, reducing the time to first meaningful paint. Express.js, a popular web framework for Node.js, is often used to implement SSR. Additionally, cookies play a crucial role in managing sessions, authentication, and user data in web applications.
+You are very familiar with JavaScript by now, and you may notice that we can only run JavaScript in our browser using the `<script>` tag. But what if we want to write scripts using JavaScript and run them directly on our local machines, just like how we do with Python?
 
-### **What is Server-Side Rendering (SSR)?**
+This is where **Node.js** comes into play. Node.js is a JavaScript runtime engine built on Chrome's V8 JavaScript engine that allows you to run JavaScript outside of the browser. This means you can do a lot more with JavaScript, such as managing local files, setting up a server, and much more. Essentially, it lets JavaScript move beyond the browser, enabling server-side development.
 
-- **Server-Side Rendering**: SSR involves generating the full HTML for a web page on the server based on a client's request and sending it to the browser. The browser then displays the pre-rendered content, which may also include interactive elements handled by client-side JavaScript.
-- **Benefits of SSR**:
-    - **Improved SEO**: Search engines can easily index server-rendered content, which improves the visibility of your website in search results.
-    - **Faster Initial Load**: Users receive fully rendered content faster since the server handles the heavy lifting, improving the perceived performance.
-    - **Better Performance on Low-Powered Devices**: Devices with limited resources benefit from SSR as they have less processing to do on the client side.
+### Learning Objectives
 
-### **How Does SSR Work with Express.js?**
+By the end of this lesson, you should be able to:
 
-- **Express.js Overview**: Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for building web and mobile applications. It’s widely used for developing server-side applications with Node.js.
-- **Rendering Views in Express**:Example of rendering a view using EJS in Express:
-    - Express can use various templating engines like EJS, Pug, or Handlebars to generate HTML content on the server.
-    - The server processes incoming requests, fetches data, renders the view with the appropriate data, and sends the complete HTML page back to the client.
-    
-    ```jsx
-    javascriptCopy code
-    const express = require('express');
-    const app = express();
-    
-    app.set('view engine', 'ejs');
-    
-    app.get('/', (req, res) => {
-        const data = { title: 'Home', message: 'Welcome to Server-Side Rendering with Express!' };
-        res.render('index', data);
-    });
-    
-    app.listen(3000, () => {
-        console.log('Server is running on http://localhost:3000');
-    });
-    
-    ```
-    
+1. Understand how npm (Node Package Manager) and Node.js work together.
+2. Create backend APIs using Node.js and Express.
+3. Make API calls using Axios.
+4. Work with the file system using Node.js and Express.
+5. Understand and use cookies to manage state and data in your applications.
 
-### **What Are Cookies?**
+### Getting Started
 
-- **Cookies**: Cookies are small pieces of data stored on the client’s browser and sent to the server with each request. They are commonly used for session management, user preferences, and tracking user activity.
-- **Setting and Accessing Cookies in Express**:
-    - Express.js provides middleware to easily set and read cookies in an application.
-    
-    Example of setting a cookie in Express:
-    
-    ```jsx
-    javascriptCopy code
-    app.get('/set-cookie', (req, res) => {
-        res.cookie('username', 'JohnDoe', { maxAge: 900000, httpOnly: true });
-        res.send('Cookie has been set');
-    });
-    
-    app.get('/get-cookie', (req, res) => {
-        const username = req.cookies['username'];
-        res.send(`Cookie Value: ${username}`);
-    });
-    
-    ```
-    
-- **Common Cookie Attributes**:
-    - `expires` and `maxAge`: Determine the lifetime of a cookie.
-    - `httpOnly`: Prevents JavaScript from accessing the cookie, mitigating the risk of XSS attacks.
-    - `secure`: Ensures the cookie is only sent over HTTPS connections.
-    - `SameSite`: Controls whether cookies are sent with cross-site requests, helping to protect against CSRF attacks.
+Let's start by creating a folder to organize our code. We’ll call this folder `example` and navigate into it using the console:
 
-### **Using Cookies for Session Management**
+```bash
+mkdir example
+cd example
 
-- **Session Management**:Example of session management in Express:
-    - Sessions allow you to store user-specific data on the server, such as login credentials or preferences, and associate this data with a unique session ID stored in a cookie.
-    - `express-session` is a popular middleware for managing sessions in an Express application.
-    
-    ```jsx
-    javascriptCopy code
-    const session = require('express-session');
-    
-    app.use(session({
-        secret: 'your-secret-key',
-        resave: false,
-        saveUninitialized: true,
-        cookie: { secure: true }
-    }));
-    
-    app.get('/login', (req, res) => {
-        req.session.user = { username: 'JohnDoe' };
-        res.send('User logged in');
-    });
-    
-    app.get('/profile', (req, res) => {
-        if (req.session.user) {
-            res.send(`Welcome ${req.session.user.username}`);
-        } else {
-            res.send('Please log in first');
-        }
-    });
-    
-    ```
-    
+```
 
-### **Security Best Practices for Cookies**
+## NPM (Node Package Manager)
 
-- **Secure Cookies**: Always use the `secure` flag to ensure cookies are only transmitted over HTTPS, which protects against man-in-the-middle attacks.
-- **HttpOnly Cookies**: Use the `httpOnly` flag to prevent JavaScript from accessing cookies, which mitigates the risk of XSS attacks.
-- **SameSite Cookies**: Implement the `SameSite` attribute to protect against CSRF attacks by restricting how cookies are sent with cross-site requests.
-- **Cookie Encryption**: Encrypt sensitive data stored in cookies to add an extra layer of security.
+With Node.js, we gain the ability to run JavaScript locally on our machines. Along with this, we benefit from a rich ecosystem of packages contributed by a large community of developers. The possibilities for JavaScript become endless!
 
-### **Advantages of Using SSR with Express and Cookies**
+To manage the many packages that give Node.js its powerful abilities, we use **npm**. Node Package Manager (npm) is where you can find and download Node packages that add extra functionality to your projects.
 
-- **Enhanced Performance**: SSR reduces the time to first meaningful paint, improving the user experience, especially on slower networks or devices.
-- **Improved SEO**: Pre-rendered HTML content is more easily indexed by search engines, enhancing your application's visibility.
-- **Efficient State Management**: Cookies enable efficient management of user sessions and authentication states across different requests.
+[NPM Website](https://www.npmjs.com/)
 
-### **Challenges and Considerations**
+## Installing Node.js
 
-- **Increased Server Load**: Since the server is responsible for rendering HTML content, it may experience higher loads, especially under heavy traffic.
-- **Complexity**: Managing both server-rendered content and client-side interactivity can increase the complexity of your application.
-- **SEO Trade-offs**: While SSR improves SEO, dynamically generated content (e.g., user-specific content) may still require careful handling to ensure proper indexing by search engines.
+To get started, you need to install Node.js on your computer. Visit [https://nodejs.org/en/](https://nodejs.org/en/) and download the installer for your operating system.
 
-### **Conclusion**
+After installation, you can confirm that Node.js and npm were installed correctly by typing the following commands in your terminal:
 
-Server-Side Rendering (SSR) with Express and cookies is a powerful technique for building fast, SEO-friendly web applications. By understanding how to implement SSR in Express and manage user data securely with cookies, developers can create applications that are both performant and secure. Whether you're building a simple website or a complex web application, SSR and cookies are essential tools in your web development toolkit.
+```bash
+node -v
+npm -v
+
+```
+
+If both commands return version numbers, you're good to go!
+
+Now, let’s install our first package. Throughout this example, we’ll use Axios to make HTTP requests, so let’s install Axios using npm.
+
+Navigate to the folder where we are storing our project (in this case, `example/`), and type the following commands:
+
+```bash
+npm init -y
+npm install axios
+
+```
+
+- The `npm init` command is used to create a new npm package. Essentially, every Node.js project can be treated as an npm package.
+- The `y` flag skips all configuration steps and creates a basic npm package with default settings.
+
+After running these commands, you should see the following files in your `example/` directory:
+
+- **`node_modules` folder**: This is where your installed packages are stored.
+- **`package.json` file**: This file keeps track of your project’s dependencies and settings.
+- **`package-lock.json` file** (optional): This file ensures that all developers working on the project use the exact same package versions.
+
+The `package.json` file is especially important as it defines the top-level packages and dependencies for your project.
+
+## Hello World with Node.js
+
+Now, let’s try running a simple Node.js script. Create a file called `helloworld.js` in the `example/` folder and add the following code:
+
+```jsx
+console.log("Hello, world.");
+
+```
+
+To run this script, use the following command in your terminal:
+
+```bash
+node helloworld.js
+
+```
+
+You should see "Hello, world." printed in the terminal. This simple example shows how you can run JavaScript code outside of a browser using Node.js.
+
+## JavaScript in the Browser vs. Node.js
+
+JavaScript in the browser and JavaScript in Node.js share the same language syntax, but there are key differences that you need to be aware of:
+
+- **Modules**: In Node.js, you use the `require` function to import modules (packages or files), whereas in the browser, you typically use `<script>` tags or ES6 `import` statements.
+- **No `document` object**: Since Node.js runs outside the browser, it doesn't have access to the `document` object or the DOM (Document Object Model). This means you can’t directly manipulate HTML elements.
+- **File System Access**: Node.js can interact with the local file system, allowing you to read, write, and manipulate files—a feature not available in browser-based JavaScript.
+- **No `fetch` function**: In Node.js, there's no built-in `fetch` function to make HTTP requests. Instead, you can use the `http` module or third-party packages like Axios to handle HTTP requests.
+
+Understanding these differences is crucial as you start working with Node.js to build server-side applications.
+
+## SSR - Server-Side Rendering
+
+So far, we've been working with JavaScript and HTML files directly in our browser. You might have just double-clicked on your `index.html` file to open it in your browser. While this is convenient, it's not how real websites work!
+
+### How Do Websites Really Work?
+
+In a real-world scenario, a special program called a **server** is constantly running on a computer somewhere on the internet. This server listens for incoming requests from users and responds by sending back HTML files (and other resources like CSS, JavaScript files, etc.).
+
+### What is the Internet?
+
+The internet is essentially a network of computers, each with a unique IP address, that communicate with each other to send and receive information. Think of it like a massive system of interconnected roads, where each computer is a house with its own unique address.
+
+Let's say you have a friend named Sara who lives across town. You want to send her a letter, so you write down her address on an envelope and drop it in the mailbox. The postal service picks it up, reads the address, and delivers the letter to Sara's house. This is similar to how information is sent across the internet.
+
+### Accessing the Server
+
+Imagine Sara wants to share her holiday photos with you, but instead of mailing them, she decides to create a website. She sets up a computer in her home, and this computer will act as a **server**. The server’s job is to host the website and respond to requests from people who want to see the photos.
+
+To visit Sara’s website, you need to know her computer’s IP address, which is like knowing her home address. When you type this IP address into your browser, it’s like sending a request to her computer, saying, “Please show me the holiday photos.”
+
+However, Sara’s computer won’t respond to just any request. To make sure your request reaches the right program on her computer (the web server), you also need to specify the correct **port**. A port is like a specific door to a room in Sara’s house where the photos are stored. Web servers commonly use port 80 for HTTP requests.
+
+You can tell your browser to communicate with Sara’s server on port 80 by typing something like `192.168.1.10:80` into the URL bar. When you hit enter, your computer sends a request over the internet to Sara’s computer, specifying that it wants to access the server through port 80. Sara’s server then receives this request, processes it, and sends back the HTML page containing her holiday photos, which your browser displays.
+
+This is how you access websites on the internet. Behind the scenes, your request travels across a series of connected networks to reach the correct server, and the server sends the information back to your browser to display the webpage.
+
+### Configuring Your Network
+
+Unfortunately, there are not enough IP addresses for every device in the world. To get around this, most home networks use a **router**, which has a public IP address. Devices connected to the router get private IP addresses, which are used within the local network.
+
+If you want to host a server on your computer and make it accessible to others, you might need to configure your router to allow incoming requests to reach your computer. This involves setting up **port forwarding** on your router and possibly adjusting your firewall settings to allow incoming connections.
+
+Alternatively, you can rent a server from a cloud provider, which handles all of this configuration for you.
+
+### Domains
+
+Remembering an IP address can be challenging, so we use **domain names** (like `vikhyath.com`) that map to IP addresses. When you type a domain name into your browser, your browser contacts a **DNS server** (a special server that stores mappings between domain names and IP addresses) to find the correct IP address.
+
+Once your browser knows the IP address, it can send the request to the correct server.
+
+### Default Port
+
+Browsers usually default to using port 80 for HTTP requests, so if you don’t specify a port, the browser will automatically send the request to port 80. For example, typing `google.com` in your browser is the same as typing `google.com:80`.
+
+## Web Server with Node.js & Express
+
+Now that we understand the basics of how the internet and servers work, let’s build our own web server using Node.js and Express.
+
+### Installing Express
+
+Express is a popular Node.js framework that simplifies the process of setting up a web server. To install it, run the following command in your project directory:
+
+```bash
+npm install express
+```
+
+After installing Express, you’ll find it listed under the `dependencies` section in your `package.json` file.
+
+### Basic Web Server
+
+Let’s create a simple web server that responds with "Hello World" when accessed:
+
+```jsx
+const express = require('express');
+const port = 3000;
+
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+app.listen(port,
+
+ () => {
+  console.log(`Example app listening at <http://localhost>:${port}`);
+});
+```
+
+Here’s what’s happening in this code:
+
+- We import the Express module and create an instance of an Express application.
+- We define a route for the root URL (`/`) that sends "Hello World" as the response.
+- We start the server on port 3000 and log a message to the console.
+
+To run your server, use the following command:
+
+```bash
+node main.js
+```
+
+Now, open your browser and go to `http://localhost:3000`. You should see "Hello World" displayed.
+
+### Sending HTML
+
+Instead of sending plain text, let’s send an HTML file as the response:
+
+```jsx
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+```
+
+In this code:
+
+- `__dirname` is a special variable that refers to the directory where your script is located.
+- `sendFile` sends the specified file (in this case, `index.html`) to the client’s browser.
+
+If your HTML file references other files like CSS or JavaScript, you’ll need to send those too:
+
+```jsx
+app.get('/styles.css', (req, res) => {
+  res.sendFile(__dirname + '/styles.css');
+});
+```
+
+Now, you can link your CSS file in your HTML, and the browser will automatically request it from your server.
+
+### SSR (Server-Side Rendering)
+
+So far, we’ve been sending static HTML files. But what if we want to send different HTML content to different users? This is where **Server-Side Rendering (SSR)** comes into play.
+
+### Web Server with State
+
+Let’s build a simple view-count tracker. Every time someone visits our website, we’ll increment a counter and display the total number of views:
+
+```jsx
+const express = require('express');
+const port = 3000;
+
+const app = express();
+
+let totalViews = 0;
+
+app.get('/', (req, res) => {
+  totalViews++;
+  res.send(`<h1>Welcome to my website!</h1> Total views: ${totalViews}`);
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at <http://localhost>:${port}`);
+});
+```
+
+Now, every time you refresh the page, the counter will increase, and the new total will be displayed.
+
+### Templating
+
+What if you want to keep your HTML in a separate file but still inject dynamic data into it? You can use a technique called **templating**.
+
+Here’s how you can do it:
+
+index.html:
+
+```html
+<h1>Welcome to my website!</h1> Total views: {{views}}
+```
+
+main.js:
+
+```jsx
+const express = require('express');
+const fs = require('fs');
+const port = 3000;
+
+const app = express();
+
+let totalViews = 0;
+
+app.get('/', (req, res) => {
+  totalViews++;
+  let html = fs.readFileSync(__dirname + '/index.html', 'utf8');
+  html = html.replace('{{views}}', totalViews);
+  res.send(html);
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at <http://localhost>:${port}`);
+});
+```
+
+In this example:
+
+- We read the HTML file, replace the placeholder (`{{views}}`) with the actual view count, and send the modified HTML to the client.
+
+### Persisting Data
+
+You may have noticed that the view count resets every time you restart the server. This is because the view count is stored in a variable that doesn’t persist across server restarts.
+
+To fix this, we can store the view count in a file:
+
+```jsx
+const express = require('express');
+const fs = require('fs');
+const port = 3000;
+
+const app = express();
+
+let totalViews = 0;
+
+if (fs.existsSync('views.txt')) {
+  totalViews = parseInt(fs.readFileSync('views.txt', 'utf8'));
+}
+
+app.get('/', (req, res) => {
+  totalViews++;
+  fs.writeFileSync('views.txt', totalViews);
+  let html = fs.readFileSync(__dirname + '/index.html', 'utf8');
+  html = html.replace('{{views}}', totalViews);
+  res.send(html);
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at <http://localhost>:${port}`);
+});
+```
+
+Now, even if you restart the server, the view count will persist.
+
+### Cookies: An Alternative Approach
+
+As we mentioned in [Lesson 5 - JavaScript 2](https://www.notion.so/docs/Lessons/Lesson6#cookies), cookies are a way of storing information in the browser that persists across page refreshes and sessions. Let’s revisit this concept now that we understand how servers work.
+
+When a client (browser) makes a request to the server, all cookies stored by that site are sent along with the request. The server can then read these cookies, update them, and send them back to the client.
+
+Here’s how you can use cookies to store the view count:
+
+```jsx
+const express = require('express');
+const port = 3000;
+
+const app = express();
+
+function getCookie(cookieString, name) {
+  let cookie = cookieString.split(';').find(cookie => cookie.trim().startsWith('views='));
+  if (cookie) {
+    return cookie.split('=')[1];
+  }
+  return 0;
+}
+
+app.get('/', (req, res) => {
+  let totalViews = getCookie(req.headers.cookie, 'views');
+  totalViews++;
+  let html = fs.readFileSync(__dirname + '/index.html', 'utf8');
+  html = html.replace('{{views}}', totalViews);
+  res.setHeader('Set-Cookie', `views=${totalViews}`);
+  res.send(html);
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at <http://localhost>:${port}`);
+});
+```
+
+In this example:
+
+- We use the `req.headers.cookie` to retrieve the cookies sent by the client.
+- The `getCookie` function parses the cookie string to find the `views` cookie.
+- The server updates the cookie and sends it back to the client using `res.setHeader`.
+
+### Why Not Use Cookies for Everything?
+
+While cookies are useful, they have limitations:
+
+1. **Local Storage**: Cookies are stored on the client side, meaning they’re specific to each browser and device. This makes them unsuitable for global data, like a total view count across all users.
+2. **Security**: Since cookies are stored on the client side, they can be easily modified by users. This can be problematic for sensitive data.
+3. **Limited Storage**: Cookies have size limits (typically around 4KB), so they’re not suitable for storing large amounts of data.
+
+In this case, cookies are not ideal for storing the total view count, but they are very useful for storing user-specific information, like login sessions.
+
+### Templating Engines
+
+Templating can get repetitive if you have to manually replace placeholders in your HTML files. Luckily, there are **templating engines** that handle this for you. One popular templating engine is **EJS** (Embedded JavaScript).
+
+Let’s see how to use EJS in our Express application:
+
+1. Install EJS:
+
+```bash
+npm install ejs
+```
+
+1. Modify your server code to use EJS:
+
+```jsx
+const express = require('express');
+const fs = require('fs');
+const ejs = require('ejs');
+const port = 3000;
+
+const app = express();
+
+let totalViews = 0;
+
+app.get('/', (req, res) => {
+  totalViews++;
+  let html = fs.readFileSync(__dirname + '/index.html', 'utf8');
+  html = ejs.render(html, { views: totalViews });
+  res.send(html);
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at <http://localhost>:${port}`);
+});
+```
+
+1. Update your `index.html` to use EJS tags:
+
+```html
+<h1>Welcome to my website!</h1> Total views: <%= views %>
+```
+
+EJS tags (`<%= %>`) are used to embed JavaScript values into your HTML. The EJS engine replaces these tags with actual data before sending the HTML to the client.
+
+### JavaScript: An Important Disambiguation
+
+In this lesson, we’ve taught you how to create a web server using JavaScript with Express. However, it's important to understand the difference between **server-side** and **client-side** JavaScript:
+
+- **Server-side JavaScript** (using Node.js and Express) runs on the server. It has access to the file system, can create HTTP responses, and can generate dynamic HTML.
+- **Client-side JavaScript** runs in the browser. It manipulates the DOM, handles user interactions, and can make HTTP requests to the server.
+
+In many cases, server-side JavaScript generates the HTML response that is sent to the browser, which then runs the client-side JavaScript.
+
+## Resources
+
+Here are some additional resources to help you dive deeper:
+
+- [Express "Hello World" Example](https://expressjs.com/en/starter/hello-world.html)
+- [NASA Open APIs](https://api.nasa.gov/)
+- [Get Query Strings and Parameters in Express.js](https://stackabuse.com/get-query-strings-and-parameters-in-express-js/)
+
+---
+
+**Contributors**
+- [Jessie Liu](http://www.linkedin.com/in/jess04liu)
+- [Sebastiaan Szafir](https://sebiszafir.com/)
+- [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)

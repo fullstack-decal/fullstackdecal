@@ -1,1 +1,142 @@
 # Flask
+[source](https://flask.palletsprojects.com/en/3.0.x/quickstart/)
+
+## Key Topics
+
+1. **Flask Overview**
+
+   Imagine you're at a hackathon and your partners aren't familiar with JavaScript, but you know that a React app would be the best frontend solution. Teaching them JavaScript on the spot could be challenging due to the learning curve, new libraries, and more. Instead, a more manageable solution is to use Flask or Django to handle the backend, allowing you to send messages between the frontend and backend using Python. Flask, in particular, is known for its simplicity and ease of use.
+
+   Flask is a Python library that facilitates the creation of web applications and APIs. In this overview, we'll explore its practical uses at an introductory level.
+
+2. **What are the advantages of using Flask over Django?**
+
+   Flask offers several advantages:
+   - **Ease of Setup:** Flask is often quicker and easier to set up compared to Django, making it ideal for proof-of-concept projects.
+   - **Flexibility:** Flask provides more flexibility in choosing components, allowing you to integrate only what you need.
+   - **Deployment:** Flask deploys smoothly with cloud services like AWS and Google App Engine.
+   - **Simplicity:** Its minimalist approach helps in learning and understanding the fundamentals of web development.
+
+3. **Structure of Flask Applications**
+
+   Flask applications follow a simple structure:
+   - **Application Instance:** Create an instance of the Flask class, which acts as the WSGI application.
+   - **Routes:** Define routes using the `@app.route()` decorator to handle different URLs.
+   - **Templates:** Use Jinja2 templates to render HTML dynamically.
+   - **Static Files:** Serve static files such as CSS and JavaScript from a `static` folder.
+   - **Configuration:** Configure the application using configuration files or environment variables.
+
+   Example structure:
+    ```text
+    /myapp
+    /static
+    /templates
+    app.py
+    config.py
+    ```
+
+4. **What are Flask Routes?**
+
+    Flask routes are used to map URLs to functions. These functions are called view functions and they return the response to the client. Routes are defined using the `@app.route()` decorator.
+    
+    Example:
+    ```python
+        @app.route('/')
+        def home():
+            return 'Hello, World!
+    ```
+        
+5. **Flask Variables + Converter Types**
+
+   Flask routes can include dynamic parts called variables. These variables are captured from the URL and passed to the view function as arguments. You can also specify the type of variable using converters to ensure the correct data type is passed.
+
+   **Defining Variables in Routes:**
+   Variables in routes are defined using angle brackets `< >`. The variable name inside the brackets will be passed as an argument to the view function.
+
+   Example:
+   ```python
+   @app.route('/user/<username>')
+   def show_user_profile(username):
+       return f'User {username}'
+       ```
+       
+    **Converter Types**:
+    Flask supports several converter types to specify the type of variable:
+    ```
+    1. string (default): Matches any text. Example: /item/<item_name>
+    2. int: Matches integers. Example: /user/<int:user_id>
+    3. float: Matches floating-point numbers. Example: /price/<float:price>
+    
+    path: Matches text including slashes. Example: /files/<path:filename>
+    ```
+    Example with converters:
+    
+    ```python 
+    @app.route('/post/<int:post_id>')
+    def show_post(post_id):
+        return f'Post ID: {post_id}'
+    ```
+    
+    6. **Request Objects (IMPORTANT)**
+
+   The `request` object in Flask is a crucial component that allows you to access data sent by the client. This includes form data, query parameters, JSON data, and files. The `request` object is an instance of `werkzeug.local.LocalProxy`, providing a convenient way to interact with incoming request data.
+   
+   
+   
+   - **`request.args`**: A `MultiDict` containing query parameters from the URL.
+   - **`request.form`**: A `MultiDict` containing form data submitted via POST.
+   - **`request.json`**: The JSON data parsed from the request body (only for requests with `application/json` content type).
+   - **`request.files`**: A `MultiDict` containing files uploaded through forms.
+
+
+
+
+   **Accessing Request Data:**
+
+   - **Form Data:** Retrieve data sent via POST requests using `request.form`. This is typically used for data submitted from HTML forms.
+     ```python
+     from flask import request
+
+     @app.route('/submit', methods=['POST'])
+     def submit_form():
+         name = request.form.get('name')  # Access form field 'name'
+         return f'Form submitted with name: {name}'
+     ```
+
+   - **Query Parameters:** Access URL query parameters using `request.args`. This is used for GET requests where data is passed in the URL.
+     ```python
+     @app.route('/search')
+     def search():
+         query = request.args.get('query')  # Access query parameter 'query'
+         return f'Search results for: {query}'
+     ```
+
+   - **JSON Data:** Access JSON data sent in the request body using `request.json`. This is useful for APIs that accept JSON payloads.
+     ```python
+     @app.route('/data', methods=['POST'])
+     def receive_data():
+         data = request.json  # Parse JSON data from the request body
+         return f'Received data: {data}'
+     ```
+
+   - **Uploaded Files:** Access files uploaded through forms using `request.files`. This allows you to handle file uploads.
+     ```python
+     @app.route('/upload', methods=['POST'])
+     def upload_file():
+         file = request.files['file']  # Access uploaded file
+         return f'File uploaded: {file.filename}'
+     ```
+
+   **Key Attributes of the `request` Object:**
+
+   - **`request.method`**: The HTTP method used for the request (e.g., GET, POST).
+     ```python
+     @app.route('/method', methods=['GET', 'POST'])
+     def check_method():
+         if request.method == 'POST':
+             return 'POST request'
+         return 'GET request'
+     ```
+
+
+       

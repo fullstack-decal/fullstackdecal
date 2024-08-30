@@ -1,1 +1,305 @@
 # Routing and Axios
+
+## Introduction
+
+Welcome to the second React lesson of the course! In this lesson, we'll expand our knowledge by diving deeper into React's powerful features: hooks, Axios, and routing.
+
+We'll start with a quick review of the `useState` hook from our previous lesson and introduce the `useEffect` hook. Together, these hooks are essential for managing state and side effects in your React components.
+
+Next, we'll explore Axios, a popular library that helps connect your React frontend to a backend server. With Axios, you'll be able to send and receive data, making your applications dynamic and interactive.
+
+Finally, we'll introduce React Router, a powerful tool that allows you to create multi-page applications with seamless navigation. By the end of this lesson, you'll be able to add multiple pages to your React app and fetch data from a backend server like a pro.
+
+## useEffect
+
+Let's begin by revisiting hooks!
+
+### Hook Review
+
+In React, **hooks** are special functions that let you "hook into" React's state and lifecycle features from function components. You've already learned about the `useState` hook, which allows you to manage state in your components. Now, let's review it quickly.
+
+### `useState` Review
+
+Here's a simple counter example, just like we did in the last lesson:
+
+```jsx
+import React, { useState } from 'react';
+
+const Counter = () => {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+};
+
+```
+
+In this example, `useState` is a hook that lets us add state to our functional components. The `useState` function returns an array with two elements:
+
+1. The current state value (`count` in this case).
+2. A function that allows you to update the state (`setCount`).
+
+We use this function inside an event handler (`onClick`) to update the state when the button is clicked.
+
+### `useEffect`
+
+Now let's introduce the `useEffect` hook, which is used to perform side effects in your components, like fetching data, updating the DOM, or setting up subscriptions.
+
+### Importing `useEffect`
+
+To use the `useEffect` hook, you need to import it just like `useState`:
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+```
+
+### Counter Example with `useEffect`
+
+Let's modify our counter example to update the document title whenever the counter changes:
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  }, [count]); // Only re-run the effect if count changes
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+
+```
+
+In this code:
+
+- The `useEffect` hook takes a function as its first argument. This function contains the code you want to run after every render.
+- The second argument is an array of dependencies. The effect runs only when one of these dependencies changes. If you pass an empty array (`[]`), the effect runs only once, when the component mounts.
+
+## Axios
+
+**Axios** is a library that allows you to make HTTP requests from your React application to a backend server. It's used to fetch data from APIs or send data to your backend.
+
+### Why Axios?
+
+Axios simplifies the process of making requests and handling responses, and it offers features like automatic JSON parsing, request cancellation, and error handling.
+
+### Installation
+
+To install Axios, run the following command in your project directory:
+
+```bash
+yarn add axios
+
+```
+
+### Making a GET Request with Axios
+
+Here's how you can use Axios to fetch data from an API:
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const App = () => {
+  const [person, setPerson] = useState("");
+
+  useEffect(() => {
+    axios.get('<https://api.github.com/users/>{#your github name}')
+      .then(response => {
+        const fetchedPerson = response.data.name;
+        setPerson(fetchedPerson);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+  return (
+    <div>
+      <h1>{person}</h1>
+    </div>
+  );
+};
+
+export default App;
+
+```
+
+In this example:
+
+- We use `axios.get()` to make a GET request to the GitHub API.
+- When the data is successfully fetched, we update the state using `setPerson`.
+- If there's an error, it's logged to the console.
+
+### Understanding HTTP Methods
+
+Axios supports various HTTP methods. The most commonly used ones are:
+
+1. **GET**: Retrieve data from the server.
+2. **POST**: Send data to the server to create a new resource.
+3. **PUT**: Update an existing resource on the server.
+4. **DELETE**: Delete a resource from the server.
+
+## React Router
+
+So far, we've built single-page applications (SPAs) where everything is rendered on a single page. But what if we want to add multiple pages to our app? That's where **React Router** comes in.
+
+### What is React Router?
+
+**React Router** is a library that allows you to implement dynamic routing in your React applications. It enables you to map different URLs to different components, making it easy to create multi-page SPAs.
+
+### Installation
+
+To install React Router, run the following command:
+
+```bash
+yarn add react-router-dom
+
+```
+
+### Basic Routing
+
+Let's create a simple React app with multiple pages using React Router:
+
+```jsx
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+
+const Home = () => <h2>Home</h2>;
+const About = () => <h2>About</h2>;
+const Users = () => <h2>Users</h2>;
+
+const App = () => {
+  return (
+    <Router>
+      <nav>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/users">Users</Link></li>
+        </ul>
+      </nav>
+
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/users" component={Users} />
+      </Switch>
+    </Router>
+  );
+};
+
+export default App;
+
+```
+
+In this example:
+
+- The `<Router>` component wraps your entire application and enables routing.
+- The `<Link>` component creates navigational links that allow you to switch between pages without reloading the page.
+- The `<Switch>` component renders the first `<Route>` that matches the current URL.
+- The `<Route>` component maps a URL path to a specific component.
+
+### Dynamic Routing
+
+Dynamic routing allows you to create routes that aren't hardcoded but instead can change based on the data being passed through the URL. This is useful when you have content that varies based on a specific parameter, such as a user ID, product ID, or any other unique identifier.
+
+### What is Dynamic Data?
+
+Dynamic data refers to information that can change or differ depending on the context or input. For example, if you're building a website with user profiles, each user will have a unique ID. You wouldn't want to manually create a separate route for each user, like `/user/1`, `/user/2`, etc. Instead, you can create a dynamic route that uses the user ID from the URL to determine which user's data to display.
+
+### How Does This Relate to User IDs or Product IDs?
+
+Let's consider an example of an e-commerce site. Each product on the site has a unique product ID. When a user clicks on a product, you want to show detailed information about that specific product. Instead of creating a route for every single product manually, you can use a dynamic route. The URL might look something like `/product/12345`, where `12345` is the product ID.
+
+In this case, `12345` is dynamic data because it changes depending on which product the user clicks on. The React Router can capture this dynamic part of the URL and pass it as a parameter to your component, allowing you to fetch and display the correct data.
+
+### Example of Dynamic Routing
+
+Here’s how you can implement dynamic routing to handle such scenarios:
+
+```jsx
+jsxCopy code
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Link, useParams } from 'react-router-dom';
+
+const DynamicRouting = () => {
+  const products = [
+    { id: '12345', name: 'Product A' },
+    { id: '67890', name: 'Product B' },
+    { id: '11223', name: 'Product C' },
+  ];
+
+  return (
+    <Router>
+      <h2>Products</h2>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            <Link to={`/product/${product.id}`}>{product.name}</Link>
+          </li>
+        ))}
+      </ul>
+
+      <Switch>
+        <Route path="/product/:id" children={<ProductDetail />} />
+      </Switch>
+    </Router>
+  );
+};
+
+const ProductDetail = () => {
+  const { id } = useParams();
+
+  // You can now use the ID to fetch the specific product data, for example:
+  // const product = fetchProductById(id);
+
+  return <h3>Selected Product ID: {id}</h3>;
+};
+
+export default DynamicRouting;
+
+```
+
+### How It Works:
+
+- **Dynamic Segment in URL**: The `path="/product/:id"` in the `<Route>` defines a dynamic segment `:id` in the URL. This means that whatever value is placed in the URL after `/product/` will be captured and treated as the `id`.
+- **useParams Hook**: The `useParams` hook is used inside the `ProductDetail` component to access the dynamic `id` from the URL. This ID can then be used to fetch or display data specific to the product associated with that ID.
+- **Dynamic Data**: In this example, the `id` represents the dynamic data. The actual value of `id` depends on which product link the user clicks. For instance, clicking on "Product A" might take you to `/product/12345`, and "Product B" to `/product/67890`. The `ProductDetail` component will display or use the ID from the URL to fetch and show the correct product details.
+
+This approach is incredibly powerful because it allows you to create scalable applications that can handle numerous entities (users, products, posts, etc.) without needing to manually create a route for each one. Instead, you define a single dynamic route that adapts based on the data provided in the URL.
+
+### Conclusion
+
+In this lesson, we've covered some of the essential tools and concepts that will help you build more complex React applications:
+
+- **Hooks**: `useState` and `useEffect` for managing state and side effects.
+- **Axios**: Making HTTP requests to fetch and send data between the frontend and backend.
+- **React Router**: Implementing navigation and dynamic routing to create multi-page applications.
+
+With these tools in your arsenal, you're well on your way to building fully functional and interactive web applications.
+
+---
+
+**Contributors**
+
+- Jessie Liu
+- [Samarth Goel](https://www.linkedin.com/in/samarth-goel-1047b8187/)
+- [Caelin Sutch](https://www.linkedin.com/in/caelinsutch)
+- [Arushi Somani](https://www.linkedin.com/in/arushisomani/)
+- [Nitya Krishnakumar](https://www.linkedin.com/in/nitya-krish/)
+- [Natalia Vetter-Neo](https://www.linkedin.com/in/nataliavetter/)
