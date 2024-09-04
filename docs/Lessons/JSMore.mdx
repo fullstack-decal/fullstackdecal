@@ -1,1 +1,373 @@
+---
+sidebar_position: 7
+---
+
 # Scope and Asynchronous JS
+
+## Introduction
+
+In JavaScript, scope is the set of variables, objects, and functions you have access to. The main types of scope are global scope and local scope. Global scope means that you have access to everything in the program. Local scope means that you have access to only the things in the current block.
+
+In recent years, asynchronous programming has become increasingly popular. Asynchronous programming is a programming paradigm that allows programmers to write code that is not tied to the order in which it will be executed. This can be extremely useful in situations where the order of execution is not known in advance, or when code needs to be executed in parallel.
+
+## Functions
+
+There are two kinds of functions:
+
+- Regular function
+- Arrow function
+
+## Regular Function
+
+Here's a regular JS function defined via `function` keyword:
+
+```jsx
+function adder(x, y) {
+  return x + y;
+}
+```
+
+- Regular function has `this` keyword and also `arguments` binding.
+  - We will be covering `this` and `arguments` binding later.
+
+## Arrow Function
+
+- Similar to the lambda function in python, arrow function is used to make code
+  simpler and more elegant.
+- Arrow function does not have its own `this`, `argument`, `new` keyword.
+- Do not use arrow function for objects.
+  - Use them for callbacks!
+
+```jsx
+const add = (x, y) => {
+  return x + y;
+};
+
+// ...or
+const add = (x, y) => x + y;
+```
+
+## Scope
+
+Scope is the accessibility of variables, functions, and objects in some
+particular part of your code during runtime.
+
+Four types of scope in JS:
+
+- Global Scope
+- Local Scope (function)
+- Block Scope (curly bracket: if)
+- Lexical Scope (nested function)
+
+### Global Scope
+
+Any variables / functions defined outside of a function becomes **GLOBAL**
+scope.
+
+```jsx
+// Global scope
+var carName = 'Tesla';
+
+function myFunction() {
+  // local scope
+  var myName = 'Alex';
+}
+```
+
+### Local Scope
+
+Any variables / functions defined inside of a function becomes **LOCAL** scope.
+You cannot access a local scope variable within global scope. However, you can
+access a global scope variable through local scope!
+
+```jsx
+var a = 20;
+
+function change() {
+  a = 25;
+}
+
+console.log(a); // 25?
+```
+
+### Block Scope
+
+Anything that defined inside a curly bracket (if, else, ...) is in **BLOCK**
+scope.
+
+![Devops Image](../assets/Lesson7/Lesson7-1.png)
+
+### var vs. let vs. const
+
+Before we talk about lexical scope, let's look at the differences between var
+vs. let vs. const.
+
+Scope of var is either **global** or **local**. When you define a var in the
+local scope, you cannot access it in global scope. However, when you define a
+var in the global scope, you can access it through local scope and update it if
+you want.
+
+```jsx
+var tester = 'hey hi';
+
+function newFunction() {
+  var hello = 'hello';
+}
+
+console.log(hello); // error: hello is not defined
+```
+
+`var` can also be redeclared and updated and won't get an error.
+
+```jsx
+var greeter = 'hey hi';
+var greeter = 'say Hello instead';
+```
+
+However, this creates a problem! If you have unknowingly declare a variable that
+shares the same name with another previous variable, you would change the value
+of that previous variable unintentionally! The compiler would also not catch
+that error.
+
+- For instance, in the example below, someone has created a temporary username
+  variable inside the if statement, that username variable overwrite the
+  previous username variable.
+
+```jsx
+var username = 'Alex';
+var shouldFetch = true;
+
+if (shouldFetch) {
+  var username = 'Bob';
+  fetch(username);
+}
+
+console.log(username); // "Bob"
+```
+
+As a result, we have `let` and `const`.
+
+`let` and `const` cannot be redeclared, which means that we would catch those
+errors right at the compiling stage.
+
+- `let` cannot be redeclared in a function / block scope
+
+Also, they are **block scoped**, meaning that things defined in a if statement
+would not influence things outside the if statement.
+
+![Devops Image](../assets/Lesson7/Lesson7-1.png)
+
+### Lexical Scope
+
+A lexical scope in JavaScript means that a variable defined outside a function
+can be accessible inside another function defined after the variable
+declaration. But the opposite is not true; the variables defined inside a
+function will not be accessible outside that function.
+
+![Devops Image](../assets/Lesson7/Lesson7-2.png)
+
+- the relationship between global & local scope can also be considered as a kind
+  of lexical scope.
+
+## `this`
+
+This keyword has multiple different meanings in different context in javascript.
+Essentially, it is a keyword that refers to the object it belongs to.
+
+### `this` in a method
+
+When you use `this` in a method of an object, it refers to the owner of the
+method, in our case, it is the `obj`.
+
+However, when using `this` in a method, it should only be used in a regular
+function rather than an arrow function, since arrow function does not have a
+this binding.
+
+```jsx
+var obj = {
+  i: 10,
+  b: () => console.log(this.i, this),
+  c: function () {
+    console.log(this.i, this);
+  },
+};
+
+obj.b(); // prints undefined, Window {...} (or the global object)
+obj.c(); // prints 10, Object {...}
+```
+
+### `this` alone
+
+When used alone, the **owner** is the Global object, so `this` refers to the
+Global object.
+
+In a browser window the Global object is `[object Window]`:
+
+### `this` in arrow function
+
+Though arrow function doesn't have a this binding, it doesn't mean that we
+cannot use this in an arrow function.
+
+In this example, we use an arrow function inside the setTimeout function, and it
+correctly produce the age in Person as 42. The reason behind this is that since
+arrow function does not have a this binding, it searches the value of "this"
+upwards from its parent scope. As a result, `this.age = 42` is found and used.
+
+```jsx
+window.age = 10;
+
+function Person() {
+  this.age = 42;
+  setTimeout(() => {
+    console.log('this.age', this.age); // will yield 42.
+  }, 1000);
+}
+```
+
+If we use a normal function here, we would have the result 10.
+
+## Asynchronous
+
+### Introduction
+
+In a *synchronous* programming model, things happen one at a time. When you call
+a function that performs a long-running action, it returns only when the action
+has finished and it can return the result. This stops your program for the time
+the action takes.
+
+An *asynchronous* model allows multiple things to happen at the same time. When
+you start an action, your program continues to run. When the action finishes,
+the program is informed and gets access to the result (for example, the data
+read from a server).
+
+![Devops Image](../assets/Lesson7/Lesson7-3.png)
+
+This is especially important for javascript, since we will be doing asynchronous
+action (fetching data) a lot! Javascript also relies on asynchronous rather than
+thread model.
+
+### Callbacks
+
+One approach to asynchronous programming is to make functions that perform a
+slow action take an extra argument, a *callback function*. The action is
+started, and when it finishes, the callback function is called with the result.
+
+As an example, the `setTimeout` function waits a given number of milliseconds (a
+second is a thousand milliseconds) and then calls a function.
+
+```jsx
+setTimeout(() => console.log('Tick'), 500);
+```
+
+We can nest multiple callbacks with one another, to handle multiple asynchronous
+data. For instance, if we want to fetch a data from a server, and then process
+the data and load it to the user:
+
+```jsx
+// fetchData(username, callback)
+// processData(data, callback)
+// loadData(data, callback)
+
+fetchData(username, callback) {
+	result = fetch(username)
+	callback(result)
+}
+
+fetchData(username, (response) => {
+	processData(response, (processedData) => {
+		loadData(processedData);
+	});
+});
+```
+
+Here, the function `fetchData` takes two arguments: the username and a callback
+function. This callback function will be called once the action of fetchData is
+finished.
+
+The function `processData`, likewise, also takes two arguments: the response
+from fetchData and a callback function.
+
+As you can see, we can chain multiple callbacks together to form a large
+callback chain to process asynchronous data.
+
+### Promises
+
+Callbacks are great. However, when the callback chains get too long, it will be
+very hard to maintain. Promise is another way to write asynchronous code without
+using callbacks.
+
+A promise is an object that may produce a single value some time in the future:
+either a resolved value, or a reason that it’s not resolved.
+
+A promise may be in one of 3 possible states: fulfilled, rejected, or pending.
+Promise users can attach callbacks to handle the fulfilled value or the reason
+for rejection.
+
+![Devops Image](../assets/Lesson7/Lesson7-4.png)
+
+To handle a promise, you can use `.then` method of a promise to pass in two
+functions, one for the promise that resolves and one for the promise that
+rejects.
+
+### Example
+
+Our `wait(3000)` call will wait 3000ms (3 seconds), and then log `'Hello!'`. All
+spec-compatible promises define a `.then()` method which you use to pass
+handlers which can take the resolved or rejected value.
+
+The ES6 promise constructor takes a function. That function takes two
+parameters, `resolve()`, and `reject()`. In the example above, we’re only
+using `resolve()`, so I left `reject()` off the parameter list. Then we
+call `setTimeout()` to create the delay, and call `resolve()` when it’s
+finished.
+
+You can optionally `resolve()` or `reject()` with values, which will be passed
+to the callback functions attached with `.then()`.
+
+```jsx
+const wait = (time) => new Promise((resolve) => setTimeout(resolve, time));
+
+const responsePromise = wait(3000); // this is a promise returned by the wait function
+responsePromise.then(
+  () => console.log('Hello!'),
+  () => console.log('error')
+); // 'Hello!'
+```
+
+## Fetch
+
+Fetch API is a way for us to fetch data from another API. This gives us a great
+chance to practice our newly learned asynchronous coding skill!
+
+Fetch takes a request url and will send a HTTP request to that particular url,
+fetching all the related data from that API.
+
+It will return a promise, which then we can resolve it by using `.then` method.
+
+```jsx
+fetch(some_random_url)
+  .then((response) => response.json())
+  .then((data) => console.log(data));
+```
+
+Let's try fetch something from the NASA API!
+
+[NASA Open APIs](https://api.nasa.gov/)
+
+```jsx
+fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
+  .then((response) => response.json())
+  .then((data) => console.log(data));
+```
+
+## Resources
+
+[Asynchronous Programming :: Eloquent JavaScript](https://eloquentjavascript.net/11_async.html)
+
+[Master the JavaScript Interview: What is a Promise?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261)
+
+---
+
+**Contributors**
+
+- [Alex Wu](https://www.linkedin.com/in/jialin-wu-658929185/)

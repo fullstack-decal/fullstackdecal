@@ -133,20 +133,20 @@ const weeks: Week[] = [
     title: "Can't forget about design",
     lessons: [
       {
-        topic: "UI/UX 1: Introduction to Design",
+        topic: "UI/UX 1",
         reading: [
           {
-            link: "/docs/Lessons/UIUX1",
-            name: "Introduction to UI/UX and Figma",
+            link: "/docs/Lessons/UIUX",
+            name: "Basic UI/UX + Design Systems",
           },
         ],
       },
       {
-        topic: "UI/UX 2: Human Centered Design Principles",
+        topic: "UI/UX 2",
         reading: [
           {
-            link: "/docs/Lessons/UIUX2",
-            name: "Human Centered Design Principles",
+            link: "/docs/Lessons/UIUX",
+            name: "Basic UI/UX + Design Systems",
           },
         ],
       },

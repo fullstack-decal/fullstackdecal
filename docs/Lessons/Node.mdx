@@ -1,1 +1,133 @@
+---
+sidebar_position: 15
+---
+
 # Node.js and Package Managers
+
+## Introduction
+
+You are very familiar with Javascript by now, and you may notice that we can
+only run Javascript in our browser using the `<script>` tag. What if we want to
+write scripts using Javascript and run them using the local machines, just like
+how python is.
+
+This is where Node comes into play. It is a JavaScript runtime engine built on
+Chrome's V8 Javascript engine that allows you to run JavaScript even without a
+browser. This means that you are able to do a lot more with JavaScript: managing
+local files, connecting and setting up a server, and much more.
+
+### Learning Objectives
+
+1. How npm & node works
+2. Create Backend APIs using Node & Express
+3. How to make API calls using axios
+4. File system with node & express
+5. Understand cookies
+
+### Getting Started
+
+Let's start by creating a folder for us to put our code in. Let's call this
+folder `example` and then let's cd` into it using the console.
+
+```bash
+mkdir example
+cd example
+```
+
+## NPM
+
+With the ability to run JavaScript locally on our machine (with the help of
+Node) and the contribution of a rich number of packages from a large community,
+the possibilities for JavaScript are endless!
+
+To manage many of the packages that give Node its most powerful abilities, we
+use NPM. Node package manager (NPM) is a place where you can find and download
+node packages.
+
+[npm](https://www.npmjs.com/)
+
+## Installing Node
+
+Go to [https://nodejs.org/en/](https://nodejs.org/en/) to install node.js for
+free.
+
+Let us confirm that you have correctly downloaded Node.js and npm.
+
+In the terminal, type
+
+```bash
+node -v
+npm -v
+```
+
+If both lines output the version number then we are good.
+
+Now, let us install out first package. The remainder of this example we will be
+using Axios to make HTTP requests as necessary, so let us install Axios.
+
+Navigate to the folder where we are storing our project, in this case `example/`
+while there, type the following command:
+
+```bash
+npm init -y
+npm install axios
+```
+
+The `npm init` command is used to create a new npm package, essentially every
+node script that we will write can be treated as a npm package. The `-y` flag
+just skip all the configuration step and creates a most basic npm package with
+all default settings.
+
+Now when we list the files in our `example/` directory, we should see three
+things:
+
+- `node_modules` folder
+- `package.json` file
+- `package-lock.json` file (optional)
+
+Essentially, each of these helps npm organize the packages we installed. In the
+node_modules folder is where we can find our actual packages. Many times, our
+node_modules file grows incredibly large and can take up quite a bit of space.
+It is discouraged to go directly into the node_modules, instead, npm provides a
+variety of utilities which we can use to keep our projects clean and efficient.
+I won't go into them here, but as you develop, you will run across them or you
+can read the docs [here](https://docs.npmjs.com/packages-and-modules). The other
+file is the package.json file. The package.json file is the file which record
+and defines the top-level packages and dependencies for our project.
+package-lock.json is a similar idea but with some nuances, you do not need to
+worry about those.
+
+## Hello World
+
+Now let's move back to Node for a second. Let's create a file called
+`helloworld.js` in the `example/` folder. Enter `console.log("hello world.")` in
+the file.
+
+You can run any node file by using the Node command.
+
+```bash
+node helloworld.js
+```
+
+The console should print "hello world." and then exit.
+
+## JS in Browser vs. Node.js
+
+Node in browser and Node.js are technically the same form of JavaScript. Both
+run on the browser's JavaScript engine, usually Chrome V8. However, there are
+some fundamental difference which make Node.js just different enough to be
+annoying. The most prominent difference is that Node.js uses the `require`
+module to import other modules which define functionality. All Node projects are
+organized into modules, and we use `require` to import them. For example, the
+following code imports Axios, a package commonly used to make HTTP requests.
+
+Another difference is that since there is no web page to be manipulated, there
+is no `document` object for Node.js, which means that DOM manipulation cannot be
+carried out in Node.js (with the help of some packages, it can).
+
+Since Node is a server side language, it can interact with the local file system
+easily, it also provides ways to setup a server with ease.
+
+If you are familiar with the `fetch` function in JS, there is no fetch function
+in Node. You can use the http package or some other third party package to
+handle sending a request.
