@@ -2,11 +2,6 @@ import { PastStaff } from "../types";
 
 const staff: PastStaff[] = [
   {
-    name: "Zayna Lateef",
-    image: "/img/staff/zayna.jpeg",
-    linkedin: "https://www.linkedin.com/in/zayna-lateef-942756216/ ",
-  },
-  {
     name: "Sebastiaan Szafir",
     image: "/img/staff/sebi.png",
     linkedin: "https://www.linkedin.com/in/sebastiaan-szafir-fridman/",

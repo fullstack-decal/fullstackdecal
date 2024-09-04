@@ -61,6 +61,16 @@ const staff: Staff[] = [
     github: "https://github.com/Darwon09",
     email: "mailto:dich@berkeley.edu",
   },
+  {
+    name: "Zayna Lateef",
+    image: "/img/staff/zayna.jpeg",
+    role: "Full-Stack TA",
+    linkedin: "https://www.linkedin.com/in/zayna-lateef-942756216/ ",
+    website: "",
+    bio: "Hi! I am a sophmore studying eecs. I love all things outdoor especially the beach, music, and surfing. I am in desperate need of new tv shows so please let me know your recs. I am super excited for a great semester :)",
+    github: "https://github.com/ZaynaLateef",
+    email: "mailto:zayna.lateef@berkeley.edu",
+  },
 ];
 
 export default staff;
