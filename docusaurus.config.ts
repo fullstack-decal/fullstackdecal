@@ -135,7 +135,7 @@ const config: Config = {
     // Use this to announce enrollment
     announcementBar: {
       id: "announcementBar-2",
-      content: `Enrollment for Fall 2024 is now open! Please apply <a target="_blank" rel="noopener noreferrer" href="https://fullstackdecal.com/enroll">here</a>. Applications are due on September 7th at 11:59 PM PST.`,
+      content: `We're still taking applications for Fall 2024 on a rolling basis until September 13th! Please apply <a target="_blank" rel="noopener noreferrer" href="https://fullstackdecal.com/enroll">here</a>.`,
       isCloseable: false,
     },
   } satisfies Preset.ThemeConfig,

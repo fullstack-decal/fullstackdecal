@@ -131,7 +131,8 @@ required to turn in a solution that they have written themselves.
 
 Vitamins for a particular lecture are usually assigned the Monday after that lecture week, and
 are then due the next Monday. This gives you a week to do that vitamin, and you should know everything
-needed to complete that vitamin since it covers content taught in the previous week.
+needed to complete that vitamin since it covers content taught in the previous week. Vitamins will be graded on completion, but remember:
+the more you put into this class, the more you get out of it.
 
 Late vitamins not covered by amnesty will get 0 credit. Use extensions!
 
@@ -176,9 +177,7 @@ California, Berkeley's Center for Student Conduct and Community Standards.”
 ### Extensions
 
 This semester we are trying out a new, more lax, extension policy. Use the extension form at the top of the screen to submit an extension for any assignment.
-Any extension up to 5 days will be approved, no questions asked. For longer extensions, please use the form to explain why your extenuating circumstances, and we'll
-send you back an email within 2-3 days to let you know if your extension request has been approved.
-Please only use that form to submit extensions, no extension requested over any other medium (i.e Ed or email) will be considered.
+Any extension up to 5 days will be approved, no questions asked. For longer extensions, please DO NOT USE THE FORM, but email us instead to explain your extenuating circumstances, and we'll send you back an email within 2-3 days to let you know if your extension request has been approved.
 These extensions will not be reflected on Gradescope on your end unfortunately, but we will keep track and consider them when calculating grades.
 
 Additionally, we are offering an amnesty policy,
