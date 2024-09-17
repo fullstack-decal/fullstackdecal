@@ -156,8 +156,9 @@ const weeks: Week[] = [
     title: "React!",
     lessons: [
       {
-        topic: "React 1: Introduction to React",
+        topic: "Node.js + React 1: Introduction to React",
         reading: [
+          { link: "/docs/Lessons/Node", name: "Node.js and Package Managers" },
           {
             link: "/docs/Lessons/ReactIntro",
             name: "Introduction to React",
@@ -182,7 +183,6 @@ const weeks: Week[] = [
       {
         topic: "Node.js, Express.js, Server Side Rendering",
         reading: [
-          { link: "/docs/Lessons/Node", name: "Node.js and Package Managers" },
           {
             link: "/docs/Lessons/SSR",
             name: "Server-Side Rendering with Express.js, Cookies",

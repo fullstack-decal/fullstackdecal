@@ -80,6 +80,16 @@ const config: Config = {
           label: "Extension Form",
         },
         {
+          href: "https://calendar.google.com/calendar/u/0?cid=Y183YTg3ZDhkYTIzODM3OTUwN2Y5MGVlMmQ4YjQ1NzBiZDNmYWZkN2I0NjI1MDU0ZjU5OTcwNzkyMDdiYjU2OWY2QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20",
+          position: "left",
+          label: "Course Calendar",
+        },
+        {
+          href: "https://edstem.org/us/join/ScBnTr",
+          position: "left",
+          label: "Ed",
+        },
+        {
           href: "https://github.com/fullstack-decal",
           position: "right",
           className: "header-github-link",
@@ -133,11 +143,11 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
     // Use this to announce enrollment
-    announcementBar: {
-      id: "announcementBar-2",
-      content: `We're still taking applications for Fall 2024 on a rolling basis until September 13th! Please apply <a target="_blank" rel="noopener noreferrer" href="https://fullstackdecal.com/enroll">here</a>.`,
-      isCloseable: false,
-    },
+    // announcementBar: {
+    //   id: "announcementBar-2",
+    //   content: `We're still taking applications for Fall 2024 on a rolling basis until September 13th! Please apply <a target="_blank" rel="noopener noreferrer" href="https://fullstackdecal.com/enroll">here</a>.`,
+    //   isCloseable: false,
+    // },
   } satisfies Preset.ThemeConfig,
 };
 
