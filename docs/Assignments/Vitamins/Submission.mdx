@@ -1,0 +1,52 @@
+---
+sidebar_position: 1
+---
+
+# Setup & Submission Information
+
+We highly recommend creating a seperate repository for each vitamin you work on, this will make it easy to just upload your repository from GitHub directly onto Gradescope for us to access your code for that vitamin and only that vitamin.
+
+Let's figure out how to do that.
+
+If you are not familiar with Git and GitHub, please refer to the [GitHub reading](/docs/Lessons/GitHub).
+
+## GitHub Repository Setup and Cloning
+
+Go to [https://github.com/](https://github.com/) to create an account. You can use whatever email you want. Once you have your account made, please refer to [this link](https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories#create-a-repository)
+to get information on how to create your first GitHub repository (only review "Create a repository" for now).
+
+Now you need to get this repository onto your local machine. Refer to [this link](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to get general guidance on where to find the link
+to clone your repository and what git command you should use to clone that repository onto your local machine. NOTE: you can put this cloned repository whenever you want on your computer, but note that all
+files that you would want to upload to your GitHub repository and eventually submit MUST be in this repository, and that this repository is already a folder so you will not have to make a folder onto your machine to host the repository (unless you want to).
+
+Now you have a location to put the code for your vitamin!
+
+## Submitting Changes and Uploading to GradeScope
+
+Now let's say you've finished the vitamin, and now want to upload those changes to GitHub and submit to Gradescope.
+
+You first need to add your changes to the staging. Use the following command to add ALL your local changes to Git staging:
+
+```
+git add .
+```
+
+Now you have to commit your changes to your local Git repository (more information is in the Git reading, but think of committing your changes as saving them onto your computer). Use the following command:
+
+```
+git commit -m <MESSAGE>
+```
+
+NOTE: MESSAGE can be whatever message you want to include to DESCRIBE your commit. You must include a non-empty message in your commit for the command to work.
+
+Finally, use the following command to push your changes to your GitHub repository:
+
+```
+git push
+```
+
+Now your changes are on your GitHub repository! Feel free to check out the webpage link your repository is on to confirm this (you might need to refresh if you're currently on that page).
+
+Now to upload your repository code to the Gradescope assignment, simply click on the assignment and navigate to your GitHub repository (if you have never done this, you may need to authorize Gradescope to use your GitHub account first), click on it, and click on the "main" branch to upload that code to the assignment.
+
+You're done! If you have any questions about this process, please don't hesitate to contact course staff.

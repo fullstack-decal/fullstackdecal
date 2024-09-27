@@ -292,27 +292,30 @@ const weeks: Week[] = [
 
 const vitamins: IncompleteAssignment[] = [
   {
-    link: { link: "/docs/Assignments/Vitamins/HTMLCSS", name: "HTML and CSS" },
+    link: {
+      link: "/docs/Assignments/Vitamins/HTMLCSS",
+      name: "HTML and CSS (Optional)",
+    },
     assignedWeek: 2,
     dueWeek: 3,
     dueDay: 2,
   },
   {
     link: { link: "/docs/Assignments/Vitamins/JS", name: "JavaScript" },
+    assignedWeek: 2,
+    dueWeek: 3,
+    dueDay: 2,
+  },
+  {
+    link: { link: "/docs/Assignments/Vitamins/Design", name: "Design" },
     assignedWeek: 3,
     dueWeek: 4,
     dueDay: 2,
   },
   {
-    link: { link: "/docs/Assignments/Vitamins/Design", name: "Design" },
+    link: { link: "/docs/Assignments/Vitamins/React", name: "React" },
     assignedWeek: 4,
     dueWeek: 5,
-    dueDay: 2,
-  },
-  {
-    link: { link: "/docs/Assignments/Vitamins/React", name: "React" },
-    assignedWeek: 5,
-    dueWeek: 6,
     dueDay: 2,
   },
   {
@@ -320,14 +323,14 @@ const vitamins: IncompleteAssignment[] = [
       link: "/docs/Assignments/Vitamins/Server",
       name: "APIs and Servers",
     },
-    assignedWeek: 6,
-    dueWeek: 7,
+    assignedWeek: 5,
+    dueWeek: 6,
     dueDay: 2,
   },
   {
     link: { link: "/docs/Assignments/Vitamins/Databases", name: "Databases" },
-    assignedWeek: 7,
-    dueWeek: 8,
+    assignedWeek: 6,
+    dueWeek: 7,
     dueDay: 2,
   },
   {
@@ -335,8 +338,8 @@ const vitamins: IncompleteAssignment[] = [
       link: "/docs/Assignments/Vitamins/NextAuth",
       name: "Next.js and Authentication",
     },
-    assignedWeek: 8,
-    dueWeek: 9,
+    assignedWeek: 7,
+    dueWeek: 8,
     dueDay: 2,
   },
   {
@@ -344,17 +347,17 @@ const vitamins: IncompleteAssignment[] = [
       link: "/docs/Assignments/Vitamins/CSSRedux",
       name: "CSS Frameworks and Redux",
     },
-    assignedWeek: 9,
-    dueWeek: 10,
+    assignedWeek: 8,
+    dueWeek: 9,
     dueDay: 2,
   },
   {
     link: {
       link: "/docs/Assignments/Vitamins/DeployThree",
-      name: "Deploying and Three.js (Optional)",
+      name: "Deploying and Three.js",
     },
-    assignedWeek: 10,
-    dueWeek: 11,
+    assignedWeek: 9,
+    dueWeek: 10,
     dueDay: 2,
   },
 ];
