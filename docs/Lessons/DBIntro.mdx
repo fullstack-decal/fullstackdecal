@@ -3,3 +3,15 @@ sidebar_position: 19
 ---
 
 # Introduction to Databases
+
+## Context
+
+Remember when we implemented a global view-count counter with SSR? We had a server that kept some state in a random `views.txt` file so that even if the server or computer restarted, the total view count would not be reset.
+
+When the data you're storing goes from a simple number to far more data (e.g., thousands of users and millions of posts), a simple `.txt` file is not enough for various reasons:
+
+- **Speed:** Reading and finding specific data in one huge `.txt` file is slow (imagine finding a user's "score" if there's a list of a million users).
+- **Reliability:** If someone deletes the text file, or if even one byte is corrupted, all your data may be gone!
+- **ACID:** Atomicity, Consistency, Isolation & Durability. If you've taken a databases course, you will appreciate this more, but essentially it allows the database to behave well when there are many servers all making requests to it.
+
+So what do we use instead of a `.txt` file? There are many options, but we will cover MySQL and MongoDB.
