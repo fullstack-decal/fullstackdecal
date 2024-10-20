@@ -104,7 +104,8 @@ Clicking on Not Home will redirect you to:
     );
     
     ```
-    
+    - NOTE: This was not done in Lecture 9, where the router was only wrapped in the `App.js` file. This is sufficient for smaller and simpler apps. However, placing the Router in index.js gives you more flexibility to wrap additional components around the entire app, such as global providers (e.g., context providers or Redux store providers) while still having routing available throughout. This is a common pattern in larger apps.
+    - If you are struggling on step 4, you can feel free to follow Lecture 9 and skip this step. But, you will need to learn this eventually.
 5. **Set Up Routes in App.js:**
     - Add routes for `Home` and `NotHome` pages in `App.js`. Define the paths and link them to the correct components.
         - Home path = /home
