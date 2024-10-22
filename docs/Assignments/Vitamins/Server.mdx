@@ -4,4 +4,128 @@ sidebar_position: 6
 
 # APIs and Servers
 
-Will be uploaded soon. Stay tuned!
+### Assignment: **Build a Simple To-Do List API**
+
+### Objective:
+
+Create a basic server that allows users to manage a to-do list using an API. You'll learn how to set up a server, create endpoints, and handle HTTP requests.
+
+### Tools:
+
+- **Node.js** (JavaScript runtime)
+- **Express.js** (Web framework for Node.js)
+- **Postman** or **cURL** (For testing API requests)
+
+### Prerequisites:
+
+- Basic understanding of JavaScript
+- Familiarity with installing npm packages
+
+### Task Breakdown:
+
+1. **Set Up Your Project:**
+    - Create a new folder for the project (e.g., `simple-todo-api`).
+    - Initialize a new Node.js project by running:
+        
+        ```bash
+        
+        npm init -y
+        ```
+        
+    - Install Express.js:
+        
+        ```bash
+        npm install express
+        ```
+        
+2. **Create the Server:**
+    - Create an `index.js` file in the project folder.
+    - Set up a basic Express server that listens on port 3000:
+        
+        ```jsx
+        const express = require('express');
+        const app = express();
+        const PORT = 3000;
+        
+        app.use(express.json());
+        
+        app.listen(PORT, () => {
+          console.log(`Server is running on http://localhost:${PORT}`);
+        });
+        
+        ```
+        
+3. **Create To-Do List Data Storage:**
+    - Use a simple in-memory array to store to-do items for now:
+        
+        ```jsx
+        let todos = [];
+        
+        ```
+        
+4. **Implement the Endpoints:**
+    - Add the following endpoints:
+        - **GET /todos**: Retrieve all to-do items.
+            
+            ```jsx
+            app.get('/todos', (req, res) => {
+              res.json(todos);
+            });
+            
+            ```
+            
+        - **POST /todos**: Add a new to-do item.
+            
+            ```jsx
+            
+            app.post('/todos', (req, res) => {
+              const { task } = req.body;
+              const newTodo = { id: todos.length + 1, task };
+              todos.push(newTodo);
+              res.status(201).json(newTodo);
+            });
+            
+            ```
+            
+        - **PUT /todos/**: Update an existing to-do item.
+            
+            ```jsx
+            
+            app.put('/todos/:id', (req, res) => {
+              const { id } = req.params;
+              const { task } = req.body;
+              const todo = todos.find((t) => t.id === parseInt(id));
+            
+              if (todo) {
+                todo.task = task;
+                res.json(todo);
+              } else {
+                res.status(404).send('To-Do item not found');
+              }
+            });
+            
+            ```
+            
+        - **DELETE /todos/**: Delete a to-do item.
+            
+            ```jsx
+            
+            app.delete('/todos/:id', (req, res) => {
+              const { id } = req.params;
+              todos = todos.filter((t) => t.id !== parseInt(id));
+              res.status(204).send();
+            });
+            
+            ```
+            
+5. **Test the API:**
+    - Use Postman or cURL to test each endpoint.
+    - Test creating, reading, updating, and deleting to-do items.
+6. **Bonus (Optional):**
+    - Add data validation to ensure tasks are not empty.
+    - Implement error handling for invalid requests.
+    - Save the to-do list data to a file using the `fs` module in Node.js.
+
+### Expected Outcome:
+
+A functioning API server that can manage a to-do list with basic CRUD (Create, Read, Update, Delete) operations.
