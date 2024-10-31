@@ -237,7 +237,7 @@ const weeks: Week[] = [
     title: "Some useful frameworks for you",
     lessons: [
       {
-        topic: "NO LECTURE",
+        topic: "Guest Lecture with Current MongoDB Employee!",
       },
       {
         topic: "CSS Frameworks and Redux.js",

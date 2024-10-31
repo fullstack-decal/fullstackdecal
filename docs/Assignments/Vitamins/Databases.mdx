@@ -4,4 +4,229 @@ sidebar_position: 7
 
 # Databases
 
-Will be uploaded soon. Stay tuned!
+This assignment should take around an hour to complete and will give you a basic understanding of SQL, MongoDB, and creating a simple backend with Express.js that interacts with both databases.
+
+**Part 1: Basics of SQL**
+
+1. Install MySQL
+    - instructions to install  mySQL community server (actual SQL) **AND** the [mySQL workbench](https://www.mysql.com/products/workbench/) (application only)
+    - NOTE: when downloading mySQL community server, it will ask you to write a password before downloading. YOU MUST REMEMBER THIS PASSWORD in order to create and use your SQL servers, so don’t forget it!
+
+2. Open up mySQL workbench application
+
+- create a new connection —> you will be prompted to enter your password you made for mysql when you downloaded it
+    - You can test the connection, there should be a prompt that opens up and say:
+        
+        :::tip 📌 **Successfully made the MySQL connection**
+        
+        Information related to this connection:
+        
+        Host: localhost
+        Port: 3306
+        User: root
+        SSL: enabled with…
+        
+        A successful MySQL connection was made with
+        the parameters defined for this connection.
+        
+        :::
+        
+1. Create Database and table on mySQL workbench
+    - Create a database called “company_db” (without the quotations)
+    - Create a table within company_db called “employees”. Make sure to add columns that satisfy:
+        - “id” - this is an auto increment primary key
+        - “name” - make sure this is a variable character and can store up to 255 characters and that the column cannot have null values.
+        - “position” - make sure this is a variable character and can store up to 255 characters and that the column cannot have null values.
+        - “salary” - make sure this is a decimal and can store up to 10 digits in 2 places and the column cannot have null values.
+    - Insert these three exact values into the database to its proper columns (capitals matter):
+        - Alice who is a Developer and has a salary of 75000.
+        - Bob who is a Designer and has a salary of 65000.
+        - Charlie who is a Manager and has a salary of 85000.
+2. Query the data. When you input this into SQL that retrieves the data:
+
+```sql
+SELECT * FROM employees;
+```
+
+- This should exactly output:
+
+```sql
++----+---------+-----------+--------+
+| id | name    | position  | salary |
++----+---------+-----------+--------+
+|  1 | Alice   | Developer | 75000.00 |
+|  2 | Bob     | Designer  | 65000.00 |
+|  3 | Charlie | Manager   | 85000.00 |
++----+---------+-----------+--------+
+```
+
+**Part 2: Basics of MongoDB**
+
+1. Install MongoDB
+    1. If you would like to see mongodb visually, use MongoDB Compass. This application is much easier to navigate than on the terminal.
+2. **Connect to the MongoDB Server**:
+    - Establish a connection to your MongoDB server.
+        - Make sure it is connected to your local host —> **localhost:27017**
+3. Create a database name called companyDB, and a collection name called projects.
+4. Create and choose the collection called “projects” where you want to insert the documents and add the following data 
+    1. name: Project A with a budget of 5000
+    2. name: Project B with a budget of 3000
+    3. name: Project C with a budget of 2000
+- Each document should be structured as a JSON object.
+1. When you query the projects collection, the output should look like this:
+
+```json
+[
+  {
+    "_id": ObjectId("some_object_id1"),
+    "name": "Project A",
+    "budget": 50000
+  },
+  {
+    "_id": ObjectId("some_object_id2"),
+    "name": "Project B",
+    "budget": 30000
+  },
+  {
+    "_id": ObjectId("some_object_id3"),
+    "name": "Project C",
+    "budget": 20000
+  }
+]
+```
+
+**Part 3: Connect with Express.js backend server**
+
+1. create a new project and open it on vscode
+2. Install Express.js, mysql, and mongodb libraries (from terminal) on your project
+3. Install the following libraries onto your project 
+    1. express.js (for node)
+    2. mysql2 (for sql)
+    3. mongodb (for mongo)
+    4. mongoose (for mongo)
+- When you install, there should be package.json files automatically outputted in your folder
+1. Create the backend server
+    1. create a file called server.js
+    2. copy the code provided below for the backend (the SQL and MongoDB parts are left empty for you to fill out!)
+    3. fill out the TODOs
+    
+    ```jsx
+    // LIBRARIES NEEDED
+    const express = require('express');
+    const app = express();
+    const mysql = require('mysql2');
+    const mongoose = require('mongoose');
+    
+    // SQL CONNECTION
+    // TO DO: connect to mysql with the host, database, user, and password. 
+    //const connection = ...uncomment this and finish the rest 
+    
+    // MySQL Connection Verification
+    function verifyMySQLConnection() {
+        connection.connect(function(err) {
+            if (err) {
+                console.error('Error connecting to MySQL: ' + err.stack);
+                return;
+            }
+            console.log('MySQL connected as id ' + connection.threadId);
+        });
+    }
+    
+    // MONGOOSE CONNECTION
+    // TODO: connect to your local host on the companyDB collection
+    
+    // TODO: Mongoose Schema and Model
+    //const ProjectScheme = ...uncomment this and finish the rest
+    // const Project Model = ... uncomment this and finish the rest
+    
+    // MongoDB Connection Verification 
+    mongoose.connection.on('connected', () => {
+        console.log('MongoDB connected successfully');
+    });
+    
+    mongoose.connection.on('error', (err) => {
+        console.error('MongoDB connection error:', err);
+    });
+    
+    // ENDPOINTS
+    // Endpoint to get all projects from MongoDB when you enter: http://localhost:3000/projects
+    app.get('/projects', async (req, res) => {
+        try {
+            const projects = await ProjectModel.find({});
+            res.json(projects);
+        } catch (err) {
+            console.error(err);
+            res.status(500).send(err);
+        }
+    });
+    
+    // Endpoint to get all employees from MySQL when you enter: http://localhost:3000/employees
+    app.get('/employees', function (req, res) {
+        connection.query('SELECT * FROM employees', function (error, results, fields) {
+            if (error) throw error;
+            res.json(results);
+        });
+    });
+    
+    // RUNNING THE SERVER
+    app.listen(3000, function () {
+        console.log('Server is running on port 3000!');
+        verifyMySQLConnection();
+    });
+    ```
+    
+2. Run the server in the terminal:
+
+```jsx
+node server.js
+```
+
+1. Test end points using PostMan or on the server itself:
+- `http://localhost:3000/employees`
+    - Makes sure this url outputs exactly this:
+    
+    ```json
+    [
+      {
+        "id": 1,
+        "name": "Alice",
+        "position": "Developer",
+        "salary": "75000.00"
+      },
+      {
+        "id": 2,
+        "name": "Bob",
+        "position": "Designer",
+        "salary": "65000.00"
+      },
+      {
+        "id": 3,
+        "name": "Charlie",
+        "position": "Manager",
+        "salary": "85000.00"
+      }
+    ]
+    ```
+    
+- `http://localhost:3000/projects`
+    - Makes sure this url outputs exactly this:
+    
+    ```json
+    [
+      {
+        "_id": ObjectId("some_object_id1"),
+        "name": "Project A",
+        "budget": 50000
+      },
+      {
+        "_id": ObjectId("some_object_id2"),
+        "name": "Project B",
+        "budget": 30000
+      },
+      {
+        "_id": ObjectId("some_object_id3"),
+        "name": "Project C",
+        "budget": 20000
+      }
+    ]
+    ```
