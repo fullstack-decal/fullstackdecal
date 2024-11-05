@@ -2,6 +2,132 @@
 sidebar_position: 8
 ---
 
-# Next.js and Authentication
+# Next.js
 
-Will be uploaded soon. Stay tuned!
+# Next JS Overview
+
+1. Why Next?
+2. Getting Started
+3. Starter Code
+3. Vitamin Challenge
+
+
+## Why Next.js
+
+### Routing
+Next.js makes creating routes for your application simple and straightforward. Just by placing files in the `pages` folder, you automatically set up routes, making it easy to manage and navigate your app.
+
+### Optimization
+Next.js helps your website run faster by automatically handling things like code splitting and efficient page rendering. It ensures that only the necessary parts of your website load, improving speed and performance without extra effort from you.
+
+### Easy Project Development
+Next.js makes starting and building projects easy with its simple setup, helpful documentation, and a variety of tools. It works well with popular libraries and technologies, making it easier to build modern web applications. Features like hot reloading and built-in TypeScript support make the development process smoother and more enjoyable.
+
+## Getting Started 
+
+```txt
+git clone https://github.com/vercel/next-learn
+```
+
+Seeing the code in action is a very good way to learn and provides a nice foundation for your own projects. If anything is unclear I recommen looking at the dynamic routing in the basics folder. 
+
+### Key components and functions startercode
+1. **Link**:
+   - `Link` is a component provided by Next.js that enables client-side navigation between different pages of your application. It allows you to navigate between pages without causing a full page reload, which results in a faster and smoother user experience.
+   - Example:
+     ```jsx
+     import Link from 'next/link';
+
+     function Home() {
+       return (
+         <div>
+           <h1>Welcome to the homepage</h1>
+           <Link href="/about">
+             <a>Go to About Page</a>
+           </Link>
+         </div>
+       );
+     }
+     ```
+
+2. **usePathname()**:
+   - `usePathname` is a hook provided by Next.js to get the current pathname in a functional component. This can be useful for conditionally rendering content based on the current route.
+   - Example:
+     ```jsx
+     import { usePathname } from 'next/navigation';
+
+     function MyComponent() {
+       const pathname = usePathname();
+
+       return (
+         <div>
+           <p>Current pathname: {pathname}</p>
+         </div>
+       );
+     }
+     ```
+
+3. **clsx**:
+   - `clsx` is a utility for constructing `className` strings conditionally. It helps in managing classes more dynamically and concisely, often used in conjunction with CSS modules or Tailwind CSS in Next.js projects.
+   - Example:
+     ```jsx
+     import clsx from 'clsx';
+
+     function Button({ isPrimary }) {
+       return (
+         <button className={clsx('btn', { 'btn-primary': isPrimary, 'btn-secondary': !isPrimary })}>
+           Click me
+         </button>
+       );
+     }
+     ```
+     
+     Question 
+     
+## Implementing Dark Mode Based on Pathname
+
+1. **Objective**: Apply dark mode styles when the user navigates to a specific pathname, e.g., `/dark-mode`.
+
+2. **Steps**:
+
+   - Use `Link` to navigate to the `/dark-mode` page.
+   - Use `usePathname` to get the current pathname.
+   - Use `clsx` to conditionally apply dark mode styles based on the pathname.
+
+3. **Code Example**:
+## Question: Implement Dark Mode Based on Pathname
+
+### Objective
+Create two buttons, one that navigates to the `/dark-mode` page and the `/light-mode` page
+Create a dark mode that activates when the user navigates to the `/dark-mode` page.
+Create a light mode that activates when the user navigates to the `/dark-mode` page.
+The buttons must include `Dark-Mode` and `Light-Mode` in them.
+
+### Starter Code
+Complete the `Home` function in the provided starter code to achieve this functionality.
+```css
+// styles/globals.css
+.container {
+  padding: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+```
+```jsx
+// pages/index.js
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import clsx from 'clsx';
+
+// HINT: Use the `usePathname` hook to get the current pathname.
+// HINT: Use the `clsx` utility to conditionally apply the 'dark-mode' class.
+
+function Home() {
+  // Your code here
+}
+
+export default Home;
