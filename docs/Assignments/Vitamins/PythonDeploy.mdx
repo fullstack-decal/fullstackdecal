@@ -29,7 +29,7 @@ The backend flask server should look something like this (refreshing the site wi
     - Clone the repository to your local machine using your terminal.
 2. **Set Up the React App**:
     - Navigate into the cloned repository directory on your machine.
-    - Initialize a React app inside the repository folder.
+    - Create a folder called "frontend" inside the repository folder and initialize a React app inside this folder.
     - Commit the initial React app to the repository and push it to GitHub.
 3. **Test the React App Locally**:
     - Run the React app on your local machine to ensure it works correctly before proceeding.
@@ -50,15 +50,27 @@ The backend flask server should look something like this (refreshing the site wi
 ### **Part 3: Set Up Flask Backend**
 
 1. **Set Up a Virtual Environment**:
-    - Create a Python virtual environment to isolate your Flask backend dependencies.
+    Create a Python virtual environment to isolate your Flask backend dependencies. This is so that the dependencies for this project do not interfere with other projects you may have.
+    - Navigate back to the root project folder (repository folder, not frontend folder).
+        
+    - Create and activate a virtual environment:
+        
+        ```bash
+        python -m venv venv
+        source venv/bin/activate  # On Windows, use: venv\\Scripts\\activate
+        
+        ```
+
 2. **Install Flask and CORS**:
     - Install Flask for building the backend and enable CORS to allow the React app to communicate with the backend.
 3. **Build the Flask Backend**:
-    - Write a Flask API endpoint that serves a random quote.
-    - Test the backend locally to ensure it works.
+    - Create a new folder called "backend" inside the repository folder.
+    - Write a Flask API endpoint that serves a random quote. 
+        - make sure to import the necessary libraries and set up the Flask app.
+    - Test the backend locally to ensure it works (run the flask file in the terminal).
 4. **Deploy the Backend**:
     - Use a platform like Render or Heroku to deploy the Flask backend.
-    - Note the backend's public URL for later use.
+    - Note the backend's public URL for later use in connecting it to the React frontend.
 
 ---
 
