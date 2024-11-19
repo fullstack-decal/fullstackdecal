@@ -4,32 +4,13 @@ sidebar_position: 8
 
 # Next.js
 
-# Next JS Overview
-
-1. Why Next?
-2. Getting Started
-3. Starter Code
-3. Vitamin Challenge
-
-
-## Why Next.js
-
-### Routing
-Next.js makes creating routes for your application simple and straightforward. Just by placing files in the `pages` folder, you automatically set up routes, making it easy to manage and navigate your app.
-
-### Optimization
-Next.js helps your website run faster by automatically handling things like code splitting and efficient page rendering. It ensures that only the necessary parts of your website load, improving speed and performance without extra effort from you.
-
-### Easy Project Development
-Next.js makes starting and building projects easy with its simple setup, helpful documentation, and a variety of tools. It works well with popular libraries and technologies, making it easier to build modern web applications. Features like hot reloading and built-in TypeScript support make the development process smoother and more enjoyable.
-
 ## Getting Started 
 
 ```txt
-git clone https://github.com/vercel/next-learn
+npx create-next-app@latest
 ```
 
-Seeing the code in action is a very good way to learn and provides a nice foundation for your own projects. If anything is unclear I recommen looking at the dynamic routing in the basics folder. 
+Use the command above to create a new Next.js application. All of the code you will write will be in the main app/ folder.
 
 ### Key components and functions startercode
 1. **Link**:
@@ -82,9 +63,7 @@ Seeing the code in action is a very good way to learn and provides a nice founda
      }
      ```
      
-     Question 
-     
-## Implementing Dark Mode Based on Pathname
+## Question: Implementing Dark Mode Based on Pathname
 
 1. **Objective**: Apply dark mode styles when the user navigates to a specific pathname, e.g., `/dark-mode`.
 
@@ -118,13 +97,14 @@ Complete the `Home` function in the provided starter code to achieve this functi
 }
 ```
 ```jsx
-// pages/index.js
+// app/page.js
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 
 // HINT: Use the `usePathname` hook to get the current pathname.
 // HINT: Use the `clsx` utility to conditionally apply the 'dark-mode' class.
+// HINT: There should also be two new pages we are redirecting to. Think about how we make more pages within Next.js.
 
 function Home() {
   // Your code here
