@@ -259,17 +259,11 @@ const weeks: Week[] = [
         reading: [
           { link: "/docs/Lessons/Django", name: "Django" },
           { link: "/docs/Lessons/Flask", name: "Flask" },
+          { link: "/docs/Lessons/Deployment", name: "Deploying Your Website" },
         ],
       },
       {
-        topic: "Deploying with AWS/Vercel + Three.js",
-        reading: [
-          { link: "/docs/Lessons/Deployment", name: "Deploying Your Website" },
-          {
-            link: "/docs/Lessons/Creative",
-            name: "Creative Web Development and Three.js",
-          },
-        ],
+        topic: "NO LECTURE",
       },
     ],
   },
@@ -353,8 +347,8 @@ const vitamins: IncompleteAssignment[] = [
   },
   {
     link: {
-      link: "/docs/Assignments/Vitamins/DeployThree",
-      name: "Deploying and Three.js",
+      link: "/docs/Assignments/Vitamins/PythonDeploy",
+      name: "Flask, Django, and Deployment",
     },
     assignedWeek: 9,
     dueWeek: 10,
