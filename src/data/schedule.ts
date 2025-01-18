@@ -402,7 +402,7 @@ const schedule: Schedule = {
   weeks,
   vitamins: resolveAssignments(vitamins, "Vitamin"),
   projects: resolveAssignments(projects, "Project"),
-  startDate: new Date("September 15, 2024"),
+  startDate: new Date("February 9, 2025"),
   lessonDays: [2, 4],
 };
 
