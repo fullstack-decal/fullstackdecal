@@ -268,7 +268,7 @@ const weeks: Week[] = [
     ],
   },
   {
-    title: "THANKSGIVING BREAK NO LECTURE",
+    title: "SPRING BREAK NO LECTURE",
     lessons: [],
   },
   {
