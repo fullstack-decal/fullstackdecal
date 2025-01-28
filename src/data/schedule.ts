@@ -199,6 +199,10 @@ const weeks: Week[] = [
     ],
   },
   {
+    title: "SPRING BREAK NO LECTURE",
+    lessons: [],
+  },
+  {
     title: "Databases, last piece of the puzzle",
     lessons: [
       {
@@ -217,6 +221,7 @@ const weeks: Week[] = [
       },
     ],
   },
+  // Weeks 9-12 are shifted forward by one week
   {
     title: "More approaches to web dev",
     lessons: [
@@ -266,10 +271,6 @@ const weeks: Week[] = [
         topic: "NO LECTURE",
       },
     ],
-  },
-  {
-    title: "SPRING BREAK NO LECTURE",
-    lessons: [],
   },
   {
     title: "The final stretch!",
@@ -323,8 +324,8 @@ const vitamins: IncompleteAssignment[] = [
   },
   {
     link: { link: "/docs/Assignments/Vitamins/Databases", name: "Databases" },
-    assignedWeek: 6,
-    dueWeek: 7,
+    assignedWeek: 7,
+    dueWeek: 8,
     dueDay: 2,
   },
   {
@@ -332,8 +333,8 @@ const vitamins: IncompleteAssignment[] = [
       link: "/docs/Assignments/Vitamins/NextAuth",
       name: "Next.js and Authentication",
     },
-    assignedWeek: 7,
-    dueWeek: 8,
+    assignedWeek: 8,
+    dueWeek: 9,
     dueDay: 2,
   },
   {
@@ -341,8 +342,8 @@ const vitamins: IncompleteAssignment[] = [
       link: "/docs/Assignments/Vitamins/CSSRedux",
       name: "CSS Frameworks and Redux",
     },
-    assignedWeek: 8,
-    dueWeek: 9,
+    assignedWeek: 9,
+    dueWeek: 10,
     dueDay: 2,
   },
   {
@@ -350,8 +351,8 @@ const vitamins: IncompleteAssignment[] = [
       link: "/docs/Assignments/Vitamins/PythonDeploy",
       name: "Flask, Django, and Deployment",
     },
-    assignedWeek: 9,
-    dueWeek: 10,
+    assignedWeek: 10,
+    dueWeek: 11,
     dueDay: 2,
   },
 ];
