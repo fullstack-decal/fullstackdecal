@@ -32,16 +32,6 @@ const staff: Staff[] = [
     email: "mailto:Robillard.matthew22@berkeley.edu",
   },
   {
-    name: "Prabhas Kurapati",
-    role: "Full-Stack TA",
-    bio: "I love HTML",
-    image: "/img/staff/prabhas.jpg",
-    linkedin: "https://www.linkedin.com/in/prabhask/",
-    website: "",
-    github: "https://github.com/prabhask5",
-    email: "mailto:prabhask@berkeley.edu",
-  },
-  {
     name: "Jason Duong",
     role: "Full-Stack TA",
     bio: "",
