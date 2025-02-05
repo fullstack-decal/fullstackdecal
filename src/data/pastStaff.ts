@@ -2,6 +2,16 @@ import { PastStaff } from "../types";
 
 const staff: PastStaff[] = [
   {
+    name: "Prabhas Kurapati",
+    image: "/img/staff/prabhas.jpg",
+    linkedin: "https://www.linkedin.com/in/prabhask/",
+  },
+  {
+    name: "Seeun Ahn",
+    image: '/img/staff/seeunahn.jpg',
+    linkedin: 'https://www.linkedin.com/in/seeunahn/',
+  },
+  {
     name: "Sebastiaan Szafir",
     image: "/img/staff/sebi.png",
     linkedin: "https://www.linkedin.com/in/sebastiaan-szafir-fridman/",
