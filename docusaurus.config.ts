@@ -144,7 +144,7 @@ const config: Config = {
     },
     announcementBar: {
       id: "announcementBar-2",
-      content: `Our Spring 2025 Decal Applications are open until Jan 31st! Please apply <a target="_blank" rel="noopener noreferrer" href="https://forms.gle/9ziqSk31tHpWJU9L6">here</a>.`,
+      content: `Our Spring 2025 Decal Applications are still rolling and have a few spaces left! Please apply ASAP <a target="_blank" rel="noopener noreferrer" href="https://forms.gle/9ziqSk31tHpWJU9L6">here</a>.`,
       isCloseable: false,
     },
   } satisfies Preset.ThemeConfig,
