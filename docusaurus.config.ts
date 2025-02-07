@@ -80,8 +80,7 @@ const config: Config = {
           label: "Extension Form",
         },
         {
-          href: "https://calendar.google.com/calendar/u/0?cid=Y183YTg3ZDhkYTIzODM3OTUwN2Y5MGVlMmQ4YjQ1NzBiZDNmYWZkN2I0NjI1MDU0ZjU5OTcwNzkyMDdiYjU2OWY2QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20",
-          position: "left",
+          href: "https://calendar.google.com/calendar/u/0?cid=Y183YTMwOTM2YjE3NWZkOTFhYmNiNTdlNTU0YjU5ZjYxODMzMmQ4M2I0NDQ3Zjc5OGQxNzJhZjk1ZjlmNzVlNWQ4QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20",
           label: "Course Calendar",
         },
         {
