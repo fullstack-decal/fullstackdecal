@@ -70,12 +70,12 @@ const config: Config = {
           label: "Resources",
         },
         {
-          href: "https://forms.gle/qmorW2vXzC5RjEjh8",
+          href: "https://docs.google.com/forms/d/e/1FAIpQLSe-Ej7U6q4ADySIzIJjnaWh5veSbPcZ4g4pJ-_b5iDgVM5Kcg/viewform?usp=header",
           position: "left",
           label: "Attendance Form",
         },
         {
-          href: "https://forms.gle/FYDUNhc5vMknwKoi9",
+          href: "https://docs.google.com/forms/d/e/1FAIpQLScHHyzhp0nZ_RnVbU0X8OcS7DqgwWf3B-O7qvNl8FpaXq41Tw/viewform?usp=header",
           position: "left",
           label: "Extension Form",
         },
