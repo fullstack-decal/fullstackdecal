@@ -84,7 +84,7 @@ const config: Config = {
           label: "Course Calendar",
         },
         {
-          href: "https://edstem.org/us/join/ScBnTr",
+          href: "https://edstem.org/us/courses/76026/discussion/6144697",
           position: "left",
           label: "Ed",
         },
