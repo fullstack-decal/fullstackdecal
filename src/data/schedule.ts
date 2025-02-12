@@ -289,10 +289,10 @@ const vitamins: IncompleteAssignment[] = [
   {
     link: {
       link: "/docs/Assignments/Vitamins/HTMLCSS",
-      name: "HTML and CSS (Optional)",
+      name: "HTML and CSS",
     },
-    assignedWeek: 2,
-    dueWeek: 3,
+    assignedWeek: 0,
+    dueWeek: 2,
     dueDay: 2,
   },
   {
