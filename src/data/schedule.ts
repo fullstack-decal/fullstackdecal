@@ -288,6 +288,15 @@ const weeks: Week[] = [
 const vitamins: IncompleteAssignment[] = [
   {
     link: {
+      link: "/docs/Assignments/Vitamins/Submission",
+      name: "Github Submission",
+    },
+    assignedWeek: 0,
+    dueWeek: 1,
+    dueDay: 2,
+  },
+  {
+    link: {
       link: "/docs/Assignments/Vitamins/HTMLCSS",
       name: "HTML and CSS",
     },

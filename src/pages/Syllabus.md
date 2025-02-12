@@ -107,7 +107,7 @@ If one or more of these is not met, you are at risk for an NP in this class. Gra
 | Item               | Points       |
 | ------------------ | ------------ |
 | Lecture Attendance | 120 (6 per)  |
-| Vitamins           | 280 (35 per) |
+| Vitamins           | 280 (28 per) |
 | Project 1          | 150          |
 | Project 2          | 150          |
 | Final Project      | 300          |
