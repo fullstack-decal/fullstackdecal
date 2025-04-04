@@ -392,7 +392,7 @@ const projects: IncompleteAssignment[] = [
     },
     assignedWeek: 7,
     dueWeek: 11,
-    dueDay: 5,
+    dueDay: 1,
     checkpoints: [
       {
         name: "Project Idea",
@@ -402,7 +402,7 @@ const projects: IncompleteAssignment[] = [
       {
         name: "Design Prototype",
         dueWeek: 10,
-        dueDay: 5,
+        dueDay: 2,
       },
     ],
   },
