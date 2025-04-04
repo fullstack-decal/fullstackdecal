@@ -328,8 +328,8 @@ const vitamins: IncompleteAssignment[] = [
       name: "APIs and Servers",
     },
     assignedWeek: 5,
-    dueWeek: 6,
-    dueDay: 2,
+    dueWeek: 7,
+    dueDay: 4,
   },
   {
     link: { link: "/docs/Assignments/Vitamins/Databases", name: "Databases" },
@@ -382,7 +382,7 @@ const projects: IncompleteAssignment[] = [
       name: "APImagination",
     },
     assignedWeek: 4,
-    dueWeek: 7,
+    dueWeek: 8,
     dueDay: 2,
   },
   {
@@ -396,12 +396,12 @@ const projects: IncompleteAssignment[] = [
     checkpoints: [
       {
         name: "Project Idea",
-        dueWeek: 8,
+        dueWeek: 9,
         dueDay: 3,
       },
       {
         name: "Design Prototype",
-        dueWeek: 9,
+        dueWeek: 10,
         dueDay: 5,
       },
     ],
