@@ -213,10 +213,10 @@ const weeks: Week[] = [
         ],
       },
       {
-        topic: "Relational Databases, SQL, ORMs",
+        topic: "Authentication + Firebase",
         reading: [
-          { link: "/docs/Lessons/SQL", name: "SQL and Relational Databases" },
-          { link: "/docs/Lessons/ORM", name: "Object Relational Models" },
+          { link: "/docs/Lessons/Auth", name: "Authentication/Authorization" },
+          { link: "/docs/Lessons/Firebase", name: "Firebase" },
         ],
       },
     ],
@@ -226,15 +226,15 @@ const weeks: Week[] = [
     title: "More approaches to web dev",
     lessons: [
       {
-        topic: "Next.js",
-        reading: [{ link: "/docs/Lessons/Next", name: "Next.js" }],
+        topic: "Relational Databases, SQL, ORMs",
+        reading: [
+          { link: "/docs/Lessons/SQL", name: "SQL and Relational Databases" },
+          { link: "/docs/Lessons/ORM", name: "Object Relational Models" },
+        ],
       },
       {
-        topic: "Authentication + Firebase",
-        reading: [
-          { link: "/docs/Lessons/Auth", name: "Authentication/Authorization" },
-          { link: "/docs/Lessons/Firebase", name: "Firebase" },
-        ],
+        topic: "Next.js",
+        reading: [{ link: "/docs/Lessons/Next", name: "Next.js" }],
       },
     ],
   },
@@ -242,17 +242,17 @@ const weeks: Week[] = [
     title: "Some useful frameworks for you",
     lessons: [
       {
-        topic: "Guest Lecture with Current MongoDB Employee!",
-      },
-      {
-        topic: "CSS Frameworks and Redux.js",
+        topic: "CSS Frameworks",
         reading: [
           {
             link: "/docs/Lessons/CSSFrameworks",
             name: "CSS Frameworks",
           },
-          { link: "/docs/Lessons/Redux", name: "Redux.js" },
         ],
+      },
+      {
+        topic: "Redux.js",
+        reading: [{ link: "/docs/Lessons/Redux", name: "Redux.js" }],
       },
     ],
   },
@@ -335,7 +335,7 @@ const vitamins: IncompleteAssignment[] = [
     link: { link: "/docs/Assignments/Vitamins/Databases", name: "Databases" },
     assignedWeek: 7,
     dueWeek: 8,
-    dueDay: 2,
+    dueDay: 4,
   },
   {
     link: {
