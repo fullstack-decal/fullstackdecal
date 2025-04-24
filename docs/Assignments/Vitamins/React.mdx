@@ -125,3 +125,134 @@ Now that you have the basic app structure, let's dive into React Hooks! Hooks le
 2. **useEffect Hook:**
     - `useEffect` allows you to perform side effects in your component, such as fetching data or updating the document title. It runs after the component renders.
     - Add logic to update the counter. Use `useEffect` to reset the counter if it goes below 0 and show the message “You passed 5!”  if it passes 5.
+
+
+### **Part 4: Submitting Your Assignment**
+
+When submitting your React project to Gradescope, please follow the instructions below carefully so we can grade your work efficiently.
+
+#### 📝 What to Include:
+- `src/` – Your main React code lives here.
+- `public/` – The static files like `index.html` and favicon.
+- `package.json` – Lists the dependencies needed for your app.
+- `package-lock.json` – Locks versions of packages used.
+- `.gitignore` – To show you understood how to use it (see next section!)
+
+> You can submit this as a zipped `.zip` file or upload each file/folder on Gradescope.
+
+#### ❌ What *Not* to Include:
+- `node_modules/` – It contains **thousands of downloaded files** and **bloats your project**.  
+  It also causes **Gradescope to lag or error out**, which is a pain for everyone.
+
+> Why don’t we want it? Because if we have the `package.json`, we can just run `npm install` or `yarn install` to regenerate `node_modules`.
+---
+
+### **Part 5: How to use gitignore**
+
+So you're wondering…  
+**How do I ignore the `node_modules` folder so it doesn’t get pushed to GitHub or uploaded to Gradescope?**
+
+**How do I ignore any file in general when uploading to github?**
+
+Super easy — let’s walk through it.
+
+
+#### Step 1: Create a `.gitignore` File
+
+In the **root directory** of your project, create a file called `.gitignore`, unless it already exists.
+
+> This literally means "git, ignore this!" 
+
+
+#### Step 2: Add `node_modules` to It
+
+Open the `.gitignore` file and type:
+
+```
+/node_modules
+```
+
+This tells Git to **ignore the entire `node_modules` folder**, which is auto-generated when you run:
+
+```bash
+npm install
+```
+
+or
+
+```bash
+yarn install
+```
+
+---
+
+### IMPORTANT: Use the Correct Path
+
+You must refer to the **correct relative path** of `node_modules` in your `.gitignore`. Let’s go over two examples:
+
+
+#### 📁 Standard Setup
+
+If you used Create React App (CRA) or a similar tool, your folder might look like this:
+
+```
+my-app/
+├── node_modules/
+├── public/
+├── src/
+├── .gitignore
+├── package.json
+└── ...
+```
+
+In this case, your `.gitignore` should include:
+
+```
+/node_modules
+```
+
+> This means: "Ignore the `node_modules` folder in the root directory."
+
+
+#### 📁 Complex Project Setup
+
+What if your project is nested like this?
+
+```
+project-root/
+├── .gitignore
+├── apps/
+│   └── frontend/
+│       ├── node_modules/
+│       └── package.json
+```
+
+Then your `.gitignore` should use:
+
+```
+/apps/frontend/node_modules
+```
+
+> This means: "Ignore the `node_modules` folder inside `apps/frontend/`."
+
+---
+
+### TL;DR:
+
+- **Always** use `.gitignore` to ignore `node_modules`
+- **Never** push `node_modules` to GitHub or Gradescope — it’s **huge**, **auto-generated**, and **breaks stuff**
+- **Use correct relative paths** based on your folder structure
+- For simplicity:  
+  📁 Put `.gitignore` in the **same folder** as the `node_modules` you want to ignore.
+
+---
+
+> 💬 Still not sure if it’s working? Run:
+> ```bash
+> git status
+> ```
+> and make sure `node_modules` doesn’t show up in the list of files Git is tracking.
+
+
+
+> **⚠️ For all future react usages, do NOT upload node_modules or else you will be penalized.**
