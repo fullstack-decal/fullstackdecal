@@ -176,11 +176,11 @@ California, Berkeley's Center for Student Conduct and Community Standards.”
 
 ### Extensions
 
+This semester we are trying out a new, more lax, extension policy. Use the extension form at the top of the screen to submit an extension for any assignment.
+
 EXTENSION POLICY ADDED: We will accept any vitamin or project submitted by May 4th without penalty. However, we will take NO extensions after May 4th under any circumstance. If you are extending Project 3, which requires an extension, please email us and we will set up a time to present with staff.
 
-This semester we are trying out a new, more lax, extension policy. Use the extension form at the top of the screen to submit an extension for any assignment.
-Any extension up to 5 days will be approved, no questions asked. For longer extensions, please DO NOT USE THE FORM, but email us instead to explain your extenuating circumstances, and we'll send you back an email within 2-3 days to let you know if your extension request has been approved.
-These extensions will not be reflected on Gradescope on your end unfortunately, but we will keep track and consider them when calculating grades.
+These extensions will not be reflected on Gradescope on your end unfortunately, but we will keep track and consider them when calculating grades. If you submitted your work late but with no extension, it will not get points.
 
 If you have any questions about this, please don't hesitate to reach out to us either on Ed or through email. We're here to support you!
 
