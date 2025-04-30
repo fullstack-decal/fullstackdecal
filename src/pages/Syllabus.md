@@ -134,7 +134,7 @@ are then due the next Monday. This gives you a week to do that vitamin, and you 
 needed to complete that vitamin since it covers content taught in the previous week. Vitamins will be graded on completion, but remember:
 the more you put into this class, the more you get out of it.
 
-Late vitamins not covered by amnesty will get 0 credit. Use extensions!
+Late vitamins not formally extended with extension form will get 0 credit. Use extensions!
 
 ### Projects
 
@@ -155,7 +155,7 @@ experience in software development teams, developing skills that can be easily t
 Grading for these projects will be very holistic with a very light requirement outline, mainly through a checkoff demo through office hours.
 Please refer to each individual project spec for more information.
 
-Late projects not covered by amnesty will get 0 credit. Use extensions!
+Late projects not formally extended with extension form will get 0 credit. Use extensions!
 
 ### Collaboration
 
@@ -176,16 +176,11 @@ California, Berkeley's Center for Student Conduct and Community Standards.”
 
 ### Extensions
 
+EXTENSION POLICY ADDED: We will accept any vitamin or project submitted by May 4th without penalty. However, we will take NO extensions after May 4th under any circumstance. If you are extending Project 3, which requires an extension, please email us and we will set up a time to present with staff.
+
 This semester we are trying out a new, more lax, extension policy. Use the extension form at the top of the screen to submit an extension for any assignment.
 Any extension up to 5 days will be approved, no questions asked. For longer extensions, please DO NOT USE THE FORM, but email us instead to explain your extenuating circumstances, and we'll send you back an email within 2-3 days to let you know if your extension request has been approved.
 These extensions will not be reflected on Gradescope on your end unfortunately, but we will keep track and consider them when calculating grades.
-
-Additionally, we are offering an amnesty policy,
-which allows every student to submit up to 200 points of assignments by the very last day in the class (12/4/2024), again no questions asked.
-More information on this policy will be sent out nearing that date, with a form for you to put in the requested assignments that you would like to
-apply amnesty towards. Note that this allows you to submit an entire non-final project + 1 vitamin or 5 vitamins by this deadline.
-
-Due to the group nature of the final project, we will not be allowing extensions on the final project or for any checkpoints of the final project.
 
 If you have any questions about this, please don't hesitate to reach out to us either on Ed or through email. We're here to support you!
 
