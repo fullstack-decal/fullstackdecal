@@ -6,16 +6,16 @@
 - **Course Number:** CS 198-099
 - **Units:** 3
 - **Faculty Sponsor:** Josh Hug
-- **Class Number:** 33300
+- **Class Number:** 30198
 
 **Course Contact:** webdev-decal@lists.berkeley.edu
 
 **Time:** There are 2 lectures every week. Students are expected to attend both lectures every week. Attendance is mandatory.
 
-- Lecture 1: Tuesday @ 6:30-8 PM PT
+- Lecture 1: Wednesday @ 6:30-8 PM PT
 - Lecture 2: Thursday @ 6:30-8 PM PT
 
-**Location:** Physics 4
+**Location:** Physics 3
 
 ## Course Overview
 
@@ -177,8 +177,6 @@ California, Berkeley's Center for Student Conduct and Community Standards.”
 ### Extensions
 
 This semester we are trying out a new, more lax, extension policy. Use the extension form at the top of the screen to submit an extension for any assignment.
-
-EXTENSION POLICY ADDED: We will accept any vitamin or project submitted by May 4th without penalty. However, we will take NO extensions after May 4th under any circumstance. If you are extending Project 3, which requires an extension, please email us and we will set up a time to present with staff.
 
 These extensions will not be reflected on Gradescope on your end unfortunately, but we will keep track and consider them when calculating grades. If you submitted your work late but with no extension, it will not get points.
 

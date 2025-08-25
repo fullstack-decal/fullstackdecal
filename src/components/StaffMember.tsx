@@ -40,7 +40,7 @@ const StaffMember: React.FC<StaffMemberProps> = ({
       <Image
         src={image}
         alt={name}
-        height="13rem"
+        height="10rem"
         width="10rem"
         objectFit="cover"
         shadow="2xl"

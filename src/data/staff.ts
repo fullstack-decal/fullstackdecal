@@ -2,16 +2,6 @@ import { Staff } from "../types";
 
 const staff: Staff[] = [
   {
-    name: "Jessie Liu",
-    role: "Head TA & Facilitator",
-    bio: "I love CSS",
-    image: "/img/staff/jessieliu.jpeg",
-    linkedin: "www.linkedin.com/in/jess04liu",
-    website: "",
-    github: "https://github.com/jessieewoo",
-    email: "mailto:jess04liu@berkeley.edu",
-  },
-  {
     name: "Darren Ich",
     role: "Head TA & Facilitator",
     bio: "HI!!!!!",
@@ -22,45 +12,15 @@ const staff: Staff[] = [
     email: "mailto:dich@berkeley.edu",
   },
   {
-    name: "Matthew Robillard",
-    role: "Full-Stack TA",
-    bio: "I love JavaScript",
-    image: "/img/staff/matt.jpeg",
-    linkedin: "https://www.linkedin.com/in/matthew-robillard-6723b8252/",
-    website: "mjrobillard.com",
-    github: "https://github.com/MJRobillard",
-    email: "mailto:Robillard.matthew22@berkeley.edu",
-  },
-  {
-    name: "Jason Duong",
-    role: "Full-Stack TA",
-    bio: "",
-    image: "/img/staff/jasonduong.jpeg",
-    linkedin: "https://www.linkedin.com/in/jasonduongg/",
-    website: "",
-    github: "https://github.com/jasonduongg",
-    email: "mailto:jasonduong@berkeley.edu",
-  },
-  {
     name: "Gisella Chan",
-    role: "Full-Stack TA",
-    bio: "bahahahaha",
-    image: "/img/staff/spongebobgisella.jpeg",
+    role: "Head TA & Facilitator",
+    bio: "Hi! I'm Gisella, a senior majoring in CS + DS. This is the second Decal I've taught, and I'm looking forward to having a great semester with you guys :)",
+    image: "/img/staff/gisella.jpeg",
     linkedin: "https://www.linkedin.com/in/gisellachan/",
     website: "",
     github: "",
     email: "mailto:gisellachan@berkeley.edu",
-  },
-  {
-    name: "Marin Lau",
-    role: "Design TA",
-    bio: "uhhhhh",
-    image: "/img/staff/patrickmarin.jpeg",
-    linkedin: "",
-    website: "",
-    github: "",
-    email: "",
-  },
+  }
 ];
 
 export default staff;

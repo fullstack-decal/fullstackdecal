@@ -70,24 +70,29 @@ const config: Config = {
           label: "Resources",
         },
         {
-          href: "https://docs.google.com/forms/d/e/1FAIpQLSc2EoMoBCfFc3KlvmyD70L82ekhTR_rUc4s8DkIX1-ilHyxVQ/viewform?usp=header",
+          href: "https://forms.gle/sbAs4EMiqUhbqzVK7",
           position: "left",
-          label: "Attendance Form",
+          label: "Apply for Fall 2025",
         },
-        {
-          href: "https://docs.google.com/forms/d/e/1FAIpQLSex5RzEK4HHVcSNffGE1E8z0KdiCHoinmsJEUeS31y5ttrgOw/viewform?usp=header",
-          position: "left",
-          label: "Extension Form",
-        },
-        {
-          href: "https://calendar.google.com/calendar/u/0?cid=Y183YTMwOTM2YjE3NWZkOTFhYmNiNTdlNTU0YjU5ZjYxODMzMmQ4M2I0NDQ3Zjc5OGQxNzJhZjk1ZjlmNzVlNWQ4QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20",
-          label: "Course Calendar",
-        },
-        {
-          href: "https://edstem.org/us/courses/76026/discussion/6144697",
-          position: "left",
-          label: "Ed",
-        },
+        // {
+        //   href: "https://forms.gle/BkWPH2HQCamWW8548",
+        //   position: "left",
+        //   label: "Attendance Form",
+        // },
+        // {
+        //   href: "https://forms.gle/W3xbPcBhzCgGqyyr9",
+        //   position: "left",
+        //   label: "Extension Form",
+        // },
+        // {
+        //   href: "",
+        //   label: "Course Calendar",
+        // },
+        // {
+        //   href: "",
+        //   position: "left",
+        //   label: "Ed",
+        // },
         {
           href: "https://github.com/fullstack-decal",
           position: "right",

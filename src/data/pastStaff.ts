@@ -1,6 +1,27 @@
 import { PastStaff } from "../types";
 
 const staff: PastStaff[] = [
+  // Spring 2025
+  {
+    name: "Matthew Robillard",
+    image: "/img/staff/matt.jpeg",
+    linkedin: "https://www.linkedin.com/in/matthew-robillard-6723b8252/",
+  },
+  {
+    name: "Jessie Liu",
+    image: "/img/staff/jessieliu.jpeg",
+    linkedin: "www.linkedin.com/in/jess04liu",
+  },
+  {
+    name: "Jason Duong",
+    image: "/img/staff/jasonduong.jpeg",
+    linkedin: "https://www.linkedin.com/in/jasonduongg/",
+  },
+  {
+    name: "Marin Lau",
+    image: "/img/past-staff/marin.jpeg",
+    linkedin: "https://www.linkedin.com/in/marin-lau/",
+  },
   {
     name: "Prabhas Kurapati",
     image: "/img/staff/prabhas.jpg",
