@@ -412,7 +412,7 @@ const schedule: Schedule = {
   weeks,
   vitamins: resolveAssignments(vitamins, "Vitamin"),
   projects: resolveAssignments(projects, "Project"),
-  startDate: new Date("September 14, 2025"),
+  startDate: new Date("September 21, 2025"),
   lessonDays: [3, 4],
 };
 
