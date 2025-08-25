@@ -412,8 +412,8 @@ const schedule: Schedule = {
   weeks,
   vitamins: resolveAssignments(vitamins, "Vitamin"),
   projects: resolveAssignments(projects, "Project"),
-  startDate: new Date("February 9, 2025"),
-  lessonDays: [2, 4],
+  startDate: new Date("September 14, 2025"),
+  lessonDays: [3, 4],
 };
 
 export default schedule;

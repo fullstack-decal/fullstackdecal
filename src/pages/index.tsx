@@ -38,7 +38,7 @@ const HomeContent: React.FC = () => {
     <>
       <Box background={backgroundGradient(colorMode)}>
         <Container maxW="container.md" my="6rem">
-          <Text textStyle="subtitle2">CS 198-99 | Spring 2025</Text>
+          <Text textStyle="subtitle2">CS 198-99 | Fall 2025</Text>
           <Text textStyle="title1">
             Introduction
             <br />
@@ -47,7 +47,7 @@ const HomeContent: React.FC = () => {
             <br />
             development
           </Text>
-          <Text textStyle="subtitle2">Tues/Thurs 6:30-8 pm @ Physics 4</Text>
+          <Text textStyle="subtitle2">Wed/Thurs 6:30-8 pm @ Physics 3</Text>
 
           <Link
             href="mailto:webdev-decal@lists.berkeley.edu"
