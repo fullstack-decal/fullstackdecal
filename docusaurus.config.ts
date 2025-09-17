@@ -69,21 +69,21 @@ const config: Config = {
           position: "left",
           label: "Resources",
         },
+        // {
+        //   href: "https://forms.gle/sbAs4EMiqUhbqzVK7",
+        //   position: "left",
+        //   label: "Apply for Fall 2025",
+        // },
         {
-          href: "https://forms.gle/sbAs4EMiqUhbqzVK7",
+          href: "https://forms.gle/BkWPH2HQCamWW8548",
           position: "left",
-          label: "Apply for Fall 2025",
+          label: "Attendance",
         },
-        // {
-        //   href: "https://forms.gle/BkWPH2HQCamWW8548",
-        //   position: "left",
-        //   label: "Attendance Form",
-        // },
-        // {
-        //   href: "https://forms.gle/W3xbPcBhzCgGqyyr9",
-        //   position: "left",
-        //   label: "Extension Form",
-        // },
+        {
+          href: "https://forms.gle/W3xbPcBhzCgGqyyr9",
+          position: "left",
+          label: "Extensions",
+        },
         // {
         //   href: "",
         //   label: "Course Calendar",
