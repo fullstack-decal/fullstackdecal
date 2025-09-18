@@ -84,10 +84,10 @@ const config: Config = {
           position: "left",
           label: "Extensions",
         },
-        // {
-        //   href: "",
-        //   label: "Course Calendar",
-        // },
+        {
+          href: "https://calendar.google.com/calendar/u/0?cid=Y180M2FjZWMwYWI1NzE5ODUyMGFlNzk0YWE3YzcyYmYxZGU1ZmVlOGMzNTVmODJlNDNhMDJlZjdmYjJiMDI0Njg5QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20",
+          label: "Course Calendar",
+        },
         // {
         //   href: "",
         //   position: "left",
