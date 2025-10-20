@@ -247,8 +247,7 @@ const weeks: Week[] = [
         ],
       },
       {
-        topic: "Redux.js",
-        reading: [{ link: "/docs/Lessons/Redux", name: "Redux.js" }],
+        topic: "Guest Speaker",
       },
     ],
   },
@@ -256,15 +255,16 @@ const weeks: Week[] = [
     title: "Ending strong",
     lessons: [
       {
+        topic: "Redux.js",
+        reading: [{ link: "/docs/Lessons/Redux", name: "Redux.js" }],
+      },
+      {
         topic: "Django + Flask",
         reading: [
           { link: "/docs/Lessons/Django", name: "Django" },
           { link: "/docs/Lessons/Flask", name: "Flask" },
           { link: "/docs/Lessons/Deployment", name: "Deploying Your Website" },
         ],
-      },
-      {
-        topic: "TBD",
       },
     ],
   },
@@ -358,8 +358,8 @@ const vitamins: IncompleteAssignment[] = [
       link: "/docs/Assignments/Vitamins/CSSRedux",
       name: "CSS Frameworks and Redux",
     },
-    assignedWeek: 8,
-    dueWeek: 9,
+    assignedWeek: 9,
+    dueWeek: 10,
     dueDay: 2,
   },
   {
