@@ -116,12 +116,7 @@ Lecture pads your grade since it is mandatory.
 
 ### Attendance
 
-Attendance at lectures is mandatory. You are required to go to at least 15/20 lectures this semester to receive a P in this course.
-This allows 5 absences to be taken for any reason. Please don't email us about excusing these absences.
-If you exceed this limit, it may result in an NP or in exceptional circumstances, an incomplete. Our curriculum moves fairly quickly in order
-to cover everything you need in order to become a full-fledged developer, so it's imperative that
-you stay up-to-date with each lesson. If you do need an excused absence after exhausting your 5, please either private message us on Ed or
-email us at the email at the top of this syllabus to do so.
+Attendance at lectures is mandatory. You are required to go to at least 17/20 lectures this semester to receive a P in this course. This allows 3 absences to be taken for any reason. Please don't email us about excusing these absences. If you exceed this limit, it may result in an NP or in exceptional circumstances, an incomplete. Our curriculum moves fairly quickly in order to cover everything you need in order to become a full-fledged developer, so it's imperative that you stay up-to-date with each lesson. If you do need an excused absence after exhausting your 3, please either private message us on Ed or email us at the email at the top of this syllabus to do so.
 
 ### Vitamins
 
@@ -176,7 +171,7 @@ California, Berkeley's Center for Student Conduct and Community Standards.”
 
 ### Extensions
 
-This semester we are trying out a new, more lax, extension policy. Use the extension form at the top of the screen to submit an extension for any assignment.
+Extensions will not be granted outside of exceptional circumstances, such as medical or family emergencies. Extensions must be submitted before the original assignment deadline. Use the extension form at the top of the screen to submit an extension for any assignment.
 
 These extensions will not be reflected on Gradescope on your end unfortunately, but we will keep track and consider them when calculating grades. If you submitted your work late but with no extension, it will not get points.
 
