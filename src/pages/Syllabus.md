@@ -12,10 +12,10 @@
 
 **Time:** There are 2 lectures every week. Students are expected to attend both lectures every week. Attendance is mandatory.
 
-- Lecture 1: Wednesday @ 6:30-8 PM PT
-- Lecture 2: Thursday @ 6:30-8 PM PT
+- Lecture 1: Wednesday @ 6:30-8 PM PT @ Physics 3
+- Lecture 2: Thursday @ 6:30-8 PM PT @ Physics 2
 
-**Location:** Physics 3
+**Location:** Physics 3 and Physics 2 (varies by day)
 
 ## Course Overview
 

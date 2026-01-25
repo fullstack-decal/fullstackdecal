@@ -19,7 +19,7 @@ import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import WeekCard from "../components/WeekCard";
 import schedule from "../data/schedule";
-import { Image, Container, Box, Text, Link } from "@chakra-ui/react";
+import { Image, Container, Box, Text, Link, Button } from "@chakra-ui/react";
 import fullStackLogoPath from "@site/static/img/logo.png";
 import { useColorMode } from "@docusaurus/theme-common";
 import { backgroundGradient } from "../data/styles";
@@ -38,7 +38,7 @@ const HomeContent: React.FC = () => {
     <>
       <Box background={backgroundGradient(colorMode)}>
         <Container maxW="container.md" my="6rem">
-          <Text textStyle="subtitle2">CS 198-099 | Fall 2025</Text>
+          <Text textStyle="subtitle2">CS 198-099 | Spring 2026</Text>
           <Text textStyle="title1">
             Introduction
             <br />
@@ -47,7 +47,7 @@ const HomeContent: React.FC = () => {
             <br />
             development
           </Text>
-          <Text textStyle="subtitle2">Wed/Thurs 6:30-8 pm @ Physics 3</Text>
+          <Text textStyle="subtitle2">Wed 6:30-8 pm @ <strong>Physics 3</strong>, Thurs 6:30-8 pm @ <strong>Physics 2</strong></Text>
 
           <Link
             href="mailto:webdev-decal@lists.berkeley.edu"
@@ -56,6 +56,12 @@ const HomeContent: React.FC = () => {
           >
             webdev-decal@lists.berkeley.edu
           </Link>
+          <br />
+          <br />
+          <Text>
+            Applications to enroll for Spring 2026 are open and due <strong>Feb 4th</strong>!
+          </Text>
+          <Button bg="#0FD3FF" color="#ffffff" _hover={{ bg: "#0aa2c7" }} onClick={() => window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSfZpLvil5TvY2QNWlSenUTdOAgg-PKIdsaA6NFeKyCTmmskig/viewform"}>Apply for Spring 2026</Button>
         </Container>
 
         {schedule.weeks.map((week, index) => {

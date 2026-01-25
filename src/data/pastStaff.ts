@@ -1,6 +1,17 @@
 import { PastStaff } from "../types";
 
 const staff: PastStaff[] = [
+  // Fall 2025
+  {
+    name: "Darren Ich",
+    image: "/img/staff/darrenich.jpeg",
+    linkedin: "https://www.linkedin.com/in/darren-ich09/",
+  },
+  {
+    name: "Gisella Chan",
+    image: "/img/staff/gisella.jpeg",
+    linkedin: "https://www.linkedin.com/in/gisellachan/",
+  },
   // Spring 2025
   {
     name: "Matthew Robillard",

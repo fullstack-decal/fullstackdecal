@@ -52,7 +52,7 @@ const config: Config = {
           type: "doc",
           docId: "Overview",
           position: "left",
-          label: "Content",
+          label: "Textbook",
         },
         {
           to: "Syllabus",
@@ -64,30 +64,30 @@ const config: Config = {
           position: "left",
           label: "Staff",
         },
-        {
-          to: "resources",
-          position: "left",
-          label: "Resources",
-        },
         // {
-        //   href: "https://forms.gle/sbAs4EMiqUhbqzVK7",
+        //   to: "resources",
         //   position: "left",
-        //   label: "Apply for Fall 2025",
+        //   label: "Resources",
         // },
         {
-          href: "https://forms.gle/BkWPH2HQCamWW8548",
+          href: "https://docs.google.com/forms/d/e/1FAIpQLSfZpLvil5TvY2QNWlSenUTdOAgg-PKIdsaA6NFeKyCTmmskig/viewform",
           position: "left",
-          label: "Attendance",
+          label: "Apply for Spring 2026",
         },
-        {
-          href: "https://forms.gle/W3xbPcBhzCgGqyyr9",
-          position: "left",
-          label: "Extensions",
-        },
-        {
-          href: "https://calendar.google.com/calendar/u/0?cid=Y180M2FjZWMwYWI1NzE5ODUyMGFlNzk0YWE3YzcyYmYxZGU1ZmVlOGMzNTVmODJlNDNhMDJlZjdmYjJiMDI0Njg5QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20",
-          label: "Course Calendar",
-        },
+        // {
+        //   href: "https://forms.gle/BkWPH2HQCamWW8548",
+        //   position: "left",
+        //   label: "Attendance",
+        // },
+        // {
+        //   href: "https://forms.gle/W3xbPcBhzCgGqyyr9",
+        //   position: "left",
+        //   label: "Extensions",
+        // },
+        // {
+        //   href: "https://calendar.google.com/calendar/u/0?cid=Y180M2FjZWMwYWI1NzE5ODUyMGFlNzk0YWE3YzcyYmYxZGU1ZmVlOGMzNTVmODJlNDNhMDJlZjdmYjJiMDI0Njg5QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20",
+        //   label: "Course Calendar",
+        // },
         // {
         //   href: "",
         //   position: "left",
@@ -146,11 +146,11 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
-    // announcementBar: {
-    //   id: "announcementBar-2",
-    //   content: `Our Spring 2025 Decal Applications are still rolling and have a few spaces left! Please apply ASAP <a target="_blank" rel="noopener noreferrer" href="https://forms.gle/9ziqSk31tHpWJU9L6">here</a>.`,
-    //   isCloseable: false,
-    // },
+    announcementBar: {
+      id: "announcementBar-2",
+      content: `Applications to enroll for Spring 2026 are open and due <strong>Feb 4th</strong>. Apply <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSfZpLvil5TvY2QNWlSenUTdOAgg-PKIdsaA6NFeKyCTmmskig/viewform">here</a>!`,
+      isCloseable: true,
+    },
   } satisfies Preset.ThemeConfig,
 };
 

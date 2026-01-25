@@ -199,6 +199,17 @@ const weeks: Week[] = [
     ],
   },
   {
+    title: "Spring Break",
+    lessons: [
+      {
+        topic: "No Lecture"
+      },
+      {
+        topic: "No Lecture"
+      },
+    ],
+  },
+  {
     title: "Databases, last piece of the puzzle",
     lessons: [
       {
@@ -265,17 +276,6 @@ const weeks: Week[] = [
           { link: "/docs/Lessons/Flask", name: "Flask" },
           { link: "/docs/Lessons/Deployment", name: "Deploying Your Website" },
         ],
-      },
-    ],
-  },
-  {
-    title: "Thanksgiving Break",
-    lessons: [
-      {
-        topic: "No Lecture"
-      },
-      {
-        topic: "No Lecture"
       },
     ],
   },
@@ -419,8 +419,8 @@ const schedule: Schedule = {
   weeks,
   vitamins: resolveAssignments(vitamins, "Vitamin"),
   projects: resolveAssignments(projects, "Project"),
-  startDate: new Date("September 14, 2025"),
-  lessonDays: [3, 4],
+  startDate: new Date("February 9, 2026"),
+  lessonDays: [2, 3],
 };
 
 export default schedule;
