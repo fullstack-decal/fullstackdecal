@@ -56,12 +56,12 @@ const HomeContent: React.FC = () => {
           >
             webdev-decal@lists.berkeley.edu
           </Link>
-          <br />
+          {/* <br />
           <br />
           <Text>
             Applications to enroll for Spring 2026 are open and due <strong>Feb 4th</strong>!
           </Text>
-          <Button bg="#0FD3FF" color="#ffffff" _hover={{ bg: "#0aa2c7" }} onClick={() => window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSfZpLvil5TvY2QNWlSenUTdOAgg-PKIdsaA6NFeKyCTmmskig/viewform"}>Apply for Spring 2026</Button>
+          <Button bg="#0FD3FF" color="#ffffff" _hover={{ bg: "#0aa2c7" }} onClick={() => window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSfZpLvil5TvY2QNWlSenUTdOAgg-PKIdsaA6NFeKyCTmmskig/viewform"}>Apply for Spring 2026</Button> */}
         </Container>
 
         {schedule.weeks.map((week, index) => {
