@@ -4,7 +4,7 @@ const staff: Staff[] = [
   {
     name: "Chase Graham",
     role: "Head TA & Facilitator",
-    bio: "Hi! I'm Chase, I'm from Hawaii and I'm majoring in Physics and Data Science. Looking forward to a great semester!",
+    bio: "Hi! I'm Chase, I'm majoring in Physics and Data Science. Looking forward to a great semester!",
     image: "/img/staff/chase.jpg",
     linkedin: "https://www.linkedin.com/in/chase-p-graham/",
     website: "",
@@ -20,7 +20,47 @@ const staff: Staff[] = [
     website: "",
     github: "",
     email: "aureliawang@berkeley.edu",
-  }
+  },
+  {
+    name: "Nicole Lee",
+    role: "Full-Stack TA",
+    bio: "hi! i'm nicole, a sophomore studying eecs + bioe :D",
+    image: "/img/staff/nicole.jpg",
+    linkedin: "https://www.linkedin.com/in/nicolehylee/",
+    website: "",
+    github: "",
+    email: "nicole.lee@berkeley.edu",
+  },
+  {
+    name: "Jae Kim",
+    role: "Design TA",
+    bio: "Hey it's Jae! I'm a UI/UX Designer in the making and I will gladly help you with any design-related questions. My favorite things to do is explore new cafes, debate whether I should buy clothes, and pet my kitten.",
+    image: "/img/staff/jae.jpeg",
+    linkedin: "",
+    website: "",
+    github: "",
+    email: "junikim28@berkeley.edu",
+  },
+  {
+    name: "Patrick Kwon",
+    role: "Full-Stack TA",
+    bio: "Hey what's up guys I'm Patrick, I study DS/CS/CogSci here, and I'm looking forward to working with you all and learning how to build software!",
+    image: "/img/staff/patrick.jpg",
+    linkedin: "https://www.linkedin.com/in/patrickkwon27/",
+    website: "https://personal-portfolio-amber-xi-58.vercel.app/",
+    github: "https://github.com/AugmentedMelon",
+    email: "augmentedmelon@berkeley.edu",
+  },
+  {
+    name: "Audrey Zhang",
+    role: "Full-Stack TA",
+    bio: "",
+    image: "/img/logo.png",
+    linkedin: "",
+    website: "",
+    github: "",
+    email: "audreyszhang@berkeley.edu",
+  },
 ];
 
 export default staff;

@@ -220,10 +220,10 @@ const weeks: Week[] = [
         ],
       },
       {
-        topic: "Authentication + Firebase",
+        topic: "Relational Databases, SQL, ORMs",
         reading: [
-          { link: "/docs/Lessons/Auth", name: "Authentication/Authorization" },
-          { link: "/docs/Lessons/Firebase", name: "Firebase" },
+          { link: "/docs/Lessons/SQL", name: "SQL and Relational Databases" },
+          { link: "/docs/Lessons/ORM", name: "Object Relational Models" },
         ],
       },
     ],
@@ -233,10 +233,10 @@ const weeks: Week[] = [
     title: "More approaches to web dev",
     lessons: [
       {
-        topic: "Relational Databases, SQL, ORMs",
+        topic: "Authentication + Firebase",
         reading: [
-          { link: "/docs/Lessons/SQL", name: "SQL and Relational Databases" },
-          { link: "/docs/Lessons/ORM", name: "Object Relational Models" },
+          { link: "/docs/Lessons/Auth", name: "Authentication/Authorization" },
+          { link: "/docs/Lessons/Firebase", name: "Firebase" },
         ],
       },
       {
@@ -249,12 +249,13 @@ const weeks: Week[] = [
     title: "Some useful frameworks for you",
     lessons: [
       {
-        topic: "CSS Frameworks",
+        topic: "CSS Frameworks and Redux.js",
         reading: [
           {
             link: "/docs/Lessons/CSSFrameworks",
             name: "CSS Frameworks",
           },
+          { link: "/docs/Lessons/Redux", name: "Redux.js" }
         ],
       },
       {
@@ -266,16 +267,15 @@ const weeks: Week[] = [
     title: "Ending strong",
     lessons: [
       {
-        topic: "Redux.js",
-        reading: [{ link: "/docs/Lessons/Redux", name: "Redux.js" }],
-      },
-      {
         topic: "Django + Flask",
         reading: [
           { link: "/docs/Lessons/Django", name: "Django" },
           { link: "/docs/Lessons/Flask", name: "Flask" },
           { link: "/docs/Lessons/Deployment", name: "Deploying Your Website" },
         ],
+      },
+      {
+        topic: "No Lecture"
       },
     ],
   },
