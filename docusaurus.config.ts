@@ -146,11 +146,11 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
-    // announcementBar: {
-    //   id: "announcementBar-2",
-    //   content: `Applications to enroll for Spring 2026 are open and due <strong>Feb 4th</strong>. Apply <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSfZpLvil5TvY2QNWlSenUTdOAgg-PKIdsaA6NFeKyCTmmskig/viewform">here</a>!`,
-    //   isCloseable: true,
-    // },
+    announcementBar: {
+      id: "announcementBar-2",
+      content: `We still have some spots open for Spring 2026! Apply <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSfZpLvil5TvY2QNWlSenUTdOAgg-PKIdsaA6NFeKyCTmmskig/viewform">here</a>`,
+      isCloseable: true,
+    },
   } satisfies Preset.ThemeConfig,
 };
 
