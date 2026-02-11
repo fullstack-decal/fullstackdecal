@@ -52,6 +52,16 @@ const staff: Staff[] = [
     email: "augmentedmelon@berkeley.edu",
   },
   {
+    name: "Christy Cheung",
+    role: "Full-Stack TA",
+    bio: "Hi! I'm Christy, studying Data Science. Really looking forward to teaching and supporting everyone this semester!",
+    image: "/img/staff/christy.png",
+    linkedin: "https://www.linkedin.com/in/christycheung-/",
+    website: "",
+    github: "",
+    email: "christycheung@berkeley.edu",
+  },
+  {
     name: "Audrey Zhang",
     role: "Full-Stack TA",
     bio: "",
