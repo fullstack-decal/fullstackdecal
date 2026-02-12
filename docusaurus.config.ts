@@ -64,6 +64,11 @@ const config: Config = {
           position: "left",
           label: "Staff",
         },
+        {
+          href: "https://forms.gle/s4wFuR4vuF2UZTLF8",
+          position: "left",
+          label: "Extensions",
+        },
         // {
         //   to: "resources",
         //   position: "left",
