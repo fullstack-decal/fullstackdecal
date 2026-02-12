@@ -28,6 +28,38 @@ Make sure to not include spaces in your repo name when creating it!
 
 In VSCode, go to File > Open Folder and open your newly cloned project folder.
 
+:::info Alternative: Using `git init`
+
+You can also create a new folder within `full-stack-decal` and link it to GitHub using `git init`. This is the same process we did in class. Check out the lecture recording if you need a refresher!
+
+```
+mkdir my-project
+cd my-project
+git init
+```
+
+After initializing, create your files and make your first commit:
+```
+git add .
+git commit -m "initial commit"
+```
+
+Then, create a new empty repository on [github.com](https://github.com) (don't initialize it with a README). Link your local repo to GitHub:
+```
+git branch -M main
+git remote add origin https://github.com/<github username>/<repo name>.git
+git push -u origin main
+```
+
+Here's what those commands do:
+- `git branch -M main` renames your current branch to `main`. The `-M` flag forces the rename even if a branch named `main` already exists. This ensures your default branch is called `main` (some systems default to `master`).
+- `git remote add origin <url>` connects your local repository to the remote GitHub repository. "Origin" is just a nickname for your remote repo's URL.
+- `git push -u origin main` pushes your code to GitHub. The `-u` flag sets `origin main` as the default upstream, so future pushes only need `git push` instead of `git push origin main`.
+
+**Either method works!** Cloning is simpler if you're starting fresh, while `git init` is useful when you already have local files you want to push to GitHub.
+
+:::
+
 ## Part 2: README
 
 Most project repos contain a file called `README.md` (or sometimes `README.txt`). The `.md` extension is for a markdown file. This lets you tell people what your project is about, and its contents will be displayed on the home page of your project on GitHub.
@@ -109,5 +141,14 @@ git push
 (To be explicit, you can also do `git push origin main` which means you push *to* origin aka remote/in the cloud *from* your local main branch, but this shorthand does the same thing.)
 
 If you look on GitHub, you should see your main branch include two files: `README.md` and `helloworld.txt`. We practiced two methods in this vitamin: adding a file via committing directly to the main branch and also adding a file through a branch. In industry, it's typically better practice to work on incremental features in new branches and reserve main for final versions.
+
+## Want More Practice?
+
+If you want to get more comfortable with Git and GitHub, here are some things you can try:
+
+- **Pull Requests (PRs):** Instead of merging locally, push your feature branch to GitHub and open a Pull Request. This lets you (or teammates) review changes before merging. It's the standard workflow in industry!
+- **Clone open source repos:** Find interesting projects on GitHub and clone them to explore their code. You can even fork a repo, make changes, and submit a PR to contribute!
+
+The more you practice, the more natural these commands will feel.
 
 All done! Make sure to follow the submission instructions linked at the top of this file.
