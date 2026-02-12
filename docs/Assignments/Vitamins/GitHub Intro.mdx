@@ -1,0 +1,154 @@
+---
+sidebar_position: 2
+---
+
+# GitHub Intro
+
+For this assignment, you will make a GitHub repository, make a feature branch, add files, and then merge your feature branch into the main branch.
+
+Before starting this assignment, please read [Setup & Submission Information](Submission.mdx). This will provide instructions on how to create and submit assignments.
+
+## Part 1: Setup
+
+Open a new terminal. Navigate to where you want to store your project folder using the `cd` commands we learned in class. We recommend making a new directory for all assignments in this course:
+```
+cd /path/to/desktop/or/downloads/or/wherever
+mkdir full-stack-decal
+cd full-stack-decal
+```
+These commands will make a new directory (`mkdir`) and enter it.
+
+Begin by creating a new GitHub repo on [github.com](https://github.com), and clone it to your local machine:
+
+```
+git clone https://github.com/<github username>/<repo name>.git
+```
+
+Make sure to not include spaces in your repo name when creating it!
+
+In VSCode, go to File > Open Folder and open your newly cloned project folder.
+
+:::info Alternative: Using `git init`
+
+You can also create a new folder within `full-stack-decal` and link it to GitHub using `git init`. This is the same process we did in class. Check out the lecture recording if you need a refresher!
+
+```
+mkdir my-project
+cd my-project
+git init
+```
+
+After initializing, create your files and make your first commit:
+```
+git add .
+git commit -m "initial commit"
+```
+
+Then, create a new empty repository on [github.com](https://github.com) (don't initialize it with a README). Link your local repo to GitHub:
+```
+git branch -M main
+git remote add origin https://github.com/<github username>/<repo name>.git
+git push -u origin main
+```
+
+Here's what those commands do:
+- `git branch -M main` renames your current branch to `main`. The `-M` flag forces the rename even if a branch named `main` already exists. This ensures your default branch is called `main` (some systems default to `master`).
+- `git remote add origin <url>` connects your local repository to the remote GitHub repository. "Origin" is just a nickname for your remote repo's URL.
+- `git push -u origin main` pushes your code to GitHub. The `-u` flag sets `origin main` as the default upstream, so future pushes only need `git push` instead of `git push origin main`.
+
+**Either method works!** Cloning is simpler if you're starting fresh, while `git init` is useful when you already have local files you want to push to GitHub.
+
+:::
+
+## Part 2: README
+
+Most project repos contain a file called `README.md` (or sometimes `README.txt`). The `.md` extension is for a markdown file. This lets you tell people what your project is about, and its contents will be displayed on the home page of your project on GitHub.
+
+In VSCode, create a new file (File > New File) and call it `README.md`.
+
+Inside the file, add some info about your project:
+
+```md
+# My Project
+
+This is my GitHub repo.
+```
+
+In markdown, we use `#` to signify a header. This will make any text following it on the same line big. There is plenty of markdown syntax to learn. Here's some samples:
+```md
+# Header
+## Subheader
+### Subsubheader
+
+Regular text
+
+You can include [hyperlinks](https://fullstackdecal.com) and even images: ![logo](https://fullstackdecal.com/img/logo.png)
+
+You can also embed `code` with backticks.
+```
+Learn more about markdown here: https://www.markdownguide.org/
+
+Now, add, commit, and push your changes:
+```
+git add .
+git commit -m "added readme"
+git push
+```
+
+Make sure you have no untracked files:
+```
+git status
+```
+
+## Part 3: Branching out!
+
+Now we want to add a new feature. Create a new branch for this feature:
+```
+git branch hello-world
+```
+Then we can move into that branch:
+```
+git checkout hello-world
+```
+
+Just as a note, you can combine the last two commands using this if you wish: `git checkout -b hello-world` which creates and switches in one command.
+
+Now that we're in the branch, we can create a new text file `helloworld.txt`. Put anything you want into it.
+
+Add and commit your changes:
+```
+git add .
+git commit -m "added helloworld.txt"
+git push origin hello-world
+```
+
+Great! Now you have a new branch. Let's merge that branch with your sacred main branch. Start by switching to the main branch:
+```
+git checkout main
+```
+Then merge the `hello-world` branch into main:
+```
+git merge hello-world
+```
+Great! Let's clean up by deleting our old branch:
+```
+git branch -d hello-world
+```
+Now push your branch changes:
+```
+git push
+```
+(To be explicit, you can also do `git push origin main` which means you push *to* origin aka remote/in the cloud *from* your local main branch, but this shorthand does the same thing.)
+
+If you look on GitHub, you should see your main branch include two files: `README.md` and `helloworld.txt`. We practiced two methods in this vitamin: adding a file via committing directly to the main branch and also adding a file through a branch. In industry, it's typically better practice to work on incremental features in new branches and reserve main for final versions.
+
+## Want More Practice?
+
+If you want to get more comfortable with Git and GitHub, here are some things you can try:
+
+- **Pull Requests (PRs):** Instead of merging locally, push your feature branch to GitHub and open a Pull Request. This lets you (or teammates) review changes before merging. It's the standard workflow in industry!
+- **Clone open source repos:** Find interesting projects on GitHub and clone them to explore their code. You can even fork a repo, make changes, and submit a PR to contribute!
+
+The more you practice, the more natural these commands will feel.
+
+All done! Make sure to follow the submission instructions linked at the top of this file.
