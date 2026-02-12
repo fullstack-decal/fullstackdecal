@@ -1,6 +1,6 @@
 import React from "react";
 import { Schedule, Assignment } from "../types";
-import { HiOutlineBookOpen } from "react-icons/hi";
+import { HiOutlineBookOpen, HiOutlinePresentationChartBar } from "react-icons/hi";
 import { CgPill } from "react-icons/cg";
 import { RiFilePaper2Fill } from "react-icons/ri";
 import {
@@ -221,6 +221,18 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
             lessonDate.getDate() +
               sortedLessonDays[lessonIdx % sortedLessonDays.length],
           );
+
+          if (lesson.slides) {
+            weekAttachnments.push(
+              <Text textStyle="label2">
+                {" "}
+                <ChakraLink color="teal" mr={3} as={Link} to={lesson.slides.link}>
+                  <HiOutlinePresentationChartBar style={{ marginBottom: "-2px" }} />{" "}
+                  {lesson.slides.name}
+                </ChakraLink>
+              </Text>,
+            );
+          }
 
           if (lesson.reading) {
             for (const reading of lesson.reading) {

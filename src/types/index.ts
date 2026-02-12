@@ -46,6 +46,7 @@ export interface Week {
 export interface Lesson {
   topic: string;
   reading?: Link[];
+  slides?: Link;
 }
 
 export interface Staff {
