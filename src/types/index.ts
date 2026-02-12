@@ -47,6 +47,7 @@ export interface Lesson {
   topic: string;
   reading?: Link[];
   slides?: Link;
+  recording?: Link;
 }
 
 export interface Staff {

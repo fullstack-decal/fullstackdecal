@@ -1,6 +1,6 @@
 import React from "react";
 import { Schedule, Assignment } from "../types";
-import { HiOutlineBookOpen, HiOutlinePresentationChartBar } from "react-icons/hi";
+import { HiOutlineBookOpen, HiOutlinePresentationChartBar, HiOutlineVideoCamera } from "react-icons/hi";
 import { CgPill } from "react-icons/cg";
 import { RiFilePaper2Fill } from "react-icons/ri";
 import {
@@ -229,6 +229,18 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
                 <ChakraLink color="teal" mr={3} as={Link} to={lesson.slides.link}>
                   <HiOutlinePresentationChartBar style={{ marginBottom: "-2px" }} />{" "}
                   {lesson.slides.name}
+                </ChakraLink>
+              </Text>,
+            );
+          }
+
+          if (lesson.recording) {
+            weekAttachnments.push(
+              <Text textStyle="label2">
+                {" "}
+                <ChakraLink color="red" mr={3} as={Link} to={lesson.recording.link}>
+                  <HiOutlineVideoCamera style={{ marginBottom: "-2px" }} />{" "}
+                  {lesson.recording.name}
                 </ChakraLink>
               </Text>,
             );
