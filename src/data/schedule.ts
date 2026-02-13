@@ -94,6 +94,10 @@ const weeks: Week[] = [
           link: "https://docs.google.com/presentation/d/1CF_R_3SGQlF_wAF5R0I2BLS4k1cfwNN_/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
           name: "Slides",
         },
+        recording: {
+          link: "https://drive.google.com/file/d/1H77xLgfHsH-dI6Cz1xWvBu9lE-X2aCKE/view?usp=sharing",
+          name: "Recording",
+        },
         reading: [{ link: "/docs/Lessons/HTML", name: "HTML" }],
       },
     ],
