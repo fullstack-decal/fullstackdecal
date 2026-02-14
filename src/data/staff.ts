@@ -61,16 +61,7 @@ const staff: Staff[] = [
     github: "",
     email: "christycheung@berkeley.edu",
   },
-  {
-    name: "Audrey Zhang",
-    role: "Full-Stack TA",
-    bio: "",
-    image: "/img/logo.png",
-    linkedin: "",
-    website: "",
-    github: "",
-    email: "audreyszhang@berkeley.edu",
-  },
+  { name: "Audrey Zhang", role: "Full-Stack TA", bio: "", image: "/img/staff/audrey.png", linkedin: "https://www.linkedin.com/in/audrey-sun-zhang/", website: "", github: "", email: "audreyszhang@berkeley.edu", },
 ];
 
 export default staff;
