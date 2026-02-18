@@ -107,6 +107,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "CSS 1: Introduction to CSS",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1rcHHPuP6lfhd_6tslr6DtYDnNnSjnJne/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          name: "Slides",
+        },
         reading: [
           {
             link: "/docs/Lessons/CSSIntro",

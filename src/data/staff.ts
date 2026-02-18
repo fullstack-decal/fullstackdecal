@@ -24,7 +24,7 @@ const staff: Staff[] = [
   {
     name: "Nicole Lee",
     role: "Full-Stack TA",
-    bio: "hi! i'm nicole, a sophomore studying eecs + bioe :D",
+    bio: "Hi everyone! I'm Nicole, a sophomore studying EECS + Bioengineering. In my free time, I love to dance, cafe hop, fold origami and play dot knot/crossy road! Excited to teach this semester 🙂",
     image: "/img/staff/nicole.jpg",
     linkedin: "https://www.linkedin.com/in/nicolehylee/",
     website: "",
