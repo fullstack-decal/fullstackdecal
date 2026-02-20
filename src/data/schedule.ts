@@ -414,7 +414,7 @@ const projects: IncompleteAssignment[] = [
       name: "APImagination",
     },
     assignedWeek: 4,
-    dueWeek: 8,
+    dueWeek: 7,
     dueDay: 2,
   },
   {
@@ -422,17 +422,12 @@ const projects: IncompleteAssignment[] = [
       link: "/docs/Assignments/Projects/FinalProject",
       name: "Final Project",
     },
-    assignedWeek: 6,
+    assignedWeek: 7,
     dueWeek: 11,
-    dueDay: 1,
+    dueDay: 2,
     checkpoints: [
       {
-        name: "Project Idea",
-        dueWeek: 8,
-        dueDay: 3,
-      },
-      {
-        name: "Design Prototype",
+        name: "Project Idea + Design Prototype",
         dueWeek: 9,
         dueDay: 2,
       },
