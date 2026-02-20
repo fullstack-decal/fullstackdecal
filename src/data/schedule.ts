@@ -120,6 +120,10 @@ const weeks: Week[] = [
       },
       {
         topic: "CSS 2: Advanced CSS",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1WYmdIPQ4h6FucXGltwu3QpjZPRqKjluc/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          name: "Slides",
+        },
         reading: [{ link: "/docs/Lessons/CSSAdv", name: "Advanced CSS" }],
       },
     ],
