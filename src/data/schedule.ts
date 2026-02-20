@@ -157,22 +157,20 @@ const weeks: Week[] = [
     title: "Can't forget about design",
     lessons: [
       {
-        topic: "UI/UX 1: Basic UI/UX",
+        topic: "UI/UX: Basic UI/UX + Figma + Wireframing",
         reading: [
           {
             link: "/docs/Lessons/UIUX",
             name: "Basic UI/UX + Design Systems",
           },
-        ],
-      },
-      {
-        topic: "UI/UX 2: Figma + Wireframing",
-        reading: [
           {
             link: "/docs/Lessons/Figma",
             name: "Figma Basics + Wireframing",
           },
         ],
+      },
+      {
+        topic: "No Lecture",
       },
     ],
   },
@@ -226,7 +224,7 @@ const weeks: Week[] = [
     title: "Spring Break",
     lessons: [
       {
-        topic: "No Lecture"
+        topic: "No Lecture",
       },
       {
         topic: "No Lecture"
@@ -244,23 +242,22 @@ const weeks: Week[] = [
         ],
       },
       {
-        topic: "Authentication + Firebase",
-        reading: [
-          { link: "/docs/Lessons/Auth", name: "Authentication/Authorization" },
-          { link: "/docs/Lessons/Firebase", name: "Firebase" },
-        ],
-      },
-    ],
-  },
-  // Weeks 9-12 are shifted forward by one week
-  {
-    title: "More approaches to web dev",
-    lessons: [
-      {
         topic: "Relational Databases, SQL, ORMs",
         reading: [
           { link: "/docs/Lessons/SQL", name: "SQL and Relational Databases" },
           { link: "/docs/Lessons/ORM", name: "Object Relational Models" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Auth and Next.js",
+    lessons: [
+      {
+        topic: "Authentication + Firebase",
+        reading: [
+          { link: "/docs/Lessons/Auth", name: "Authentication/Authorization" },
+          { link: "/docs/Lessons/Firebase", name: "Firebase" },
         ],
       },
       {
@@ -270,19 +267,20 @@ const weeks: Week[] = [
     ],
   },
   {
-    title: "Some useful frameworks for you",
+    title: "Useful frontend frameworks!",
     lessons: [
       {
-        topic: "CSS Frameworks",
+        topic: "CSS Frameworks and Redux.js",
         reading: [
           {
             link: "/docs/Lessons/CSSFrameworks",
             name: "CSS Frameworks",
           },
+          { link: "/docs/Lessons/Redux", name: "Redux.js" },
         ],
       },
       {
-        topic: "Guest Speaker",
+        topic: "Guest Lecture",
       },
     ],
   },
@@ -290,16 +288,15 @@ const weeks: Week[] = [
     title: "Ending strong",
     lessons: [
       {
-        topic: "Redux.js",
-        reading: [{ link: "/docs/Lessons/Redux", name: "Redux.js" }],
-      },
-      {
         topic: "Django + Flask",
         reading: [
           { link: "/docs/Lessons/Django", name: "Django" },
           { link: "/docs/Lessons/Flask", name: "Flask" },
           { link: "/docs/Lessons/Deployment", name: "Deploying Your Website" },
         ],
+      },
+      {
+        topic: "No Lecture",
       },
     ],
   },
@@ -360,21 +357,21 @@ const vitamins: IncompleteAssignment[] = [
     },
     assignedWeek: 5,
     dueWeek: 7,
-    dueDay: 4,
+    dueDay: 2,
   },
   {
     link: { link: "/docs/Assignments/Vitamins/Databases", name: "Databases" },
-    assignedWeek: 6,
-    dueWeek: 7,
-    dueDay: 4,
+    assignedWeek: 7,
+    dueWeek: 8,
+    dueDay: 2,
   },
   {
     link: {
       link: "/docs/Assignments/Vitamins/NextAuth",
       name: "Next.js and Authentication",
     },
-    assignedWeek: 7,
-    dueWeek: 8,
+    assignedWeek: 8,
+    dueWeek: 9,
     dueDay: 2,
   },
   {
@@ -391,7 +388,7 @@ const vitamins: IncompleteAssignment[] = [
       link: "/docs/Assignments/Vitamins/PythonDeploy",
       name: "Flask, Django, and Deployment",
     },
-    assignedWeek: 9,
+    assignedWeek: 10,
     dueWeek: 11,
     dueDay: 2,
   },
