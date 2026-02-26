@@ -137,6 +137,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "JavaScript 1: Introduction to JavaScript + Asynchronous JS",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1ZfobR0c1MjvHgP0Oc4w-WJbiR4V1h6Z7/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          name: "Slides",
+        },
         reading: [
           {
             link: "/docs/Lessons/JSIntro",
@@ -150,10 +154,6 @@ const weeks: Week[] = [
       },
       {
         topic: "JavaScript 2: DOM + TypeScript",
-        slides: {
-          link: "https://docs.google.com/presentation/d/1NOmINB3fEQjDaGQazjqYtjjOSVJxwE9t/edit?usp=sharing&rtpof=true&sd=true",
-          name: "Slides",
-        },
         reading: [
           { link: "/docs/Lessons/DOM", name: "DOM" },
           { link: "/docs/Lessons/TypeScript", name: "TypeScript" },
