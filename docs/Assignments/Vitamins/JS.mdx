@@ -93,8 +93,7 @@ toggle whether or not the sidebar is opened.
 
 ![Sidebar gif](./AssignmentAssets/Vit4/sidebar.gif)
 
-**Bonus (2 points):** for an extra two points, when the sidebar is open, have the
-button's text be `‹` (this is not an angle bracket!). Make sure to
+When the sidebar is open, have the button's text be `‹` (this is not an angle bracket!). Make sure to
 change it back when the user closes the sidebar.
 
 To get an element with an ID, JavaScript offers the [getElementById funnction](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById).
@@ -113,7 +112,7 @@ Now, you will implement a simple TODO list. There are the following relevant ele
 - The `<ul>` with the TODOs has ID `todo-list`
 
 When the user clicks on the add-todo button. Append a new `<li>` to the list of TODOs
-containing the text that the user entered. After adding the TODO, clear the input.
+containing the text that the user entered. After adding the TODO, clear the input. Validate that the todo task name is not empty before adding the list.
 
 ![TODO gif](./AssignmentAssets/Vit4/todo.gif)
 
@@ -123,8 +122,6 @@ ways to complete this question.
 - [`document.createElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement)
 - [`element.append`](https://developer.mozilla.org/en-US/docs/Web/API/Element/append)
 - [`input.value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text#value)
-
-**Bonus (2 points):** Validate that the todo task name is not empty before adding the list.
 
 :::caution Do not use innerHTML in this question
 Using `innerHTML` to set text very often a [severe security vulnerability](https://www.dhairyashah.dev/posts/why-innerhtml-is-a-bad-idea-and-how-to-avoid-it/).
