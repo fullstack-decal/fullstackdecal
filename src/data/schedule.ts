@@ -150,6 +150,10 @@ const weeks: Week[] = [
       },
       {
         topic: "JavaScript 2: DOM + TypeScript",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1NOmINB3fEQjDaGQazjqYtjjOSVJxwE9t/edit?usp=sharing&rtpof=true&sd=true",
+          name: "Slides",
+        },
         reading: [
           { link: "/docs/Lessons/DOM", name: "DOM" },
           { link: "/docs/Lessons/TypeScript", name: "TypeScript" },
