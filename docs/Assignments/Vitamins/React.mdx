@@ -1,29 +1,27 @@
 ---
+sidebar_position: 5
+---
 
-## sidebar_position: 5
+# React
 
-# React Assignment
-
-### **Introduction**
+### Introduction
 
 In this assignment, you will build a React application with multiple pages, reusable components, a counter, and theme switching. You will practice using key React Hooks (`useState`, `useEffect`, `useContext`) and implement routing using React Router.
 
 This assignment is designed to give hands-on experience with real-world React patterns, including nested components and conditional rendering.
 
----
-
-## **Learning Objectives**
+## Learning Objectives
 
 * Set up a React project and install dependencies.
 * Implement reusable components and nested components.
 * Use React Hooks (`useState`, `useEffect`, `useContext`).
 * Implement routing with React Router.
-* Manage global state with Context API.
+* Manage global state with `useContext` and `createContext`.
 * Implement conditional rendering and dynamic messages.
 
 ---
 
-## **Folder Structure**
+## Folder Structure
 
 ```
 src/
@@ -43,11 +41,19 @@ src/
     └── ThemeContext.js
 ```
 
+The `src/` folder is where you'll write all your code. When you create your React app, you'll also see some other important files and folders outside of `src/` that are used for setup and dependencies:
+
+- **`node_modules/`** - Contains all the packages/dependencies your project needs. This folder is generated from the packages in `package.json` when you run `npm install`. It should NOT be uploaded to GitHub or Gradescope.
+- **`package.json`** - Lists your project's dependencies and scripts (like `npm start`). Running `npm install <package>` will add the package to both `package.json` and `node_modules/`. After installing, you can import and use functions, components, and other code from that package in your project. Packages come from the [npm registry](https://www.npmjs.com/), a huge collection of open-source code that developers share.
+- **`package-lock.json`** - Locks the exact versions of dependencies. Helps ensure consistent installs.
+- **`public/`** - Contains static files like `index.html` (the single HTML page your React app mounts to) and images.
+- **`.gitignore`** - Tells Git which files to ignore (like `node_modules/`).
+
 ---
 
-## **Part 1: Setup**
+## Part 1: Setup
 
-**Description:** You will create a new React project, start the development server, and install necessary dependencies to begin building the application.
+**Description:** You will create a new React project and start the development server.
 
 1. **Create Project**
 
@@ -55,6 +61,14 @@ src/
    npx create-react-app my-app
    cd my-app
    ```
+
+   :::info npx vs npm
+   You might notice we use `npx` here instead of `npm`. What's the difference?
+   - **`npm`** installs packages to your project (or globally) so you can use them repeatedly. We used this in lecture.
+   - **`npx`** runs a package directly without installing it permanently. It's useful for one-time commands like `create-react-app` that you only need to run once to set up a project.
+   
+   Both come with Node.js, so you have access to both!
+   :::
 
 2. **Start Project**
 
@@ -64,29 +78,21 @@ src/
 
    Open `http://localhost:3000` in your browser.
 
-3. **Install Dependencies**
-
-   ```bash
-   npm install react-router-dom
-   ```
-
-4. **Verify Installation**
-   Check that `react-router-dom` appears in `package.json` dependencies.
-
 ---
 
-## **Part 2: Pages and Components Skeleton**
+## Part 2: Pages and Components Skeleton
 
-**Description:** You will create the basic skeleton of your application with all necessary pages and components. This provides the foundation to add logic, styling, and hooks later.
+**Description:** You will create the basic skeleton of your application with all necessary pages and components. This provides the foundation to add logic, styling, and hooks later. Take some time to understand how all these files connect to each other—notice how components are imported and used across different files, and how data flows between them!
 
-### `index.js`
+**`index.js`**
 
 ```jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
-// Wrap <App /> with <BrowserRouter> and <ThemeProvider> here when implementing
+// TODO: Wrap <App /> with <BrowserRouter>
+// TODO: Wrap <App /> with <ThemeProvider>
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -95,7 +101,7 @@ root.render(
 );
 ```
 
-### `App.js`
+**`App.js`**
 
 ```jsx
 import React from "react";
@@ -116,12 +122,16 @@ function App() {
 export default App;
 ```
 
-### `components/Navbar/Navbar.js`
+**`components/Navbar/Navbar.js`**
 
 ```jsx
 import React from "react";
 
 // TODO: Add navigation links to Home and CounterPage
+// TODO: Add a theme toggle button
+// TODO: Use useContext to access theme and toggle function
+// TODO: Apply class "navbar-light" or "navbar-dark" using ternary operator based on theme
+// TODO: Create Navbar.css with styles for navbar-light and navbar-dark
 function Navbar() {
   return <nav></nav>;
 }
@@ -129,13 +139,13 @@ function Navbar() {
 export default Navbar;
 ```
 
-### `pages/Home/Home.js`
+**`pages/Home/Home.js`**
 
 ```jsx
 import React from "react";
 
-// TODO: Add content for Home page
-// Example: welcome message or description of the app
+// TODO: Add content for Home page (welcome message or description)
+// TODO: Use useContext to access theme and style accordingly
 function Home() {
   return <div></div>;
 }
@@ -143,7 +153,7 @@ function Home() {
 export default Home;
 ```
 
-### `pages/CounterPage/CounterPage.js`
+**`pages/CounterPage/CounterPage.js`**
 
 ```jsx
 import React from "react";
@@ -151,14 +161,16 @@ import CounterDisplay from "./CounterDisplay";
 import CounterControls from "./CounterControls";
 
 // TODO: Use useState to manage counter
-// TODO: Use useEffect for conditional messages
-// Description: This page will display the counter and buttons to increase/decrease the value
+// TODO: Use useEffect to show a message when counter > 5
+// TODO: Use useEffect to reset counter to 0 if it becomes negative
+// TODO: Pass counter value to CounterDisplay as a prop
+// TODO: Pass increment/decrement functions to CounterControls as props
 function CounterPage() {
   return (
     <div>
       <CounterDisplay />
       <CounterControls />
-      {/* TODO: Add popup message when counter > 5 */}
+      {/* TODO: Show a message when counter > 5 */}
     </div>
   );
 }
@@ -166,7 +178,7 @@ function CounterPage() {
 export default CounterPage;
 ```
 
-### `pages/CounterPage/CounterDisplay.js`
+**`pages/CounterPage/CounterDisplay.js`**
 
 ```jsx
 import React from "react";
@@ -180,7 +192,7 @@ function CounterDisplay() {
 export default CounterDisplay;
 ```
 
-### `pages/CounterPage/CounterControls.js`
+**`pages/CounterPage/CounterControls.js`**
 
 ```jsx
 import React from "react";
@@ -195,13 +207,14 @@ function CounterControls() {
 export default CounterControls;
 ```
 
-### `context/ThemeContext.js`
+**`context/ThemeContext.js`**
 
 ```jsx
 import React, { createContext } from "react";
 
-// TODO: Create state for theme (light/dark) and toggle function
-// Description: Provides theme context to enable light/dark mode across the app
+// TODO: Use useState to create state for theme (light/dark)
+// TODO: Create a toggle function to switch between light and dark
+// TODO: Pass theme and toggle function in the Provider value
 export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
@@ -211,39 +224,119 @@ export function ThemeProvider({ children }) {
 
 ---
 
-## **Part 3: Routing**
+## Part 3: Routing
 
 **Description:** You will implement navigation in your app so users can move between Home and CounterPage using React Router.
 
+First, install the `react-router-dom` package:
+
+```bash
+npm install react-router-dom
+```
+
+Check that `react-router-dom` appears in your `package.json` dependencies. Now you can import and use components from this package:
+
+* In `index.js`: `import { BrowserRouter } from "react-router-dom";`
+* In `App.js`: `import { Routes, Route } from "react-router-dom";`
+* In `Navbar.js`: `import { Link } from "react-router-dom";`
+
+Here's what each component does:
+
+* **`<BrowserRouter>`** - Wraps your entire app and enables routing. It keeps track of the current URL and lets your app respond to URL changes.
+* **`<Routes>`** - A container for all your `<Route>` components. It looks at the current URL and renders the matching route.
+* **`<Route>`** - Defines a single route. You specify a `path` (like `/home`) and an `element` (the component to render when the URL matches).
+* **`<Link>`** - Like an `<a>` tag but for React Router. It lets users navigate without refreshing the page.
+
+:::tip
+You can actually see the code for `react-router-dom` inside your `node_modules/` folder (recall that this folder contains all the packages your project depends on). However, it's probably too complex to understand. When using a package, you should always refer to its [documentation](https://reactrouter.com/) or its page on the [npm registry](https://www.npmjs.com/package/react-router-dom) to learn how to use it.
+:::
+
+Then:
+
 * Wrap `<App />` with `<BrowserRouter>` in `index.js`.
 * Use `<Routes>` and `<Route>` in `App.js` for Home (`/home`) and CounterPage (`/counter`).
+* Add navigation links (using `<Link>`) in Navbar to Home and CounterPage.
 * Optional: add extra pages for practice.
 
 ---
 
-## **Part 4: Counter Page Logic**
+## Part 4: Counter Page Logic
 
 **Description:** You will add functionality to the counter page so users can increase/decrease the value and see messages based on the counter.
 
-* Use `useState` for counter.
+* Use `useState` in CounterPage to manage the counter value.
 * Use `useEffect` to:
-
   * Show a message when counter > 5.
   * Reset counter to 0 if it becomes negative.
-* Pass functions from CounterPage to CounterControls to update counter.
+* Pass the counter value as a prop to CounterDisplay.
+* Pass increment/decrement functions from CounterPage to CounterControls as props.
+* Add Increase and Decrease buttons in CounterControls.
+
+### Conditional Rendering with `&&`
+
+To show the message only when counter > 5, use the `&&` operator for conditional rendering:
+
+```jsx
+{counter > 5 && <p>You passed 5!</p>}
+```
+
+**How does `&&` work?** In JavaScript, `&&` returns the second value if the first is true, otherwise it returns the first value. React won't render `false`, so:
+- If `counter > 5` is `false` → nothing renders
+- If `counter > 5` is `true` → the `<p>` element renders
+
+This is super useful in React for showing/hiding elements based on conditions without needing a full if-else statement!
 
 ---
 
-## **Part 5: Theme Context**
+## Part 5: Theme Context
 
-**Description:** Implement global light/dark theme using Context API so users can toggle the theme across all pages.
+**Description:** Implement global light/dark theme using `useContext` and `createContext` so users can toggle the theme across all pages.
 
-* Implement a light/dark theme in ThemeContext.
-* Add a toggle button in Navbar.
-* Use `useContext` to access theme in other components.
-* Update component styles dynamically based on theme.
+* Use `useState` in ThemeContext to manage the theme state (`"light"` or `"dark"`).
+* Create a toggle function to switch between light and dark.
+* Pass both theme and toggle function in the ThemeProvider value.
+* Wrap `<App />` with `<ThemeProvider>` in `index.js`.
+* Add a toggle button in Navbar to switch themes.
+* Use `useContext` to access theme in the Navbar component.
 
-## **Part 7: Submission Instructions**
+### Required: Style the Navbar Based on Theme
+
+You **must** style the Navbar differently based on the theme. Use these exact specifications:
+
+In `Navbar.js`, apply a dynamic class to the `<nav>` element:
+```jsx
+<nav className={theme === "dark" ? "navbar navbar-dark" : "navbar navbar-light"}>
+```
+
+In `Navbar.css`, add these exact styles:
+```css
+.navbar-light {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.navbar-light .nav-link {
+  color: #333333;
+}
+
+.navbar-dark {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.navbar-dark .nav-link {
+  color: #ffffff;
+}
+```
+
+**Light mode:** white background (`#ffffff`), dark text (`#333333`)
+**Dark mode:** dark background (`#333333`), white text (`#ffffff`)
+
+:::warning Important
+The autograder will check that your Navbar changes appearance when the theme is toggled. Make sure you use the exact class names `navbar-light` and `navbar-dark`.
+:::
+
+## Part 6: Submission Instructions
 
 **Description:** Guidelines to submit your project so it can be graded properly.
 
@@ -263,13 +356,4 @@ export function ThemeProvider({ children }) {
   /node_modules
   ```
 
-* Zip the project or upload each file to Gradescope.
-
----
-
-## **Next Steps**
-
-* Complete each component and page using the skeleton code.
-* Add styling to Navbar, CounterPage, and Home.
-* Implement all hooks and logic for counter and theme.
-* Test routing, counter functionality, and theme switching.
+* Zip the project and upload to Gradescope.
