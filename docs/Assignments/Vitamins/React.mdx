@@ -1,258 +1,275 @@
 ---
-sidebar_position: 5
----
 
-# React
+## sidebar_position: 5
+
+# React Assignment
 
 ### **Introduction**
 
-In this assignment, you will learn how to set up a basic React project, create components, and use key React Hooks such as `useState`, `useEffect`, and `useContext`. You'll also learn how to manage navigation between pages using React Router. The goal is to give you hands-on practice with some of the core concepts in React.
+In this assignment, you will build a React application with multiple pages, reusable components, a counter, and theme switching. You will practice using key React Hooks (`useState`, `useEffect`, `useContext`) and implement routing using React Router.
 
-### **Learning Objectives**
-
-- Understand how to set up a new React project.
-- Learn how to use important React Hooks: `useState`, `useEffect`, and `useContext`.
-- Set up routes to navigate between different pages using React Router.
-- Manage state within components and maintain it across the application.
-
-We will create a basic react website that looks like this:
-
-- Everything I’ve shown you must look like this (in terms of content, not design). But, feel free to add more pages/content if you’d like, as long as you have this base down!
- 
- ![React Website](./AssignmentAssets/vitamin4-react-img/screenshot2.png)
-
-Clicking on Home will redirect you to:
-
- ![React Website: Home](./AssignmentAssets/vitamin4-react-img/screenshot1.png)
-
-Clicking on Not Home will redirect you to:
-
- ![React Website: NotHome](./AssignmentAssets/vitamin4-react-img/screenshot3.png)
-
-- Clicking on Increase, will increase the counter bar by +1, conversely, clicking on decrease will result in -1.
-- if the counter display shows more than 5, there will be a pop up comment on the bottom that says: You passed 5! (this will only show if its 5+).
+This assignment is designed to give hands-on experience with real-world React patterns, including nested components and conditional rendering.
 
 ---
 
-### **Part 1: Setting Up a React Project**
+## **Learning Objectives**
 
-1. **Create Your Project Folder in your preferred editor (such as VS code):**
-    - Use `npx` to create a new React project. It sets up everything you need, including the basic folder structure and initial files.
-        - Navigate to the project directory in your terminal.
-2. **Running the React Project:**
-    - Start your React app locally. You’ll see the default welcome page in the browser at `http://localhost:3000`. Feel free to delete the default content to start fresh.
-    - Every time you make changes to your code, the browser will automatically reload to reflect your changes. This makes development easier since you can see changes instantly.
-3. **Stop and Restart the Server:**
-    - If you need to stop the server at any time, press `Ctrl + C` in your terminal where the project is running.
-4. **Install React Router:**
-    - Install `react-router-dom` so you can add routing to your app.
-        - React Router is not included in the default project, so we need to install it. This will allow us to create navigation between different pages in our app.
-5. **Verify Installation:** After installation, check your `package.json` file under `dependencies` to make sure `react-router-dom` was added. It should look like this:
-    
-    ```json
-    "dependencies": {
-      "react": "^17.0.2",
-      "react-dom": "^17.0.2",
-      "react-router-dom": "^6.0.0",
-      "react-scripts": "4.0.3"
-    }
-    ```
-    
+* Set up a React project and install dependencies.
+* Implement reusable components and nested components.
+* Use React Hooks (`useState`, `useEffect`, `useContext`).
+* Implement routing with React Router.
+* Manage global state with Context API.
+* Implement conditional rendering and dynamic messages.
 
 ---
 
-### **Part 2: Creating Basic Components**
-
-1. **Organize Folders:**
-    - Inside the `src` folder, create two subfolders: `components` (for reusable components) and `pages` (for different pages of your app).
-    - **Why are we doing this?**
-        - Breaking your app into reusable components is a key part of React. It allows you to keep your code organized and modular. Components are self-contained and can be reused in different parts of your app.
-2. **Create a Navbar Component:**
-    - In the `components` folder, create a `Navbar` folder with two files: `Navbar.js` and `Navbar.css`.
-    - Write the logic for the `Navbar.js` component that includes links to different pages and style it using `Navbar.css`.
-        - css does not need to be exact!
-    
-    Here’s some starter code to help you out:
-    
-    ```bash
-    //import React
-    // Import Link to navigate between pages
-    // Import the CSS file for styling
-    
-    const Navbar = () => {
-      return (
-       // fill in the rest here!
-       // add Home and NotHome, including links (after routing established)
-    };
-    
-    // Always export your components so they can be imported in other files
-    
-    ```
-    
-3. **Add the Navbar to App.js:**
-    - Open `App.js` and import the `Navbar` component so it appears on every page of the app.
-4. **Wrap App in Router:**
-    - In `index.js`, wrap the `App` component with `Router` so routing works across the app.
-    
-    Starter code to help you out:
-    
-    ```jsx
-    //import required here
-    
-    ReactDOM.render( 
-    //... router here, etc.
-    );
-    
-    ```
-    - NOTE: This was not done in Lecture 10, where the router was only wrapped in the `App.js` file. This is sufficient for smaller and simpler apps. However, placing the Router in index.js gives you more flexibility to wrap additional components around the entire app, such as global providers (e.g., context providers or Redux store providers) while still having routing available throughout. This is a common pattern in larger apps.
-    - If you are struggling on step 4, you can feel free to follow Lecture 9 and skip this step. But, you will need to learn this eventually.
-5. **Set Up Routes in App.js:**
-    - Add routes for `Home` and `NotHome` pages in `App.js`. Define the paths and link them to the correct components.
-        - Home path = /home
-        - NotHome path = /nothome
-6. **Create Home and NotHome Pages:**
-    - In the `pages` folder, create folders for `Home` and `NotHome`. In each folder, create a simple component that displays a title below the navbar.
-
----
-
-### **Part 3: Using React Hooks**
-
-Now that you have the basic app structure, let's dive into React Hooks! Hooks let you manage state and side effects in functional components.
-
-1. **useState Hook:**
-    - `useState` helps manage dynamic values like a counter or form inputs that need to change as the user interacts with your app.
-    - In the `NotHome` component, implement a counter using `useState`. Add buttons to increase or decrease the counter.
-2. **useEffect Hook:**
-    - `useEffect` allows you to perform side effects in your component, such as fetching data or updating the document title. It runs after the component renders.
-    - Add logic to update the counter. Use `useEffect` to reset the counter if it goes below 0 and show the message “You passed 5!”  if it passes 5.
-
-
-### **Part 4: Submitting Your Assignment**
-
-When submitting your React project to Gradescope, please follow the instructions below carefully so we can grade your work efficiently.
-
-#### 📝 What to Include:
-- `src/` – Your main React code lives here.
-- `public/` – The static files like `index.html` and favicon.
-- `package.json` – Lists the dependencies needed for your app.
-- `package-lock.json` – Locks versions of packages used.
-- `.gitignore` – To show you understood how to use it (see next section!)
-
-> You can submit this as a zipped `.zip` file or upload each file/folder on Gradescope.
-
-#### ❌ What *Not* to Include:
-- `node_modules/` – It contains **thousands of downloaded files** and **bloats your project**.  
-  It also causes **Gradescope to lag or error out**, which is a pain for everyone.
-
-> Why don’t we want it? Because if we have the `package.json`, we can just run `npm install` or `yarn install` to regenerate `node_modules`.
----
-
-### **Part 5: How to use gitignore**
-
-So you're wondering…  
-**How do I ignore the `node_modules` folder so it doesn’t get pushed to GitHub or uploaded to Gradescope?**
-
-**How do I ignore any file in general when uploading to github?**
-
-Super easy — let’s walk through it.
-
-
-#### Step 1: Create a `.gitignore` File
-
-In the **root directory** of your project, create a file called `.gitignore`, unless it already exists.
-
-> This literally means "git, ignore this!" 
-
-
-#### Step 2: Add `node_modules` to It
-
-Open the `.gitignore` file and type:
+## **Folder Structure**
 
 ```
-/node_modules
-```
-
-This tells Git to **ignore the entire `node_modules` folder**, which is auto-generated when you run:
-
-```bash
-npm install
-```
-
-or
-
-```bash
-yarn install
+src/
+├── App.js
+├── index.js
+├── components/
+│   └── Navbar/
+│       └── Navbar.js
+├── pages/
+│   ├── Home/
+│   │   └── Home.js
+│   └── CounterPage/
+│       ├── CounterPage.js
+│       ├── CounterDisplay.js
+│       └── CounterControls.js
+└── context/
+    └── ThemeContext.js
 ```
 
 ---
 
-### IMPORTANT: Use the Correct Path
+## **Part 1: Setup**
 
-You must refer to the **correct relative path** of `node_modules` in your `.gitignore`. Let’s go over two examples:
+**Description:** You will create a new React project, start the development server, and install necessary dependencies to begin building the application.
 
+1. **Create Project**
 
-#### 📁 Standard Setup
+   ```bash
+   npx create-react-app my-app
+   cd my-app
+   ```
 
-If you used Create React App (CRA) or a similar tool, your folder might look like this:
+2. **Start Project**
 
-```
-my-app/
-├── node_modules/
-├── public/
-├── src/
-├── .gitignore
-├── package.json
-└── ...
-```
+   ```bash
+   npm start
+   ```
 
-In this case, your `.gitignore` should include:
+   Open `http://localhost:3000` in your browser.
 
-```
-/node_modules
-```
+3. **Install Dependencies**
 
-> This means: "Ignore the `node_modules` folder in the root directory."
+   ```bash
+   npm install react-router-dom
+   ```
 
-
-#### 📁 Complex Project Setup
-
-What if your project is nested like this?
-
-```
-project-root/
-├── .gitignore
-├── apps/
-│   └── frontend/
-│       ├── node_modules/
-│       └── package.json
-```
-
-Then your `.gitignore` should use:
-
-```
-/apps/frontend/node_modules
-```
-
-> This means: "Ignore the `node_modules` folder inside `apps/frontend/`."
+4. **Verify Installation**
+   Check that `react-router-dom` appears in `package.json` dependencies.
 
 ---
 
-### TL;DR:
+## **Part 2: Pages and Components Skeleton**
 
-- **Always** use `.gitignore` to ignore `node_modules`
-- **Never** push `node_modules` to GitHub or Gradescope — it’s **huge**, **auto-generated**, and **breaks stuff**
-- **Use correct relative paths** based on your folder structure
-- For simplicity:  
-  📁 Put `.gitignore` in the **same folder** as the `node_modules` you want to ignore.
+**Description:** You will create the basic skeleton of your application with all necessary pages and components. This provides the foundation to add logic, styling, and hooks later.
+
+### `index.js`
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+// Wrap <App /> with <BrowserRouter> and <ThemeProvider> here when implementing
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+### `App.js`
+
+```jsx
+import React from "react";
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./pages/Home/Home";
+import CounterPage from "./pages/CounterPage/CounterPage";
+
+// TODO: Add Routes for Home and CounterPage
+function App() {
+  return (
+    <div>
+      <Navbar />
+      {/* Add <Routes> and <Route> components here */}
+    </div>
+  );
+}
+
+export default App;
+```
+
+### `components/Navbar/Navbar.js`
+
+```jsx
+import React from "react";
+
+// TODO: Add navigation links to Home and CounterPage
+function Navbar() {
+  return <nav></nav>;
+}
+
+export default Navbar;
+```
+
+### `pages/Home/Home.js`
+
+```jsx
+import React from "react";
+
+// TODO: Add content for Home page
+// Example: welcome message or description of the app
+function Home() {
+  return <div></div>;
+}
+
+export default Home;
+```
+
+### `pages/CounterPage/CounterPage.js`
+
+```jsx
+import React from "react";
+import CounterDisplay from "./CounterDisplay";
+import CounterControls from "./CounterControls";
+
+// TODO: Use useState to manage counter
+// TODO: Use useEffect for conditional messages
+// Description: This page will display the counter and buttons to increase/decrease the value
+function CounterPage() {
+  return (
+    <div>
+      <CounterDisplay />
+      <CounterControls />
+      {/* TODO: Add popup message when counter > 5 */}
+    </div>
+  );
+}
+
+export default CounterPage;
+```
+
+### `pages/CounterPage/CounterDisplay.js`
+
+```jsx
+import React from "react";
+
+// TODO: Receive counter value as prop and display it
+// Description: Shows the current value of the counter
+function CounterDisplay() {
+  return <div></div>;
+}
+
+export default CounterDisplay;
+```
+
+### `pages/CounterPage/CounterControls.js`
+
+```jsx
+import React from "react";
+
+// TODO: Receive increment/decrement functions as props
+// TODO: Add buttons for Increase and Decrease
+// Description: Provides buttons to change the counter value
+function CounterControls() {
+  return <div></div>;
+}
+
+export default CounterControls;
+```
+
+### `context/ThemeContext.js`
+
+```jsx
+import React, { createContext } from "react";
+
+// TODO: Create state for theme (light/dark) and toggle function
+// Description: Provides theme context to enable light/dark mode across the app
+export const ThemeContext = createContext();
+
+export function ThemeProvider({ children }) {
+  return <ThemeContext.Provider value={{}}>{children}</ThemeContext.Provider>;
+}
+```
 
 ---
 
-> 💬 Still not sure if it’s working? Run:
-> ```bash
-> git status
-> ```
-> and make sure `node_modules` doesn’t show up in the list of files Git is tracking.
+## **Part 3: Routing**
 
+**Description:** You will implement navigation in your app so users can move between Home and CounterPage using React Router.
 
+* Wrap `<App />` with `<BrowserRouter>` in `index.js`.
+* Use `<Routes>` and `<Route>` in `App.js` for Home (`/home`) and CounterPage (`/counter`).
+* Optional: add extra pages for practice.
 
-> **⚠️ For all future react usages, do NOT upload node_modules or else you will be penalized.**
+---
+
+## **Part 4: Counter Page Logic**
+
+**Description:** You will add functionality to the counter page so users can increase/decrease the value and see messages based on the counter.
+
+* Use `useState` for counter.
+* Use `useEffect` to:
+
+  * Show a message when counter > 5.
+  * Reset counter to 0 if it becomes negative.
+* Pass functions from CounterPage to CounterControls to update counter.
+
+---
+
+## **Part 5: Theme Context**
+
+**Description:** Implement global light/dark theme using Context API so users can toggle the theme across all pages.
+
+* Implement a light/dark theme in ThemeContext.
+* Add a toggle button in Navbar.
+* Use `useContext` to access theme in other components.
+* Update component styles dynamically based on theme.
+
+## **Part 7: Submission Instructions**
+
+**Description:** Guidelines to submit your project so it can be graded properly.
+
+* Include:
+
+  * `src/` folder
+  * `public/` folder
+  * `package.json`
+  * `package-lock.json`
+  * `.gitignore`
+
+* Do **not** include `node_modules/`.
+
+* Use `.gitignore` to ignore `node_modules`:
+
+  ```
+  /node_modules
+  ```
+
+* Zip the project or upload each file to Gradescope.
+
+---
+
+## **Next Steps**
+
+* Complete each component and page using the skeleton code.
+* Add styling to Navbar, CounterPage, and Home.
+* Implement all hooks and logic for counter and theme.
+* Test routing, counter functionality, and theme switching.
