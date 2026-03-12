@@ -41,6 +41,14 @@ src/
     └── ThemeContext.js
 ```
 
+**What's the difference between `components/` and `pages/`?**
+
+- **`components/`** - Reusable UI pieces that can appear on multiple pages. For example, the Navbar shows up on every page, so it goes in `components/`. Think of these as building blocks.
+- **`pages/`** - Full pages that users navigate to via routes (like `/home` or `/counter`). Each page is typically made up of multiple components.
+- **`context/`** - Contains React Context files for sharing state globally across your app (like theme).
+
+This organization keeps your code clean and makes it easy to find things!
+
 The `src/` folder is where you'll write all your code. When you create your React app, you'll also see some other important files and folders outside of `src/` that are used for setup and dependencies:
 
 - **`node_modules/`** - Contains all the packages/dependencies your project needs. This folder is generated from the packages in `package.json` when you run `npm install`. It should NOT be uploaded to GitHub or Gradescope.
