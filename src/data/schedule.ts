@@ -199,6 +199,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "Node.js + React 1: Introduction to React",
+        recording: {
+          link: "https://drive.google.com/file/d/1AsU2F6TReAfqPKTYYKPkKRW_y2yaZB44/view?usp=sharing",
+          name: "Recording",
+        },
         reading: [
           { link: "/docs/Lessons/Node", name: "Node.js and Package Managers" },
           {
