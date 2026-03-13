@@ -213,15 +213,19 @@ const weeks: Week[] = [
             link: "/docs/Lessons/ReactIntro",
             name: "Introduction to React",
           },
-        ],
-      },
-      {
-        topic: "React 2: More React Hooks, Routing, Fetching Data",
-        reading: [
           {
             link: "/docs/Lessons/ReactHooks",
             name: "More React Hooks",
           },
+        ],
+      },
+      {
+        topic: "React 2: Routing, APIs",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1D83XleJSaqoo-fYCsR-I6xmiPa5CcGfI/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          name: "Slides",
+        },
+        reading: [
           { link: "/docs/Lessons/Routing", name: "Routing and Axios" },
         ],
       },
