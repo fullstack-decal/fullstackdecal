@@ -348,20 +348,23 @@ The autograder will check that your Navbar changes appearance when the theme is 
 
 **Description:** Guidelines to submit your project so it can be graded properly.
 
-* Include:
+Because there are many files to submit, please **zip your entire project folder** and submit the zip file to Gradescope.
 
-  * `src/` folder
-  * `public/` folder
-  * `package.json`
-  * `package-lock.json`
-  * `.gitignore`
+Your zip file should include:
+* `src/` folder
+* `public/` folder
+* `package.json`
+* `package-lock.json`
+* `.gitignore`
 
-* Do **not** include `node_modules/`.
+When you check your code section in Gradescope, it should say assignment_folder/package.json instead of just package.json.
 
-* Use `.gitignore` to ignore `node_modules`:
+Do **not** include `node_modules/` in your zip file - it's too large and will cause issues. Use `.gitignore` to ignore it:
 
-  ```
-  /node_modules
-  ```
+```
+/node_modules
+```
 
-* Zip the project and upload to Gradescope.
+:::tip
+Before zipping, make sure `node_modules/` is not in your project folder, or exclude it when creating the zip. We can regenerate it by running `npm install` using your `package.json`.
+:::
