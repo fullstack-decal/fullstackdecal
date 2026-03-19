@@ -235,7 +235,7 @@ const weeks: Week[] = [
     title: "Servin' servers",
     lessons: [
       {
-        topic: "Node.js, Express.js, Server Side Rendering",
+        topic: "Node.js, Server Side Rendering, Express.js, Cookies",
         slides: {
           link: "https://docs.google.com/presentation/d/1k_Sjzi0BeZhd3zDHD0Bx7ObHoiGuRLfc/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
           name: "Slides",
@@ -245,12 +245,12 @@ const weeks: Week[] = [
             link: "/docs/Lessons/SSR",
             name: "Server-Side Rendering with Express.js, Cookies",
           },
+          { link: "/docs/Lessons/Web", name: "Web Servers with Express.js" },
         ],
       },
       {
-        topic: "Express.js Part 2, APIs, Client Side Rendering",
+        topic: "APIs, Client Side Rendering",
         reading: [
-          { link: "/docs/Lessons/Web", name: "Web Servers with Express.js" },
           { link: "/docs/Lessons/CSR", name: "APIs and Client Side Rendering" },
         ],
       },
