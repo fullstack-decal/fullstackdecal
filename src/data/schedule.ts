@@ -240,6 +240,10 @@ const weeks: Week[] = [
           link: "https://docs.google.com/presentation/d/1k_Sjzi0BeZhd3zDHD0Bx7ObHoiGuRLfc/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
           name: "Slides",
         },
+        recording: {
+          link: "https://drive.google.com/file/d/1bZ0g0pBVG28szIwgUA7NwDNyq6s4Flg4/view?usp=drive_link",
+          name: "Recording"
+        },
         reading: [
           {
             link: "/docs/Lessons/SSR",
