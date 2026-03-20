@@ -249,7 +249,11 @@ const weeks: Week[] = [
         ],
       },
       {
-        topic: "APIs, Client Side Rendering",
+        topic: "APIs",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1PU-0EQU_abTt_yPhUtCiLcgTtFZklpsq/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          name: "Slides",
+        },
         reading: [
           { link: "/docs/Lessons/CSR", name: "APIs and Client Side Rendering" },
         ],
@@ -446,7 +450,7 @@ const projects: IncompleteAssignment[] = [
       name: "APImagination",
     },
     assignedWeek: 4,
-    dueWeek: 7,
+    dueWeek: 8,
     dueDay: 2,
   },
   {
