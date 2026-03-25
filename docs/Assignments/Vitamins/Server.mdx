@@ -2,130 +2,132 @@
 sidebar_position: 6
 ---
 
-# APIs and Servers
+# Node, Express, and APIs
 
-### Assignment: **Build a Simple To-Do List API**
+### Overview
 
-### Objective:
+In this vitamin, we are transitioning from the frontend to the backend. You will set up a local server using **Node.js** and **Express**, define **RESTful API** endpoints, and learn how to securely interact with external services like Spotify using **Environment Variables**.
 
-Create a basic server that allows users to manage a to-do list using an API. You'll learn how to set up a server, create endpoints, and handle HTTP requests.
+---
 
-### Tools:
+### Part 1: Initializing Node.js
 
-- **Node.js** (JavaScript runtime)
-- **Express.js** (Web framework for Node.js)
-- **Postman** or **cURL** (For testing API requests)
+Unlike the browser, Node.js needs a `package.json` to keep track of dependencies.
 
-### Prerequisites:
+1. Create a new folder for this vitamin and `cd` into it.
+2. Run `npm init -y` to initialize the project.
+3. Install the necessary packages:
 
-- Basic understanding of JavaScript
-- Familiarity with installing npm packages
+```bash
+npm install express dotenv
+```
 
-### Task Breakdown:
+---
 
-1. **Set Up Your Project:**
-    - Create a new folder for the project (e.g., `simple-todo-api`).
-    - Initialize a new Node.js project by running:
-        
-        ```bash
-        
-        npm init -y
-        ```
-        
-    - Install Express.js:
-        
-        ```bash
-        npm install express
-        ```
-        
-2. **Create the Server:**
-    - Create an `index.js` file in the project folder.
-    - Set up a basic Express server that listens on port 3000:
-        
-        ```jsx
-        const express = require('express');
-        const app = express();
-        const PORT = 3000;
-        
-        app.use(express.json());
-        
-        app.listen(PORT, () => {
-          console.log(`Server is running on http://localhost:${PORT}`);
-        });
-        
-        ```
-        
-3. **Create To-Do List Data Storage:**
-    - Use a simple in-memory array to store to-do items for now:
-        
-        ```jsx
-        let todos = [];
-        
-        ```
-        
-4. **Implement the Endpoints:**
-    - Add the following endpoints:
-        - **GET /todos**: Retrieve all to-do items.
-            
-            ```jsx
-            app.get('/todos', (req, res) => {
-              res.json(todos);
-            });
-            
-            ```
-            
-        - **POST /todos**: Add a new to-do item.
-            
-            ```jsx
-            
-            app.post('/todos', (req, res) => {
-              const { task } = req.body;
-              const newTodo = { id: todos.length + 1, task };
-              todos.push(newTodo);
-              res.status(201).json(newTodo);
-            });
-            
-            ```
-            
-        - **PUT /todos/**: Update an existing to-do item.
-            
-            ```jsx
-            
-            app.put('/todos/:id', (req, res) => {
-              const { id } = req.params;
-              const { task } = req.body;
-              const todo = todos.find((t) => t.id === parseInt(id));
-            
-              if (todo) {
-                todo.task = task;
-                res.json(todo);
-              } else {
-                res.status(404).send('To-Do item not found');
-              }
-            });
-            
-            ```
-            
-        - **DELETE /todos/**: Delete a to-do item.
-            
-            ```jsx
-            
-            app.delete('/todos/:id', (req, res) => {
-              const { id } = req.params;
-              todos = todos.filter((t) => t.id !== parseInt(id));
-              res.status(204).send();
-            });
-            
-            ```
-            
-5. **Test the API:**
-    - Use Postman or cURL to test each endpoint.
-    - Test creating, reading, updating, and deleting to-do items.
-6. **Bonus (Optional):**
-    - Add data validation to ensure tasks are not empty.
-    - Implement error handling for invalid requests.
-    - Save the to-do list data to a file using the `fs` module in Node.js.
+### Part 2: Your First Express Server
 
-### Expected Outcome:
+We will start by building a simple server in `server.js`.
 
-A functioning API server that can manage a to-do list with basic CRUD (Create, Read, Update, Delete) operations.
+#### TODO 1: Basic Setup
+
+Set up the boilerplate for an Express application.
+
+```jsx
+// server.js
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+// TODO: Allow your server to parse JSON bodies in requests
+// Hint: look at express.json() middleware
+
+app.get('/', (req, res) => {
+    // TODO: Send back a string that says "Hello World"
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
+```
+
+---
+
+### Part 3: RESTful Design
+
+Recall from Lecture 12 that RESTful APIs use different methods (`GET`, `POST`, `DELETE`) to represent different actions. We will manage a simple local array of books.
+
+#### TODO 2: Implementing CRUD
+
+Complete the logic for the following endpoints.
+
+```jsx
+let books = [
+    { id: 1, title: "The Great Gatsby" },
+    { id: 2, title: "1984" }
+];
+
+// GET: Fetch all books
+app.get('/books', (req, res) => {
+    res.json(books);
+});
+
+// POST: Add a new book
+app.post('/books', (req, res) => {
+    // TODO: Take the book title from req.body and add it to the books array
+    // Then, return the new list with a 201 status code
+});
+
+// DELETE: Remove a book by ID
+app.delete('/books/:id', (req, res) => {
+    const { id } = req.params;
+    // TODO: Filter the books array to remove the book with the matching id
+    // Return the updated array
+});
+```
+
+---
+
+### Part 4: Testing with Postman
+
+Since browsers default to `GET` requests, we use **Postman** to test our other methods.
+
+#### TODO 3: The Postman Check
+
+1. Start your server: `node server.js`.
+2. Open Postman and create a **POST** request to `http://localhost:3000/books`.
+3. Under the **Body** tab, select **raw** and **JSON**.
+4. Send a JSON object: `{"title": "Catcher in the Rye"}`.
+5. Verify that your server returns the updated list.
+
+---
+
+### Part 5: Secure API Keys & .env
+
+As mentioned in the Spotify demo, we never hardcode API keys. We use `.env` files to keep secrets safe.
+
+#### TODO 4: Environment Variables
+
+1. Create a file named `.env` in your root directory.
+2. Add a fake key: `SPOTIFY_KEY=your_secret_here`.
+3. Create a `.gitignore` file and add the following lines to prevent leaking secrets:
+
+```plaintext
+node_modules
+.env
+```
+
+4. In `server.js`, use `dotenv` to access your key:
+
+```jsx
+require('dotenv').config();
+
+app.get('/secrets', (req, res) => {
+    // TODO: Access the SPOTIFY_KEY from process.env and send it back to the client
+});
+```
+
+---
+
+### Submission
+
+- Ensure your `.gitignore` is working (you should not see `node_modules` in your `git status`).
