@@ -6,7 +6,7 @@ sidebar_position: 6
 
 ### Overview
 
-In this vitamin, we are transitioning from the frontend to the backend. You will set up a local server using **Node.js** and **Express**, define **RESTful API** endpoints, and learn how to securely interact with external services like Spotify using **Environment Variables**.
+In this vitamin, we are transitioning from the frontend to the backend. You will set up a local server using **Node.js** and **Express**, define **RESTful API** endpoints, use **EJS templating** to render HTML, and learn how to securely interact with external services using **Environment Variables**.
 
 ---
 
@@ -19,8 +19,13 @@ Unlike the browser, Node.js needs a `package.json` to keep track of dependencies
 3. Install the necessary packages:
 
 ```bash
-npm install express dotenv
+npm install express ejs dotenv
 ```
+
+**What are these packages?**
+- **`express`** - A minimal web framework for Node.js that makes it easy to create servers and handle HTTP requests (GET, POST, etc.). Used in Part 2.
+- **`ejs`** - A templating engine that lets you generate HTML dynamically by embedding JavaScript inside your HTML files. Used in Part 5.
+- **`dotenv`** - Loads environment variables from a `.env` file into `process.env`, so you can keep secrets (like API keys) out of your code. Used in Part 6.
 
 ---
 
@@ -54,7 +59,7 @@ app.listen(PORT, () => {
 
 ### Part 3: RESTful Design
 
-Recall from Lecture 12 that RESTful APIs use different methods (`GET`, `POST`, `DELETE`) to represent different actions. We will manage a simple local array of books.
+Recall from Lecture 12 that RESTful APIs use different methods (`GET`, `POST`, `PATCH`, `DELETE`) to represent different actions. We will manage a simple local array of books.
 
 #### TODO 2: Implementing CRUD
 
@@ -77,6 +82,14 @@ app.post('/books', (req, res) => {
     // Then, return the new list with a 201 status code
 });
 
+// PATCH: Update a book's title by ID
+app.patch('/books/:id', (req, res) => {
+    const { id } = req.params;
+    const { title } = req.body;
+    // TODO: Find the book with the matching id and update its title to the one requested in req.body
+    // Return the updated book, or a 404 error if not found
+});
+
 // DELETE: Remove a book by ID
 app.delete('/books/:id', (req, res) => {
     const { id } = req.params;
@@ -93,19 +106,119 @@ Since browsers default to `GET` requests, we use **Postman** to test our other m
 
 #### TODO 3: The Postman Check
 
-1. Start your server: `node server.js`.
-2. Open Postman and create a **POST** request to `http://localhost:3000/books`.
-3. Under the **Body** tab, select **raw** and **JSON**.
-4. Send a JSON object: `{"title": "Catcher in the Rye"}`.
-5. Verify that your server returns the updated list.
+Start your server with `node server.js`, then test each endpoint in Postman:
+
+**1. Test GET (fetch all books):**
+- Method: `GET`
+- URL: `http://localhost:3000/books`
+- Expected: Returns the array of books
+- Verify: You should see `[{"id":1,"title":"The Great Gatsby"},{"id":2,"title":"1984"}]`
+
+**2. Test POST (add a new book):**
+- Method: `POST`
+- URL: `http://localhost:3000/books`
+- Body tab: Select **raw** and **JSON**
+- Body content: `{"title": "Catcher in the Rye"}`
+- Expected: Returns the updated list with your new book added
+- Verify: The new book should appear in the array with a new id
+
+**3. Test PATCH (update a book's title):**
+- Method: `PATCH`
+- URL: `http://localhost:3000/books/1`
+- Body tab: Select **raw** and **JSON**
+- Body content: `{"title": "The Great Gatsby (Updated)"}`
+- Expected: Returns the updated book
+- Verify: Do a GET request again—the book with id 1 should have the new title
+
+**4. Test DELETE (remove a book):**
+- Method: `DELETE`
+- URL: `http://localhost:3000/books/2`
+- Expected: Returns the updated list without the deleted book
+- Verify: The book with id 2 ("1984") should no longer be in the array
+
+**Understanding Status Codes:**
+
+When you send a request in Postman, you'll see a status code in the response. Here's what to expect:
+- **200 OK** - Request succeeded (you should see this for GET, PATCH, DELETE)
+- **201 Created** - Resource was created successfully (you should see this for POST)
+- **4xx errors** (like 400, 404) - Something's wrong with your request (client error)
+- **5xx errors** (like 500) - Something's wrong with your server code (server error)
+
+If you see a 4xx or 5xx error, refer to the lecture slides or textbook to understand what each code means and use that to start debugging your issue.
+
+:::tip
+If something isn't working, check your terminal for errors. Make sure you restart your server (`Ctrl+C` then `node server.js`) after making changes to your code.
+:::
 
 ---
 
-### Part 5: Secure API Keys & .env
+### Part 5: EJS Templating
+
+So far, our API returns JSON data. But what if we want to display our books in a nice HTML page? That's where **EJS (Embedded JavaScript)** comes in—it lets us insert JavaScript variables directly into HTML.
+
+#### TODO 4: Set Up EJS
+
+1. Create a folder called `views` in your project root.
+2. Inside `views`, create a file called `books.ejs`.
+3. In `server.js`, tell Express to use EJS as the view engine:
+
+```jsx
+// Add this near the top of server.js, after creating the app
+app.set('view engine', 'ejs');
+```
+
+#### TODO 5: Create the EJS Template
+
+In `views/books.ejs`, create an HTML file that displays all books. Use `forEach` to loop through the books array.
+
+`forEach` is a JavaScript array method that runs a function on each item in an array. For example, `books.forEach(book => { ... })` will run the code inside `{ ... }` once for each book, with `book` representing the current item. You can name this variable anything you want (like `item` or `b`), but it's good practice to choose a name that makes sense—since we're looping through books, `book` is a clear choice.
+
+**Quick EJS syntax:**
+- `<% %>` - Run JavaScript code (no output)
+- `<%= %>` - Output a value into the HTML
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Book List</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { color: #333; }
+        ul { list-style-type: none; padding: 0; }
+        li { padding: 10px; margin: 5px 0; background-color: #f0f0f0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>My Book List</h1>
+    <ul>
+        <% books.forEach(book => { %>
+            <!-- TODO: Create an <li> element that displays the book's title -->
+        <% }) %>
+    </ul>
+</body>
+</html>
+```
+
+#### TODO 6: Render the Template
+
+Create a new route that renders the EJS template with the books data:
+
+```jsx
+app.get('/books/view', (req, res) => {
+    // TODO: Use res.render() to render 'books' template and pass the books array
+});
+```
+
+Now visit `http://localhost:3000/books/view` in your browser to see your books displayed in a nice HTML page!
+
+---
+
+### Part 6: Secure API Keys & .env
 
 As mentioned in the Spotify demo, we never hardcode API keys. We use `.env` files to keep secrets safe.
 
-#### TODO 4: Environment Variables
+#### TODO 7: Environment Variables
 
 1. Create a file named `.env` in your root directory.
 2. Add a fake key: `SPOTIFY_KEY=your_secret_here`.
@@ -130,4 +243,23 @@ app.get('/secrets', (req, res) => {
 
 ### Submission
 
-- Ensure your `.gitignore` is working (you should not see `node_modules` in your `git status`).
+**Zip your entire project folder** and submit the zip file to Gradescope.
+
+Your zip file should include:
+* `server.js`
+* `views/` folder (with `books.ejs`)
+* `package.json`
+* `package-lock.json`
+* `.gitignore`
+* `.env`
+
+Do **not** include `node_modules/` in your zip file. Make sure your `.gitignore` includes:
+
+```
+node_modules
+.env
+```
+
+:::tip
+We can regenerate `node_modules/` by running `npm install` using your `package.json`.
+:::
