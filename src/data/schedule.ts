@@ -324,7 +324,7 @@ const weeks: Week[] = [
         ],
       },
       {
-        topic: "Guest Lecture",
+        topic: "Guest Lecture: 8090 Solutions - Using Agentic Programming to build Business Software",
       },
     ],
   },
@@ -340,7 +340,7 @@ const weeks: Week[] = [
         ],
       },
       {
-        topic: "Guest Lecture",
+        topic: "Guest Lecture: MongoDB - Intro to Data Modeling",
       },
     ],
   },
