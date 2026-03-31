@@ -101,7 +101,7 @@ All communication this semester will be centralized on Ed. Please ask all questi
 
 This DeCal is graded on a P/NP bases. Your final grade
 will be based primarily upon completion of work in the class.
-A "pass" is a 70% (700 points) in the class, attendance of 15/20 lectures this semester, and completion of the final project.
+A "pass" is a 70% (700 points) in the class, attendance of 17/20 lectures this semester, and completion of the final project.
 If one or more of these is not met, you are at risk for an NP in this class. Gradescope will be used to host the grades.
 
 | Item               | Points       |
