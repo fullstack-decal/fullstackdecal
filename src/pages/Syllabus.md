@@ -171,7 +171,7 @@ California, Berkeley's Center for Student Conduct and Community Standards.”
 
 ### Extensions
 
-Extensions will not be granted outside of exceptional circumstances, such as medical or family emergencies. Extensions must be submitted before the original assignment deadline. Use the extension form at the top of the screen to submit an extension for any assignment.
+Extensions past the 3-day guarantee will not be granted outside of exceptional circumstances, such as medical or family emergencies. Extensions must be submitted before the original assignment deadline. Use the extension form at the top of the screen to submit an extension for any assignment.
 
 These extensions will not be reflected on Gradescope on your end unfortunately, but we will keep track and consider them when calculating grades. If you submitted your work late but with no extension, it will not get points.
 
