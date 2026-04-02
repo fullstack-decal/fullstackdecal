@@ -337,6 +337,10 @@ app.delete('/projects/:id', async (req, res) => {
 });
 
 // ------ MYSQL ENDPOINTS ------
+// IMPORTANT: Use ? placeholders for user input instead of string concatenation!
+// Example: connection.query('SELECT * FROM users WHERE id = ?', [userId], callback)
+// This prevents SQL injection attacks where malicious users could insert
+// harmful SQL code through input fields and damage your database.
 
 // TODO: GET all employees from MySQL
 // Use connection.query() with SELECT * FROM employees
