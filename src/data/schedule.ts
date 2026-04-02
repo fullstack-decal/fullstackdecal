@@ -90,14 +90,6 @@ const weeks: Week[] = [
       },
       {
         topic: "HTML",
-        slides: {
-          link: "https://docs.google.com/presentation/d/1CF_R_3SGQlF_wAF5R0I2BLS4k1cfwNN_/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
-          name: "Slides",
-        },
-        recording: {
-          link: "https://drive.google.com/file/d/1H77xLgfHsH-dI6Cz1xWvBu9lE-X2aCKE/view?usp=sharing",
-          name: "Recording",
-        },
         reading: [{ link: "/docs/Lessons/HTML", name: "HTML" }],
       },
     ],
@@ -107,14 +99,6 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "CSS 1: Introduction to CSS",
-        slides: {
-          link: "https://docs.google.com/presentation/d/1rcHHPuP6lfhd_6tslr6DtYDnNnSjnJne/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
-          name: "Slides",
-        },
-        recording: {
-          link: "https://drive.google.com/file/d/1XoanOFzQ5qMue4_cFWazSO93wDEktJhm/view?usp=sharing",
-          name: "Recording",
-        },
         reading: [
           {
             link: "/docs/Lessons/CSSIntro",
@@ -124,10 +108,6 @@ const weeks: Week[] = [
       },
       {
         topic: "CSS 2: Advanced CSS",
-        slides: {
-          link: "https://docs.google.com/presentation/d/1WYmdIPQ4h6FucXGltwu3QpjZPRqKjluc/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
-          name: "Slides",
-        },
         reading: [{ link: "/docs/Lessons/CSSAdv", name: "Advanced CSS" }],
       },
     ],
@@ -137,14 +117,6 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "JavaScript 1: Introduction to JavaScript + Asynchronous JS",
-        slides: {
-          link: "https://docs.google.com/presentation/d/1ZfobR0c1MjvHgP0Oc4w-WJbiR4V1h6Z7/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
-          name: "Slides",
-        },
-        recording: {
-          link: "https://drive.google.com/file/d/14TsCMOX_Pyd2ugI1pGmmux4-cIHraIwV/view?usp=drive_link",
-          name: "Recording"
-        },
         reading: [
           {
             link: "/docs/Lessons/JSIntro",
@@ -158,10 +130,6 @@ const weeks: Week[] = [
       },
       {
         topic: "JavaScript 2: DOM + TypeScript",
-        slides: {
-          link: "https://docs.google.com/presentation/d/1NOmINB3fEQjDaGQazjqYtjjOSVJxwE9t/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
-          name: "Slides",
-        },
         reading: [
           { link: "/docs/Lessons/DOM", name: "DOM" },
           { link: "/docs/Lessons/TypeScript", name: "TypeScript" },
@@ -173,24 +141,22 @@ const weeks: Week[] = [
     title: "Can't forget about design",
     lessons: [
       {
-        topic: "UI/UX: Basic UI/UX + Figma + Wireframing",
-        slides: {
-          link: "https://docs.google.com/presentation/d/1ZHL1qaK0Zm6C5T1znJtzQIAm4fiNeNWh/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
-          name: "Slides",
-        },
+        topic: "UI/UX 1: Basic UI/UX",
         reading: [
           {
             link: "/docs/Lessons/UIUX",
             name: "Basic UI/UX + Design Systems",
           },
+        ],
+      },
+      {
+        topic: "UI/UX 2: Figma + Wireframing",
+        reading: [
           {
             link: "/docs/Lessons/Figma",
             name: "Figma Basics + Wireframing",
           },
         ],
-      },
-      {
-        topic: "No Lecture",
       },
     ],
   },
@@ -199,33 +165,21 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "Node.js + React 1: Introduction to React",
-        slides: {
-          link: "https://docs.google.com/presentation/d/1vgLHNVi74mQxrL_ZbtYljJfJYNZ98Fvg/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
-          name: "Slides",
-        },
-        recording: {
-          link: "https://drive.google.com/file/d/1AsU2F6TReAfqPKTYYKPkKRW_y2yaZB44/view?usp=sharing",
-          name: "Recording",
-        },
         reading: [
           { link: "/docs/Lessons/Node", name: "Node.js and Package Managers" },
           {
             link: "/docs/Lessons/ReactIntro",
             name: "Introduction to React",
           },
+        ],
+      },
+      {
+        topic: "React 2: More React Hooks, Routing, Fetching Data",
+        reading: [
           {
             link: "/docs/Lessons/ReactHooks",
             name: "More React Hooks",
           },
-        ],
-      },
-      {
-        topic: "React 2: Routing, APIs",
-        slides: {
-          link: "https://docs.google.com/presentation/d/1D83XleJSaqoo-fYCsR-I6xmiPa5CcGfI/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
-          name: "Slides",
-        },
-        reading: [
           { link: "/docs/Lessons/Routing", name: "Routing and Axios" },
         ],
       },
@@ -235,30 +189,18 @@ const weeks: Week[] = [
     title: "Servin' servers",
     lessons: [
       {
-        topic: "Node.js, Server Side Rendering, Express.js, Cookies",
-        slides: {
-          link: "https://docs.google.com/presentation/d/1k_Sjzi0BeZhd3zDHD0Bx7ObHoiGuRLfc/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
-          name: "Slides",
-        },
-        recording: {
-          link: "https://drive.google.com/file/d/1bZ0g0pBVG28szIwgUA7NwDNyq6s4Flg4/view?usp=drive_link",
-          name: "Recording"
-        },
+        topic: "Node.js, Express.js, Server Side Rendering",
         reading: [
           {
             link: "/docs/Lessons/SSR",
             name: "Server-Side Rendering with Express.js, Cookies",
           },
-          { link: "/docs/Lessons/Web", name: "Web Servers with Express.js" },
         ],
       },
       {
-        topic: "APIs",
-        slides: {
-          link: "https://docs.google.com/presentation/d/1PU-0EQU_abTt_yPhUtCiLcgTtFZklpsq/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
-          name: "Slides",
-        },
+        topic: "Express.js Part 2, APIs, Client Side Rendering",
         reading: [
+          { link: "/docs/Lessons/Web", name: "Web Servers with Express.js" },
           { link: "/docs/Lessons/CSR", name: "APIs and Client Side Rendering" },
         ],
       },
@@ -268,7 +210,7 @@ const weeks: Week[] = [
     title: "Spring Break",
     lessons: [
       {
-        topic: "No Lecture",
+        topic: "No Lecture"
       },
       {
         topic: "No Lecture"
@@ -280,32 +222,33 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "Databases Intro, NoSQL vs SQL, MongoDB",
-        slides: {
-          link: "https://docs.google.com/presentation/d/1wVQapYLynjgadUuTwYhZJDtf34FBGO_1/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
-          name: "Slides",
-        },
         reading: [
           { link: "/docs/Lessons/DBIntro", name: "Introduction to Databases" },
           { link: "/docs/Lessons/Mongo", name: "MongoDB" },
         ],
+        recording: {
+          name: 'Recording',
+          link: 'https://drive.google.com/file/d/1SMRIBsbYpbnaQFyvwrrxKi8Y2kw0KnDi/view?usp=sharing'
+        }
       },
-      {
-        topic: "Relational Databases, SQL, ORMs",
-        reading: [
-          { link: "/docs/Lessons/SQL", name: "SQL and Relational Databases" },
-          { link: "/docs/Lessons/ORM", name: "Object Relational Models" },
-        ],
-      },
-    ],
-  },
-  {
-    title: "Auth and Next.js",
-    lessons: [
       {
         topic: "Authentication + Firebase",
         reading: [
           { link: "/docs/Lessons/Auth", name: "Authentication/Authorization" },
           { link: "/docs/Lessons/Firebase", name: "Firebase" },
+        ],
+      },
+    ],
+  },
+  // Weeks 9-12 are shifted forward by one week
+  {
+    title: "More approaches to web dev",
+    lessons: [
+      {
+        topic: "Relational Databases, SQL, ORMs",
+        reading: [
+          { link: "/docs/Lessons/SQL", name: "SQL and Relational Databases" },
+          { link: "/docs/Lessons/ORM", name: "Object Relational Models" },
         ],
       },
       {
@@ -315,20 +258,19 @@ const weeks: Week[] = [
     ],
   },
   {
-    title: "Useful frontend frameworks!",
+    title: "Some useful frameworks for you",
     lessons: [
       {
-        topic: "CSS Frameworks and Redux.js",
+        topic: "CSS Frameworks",
         reading: [
           {
             link: "/docs/Lessons/CSSFrameworks",
             name: "CSS Frameworks",
           },
-          { link: "/docs/Lessons/Redux", name: "Redux.js" },
         ],
       },
       {
-        topic: "Guest Lecture: 8090 Solutions - Using Agentic Programming to build Business Software",
+        topic: "Guest Speaker",
       },
     ],
   },
@@ -336,15 +278,16 @@ const weeks: Week[] = [
     title: "Ending strong",
     lessons: [
       {
+        topic: "Redux.js",
+        reading: [{ link: "/docs/Lessons/Redux", name: "Redux.js" }],
+      },
+      {
         topic: "Django + Flask",
         reading: [
           { link: "/docs/Lessons/Django", name: "Django" },
           { link: "/docs/Lessons/Flask", name: "Flask" },
           { link: "/docs/Lessons/Deployment", name: "Deploying Your Website" },
         ],
-      },
-      {
-        topic: "Guest Lecture: MongoDB - Intro to Data Modeling",
       },
     ],
   },
@@ -405,21 +348,21 @@ const vitamins: IncompleteAssignment[] = [
     },
     assignedWeek: 5,
     dueWeek: 7,
-    dueDay: 2,
+    dueDay: 4,
   },
   {
     link: { link: "/docs/Assignments/Vitamins/Databases", name: "Databases" },
-    assignedWeek: 7,
-    dueWeek: 8,
-    dueDay: 2,
+    assignedWeek: 6,
+    dueWeek: 7,
+    dueDay: 4,
   },
   {
     link: {
       link: "/docs/Assignments/Vitamins/NextAuth",
       name: "Next.js and Authentication",
     },
-    assignedWeek: 8,
-    dueWeek: 9,
+    assignedWeek: 7,
+    dueWeek: 8,
     dueDay: 2,
   },
   {
@@ -436,7 +379,7 @@ const vitamins: IncompleteAssignment[] = [
       link: "/docs/Assignments/Vitamins/PythonDeploy",
       name: "Flask, Django, and Deployment",
     },
-    assignedWeek: 10,
+    assignedWeek: 9,
     dueWeek: 11,
     dueDay: 2,
   },
@@ -466,12 +409,17 @@ const projects: IncompleteAssignment[] = [
       link: "/docs/Assignments/Projects/FinalProject",
       name: "Final Project",
     },
-    assignedWeek: 7,
+    assignedWeek: 6,
     dueWeek: 11,
-    dueDay: 2,
+    dueDay: 1,
     checkpoints: [
       {
-        name: "Project Idea + Design Prototype",
+        name: "Project Idea",
+        dueWeek: 8,
+        dueDay: 3,
+      },
+      {
+        name: "Design Prototype",
         dueWeek: 9,
         dueDay: 2,
       },
