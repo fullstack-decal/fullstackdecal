@@ -318,7 +318,7 @@ app.use(express.json());
 // ------ MONGODB ENDPOINTS ------
 
 // TODO: GET all projects from MongoDB
-// Use ProjectModel.find({}) and return as JSON
+// Use ProjectModel.find({}) and return the results as JSON using .json()
 app.get('/projects', async (req, res) => {
     // YOUR CODE HERE
 });
@@ -344,7 +344,7 @@ app.delete('/projects/:id', async (req, res) => {
 
 // TODO: GET all employees from MySQL
 // Use connection.query() with SELECT * FROM employees
-// Return the results as JSON
+// Return the results as JSON using .json()
 app.get('/employees', function (req, res) {
     // YOUR CODE HERE
 });
