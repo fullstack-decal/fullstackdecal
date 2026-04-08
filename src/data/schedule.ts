@@ -303,6 +303,10 @@ const weeks: Week[] = [
           { link: "/docs/Lessons/SQL", name: "SQL and Relational Databases" },
           { link: "/docs/Lessons/ORM", name: "Object Relational Models" },
         ],
+        slides: {
+          link: 'https://docs.google.com/presentation/d/1fO7-9j7P2xMiCBCTQ5m_HvK6AH4KileF/edit?usp=sharing&ouid=117005960368617411998&rtpof=true&sd=true',
+          name: 'Slides'
+        }
       },
     ],
   },
