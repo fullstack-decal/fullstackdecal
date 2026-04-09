@@ -319,6 +319,14 @@ const weeks: Week[] = [
           { link: "/docs/Lessons/Auth", name: "Authentication/Authorization" },
           { link: "/docs/Lessons/Firebase", name: "Firebase" },
         ],
+        recording: {
+          link: "https://drive.google.com/file/d/17bb4sLGq_AmGI_cSyJBT9AzmDWdwRqOl/view?usp=drive_link",
+          name: "Recording"
+        },
+        slides: {
+          link: "https://docs.google.com/presentation/d/1OwMoj97hPKjV_PRlY8jww7ELBlSKGp75/edit?usp=drive_link&ouid=117005960368617411998&rtpof=true&sd=true",
+          name: "Slides"
+        }
       },
       {
         topic: "Next.js",
