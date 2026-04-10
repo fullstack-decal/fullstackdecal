@@ -318,7 +318,7 @@ const weeks: Week[] = [
     title: "Auth and Next.js",
     lessons: [
       {
-        topic: "Authentication + Firebase",
+        topic: "Authentication, Firebase, Supabase",
         reading: [
           { link: "/docs/Lessons/Auth", name: "Authentication/Authorization" },
           { link: "/docs/Lessons/Firebase", name: "Firebase" },
