@@ -334,6 +334,10 @@ const weeks: Week[] = [
       },
       {
         topic: "Next.js",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1MO2DKMh2uNl-L9ML9dJueUUZhunVSzPu/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          name: "Slides",
+        },
         reading: [{ link: "/docs/Lessons/Next", name: "Next.js" }],
       },
     ],
