@@ -2,113 +2,626 @@
 sidebar_position: 8
 ---
 
-# Auth and Next.js
+# Next.js and Auth 
 
-## Getting Started 
+### Overview
 
-```txt
-npx create-next-app@latest
+In this vitamin, you'll learn the fundamentals of **Next.js**, a powerful React framework, and integrate it with **Supabase** authentication. You'll build a mini auth project that demonstrates routing, server/client components, API routes, and user authentication.
+
+**What is Supabase?** Remember working with MySQL in the Databases vitamin? Supabase is like a more full-featured version of that. It's a database (PostgreSQL, similar to MySQL) with authentication, file storage, and more built right in. Instead of building auth from scratch, Supabase handles user sign-up, login, sessions, and OAuth for you!
+
+:::tip Don't be intimidated!
+The file structure for this project might look large, but don't worry! It's mostly small files with just a few lines of code each. This vitamin is more reading than coding!
+:::
+
+### Learning Objectives
+
+- Understand static vs dynamic routing in Next.js
+- Use layouts to share UI across pages
+- Differentiate between client and server components (and why it's efficient!)
+- Create API route handlers
+- Understand environment variables (`NEXT_PUBLIC_` vs regular)
+- Implement email/password and Google OAuth authentication with Supabase
+
+---
+
+## Part 1: Next.js Setup
+
+### Step 1: Create a New Next.js App
+
+```bash
+npx create-next-app@latest auth-vitamin
 ```
 
-Use the command above to create a new Next.js application. All of the code you will write will be in the main app/ folder.
+When prompted, select:
+- TypeScript: **No** (for simplicity)
+- ESLint: **Yes**
+- Tailwind CSS: **Yes** (optional, makes styling easier)
+- `src/` directory: **No**
+- App Router: **Yes**
+- Import alias: **No**
 
-### Key components and functions startercode
-1. **Link**:
-   - `Link` is a component provided by Next.js that enables client-side navigation between different pages of your application. It allows you to navigate between pages without causing a full page reload, which results in a faster and smoother user experience.
-   - Example:
-     ```jsx
-     import Link from 'next/link';
-
-     function Home() {
-       return (
-         <div>
-           <h1>Welcome to the homepage</h1>
-           <Link href="/about">
-             <a>Go to About Page</a>
-           </Link>
-         </div>
-       );
-     }
-     ```
-
-2. **usePathname()**:
-   - `usePathname` is a hook provided by Next.js to get the current pathname in a functional component. This can be useful for conditionally rendering content based on the current route.
-   - Example:
-     ```jsx
-     import { usePathname } from 'next/navigation';
-
-     function MyComponent() {
-       const pathname = usePathname();
-
-       return (
-         <div>
-           <p>Current pathname: {pathname}</p>
-         </div>
-       );
-     }
-     ```
-
-3. **clsx**:
-   - `clsx` is a utility for constructing `className` strings conditionally. It helps in managing classes more dynamically and concisely, often used in conjunction with CSS modules or Tailwind CSS in Next.js projects.
-   - Example:
-     ```jsx
-     import clsx from 'clsx';
-
-     function Button({ isPrimary }) {
-       return (
-         <button className={clsx('btn', { 'btn-primary': isPrimary, 'btn-secondary': !isPrimary })}>
-           Click me
-         </button>
-       );
-     }
-     ```
-     
-## Question: Implementing Dark Mode Based on Pathname
-
-1. **Objective**: Apply dark mode styles when the user navigates to a specific pathname, e.g., `/dark-mode`.
-
-2. **Steps**:
-
-   - Use `Link` to navigate to the `/dark-mode` page.
-   - Use `usePathname` to get the current pathname.
-   - Use `clsx` to conditionally apply dark mode styles based on the pathname.
-
-3. **Code Example**:
-## Question: Implement Dark Mode Based on Pathname
-
-### Objective
-Create two buttons, one that navigates to the `/dark-mode` page and the `/light-mode` page
-Create a dark mode that activates when the user navigates to the `/dark-mode` page.
-Create a light mode that activates when the user navigates to the `/dark-mode` page.
-The buttons must include `Dark-Mode` and `Light-Mode` in them.
-
-### Starter Code
-Complete the `Home` function in the provided starter code to achieve this functionality.
-```css
-// styles/globals.css
-.container {
-  padding: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.dark-mode {
-  background-color: #333;
-  color: #fff;
-}
+```bash
+cd auth-vitamin
+npm run dev
 ```
+
+Visit `http://localhost:3000` to see your app running!
+
+### Step 2: Understand the App Router Structure
+
+In Next.js App Router, **file structure = routes**. Here's what you'll build in this vitamin:
+
+```
+auth-vitamin/
+├── app/
+│   ├── page.js              → localhost:3000/ (home page)
+│   ├── layout.js            → Wraps ALL pages (navbar here)
+│   ├── about/
+│   │   └── page.js          → localhost:3000/about
+│   ├── login/
+│   │   └── page.js          → localhost:3000/login
+│   ├── dashboard/
+│   │   └── page.js          → localhost:3000/dashboard
+│   ├── user/
+│   │   └── [id]/
+│   │       └── page.js      → localhost:3000/user/123 (dynamic)
+│   ├── components/
+│   │   └── AuthStatus.js    → Client component
+│   └── api/
+│       └── auth/
+│           ├── signup/
+│           │   └── route.js → POST /api/auth/signup
+│           ├── login/
+│           │   └── route.js → POST /api/auth/login
+│           ├── logout/
+│           │   └── route.js → POST /api/auth/logout
+│           ├── user/
+│           │   └── route.js → GET /api/auth/user
+│           └── google/
+│               └── route.js → GET /api/auth/google
+├── lib/
+│   ├── supabase.js          → Client-side Supabase
+│   └── supabase-server.js   → Server-side Supabase
+└── .env.local               → Environment variables
+```
+
+---
+
+## Part 2: Layouts
+
+Layouts let you share UI (like navbars, footers) across multiple pages. The layout wraps all pages in that folder and its subfolders.
+
+### The Root Layout
+
+Every Next.js app has a root layout (`app/layout.js`) that wraps ALL pages:
+
 ```jsx
-// app/page.js
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import clsx from 'clsx';
-
-// HINT: Use the `usePathname` hook to get the current pathname.
-// HINT: Use the `clsx` utility to conditionally apply the 'dark-mode' class.
-// HINT: There should also be two new pages we are redirecting to. Think about how we make more pages within Next.js.
-
-function Home() {
-  // Your code here
+// app/layout.js - this wraps every page in your app
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <nav>This navbar appears on EVERY page</nav>
+        {children}  {/* The actual page content goes here */}
+        <footer>This footer appears on EVERY page</footer>
+      </body>
+    </html>
+  )
 }
-
-export default Home;
 ```
+
+**TODO 1:** Modify `app/layout.js` to add a simple navigation bar with links to Home (`/`), About (`/about`), and Login (`/login`)
+
+Use the `Link` component from `next/link` for navigation (not regular `<a>` tags). This enables client-side navigation without full page reloads.
+
+:::tip Why Layouts?
+When you navigate between pages, the layout **doesn't re-render**. Only the `{children}` part changes. This makes navigation feel instant!
+:::
+
+---
+
+## Part 3: Static and Dynamic Routing
+
+### Static Routes
+
+Static routes have fixed paths.
+
+**TODO 2:** Create `app/about/page.js` (a simple About page)
+
+**TODO 3:** Create `app/login/page.js` (we'll add the login form later, just put placeholder text for now)
+
+### Dynamic Routes
+
+Dynamic routes use brackets `[param]` to capture URL parameters.
+
+**TODO 4:** Create `app/user/[id]/page.js`
+
+This page should:
+- Access the `id` parameter from the URL using `params`
+- Display "User Profile: " followed by the id
+
+Example: visiting `/user/123` should show "User Profile: 123"
+
+```js
+// Hint: Dynamic route pages receive params as a prop
+export default function UserProfile({ params }) {
+  // Access params.id here
+}
+```
+
+---
+
+## Part 4: Supabase Setup & Environment Variables
+
+Now let's add authentication with Supabase. This is also a great chance to learn about environment variables!
+
+### Step 1: Create a Supabase Project
+
+1. Go to [supabase.com](https://supabase.com) and sign up/login
+2. Click **New Project**
+3. Fill in project name, password, and region
+4. Wait for setup to complete
+
+### Step 2: Enable Email Auth
+
+1. Go to **Authentication** → **Providers**
+2. Ensure **Email** is enabled (it usually is by default)
+3. For testing, go to **Authentication** → **Settings** and disable **Confirm email**
+
+**What does "Confirm email" do?** When enabled, Supabase sends a verification email to new users, and they can't log in until they click the link. This prevents fake sign-ups in production. For development, we disable it so you can test without checking your email every time.
+
+### Step 3: Get Your API Keys
+
+In **Project Settings** → **API**, you'll find three important values:
+- **Project URL** - This is public, anyone can see it
+- **anon public key** - This is also public, safe to expose
+- **service_role key** - This is SECRET, never expose to client!
+
+### Step 4: Environment Variables - Public vs Private
+
+Create `.env.local` in your project root:
+
+```env
+# NEXT_PUBLIC_ prefix = available in browser AND server
+# Use for values that are safe to expose (like Supabase URL and anon key)
+NEXT_PUBLIC_SUPABASE_URL=your_project_url_here
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_here
+
+# No prefix = available ONLY on server
+# Use for secret values (like service role key, API secrets)
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
+```
+
+:::warning Security Rule
+- `NEXT_PUBLIC_*` variables are bundled into your JavaScript and visible to anyone through DevTools
+- Regular variables are ONLY available in server components and API routes
+- **Never put secrets in `NEXT_PUBLIC_` variables!**
+:::
+
+### Step 5: Install Supabase
+
+```bash
+npm install @supabase/supabase-js
+```
+
+**TODO 5:** Create `lib/supabase.js` (the client-side Supabase client):
+
+```js
+import { createClient } from '@supabase/supabase-js'
+
+// These NEXT_PUBLIC_ variables work here because this file
+// can be imported by client components
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+export const supabase = // TODO: Create the client using createClient()
+```
+
+**TODO 6:** Create `lib/supabase-server.js` (for server-only operations):
+
+```js
+import { createClient } from '@supabase/supabase-js'
+
+// This uses the secret service role key, only works on server!
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+export const supabaseAdmin = // TODO: Create the admin client
+```
+
+It's the same `createClient()` function as before, just using the secret service role key instead of the anon key. The service role key bypasses Row Level Security (RLS) and has full admin access to the database, which is why it must stay on the server!
+
+---
+
+## Part 5: API Route Handlers
+
+In the lecture slides, we called Supabase directly from the client (e.g., `supabase.auth.signIn()`). That works, but in this assignment we'll create API routes instead. This is a common pattern that:
+- Keeps sensitive logic on the server
+- Allows you to add extra validation
+- Works with any frontend (not just React)
+
+### How `route.js` Works
+
+Just like `page.js` creates a page, `route.js` creates an API endpoint:
+
+| File | What it creates |
+|------|-----------------|
+| `app/about/page.js` | A page at `/about` |
+| `app/api/hello/route.js` | An API endpoint at `/api/hello` |
+
+In `route.js`, you export functions named after HTTP methods:
+- `export async function GET(request)` → handles GET requests
+- `export async function POST(request)` → handles POST requests
+- `export async function DELETE(request)` → handles DELETE requests
+
+Next.js automatically routes requests to the right function based on the HTTP method.
+
+**TODO 7:** Create `app/api/auth/signup/route.js`:
+
+```js
+import { supabase } from '../../../../lib/supabase'
+
+export async function POST(request) {
+  // TODO:
+  // 1. Get email and password from request.json()
+  // 2. Call supabase.auth.signUp({ email, password })
+  // 3. Return the result as JSON
+  // 4. Use appropriate status codes (201 for success, 400 for error)
+}
+```
+
+**TODO 8:** Create `app/api/auth/login/route.js`:
+
+```js
+import { supabase } from '../../../../lib/supabase'
+
+export async function POST(request) {
+  // TODO:
+  // 1. Get email and password from request.json()
+  // 2. Call supabase.auth.signInWithPassword({ email, password })
+  // 3. Return the result as JSON
+}
+```
+
+**TODO 9:** Create `app/api/auth/logout/route.js`:
+
+```js
+import { supabase } from '../../../../lib/supabase'
+
+export async function POST(request) {
+  // TODO: Call supabase.auth.signOut() and return result
+}
+```
+
+**TODO 10:** Create `app/api/auth/user/route.js`:
+
+```js
+import { supabase } from '../../../../lib/supabase'
+
+export async function GET(request) {
+  // TODO: Call supabase.auth.getUser() and return the user data
+}
+```
+
+---
+
+## Part 6: Client vs Server Components
+
+Now that the API routes exist, let's build a client component that calls them!
+
+### The Power of Server Components
+
+By default, all components in Next.js App Router are **Server Components**:
+- Render on the server (fast initial load!)
+- Can directly access databases, file system
+- HTML is sent to the browser ready to display
+- **Cannot** use hooks (`useState`, `useEffect`) or browser APIs
+
+### Client Components for Interactivity
+
+Add `"use client"` at the top for **Client Components**:
+- Can use React hooks and browser APIs
+- Needed for interactivity (clicks, forms, state)
+
+### The Best Pattern: Server + Client Together
+
+Here's why Next.js is so efficient: **Server Components can import Client Components**:
+
+```jsx
+// app/page.js - This is a SERVER component (no "use client")
+import AuthStatus from './components/AuthStatus'  // Client component
+
+export default function HomePage() {
+  // This part renders on the server (FAST!)
+  return (
+    <div>
+      <h1>Welcome to AuthVitamin</h1>
+      <p>This text was rendered on the server instantly.</p>
+      
+      {/* This interactive part is a client component */}
+      <AuthStatus />
+    </div>
+  )
+}
+```
+
+**How it works:**
+1. Server renders the page HTML instantly (including placeholder for AuthStatus)
+2. HTML is sent to browser, user sees content immediately
+3. React "hydrates" the AuthStatus, making it interactive
+4. Result: Fast initial load + full interactivity!
+
+**TODO 11:** Create `app/components/AuthStatus.js` as a client component.
+
+This component calls the `/api/auth/user` endpoint you created in Part 5. This is how the frontend and backend connect: your client component fetches data from your API route!
+
+- Add the directive at the top to make this a client component
+- Complete the `checkStatus` function to call `fetch('/api/auth/user')`, parse the JSON response, and update the status state
+- Use a ternary operator in the `<p>` tag: if `status` is `null` (hasn't checked yet), show "Click button to check". Otherwise, show the `status` value.
+
+```js
+// TODO: Add the client component directive here
+
+import { useState } from 'react'
+
+export default function AuthStatus() {
+  const [status, setStatus] = useState(null)  // null = not checked yet
+  
+  const checkStatus = async () => {
+    // TODO: 
+    // 1. Use fetch() to call GET /api/auth/user
+    // 2. Parse the response with .json()
+    // 3. If data.data?.user exists, setStatus to the user's email
+    // 4. Otherwise, setStatus to "Not Logged In"
+  }
+  
+  return (
+    <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '8px', marginTop: '20px' }}>
+      <h3>Auth Status</h3>
+      <button onClick={checkStatus} style={{ padding: '10px 20px', marginBottom: '10px' }}>
+        Check Login Status
+      </button>
+      <p>
+        {/* TODO: ternary - if status is null, show "Click button to check", else show status */}
+      </p>
+    </div>
+  )
+}
+```
+
+**TODO 12:** In `app/page.js`, import the AuthStatus component and add it to the page.
+
+Keep `app/page.js` as a server component (don't add "use client"!). This demonstrates the server-imports-client pattern.
+
+---
+
+## Part 7: Google OAuth
+
+### Step 1: Get Redirect URI from Supabase
+
+1. In Supabase dashboard, go to **Authentication** → **Providers**
+2. Find **Google** and click to expand it
+3. Toggle it **ON**
+4. **Copy the "Redirect URL"** shown (looks like `https://xxxxx.supabase.co/auth/v1/callback`). You'll need this for Google Cloud Console
+
+### Step 2: Set Up Google Cloud Console
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+
+2. **Create a project** (or select an existing one):
+   - Click the project dropdown at the top
+   - Click "New Project"
+   - Give it a name and click "Create"
+
+3. **Enable the Google+ API** (required for OAuth):
+   - Go to **APIs & Services** → **Library**
+   - Search for "Google+ API" and enable it
+
+4. **Configure OAuth Consent Screen**:
+   - Go to **APIs & Services** → **OAuth consent screen**
+   - Select **External** and click "Create"
+   - Fill in the required fields (App name, User support email, Developer email)
+   - Click "Save and Continue" through the remaining steps (you can skip optional fields)
+
+5. **Create OAuth Credentials**:
+   - Go to **APIs & Services** → **Credentials**
+   - Click **Create Credentials** → **OAuth client ID**
+   - Select **Web application**
+   - Give it a name (e.g., "Supabase Auth")
+   - Under **Authorized redirect URIs**, click "Add URI" and paste the Redirect URL from Supabase (the one you copied in Step 1)
+   - Click **Create**
+
+6. **Copy your credentials**:
+   - You'll see a popup with your **Client ID** and **Client Secret**
+   - Copy both of these!
+
+### Step 3: Paste Credentials in Supabase
+
+1. Go back to Supabase → **Authentication** → **Providers** → **Google**
+2. Paste your **Client ID** from Google
+3. Paste your **Client Secret** from Google
+4. Click **Save**
+
+### Step 4: Create OAuth API Route
+
+**TODO 13:** Create `app/api/auth/google/route.js`:
+
+```js
+import { supabase } from '../../../../lib/supabase'
+
+export async function GET(request) {
+  // TODO: Call supabase.auth.signInWithOAuth({ provider: 'google' })
+  // This returns a URL - redirect the user to it
+}
+```
+
+---
+
+## Part 8: The Frontend
+
+We're giving you the frontend code so you can paste it in and immediately see all the buttons and forms working. Once you paste these in, you can play around with signing up, logging in, and testing your auth system!
+
+### Login Page
+
+Replace `app/login/page.js` with:
+
+```jsx
+"use client"
+
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+
+export default function LoginPage() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [isSignUp, setIsSignUp] = useState(false)
+  const [error, setError] = useState('')
+  const router = useRouter()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setError('')
+    
+    // Call our API route instead of Supabase directly!
+    const endpoint = isSignUp ? '/api/auth/signup' : '/api/auth/login'
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    })
+    
+    const data = await res.json()
+    
+    if (data.error) {
+      setError(data.error.message)
+    } else {
+      router.push('/dashboard')
+    }
+  }
+
+  const handleGoogleSignIn = () => {
+    // Redirect to our Google OAuth API route
+    window.location.href = '/api/auth/google'
+  }
+
+  return (
+    <div style={{ maxWidth: '400px', margin: '100px auto', padding: '20px' }}>
+      <h1>{isSignUp ? 'Sign Up' : 'Login'}</h1>
+      
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          style={{ width: '100%', padding: '10px', marginBottom: '10px' }}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={{ width: '100%', padding: '10px', marginBottom: '10px' }}
+        />
+        <button type="submit" style={{ width: '100%', padding: '10px', marginBottom: '10px' }}>
+          {isSignUp ? 'Sign Up' : 'Login'}
+        </button>
+      </form>
+
+      <button onClick={handleGoogleSignIn} style={{ width: '100%', padding: '10px', marginBottom: '10px' }}>
+        Sign in with Google
+      </button>
+
+      <p onClick={() => setIsSignUp(!isSignUp)} style={{ cursor: 'pointer', color: 'blue' }}>
+        {isSignUp ? 'Already have an account? Login' : "Don't have an account? Sign Up"}
+      </p>
+
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+    </div>
+  )
+}
+```
+
+### Dashboard Page
+
+Create `app/dashboard/page.js`:
+
+```jsx
+"use client"
+
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+
+export default function Dashboard() {
+  const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const router = useRouter()
+
+  useEffect(() => {
+    async function checkUser() {
+      // Call our API route to get user
+      const res = await fetch('/api/auth/user')
+      const data = await res.json()
+      
+      if (data.data?.user) {
+        setUser(data.data.user)
+      } else {
+        router.push('/login')
+      }
+      setLoading(false)
+    }
+    checkUser()
+  }, [router])
+
+  const handleLogout = async () => {
+    await fetch('/api/auth/logout', { method: 'POST' })
+    router.push('/login')
+  }
+
+  if (loading) return <p>Loading...</p>
+
+  return (
+    <div style={{ maxWidth: '600px', margin: '100px auto', padding: '20px' }}>
+      <h1>Dashboard</h1>
+      <p>Welcome, {user?.email}!</p>
+      <p>User ID: {user?.id}</p>
+      <button onClick={handleLogout} style={{ padding: '10px 20px' }}>
+        Logout
+      </button>
+    </div>
+  )
+}
+```
+
+---
+
+## It All Comes Together!
+
+You should now have a fully working auth system! Test it out:
+
+1. **Run your app** with `npm run dev`
+2. **Go to the login page** and sign up with an email and password
+3. **Check Supabase**: go to your Supabase dashboard → **Authentication** → **Users** tab. You should see the new user you just created!
+4. **Try logging out** and logging back in
+5. **Test the AuthStatus component** on the home page: click "Check Login Status" to see if it detects you're logged in
+6. **Try Google OAuth**: you should be redirected to Google and back after you sign in on the Google screen
+
+If everything works, congratulations! You've built a full-stack Next.js app with authentication! 🎉
+
+---
+
+## Submission
+
+Because this is a large project, follow these steps before submitting:
+
+1. **Delete the `node_modules/` folder** (this is huge and we can regenerate it with `npm install`)
+
+2. **Replace your `.env.local` keys with placeholders** (don't expose your real secret keys!)
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_url_here
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_here
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
+```
+
+3. Since this is a large project, **zip your entire project folder** and submit to Gradescope
