@@ -346,7 +346,7 @@ const weeks: Week[] = [
     title: "Useful frontend frameworks!",
     lessons: [
       {
-        topic: "CSS Frameworks and Redux.js",
+        topic: "CSS Frameworks, Redux.js",
         reading: [
           {
             link: "/docs/Lessons/CSSFrameworks",
@@ -364,7 +364,7 @@ const weeks: Week[] = [
     title: "Ending strong",
     lessons: [
       {
-        topic: "Django + Flask",
+        topic: "Django, Flask",
         reading: [
           { link: "/docs/Lessons/Django", name: "Django" },
           { link: "/docs/Lessons/Flask", name: "Flask" },
@@ -448,7 +448,7 @@ const vitamins: IncompleteAssignment[] = [
     },
     assignedWeek: 8,
     dueWeek: 9,
-    dueDay: 2,
+    dueDay: 0,
   },
   {
     link: {
