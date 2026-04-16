@@ -509,7 +509,7 @@ const projects: IncompleteAssignment[] = [
       {
         name: "Project Idea + Design Prototype",
         dueWeek: 9,
-        dueDay: 2,
+        dueDay: 5,
       },
     ],
   },
