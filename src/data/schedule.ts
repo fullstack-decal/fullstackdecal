@@ -225,6 +225,10 @@ const weeks: Week[] = [
           link: "https://docs.google.com/presentation/d/1D83XleJSaqoo-fYCsR-I6xmiPa5CcGfI/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
           name: "Slides",
         },
+        recording: {
+          link: "https://drive.google.com/file/d/1n6tJAL4eQQP5cS64aSiQC8DsAStgWjMh/view?usp=sharing",
+          name: "Recording",
+        },
         reading: [
           { link: "/docs/Lessons/Routing", name: "Routing and Axios" },
         ],
@@ -347,6 +351,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "CSS Frameworks, Redux.js",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1GIKZtNvNLv5Hb53w_lRe2jUoIr0vTcVf/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          name: "Slides",
+        },
         reading: [
           {
             link: "/docs/Lessons/CSSFrameworks",
