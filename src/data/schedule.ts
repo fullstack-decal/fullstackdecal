@@ -465,7 +465,7 @@ const vitamins: IncompleteAssignment[] = [
     },
     assignedWeek: 9,
     dueWeek: 10,
-    dueDay: 2,
+    dueDay: 6,
   },
   {
     link: {
