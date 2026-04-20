@@ -4,109 +4,461 @@ sidebar_position: 9
 
 # CSS Frameworks and Redux
 
-In this assignment, we’ll be building a simple to-do list app, but with a twist—using **Bootstrap** to handle all the styling and **Redux** to manage our data. Here’s what that looks like:
+### Overview
 
-- **Using Bootstrap**: We’ll make our app look clean and professional without writing tons of custom CSS. Bootstrap will give us the classes we need to style the form, buttons, and list items so they’re all neat and responsive.
-    - Check out [https://getbootstrap.com/](https://getbootstrap.com/) for more information and Bootstrap styles!
-- **Managing Data with Redux**: Instead of each part of the app managing its own tasks, we’ll keep everything organized in one central place using Redux. This makes it easy for different parts of the app to know what’s going on and stay in sync.
+In this vitamin, you'll build a **Shopping Cart** application using **Redux Toolkit** for state management and **Bootstrap** for styling. This teaches you how modern React applications manage complex state across components.
 
-By the end of this, you’ll have a to-do list app that looks polished and has a well-structured way of handling data—two things that are super useful when building bigger apps later on!
+**Why Redux?** In our React vitamin, you used `useState` and `useContext` for state. That works for small apps, but as apps grow, passing state through many components becomes messy. Redux gives you a **single central store** that any component can read from or write to.
+
+**Why Bootstrap?** Instead of writing CSS from scratch, Bootstrap provides pre-built classes like `btn btn-primary` and `card` that make your app look professional with minimal effort.
+
+### Learning Objectives
+
+- Understand Redux core concepts: Store, Slices, Actions, Reducers
+- Use `useSelector` to read state from the Redux store
+- Use `useDispatch` to send actions to update state
+- Apply Bootstrap classes for responsive, professional styling
 
 ---
 
-**Project Structure + Appearance**
+## Redux Concepts Overview
 
-After creating your React app with `create-react-app`, you should have a basic file structure. Here’s a quick overview of the folder:
+### Store
+The **store** is a single JavaScript object that holds all your application's state. Instead of having state scattered across different components, everything lives in one place. Any component can access it.
+
+### Slice
+A **slice** is a collection of Redux logic for a single feature. It contains:
+- **Initial state** - the starting values (e.g., `{ items: [], totalQuantity: 0 }`)
+- **Reducers** - functions that update the state
+
+Think of slices as organizing your store into sections. A shopping app might have a `cartSlice`, `userSlice`, and `productsSlice`.
+
+### Actions
+**Actions** are plain objects that describe what happened. They have a `type` (like `"cart/addItem"`) and optionally a `payload` (the data). You don't create these manually; Redux Toolkit generates them for you.
+
+### Reducers
+**Reducers** are functions that take the current state and an action, then return the new state. They define *how* the state changes in response to actions.
+
+```js
+addItem: (state, action) => {
+  // action.payload contains the data passed when dispatching
+  state.items.push(action.payload);
+}
+```
+
+### useSelector
+The `useSelector` hook lets components **read** data from the store. You use this inside your React components (not in the Redux setup files):
+
+```js
+// Inside a component like Cart.js
+const items = useSelector((state) => state.cart.items);
+```
+
+The function you pass receives the entire store state and returns the piece you need.
+
+### useDispatch
+The `useDispatch` hook lets components **send** actions to update the store. You also use this inside your React components:
+
+```js
+// Inside a component like ProductList.js
+const dispatch = useDispatch();
+dispatch(addItem({ id: 1, name: "Shirt", price: 25 }));
+```
+
+:::info Where Does Each Piece Go?
+- **Slice, reducers, actions** → `store/cartSlice.js` (Redux setup)
+- **Store configuration** → `store/store.js` (Redux setup)
+- **useSelector, useDispatch** → Inside your React components (e.g., `Cart.js`, `ProductList.js`)
+:::
+
+### The Flow
 
 ```
-react-todo-app/
-├── public/
-├── src/
-│   ├── components/
-│   │   ├── TaskForm.js
-│   │   ├── TaskList.js
-│   ├── App.js
-│   ├── index.js
+User clicks "Add to Cart"
+        ↓
+Component calls dispatch(addItem(product))
+        ↓
+Redux runs the addItem reducer
+        ↓
+State updates (item added to cart)
+        ↓
+Components using useSelector re-render with new data
+```
+
+---
+
+## Using Bootstrap in React
+
+In React, use `className` instead of `class`. Combine multiple classes with spaces:
+
+```jsx
+<button className="btn btn-primary">Click me</button>
+<div className="card mt-4">...</div>
+```
+
+### Bootstrap Classes Reference
+
+**Layout:**
+- `container-fluid` - Full-width container
+- `row` - Creates a horizontal row for columns
+- `col-md-4`, `col-md-8` - Column widths (out of 12 total)
+- `mt-4`, `mb-3`, `me-2` - Margins (t=top, b=bottom, e=end/right, s=start/left)
+
+**Cards:**
+- `card` - Card container
+- `card-header` - Card header section
+- `card-body` - Card content area
+- `card-title` - Card title text
+- `card-img-top` - Image at top of card
+
+**Buttons:**
+- `btn` - Base button class (always required)
+- `btn-primary` - Blue button
+- `btn-danger` - Red button
+- `btn-secondary` - Gray button
+- `btn-sm` - Small button size
+
+**Lists:**
+- `list-group` - Container for list items
+- `list-group-item` - Individual list item
+
+**Flexbox:**
+- `d-flex` - Display as flexbox
+- `justify-content-between` - Space items apart
+- `align-items-center` - Vertically center items
+
+**Navbar:**
+- `navbar` - Navigation bar container
+- `navbar-dark` - Light text for dark backgrounds
+- `bg-dark` - Dark background color
+- `navbar-brand` - Brand/title text
+
+**Text:**
+- `text-muted` - Gray/muted text color
+
+See [Bootstrap docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/) for more.
+
+---
+
+## Part 1: Project Setup
+
+```bash
+npx create-react-app shopping-cart
+cd shopping-cart
+npm install @reduxjs/toolkit react-redux bootstrap
+```
+
+Create this file structure:
+
+```
+src/
+├── components/
+│   ├── ProductList.js
+│   ├── Cart.js
+│   └── CartItem.js
+├── store/
 │   ├── store.js
-└── package.json
-
+│   └── cartSlice.js
+├── data/
+│   └── products.js
+├── App.js
+└── index.js
 ```
 
-The website should look something like this:
+---
 
-![Image of To-Do List App](./AssignmentAssets/vit8img.png)
+## Part 2: Product Data
 
-### **Summary**
+Create `src/data/products.js` with an array of at least 4 products. Each product must have: `id`, `name`, `price`, `image`.
 
-1. **`index.js`** initializes the app with Bootstrap styling and the Redux store.
-2. **`store.js`** holds the central state (tasks) and manages updates through actions (you will need to create this file).
-3. **`App.js`** serves as the app’s main structure, bringing together `TaskForm` and `TaskList`.
-
-Components folder:
-
-1. **`TaskForm.js`** lets users add tasks, dispatching actions to update the state (you will need to create this file).
-2. **`TaskList.js`** displays the current list of tasks, enabling users to delete tasks and see the list update in real-time (you will need to create this file).
-
-### Steps:
-
-Before we begin, make sure to set up a react project and cd into it!
-
-### **1. Setting Up Bootstrap in `src/index.js`**
-
-- **File**: Look for `src/index.js`
-- **Task**:
-    - Import the Bootstrap CSS at the top to make its styles available throughout your project.
-    - Wrap the `<App />` component with `<Provider store={store}>`, which makes the Redux store accessible to the app.
-    - Import `Provider` from `react-redux` and `store` from `store.js`.
+Export this array as the default export.
 
 ---
 
-### **2. Setting Up the Redux Store in `src/store.js`**
+## Part 3: Create the Cart Slice
 
-- **File**: Create `src/store.js`
-- **Task**:
-    - Define the initial state of your app with an empty list of tasks.
-    - Set up a reducer function to handle actions for adding and deleting tasks.
-    - Create a Redux store using this reducer, then export the store to use in other parts of the app.
+Create `src/store/cartSlice.js`:
+
+```js
+import { createSlice } from '@reduxjs/toolkit';
+
+const initialState = {
+  items: [],
+  totalQuantity: 0,
+};
+
+const cartSlice = createSlice({
+  name: 'cart',
+  initialState,
+  reducers: {
+    addItem: (state, action) => {
+      // TODO 1: Add item to cart
+      // If item exists, increment quantity. If new, add with quantity: 1
+      // Update totalQuantity
+    },
+    removeItem: (state, action) => {
+      // TODO 2: Remove item from cart by id (action.payload)
+      // Update totalQuantity
+    },
+    updateQuantity: (state, action) => {
+      // TODO 3: Update item quantity
+      // action.payload has { id, quantity }
+      // If quantity <= 0, remove item
+    },
+    clearCart: (state) => {
+      // TODO 4: Reset cart to initial state
+    },
+  },
+});
+
+export const { addItem, removeItem, updateQuantity, clearCart } = cartSlice.actions;
+export default cartSlice.reducer;
+```
+
+:::info Understanding the Exports
+`createSlice()` returns an object with:
+- `cartSlice.actions` - Action creator functions for each reducer
+- `cartSlice.reducer` - The reducer function
+
+We export actions as **named exports** (for components to dispatch) and the reducer as **default export** (for the store).
+
+**How dispatch works with actions:**
+
+When you call an action creator like `addItem({ id: 1, name: "Shirt", price: 25 })`, it returns an action object:
+```js
+{ type: 'cart/addItem', payload: { id: 1, name: "Shirt", price: 25 } }
+```
+
+Then `dispatch()` sends this action to the store, which runs the matching reducer function:
+```js
+const dispatch = useDispatch();
+dispatch(addItem({ id: 1, name: "Shirt", price: 25 }));
+// This triggers the addItem reducer with action.payload = { id: 1, name: "Shirt", price: 25 }
+```
+:::
+
+:::tip Redux Toolkit Magic
+With Redux Toolkit, you can write code that looks like it "mutates" state (e.g., `state.items.push(item)`). Under the hood, it uses Immer to handle immutability for you!
+:::
 
 ---
 
-### **3. Building the Main Layout in `src/App.js`**
+## Part 4: Configure the Store
 
-- **File**: Look for `src/App.js`
-- **Task**:
-    - Set up the main layout for the app, including a title.
-    - Import and render the `TaskForm` and `TaskList` components to organize the app structure.
+Create `src/store/store.js`:
 
----
+```js
+import { configureStore } from '@reduxjs/toolkit';
+import cartReducer from './cartSlice';
 
-### **4. Creating the TaskForm Component in `src/components/TaskForm.js`**
-
-- **File**: `src/components/TaskForm.js`
-- **Task**:
-    - Create an input form for adding new tasks.
-    - Use `useState` to manage the input field’s content.
-    - Dispatch an action to the Redux store when a new task is submitted.
+// TODO 5: Create and export the store using configureStore
+// The store should have a "cart" key that uses cartReducer
+```
 
 ---
 
-### **5. Creating the TaskList Component in `src/components/TaskList.js`**
+## Part 5: Connect Redux to React
 
-- **File**: `src/components/TaskList.js`
-- **Task**:
-    - Display the list of tasks from the Redux store.
-    - Add a delete button for each task that dispatches an action to remove the specific task.
-    - Use `useSelector` to access the tasks in the Redux store, and `useDispatch` to send delete actions.
+Update `src/index.js`:
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { Provider } from 'react-redux';
+import store from './store/store';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+```
 
 ---
 
-### **6. Running and Testing the App**
+## Part 6: Create the ProductList Component
 
-1. **Run the app** using `npm start`.
-2. **Test** the functionality:
-    - **Add tasks** through the form, and they should appear in the list.
-    - **Delete tasks** by clicking their delete button, and they should be removed from the list.
+Create `src/components/ProductList.js`:
 
-### 7. Final Task
+```jsx
+import { useDispatch } from 'react-redux';
+import { addItem } from '../store/cartSlice';
+import products from '../data/products';
 
-When you’re done, submit to Gradescope! Congrats on completing Vitamin 8!
+function ProductList() {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (product) => {
+    // TODO 6: Dispatch addItem action with the product
+  };
+
+  return (
+    <div>
+      <h2>Products</h2>
+      {/* TODO 7: Create a grid of product cards */}
+      {/* Map over products and display each one */}
+      {/* 
+        Bootstrap classes to use:
+        - row, col-md-3 (or col-md-4) for grid layout
+        - card, card-body, card-title, card-img-top for cards
+        - btn btn-primary for the Add to Cart button
+      */}
+    </div>
+  );
+}
+
+export default ProductList;
+```
+
+---
+
+## Part 7: Create the Cart Component
+
+Create `src/components/Cart.js`:
+
+```jsx
+import { useSelector, useDispatch } from 'react-redux';
+import { clearCart } from '../store/cartSlice';
+import CartItem from './CartItem';
+
+function Cart() {
+  const dispatch = useDispatch();
+  
+  // TODO 8: Use useSelector to get items from the cart state
+  // TODO 9: Use useSelector to get totalQuantity from the cart state
+
+  const handleClearCart = () => {
+    // TODO 10: Dispatch clearCart action
+  };
+
+  // TODO 11: Calculate total price (price * quantity for each item)
+  const totalPrice = 0;
+
+  return (
+    <div>
+      {/* TODO 12: Build the cart UI */}
+      {/* Show: "Cart (X items)" title, list of CartItem components, total price, Clear Cart button */}
+      {/* If cart is empty, show "Your cart is empty" */}
+      {/*
+        Bootstrap classes to use:
+        - card, card-header, card-body for the container
+        - list-group, list-group-item for the items list
+        - btn btn-danger for the Clear Cart button
+        - text-muted for empty cart message
+      */}
+    </div>
+  );
+}
+
+export default Cart;
+```
+
+---
+
+## Part 8: Create the CartItem Component
+
+Create `src/components/CartItem.js`:
+
+```jsx
+import { useDispatch } from 'react-redux';
+import { removeItem, updateQuantity } from '../store/cartSlice';
+
+function CartItem({ item }) {
+  const dispatch = useDispatch();
+
+  const handleIncrease = () => {
+    // TODO 13: Dispatch updateQuantity to increase by 1
+  };
+
+  const handleDecrease = () => {
+    // TODO 14: Dispatch updateQuantity to decrease by 1
+  };
+
+  const handleRemove = () => {
+    // TODO 15: Dispatch removeItem with the item's id
+  };
+
+  return (
+    <div>
+      {/* TODO 16: Display item name, price, quantity with +/- buttons, and Remove button */}
+      {/*
+        Bootstrap classes to use:
+        - d-flex, justify-content-between, align-items-center for layout
+        - btn btn-sm btn-secondary for +/- buttons
+        - btn btn-sm btn-danger for Remove button
+        - mb-0 for removing margin from text elements
+      */}
+    </div>
+  );
+}
+
+export default CartItem;
+```
+
+---
+
+## Part 9: Build the App Layout
+
+Update `src/App.js`:
+
+```jsx
+import ProductList from './components/ProductList';
+import Cart from './components/Cart';
+
+function App() {
+  return (
+    <div>
+      {/* TODO 17: Create app layout */}
+      {/* - Navbar at top with title "Redux Shopping Cart" */}
+      {/* - Two-column layout: Products on left (wider), Cart on right */}
+      {/*
+        Bootstrap classes to use:
+        - navbar, navbar-dark, bg-dark, navbar-brand for the navbar
+        - container-fluid for full-width container
+        - row for the row
+        - col-md-8 for products column
+        - col-md-4 for cart column
+        - mt-4 for top margin
+      */}
+    </div>
+  );
+}
+
+export default App;
+```
+
+---
+
+## Testing Your App
+
+Run `npm start` and verify:
+
+**Cart functionality:**
+- Adding items to cart increases `totalQuantity`
+- Adding same item twice increases its `quantity` (not a duplicate entry)
+- Quantity +/- buttons update `quantity` correctly
+- Quantity going to 0 removes the item
+- Remove button removes the item
+- Clear Cart resets `items` and `totalQuantity`
+- Total price calculates correctly (`price * quantity` for each item)
+
+**Bootstrap styling:**
+- Navbar appears dark with white text
+- Products display in a grid of cards
+- Cart uses card styling with list items
+- Buttons have appropriate colors (primary, danger, secondary)
+
+---
+
+## Submission
+
+1. Delete `node_modules/` folder
+2. Zip your entire project folder
+3. Submit to Gradescope
+
+:::tip
+We can regenerate `node_modules/` by running `npm install`.
+:::

@@ -328,20 +328,20 @@ Add `"use client"` at the top for **Client Components**:
 
 Here's why Next.js is so efficient: **Server Components can import Client Components**:
 
-```jsx
+     ```jsx
 // app/page.js - This is a SERVER component (no "use client")
 import AuthStatus from './components/AuthStatus'  // Client component
 
 export default function HomePage() {
   // This part renders on the server (FAST!)
-  return (
-    <div>
+       return (
+         <div>
       <h1>Welcome to AuthVitamin</h1>
       <p>This text was rendered on the server instantly.</p>
       
       {/* This interactive part is a client component */}
       <AuthStatus />
-    </div>
+         </div>
   )
 }
 ```
@@ -375,8 +375,8 @@ export default function AuthStatus() {
     // 3. If data.data?.user exists, setStatus to the user's email
     // 4. Otherwise, setStatus to "Not Logged In"
   }
-  
-  return (
+
+       return (
     <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '8px', marginTop: '20px' }}>
       <h3>Auth Status</h3>
       <button onClick={checkStatus} style={{ padding: '10px 20px', marginBottom: '10px' }}>
@@ -385,7 +385,7 @@ export default function AuthStatus() {
       <p>
         {/* TODO: ternary - if status is null, show "Click button to check", else show status */}
       </p>
-    </div>
+         </div>
   )
 }
 ```
