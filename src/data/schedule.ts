@@ -378,9 +378,9 @@ const weeks: Week[] = [
           { link: "/docs/Lessons/Flask", name: "Flask" },
           { link: "/docs/Lessons/Deployment", name: "Deploying Your Website" },
         ],
-        slides: [
+        slides:
           { link: "https://docs.google.com/presentation/d/1Kz9siDX41nn-pJESLP1FBpDj0Em1Ux_6/edit?usp=sharing&ouid=117005960368617411998&rtpof=true&sd=true", name: "Slides" }
-        ]
+        
       },
       {
         topic: "Guest Lecture: MongoDB - Intro to Data Modeling",
