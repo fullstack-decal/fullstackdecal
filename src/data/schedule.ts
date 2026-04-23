@@ -378,6 +378,9 @@ const weeks: Week[] = [
           { link: "/docs/Lessons/Flask", name: "Flask" },
           { link: "/docs/Lessons/Deployment", name: "Deploying Your Website" },
         ],
+        slides:
+          { link: "https://docs.google.com/presentation/d/1Kz9siDX41nn-pJESLP1FBpDj0Em1Ux_6/edit?usp=sharing&ouid=117005960368617411998&rtpof=true&sd=true", name: "Slides" }
+        
       },
       {
         topic: "Guest Lecture: MongoDB - Intro to Data Modeling",
@@ -470,7 +473,7 @@ const vitamins: IncompleteAssignment[] = [
   {
     link: {
       link: "/docs/Assignments/Vitamins/PythonDeploy",
-      name: "Flask, Django, and Deployment",
+      name: "Flask, Django, and Deployment (EXTRA CREDIT/ATTENDANCE FIXER)",
     },
     assignedWeek: 10,
     dueWeek: 11,
