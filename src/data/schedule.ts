@@ -372,7 +372,7 @@ const weeks: Week[] = [
     title: "Ending strong",
     lessons: [
       {
-        topic: "Django, Flask",
+        topic: "Django, Flask, Deployment",
         reading: [
           { link: "/docs/Lessons/Django", name: "Django" },
           { link: "/docs/Lessons/Flask", name: "Flask" },
