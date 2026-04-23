@@ -470,7 +470,7 @@ const vitamins: IncompleteAssignment[] = [
   {
     link: {
       link: "/docs/Assignments/Vitamins/PythonDeploy",
-      name: "Flask, Django, and Deployment",
+      name: "Flask, Django, and Deployment (EXTRA CREDIT/ATTENDANCE FIXER)",
     },
     assignedWeek: 10,
     dueWeek: 11,
