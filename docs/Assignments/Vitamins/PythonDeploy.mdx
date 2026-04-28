@@ -2,101 +2,608 @@
 sidebar_position: 10
 ---
 
-# Flask, Django, and Deploying
+# Flask, Django, and Deployment
 
-## Creating a Simple React + Flask Web App with Deployment on Vercel
+## Overview
 
-### **Objective**:
+In this vitamin, you'll build a **Quote of the Day** application using both Flask and Django, then deploy your Django app to Vercel.
 
-In this assignment, you’ll build and deploy a simple "Quote of the Day" app using **React** for the frontend and **Flask** for the backend. React will handle the user interface, and Flask will give us an easy way to set up an API for serving random quotes. We’re using Flask instead of Django because it’s lightweight and perfect for small projects like this—no need for extra features we won’t even use. You’ll deploy the React app on **Vercel** so it’s live and shareable, and the Flask backend on a platform like Render or Heroku. Deployment is super important because it makes your app accessible online and shows you how to connect the frontend and backend in a real-world scenario. By the end, you’ll have a simple, deployed app to show off!
+- **Flask** → Build a JSON API (test locally, submit to Gradescope)
+- **Django** → Build a full app with MVT (Model-View-Template), then deploy
 
-**NOTE**: If the deployment part does not work, then you do not need to deploy the frontend or backend, as long as you have a basic flask and react web app to show you understand how to use flask.
+:::info Why Both Frameworks?
+Flask and Django are both **Python** web frameworks. In the real world, you'd pick one. We're building both so you can compare:
+- **Flask** - Minimal, you add only what you need
+- **Django** - Full-featured with built-in ORM, admin panel, and templating
 
-The React site should look something like this (the quotes should be randomized when you click the button).
+Django includes its own frontend via templates, so it deploys as one complete app!
+:::
 
-![Vitamin9React](./AssignmentAssets/vit9-react.png)
+### Learning Objectives
 
-The backend flask server should look something like this (refreshing the site will randomly change the quote).
-
-![Vitamin9flask](./AssignmentAssets/vit9-flask.png)
-
----
-
-### **Part 1: Create a GitHub Repository and Set Up React**
-
-1. **Create a GitHub Repository**:
-    - Log in to GitHub and create a new repository for the project.
-    - Clone the repository to your local machine using your terminal.
-2. **Set Up the React App**:
-    - Navigate into the cloned repository directory on your machine.
-    - Create a folder called "frontend" inside the repository folder and initialize a React app inside this folder.
-    - Commit the initial React app to the repository and push it to GitHub.
-3. **Test the React App Locally**:
-    - Run the React app on your local machine to ensure it works correctly before proceeding.
+- Build a REST API with Flask
+- Build a full web app with Django's Model-View-Template pattern
+- Understand the difference between Flask and Django
+- Deploy a Django app to Vercel
 
 ---
 
-### **Part 2: Deploy React Frontend on Vercel**
+## Part 1: Project Setup
 
-1. **Link the GitHub Repository to Vercel**:
-    - Log in to Vercel and connect it to your GitHub account.
-    - Select the repository you just created and link it to a new Vercel project.
-2. **Deploy the React App**:
-    - Follow the guided steps in Vercel to deploy your React app.
-    - Note the live URL provided by Vercel and test the deployed app to ensure it works as expected.
+```
+quote-app/
+├── flask-backend/
+└── django-app/
+```
 
----
-
-### **Part 3: Set Up Flask Backend**
-
-1. **Set Up a Virtual Environment**:
-    Create a Python virtual environment to isolate your Flask backend dependencies. This is so that the dependencies for this project do not interfere with other projects you may have.
-    - Navigate back to the root project folder (repository folder, not frontend folder).
-        
-    - Create and activate a virtual environment:
-        
-        ```bash
-        python -m venv venv
-        source venv/bin/activate  # On Windows, use: venv\\Scripts\\activate
-        
-        ```
-
-2. **Install Flask and CORS**:
-    - Install Flask for building the backend and enable CORS to allow the React app to communicate with the backend.
-3. **Build the Flask Backend**:
-    - Create a new folder called "backend" inside the repository folder.
-    - Write a Flask API endpoint that serves a random quote. 
-        - make sure to import the necessary libraries and set up the Flask app.
-    - Test the backend locally to ensure it works (run the flask file in the terminal).
-4. **Deploy the Backend**:
-    - Use a platform like Render or Heroku to deploy the Flask backend.
-    - Note the backend's public URL for later use in connecting it to the React frontend.
+```bash
+mkdir quote-app && cd quote-app
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+```
 
 ---
 
-### **Part 4: Connect React Frontend to Flask Backend**
+## Part 2: Flask Backend
 
-1. **Update the React App**:
-    - Modify the React app to fetch data from the deployed Flask backend. Replace any local backend URLs with the public URL of your Flask backend.
-2. **Push Changes to GitHub**:
-    - Commit and push the updated React app code to GitHub. Vercel will automatically redeploy the app.
-3. **Test the Deployed App**:
-    - Visit your Vercel app's live URL and confirm that it fetches and displays quotes from the backend.
+Flask is great for simple APIs. You'll build JSON endpoints and test them locally.
+
+### Step 1: Setup
+
+```bash
+mkdir flask-backend && cd flask-backend
+pip install flask
+```
+
+### Step 2: Create the API
+
+Create `flask-backend/app.py`:
+
+```python
+from flask import Flask, jsonify, request
+import random
+
+app = Flask(__name__)
+
+quotes = [
+    {"id": 1, "text": "The only way to do great work is to love what you do.", "author": "Steve Jobs"},
+    {"id": 2, "text": "Code is like humor. When you have to explain it, it's bad.", "author": "Cory House"},
+    {"id": 3, "text": "First, solve the problem. Then, write the code.", "author": "John Johnson"},
+    {"id": 4, "text": "Simplicity is the soul of efficiency.", "author": "Austin Freeman"},
+    {"id": 5, "text": "Fix the cause, not the symptom.", "author": "Steve Maguire"},
+]
+
+next_id = 6  # For generating new IDs
+
+# TODO 1: Create GET /api/quote - return a random quote as JSON
+
+# TODO 2: Create GET /api/quotes - return all quotes as JSON
+
+# TODO 3: Create POST /api/quotes - add a new quote
+#   - Get JSON data from request.json
+#   - Create new quote with next_id, text, and author
+#   - Append to quotes list
+#   - Increment next_id
+#   - Return the new quote with status 201
+
+# TODO 4: Create PUT /api/quotes/<id> - update a quote by id
+#   - Get JSON data from request.json
+#   - Find quote with matching id
+#   - Update text and/or author
+#   - Return the updated quote
+#   - If not found, return error with status 404
+
+# TODO 5: Create DELETE /api/quotes/<id> - delete a quote by id
+#   - Find and remove quote with matching id
+#   - Return success message
+#   - If not found, return error with status 404
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
+```
+
+### Step 3: Test Locally
+
+```bash
+python app.py
+```
+
+**Test GET in browser:**
+- `http://localhost:5000/api/quote` - random quote
+- `http://localhost:5000/api/quotes` - all quotes
+
+**Test POST, PUT, DELETE with curl or Postman:**
+
+```bash
+# Add a new quote (POST)
+curl -X POST http://localhost:5000/api/quotes \
+  -H "Content-Type: application/json" \
+  -d '{"text": "New quote here", "author": "Someone"}'
+
+# Update a quote (PUT)
+curl -X PUT http://localhost:5000/api/quotes/1 \
+  -H "Content-Type: application/json" \
+  -d '{"text": "Updated quote", "author": "New Author"}'
+
+# Delete a quote (DELETE)
+curl -X DELETE http://localhost:5000/api/quotes/1
+```
+
+### Step 4: Save Dependencies
+
+```bash
+pip freeze > requirements.txt
+```
 
 ---
 
-### **Part 5: Submit to Gradescope** ###
+## Part 3: Django App with MVT
+
+Django uses the **Model-View-Template (MVT)** pattern. Unlike Flask, Django includes its own frontend via templates, making it a complete web app.
+
+| Component | What it does |
+|-----------|--------------|
+| **Model** | Defines data structure (database tables) |
+| **View** | Handles requests, returns responses |
+| **Template** | HTML pages with Django syntax |
+
+### Step 1: Setup
+
+```bash
+cd ..  # back to quote-app
+pip install django
+django-admin startproject quotesite django-app
+cd django-app
+python manage.py startapp quotes
+```
+
+### Step 2: Configure Settings
+
+**Update `quotesite/settings.py`:**
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'quotes',  # Add this
+]
+```
+
+Also add at the bottom:
+
+```python
+# For deployment
+ALLOWED_HOSTS = ['*']
+```
+
+### Step 3: Create the Model
+
+**Update `quotes/models.py`:**
+
+```python
+from django.db import models
+
+# TODO 6: Create a Quote model with:
+#   - text (CharField, max_length=500)
+#   - author (CharField, max_length=100)
+#   - __str__ method that returns the text
+
+class Quote(models.Model):
+    # Your fields here
+    pass
+```
+
+Run migrations to create the database table:
+
+```bash
+python manage.py makemigrations
+```
+
+This looks at your models and creates a migration file (like a "recipe" for database changes). You should see:
+
+```
+Migrations for 'quotes':
+  quotes/migrations/0001_initial.py
+    - Create model Quote
+```
+
+Then apply the migrations to create the actual database tables:
+
+```bash
+python manage.py migrate
+```
+
+This applies all migrations to actually create the tables in the database. You should see:
+
+```
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, quotes, sessions
+Running migrations:
+  Applying quotes.0001_initial... OK
+```
+
+### Step 4: Add Data via Admin
+
+**Update `quotes/admin.py`:**
+
+```python
+from django.contrib import admin
+from .models import Quote
+
+admin.site.register(Quote)
+```
+
+```bash
+python manage.py createsuperuser
+python manage.py runserver
+```
+
+Go to `http://localhost:8000/admin` and add at least 5 quotes.
+
+### Step 5: Create the Views
+
+**Update `quotes/views.py`:**
+
+```python
+from django.shortcuts import render
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import Quote
+import random
+import json
+
+# ============ TEMPLATE VIEWS (return HTML) ============
+
+# TODO 7: Create a home view
+#   - Get all quotes from database: Quote.objects.all()
+#   - Pick a random quote
+#   - Render 'quotes/home.html' with quote in context
+
+# TODO 8: Create an all_quotes view
+#   - Get all quotes
+#   - Render 'quotes/all_quotes.html' with quotes in context
 
 
-To submit your assignment:
+# ============ API VIEWS (return JSON) ============
 
->  **DO NOT** upload your entire project folder as-is.  
->  **DO NOT** upload your `venv` folder. This contains your virtual environment (a local copy of Python and installed packages) and can be **very large**. It's not needed for grading since we can install everything using your `requirements.txt`.
+# TODO 9: Create a random_quote_api view
+#   - Get all quotes, pick random one
+#   - Return JsonResponse with 'id', 'text', 'author'
 
-> Note: You can ignore files using `.gitignore`. Please refer to [**IMPORTANT FOR PROJECT: Vitamin 5 – Common Mistakes**](https://edstem.org/us/courses/76026/discussion/6504424) on Edstem for more info.
+@csrf_exempt  # Allows POST/PUT/DELETE without CSRF token
+def quotes_api(request):
+    # TODO 10: Handle GET and POST for /api/quotes/
+    #   GET: Return all quotes as JSON (use safe=False for lists)
+    #   POST: Create new quote from request.body, return with status 201
+    #   Check request.method to determine which action
+    pass
 
-Only include the **essential folders and files** listed below:
+@csrf_exempt
+def quote_detail_api(request, id):
+    # TODO 11: Handle GET, PUT, DELETE for /api/quotes/<id>/
+    #   GET: Return single quote as JSON (404 if not found)
+    #   PUT: Update quote from request.body, return updated quote
+    #   DELETE: Delete quote, return success message
+    #   Check request.method to determine which action
+    pass
+```
 
-- `frontend/` – your React app folder.
-- `backend/` – your Flask app folder.
-- `requirements.txt` - so we can install everything in venv.
+:::info RESTful API Design
+Same URL, different HTTP methods:
+- `GET /api/quotes/` → list all
+- `POST /api/quotes/` → create new
+- `GET /api/quotes/1/` → get one
+- `PUT /api/quotes/1/` → update one
+- `DELETE /api/quotes/1/` → delete one
+
+Use `request.method` to check which HTTP method was used.
+:::
+
+:::info @csrf_exempt
+Django has CSRF protection by default, which blocks POST/PUT/DELETE requests without a token. For APIs, we use `@csrf_exempt` to disable this. In production, you'd use proper authentication instead.
+:::
+
+### Step 6: Create the Templates
+
+```bash
+mkdir -p quotes/templates/quotes
+```
+
+**Create `quotes/templates/quotes/home.html`:**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quote of the Day</title>
+    <style>
+        body { 
+            font-family: Georgia, serif; 
+            max-width: 600px; 
+            margin: 50px auto; 
+            padding: 20px;
+            text-align: center; 
+        }
+        .quote-box { 
+            background: #f5f5f5; 
+            padding: 30px; 
+            border-radius: 10px; 
+            margin: 30px 0; 
+        }
+        .text { font-size: 22px; font-style: italic; line-height: 1.6; }
+        .author { color: #666; margin-top: 15px; }
+        a { color: #007bff; text-decoration: none; margin: 0 10px; }
+    </style>
+</head>
+<body>
+    <h1>Quote of the Day</h1>
+    
+    <div class="quote-box">
+        <!-- TODO 15: Display quote.text and quote.author using {{ }} -->
+        <p class="text">"..."</p>
+        <p class="author">- ...</p>
+    </div>
+    
+    <a href="{% url 'home' %}">New Quote</a>
+    <a href="{% url 'all_quotes' %}">All Quotes</a>
+</body>
+</html>
+```
+
+**Create `quotes/templates/quotes/all_quotes.html`:**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Quotes</title>
+    <style>
+        body { 
+            font-family: Georgia, serif; 
+            max-width: 800px; 
+            margin: 50px auto; 
+            padding: 20px; 
+        }
+        .quote-card { 
+            background: #f5f5f5; 
+            padding: 20px; 
+            margin: 15px 0; 
+            border-radius: 8px;
+            border-left: 4px solid #007bff; 
+        }
+        .text { font-style: italic; }
+        .author { color: #666; margin-top: 10px; }
+        a { color: #007bff; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>All Quotes</h1>
+    
+    <!-- TODO 16: Loop through quotes with {% for quote in quotes %} -->
+    <div class="quote-card">
+        <p class="text">"Quote text"</p>
+        <p class="author">- Author</p>
+    </div>
+    <!-- {% endfor %} -->
+    
+    <p><a href="{% url 'home' %}">← Random Quote</a></p>
+</body>
+</html>
+```
+
+### Step 7: Set Up URLs
+
+All our API routes start with `api/` (like `api/quote/`, `api/quotes/`, etc.). Instead of repeating `api/` in every pattern, use `include()` to group them in a separate file called `quotes/api_urls.py`.
+
+**Create `quotes/urls.py`:**
+
+```python
+from django.urls import path, include
+from . import views
+
+urlpatterns = [
+    # TODO 12: Add template view patterns
+    #   - '' -> home view, name='home'
+    #   - 'all/' -> all_quotes view, name='all_quotes'
+    
+    # TODO 13: Use include() to add all API routes under 'api/'
+]
+```
+
+**Create `quotes/api_urls.py`:**
+
+```python
+from django.urls import path
+from . import views
+
+# TODO 14: Define API URL patterns (no 'api/' prefix needed - include() adds it)
+#   - 'quote/' -> random_quote_api (random quote)
+#   - 'quotes/' -> quotes_api (GET all, POST new)
+#   - 'quotes/<int:id>/' -> quote_detail_api (GET one, PUT, DELETE)
+
+urlpatterns = [
+    # Your patterns here
+]
+```
+
+**Update `quotesite/urls.py`:**
+
+```python
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('quotes.urls')),
+]
+```
+
+`path('', include('quotes.urls'))` means: take all URL patterns from `quotes/urls.py` and add them starting at the root (`''`). So if `quotes/urls.py` has `path('all/', ...)`, the full URL becomes `/all/`.
+
+### Step 8: Test Locally
+
+```bash
+python manage.py runserver
+```
+
+- `http://localhost:8000/` - Random quote page
+- `http://localhost:8000/all/` - All quotes page
+- `http://localhost:8000/admin/` - Admin panel
+
+---
+
+## Part 4: Deploy Django to Vercel
+
+:::info One Deployment vs Two
+If you were using **Flask + React**, you'd need to deploy **twice**:
+1. Deploy Flask backend to Vercel/Render
+2. Deploy React frontend to Vercel
+3. Configure React to call the Flask API URL
+
+But with **Django + Templates**, the frontend is built into Django, so you only deploy **once**! This is one of Django's advantages for full-stack apps.
+:::
+
+Since Django includes templates (the frontend), you deploy everything together as one app.
+
+### Step 1: Prepare for Deployment
+
+**Create `django-app/vercel.json`:**
+
+```json
+{
+  "builds": [{
+    "src": "quotesite/wsgi.py",
+    "use": "@vercel/python",
+    "config": { "maxLambdaSize": "15mb" }
+  }],
+  "routes": [
+    { "src": "/(.*)", "dest": "quotesite/wsgi.py" }
+  ]
+}
+```
+
+**Create `django-app/requirements.txt`:**
+
+```
+django
+```
+
+**Update `quotesite/wsgi.py`:**
+
+```python
+import os
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'quotesite.settings')
+
+application = get_wsgi_application()
+app = application  # Vercel needs this
+```
+
+### Step 2: Push to GitHub
+
+:::warning Important
+Push **only** the `django-app/` folder as its own repository. Do NOT include the Flask backend - that's a separate project for Gradescope submission only.
+:::
+
+1. Create a **new** GitHub repository (e.g., "quote-django")
+2. Navigate into the `django-app/` folder:
+   ```bash
+   cd django-app
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git remote add origin https://github.com/YOUR_USERNAME/quote-django.git
+   git push -u origin main
+   ```
+
+### Step 3: Deploy on Vercel
+
+1. Go to [vercel.com](https://vercel.com) and sign in with GitHub
+2. Click **"Add New Project"**
+3. Import your Django repository
+4. Click **Deploy**
+5. Wait for deployment to complete
+
+### Step 4: Test Your Deployed App
+
+Visit your Vercel URL:
+- `https://your-app.vercel.app/` - Random quote
+- `https://your-app.vercel.app/all/` - All quotes
+
+:::tip Automatic Redeployment
+Every time you push changes to GitHub, Vercel automatically redeploys your app. If you create a Pull Request, Vercel creates a **preview deployment** so you can test changes before merging!
+:::
+
+:::warning Note on Database
+SQLite resets on each Vercel deploy. We'll use a **data migration** to automatically populate quotes whenever the database is created.
+:::
+
+### Step 5: Create a Data Migration
+
+A data migration runs during `migrate` and inserts initial data into the database.
+
+```bash
+python manage.py makemigrations quotes --empty --name seed_quotes
+```
+
+This creates an empty migration file. Open `quotes/migrations/0002_seed_quotes.py` and update it:
+
+```python
+from django.db import migrations
+
+def seed_quotes(apps, schema_editor):
+    Quote = apps.get_model('quotes', 'Quote')
+    quotes = [
+        {"text": "The only way to do great work is to love what you do.", "author": "Steve Jobs"},
+        {"text": "Code is like humor. When you have to explain it, it's bad.", "author": "Cory House"},
+        {"text": "First, solve the problem. Then, write the code.", "author": "John Johnson"},
+        {"text": "Simplicity is the soul of efficiency.", "author": "Austin Freeman"},
+        {"text": "Fix the cause, not the symptom.", "author": "Steve Maguire"},
+    ]
+    for q in quotes:
+        Quote.objects.create(text=q["text"], author=q["author"])
+
+class Migration(migrations.Migration):
+    dependencies = [
+        ('quotes', '0001_initial'),
+    ]
+
+    operations = [
+        migrations.RunPython(seed_quotes),
+    ]
+```
+
+Now whenever `migrate` runs (including on Vercel), the quotes are automatically added!
+
+---
+
+## Flask vs Django Summary
+
+| | Flask | Django |
+|--|-------|--------|
+| **Setup** | Minimal | More boilerplate |
+| **Data** | Hardcoded list | Database with ORM |
+| **Frontend** | None (API only) | Built-in templates |
+| **Admin Panel** | None | Built-in |
+| **Deployment** | API only | Full app (frontend + backend) |
+| **Best for** | Simple APIs | Complete web apps |
+
+---
+
+## Submission
+
+Submit to Gradescope:
+- `flask-backend/` folder (with `app.py` and `requirements.txt`)
+- `django-app/` folder (entire Django project)
+- Your deployed Django URL
+
+:::warning Do NOT include
+- `venv/` folder
+- `db.sqlite3` (database file)
+- `__pycache__/` folders
+:::
