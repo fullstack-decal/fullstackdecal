@@ -476,8 +476,8 @@ const vitamins: IncompleteAssignment[] = [
       name: "Flask, Django, and Deployment (EXTRA CREDIT/ATTENDANCE FIXER)",
     },
     assignedWeek: 10,
-    dueWeek: 11,
-    dueDay: 2,
+    dueWeek: 12,
+    dueDay: 1,
   },
 ];
 
