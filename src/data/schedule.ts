@@ -392,6 +392,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "Final Project Presentations",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1dSATBY0SQn8wE-K4Ws6oFtFXJnL_bgHJu5ksHaLIkTk/edit?usp=sharing",
+          name: "Slides",
+        },
       },
       {
         topic: "Final Project Presentations",
