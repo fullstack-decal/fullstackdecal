@@ -273,17 +273,6 @@ const weeks: Week[] = [
     ],
   },
   {
-    title: "Spring Break",
-    lessons: [
-      {
-        topic: "No Lecture",
-      },
-      {
-        topic: "No Lecture"
-      },
-    ],
-  },
-  {
     title: "Databases, last piece of the puzzle",
     lessons: [
       {
@@ -388,6 +377,28 @@ const weeks: Week[] = [
     ],
   },
   {
+    title: "Final project work week",
+    lessons: [
+      {
+        topic: "No Lecture",
+      },
+      {
+        topic: "No Lecture",
+      },
+    ],
+  },
+  {
+    title: "Thanksgiving Break",
+    lessons: [
+      {
+        topic: "No Lecture",
+      },
+      {
+        topic: "No Lecture",
+      },
+    ],
+  },
+  {
     title: "The final stretch!",
     lessons: [
       {
@@ -447,13 +458,13 @@ const vitamins: IncompleteAssignment[] = [
       name: "APIs and Servers",
     },
     assignedWeek: 5,
-    dueWeek: 7,
+    dueWeek: 6,
     dueDay: 2,
   },
   {
     link: { link: "/docs/Assignments/Vitamins/Databases", name: "Databases" },
-    assignedWeek: 7,
-    dueWeek: 8,
+    assignedWeek: 6,
+    dueWeek: 7,
     dueDay: 2,
   },
   {
@@ -461,17 +472,17 @@ const vitamins: IncompleteAssignment[] = [
       link: "/docs/Assignments/Vitamins/NextAuth",
       name: "Next.js and Authentication",
     },
-    assignedWeek: 8,
-    dueWeek: 9,
-    dueDay: 6,
+    assignedWeek: 7,
+    dueWeek: 8,
+    dueDay: 2,
   },
   {
     link: {
       link: "/docs/Assignments/Vitamins/CSSRedux",
       name: "CSS Frameworks and Redux",
     },
-    assignedWeek: 9,
-    dueWeek: 10,
+    assignedWeek: 8,
+    dueWeek: 9,
     dueDay: 6,
   },
   {
@@ -479,7 +490,7 @@ const vitamins: IncompleteAssignment[] = [
       link: "/docs/Assignments/Vitamins/PythonDeploy",
       name: "Flask, Django, and Deployment (EXTRA CREDIT/ATTENDANCE FIXER)",
     },
-    assignedWeek: 10,
+    assignedWeek: 9,
     dueWeek: 12,
     dueDay: 1,
   },
@@ -501,7 +512,7 @@ const projects: IncompleteAssignment[] = [
       name: "APImagination",
     },
     assignedWeek: 4,
-    dueWeek: 8,
+    dueWeek: 7,
     dueDay: 2,
   },
   {
@@ -509,13 +520,13 @@ const projects: IncompleteAssignment[] = [
       link: "/docs/Assignments/Projects/FinalProject",
       name: "Final Project",
     },
-    assignedWeek: 7,
-    dueWeek: 11,
+    assignedWeek: 6,
+    dueWeek: 12,
     dueDay: 2,
     checkpoints: [
       {
         name: "Project Idea + Design Prototype",
-        dueWeek: 9,
+        dueWeek: 8,
         dueDay: 5,
       },
     ],
@@ -526,8 +537,8 @@ const schedule: Schedule = {
   weeks,
   vitamins: resolveAssignments(vitamins, "Vitamin"),
   projects: resolveAssignments(projects, "Project"),
-  startDate: new Date("February 9, 2026"),
-  lessonDays: [2, 3],
+  startDate: new Date("September 6, 2026"),
+  lessonDays: [3, 4],
 };
 
 export default schedule;

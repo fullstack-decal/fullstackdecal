@@ -11,9 +11,7 @@ import {
   Text,
   Divider,
   Center,
-  Link as ChakraLink,
 } from "@chakra-ui/react";
-import Link from "@docusaurus/Link";
 import { useColorMode } from "@docusaurus/theme-common";
 
 interface WeekCardProps {
@@ -48,7 +46,7 @@ const FirstWeekCol: React.FC<{ children: React.ReactNode }> = ({
  * @param {Assignment} assignment - The assignment to display.
  * @returns {JSX.Element} The assignment link component.
  */
-const AssignmentLink: React.FC<{ assignment: Assignment }> = ({
+const AssignmentLabel: React.FC<{ assignment: Assignment }> = ({
   assignment,
 }) => {
   const isVitamin = assignment.type == "Vitamin";
@@ -60,10 +58,8 @@ const AssignmentLink: React.FC<{ assignment: Assignment }> = ({
   );
   const color = isVitamin ? "purple" : "pink";
   return (
-    <Text textStyle="label1">
-      <ChakraLink color={color} mr={3} as={Link} to={assignment.link.link}>
-        {icon} {assignment.link.name}
-      </ChakraLink>
+    <Text textStyle="label1" color={color} mr={3}>
+      {icon} {assignment.link.name}
     </Text>
   );
 };
@@ -92,7 +88,7 @@ const AssignmentList: React.FC<{
         <Text textStyle="label2">{type}</Text>
       </FirstWeekCol>
       <div>
-        <AssignmentLink assignment={assignment} />
+        <AssignmentLabel assignment={assignment} />
         <span
           style={{
             fontSize: "14px",
@@ -224,24 +220,18 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
 
           if (lesson.slides) {
             weekAttachnments.push(
-              <Text textStyle="label2">
-                {" "}
-                <ChakraLink color="teal" mr={3} as={Link} to={lesson.slides.link}>
-                  <HiOutlinePresentationChartBar style={{ marginBottom: "-2px" }} />{" "}
-                  {lesson.slides.name}
-                </ChakraLink>
+              <Text textStyle="label2" color="teal" mr={3}>
+                <HiOutlinePresentationChartBar style={{ marginBottom: "-2px" }} />{" "}
+                {lesson.slides.name}
               </Text>,
             );
           }
 
           if (lesson.recording) {
             weekAttachnments.push(
-              <Text textStyle="label2">
-                {" "}
-                <ChakraLink color="red" mr={3} as={Link} to={lesson.recording.link}>
-                  <HiOutlineVideoCamera style={{ marginBottom: "-2px" }} />{" "}
-                  {lesson.recording.name}
-                </ChakraLink>
+              <Text textStyle="label2" color="red" mr={3}>
+                <HiOutlineVideoCamera style={{ marginBottom: "-2px" }} />{" "}
+                {lesson.recording.name}
               </Text>,
             );
           }
@@ -249,12 +239,9 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
           if (lesson.reading) {
             for (const reading of lesson.reading) {
               weekAttachnments.push(
-                <Text textStyle="label2">
-                  {" "}
-                  <ChakraLink color="blue" mr={3} as={Link} to={reading.link}>
-                    <HiOutlineBookOpen style={{ marginBottom: "-2px" }} />{" "}
-                    {reading.name} Reading
-                  </ChakraLink>
+                <Text textStyle="label2" color="blue" mr={3}>
+                  <HiOutlineBookOpen style={{ marginBottom: "-2px" }} />{" "}
+                  {reading.name} Reading
                 </Text>,
               );
             }
