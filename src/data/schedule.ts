@@ -377,6 +377,17 @@ const weeks: Week[] = [
     ],
   },
   {
+    title: "Final project work week",
+    lessons: [
+      {
+        topic: "No Lecture",
+      },
+      {
+        topic: "No Lecture",
+      },
+    ],
+  },
+  {
     title: "Thanksgiving Break",
     lessons: [
       {
@@ -480,7 +491,7 @@ const vitamins: IncompleteAssignment[] = [
       name: "Flask, Django, and Deployment (EXTRA CREDIT/ATTENDANCE FIXER)",
     },
     assignedWeek: 9,
-    dueWeek: 11,
+    dueWeek: 12,
     dueDay: 1,
   },
 ];
@@ -510,7 +521,7 @@ const projects: IncompleteAssignment[] = [
       name: "Final Project",
     },
     assignedWeek: 6,
-    dueWeek: 11,
+    dueWeek: 12,
     dueDay: 2,
     checkpoints: [
       {
@@ -526,7 +537,7 @@ const schedule: Schedule = {
   weeks,
   vitamins: resolveAssignments(vitamins, "Vitamin"),
   projects: resolveAssignments(projects, "Project"),
-  startDate: new Date("September 13, 2026"),
+  startDate: new Date("September 6, 2026"),
   lessonDays: [3, 4],
 };
 
