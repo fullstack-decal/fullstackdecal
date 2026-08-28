@@ -47,7 +47,7 @@ const HomeContent: React.FC = () => {
             <br />
             development
           </Text>
-          <Text textStyle="subtitle2">Wed 6:30-8 pm @ <strong>Physics 3</strong>, Thurs 6:30-8 pm @ <strong>Physics 2</strong></Text>
+          <Text textStyle="subtitle2">Wed 6:30-8 pm @ <strong>Art/Anthro 160</strong>, Thurs 6:30-8 pm @ <strong>Art/Anthro 160</strong></Text>
 
           <Link
             href="mailto:webdev-decal@lists.berkeley.edu"

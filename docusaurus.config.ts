@@ -69,6 +69,12 @@ const config: Config = {
           position: "left",
           label: "Extensions",
         },
+
+        {
+          href: "https://forms.gle/PqbLRBeTUDPhr7uV9",
+          position: "left",
+          label: "Apply",
+        },
         // {
         //   to: "resources",
         //   position: "left",
@@ -150,6 +156,12 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+    },
+
+      announcementBar: {
+      id: "announcementBar-4",
+      content: `Applications are open! Apply <a target="_blank" rel="noopener noreferrer" href="https://forms.gle/PqbLRBeTUDPhr7uV9">here</a>`,
+      isCloseable: true,
     },
     // announcementBar: {
     //   id: "announcementBar-3",
