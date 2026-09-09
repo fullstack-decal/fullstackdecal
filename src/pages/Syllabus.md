@@ -66,6 +66,8 @@ debugger. However, the TAs can help you find bugs and offer you the proper appro
 
 All communication this semester will be centralized on Ed. Please ask all questions there, and feel free to make private posts if you need to communicate with course staff directly.
 
+Link to ED: https://edstem.org/us/join/yfUMkH 
+
 ### Ed Etiquette
 
 - Search before posting. Your question may have already been answered by us or
