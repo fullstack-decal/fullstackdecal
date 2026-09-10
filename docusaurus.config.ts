@@ -158,11 +158,11 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
 
-      announcementBar: {
-      id: "announcementBar-4",
-      content: `Applications are open! Apply <a target="_blank" rel="noopener noreferrer" href="https://forms.gle/PqbLRBeTUDPhr7uV9">here</a>`,
-      isCloseable: true,
-    },
+    // announcementBar: {
+    //  id: "announcementBar-4",
+    //  content: `Applications are open! Apply <a target="_blank" rel="noopener noreferrer" href="https://forms.gle/PqbLRBeTUDPhr7uV9">here</a>`,
+    //  isCloseable: true,
+    // },
     // announcementBar: {
     //   id: "announcementBar-3",
     //   content: `We still have some spots open for Spring 2026! Apply <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSfZpLvil5TvY2QNWlSenUTdOAgg-PKIdsaA6NFeKyCTmmskig/viewform">here</a>`,
