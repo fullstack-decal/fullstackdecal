@@ -76,7 +76,7 @@ const weeks: Week[] = [
       {
         topic: "Course Introduction + Github",
         slides: {
-          link: "https://docs.google.com/presentation/d/1-kyUY968ljN4bGY9x7TQZA68qBU3K74Q/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          link: "https://docs.google.com/presentation/d/1HIGn8YkgL6GHi8TkMEfkLtKJA20xrP-O/edit?usp=sharing&ouid=107523146490304366802&rtpof=true&sd=true",
           name: "Slides",
         },
         recording: {
