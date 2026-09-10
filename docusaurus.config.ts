@@ -65,7 +65,7 @@ const config: Config = {
           label: "Staff",
         },
         {
-          href: "https://forms.gle/s4wFuR4vuF2UZTLF8",
+          href: "https://forms.gle/busEpb82TrpLtcsN8",
           position: "left",
           label: "Extensions",
         },
