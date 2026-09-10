@@ -11,6 +11,7 @@ import {
   Text,
   Divider,
   Center,
+  Link,
 } from "@chakra-ui/react";
 import { useColorMode } from "@docusaurus/theme-common";
 
@@ -220,32 +221,39 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
 
           if (lesson.slides) {
             weekAttachnments.push(
-              <Text textStyle="label2" color="teal" mr={3}>
-                <HiOutlinePresentationChartBar style={{ marginBottom: "-2px" }} />{" "}
-                {lesson.slides.name}
-              </Text>,
+              <Link href={lesson.slides.link} isExternal>
+                <Text textStyle="label2" color="teal" mr={3}>
+                  <HiOutlinePresentationChartBar style={{ marginBottom: "-2px" }} />{" "}
+                  {lesson.slides.name}
+                </Text>
+              </Link>,
             );
           }
 
           if (lesson.recording) {
             weekAttachnments.push(
-              <Text textStyle="label2" color="red" mr={3}>
-                <HiOutlineVideoCamera style={{ marginBottom: "-2px" }} />{" "}
-                {lesson.recording.name}
-              </Text>,
+              <Link href={lesson.recording.link} isExternal>
+                <Text textStyle="label2" color="red" mr={3}>
+                  <HiOutlineVideoCamera style={{ marginBottom: "-2px" }} />{" "}
+                  {lesson.recording.name}
+                </Text>
+              </Link>,
             );
           }
 
           if (lesson.reading) {
             for (const reading of lesson.reading) {
               weekAttachnments.push(
-                <Text textStyle="label2" color="blue" mr={3}>
-                  <HiOutlineBookOpen style={{ marginBottom: "-2px" }} />{" "}
-                  {reading.name} Reading
-                </Text>,
+                <Link href={reading.link} isExternal>
+                  <Text textStyle="label2" color="blue" mr={3}>
+                    <HiOutlineBookOpen style={{ marginBottom: "-2px" }} />{" "}
+                    {reading.name} Reading
+                  </Text>
+                </Link>,
               );
             }
           }
+}
 
           return (
             <VStack spacing={2} align="start" key={lessonIdx}>
