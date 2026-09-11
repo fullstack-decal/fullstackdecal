@@ -253,7 +253,6 @@ const WeekCard: React.FC<WeekCardProps> = ({ weekNumber, schedule }) => {
               );
             }
           }
-}
 
           return (
             <VStack spacing={2} align="start" key={lessonIdx}>
