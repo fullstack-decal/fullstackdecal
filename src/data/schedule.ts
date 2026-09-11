@@ -91,7 +91,7 @@ const weeks: Week[] = [
       {
         topic: "HTML",
         slides: {
-          link: "https://docs.google.com/presentation/d/1CF_R_3SGQlF_wAF5R0I2BLS4k1cfwNN_/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          link: "https://docs.google.com/presentation/d/1SiUkwznTP0j96tuntyv0mYgNVoKJ3bWk/edit?usp=sharing&ouid=107523146490304366802&rtpof=true&sd=true",
           name: "Slides",
         },
         recording: {
@@ -108,7 +108,7 @@ const weeks: Week[] = [
       {
         topic: "CSS 1: Introduction to CSS",
         slides: {
-          link: "https://docs.google.com/presentation/d/1rcHHPuP6lfhd_6tslr6DtYDnNnSjnJne/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          link: "",
           name: "Slides",
         },
         recording: {
@@ -125,7 +125,7 @@ const weeks: Week[] = [
       {
         topic: "CSS 2: Advanced CSS",
         slides: {
-          link: "https://docs.google.com/presentation/d/1WYmdIPQ4h6FucXGltwu3QpjZPRqKjluc/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          link: "",
           name: "Slides",
         },
         reading: [{ link: "/docs/Lessons/CSSAdv", name: "Advanced CSS" }],
@@ -138,7 +138,7 @@ const weeks: Week[] = [
       {
         topic: "JavaScript 1: Introduction to JavaScript + Asynchronous JS",
         slides: {
-          link: "https://docs.google.com/presentation/d/1ZfobR0c1MjvHgP0Oc4w-WJbiR4V1h6Z7/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          link: "",
           name: "Slides",
         },
         recording: {
@@ -159,7 +159,7 @@ const weeks: Week[] = [
       {
         topic: "JavaScript 2: DOM + TypeScript",
         slides: {
-          link: "https://docs.google.com/presentation/d/1NOmINB3fEQjDaGQazjqYtjjOSVJxwE9t/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          link: "",
           name: "Slides",
         },
         reading: [
@@ -175,7 +175,7 @@ const weeks: Week[] = [
       {
         topic: "UI/UX: Basic UI/UX + Figma + Wireframing",
         slides: {
-          link: "https://docs.google.com/presentation/d/1ZHL1qaK0Zm6C5T1znJtzQIAm4fiNeNWh/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          link: "",
           name: "Slides",
         },
         reading: [
@@ -200,7 +200,7 @@ const weeks: Week[] = [
       {
         topic: "Node.js + React 1: Introduction to React",
         slides: {
-          link: "https://docs.google.com/presentation/d/1vgLHNVi74mQxrL_ZbtYljJfJYNZ98Fvg/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          link: "",
           name: "Slides",
         },
         recording: {
@@ -222,7 +222,7 @@ const weeks: Week[] = [
       {
         topic: "React 2: Routing, APIs",
         slides: {
-          link: "https://docs.google.com/presentation/d/1D83XleJSaqoo-fYCsR-I6xmiPa5CcGfI/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          link: "",
           name: "Slides",
         },
         recording: {
@@ -241,7 +241,7 @@ const weeks: Week[] = [
       {
         topic: "Node.js, Server Side Rendering, Express.js, Cookies",
         slides: {
-          link: "https://docs.google.com/presentation/d/1k_Sjzi0BeZhd3zDHD0Bx7ObHoiGuRLfc/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          link: "",
           name: "Slides",
         },
         recording: {
@@ -259,7 +259,7 @@ const weeks: Week[] = [
       {
         topic: "APIs",
         slides: {
-          link: "https://docs.google.com/presentation/d/1PU-0EQU_abTt_yPhUtCiLcgTtFZklpsq/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          link: "",
           name: "Slides",
         },
         reading: [
@@ -278,7 +278,7 @@ const weeks: Week[] = [
       {
         topic: "Databases Intro, NoSQL vs SQL, MongoDB, Graph Databases",
         slides: {
-          link: "https://docs.google.com/presentation/d/1wVQapYLynjgadUuTwYhZJDtf34FBGO_1/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          link: "",
           name: "Slides",
         },
         recording: {
@@ -297,7 +297,7 @@ const weeks: Week[] = [
           { link: "/docs/Lessons/ORM", name: "Object Relational Models" },
         ],
         slides: {
-          link: 'https://docs.google.com/presentation/d/1fO7-9j7P2xMiCBCTQ5m_HvK6AH4KileF/edit?usp=sharing&ouid=117005960368617411998&rtpof=true&sd=true',
+          link: '',
           name: 'Slides'
         },
         recording: {
@@ -321,14 +321,14 @@ const weeks: Week[] = [
           name: "Recording"
         },
         slides: {
-          link: "https://docs.google.com/presentation/d/1OwMoj97hPKjV_PRlY8jww7ELBlSKGp75/edit?usp=drive_link&ouid=117005960368617411998&rtpof=true&sd=true",
+          link: "",
           name: "Slides"
         }
       },
       {
         topic: "Next.js",
         slides: {
-          link: "https://docs.google.com/presentation/d/1MO2DKMh2uNl-L9ML9dJueUUZhunVSzPu/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          link: "",
           name: "Slides",
         },
         reading: [{ link: "/docs/Lessons/Next", name: "Next.js" }],
@@ -341,7 +341,7 @@ const weeks: Week[] = [
       {
         topic: "CSS Frameworks, Redux.js",
         slides: {
-          link: "https://docs.google.com/presentation/d/1GIKZtNvNLv5Hb53w_lRe2jUoIr0vTcVf/edit?usp=sharing&ouid=101125765203534060398&rtpof=true&sd=true",
+          link: "",
           name: "Slides",
         },
         reading: [
@@ -368,7 +368,7 @@ const weeks: Week[] = [
           { link: "/docs/Lessons/Deployment", name: "Deploying Your Website" },
         ],
         slides:
-          { link: "https://docs.google.com/presentation/d/1Kz9siDX41nn-pJESLP1FBpDj0Em1Ux_6/edit?usp=sharing&ouid=117005960368617411998&rtpof=true&sd=true", name: "Slides" }
+          { link: "", name: "Slides" }
         
       },
       {
@@ -404,7 +404,7 @@ const weeks: Week[] = [
       {
         topic: "Final Project Presentations",
         slides: {
-          link: "https://docs.google.com/presentation/d/1dSATBY0SQn8wE-K4Ws6oFtFXJnL_bgHJu5ksHaLIkTk/edit?usp=sharing",
+          link: "",
           name: "Slides",
         },
       },
