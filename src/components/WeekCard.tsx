@@ -59,9 +59,11 @@ const AssignmentLabel: React.FC<{ assignment: Assignment }> = ({
   );
   const color = isVitamin ? "purple" : "pink";
   return (
-    <Text textStyle="label1" color={color} mr={3}>
-      {icon} {assignment.link.name}
-    </Text>
+    <Link href={assignment.link.link}>
+      <Text textStyle="label1" color={color} mr={3}>
+        {icon} {assignment.link.name}
+      </Text>
+    </Link>
   );
 };
 
