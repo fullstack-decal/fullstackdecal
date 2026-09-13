@@ -59,6 +59,7 @@ export interface Staff {
   bio?: string;
   github?: string;
   email: string;
+  officeHoursLink: string;
 }
 
 export interface PastStaff {
@@ -66,3 +67,4 @@ export interface PastStaff {
   image: string;
   linkedin: string;
 }
+

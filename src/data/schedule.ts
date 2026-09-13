@@ -107,14 +107,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "CSS 1: Introduction to CSS",
-        slides: {
-          link: "",
-          name: "Slides",
-        },
-        recording: {
+        /* recording: {
           link: "https://drive.google.com/file/d/1XoanOFzQ5qMue4_cFWazSO93wDEktJhm/view?usp=sharing",
           name: "Recording",
-        },
+        }, */
         reading: [
           {
             link: "/docs/Lessons/CSSIntro",
@@ -124,10 +120,6 @@ const weeks: Week[] = [
       },
       {
         topic: "CSS 2: Advanced CSS",
-        slides: {
-          link: "",
-          name: "Slides",
-        },
         reading: [{ link: "/docs/Lessons/CSSAdv", name: "Advanced CSS" }],
       },
     ],
@@ -137,14 +129,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "JavaScript 1: Introduction to JavaScript + Asynchronous JS",
-        slides: {
-          link: "",
-          name: "Slides",
-        },
-        recording: {
+        /* recording: {
           link: "https://drive.google.com/file/d/14TsCMOX_Pyd2ugI1pGmmux4-cIHraIwV/view?usp=drive_link",
           name: "Recording"
-        },
+        }, */
         reading: [
           {
             link: "/docs/Lessons/JSIntro",
@@ -158,10 +146,6 @@ const weeks: Week[] = [
       },
       {
         topic: "JavaScript 2: DOM + TypeScript",
-        slides: {
-          link: "",
-          name: "Slides",
-        },
         reading: [
           { link: "/docs/Lessons/DOM", name: "DOM" },
           { link: "/docs/Lessons/TypeScript", name: "TypeScript" },
@@ -174,10 +158,6 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "UI/UX: Basic UI/UX + Figma + Wireframing",
-        slides: {
-          link: "",
-          name: "Slides",
-        },
         reading: [
           {
             link: "/docs/Lessons/UIUX",
@@ -199,14 +179,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "Node.js + React 1: Introduction to React",
-        slides: {
-          link: "",
-          name: "Slides",
-        },
-        recording: {
+        /* recording: {
           link: "https://drive.google.com/file/d/1AsU2F6TReAfqPKTYYKPkKRW_y2yaZB44/view?usp=sharing",
           name: "Recording",
-        },
+        }, */
         reading: [
           { link: "/docs/Lessons/Node", name: "Node.js and Package Managers" },
           {
@@ -221,14 +197,10 @@ const weeks: Week[] = [
       },
       {
         topic: "React 2: Routing, APIs",
-        slides: {
-          link: "",
-          name: "Slides",
-        },
-        recording: {
+        /* recording: {
           link: "https://drive.google.com/file/d/1n6tJAL4eQQP5cS64aSiQC8DsAStgWjMh/view?usp=sharing",
           name: "Recording",
-        },
+        }, */
         reading: [
           { link: "/docs/Lessons/Routing", name: "Routing and Axios" },
         ],
@@ -240,14 +212,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "Node.js, Server Side Rendering, Express.js, Cookies",
-        slides: {
-          link: "",
-          name: "Slides",
-        },
-        recording: {
+        /* recording: {
           link: "https://drive.google.com/file/d/1bZ0g0pBVG28szIwgUA7NwDNyq6s4Flg4/view?usp=drive_link",
           name: "Recording"
-        },
+        }, */
         reading: [
           {
             link: "/docs/Lessons/SSR",
@@ -258,17 +226,13 @@ const weeks: Week[] = [
       },
       {
         topic: "APIs",
-        slides: {
-          link: "",
-          name: "Slides",
-        },
         reading: [
           { link: "/docs/Lessons/CSR", name: "APIs and Client Side Rendering" },
         ],
-        recording: {
+        /* recording: {
           name: 'Recording',
           link: 'https://drive.google.com/file/d/1nuyhrpNtCiSc24XSuvx_ve8C5VcQkD22/view?usp=sharing'
-        }
+        }, */
       },
     ],
   },
@@ -277,14 +241,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "Databases Intro, NoSQL vs SQL, MongoDB, Graph Databases",
-        slides: {
-          link: "",
-          name: "Slides",
-        },
-        recording: {
+        /* recording: {
           link: "https://drive.google.com/file/d/1SMRIBsbYpbnaQFyvwrrxKi8Y2kw0KnDi/view?usp=sharing",
           name: "Recording",
-        },
+        }, */
         reading: [
           { link: "/docs/Lessons/DBIntro", name: "Introduction to Databases" },
           { link: "/docs/Lessons/Mongo", name: "MongoDB" },
@@ -296,14 +256,10 @@ const weeks: Week[] = [
           { link: "/docs/Lessons/SQL", name: "SQL and Relational Databases" },
           { link: "/docs/Lessons/ORM", name: "Object Relational Models" },
         ],
-        slides: {
-          link: '',
-          name: 'Slides'
-        },
-        recording: {
+        /* recording: {
           link: 'https://docs.google.com/presentation/d/1fO7-9j7P2xMiCBCTQ5m_HvK6AH4KileF/edit?usp=drive_link&ouid=117005960368617411998&rtpof=true&sd=true',
           name: 'Recording'
-        }
+        }, */
       },
     ],
   },
@@ -316,21 +272,13 @@ const weeks: Week[] = [
           { link: "/docs/Lessons/Auth", name: "Authentication/Authorization" },
           { link: "/docs/Lessons/Firebase", name: "Firebase" },
         ],
-        recording: {
+        /* recording: {
           link: "https://drive.google.com/file/d/17bb4sLGq_AmGI_cSyJBT9AzmDWdwRqOl/view?usp=drive_link",
           name: "Recording"
-        },
-        slides: {
-          link: "",
-          name: "Slides"
-        }
+        }, */
       },
       {
         topic: "Next.js",
-        slides: {
-          link: "",
-          name: "Slides",
-        },
         reading: [{ link: "/docs/Lessons/Next", name: "Next.js" }],
       },
     ],
@@ -340,10 +288,6 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "CSS Frameworks, Redux.js",
-        slides: {
-          link: "",
-          name: "Slides",
-        },
         reading: [
           {
             link: "/docs/Lessons/CSSFrameworks",
@@ -367,9 +311,6 @@ const weeks: Week[] = [
           { link: "/docs/Lessons/Flask", name: "Flask" },
           { link: "/docs/Lessons/Deployment", name: "Deploying Your Website" },
         ],
-        slides:
-          { link: "", name: "Slides" }
-        
       },
       {
         topic: "Guest Lecture: MongoDB - Intro to Data Modeling",
@@ -403,10 +344,6 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "Final Project Presentations",
-        slides: {
-          link: "",
-          name: "Slides",
-        },
       },
       {
         topic: "Final Project Presentations",

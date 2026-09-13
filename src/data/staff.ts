@@ -4,11 +4,11 @@ const staff: Staff[] = [
   {
     name: "Sophie Luk",
     role: "Head TA & Facilitator",
-    bio: "Hello! I'm Sophie, I'm a junior studying Cognitive Science. Excited to be teaching this decal!",
+    bio: "Hello! I'm Sophie, I'm a junior studying Cognitive Science. Excited to be running this decal!",
     image: "/img/staff/SophieL.jpg",
     linkedin: "www.linkedin.com/in/sophie-luk-279272225",
     website: "",
-    github: "",
+    github: "", 
     email: "mailto:sophie_luk@berkeley.edu",
   },
   {
@@ -40,6 +40,7 @@ const staff: Staff[] = [
     website: "",
     github: "",
     email: "lehuy_hoang@berkeley.edu",
+    officeHoursLink: "https://forms.gle/your-sign-up-link",
   },
   {
     name: "Ritam Chakraborty",
