@@ -107,10 +107,14 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "CSS 1: Introduction to CSS",
-        /* recording: {
-          link: "https://drive.google.com/file/d/1XoanOFzQ5qMue4_cFWazSO93wDEktJhm/view?usp=sharing",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1QmKjcnJmI4LqzcV0YIel7xufwClqrjLB/edit?usp=sharing&ouid=106261733186428499675",
+          name: "Slides",
+        },
+        recording: {
+          link: "https://drive.google.com/file/d/1Je_tSZthON7FlZPjt_Dafc8keBgeH2MK/view?usp=drive_link",
           name: "Recording",
-        }, */
+        },
         reading: [
           {
             link: "/docs/Lessons/CSSIntro",
@@ -120,6 +124,10 @@ const weeks: Week[] = [
       },
       {
         topic: "CSS 2: Advanced CSS",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1GoWCOERcsUBkbdSJQwmwzYJ48c8kvrIK/edit?usp=sharing&ouid=106261733186428499675",
+          name: "Slides",
+        },
         reading: [{ link: "/docs/Lessons/CSSAdv", name: "Advanced CSS" }],
       },
     ],
