@@ -125,14 +125,6 @@ const weeks: Week[] = [
       {
         topic: "CSS 2: Advanced CSS",
         slides: {
-          link: "https://docs.google.com/presentation/d/1QmKjcnJmI4LqzcV0YIel7xufwClqrjLB/edit?usp=sharing&ouid=107523146490304366802&rtpof=true&sd=true",
-          name: "Slides",
-        },
-        recording: {
-          link: "https://drive.google.com/file/d/1H77xLgfHsH-dI6Cz1xWvBu9lE-X2aCKE/view?usp=sharing",
-          name: "Recording",
-        },
-        slides: {
           link: "https://docs.google.com/presentation/d/1GoWCOERcsUBkbdSJQwmwzYJ48c8kvrIK/edit?usp=sharing&ouid=106261733186428499675",
           name: "Slides",
         },
