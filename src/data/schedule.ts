@@ -137,10 +137,14 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "JavaScript 1: Introduction to JavaScript + Asynchronous JS",
-        /* recording: {
+        slides: {
+          link: "https://docs.google.com/presentation/d/1sBO2EJSQmZ-bFP1lzfx2zZ7JTZdebsl_/edit?usp=sharing&ouid=107523146490304366802&rtpof=true&sd=true",
+          name: "Slides",
+        },
+        recording: {
           link: "https://drive.google.com/file/d/14TsCMOX_Pyd2ugI1pGmmux4-cIHraIwV/view?usp=drive_link",
           name: "Recording"
-        }, */
+        },
         reading: [
           {
             link: "/docs/Lessons/JSIntro",
