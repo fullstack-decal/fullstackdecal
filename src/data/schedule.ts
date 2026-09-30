@@ -174,6 +174,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "UI/UX: Basic UI/UX + Figma + Wireframing",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1pEZu9G4HwrjEEtoflVM9sExVEMBMi9QP/edit?usp=sharing&ouid=107523146490304366802&rtpof=true&sd=true",
+          name: "Slides",
+        },
         reading: [
           {
             link: "/docs/Lessons/UIUX",
