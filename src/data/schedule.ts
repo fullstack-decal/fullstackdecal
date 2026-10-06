@@ -32,7 +32,7 @@
     link: { link: "/docs/Assignments/Vitamins/HTMLCSS", name: "HTML & CSS" },
     assignedWeek: 2,
     dueWeek: 3,
-    dueDay: 2,
+    dueDay: 3,
   },
 
   For the name, add just the assignment name itself. The code will automatically add a vitamin/project numbering prefix based on the ordering of assignments in the respective lists.
@@ -380,7 +380,7 @@ const vitamins: IncompleteAssignment[] = [
     },
     assignedWeek: 0,
     dueWeek: 1,
-    dueDay: 2,
+    dueDay: 3,
   },
   {
     link: {
@@ -389,25 +389,25 @@ const vitamins: IncompleteAssignment[] = [
     },
     assignedWeek: 0,
     dueWeek: 2,
-    dueDay: 2,
+    dueDay: 3,
   },
   {
     link: { link: "/docs/Assignments/Vitamins/JS", name: "JavaScript" },
     assignedWeek: 2,
     dueWeek: 3,
-    dueDay: 2,
+    dueDay: 3,
   },
   {
     link: { link: "/docs/Assignments/Vitamins/Design", name: "Design" },
     assignedWeek: 3,
     dueWeek: 4,
-    dueDay: 2,
+    dueDay: 3,
   },
   {
     link: { link: "/docs/Assignments/Vitamins/React", name: "React" },
     assignedWeek: 4,
     dueWeek: 5,
-    dueDay: 2,
+    dueDay: 3,
   },
   {
     link: {
@@ -416,13 +416,13 @@ const vitamins: IncompleteAssignment[] = [
     },
     assignedWeek: 5,
     dueWeek: 6,
-    dueDay: 2,
+    dueDay: 3,
   },
   {
     link: { link: "/docs/Assignments/Vitamins/Databases", name: "Databases" },
     assignedWeek: 6,
     dueWeek: 7,
-    dueDay: 2,
+    dueDay: 3,
   },
   {
     link: {
@@ -431,7 +431,7 @@ const vitamins: IncompleteAssignment[] = [
     },
     assignedWeek: 7,
     dueWeek: 8,
-    dueDay: 2,
+    dueDay: 3,
   },
   {
     link: {
@@ -460,8 +460,8 @@ const projects: IncompleteAssignment[] = [
       name: "Personal Website",
     },
     assignedWeek: 2,
-    dueWeek: 4,
-    dueDay: 2,
+    dueWeek: 5,
+    dueDay: 3,
   },
   {
     link: {
@@ -470,7 +470,7 @@ const projects: IncompleteAssignment[] = [
     },
     assignedWeek: 4,
     dueWeek: 7,
-    dueDay: 2,
+    dueDay: 3,
   },
   {
     link: {
@@ -479,7 +479,7 @@ const projects: IncompleteAssignment[] = [
     },
     assignedWeek: 6,
     dueWeek: 12,
-    dueDay: 2,
+    dueDay: 3,
     checkpoints: [
       {
         name: "Project Idea + Design Prototype",
