@@ -236,6 +236,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "Node.js, Server Side Rendering, Express.js, Cookies",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1DM-m-zkFqBkRo9QbMJqkF538n--LEmEV/edit?usp=sharing&ouid=100392306421775789267&rtpof=true&sd=true",
+          name: "Slides",
+        },
         /* recording: {
           link: "https://drive.google.com/file/d/1bZ0g0pBVG28szIwgUA7NwDNyq6s4Flg4/view?usp=drive_link",
           name: "Recording"
