@@ -199,10 +199,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "Node.js + React 1: Introduction to React",
-        /* recording: {
+        recording: {
           link: "https://drive.google.com/file/d/1AsU2F6TReAfqPKTYYKPkKRW_y2yaZB44/view?usp=sharing",
           name: "Recording",
-        }, */
+        }, 
         reading: [
           { link: "/docs/Lessons/Node", name: "Node.js and Package Managers" },
           {
@@ -217,10 +217,10 @@ const weeks: Week[] = [
       },
       {
         topic: "React 2: Routing, APIs",
-        /* recording: {
+        recording: {
           link: "https://drive.google.com/file/d/1n6tJAL4eQQP5cS64aSiQC8DsAStgWjMh/view?usp=sharing",
           name: "Recording",
-        }, */
+        }, 
         reading: [
           { link: "/docs/Lessons/Routing", name: "Routing and Axios" },
         ],
@@ -232,10 +232,14 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "Node.js, Server Side Rendering, Express.js, Cookies",
-        /* recording: {
+        slides: {
+          link: "https://docs.google.com/presentation/d/1DM-m-zkFqBkRo9QbMJqkF538n--LEmEV/edit?usp=sharing&ouid=107523146490304366802&rtpof=true&sd=true",
+          name: "Slides",
+        },
+        recording: {
           link: "https://drive.google.com/file/d/1bZ0g0pBVG28szIwgUA7NwDNyq6s4Flg4/view?usp=drive_link",
           name: "Recording"
-        }, */
+        }, 
         reading: [
           {
             link: "/docs/Lessons/SSR",
