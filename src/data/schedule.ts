@@ -221,6 +221,10 @@ const weeks: Week[] = [
       },
       {
         topic: "React 2: Routing, APIs",
+        slides: {
+          link: "https://docs.google.com/presentation/d/13qWJFmVzuPQZnZqLUsspjyd9FO6NH9sO/edit?slide=id.p1#slide=id.p1",
+          name: "Slides",
+        },
         /* recording: {
           link: "https://drive.google.com/file/d/1n6tJAL4eQQP5cS64aSiQC8DsAStgWjMh/view?usp=sharing",
           name: "Recording",
