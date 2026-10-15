@@ -206,7 +206,7 @@ const weeks: Week[] = [
         /* recording: {
           link: "https://drive.google.com/file/d/1AsU2F6TReAfqPKTYYKPkKRW_y2yaZB44/view?usp=sharing",
           name: "Recording",
-        }, 
+        }, */
         reading: [
           { link: "/docs/Lessons/Node", name: "Node.js and Package Managers" },
           {
@@ -228,7 +228,7 @@ const weeks: Week[] = [
         /* recording: {
           link: "https://drive.google.com/file/d/1n6tJAL4eQQP5cS64aSiQC8DsAStgWjMh/view?usp=sharing",
           name: "Recording",
-        }, 
+        }, */
         reading: [
           { link: "/docs/Lessons/Routing", name: "Routing and Axios" },
         ],
@@ -247,7 +247,7 @@ const weeks: Week[] = [
         /* recording: {
           link: "https://drive.google.com/file/d/1bZ0g0pBVG28szIwgUA7NwDNyq6s4Flg4/view?usp=drive_link",
           name: "Recording"
-        }, 
+        }, */
         reading: [
           {
             link: "/docs/Lessons/SSR",
