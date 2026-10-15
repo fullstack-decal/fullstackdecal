@@ -199,7 +199,11 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "Node.js + React 1: Introduction to React",
-        recording: {
+        slides: {
+          link: "https://docs.google.com/presentation/d/1UTotFwJ6L-TStgCOjc4CDSRJJM4qbvRD/edit?usp=sharing&ouid=106261733186428499675&rtpof=true&sd=true",
+          name: "Slides",
+        },
+        /* recording: {
           link: "https://drive.google.com/file/d/1AsU2F6TReAfqPKTYYKPkKRW_y2yaZB44/view?usp=sharing",
           name: "Recording",
         }, 
@@ -217,7 +221,11 @@ const weeks: Week[] = [
       },
       {
         topic: "React 2: Routing, APIs",
-        recording: {
+        slides: {
+          link: "https://docs.google.com/presentation/d/13qWJFmVzuPQZnZqLUsspjyd9FO6NH9sO/edit?slide=id.p1#slide=id.p1",
+          name: "Slides",
+        },
+        /* recording: {
           link: "https://drive.google.com/file/d/1n6tJAL4eQQP5cS64aSiQC8DsAStgWjMh/view?usp=sharing",
           name: "Recording",
         }, 
@@ -233,10 +241,10 @@ const weeks: Week[] = [
       {
         topic: "Node.js, Server Side Rendering, Express.js, Cookies",
         slides: {
-          link: "https://docs.google.com/presentation/d/1DM-m-zkFqBkRo9QbMJqkF538n--LEmEV/edit?usp=sharing&ouid=107523146490304366802&rtpof=true&sd=true",
+          link: "https://docs.google.com/presentation/d/1DM-m-zkFqBkRo9QbMJqkF538n--LEmEV/edit?usp=sharing&ouid=100392306421775789267&rtpof=true&sd=true",
           name: "Slides",
         },
-        recording: {
+        /* recording: {
           link: "https://drive.google.com/file/d/1bZ0g0pBVG28szIwgUA7NwDNyq6s4Flg4/view?usp=drive_link",
           name: "Recording"
         }, 
