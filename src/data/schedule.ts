@@ -258,6 +258,10 @@ const weeks: Week[] = [
       },
       {
         topic: "APIs",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1T4m0G2uyekV4dA-oQsInrlXHtZd2HwGP/edit?usp=sharing&ouid=107523146490304366802&rtpof=true&sd=true",
+          name: "Slides",
+        },
         reading: [
           { link: "/docs/Lessons/CSR", name: "APIs and Client Side Rendering" },
         ],
