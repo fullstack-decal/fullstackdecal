@@ -265,10 +265,10 @@ const weeks: Week[] = [
         reading: [
           { link: "/docs/Lessons/CSR", name: "APIs and Client Side Rendering" },
         ],
-        /* recording: {
-          name: 'Recording',
-          link: 'https://drive.google.com/file/d/1nuyhrpNtCiSc24XSuvx_ve8C5VcQkD22/view?usp=sharing'
-        }, */
+        recording: {
+          name: "Recording",
+          link: "https://drive.google.com/file/d/1bsBU4Tksijg-KrOINJEe-2KjwTloevum/view?usp=sharing",
+        },
       },
     ],
   },
