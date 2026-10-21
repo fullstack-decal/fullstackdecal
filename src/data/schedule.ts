@@ -277,10 +277,14 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "Databases Intro, NoSQL vs SQL, MongoDB, Graph Databases",
-        /* recording: {
+        slides: {
+          link: "https://docs.google.com/presentation/d/1BvQjHLhuvQEf6cvUAJdGEeLRUBB9mceC/edit?usp=sharing&ouid=107523146490304366802&rtpof=true&sd=true",
+          name: "Slides",
+        },
+         recording: {
           link: "https://drive.google.com/file/d/1SMRIBsbYpbnaQFyvwrrxKi8Y2kw0KnDi/view?usp=sharing",
           name: "Recording",
-        }, */
+        }, 
         reading: [
           { link: "/docs/Lessons/DBIntro", name: "Introduction to Databases" },
           { link: "/docs/Lessons/Mongo", name: "MongoDB" },
