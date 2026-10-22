@@ -292,14 +292,18 @@ const weeks: Week[] = [
       },
       {
         topic: "Relational Databases, SQL, ORMs",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1ZloBR-cYwlia3d-psQyXvZpJbz2GFh__/edit?usp=sharing&ouid=107523146490304366802&rtpof=true&sd=true",
+          name: "Slides",
+        },
         reading: [
           { link: "/docs/Lessons/SQL", name: "SQL and Relational Databases" },
           { link: "/docs/Lessons/ORM", name: "Object Relational Models" },
         ],
-        /* recording: {
+        recording: {
           link: 'https://docs.google.com/presentation/d/1fO7-9j7P2xMiCBCTQ5m_HvK6AH4KileF/edit?usp=drive_link&ouid=117005960368617411998&rtpof=true&sd=true',
           name: 'Recording'
-        }, */
+        }, 
       },
     ],
   },
