@@ -312,6 +312,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "Authentication, Firebase, Supabase",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1bu1dKyLj9KY5YplTEXQktDk0ZKHrzxdj/edit?usp=sharing&ouid=107523146490304366802&rtpof=true&sd=true",
+          name: "Slides",
+        },
         reading: [
           { link: "/docs/Lessons/Auth", name: "Authentication/Authorization" },
           { link: "/docs/Lessons/Firebase", name: "Firebase" },
@@ -323,6 +327,10 @@ const weeks: Week[] = [
       },
       {
         topic: "Next.js",
+        slides: {
+          link: "https://docs.google.com/presentation/d/1gWVrQbMFadQv5asJc_vBegn5QshzO-um/edit?usp=sharing&ouid=107523146490304366802&rtpof=true&sd=true",
+          name: "Slides",
+        },
         reading: [{ link: "/docs/Lessons/Next", name: "Next.js" }],
       },
     ],
@@ -332,6 +340,10 @@ const weeks: Week[] = [
     lessons: [
       {
         topic: "CSS Frameworks, Redux.js",
+        slides: {
+          link: "https://docs.google.com/presentation/d/19x_4w0N_Yt72Ts9oJMcZMtyXjrA--yqE/edit?usp=sharing&ouid=107523146490304366802&rtpof=true&sd=true",
+          name: "Slides",
+        },
         reading: [
           {
             link: "/docs/Lessons/CSSFrameworks",
